@@ -6,7 +6,7 @@ package com.example.cricflex;
 
 public class Player {
     // int id;
-    String name, email, username,  password;
+    String  email, username,  password;
 
     /*
     public void setId(int id){
@@ -16,13 +16,6 @@ public class Player {
         return this.id;
     }
     */
-
-    public void setName(String name){
-        this.name = name;
-    }
-    public String getName(){
-        return this.name;
-    }
 
     public void setUsername(String username){
         this.username = username;

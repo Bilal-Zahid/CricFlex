@@ -24,7 +24,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
 
     private static final String TABLE_CREATE = "create table "+TABLE_NAME+" (id integer primary key not null  , "+
-            "name text not null , email text not null , username text not null, password text not null);";
+            " email text not null , username text not null, password text not null);";
 
 
 
@@ -54,9 +54,10 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         int count = cursor.getCount();
 
         values.put(COLUMN_ID,count);
-        values.put(COLUMN_NAME , p.getName());
-        values.put(COLUMN_USERNAME, p.getusername());
+        //values.put(COLUMN_NAME , p.getName());
         values.put(COLUMN_EMAIL, p.getEmail());
+        values.put(COLUMN_USERNAME, p.getusername());
+
         values.put(COLUMN_PASSWORD, p.getPassword());
 
         db.insert(TABLE_NAME, null , values);
@@ -80,7 +81,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
             }
             while(cursor.moveToNext());
         }
-
+        
         return pass;
     }
 }
