@@ -51,7 +51,7 @@ import android.bluetooth.le.ScanSettings;
 
 public class MainActivity extends Activity implements BluetoothAdapter.LeScanCallback {
 
-
+//COMITTING ///
     @Override
     public void onBackPressed() {
         super.onBackPressed();
