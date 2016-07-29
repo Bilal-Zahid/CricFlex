@@ -15,7 +15,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     private static final String DATABASE_NAME = "cricflex.db";
     private static final String TABLE_NAME = "players";
     private static final String COLUMN_ID = "id";
-    private static final String COLUMN_NAME = "name";
+    //private static final String COLUMN_NAME = "name";
     private static final String COLUMN_EMAIL = "email";
     private static final String COLUMN_USERNAME = "username";
     private static final String COLUMN_PASSWORD = "password";
@@ -52,7 +52,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         String query = "select * from players";
         Cursor cursor = db.rawQuery(query,null);
         int count = cursor.getCount();
-
+        cursor.close();
         values.put(COLUMN_ID,count);
         //values.put(COLUMN_NAME , p.getName());
         values.put(COLUMN_EMAIL, p.getEmail());
@@ -81,7 +81,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
             }
             while(cursor.moveToNext());
         }
-        
+        cursor.close();
         return pass;
     }
 }

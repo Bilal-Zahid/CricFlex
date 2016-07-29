@@ -58,6 +58,8 @@ public class MainActivity extends Activity implements BluetoothAdapter.LeScanCal
     }
 
 
+    //check commit by bilal
+    
     //changings
     private BluetoothAdapter mBluetoothAdapter;
     private int REQUEST_ENABLE_BT = 1;
