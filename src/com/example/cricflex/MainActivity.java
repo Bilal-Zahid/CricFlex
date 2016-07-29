@@ -58,8 +58,8 @@ public class MainActivity extends Activity implements BluetoothAdapter.LeScanCal
     }
 
 
-    //check commit by bilal
-    
+    //check commit by bilal zahid 1234
+
     //changings
     private BluetoothAdapter mBluetoothAdapter;
     private int REQUEST_ENABLE_BT = 1;
@@ -71,6 +71,7 @@ public class MainActivity extends Activity implements BluetoothAdapter.LeScanCal
     private BluetoothGatt mGatt;
     private File accelerationFile = new File("/sdcard/acceleration.txt");
     private long temp;
+    private int test1234;
 /*
     private ScanCallback mScanCallback = new ScanCallback() {
         @Override
