@@ -81,13 +81,16 @@ public class RegisterActivity extends Activity {
                     Toast.makeText(RegisterActivity.this, "Invalid Email Address", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
+                if(!helper.searchPassword(usernamestr).equals("not found")){
+                    Toast.makeText(RegisterActivity.this, "Username Already Exists", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 p.setUsername(usernamestr);
                 p.setEmail(emailstr);
                 p.setPassword(passwordstr);
 
                 helper.insertPlayer(p);
-
+                Toast.makeText(RegisterActivity.this, "Registered", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
