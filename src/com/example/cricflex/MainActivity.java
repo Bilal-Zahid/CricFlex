@@ -11,6 +11,7 @@ import java.io.OutputStreamWriter;
 import java.util.List;
 import java.util.UUID;
 
+import android.os.Handler;
 import android.util.Log;
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
@@ -52,10 +53,8 @@ import android.bluetooth.le.ScanSettings;
 public class MainActivity extends Activity implements BluetoothAdapter.LeScanCallback {
 
 //COMITTING ///
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-    }
+    private static Boolean exit = false;
+
 
 
     //check commit by bilal zahid 1234
@@ -534,6 +533,24 @@ public class MainActivity extends Activity implements BluetoothAdapter.LeScanCal
             bindService(rfduinoIntent, rfduinoServiceConnection, BIND_AUTO_CREATE);
         }
 
+
+    }
+    @Override
+    public void onBackPressed() {
+        if (exit) {
+            this.finishAffinity(); // finish activity
+        } else {
+            Toast.makeText(this, "Press Back again to Exit.",
+                    Toast.LENGTH_SHORT).show();
+            exit = true;
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    exit = false;
+                }
+            }, 3 * 1000);
+
+        }
 
     }
 

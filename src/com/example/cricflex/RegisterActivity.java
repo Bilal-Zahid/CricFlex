@@ -105,4 +105,10 @@ public class RegisterActivity extends Activity {
 
 
     }
+    @Override
+    public void onBackPressed() {
+        // your code.
+        Intent i = new Intent(RegisterActivity.this, LoginActivity.class);
+        RegisterActivity.this.startActivity(i);
+    }
 }

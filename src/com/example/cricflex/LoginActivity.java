@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
@@ -16,7 +17,7 @@ public class LoginActivity extends Activity {
 
 
     DatabaseHelper helper = new DatabaseHelper(this);
-
+    private static Boolean exit = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
@@ -83,6 +84,25 @@ public class LoginActivity extends Activity {
                 LoginActivity.this.startActivity(i);
             }
         });
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (exit) {
+            this.finishAffinity(); // finish activity
+        } else {
+            Toast.makeText(this, "Press Back again to Exit.",
+                    Toast.LENGTH_SHORT).show();
+            exit = true;
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    exit = false;
+                }
+            }, 3 * 1000);
+
+        }
 
     }
 }
