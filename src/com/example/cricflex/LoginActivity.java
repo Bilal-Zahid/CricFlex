@@ -70,8 +70,7 @@ public class LoginActivity extends Activity {
                 }
                 else{
                     //Toast message = Toast.makeText(LoginActivity.this, "Wrong Password! ", Toast.LENGTH_SHORT);
-                    Toast.makeText(LoginActivity.this, "Wrong Credentials",
-                            Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Wrong Credentials", Toast.LENGTH_SHORT).show();
                 }
             }
         });
