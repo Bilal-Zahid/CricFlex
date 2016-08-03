@@ -10,13 +10,25 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class RegisterActivity extends Activity {
+
+    private Pattern pattern;
+    private Matcher matcher;
+
+    private static final String EMAIL_PATTERN =
+            "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                    + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
     DatabaseHelper helper = new DatabaseHelper(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        pattern = Pattern.compile(EMAIL_PATTERN);
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
         super.onCreate(savedInstanceState);
         View decorView = getWindow().getDecorView();
@@ -59,12 +71,26 @@ public class RegisterActivity extends Activity {
                 final String passwordstr = etPassword.getText().toString();
 
 //                p.setName(namestr);
+                if(usernamestr.equals("")||passwordstr.equals("")||emailstr.equals("")){
+                    Toast.makeText(RegisterActivity.this, "Empty fields", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                matcher = pattern.matcher(emailstr);
+                if(!matcher.matches()){
+                    Toast.makeText(RegisterActivity.this, "Invalid Email Address", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(!helper.searchPassword(usernamestr).equals("not found")){
+                    Toast.makeText(RegisterActivity.this, "Username Already Exists", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 p.setUsername(usernamestr);
                 p.setEmail(emailstr);
                 p.setPassword(passwordstr);
 
                 helper.insertPlayer(p);
-
+                Toast.makeText(RegisterActivity.this, "Registered", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
@@ -78,5 +104,11 @@ public class RegisterActivity extends Activity {
         });
 
 
+    }
+    @Override
+    public void onBackPressed() {
+        // your code.
+        Intent i = new Intent(RegisterActivity.this, LoginActivity.class);
+        RegisterActivity.this.startActivity(i);
     }
 }
