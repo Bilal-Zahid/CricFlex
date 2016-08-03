@@ -25,4 +25,21 @@
     <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
     <string name="play_again">Play Again</string>
 
+
+    <!--related to navigation bar-->
+    <string-array name="navigation_array">
+        <item>Monitor</item>
+        <item>Bravo</item>
+        <item>Charlie</item>
+        <item>Alpha</item>
+        <item>Bravo</item>
+        <item>Charlie</item>
+        <item>Alpha</item>
+        <item>Charlie</item>
+    </string-array>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="action_websearch">Web search</string>
+    <string name="app_not_available">Sorry, there\'s no web browser available</string>
+
 </resources>
