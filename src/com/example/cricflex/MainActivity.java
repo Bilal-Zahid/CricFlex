@@ -7,21 +7,17 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
 
 import android.app.FragmentManager;
-import android.app.SearchManager;
 import android.content.res.Configuration;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
@@ -41,28 +37,15 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothManager;
 import android.bluetooth.le.BluetoothLeScanner;
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
-import android.bluetooth.BluetoothGattCallback;
-import android.bluetooth.BluetoothGattCharacteristic;
-import android.bluetooth.BluetoothGattService;
-import android.bluetooth.BluetoothManager;
-import android.bluetooth.BluetoothProfile;
-import android.bluetooth.le.BluetoothLeScanner;
-import android.bluetooth.le.ScanCallback;
 import android.bluetooth.le.ScanFilter;
-import android.bluetooth.le.ScanResult;
 import android.bluetooth.le.ScanSettings;
 
 public class MainActivity extends ActionBarActivity implements BluetoothAdapter.LeScanCallback {
@@ -676,8 +659,6 @@ public class MainActivity extends ActionBarActivity implements BluetoothAdapter.
         // Handle action buttons
         switch(item.getItemId()) {
 
-            case R.id.action_websearch:
-                return true;
 
             case R.id.action_settings:
                 return true;
@@ -756,7 +737,7 @@ public class MainActivity extends ActionBarActivity implements BluetoothAdapter.
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_planet, container, false);
+            View rootView = inflater.inflate(R.layout.fragment_view, container, false);
             int i = getArguments().getInt(ARG_DRAWER_NUMBER);
             String drawerTile = getResources().getStringArray(R.array.navigation_array)[i];
 

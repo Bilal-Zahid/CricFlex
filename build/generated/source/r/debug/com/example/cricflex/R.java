@@ -1594,7 +1594,6 @@ containing a value of this type.
         public static final int action_mode_bar_stub=0x7f0c003c;
         public static final int action_mode_close_button=0x7f0c0025;
         public static final int action_settings=0x7f0c0069;
-        public static final int action_websearch=0x7f0c006a;
         public static final int activity_chooser_view_content=0x7f0c0026;
         public static final int alertTitle=0x7f0c0030;
         public static final int always=0x7f0c0016;
@@ -1725,7 +1724,7 @@ containing a value of this type.
         public static final int activity_welcome=0x7f03001f;
         public static final int activity_welcome1=0x7f030020;
         public static final int drawer_list_item=0x7f030021;
-        public static final int fragment_planet=0x7f030022;
+        public static final int fragment_view=0x7f030022;
         public static final int select_dialog_item_material=0x7f030023;
         public static final int select_dialog_multichoice_material=0x7f030024;
         public static final int select_dialog_singlechoice_material=0x7f030025;
