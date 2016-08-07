@@ -8,7 +8,28 @@
         android:orderInCategory="100"
         android:title="@string/action_settings"
         android:icon="@drawable/profileicon"
-        app:showAsAction="always"/>
+        app:showAsAction="always" >
+
+        <menu>
+
+            <item android:id="@+id/username"
+                android:icon="@drawable/profile1"
+                android:title="username" />
+
+            <item android:id="@+id/email"
+                android:icon="@drawable/email1"
+                android:title="email" />
+
+        </menu>
+    </item>
+
+
+
+
+
+
+
+
 
 
 </menu>

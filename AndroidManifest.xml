@@ -25,7 +25,7 @@
         android:theme="@style/AppTheme">
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".WelcomeActivity1">
+        <activity android:name=".WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -49,10 +49,6 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".RegisterActivity"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".WelcomeActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity

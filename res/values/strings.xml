@@ -10,10 +10,10 @@
     <string name="skip">SKIP</string>
     <string name="start">GOT IT</string>
 
-    <string name="slide_1_title">Hello Food!</string>
-    <string name="slide_1_desc">The easiest way to order food from your favourite restaurant!</string>
+    <string name="slide_1_title">Hello from CricFlex </string>
+    <string name="slide_1_desc">World\'s first wearable for detecting illegal bowling action </string>
 
-    <string name="slide_2_title">Movie Tickets</string>
+    <string name="slide_2_title">Cricflex</string>
     <string name="slide_2_desc">Book movie tickets for your family and friends!</string>
 
     <string name="slide_3_title">Great Discounts</string>
@@ -22,20 +22,18 @@
     <string name="slide_4_title">World Travel</string>
     <string name="slide_4_desc">Book tickets of any transportation and travel the world!</string>
 
-    <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
-    <string name="play_again">Play Again</string>
+
 
 
     <!--related to navigation bar-->
     <string-array name="navigation_array">
-        <item>Monitor</item>
-        <item>Bravo</item>
-        <item>Charlie</item>
-        <item>Alpha</item>
-        <item>Bravo</item>
-        <item>Charlie</item>
-        <item>Alpha</item>
-        <item>Charlie</item>
+        <item>Home</item>
+        <item>Profile</item>
+        <item>Help</item>
+        <item>About</item>
+        <item>Logout</item>
+        <item>Exit</item>
+
     </string-array>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>

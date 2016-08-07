@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -39,6 +40,8 @@ public class RegisterActivity extends Activity {
 
         getActionBar().hide();
         setContentView(R.layout.activity_register);
+
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 /*
         final EditText etName = (EditText) findViewById(R.id.etName);

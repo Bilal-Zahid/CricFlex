@@ -11,8 +11,10 @@ import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
 
+import android.app.ActionBar;
 import android.app.FragmentManager;
 import android.content.res.Configuration;
+import android.os.Build;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -35,6 +37,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
@@ -139,6 +143,9 @@ public class MainActivity extends ActionBarActivity implements BluetoothAdapter.
     private CharSequence mTitle;
     private String[] nNavigationTiles;
 
+    private Menu menu;
+    private String username,email;
+
 
 
 
@@ -216,7 +223,15 @@ public class MainActivity extends ActionBarActivity implements BluetoothAdapter.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+
+
+
+
 
         View decorView = getWindow().getDecorView();
         // Hide the status bar.
@@ -634,9 +649,16 @@ public class MainActivity extends ActionBarActivity implements BluetoothAdapter.
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+
+
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main, menu);
         return super.onCreateOptionsMenu(menu);
+    }
+    private void setOptionTitle(int id, String title)
+    {
+        MenuItem item = menu.findItem(id);
+        item.setTitle(title);
     }
 
     /* Called whenever we call invalidateOptionsMenu() */
@@ -646,6 +668,16 @@ public class MainActivity extends ActionBarActivity implements BluetoothAdapter.
         boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
 //        menu.findItem(R.id.action_websearch).setVisible(!drawerOpen);
 //        menu.findItem(R.id.action_settings).setVisible(!drawerOpen);
+        MenuItem username = menu.findItem(R.id.username);
+        Intent intent = getIntent();
+        String uname = intent.getStringExtra("username");
+        //setOptionTitle("username",uname);
+        username.setTitle(uname);
+
+        //System.out.println(uname+intent.getStringExtra("email"));
+        MenuItem email = menu.findItem(R.id.email);
+        email.setTitle(intent.getStringExtra("email"));
+
         return super.onPrepareOptionsMenu(menu);
     }
 
@@ -667,6 +699,8 @@ public class MainActivity extends ActionBarActivity implements BluetoothAdapter.
                 return super.onOptionsItemSelected(item);
         }
     }
+
+
 
 
     // Side Navigation Drawer///////////////////////////////////////////////////////////////////////

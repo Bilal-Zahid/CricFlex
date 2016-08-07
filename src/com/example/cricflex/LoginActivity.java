@@ -9,6 +9,7 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -29,6 +30,7 @@ public class LoginActivity extends Activity {
         //hide action bar
 
         getActionBar().hide();
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 
 
@@ -67,6 +69,8 @@ public class LoginActivity extends Activity {
                             Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(LoginActivity.this, MainActivity.class);
                     i.putExtra("username",usernamestr);
+                    i.putExtra("email",helper.getEmail(usernamestr));
+
                     LoginActivity.this.startActivity(i);
                 }
                 else{
