@@ -10,10 +10,10 @@
     <string name="skip">SKIP</string>
     <string name="start">GOT IT</string>
 
-    <string name="slide_1_title">Hello from CricFlex </string>
-    <string name="slide_1_desc">World\'s first wearable for detecting illegal bowling action </string>
+    <string name="slide_1_title">Hello Food!</string>
+    <string name="slide_1_desc">The easiest way to order food from your favourite restaurant!</string>
 
-    <string name="slide_2_title">Cricflex</string>
+    <string name="slide_2_title">Movie Tickets</string>
     <string name="slide_2_desc">Book movie tickets for your family and friends!</string>
 
     <string name="slide_3_title">Great Discounts</string>
@@ -22,22 +22,33 @@
     <string name="slide_4_title">World Travel</string>
     <string name="slide_4_desc">Book tickets of any transportation and travel the world!</string>
 
+    <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
+    <string name="play_again">Play Again</string>
 
 
-
-    <!--related to navigation bar-->
-    <string-array name="navigation_array">
-        <item>Home</item>
-        <item>Profile</item>
-        <item>Help</item>
-        <item>About</item>
-        <item>Logout</item>
-        <item>Exit</item>
-
+    <!-- Nav Drawer Menu Items -->
+    <string-array name="nav_drawer_items">
+        <item >Home</item>
+        <item >Monitor</item>
+        <item >History</item>
+        <item >Friends</item>
+        <item >Awards</item>
+        <item >Coach</item>
+        <item >About</item>
     </string-array>
-    <string name="drawer_open">Open navigation drawer</string>
-    <string name="drawer_close">Close navigation drawer</string>
-    <string name="action_websearch">Web search</string>
-    <string name="app_not_available">Sorry, there\'s no web browser available</string>
+
+    <!-- Nav Drawer List Item Icons -->
+    <!-- Keep them in order as the titles are in -->
+    <array name="nav_drawer_icons">
+        <item>@drawable/profile1</item>
+        <item>@drawable/password1</item>
+        <item>@drawable/email1</item>
+        <item>@drawable/profile1</item>
+        <item>@drawable/password1</item>
+        <item>@drawable/email1</item>
+    </array>
+
+    <!-- Content Description -->
+    <string name="desc_list_item_icon">Item Icon</string>
 
 </resources>

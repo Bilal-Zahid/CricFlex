@@ -36,4 +36,10 @@
         <item name="android:src">@drawable/profileicon</item>
     </style>
 
+    <style name="CustomActivityTheme" parent="Theme.AppCompat">
+
+        <item name="android:homeAsUpIndicator">@drawable/homebutton1</item>
+
+    </style>
+
 </resources>

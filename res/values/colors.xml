@@ -35,4 +35,14 @@
         <item>@color/dot_dark_screen3</item>
         <item>@color/dot_dark_screen4</item>
     </array>
+
+    <color name="list_item_bg_normal_start">#000000</color>
+    <color name="list_item_bg_normal_end">#000000</color>
+    <color name="list_item_bg_pressed_start">#00a1f1</color>
+    <color name="list_item_bg_pressed_end">#00a1f1</color>
+
+    <color name="activity_list_slidermenu_bg">#000000</color>
+    <color name="activity_list_slidermenu_divider">#333333</color>
+
+
 </resources>

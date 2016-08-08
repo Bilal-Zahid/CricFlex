@@ -201,6 +201,7 @@ public class RFDService extends Service{
         if( device.getName().equals("Abdullah"))
         {
         mBluetoothGatt = device.connectGatt(this, false, mGattCallback);
+            Log.d(TAG, "FOUND THE REQUIRED DEVICE");
         Log.d(TAG, "Trying to create a new connection.");
         mBluetoothDeviceAddress = address;
         return true;
