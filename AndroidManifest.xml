@@ -26,16 +26,21 @@
         android:theme="@style/AppTheme">
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".ActivityWelcome">
+        <activity android:name=".ActivitySplash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
         </activity>
 
 
+        <activity
+            android:name=".ActivityWelcome"
+            android:label="CricFlex"
+            android:screenOrientation="portrait">
+
+        </activity>
 
         <activity
             android:name=".ActivityLogin"
