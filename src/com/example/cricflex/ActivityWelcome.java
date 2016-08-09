@@ -32,6 +32,7 @@ public class ActivityWelcome extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getActionBar().hide();
         // Checking for first time launch - before calling setContentView()
         prefManager = new PrefManager(this);

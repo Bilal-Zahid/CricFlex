@@ -50,7 +50,7 @@ public class ActivityGraph extends Activity{
 		@Override
 	    public void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
-	       
+			getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 	        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 			requestWindowFeature(Window.FEATURE_NO_TITLE);//Hide title
 			this.getWindow().setFlags(WindowManager.LayoutParams.

@@ -35,6 +35,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -106,12 +108,10 @@ public class ActivityMain extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
 
-        View decorView = getWindow().getDecorView();
-        // Hide the status bar.
-        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
-        decorView.setSystemUiVisibility(uiOptions);
+
 
 
 
@@ -249,7 +249,7 @@ public class ActivityMain extends ActionBarActivity {
         switch(item.getItemId()) {
 
 
-            case R.id.action_settings:
+            case R.id.profile:
                 return true;
 
             default:
@@ -280,7 +280,17 @@ public class ActivityMain extends ActionBarActivity {
     public boolean onPrepareOptionsMenu(Menu menu) {
         // if nav drawer is opened, hide the action items
         boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
-        menu.findItem(R.id.action_settings).setVisible(!drawerOpen);
+        //menu.findItem(R.id.profile).setVisible(!drawerOpen);
+        MenuItem username = menu.findItem(R.id.username);
+        Intent intent = getIntent();
+        String uname = intent.getStringExtra("username");
+        //setOptionTitle("username",uname);
+        username.setTitle(uname);
+
+        //System.out.println(uname+intent.getStringExtra("email"));
+        MenuItem email = menu.findItem(R.id.email);
+        email.setTitle(intent.getStringExtra("email"));
+
         return super.onPrepareOptionsMenu(menu);
     }
 

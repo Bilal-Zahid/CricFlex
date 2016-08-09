@@ -6,6 +6,7 @@ import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -26,18 +27,13 @@ public class ActivityRegister extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        pattern = Pattern.compile(EMAIL_PATTERN);
-        getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
         super.onCreate(savedInstanceState);
-        View decorView = getWindow().getDecorView();
-        // Hide the status bar.
-        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
-        decorView.setSystemUiVisibility(uiOptions);
-        //hide action bar
-
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getActionBar().hide();
-        setContentView(R.layout.activity_register);
 
+
+        setContentView(R.layout.activity_register);
+        pattern = Pattern.compile(EMAIL_PATTERN);
 /*
         final EditText etName = (EditText) findViewById(R.id.etName);
         final EditText etUsername = (EditText) findViewById(R.id.etUsername);

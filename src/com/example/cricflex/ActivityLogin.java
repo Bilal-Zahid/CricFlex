@@ -65,6 +65,7 @@ public class ActivityLogin extends Activity {
                             Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(ActivityLogin.this, ActivityMain.class);
                     i.putExtra("username",usernamestr);
+                    i.putExtra("email",helper.getEmail(usernamestr));
                     ActivityLogin.this.startActivity(i);
                 }
                 else{

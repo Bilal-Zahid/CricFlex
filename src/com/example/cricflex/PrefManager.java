@@ -36,7 +36,7 @@ public class PrefManager {
 
     //for just one time welcome screen change false with true
     public boolean isFirstTimeLaunch() {
-        return true;/*pref.getBoolean(IS_FIRST_TIME_LAUNCH, false);*/
+        return pref.getBoolean(IS_FIRST_TIME_LAUNCH, false);
     }
 
 }
