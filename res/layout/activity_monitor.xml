@@ -1,0 +1,117 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bkd15"
+    android:id="@+id/monitor"
+    tools:context=".ActivityMain" >
+
+    <TextView
+        android:id="@+id/degreesign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/angle"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="o"
+        android:textColor="#FFFFFF"
+        android:textSize="50dp" />
+
+
+
+    <TextView
+        android:id="@+id/angle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/degreesign"
+        android:layout_centerHorizontal="true"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="0"
+        android:textColor="#FFFFFF"
+        android:textSize="150dp" />
+
+    <TextView
+        android:id="@+id/legal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="30dp"
+        android:textColor="#663a3a"
+        android:layout_below="@+id/angle"
+        android:layout_above="@+id/start"
+        android:layout_centerHorizontal="true" />
+
+
+    <ImageButton
+        android:id="@+id/start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="5dp"
+        android:layout_centerHorizontal="true"
+        android:background="@android:color/transparent"
+        android:src="@drawable/startbutton"
+        android:visibility="visible"/>
+
+
+    <ImageButton
+        android:id="@+id/stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="5dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/stopbutton"
+        android:visibility="gone" />
+
+    <ImageButton
+        android:id="@+id/graph"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="5dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/graphbutton"
+        android:visibility="gone" />
+
+    <!--<TextView-->
+        <!--android:id="@+id/test"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignLeft="@+id/start"-->
+        <!--android:layout_below="@+id/degreesign"-->
+        <!--android:layout_marginLeft="15dp"-->
+        <!--android:text="0" />-->
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="1"-->
+        <!--android:id="@+id/acceleration"-->
+        <!--android:layout_alignTop="@+id/legal"-->
+        <!--android:layout_centerHorizontal="true" />-->
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="0"-->
+        <!--android:id="@+id/timer"-->
+        <!--android:textSize="50dp"-->
+        <!--android:layout_above="@+id/acceleration"-->
+        <!--android:layout_toEndOf="@+id/graph" />-->
+
+    <!--<Button-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="store"-->
+        <!--android:id="@+id/checkLabel"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_alignParentEnd="true" />-->
+
+</RelativeLayout>
