@@ -36,36 +36,37 @@ public class ActivityRegister extends Activity {
         pattern = Pattern.compile(EMAIL_PATTERN);
 /*
         final EditText etName = (EditText) findViewById(R.id.etName);
-        final EditText etUsername = (EditText) findViewById(R.id.etUsername);
-        final EditText etEmail = (EditText) findViewById(R.id.etEmail);
-        final EditText etPassword = (EditText) findViewById(R.id.etPassword);
+        final EditText reg_username = (EditText) findViewById(R.id.reg_username);
+        final EditText reg_email = (EditText) findViewById(R.id.reg_email);
+        final EditText reg_password = (EditText) findViewById(R.id.reg_password);
 */
-        final Button bRegister = (Button) findViewById(R.id.bRegister);
-        final Button bLogin = (Button) findViewById(R.id.clogin);
-        bLogin.setPaintFlags(bLogin.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG); // underline button text
+        final Button button_register = (Button) findViewById(R.id.button_register);
+        //final Button bLogin = (Button) findViewById(R.id.clogin);
+        //bLogin.setPaintFlags(bLogin.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG); // underline button text
 /*
         final String namestr = etName.getText().toString();
-        final String usernamestr = etUsername.getText().toString();
-        final String emailstr = etEmail.getText().toString();
-        final String passwordstr = etPassword.getText().toString();
+        final String usernamestr = reg_username.getText().toString();
+        final String emailstr = reg_email.getText().toString();
+        final String passwordstr = reg_password.getText().toString();
 */
         final Player p = new Player();
 
 
-        bRegister.setOnClickListener(new View.OnClickListener() {
+        button_register.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
 //                final EditText etName = (EditText) findViewById(R.id.etName);
-                final EditText etUsername = (EditText) findViewById(R.id.etUsername);
-                final EditText etEmail = (EditText) findViewById(R.id.etEmail);
-                final EditText etPassword = (EditText) findViewById(R.id.etPassword);
+                final EditText reg_username = (EditText) findViewById(R.id.reg_username);
+                final EditText reg_email = (EditText) findViewById(R.id.reg_email);
+                final EditText reg_password = (EditText) findViewById(R.id.reg_password);
+                final EditText reg_security = (EditText) findViewById(R.id.reg_security);
 
 //                final String namestr = etName.getText().toString();
-                final String usernamestr = etUsername.getText().toString();
-                final String emailstr = etEmail.getText().toString();
-                final String passwordstr = etPassword.getText().toString();
-
+                final String usernamestr = reg_username.getText().toString();
+                final String emailstr = reg_email.getText().toString();
+                final String passwordstr = reg_password.getText().toString();
+                final String securitystr = reg_security.getText().toString();
 //                p.setName(namestr);
-                if(usernamestr.equals("")||passwordstr.equals("")||emailstr.equals("")){
+                if(usernamestr.equals("")||passwordstr.equals("")||emailstr.equals("")||securitystr.equals("")){
                     Toast.makeText(ActivityRegister.this, "Empty fields", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -82,20 +83,22 @@ public class ActivityRegister extends Activity {
                 p.setUsername(usernamestr);
                 p.setEmail(emailstr);
                 p.setPassword(passwordstr);
-
+                p.setSecurity(securitystr);
                 helper.insertPlayer(p);
+
                 Toast.makeText(ActivityRegister.this, "Registered", Toast.LENGTH_SHORT).show();
+
                 Intent intent = new Intent(ActivityRegister.this, ActivityLogin.class);
                 startActivity(intent);
             }
         });
 
-        bLogin.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                Intent i = new Intent(ActivityRegister.this, ActivityLogin.class);
-                ActivityRegister.this.startActivity(i);
-            }
-        });
+//        bLogin.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View view) {
+//                Intent i = new Intent(ActivityRegister.this, ActivityLogin.class);
+//                ActivityRegister.this.startActivity(i);
+//            }
+//        });
 
 
     }

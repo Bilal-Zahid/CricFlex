@@ -6,7 +6,7 @@ package com.example.cricflex;
 
 public class Player {
     // int id;
-    String  email, username,  password;
+    String  email, username,  password, security;
 
     /*
     public void setId(int id){
@@ -36,6 +36,13 @@ public class Player {
     }
     public String getPassword(){
         return this.password;
+    }
+
+    public void setSecurity(String password){
+        this.security = security;
+    }
+    public String getSecurity(){
+        return this.security;
     }
 
 

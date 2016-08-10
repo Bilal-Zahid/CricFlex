@@ -69,8 +69,8 @@
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
 
-        <service android:name=".RFDService" />
 
+        <service android:name=".RFDService" />
 
     </application>
 

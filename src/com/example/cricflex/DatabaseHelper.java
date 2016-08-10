@@ -19,12 +19,13 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     private static final String COLUMN_EMAIL = "email";
     private static final String COLUMN_USERNAME = "username";
     private static final String COLUMN_PASSWORD = "password";
+    private static final String COLUMN_SECURITY = "security";
 
     SQLiteDatabase db;
 
 
     private static final String TABLE_CREATE = "create table "+TABLE_NAME+" (id integer primary key not null  , "+
-            " email text not null , username text not null, password text not null);";
+            " email text not null , username text not null, password text not null, security text not null);";
 
 
 
@@ -55,10 +56,11 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         cursor.close();
         values.put(COLUMN_ID,count);
         //values.put(COLUMN_NAME , p.getName());
+
         values.put(COLUMN_EMAIL, p.getEmail());
         values.put(COLUMN_USERNAME, p.getusername());
-
         values.put(COLUMN_PASSWORD, p.getPassword());
+        values.put(COLUMN_SECURITY, p.getSecurity());
 
         db.insert(TABLE_NAME, null , values);
         db.close();

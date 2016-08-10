@@ -48,6 +48,7 @@ public class ActivitySplash extends Activity {
             public void onAnimationEnd(Animation animation) {
                 Intent i = new Intent( ActivitySplash.this, ActivityWelcome.class );
                 ActivitySplash.this.startActivity( i );
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 
