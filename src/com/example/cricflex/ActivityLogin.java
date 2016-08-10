@@ -16,6 +16,7 @@ public class ActivityLogin extends Activity {
 
     DatabaseHelper helper = new DatabaseHelper(this);
     private static Boolean exit = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
@@ -28,10 +29,9 @@ public class ActivityLogin extends Activity {
 
         getActionBar().hide();
 
-
-
-
         setContentView(R.layout.activity_login);
+
+
 
         /*
         final EditText etUsername = (EditText) findViewById(R.id.etUsername);
@@ -41,6 +41,9 @@ public class ActivityLogin extends Activity {
         final String usernamestr = etUsername.getText().toString();
         final String passwordstr = etPassword.getText().toString();
         */
+
+        Button button_forgot_password = (Button) findViewById(R.id.button_forgot_password);
+        button_forgot_password.setOnClickListener(new handleForgotPasswordButton());
 
         final Button bLogin = (Button) findViewById(R.id.Login);
         bLogin.setOnClickListener(new View.OnClickListener(){
@@ -84,6 +87,14 @@ public class ActivityLogin extends Activity {
             }
         });
 
+    }
+
+    class handleForgotPasswordButton implements View.OnClickListener {
+        public void onClick(View v) {
+
+            setContentView(R.layout.activity_forgot_password);
+
+        }
     }
 
     @Override
