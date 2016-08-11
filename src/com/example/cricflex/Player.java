@@ -38,7 +38,7 @@ public class Player {
         return this.password;
     }
 
-    public void setSecurity(String password){
+    public void setSecurity(String security){
         this.security = security;
     }
     public String getSecurity(){

@@ -66,7 +66,9 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         db.close();
     }
 
-    public String searchPassword(String username){
+
+
+    public String getPassword(String username){
         db = this.getReadableDatabase();
         String query = "select username, password from " + TABLE_NAME;
         Cursor cursor = db.rawQuery(query,null);
@@ -107,4 +109,36 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         cursor.close();
         return email;
     }
+    public String getSecurity(String username){
+        db = this.getReadableDatabase();
+        String query = "select username, security from " + TABLE_NAME;
+        Cursor cursor = db.rawQuery(query,null);
+        String uname , security;
+        security = "not found";
+        if(cursor.moveToFirst()){
+            do{
+                uname = cursor.getString(0);
+
+                if(uname.equals(username)){
+                    security = cursor.getString(1);
+                    break;
+                }
+            }
+            while(cursor.moveToNext());
+        }
+        cursor.close();
+        return security;
+    }
+
+
+    public void changePassword(String username, String newPassword){
+        db = this.getReadableDatabase();
+//        String query = "select username, security from " + TABLE_NAME;
+        String query = "UPDATE "+TABLE_NAME+"  SET password = '"+newPassword+"' WHERE username = '"+username+"'";
+        //db.rawQuery(query,null);
+        db.execSQL(query);
+        //boolean flag = true;
+        //return flag;
+    }
+
 }

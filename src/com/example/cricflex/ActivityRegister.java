@@ -2,10 +2,8 @@ package com.example.cricflex;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -76,7 +74,7 @@ public class ActivityRegister extends Activity {
                     Toast.makeText(ActivityRegister.this, "Invalid Email Address", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if(!helper.searchPassword(usernamestr).equals("not found")){
+                if(!helper.getPassword(usernamestr).equals("not found")){
                     Toast.makeText(ActivityRegister.this, "Username Already Exists", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -86,7 +84,7 @@ public class ActivityRegister extends Activity {
                 p.setSecurity(securitystr);
                 helper.insertPlayer(p);
 
-                Toast.makeText(ActivityRegister.this, "Registered", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ActivityRegister.this, "Successfully Registered Account", Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(ActivityRegister.this, ActivityLogin.class);
                 startActivity(intent);
