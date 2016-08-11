@@ -42,15 +42,12 @@ public class ActivityLogin extends Activity {
         final String passwordstr = etPassword.getText().toString();
         */
 
-        Button button_forgot_password = (Button) findViewById(R.id.button_forgot_password);
-        button_forgot_password.setOnClickListener(new handleForgotPasswordButton());
 
         final Button bLogin = (Button) findViewById(R.id.Login);
         bLogin.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
-                final EditText etUsername = (EditText) findViewById(R.id.etUsername);
-                final EditText etPassword = (EditText) findViewById(R.id.etPassword);
-
+                final EditText etUsername = (EditText) findViewById(R.id.lgn_username);
+                final EditText etPassword = (EditText) findViewById(R.id.lgn_password);
 
                 final String usernamestr = etUsername.getText().toString();
                 final String passwordstr = etPassword.getText().toString();
@@ -89,13 +86,20 @@ public class ActivityLogin extends Activity {
 
     }
 
-    class handleForgotPasswordButton implements View.OnClickListener {
-        public void onClick(View v) {
-
-            setContentView(R.layout.activity_forgot_password);
-
-        }
+    public void setfgpLayout1(View view) {
+        setContentView(R.layout.activity_forgot_password1);
     }
+
+    public void setfgpLayout2(View view) {
+        setContentView(R.layout.activity_forgot_password2);
+    }
+    public void setfgpLayout3(View view) {
+        setContentView(R.layout.activity_forgot_password3);
+    }
+    public void setloginLayout(View view) {
+        setContentView(R.layout.activity_login);
+    }
+
 
     @Override
     public void onBackPressed() {
