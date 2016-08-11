@@ -1589,14 +1589,15 @@ containing a value of this type.
         public static final int list_item_bg_normal=0x7f02005f;
         public static final int list_item_bg_pressed=0x7f020060;
         public static final int list_selector=0x7f020061;
-        public static final int password1=0x7f020062;
-        public static final int profile1=0x7f020063;
-        public static final int profileicon=0x7f020064;
-        public static final int security1=0x7f020065;
-        public static final int startbutton=0x7f020066;
-        public static final int startbutton1=0x7f020067;
-        public static final int stopbutton=0x7f020068;
-        public static final int welcomescreenbkd=0x7f020069;
+        public static final int logout=0x7f020062;
+        public static final int password1=0x7f020063;
+        public static final int profile1=0x7f020064;
+        public static final int profileicon=0x7f020065;
+        public static final int security1=0x7f020066;
+        public static final int startbutton=0x7f020067;
+        public static final int startbutton1=0x7f020068;
+        public static final int stopbutton=0x7f020069;
+        public static final int welcomescreenbkd=0x7f02006a;
     }
     public static final class id {
         public static final int Graph=0x7f0d005c;
@@ -1675,6 +1676,7 @@ containing a value of this type.
         public static final int listMode=0x7f0d0009;
         public static final int list_item=0x7f0d002a;
         public static final int list_slidermenu=0x7f0d0065;
+        public static final int logout=0x7f0d0081;
         public static final int middle=0x7f0d0015;
         public static final int monitor=0x7f0d0066;
         public static final int multiply=0x7f0d001e;

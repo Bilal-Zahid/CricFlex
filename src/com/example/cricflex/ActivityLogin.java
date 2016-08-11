@@ -16,7 +16,7 @@ public class ActivityLogin extends Activity {
 
     DatabaseHelper helper = new DatabaseHelper(this);
     private static Boolean exit = false;
-    private static String layoutCheck;
+    private static String layoutCheck = "login activity";
 
     private static EditText fgp_username = null;
     private static String fgpUsername;

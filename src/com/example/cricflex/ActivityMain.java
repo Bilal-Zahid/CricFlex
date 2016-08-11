@@ -193,20 +193,6 @@ public class ActivityMain extends ActionBarActivity {
             displayView(0);
         }
 
-//        startButton = (ImageButton) findViewById(R.id.start);
-//        stopButton = (ImageButton) findViewById(R.id.stop);
-//        graphButton = (ImageButton) findViewById(R.id.graph);
-//
-//        startButton.setOnClickListener(new handleStartButton());
-//        stopButton.setOnClickListener(new handleStopButton());
-//        graphButton.setOnClickListener(new handleGraphButton());
-//
-//        angleText = (TextView) findViewById(R.id.angle);
-//        degreeSign = (TextView) findViewById(R.id.degreesign);
-//        legal = (TextView) findViewById(R.id.legal);
-
-        // Side Navigation Bar //
-
     }
 
 
@@ -248,8 +234,14 @@ public class ActivityMain extends ActionBarActivity {
         // Handle action buttons
         switch(item.getItemId()) {
 
+            case R.id.logout:
+                finish();
+                Intent intent = new Intent(ActivityMain.this, ActivityLogin.class);
+                //ActivityMain.this.finish();
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
 
-            case R.id.profile:
                 return true;
 
             default:

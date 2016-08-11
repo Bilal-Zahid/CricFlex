@@ -20,6 +20,11 @@
                 android:icon="@drawable/email1"
                 android:title="email" />
 
+            <item android:id="@+id/logout"
+                android:icon="@drawable/logout"
+                android:title="logout" />
+
+
         </menu>
     </item>
 
