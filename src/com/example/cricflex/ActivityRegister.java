@@ -86,7 +86,7 @@ public class ActivityRegister extends Activity {
 
                 Toast.makeText(ActivityRegister.this, "Successfully Registered Account", Toast.LENGTH_SHORT).show();
 
-                Intent intent = new Intent(ActivityRegister.this, ActivityLogin.class);
+                Intent intent = new Intent(ActivityRegister.this, ActivitySetupProfile.class);
                 startActivity(intent);
             }
         });

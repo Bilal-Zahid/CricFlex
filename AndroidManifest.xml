@@ -24,9 +24,7 @@
         android:logo="@mipmap/cricflexlogosmall"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".ActivitySplash">
+        <activity android:name=".ActivitySetupProfile">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -57,6 +55,10 @@
             android:name=".ActivityRegister"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
+        <!--<activity-->
+            <!--android:name=".ActivitySetupProfile"-->
+            <!--android:label="@string/app_name"-->
+            <!--android:screenOrientation="portrait" />-->
         <activity
             android:name=".ActivityHelp"
             android:label="@string/app_name"
