@@ -53,7 +53,8 @@ public class ActivityMain extends ActionBarActivity {
 //COMITTING ///
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        //super.onBackPressed();
+        moveTaskToBack(true);
     }
 
 
@@ -109,6 +110,12 @@ public class ActivityMain extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        if(SaveSharedPreference.getUserName(ActivityMain.this).length() == 0)
+        {
+            Intent intent = new Intent(ActivityMain.this, ActivityLogin.class);
+            startActivity(intent);
+        }
+
         setContentView(R.layout.activity_main);
 
 
@@ -238,6 +245,9 @@ public class ActivityMain extends ActionBarActivity {
                 finish();
                 Intent intent = new Intent(ActivityMain.this, ActivityLogin.class);
                 //ActivityMain.this.finish();
+
+                SaveSharedPreference.clearUserName(ActivityMain.this);
+
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
@@ -274,15 +284,17 @@ public class ActivityMain extends ActionBarActivity {
         boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
         //menu.findItem(R.id.profile).setVisible(!drawerOpen);
         MenuItem username = menu.findItem(R.id.username);
-        Intent intent = getIntent();
-        String uname = intent.getStringExtra("username");
+        //Intent intent = getIntent();
+        //String uname = intent.getStringExtra("username");
+        String usernamestr = SaveSharedPreference.getUserName(ActivityMain.this);
         //setOptionTitle("username",uname);
-        username.setTitle(uname);
+        username.setTitle(usernamestr);
 
         //System.out.println(uname+intent.getStringExtra("email"));
         MenuItem email = menu.findItem(R.id.email);
-        email.setTitle(intent.getStringExtra("email"));
-
+        String emailstr = SaveSharedPreference.getEmail(ActivityMain.this);
+        //email.setTitle(intent.getStringExtra("email"));
+        email.setTitle(emailstr);
         return super.onPrepareOptionsMenu(menu);
     }
 

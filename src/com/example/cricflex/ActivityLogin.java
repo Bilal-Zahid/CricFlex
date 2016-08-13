@@ -75,9 +75,13 @@ public class ActivityLogin extends Activity {
                     // text2 = passwordstr;
                     Toast.makeText(ActivityLogin.this, "Signed In" ,
                             Toast.LENGTH_SHORT).show();
+
+                    SaveSharedPreference.setUserName(ActivityLogin.this,usernamestr);
+                    SaveSharedPreference.setEmail(ActivityLogin.this,helper.getEmail(usernamestr));
+
                     Intent i = new Intent(ActivityLogin.this, ActivityMain.class);
-                    i.putExtra("username",usernamestr);
-                    i.putExtra("email",helper.getEmail(usernamestr));
+                    //i.putExtra("username",usernamestr);
+                    //i.putExtra("email",helper.getEmail(usernamestr));
                     ActivityLogin.this.startActivity(i);
                 }
                 else{
