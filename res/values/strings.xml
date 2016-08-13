@@ -64,4 +64,27 @@
     <string name="title_activity_arc_in_fragment">ArcInFragment</string>
     <string name="action_arc_tab">Arc Fragment</string>
 
+
+
+    <string-array name="bowlingstyle_array">
+        <item>Right-arm fast</item>
+        <item>Right-arm fast medium</item>
+        <item>Right-arm medium fast</item>
+        <item>Right-arm medium</item>
+        <item>Left-arm fast</item>
+        <item>Left-arm fast medium</item>
+        <item>Left-arm medium fast</item>
+        <item>Left-arm medium</item>
+        <item>Off break (right-arm)</item>
+        <item>Leg break (right-arm)</item>
+        <item>Slow left-arm orthodox</item>
+        <item>Slow left-arm chinaman</item>
+    </string-array>
+
+    <string-array name="careerlevel_array">
+        <item>Club</item>
+        <item>National</item>
+        <item>International</item>
+    </string-array>
+
 </resources>
