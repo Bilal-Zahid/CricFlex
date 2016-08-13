@@ -121,7 +121,7 @@ public class ActivityWelcome extends Activity {
 
     private void launchHomeScreen() {
         prefManager.setFirstTimeLaunch(false);
-        startActivity(new Intent(ActivityWelcome.this, ActivityLogin.class));
+        startActivity(new Intent(ActivityWelcome.this, ActivityMain.class));
         finish();
     }
 
