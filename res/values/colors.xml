@@ -45,4 +45,7 @@
     <color name="activity_list_slidermenu_divider">#333333</color>
 
 
+    <color name="arc_finished_color">#20ffbb</color>
+    <color name="arc_unfinished_color">#ff0000</color>
+
 </resources>
