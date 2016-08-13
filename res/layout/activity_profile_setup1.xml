@@ -26,7 +26,7 @@
             android:layout_gravity="center_horizontal"
             android:gravity="center"
             android:layout_marginTop="10dp"
-            android:id="@+id/imageView"
+            android:id="@+id/profilepicture"
             android:src="@drawable/profileicon"
             android:background="@drawable/ring_shape"
             android:layout_weight="1"/>
