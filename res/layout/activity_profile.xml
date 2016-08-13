@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".ActivityProfile"
+    android:background="@drawable/bkd14">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_gravity="top"
+            android:layout_marginTop="10dp"
+            android:id="@+id/imageView"
+            android:src="@drawable/cricflexlogolarge_stroke"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/header"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_centerInParent="true">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/reg_username"
+            android:background="@drawable/edittext_bottom_border_bg"
+            android:drawableStart="@drawable/profile1"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:drawablePadding="10dp"
+            android:hint="Username"
+            android:textSize="20dp"
+            android:textColor="#FFFFFF"
+            android:padding="10dp"
+            android:textColorHint="#CCCCCC"
+            android:layout_weight="1"
+            android:inputType="textPersonName"
+            android:imeOptions="actionNext"
+            android:nextFocusDown="@+id/reg_password"
+            android:textCursorDrawable="@null"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/reg_email"
+            android:background="@drawable/edittext_bottom_border_bg"
+            android:drawableStart="@drawable/email1"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:drawablePadding="10dp"
+            android:padding="10dp"
+            android:hint="Email"
+            android:textSize="20dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#CCCCCC"
+            android:layout_weight="1"
+            android:inputType="textEmailAddress"
+            android:imeOptions="actionNext"
+            android:nextFocusDown="@+id/reg_password"
+            android:textCursorDrawable="@null"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittext_bottom_border_bg"
+            android:drawableStart="@drawable/password1"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:drawablePadding="10dp"
+            android:padding="10dp"
+            android:inputType="textPassword"
+            android:id="@+id/reg_password"
+            android:hint="Password"
+            android:textSize="20dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#CCCCCC"
+            android:layout_weight="1"
+            android:textCursorDrawable="@null"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittext_bottom_border_bg"
+            android:drawableStart="@drawable/security1"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:drawablePadding="10dp"
+            android:padding="10dp"
+            android:inputType="textPersonName"
+            android:id="@+id/reg_security"
+            android:hint="Security Question: \nFavourite Cricketer's name?"
+            android:textSize="20dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#CCCCCC"
+            android:layout_weight="1"
+            android:textCursorDrawable="@null"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Register new account"
+            android:id="@+id/button_register"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true"
+
+            android:textColor="#FFFFFF"
+            android:textSize="20dp"
+            android:background="@drawable/button_bg"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+
+
+
+
+    <!--<Button-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginTop="20dp"-->
+    <!--android:layout_gravity="center"-->
+    <!--android:text="Already has an account"-->
+    <!--android:textColor="@drawable/button_text_color"-->
+    <!--android:background="@android:color/transparent"-->
+    <!--android:id="@+id/clogin"-->
+    <!--android:layout_below="@+id/button_register"-->
+    <!--android:layout_alignParentEnd="true"-->
+    <!--android:layout_alignParentStart="true"-->
+    <!--android:layout_weight="1"/>-->
+
+
+
+
+</RelativeLayout>
