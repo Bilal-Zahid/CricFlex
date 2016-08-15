@@ -80,8 +80,6 @@ public class ActivityLogin extends Activity {
                     SaveSharedPreference.setEmail(ActivityLogin.this,helper.getEmail(usernamestr));
 
                     Intent i = new Intent(ActivityLogin.this, ActivityMain.class);
-                    //i.putExtra("username",usernamestr);
-                    //i.putExtra("email",helper.getEmail(usernamestr));
                     ActivityLogin.this.startActivity(i);
                 }
                 else{

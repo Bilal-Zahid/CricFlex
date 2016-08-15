@@ -9,6 +9,7 @@ import android.graphics.BitmapFactory;
 import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.v7.app.ActionBar;
 import android.text.InputType;
@@ -28,30 +29,52 @@ import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Locale;
 
 /**
- * Created by Asawal on 8/13/2016.
+ * Created by Asawal on 8/13/2016.      Chah gayay ho aap
  */
 public class ActivitySetupProfile extends Activity implements View.OnClickListener {
 
+    DatabaseHelper helper = new DatabaseHelper(this);
     RadioButton rdbMale, rdbFemale;
     RadioGroup rgGender;
-    String gender ="Male";
+
+    RadioButton rdbLeft, rdbRight;
+    RadioGroup rgBowlingArm;
+
+    String selectedGender ="male";
+    String selectedCountry;
+    String selectedDOB;
+    String selectedBowlingArm = "Left";
+    String selectedBowlingStyle = "fast";
+    String selectedCareerLevel = "international";
     Context ctx;
 
+    //private TextView location;
 
+    //private String location = "not set";
 
     private EditText birthDate;
     private DatePickerDialog birthDatePickerDialog;
     private SimpleDateFormat dateFormatter;
 
+    private Spinner CountrySpinner;
+    private Spinner bowlingStylesSpinner;
+    private Spinner careerLevelSpinner;
+
     private static int RESULT_LOAD_IMG = 1;
     String imgDecodableString;
 
+    final Player p = new Player();
+
+
 //    private ImageView profileImage;
+
+
 
 
     @Override
@@ -62,6 +85,7 @@ public class ActivitySetupProfile extends Activity implements View.OnClickListen
         findViewsById();
 
         initializeCountrySpinner();
+
         dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
         setDateTimeField();
 
@@ -80,6 +104,126 @@ public class ActivitySetupProfile extends Activity implements View.OnClickListen
                 startActivityForResult(galleryIntent, RESULT_LOAD_IMG);
             }
         });
+
+        rgGender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+        {
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch(checkedId){
+                    case R.id.rdbFemale:
+                        // do operations specific to this selection
+                        selectedGender = "female";
+                        break;
+
+                    case R.id.rdbMale:
+                        // do operations specific to this selection
+                        selectedGender = "male";
+                        break;
+                }
+            }
+        });
+
+
+        final Button setupProfileNextButton = (Button) findViewById(R.id.stp_next);
+        setupProfileNextButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+
+                selectedDOB = birthDate.getText().toString();
+                selectedCountry = CountrySpinner.getSelectedItem().toString();
+                //String selectedGender = gender;
+
+                if(selectedDOB.equals("")){
+                    final Toast toast = Toast.makeText(ActivitySetupProfile.this, "Date Of Birth Not Selected" , Toast.LENGTH_SHORT);
+                    toast.show();
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            toast.cancel();
+                        }
+                    }, 500);
+                    return;
+                }
+
+                setContentView(R.layout.activity_profile_setup2);
+                findViewsById2();
+
+                rgBowlingArm.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+                {
+                    public void onCheckedChanged(RadioGroup group, int checkedId) {
+                        switch(checkedId){
+                            case R.id.rdbLeft:
+                                // do operations specific to this selection
+                                selectedBowlingArm = "Left";
+                                break;
+
+                            case R.id.rdbRight:
+                                // do operations specific to this selection
+                                selectedBowlingArm = "Right";
+                                break;
+                        }
+                    }
+                });
+                initializeBowlingStylesSpinner();
+                initializeCareerLevelSpinner();
+
+
+
+                final Button setupProfileDoneButton = (Button) findViewById(R.id.stp_done);
+                setupProfileDoneButton.setOnClickListener(new View.OnClickListener(){
+                    public void onClick(View view){
+                        selectedBowlingStyle = bowlingStylesSpinner.getSelectedItem().toString();
+                        selectedCareerLevel = careerLevelSpinner.getSelectedItem().toString();
+                        //DataBase Work to do!!!
+                        Intent intent = getIntent();
+                        String username = intent.getStringExtra("username");
+                        String email = intent.getStringExtra("email");
+                        String password = intent.getStringExtra("password");
+                        String security = intent.getStringExtra("security");
+                        String gender = selectedGender;
+                        String location = selectedCountry;
+                        String DOB = selectedDOB;
+                        String bowlingArm = selectedBowlingArm;
+                        String bowlingStyle = selectedBowlingStyle;
+                        String careerLevel = selectedCareerLevel;
+
+                        System.out.println("username : "+ username);
+                        System.out.println("email : "+ email);
+                        System.out.println("password : "+ password);
+                        System.out.println("security : "+ security);
+                        System.out.println("gender : "+ gender);
+                        System.out.println("location : "+ location);
+                        System.out.println("DOB : "+ DOB);
+                        System.out.println("bowlingArm : "+ bowlingArm);
+                        System.out.println("bowlingStyle : "+ bowlingStyle);
+                        System.out.println("careerLevel : "+ careerLevel);
+
+                        p.setUsername(username);
+                        p.setEmail(email);
+                        p.setPassword(password);
+                        p.setSecurity(security);
+                        p.setGender(gender);
+                        p.setLocation(location);
+                        p.setDOB(DOB);
+                        p.setBowlingArm(bowlingArm);
+                        p.setBowlingStyle(bowlingStyle);
+                        p.setCareerLevel(careerLevel);
+
+                        helper.insertPlayer(p);
+                        Toast toast = Toast.makeText(ActivitySetupProfile.this, "Registered Account!" , Toast.LENGTH_SHORT);
+
+                        Intent i = new Intent(ActivitySetupProfile.this, ActivityMain.class);
+                        ActivitySetupProfile.this.startActivity(i);
+
+
+                    }
+                });
+
+
+
+            }
+        });
+
+
 
     }
 
@@ -124,6 +268,31 @@ public class ActivitySetupProfile extends Activity implements View.OnClickListen
 
 
 
+    private void initializeBowlingStylesSpinner(){
+
+
+        Context context=getApplicationContext();
+        String[] bowlingStylesArray = context.getResources().getStringArray(R.array.bowlingstyle_array);
+        bowlingStylesSpinner = (Spinner)findViewById(R.id.bowlingstyle_spinner);
+        //ArrayList<String> bowlingStyles = new ArrayList( Arrays.asList( R.array.bowlingstyle_array ) );
+        //System.out.println(R.array.bowlingstyle_array);
+
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.spiner_item, bowlingStylesArray);
+        bowlingStylesSpinner.setAdapter(adapter);
+    }
+
+    private void initializeCareerLevelSpinner(){
+        Context context=getApplicationContext();
+        String[] careerLevels = context.getResources().getStringArray(R.array.careerlevel_array);
+        careerLevelSpinner = (Spinner)findViewById(R.id.careerlevel_spinner);
+        //ArrayList<String> careerLevels = new ArrayList( Arrays.asList( R.array.careerlevel_array ) );
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.spiner_item, careerLevels);
+        careerLevelSpinner.setAdapter(adapter);
+    }
+
+
+
 
     private void initializeCountrySpinner(){
 
@@ -138,9 +307,11 @@ public class ActivitySetupProfile extends Activity implements View.OnClickListen
         }
         Collections.sort(countries, String.CASE_INSENSITIVE_ORDER);
 
-        Spinner CountrySpinner = (Spinner)findViewById(R.id.country_spinner);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.country_spiner_item, countries);
+        CountrySpinner = (Spinner)findViewById(R.id.country_spinner);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.spiner_item, countries);
         CountrySpinner.setAdapter(adapter);
+
+        // = CountrySpinner.getSelectedItem().toString();
     }
 
     private void findViewsById() {
@@ -152,9 +323,20 @@ public class ActivitySetupProfile extends Activity implements View.OnClickListen
 
 
 
+
         birthDate = (EditText) findViewById(R.id.stp_dob);
         birthDate.setInputType(InputType.TYPE_NULL);
         birthDate.requestFocus();
+
+    }
+
+    private void findViewsById2() {
+
+        rgBowlingArm = (RadioGroup) findViewById(R.id.rgBowlingArm);
+        rdbLeft = (RadioButton) findViewById(R.id.rdbLeft);
+        rdbRight = (RadioButton) findViewById(R.id.rdbRight);
+
+
 
     }
 
@@ -183,21 +365,13 @@ public class ActivitySetupProfile extends Activity implements View.OnClickListen
     }
 
 
-    public void onCheckedChanged(RadioGroup group, int position) {
-        // TODO Auto-generated method stub
-        switch (position) {
-            case R.id.rdbMale:
-                gender = "Male";
-                System.out.println("Male");
-                break;
-            case R.id.rdbFemale:
-                gender = "Female";
-                System.out.println("FeMale");
-                break;
 
-            default:
-                break;
-        }
+
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 
 
@@ -206,5 +380,6 @@ public class ActivitySetupProfile extends Activity implements View.OnClickListen
         if(view == birthDate) {
             birthDatePickerDialog.show();
         }
+        //if(view == )
     }
 }

@@ -82,11 +82,15 @@ public class ActivityRegister extends Activity {
                 p.setEmail(emailstr);
                 p.setPassword(passwordstr);
                 p.setSecurity(securitystr);
-                helper.insertPlayer(p);
+                //helper.insertPlayer(p);
 
-                Toast.makeText(ActivityRegister.this, "Successfully Registered Account", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(ActivityRegister.this, "Successfully Registered Account", Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(ActivityRegister.this, ActivitySetupProfile.class);
+                intent.putExtra("username", usernamestr);
+                intent.putExtra("email", emailstr);
+                intent.putExtra("password", passwordstr);
+                intent.putExtra("security", securitystr);
                 startActivity(intent);
             }
         });
