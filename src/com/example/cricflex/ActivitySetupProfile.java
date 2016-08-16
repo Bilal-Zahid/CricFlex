@@ -54,6 +54,8 @@ public class ActivitySetupProfile extends Activity implements View.OnClickListen
     String selectedCareerLevel = "international";
     Context ctx;
 
+    String backCheck = "activity setup profile 1";
+
     //private TextView location;
 
     //private String location = "not set";
@@ -146,6 +148,8 @@ public class ActivitySetupProfile extends Activity implements View.OnClickListen
 
                 setContentView(R.layout.activity_profile_setup2);
                 findViewsById2();
+
+                backCheck = "activity setup profile 2";
 
                 rgBowlingArm.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
                 {
@@ -371,7 +375,20 @@ public class ActivitySetupProfile extends Activity implements View.OnClickListen
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        if(backCheck.equals("activity setup profile 1")){
+            Intent i = new Intent(ActivitySetupProfile.this, ActivityRegister.class);
+            ActivitySetupProfile.this.startActivity(i);
+            return;
+        }
+
+        if(backCheck.equals("activity setup profile 2")){
+            Intent intent = getIntent();
+            finish();
+            startActivity(intent);
+            backCheck = "activity setup profile 1";
+            return;
+        }
+
     }
 
 
