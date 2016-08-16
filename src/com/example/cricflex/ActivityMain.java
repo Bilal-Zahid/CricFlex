@@ -148,20 +148,23 @@ public class ActivityMain extends ActionBarActivity {
         navDrawerItems = new ArrayList<NavDrawerItem>();
 
         // adding nav drawer items to array
-        // Home
+
+        // Profile
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
-        // Monitor
+        // Home
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(0, -1)));
-        // History
+        // Monitor
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(0, -1)));
-        // Friends
+        // History
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(0, -1)));
-        // Awards
+        // Friends
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(0, -1)));
-        // Coach
+        // Awards
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(0, -1)));
-        // About
+        // Coach
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[6], navMenuIcons.getResourceId(0, -1)));
+        // About
+        navDrawerItems.add(new NavDrawerItem(navMenuTitles[7], navMenuIcons.getResourceId(0, -1)));
         // Recycle the typed array
         navMenuIcons.recycle();
 
@@ -305,27 +308,33 @@ public class ActivityMain extends ActionBarActivity {
         Fragment fragment = null;
         switch (position) {
             case 0:
-                fragment = new FragmentHome();
+                fragment = new FragmentProfile();
+                Bundle bundle = new Bundle();
+                String username = SaveSharedPreference.getUserName(ActivityMain.this);
+                bundle.putString("username", username);
+                fragment.setArguments(bundle);
                 break;
             case 1:
-                fragment = new FragmentMonitor();
+                fragment = new FragmentHome();
                 break;
             case 2:
-                fragment = new FragmentHistory();
+                fragment = new FragmentMonitor();
                 break;
             case 3:
-                fragment = new FragmentFriends();
+                fragment = new FragmentHistory();
                 break;
             case 4:
-                fragment = new FragmentAwards();
+                fragment = new FragmentFriends();
                 break;
             case 5:
-                fragment = new FragmentCoach();
+                fragment = new FragmentAwards();
                 break;
             case 6:
+                fragment = new FragmentCoach();
+                break;
+            case 7:
                 fragment = new FragmentAbout();
                 break;
-
             default:
                 break;
         }

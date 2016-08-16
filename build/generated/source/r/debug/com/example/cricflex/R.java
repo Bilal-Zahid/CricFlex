@@ -1783,7 +1783,7 @@ containing a value of this type.
     public static final class id {
         public static final int Graph=0x7f0d005c;
         public static final int Login=0x7f0d0061;
-        public static final int action_arch_tab=0x7f0d00ab;
+        public static final int action_arch_tab=0x7f0d00b3;
         public static final int action_bar=0x7f0d0040;
         public static final int action_bar_activity_content=0x7f0d0000;
         public static final int action_bar_container=0x7f0d003f;
@@ -1792,14 +1792,14 @@ containing a value of this type.
         public static final int action_bar_subtitle=0x7f0d0024;
         public static final int action_bar_title=0x7f0d0023;
         public static final int action_context_bar=0x7f0d0041;
-        public static final int action_list=0x7f0d00aa;
+        public static final int action_list=0x7f0d00b2;
         public static final int action_menu_divider=0x7f0d0002;
         public static final int action_menu_presenter=0x7f0d0003;
         public static final int action_mode_bar=0x7f0d003d;
         public static final int action_mode_bar_stub=0x7f0d003c;
         public static final int action_mode_close_button=0x7f0d0025;
-        public static final int action_settings=0x7f0d00a8;
-        public static final int action_viewpager=0x7f0d00a9;
+        public static final int action_settings=0x7f0d00b0;
+        public static final int action_viewpager=0x7f0d00b1;
         public static final int activity_chooser_view_content=0x7f0d0026;
         public static final int age=0x7f0d0072;
         public static final int alertTitle=0x7f0d0030;
@@ -1879,7 +1879,7 @@ containing a value of this type.
         public static final int list_item=0x7f0d002a;
         public static final int list_slidermenu=0x7f0d0065;
         public static final int location=0x7f0d0074;
-        public static final int logout=0x7f0d00a7;
+        public static final int logout=0x7f0d00af;
         public static final int middle=0x7f0d0015;
         public static final int monitor=0x7f0d0066;
         public static final int multiply=0x7f0d001e;
@@ -1887,10 +1887,18 @@ containing a value of this type.
         public static final int none=0x7f0d000e;
         public static final int normal=0x7f0d000a;
         public static final int parentPanel=0x7f0d002d;
-        public static final int profile=0x7f0d00a5;
+        public static final int profile=0x7f0d00ad;
         public static final int profilepicture=0x7f0d006d;
         public static final int progress_circular=0x7f0d0005;
         public static final int progress_horizontal=0x7f0d0006;
+        public static final int pv_age=0x7f0d00a8;
+        public static final int pv_bowling_style=0x7f0d00a6;
+        public static final int pv_career_level=0x7f0d00a7;
+        public static final int pv_dateofbirth=0x7f0d00ac;
+        public static final int pv_email=0x7f0d00ab;
+        public static final int pv_gender=0x7f0d00a9;
+        public static final int pv_location=0x7f0d00aa;
+        public static final int pv_username=0x7f0d00a5;
         public static final int radio=0x7f0d003a;
         public static final int rdbFemale=0x7f0d007b;
         public static final int rdbLeft=0x7f0d0083;
@@ -1946,7 +1954,7 @@ containing a value of this type.
         public static final int txtLabel=0x7f0d0095;
         public static final int up=0x7f0d0008;
         public static final int useLogo=0x7f0d0012;
-        public static final int username=0x7f0d00a6;
+        public static final int username=0x7f0d00ae;
         public static final int view=0x7f0d0071;
         public static final int view1=0x7f0d007c;
         public static final int view2=0x7f0d007e;
