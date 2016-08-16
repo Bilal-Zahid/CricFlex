@@ -77,8 +77,15 @@
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
 
+        <activity
+            android:name=".ActivityProfile"
+            android:label="@string/profile"
+            android:screenOrientation="portrait" />
 
         <service android:name=".RFDService" />
+
+
+
 
     </application>
 

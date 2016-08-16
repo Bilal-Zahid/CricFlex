@@ -6,12 +6,10 @@
     android:visible="true"
     android:useLevel="false"
     >
-
     <solid
         android:color="#ffffff"
         />
     <stroke
         android:width="0dp"
         android:color="@android:color/white" />
-
 </shape>
