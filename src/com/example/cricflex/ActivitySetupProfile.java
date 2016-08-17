@@ -5,7 +5,9 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
@@ -39,7 +41,9 @@ import java.util.Locale;
  */
 public class ActivitySetupProfile extends Activity implements View.OnClickListener {
 
+    DbBitmapUtility dbBitmapUtility = new DbBitmapUtility();
     DatabaseHelper helper = new DatabaseHelper(this);
+
     RadioButton rdbMale, rdbFemale;
     RadioGroup rgGender;
 
@@ -54,6 +58,7 @@ public class ActivitySetupProfile extends Activity implements View.OnClickListen
     String selectedCareerLevel = "international";
     Context ctx;
 
+    Bitmap bitmapImage;
     String backCheck = "activity setup profile 1";
 
     //private TextView location;
@@ -86,6 +91,8 @@ public class ActivitySetupProfile extends Activity implements View.OnClickListen
         setContentView(R.layout.activity_profile_setup1);
         findViewsById();
 
+        bitmapImage = BitmapFactory.decodeResource(getResources(), R.drawable.profile_icon_large);
+
         initializeCountrySpinner();
 
         dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
@@ -99,13 +106,21 @@ public class ActivitySetupProfile extends Activity implements View.OnClickListen
             public void onClick(View v) {
                 //Log.i(SystemSettings.APP_TAG + " : " + HomeActivity.class.getName(), "Entered onClick method");
                 // Create intent to Open Image applications like Gallery, Google Photos
-                Intent galleryIntent = new Intent(Intent.ACTION_PICK,
-                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                //Intent galleryIntent = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 // Start the Intent
+//                Intent takePicture = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//                startActivityForResult(takePicture, RESULT_LOAD_IMG);
                 //Image imageFromGallery = new;
+                Intent galleryIntent = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(galleryIntent, RESULT_LOAD_IMG);
             }
         });
+
+
+        //Bitmap bitmap = ((BitmapDrawable)profileImage.getDrawable()).getBitmap();
+
+        //profileImage.setImageBitmap(bitmap);
+
 
         rgGender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
         {
@@ -212,6 +227,10 @@ public class ActivitySetupProfile extends Activity implements View.OnClickListen
                         p.setBowlingStyle(bowlingStyle);
                         p.setCareerLevel(careerLevel);
 
+
+                        helper.addEntry(username,dbBitmapUtility.getBytes(bitmapImage));
+
+
                         helper.insertPlayer(p);
                         Toast toast = Toast.makeText(ActivitySetupProfile.this, "Registered Account!" , Toast.LENGTH_SHORT);
 
@@ -256,8 +275,10 @@ public class ActivitySetupProfile extends Activity implements View.OnClickListen
                 cursor.close();
                 ImageView imgView = (ImageView) findViewById(R.id.profilepicture);
                 // Set the Image in ImageView after decoding the String
-                imgView.setImageBitmap(BitmapFactory
-                        .decodeFile(imgDecodableString));
+                bitmapImage =  BitmapFactory.decodeFile(imgDecodableString);
+
+
+                imgView.setImageBitmap(bitmapImage);
 
             } else {
                 Toast.makeText(this, "You haven't picked Image",

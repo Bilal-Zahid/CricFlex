@@ -2,9 +2,13 @@ package com.example.cricflex;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
 /**
  * Created by bilal on 6/21/2016.
@@ -32,7 +36,13 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     private static final String COLUMN_CAREERLEVEL = "careerlevel";
 
 
+    // For Storing Images
+    // column names
+    private static final String KEY_NAME = "image_name";
+    private static final String KEY_IMAGE = "image_data";
 
+    // Table Names
+    private static final String IMAGE_TABLE = "table_image";
 
     SQLiteDatabase db;
 
@@ -42,6 +52,10 @@ public class DatabaseHelper extends SQLiteOpenHelper{
             " gender text not null, DOB text not null, location text not null, bowlingstyle text not null, bowlingarm text not null, careerlevel text not null);";
 
 
+    private static final String CREATE_TABLE_IMAGE = "CREATE TABLE " + IMAGE_TABLE + "("+
+            KEY_NAME + " TEXT," +
+            KEY_IMAGE + " BLOB);";
+
 
     public DatabaseHelper(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -50,12 +64,14 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(TABLE_CREATE);
+        db.execSQL(CREATE_TABLE_IMAGE);
         this.db = db;
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         String query = "DROP TABLE IF EXISTS" + TABLE_NAME;
+        db.execSQL("DROP TABLE IF EXISTS " + IMAGE_TABLE);
         db.execSQL(query);
         this.onCreate(db);
     }
@@ -298,4 +314,39 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         //return flag;
     }
 
+    public void addEntry( String name, byte[] image) throws SQLiteException {
+        SQLiteDatabase database = this.getWritableDatabase();
+        ContentValues cv = new  ContentValues();
+        cv.put(KEY_NAME,    name);
+        cv.put(KEY_IMAGE,   image);
+        database.insert( IMAGE_TABLE, null, cv );
+    }
+
+
+
+    public Bitmap getImage(String username){
+        db = this.getReadableDatabase();
+        String query = "select image_name , image_data  from " + IMAGE_TABLE;
+        Cursor cursor = db.rawQuery(query,null);
+        String imageName;
+        byte [] imageData;
+        imageData = null;
+
+        Bitmap bitmapImage = null;
+        bitmapImage = BitmapFactory.decodeResource(Resources.getSystem(),R.drawable.profile1);
+        if(cursor.moveToFirst()){
+            do{
+                imageName = cursor.getString(0);
+                if(imageName.equals(username)){
+                    imageData = cursor.getBlob(1);
+                    bitmapImage = BitmapFactory.decodeByteArray(imageData, 0, imageData.length);
+
+                    break;
+                }
+            }
+            while(cursor.moveToNext());
+        }
+        cursor.close();
+        return bitmapImage;
+    }
 }

@@ -22,12 +22,6 @@ public class FragmentProfile extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
 
-
-
-
-
-
-
         String username = "";
         Bundle bundle = this.getArguments();
         if (bundle != null) {
@@ -57,6 +51,16 @@ public class FragmentProfile extends Fragment {
 
         TextView pv_DOB = (TextView)rootView.findViewById(R.id.pv_dateofbirth);
         pv_DOB.setText(helper.getDOB(username));
+
+        //CircleImageView circleImageView = new CircleImageView(getActivity());
+        //circleImageView =
+
+        CircleImageView circleImageView = (CircleImageView) rootView.findViewById(R.id.profilepicture);
+        circleImageView.setImageBitmap(helper.getImage(username));
+
+
+
+
 
 
 
