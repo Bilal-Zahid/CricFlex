@@ -1,11 +1,19 @@
 package com.example.cricflex;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
+import android.media.ExifInterface;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import java.io.FileInputStream;
 
 public class FragmentProfile extends Fragment {
 
@@ -55,8 +63,15 @@ public class FragmentProfile extends Fragment {
         //CircleImageView circleImageView = new CircleImageView(getActivity());
         //circleImageView =
 
+
+
         CircleImageView circleImageView = (CircleImageView) rootView.findViewById(R.id.profilepicture);
-        circleImageView.setImageBitmap(helper.getImage(username));
+        //Bitmap bitmapImage1 = helper.getImage(username);
+
+        //circleImageView.setImageBitmap(bitmapImage1);
+
+        Bitmap b = getImageBitmap(this.getActivity(),username,"jpeg");
+        circleImageView.setImageBitmap(b);
 
 
 
@@ -65,5 +80,17 @@ public class FragmentProfile extends Fragment {
 
 
         return rootView;
+    }
+    public Bitmap getImageBitmap(Context context, String name, String extension){
+        name=name+"."+extension;
+        try{
+            FileInputStream fis = context.openFileInput(name);
+            Bitmap b = BitmapFactory.decodeStream(fis);
+            fis.close();
+            return b;
+        }
+        catch(Exception e){
+        }
+        return null;
     }
 }

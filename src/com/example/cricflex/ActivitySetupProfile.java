@@ -3,11 +3,14 @@ package com.example.cricflex;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
+import android.media.ExifInterface;
 import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
@@ -29,6 +32,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -59,6 +68,7 @@ public class ActivitySetupProfile extends Activity implements View.OnClickListen
     Context ctx;
 
     Bitmap bitmapImage;
+
     String backCheck = "activity setup profile 1";
 
     //private TextView location;
@@ -82,6 +92,9 @@ public class ActivitySetupProfile extends Activity implements View.OnClickListen
 //    private ImageView profileImage;
 
 
+
+
+    private static final int SELECT_PICTURE = 1;
 
 
     @Override
@@ -109,12 +122,35 @@ public class ActivitySetupProfile extends Activity implements View.OnClickListen
                 //Intent galleryIntent = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 // Start the Intent
 //                Intent takePicture = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//                takePicture.putExtra("android.intent.extras.CAMERA_FACING", 1);
 //                startActivityForResult(takePicture, RESULT_LOAD_IMG);
+
                 //Image imageFromGallery = new;
-                Intent galleryIntent = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(galleryIntent, RESULT_LOAD_IMG);
+//                Intent galleryIntent = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+//                startActivityForResult(galleryIntent, RESULT_LOAD_IMG);
+
+
+                Intent pickIntent = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                //pickIntent.setType("image/*");
+                //pickIntent.setAction(Intent.ACTION_GET_CONTENT);
+
+                Intent takePhotoIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+                String pickTitle = "Select or take a new Picture"; // Or get from strings.xml
+                Intent chooserIntent = Intent.createChooser(pickIntent, pickTitle);
+                chooserIntent.putExtra
+                        (
+                                Intent.EXTRA_INITIAL_INTENTS,
+                                new Intent[] { takePhotoIntent }
+                        );
+
+                startActivityForResult(chooserIntent, SELECT_PICTURE);
+
+
             }
         });
+
+
 
 
         //Bitmap bitmap = ((BitmapDrawable)profileImage.getDrawable()).getBitmap();
@@ -228,13 +264,19 @@ public class ActivitySetupProfile extends Activity implements View.OnClickListen
                         p.setCareerLevel(careerLevel);
 
 
-                        helper.addEntry(username,dbBitmapUtility.getBytes(bitmapImage));
+                        saveImage(getApplicationContext(),bitmapImage,username,"jpeg");
+
+
+
+
+                        //helper.addEntry(username,dbBitmapUtility.getBytes(bitmapImage));
 
 
                         helper.insertPlayer(p);
                         Toast toast = Toast.makeText(ActivitySetupProfile.this, "Registered Account!" , Toast.LENGTH_SHORT);
 
-                        Intent i = new Intent(ActivitySetupProfile.this, ActivityMain.class);
+                        toast.show();
+                        Intent i = new Intent(ActivitySetupProfile.this, ActivityLogin.class);
                         ActivitySetupProfile.this.startActivity(i);
 
 
@@ -250,8 +292,6 @@ public class ActivitySetupProfile extends Activity implements View.OnClickListen
 
     }
 
-
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -261,35 +301,210 @@ public class ActivitySetupProfile extends Activity implements View.OnClickListen
                     && null != data) {
                 // Get the Image from data
 
+
+
                 Uri selectedImage = data.getData();
-                String[] filePathColumn = { MediaStore.Images.Media.DATA };
+                System.out.print("uri: " + selectedImage.toString());
+                //File f = new File(selectedImage.getPath());
 
-                // Get the cursor
-                Cursor cursor = getContentResolver().query(selectedImage,
-                        filePathColumn, null, null, null);
-                // Move to first row
-                cursor.moveToFirst();
-
-                int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-                imgDecodableString = cursor.getString(columnIndex);
-                cursor.close();
-                ImageView imgView = (ImageView) findViewById(R.id.profilepicture);
-                // Set the Image in ImageView after decoding the String
-                bitmapImage =  BitmapFactory.decodeFile(imgDecodableString);
+                //selectedImage = Uri.fromFile(f);
+                //ContextWrapper context = new ContextWrapper();
+                //Bitmap b;
+                bitmapImage = handleSamplingAndRotationBitmap( this.getApplicationContext(), selectedImage);
+//                bitmapImage = b;
+                ImageView profileImage = (ImageView) findViewById(R.id.profilepicture);
+                profileImage.setImageBitmap(bitmapImage);
 
 
-                imgView.setImageBitmap(bitmapImage);
+//                String[] filePathColumn = { MediaStore.Images.Media.DATA };
+//
+//                // Get the cursor
+//                Cursor cursor = getContentResolver().query(selectedImage,
+//                        filePathColumn, null, null, null);
+////                // Move to first row
+//                cursor.moveToFirst();
+//
+//                int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+//                imgDecodableString = cursor.getString(columnIndex);
+////                cursor.close();
+////
+////                // Set the Image in ImageView after decoding the String
+//                bitmapImage =  BitmapFactory.decodeFile(imgDecodableString);
+////
+//
+//
+//
+//
+//                BitmapFactory.Options options = new BitmapFactory.Options();
+//                options.inSampleSize = 8;
+
+//                ByteArrayInputStream inputStreamImage = new ByteArrayInputStream(DbBitmapUtility.getBytes(bitmapImage));
+//                Bitmap compressedBitmap = BitmapFactory.decodeStream(inputStreamImage, null, options);
+
+                //String pathToImage = selectedImage.getPath();
+
+                //compressedBitmap = rotateImageIfRequired(compressedBitmap,selectedImage);
+
+
+
+
+
+
+//                ExifInterface exif = new ExifInterface(pathToImage);
+//                int orientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, 1);
+//                Log.d("EXIF", "Exif: " + orientation);
+//                Matrix matrix = new Matrix();
+//                if (orientation == 6) {
+//                    matrix.postRotate(90);
+//                }
+//                else if (orientation == 3) {
+//                    matrix.postRotate(180);
+//                }
+//                else if (orientation == 8) {
+//                    matrix.postRotate(270);
+//                }
+//                compressedBitmap = Bitmap.createBitmap(compressedBitmap, 0, 0, compressedBitmap.getWidth(), compressedBitmap.getHeight(), matrix, true); // rotating bitmap
+
+
+//                ExifInterface ei = new ExifInterface(selectedImage.getPath());
+//                int orientation = ei.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);
+//
+//                switch (orientation) {
+//                    case ExifInterface.ORIENTATION_ROTATE_90:
+//                        compressedBitmap = rotateImage(compressedBitmap, 90);
+//                        break;
+//                    case ExifInterface.ORIENTATION_ROTATE_180:
+//                        compressedBitmap = rotateImage(compressedBitmap, 180);
+//                        break;
+//                    case ExifInterface.ORIENTATION_ROTATE_270:
+//                        compressedBitmap = rotateImage(compressedBitmap, 270);
+//                        break;
+//                    default:
+//
+//                }
+                //compressedBitmap = rotateImage(compressedBitmap, 90);
+
+
+
+//                bitmapImage  = compressedBitmap;
+
+                profileImage.setImageBitmap(bitmapImage);
+
+                //saveImage(this.getApplicationContext(),bitmapImage,);
+
 
             } else {
                 Toast.makeText(this, "You haven't picked Image",
                         Toast.LENGTH_LONG).show();
             }
         } catch (Exception e) {
-            Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG)
+            Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT)
                     .show();
         }
 
     }
+
+
+
+    public static Bitmap handleSamplingAndRotationBitmap(Context context, Uri selectedImage)
+            throws IOException {
+        int MAX_HEIGHT = 1024;
+        int MAX_WIDTH = 1024;
+
+        // First decode with inJustDecodeBounds=true to check dimensions
+        final BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        InputStream imageStream = context.getContentResolver().openInputStream(selectedImage);
+        BitmapFactory.decodeStream(imageStream, null, options);
+        imageStream.close();
+
+        // Calculate inSampleSize
+        options.inSampleSize = calculateInSampleSize(options, MAX_WIDTH, MAX_HEIGHT);
+
+        // Decode bitmap with inSampleSize set
+        options.inJustDecodeBounds = false;
+        imageStream = context.getContentResolver().openInputStream(selectedImage);
+        Bitmap img = BitmapFactory.decodeStream(imageStream, null, options);
+
+        img = rotateImageIfRequired(img, selectedImage);
+        return img;
+    }
+
+    private static int calculateInSampleSize(BitmapFactory.Options options,
+                                             int reqWidth, int reqHeight) {
+        // Raw height and width of image
+        final int height = options.outHeight;
+        final int width = options.outWidth;
+        int inSampleSize = 1;
+
+        if (height > reqHeight || width > reqWidth) {
+
+            // Calculate ratios of height and width to requested height and width
+            final int heightRatio = Math.round((float) height / (float) reqHeight);
+            final int widthRatio = Math.round((float) width / (float) reqWidth);
+
+            // Choose the smallest ratio as inSampleSize value, this will guarantee a final image
+            // with both dimensions larger than or equal to the requested height and width.
+            inSampleSize = heightRatio < widthRatio ? heightRatio : widthRatio;
+
+            // This offers some additional logic in case the image has a strange
+            // aspect ratio. For example, a panorama may have a much larger
+            // width than height. In these cases the total pixels might still
+            // end up being too large to fit comfortably in memory, so we should
+            // be more aggressive with sample down the image (=larger inSampleSize).
+
+            final float totalPixels = width * height;
+
+            // Anything more than 2x the requested pixels we'll sample down further
+            final float totalReqPixelsCap = reqWidth * reqHeight * 2;
+
+            while (totalPixels / (inSampleSize * inSampleSize) > totalReqPixelsCap) {
+                inSampleSize++;
+            }
+        }
+        return inSampleSize;
+    }
+
+
+    private static Bitmap rotateImageIfRequired(Bitmap img, Uri selectedImage) throws IOException {
+
+        ExifInterface ei = new ExifInterface(selectedImage.getPath());
+        //int orientation = ei.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);
+
+        int orientation = ei.getAttributeInt(ExifInterface.TAG_ORIENTATION, 1);
+
+//                ExifInterface exif = new ExifInterface(pathToImage);
+//                int orientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, 1);
+//                Log.d("EXIF", "Exif: " + orientation);
+//                Matrix matrix = new Matrix();
+//                if (orientation == 6) {
+//                    matrix.postRotate(90);
+//                }
+//                else if (orientation == 3) {
+//                    matrix.postRotate(180);
+//                }
+//                else if (orientation == 8) {
+//                    matrix.postRotate(270);
+//                }
+        switch (orientation) {
+            case ExifInterface.ORIENTATION_ROTATE_90:
+                return rotateImage(img, 90);
+            case ExifInterface.ORIENTATION_ROTATE_180:
+                return rotateImage(img, 180);
+            case ExifInterface.ORIENTATION_ROTATE_270:
+                return rotateImage(img, 270);
+            default:
+                return img;
+        }
+    }
+    private static Bitmap rotateImage(Bitmap img, int degree) {
+        Matrix matrix = new Matrix();
+        matrix.postRotate(degree);
+        Bitmap rotatedImg = Bitmap.createBitmap(img, 0, 0, img.getWidth(), img.getHeight(), matrix, true);
+        img.recycle();
+        return rotatedImg;
+    }
+
 
 
 
@@ -420,4 +635,32 @@ public class ActivitySetupProfile extends Activity implements View.OnClickListen
         }
         //if(view == )
     }
+
+    public void saveImage(Context context, Bitmap b,String name,String extension){
+        name=name+"."+extension;
+        FileOutputStream out;
+        try {
+            out = context.openFileOutput(name, Context.MODE_PRIVATE);
+            b.compress(Bitmap.CompressFormat.JPEG, 90, out);
+            out.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public Bitmap getImageBitmap(Context context,String name,String extension){
+        name=name+"."+extension;
+        try{
+            FileInputStream fis = context.openFileInput(name);
+            Bitmap b = BitmapFactory.decodeStream(fis);
+            fis.close();
+            return b;
+        }
+        catch(Exception e){
+        }
+        return null;
+    }
+
+
+
 }

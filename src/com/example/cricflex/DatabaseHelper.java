@@ -334,6 +334,12 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
         Bitmap bitmapImage = null;
         bitmapImage = BitmapFactory.decodeResource(Resources.getSystem(),R.drawable.profile1);
+
+
+        if(cursor==null){
+            return bitmapImage;
+        }
+
         if(cursor.moveToFirst()){
             do{
                 imageName = cursor.getString(0);
