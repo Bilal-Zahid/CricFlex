@@ -45,8 +45,8 @@
     <color name="activity_list_slidermenu_divider">#333333</color>
 
 
-    <color name="arc_finished_color">#20ffbb</color>
-    <color name="arc_unfinished_color">#ff0000</color>
+    <color name="arc_finished_color">#00aff0</color>
+    <color name="arc_unfinished_color">#5000aff0</color>
 
 
 
@@ -54,5 +54,9 @@
     <color name="light">#FFEEEEEE</color>
 
     <color name="text_light">#FFEEEEEE</color>
+    <color name="text_dark">#FF222222</color>
+
+    <color name="illegal_background_color">#50FF0000</color>
+    <color name="legal_background_color">#5000FF00</color>
 
 </resources>

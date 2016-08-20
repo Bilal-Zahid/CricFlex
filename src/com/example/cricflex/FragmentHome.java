@@ -1,10 +1,12 @@
 package com.example.cricflex;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 public class FragmentHome extends Fragment {
 
@@ -12,6 +14,7 @@ public class FragmentHome extends Fragment {
 
 
     private ArcProgress arcProgress;
+    private Button startButton;
 
 
 
@@ -35,7 +38,19 @@ public class FragmentHome extends Fragment {
 
 
         arcProgress = (ArcProgress) rootView.findViewById(R.id.arc_progress);
-        arcProgress.setProgress(45);
+        arcProgress.setProgress(50);
+        startButton = (Button) rootView.findViewById(R.id.home_start);
+
+
+        startButton.setOnClickListener(new View.OnClickListener(){
+
+            public void onClick(View view) {
+
+                Intent intent = new Intent(getActivity(), ActivityMonitor.class);
+                startActivity(intent);
+            }
+        });
+
 
         return rootView;
     }

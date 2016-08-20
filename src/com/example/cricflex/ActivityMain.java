@@ -50,40 +50,13 @@ import android.bluetooth.le.ScanSettings;
 
 public class ActivityMain extends ActionBarActivity {
 
-//COMITTING ///
+
     @Override
     public void onBackPressed() {
         //super.onBackPressed();
         moveTaskToBack(true);
     }
 
-
-    //check commit by bilal zahid 1234
-
-    //changings
-    private BluetoothAdapter mBluetoothAdapter;
-    private int REQUEST_ENABLE_BT = 1;
-
-    private static final long SCAN_PERIOD = 10000;
-    private BluetoothLeScanner mLEScanner;
-    private ScanSettings settings;
-    private List<ScanFilter> filters;
-    private BluetoothGatt mGatt;
-    private File accelerationFile = new File("/sdcard/acceleration.txt");
-    private long temp;
-    private int test1234;
-
-
-/*
-    private ScanCallback mScanCallback = new ScanCallback() {
-        @Override
-        public void onScanResult(int callbackType, ScanResult result) {
-            Log.i("callbackType", String.valueOf(callbackType));
-            Log.i("result", result.toString());
-            BluetoothDevice btDevice = result.getDevice();
-            connectToDevice(btDevice);
-        }
-*/    //changings
 
 
 // Side Navigation Drawer
@@ -118,18 +91,6 @@ public class ActivityMain extends ActionBarActivity {
 
         setContentView(R.layout.activity_main);
 
-
-
-
-
-
-
-
-
-//        acceleration = (TextView) findViewById(R.id.acceleration);
-//        timer = (TextView) findViewById(R.id.timer);
-//        connectionStatusText = (TextView) findViewById(R.id.test);
-
         
         // Side Navigation Bar/////////////////////////////////////////////////////////////////
 
@@ -153,15 +114,15 @@ public class ActivityMain extends ActionBarActivity {
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
         // Home
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(0, -1)));
-        // Monitor
-        navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(0, -1)));
         // History
-        navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(0, -1)));
-        // Friends
-        navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(0, -1)));
+        navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(0, -1)));
         // Awards
+        navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(0, -1)));
+        // Training
+        navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(0, -1)));
+        // Friends
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(0, -1)));
-        // Coach
+        // Help
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[6], navMenuIcons.getResourceId(0, -1)));
         // About
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[7], navMenuIcons.getResourceId(0, -1)));
@@ -318,19 +279,19 @@ public class ActivityMain extends ActionBarActivity {
                 fragment = new FragmentHome();
                 break;
             case 2:
-                fragment = new FragmentMonitor();
-                break;
-            case 3:
                 fragment = new FragmentHistory();
                 break;
-            case 4:
-                fragment = new FragmentFriends();
-                break;
-            case 5:
+            case 3:
                 fragment = new FragmentAwards();
                 break;
+            case 4:
+                fragment = new FragmentTraining();
+                break;
+            case 5:
+                fragment = new FragmentFriends();
+                break;
             case 6:
-                fragment = new FragmentCoach();
+                fragment = new FragmentHelp();
                 break;
             case 7:
                 fragment = new FragmentAbout();

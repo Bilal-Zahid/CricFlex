@@ -61,10 +61,10 @@
             android:name=".ActivityRegister"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
-        <!--<activity-->
-            <!--android:name=".ActivitySetupProfile"-->
-            <!--android:label="@string/app_name"-->
-            <!--android:screenOrientation="portrait" />-->
+        <activity
+            android:name=".ActivityMonitor"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ActivityHelp"
             android:label="@string/app_name"

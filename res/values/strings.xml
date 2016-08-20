@@ -16,10 +16,10 @@
     <string name="slide_1_desc">World\'s first wearable to detect illegal bowling action in cricket</string>
 
     <string name="slide_2_title">Comfortable Band</string>
-    <string name="slide_2_desc">Daikhen ji ye bohat e fit wale material ka band istemaal kiya hai humne. apko bilkul pasand nae ae ga. beshak larki k mamu ko dikha den</string>
+    <string name="slide_2_desc">Arm angle, start of action and release point detection</string>
 
     <string name="slide_3_title">Player Profile</string>
-    <string name="slide_3_desc">Keeps record of all the balls and also maintain user profile on server with bla bla bla</string>
+    <string name="slide_3_desc">Keeps record of all the balls and also maintain user profile on server</string>
 
     <string name="slide_4_title">Data Analytics</string>
     <string name="slide_4_desc">Data analytics (DA) is the science of examining raw data with the purpose of drawing conclusions about that information.</string>
@@ -32,11 +32,11 @@
     <string-array name="nav_drawer_items">
         <item >Profile</item>
         <item >Home</item>
-        <item >Monitor</item>
         <item >History</item>
-        <item >Friends</item>
         <item >Awards</item>
-        <item >Coach</item>
+        <item >Training</item>
+        <item >Friends</item>
+        <item >Help</item>
         <item >About</item>
     </string-array>
 
@@ -89,5 +89,9 @@
         <item>National</item>
         <item>International</item>
     </string-array>
+
+    <string name="illegal_monitor_status">Illegal</string>
+    <string name="legal_monitor_status">Legal</string>
+
 
 </resources>
