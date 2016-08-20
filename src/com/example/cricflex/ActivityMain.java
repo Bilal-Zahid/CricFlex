@@ -206,17 +206,20 @@ public class ActivityMain extends ActionBarActivity {
         switch(item.getItemId()) {
 
             case R.id.logout:
-                finish();
+
                 Intent intent = new Intent(ActivityMain.this, ActivityLogin.class);
                 //ActivityMain.this.finish();
+
 
                 SaveSharedPreference.clearUserName(ActivityMain.this);
 
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
 
+                startActivity(intent);
+                finish();
                 return true;
+
 
             default:
                 return super.onOptionsItemSelected(item);

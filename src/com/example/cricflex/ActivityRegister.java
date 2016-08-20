@@ -3,6 +3,7 @@ package com.example.cricflex;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -69,6 +70,7 @@ public class ActivityRegister extends Activity {
                     return;
                 }
 
+
                 matcher = pattern.matcher(emailstr);
                 if(!matcher.matches()){
                     Toast.makeText(ActivityRegister.this, "Invalid Email Address", Toast.LENGTH_SHORT).show();
@@ -76,6 +78,18 @@ public class ActivityRegister extends Activity {
                 }
                 if(!helper.getPassword(usernamestr).equals("not found")){
                     Toast.makeText(ActivityRegister.this, "Username Already Exists", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(usernamestr.contains(" ")){
+                    final Toast toast = Toast.makeText(ActivityRegister.this, "Username cannot contain spaces" , Toast.LENGTH_SHORT);
+                    toast.show();
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            toast.cancel();
+                        }
+                    }, 500);
                     return;
                 }
                 p.setUsername(usernamestr);
