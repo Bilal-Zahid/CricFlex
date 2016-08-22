@@ -161,7 +161,7 @@ public class ActivityMain extends ActionBarActivity {
 
         if (savedInstanceState == null) {
             // on first time display view for first nav item
-            displayView(0);
+            displayView(1);
         }
 
     }

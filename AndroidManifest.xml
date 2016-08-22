@@ -42,6 +42,12 @@
         </activity>
 
         <activity
+            android:name=".ActivityMonitor"
+            android:label="CricFlex"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity
             android:name=".ActivityWelcome"
             android:label="CricFlex"
             android:screenOrientation="portrait">
@@ -64,7 +70,7 @@
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ActivityMonitor"
+            android:name=".ActivityMonitor2"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity
