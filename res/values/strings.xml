@@ -30,14 +30,14 @@
 
     <!-- Nav Drawer Menu Items -->
     <string-array name="nav_drawer_items">
-        <item >Profile</item>
-        <item >Home</item>
-        <item >History</item>
-        <item >Awards</item>
-        <item >Training</item>
-        <item >Friends</item>
-        <item >Help</item>
-        <item >About</item>
+        <item>Profile</item>
+        <item>Home</item>
+        <item>History</item>
+        <item>Awards</item>
+        <item>Training</item>
+        <item>Friends</item>
+        <item>Help</item>
+        <item>About</item>
     </string-array>
 
     <!-- Nav Drawer List Item Icons -->
@@ -55,7 +55,6 @@
     <string name="desc_list_item_icon">Item Icon</string>
 
 
-
     <string name="action_viewpager">ViewPager</string>
     <string name="action_list">List</string>
     <string name="title_activity_view_pager">ViewPagerActivity</string>
@@ -66,7 +65,6 @@
     <string name="title_item_detail">Item Detail</string>
     <string name="title_activity_arc_in_fragment">ArcInFragment</string>
     <string name="action_arc_tab">Arc Fragment</string>
-
 
 
     <string-array name="bowlingstyle_array">
