@@ -59,4 +59,7 @@
     <color name="illegal_background_color">#50FF0000</color>
     <color name="legal_background_color">#5000FF00</color>
 
+
+    <color name="gif_background_color">#00aff0</color>
+
 </resources>

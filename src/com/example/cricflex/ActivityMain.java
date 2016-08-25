@@ -205,6 +205,12 @@ public class ActivityMain extends ActionBarActivity {
         // Handle action buttons
         switch(item.getItemId()) {
 
+            case R.id.calibrate:
+
+                Intent intent1 = new Intent(ActivityMain.this, ActivityCalibrate.class);
+                startActivity(intent1);
+                return true;
+
             case R.id.logout:
 
                 Intent intent = new Intent(ActivityMain.this, ActivityLogin.class);

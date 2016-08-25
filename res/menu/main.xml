@@ -20,6 +20,10 @@
                 android:icon="@drawable/email1"
                 android:title="email" />
 
+            <item android:id="@+id/calibrate"
+                android:icon="@drawable/email1"
+                android:title="calibrate" />
+
             <item android:id="@+id/logout"
                 android:icon="@drawable/logout"
                 android:title="logout" />

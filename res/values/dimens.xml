@@ -11,9 +11,9 @@
     <dimen name="slide_desc">20dp</dimen>
     <dimen name="desc_padding">5dp</dimen>
     <dimen name="home_medium_text">35dp</dimen>
-    <dimen name="angle_text">100dp</dimen>
-    <dimen name="monitor_status_text">30dp</dimen>
-    <dimen name="monitor_medium_text">50dp</dimen>
-    <dimen name="chronometer_text">40dp</dimen>
+    <dimen name="angle_text">100sp</dimen>
+    <dimen name="monitor_status_text">30sp</dimen>
+    <dimen name="monitor_medium_text">50sp</dimen>
+    <dimen name="chronometer_text">40sp</dimen>
 
 </resources>

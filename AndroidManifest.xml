@@ -34,7 +34,11 @@
 
         </activity>
 
-
+        <activity
+            android:name=".ActivityCalibrate"
+            android:label="CricFlex"
+            android:screenOrientation="portrait">
+        </activity>
         <activity
             android:name=".ActivitySetupProfile"
             android:label="CricFlex"
