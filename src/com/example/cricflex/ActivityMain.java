@@ -40,6 +40,7 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -57,27 +58,11 @@ public class ActivityMain extends ActionBarActivity {
         moveTaskToBack(true);
     }
 
-
-
-// Side Navigation Drawer
-    private DrawerLayout mDrawerLayout;
-    private ListView mDrawerList;
+    ListView mDrawerList;
+    RelativeLayout mDrawerPane;
     private ActionBarDrawerToggle mDrawerToggle;
-
-    // nav drawer title
-    private CharSequence mDrawerTitle;
-
-    // used to store app title
-    private CharSequence mTitle;
-
-    // slide menu items
-    private String[] navMenuTitles;
-    private TypedArray navMenuIcons;
-
-    private ArrayList<NavDrawerItem> navDrawerItems;
-    private NavDrawerListAdapter adapter;
-
-    
+    private DrawerLayout mDrawerLayout;
+    ArrayList<NavDrawerItem> navDrawerItems = new ArrayList<NavDrawerItem>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,80 +76,76 @@ public class ActivityMain extends ActionBarActivity {
 
         setContentView(R.layout.activity_main);
 
-        
-        // Side Navigation Bar/////////////////////////////////////////////////////////////////
-
-        mTitle = mDrawerTitle = getTitle();
-
-        // load slide menu items
-        navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
-
-        // nav drawer icons from resources
-        navMenuIcons = getResources()
-                .obtainTypedArray(R.array.nav_drawer_icons);
-
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mDrawerList = (ListView) findViewById(R.id.list_slidermenu);
-
-        navDrawerItems = new ArrayList<NavDrawerItem>();
-
-        // adding nav drawer items to array
-
-        // Profile
-        navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
-        // Home
-        navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(0, -1)));
-        // History
-        navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(0, -1)));
-        // Awards
-        navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(0, -1)));
-        // Training
-        navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(0, -1)));
-        // Friends
-        navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(0, -1)));
-        // Help
-        navDrawerItems.add(new NavDrawerItem(navMenuTitles[6], navMenuIcons.getResourceId(0, -1)));
-        // About
-        navDrawerItems.add(new NavDrawerItem(navMenuTitles[7], navMenuIcons.getResourceId(0, -1)));
-        // Recycle the typed array
-        navMenuIcons.recycle();
-
-        mDrawerList.setOnItemClickListener(new SlideMenuClickListener());
-
-        // setting the nav drawer list adapter
-        adapter = new NavDrawerListAdapter(getApplicationContext(),
-                navDrawerItems);
-        mDrawerList.setAdapter(adapter);
-
-        // enabling action bar app icon and behaving it as toggle button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+
+
+        // Home
+        navDrawerItems.add(new NavDrawerItem("Home", R.drawable.ball));
+        // History
+        navDrawerItems.add(new NavDrawerItem("History", R.drawable.ball));
+        // Awards
+        navDrawerItems.add(new NavDrawerItem("Awards", R.drawable.ball));
+        // Training
+        navDrawerItems.add(new NavDrawerItem("Training", R.drawable.ball));
+        // Friends
+        navDrawerItems.add(new NavDrawerItem("Friends", R.drawable.ball));
+        // Help
+        navDrawerItems.add(new NavDrawerItem("Help", R.drawable.ball));
+        // About
+        navDrawerItems.add(new NavDrawerItem("About", R.drawable.ball));
+
+        //Drawer Layout
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+        // Populate the Navigtion Drawer with options
+
+        mDrawerPane = (RelativeLayout) findViewById(R.id.drawerPane);
+        mDrawerList = (ListView) findViewById(R.id.list_slidermenu);
+        NavDrawerListAdapter adapter = new NavDrawerListAdapter(this, navDrawerItems);
+        mDrawerList.setAdapter(adapter);
+
+
+        // Drawer Item click listeners
+        mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                selectItemFromDrawer(position);
+            }
+        });
+
 
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
                 R.drawable.ic_drawer, //nav menu toggle icon
                 R.string.app_name, // nav drawer open - description for accessibility
                 R.string.app_name // nav drawer close - description for accessibility
         ) {
-            public void onDrawerClosed(View view) {
-                getSupportActionBar().setTitle(mTitle);
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
                 // calling onPrepareOptionsMenu() to show action bar icons
                 invalidateOptionsMenu();
             }
 
-            public void onDrawerOpened(View drawerView) {
-                getSupportActionBar().setTitle(mDrawerTitle);
-                // calling onPrepareOptionsMenu() to hide action bar icons
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+//                Log.d(TAG, "onDrawerClosed: " + getTitle());
+
                 invalidateOptionsMenu();
             }
         };
+
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
         if (savedInstanceState == null) {
             // on first time display view for first nav item
-            displayView(1);
+            selectItemFromDrawer(0);
         }
 
+
     }
+
 
 
 
@@ -233,27 +214,14 @@ public class ActivityMain extends ActionBarActivity {
     }
 
 
-    // Side Navigation Drawer///////////////////////////////////////////////////////////////////////
 
-    /**
-     * Slide menu item click listener
-     * */
-    private class SlideMenuClickListener implements ListView.OnItemClickListener {
-        @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position,
-                                long id) {
-            // display view for selected nav drawer item
-            displayView(position);
-        }
-    }
-
-    /***
+    /*
      * Called when invalidateOptionsMenu() is triggered
      */
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         // if nav drawer is opened, hide the action items
-        boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
+        boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerPane);
         //menu.findItem(R.id.profile).setVisible(!drawerOpen);
         MenuItem username = menu.findItem(R.id.username);
         //Intent intent = getIntent();
@@ -273,36 +241,30 @@ public class ActivityMain extends ActionBarActivity {
     /**
      * Diplaying fragment view for selected nav drawer list item
      * */
-    private void displayView(int position) {
+    private void selectItemFromDrawer(int position) {
         // update the main content by replacing fragments
         Fragment fragment = null;
         switch (position) {
+
             case 0:
-                fragment = new FragmentProfile();
-                Bundle bundle = new Bundle();
-                String username = SaveSharedPreference.getUserName(ActivityMain.this);
-                bundle.putString("username", username);
-                fragment.setArguments(bundle);
-                break;
-            case 1:
                 fragment = new FragmentHome();
                 break;
-            case 2:
+            case 1:
                 fragment = new FragmentHistory();
                 break;
-            case 3:
+            case 2:
                 fragment = new FragmentAwards();
                 break;
-            case 4:
+            case 3:
                 fragment = new FragmentTraining();
                 break;
-            case 5:
+            case 4:
                 fragment = new FragmentFriends();
                 break;
-            case 6:
+            case 5:
                 fragment = new FragmentHelp();
                 break;
-            case 7:
+            case 6:
                 fragment = new FragmentAbout();
                 break;
             default:
@@ -317,8 +279,8 @@ public class ActivityMain extends ActionBarActivity {
             // update selected item and title, then close the drawer
             mDrawerList.setItemChecked(position, true);
             mDrawerList.setSelection(position);
-            setTitle(navMenuTitles[position]);
-            mDrawerLayout.closeDrawer(mDrawerList);
+            setTitle(navDrawerItems.get(position).getTitle());
+            mDrawerLayout.closeDrawer(mDrawerPane);
         } else {
             // error in creating fragment
             Log.e("ActivityMain", "Error in creating fragment");
@@ -327,8 +289,8 @@ public class ActivityMain extends ActionBarActivity {
 
     @Override
     public void setTitle(CharSequence title) {
-        mTitle = title;
-        getSupportActionBar().setTitle(mTitle);
+//        mTitle = title;
+        getSupportActionBar().setTitle(title);
     }
 
     /**
@@ -350,7 +312,24 @@ public class ActivityMain extends ActionBarActivity {
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
 
-// Side Navigation Drawer //
+    public void viewProfile(View v){
+        Fragment fragment = null;
+        fragment = new FragmentProfile();
+        Bundle bundle = new Bundle();
+        String username = SaveSharedPreference.getUserName(ActivityMain.this);
+        bundle.putString("username", username);
+        fragment.setArguments(bundle);
+
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.frame_container, fragment).commit();
+        setTitle(R.string.profile);
+
+        mDrawerList.setItemChecked(mDrawerList.getCheckedItemPosition(), false);
+        mDrawerLayout.closeDrawer(mDrawerPane);
+
+
+
+    }
 
 
 

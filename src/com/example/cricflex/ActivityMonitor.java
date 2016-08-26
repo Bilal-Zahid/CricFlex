@@ -291,7 +291,7 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
         public void onClick(View v) {
             startButtonPressed = true;
 //            stopButtonPressed = false;
-            monitorStartButton.setVisibility(View.GONE);
+            monitorStartButton.setVisibility(View.INVISIBLE);
             monitorFinishButton.setVisibility(View.VISIBLE);
             //graphButton.setVisibility(View.VISIBLE);
 

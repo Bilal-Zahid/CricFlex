@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -61,6 +62,29 @@ public class ActivityLogin extends Activity {
                 final EditText etPassword = (EditText) findViewById(R.id.lgn_password);
 
 
+
+                //To hide the keyboard when user touch anywhere else on the screen
+
+                etUsername.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                    @Override
+                    public void onFocusChange(View v, boolean hasFocus) {
+                        if (!hasFocus) {
+                            hideKeyboard(v);
+                        }
+                    }
+                });
+                etPassword.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                    @Override
+                    public void onFocusChange(View v, boolean hasFocus) {
+                        if (!hasFocus) {
+                            hideKeyboard(v);
+                        }
+                    }
+                });
+
+                /////////////////////////////////////
+
+
                 final String usernamestr = etUsername.getText().toString();
                 final String passwordstr = etPassword.getText().toString();
 
@@ -98,6 +122,11 @@ public class ActivityLogin extends Activity {
             }
         });
 
+    }
+
+    public void hideKeyboard(View view) {
+        InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
 
