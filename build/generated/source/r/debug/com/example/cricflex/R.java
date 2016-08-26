@@ -1787,25 +1787,22 @@ containing a value of this type.
         public static final int logout=0x7f020076;
         public static final int ok_icon=0x7f020077;
         public static final int password1=0x7f020078;
-        public static final int pause_circle=0x7f020079;
-        public static final int pause_circle_large=0x7f02007a;
-        public static final int photo_bg=0x7f02007b;
-        public static final int profile1=0x7f02007c;
-        public static final int profile_icon_large=0x7f02007d;
-        public static final int profileicon=0x7f02007e;
-        public static final int ring_shape=0x7f02007f;
-        public static final int security1=0x7f020080;
-        public static final int stadium=0x7f020081;
-        public static final int start_circle_large=0x7f020082;
-        public static final int start_cirlce=0x7f020083;
-        public static final int startbutton=0x7f020084;
-        public static final int startbutton1=0x7f020085;
-        public static final int stop_circle=0x7f020086;
-        public static final int stop_circle_large=0x7f020087;
-        public static final int stopbutton=0x7f020088;
-        public static final int strip=0x7f020089;
-        public static final int web_analytics=0x7f02008a;
-        public static final int welcomescreenbkd=0x7f02008b;
+        public static final int pause_circle_large=0x7f020079;
+        public static final int photo_bg=0x7f02007a;
+        public static final int profile1=0x7f02007b;
+        public static final int profile_icon_large=0x7f02007c;
+        public static final int profileicon=0x7f02007d;
+        public static final int ring_shape=0x7f02007e;
+        public static final int security1=0x7f02007f;
+        public static final int stadium=0x7f020080;
+        public static final int start_circle_large=0x7f020081;
+        public static final int startbutton=0x7f020082;
+        public static final int startbutton1=0x7f020083;
+        public static final int stop_circle_large=0x7f020084;
+        public static final int stopbutton=0x7f020085;
+        public static final int strip=0x7f020086;
+        public static final int web_analytics=0x7f020087;
+        public static final int welcomescreenbkd=0x7f020088;
     }
     public static final class id {
         public static final int Graph=0x7f0d0065;
@@ -1859,6 +1856,7 @@ containing a value of this type.
         public static final int calibrate=0x7f0d00c6;
         public static final int careerlevel=0x7f0d0099;
         public static final int careerlevel_spinner=0x7f0d009a;
+        public static final int chart=0x7f0d0066;
         public static final int checkbox=0x7f0d0038;
         public static final int collapseActionView=0x7f0d0017;
         public static final int contentPanel=0x7f0d0031;
@@ -1914,7 +1912,6 @@ containing a value of this type.
         public static final int lgn_password=0x7f0d0069;
         public static final int lgn_username=0x7f0d0067;
         public static final int linearlayout=0x7f0d008a;
-        public static final int linechart=0x7f0d0066;
         public static final int listMode=0x7f0d0009;
         public static final int list_item=0x7f0d002a;
         public static final int list_slidermenu=0x7f0d0074;

@@ -2,6 +2,7 @@ package com.example.cricflex;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
@@ -14,6 +15,8 @@ import android.app.Activity;
 import android.app.FragmentManager;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
@@ -63,6 +66,7 @@ public class ActivityMain extends ActionBarActivity {
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
     ArrayList<NavDrawerItem> navDrawerItems = new ArrayList<NavDrawerItem>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -230,6 +234,13 @@ public class ActivityMain extends ActionBarActivity {
         //setOptionTitle("username",uname);
         username.setTitle(usernamestr);
 
+        //Adding Picture on profile layout
+        CircleImageView circleImageView = (CircleImageView) findViewById(R.id.profilepicture);
+        Bitmap b = getImageBitmap(this,usernamestr,"jpeg");
+        circleImageView.setImageBitmap(b);
+
+
+
         //System.out.println(uname+intent.getStringExtra("email"));
         MenuItem email = menu.findItem(R.id.email);
         String emailstr = SaveSharedPreference.getEmail(ActivityMain.this);
@@ -329,6 +340,19 @@ public class ActivityMain extends ActionBarActivity {
 
 
 
+    }
+
+    public Bitmap getImageBitmap(Context context, String name, String extension){
+        name=name+"."+extension;
+        try{
+            FileInputStream fis = context.openFileInput(name);
+            Bitmap b = BitmapFactory.decodeStream(fis);
+            fis.close();
+            return b;
+        }
+        catch(Exception e){
+        }
+        return null;
     }
 
 
