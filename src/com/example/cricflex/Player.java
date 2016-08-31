@@ -17,10 +17,53 @@ public class Player {
     String Gender;
     String Location;
 
+    String legalBowls = "0";
+    String illegalBowls = "0";
+    String averageAngle = "0";
+    String longestStreak = "0";
+    String lastBowlAngle = "0";
+
+
+
+
+    public String getLegalBowls() {
+        return legalBowls;
+    }
+
+    public void setLegalBowls(String legalBowls) {
+        this.legalBowls = legalBowls;
+    }
+
+    public String getAverageAngle() {
+        return averageAngle;
+    }
+
+    public void setAverageAngle(String averageAngle) {
+        this.averageAngle = averageAngle;
+    }
+
+    public String getIllegalBowls() {
+        return illegalBowls;
+    }
+
+    public void setIllegalBowls(String illegalBowls) {
+        this.illegalBowls = illegalBowls;
+    }
+
+    public String getLongestStreak() {
+        return longestStreak;
+    }
+
+    public void setLongestStreak(String longestStreak) {
+        this.longestStreak = longestStreak;
+    }
+
+    public String getLastBowlAngle() { return lastBowlAngle;}
+    public void setLastBowlAngle(String lastBowlAngle) { this.lastBowlAngle = lastBowlAngle;}
+
     public String getBowlingStyle() {
         return bowlingStyle;
     }
-
     public void setBowlingStyle(String bowlingStyle) {
         this.bowlingStyle = bowlingStyle;
     }
@@ -28,7 +71,6 @@ public class Player {
     public String getBowlingArm() {
         return bowlingArm;
     }
-
     public void setBowlingArm(String bowlingArm) {
         this.bowlingArm = bowlingArm;
     }
@@ -36,7 +78,6 @@ public class Player {
     public String getDOB() {
         return DOB;
     }
-
     public void setDOB(String DOB) {
         this.DOB = DOB;
     }
@@ -44,7 +85,6 @@ public class Player {
     public String getHeight() {
         return Height;
     }
-
     public void setHeight(String height) {
         Height = height;
     }
@@ -52,7 +92,6 @@ public class Player {
     public String getWeight() {
         return Weight;
     }
-
     public void setWeight(String weight) {
         Weight = weight;
     }
@@ -60,7 +99,6 @@ public class Player {
     public String getCareerLevel() {
         return careerLevel;
     }
-
     public void setCareerLevel(String careerLevel) {
         this.careerLevel = careerLevel;
     }
@@ -68,34 +106,21 @@ public class Player {
     public String getGender() {
         return Gender;
     }
-
     public void setGender(String gender) {
         Gender = gender;
     }
 
-
     public String getLocation() {
         return Location;
     }
-
     public void setLocation(String location) {
         Location = location;
     }
 
-
-    /*
-    public void setId(int id){
-        this.id = id;
-    }
-    public int getId(){
-        return this.id;
-    }
-    */
-
     public void setUsername(String username){
         this.username = username;
     }
-    public String getusername(){
+    public String getUsername(){
         return this.username;
     }
 

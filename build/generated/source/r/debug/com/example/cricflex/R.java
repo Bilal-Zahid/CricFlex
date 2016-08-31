@@ -1807,7 +1807,7 @@ containing a value of this type.
     public static final class id {
         public static final int Graph=0x7f0d0065;
         public static final int Login=0x7f0d006b;
-        public static final int action_arch_tab=0x7f0d00cb;
+        public static final int action_arch_tab=0x7f0d00cc;
         public static final int action_bar=0x7f0d0040;
         public static final int action_bar_activity_content=0x7f0d0000;
         public static final int action_bar_container=0x7f0d003f;
@@ -1816,20 +1816,20 @@ containing a value of this type.
         public static final int action_bar_subtitle=0x7f0d0024;
         public static final int action_bar_title=0x7f0d0023;
         public static final int action_context_bar=0x7f0d0041;
-        public static final int action_list=0x7f0d00ca;
+        public static final int action_list=0x7f0d00cb;
         public static final int action_menu_divider=0x7f0d0002;
         public static final int action_menu_presenter=0x7f0d0003;
         public static final int action_mode_bar=0x7f0d003d;
         public static final int action_mode_bar_stub=0x7f0d003c;
         public static final int action_mode_close_button=0x7f0d0025;
-        public static final int action_settings=0x7f0d00c8;
-        public static final int action_viewpager=0x7f0d00c9;
+        public static final int action_settings=0x7f0d00c9;
+        public static final int action_viewpager=0x7f0d00ca;
         public static final int activity_chooser_view_content=0x7f0d0026;
         public static final int age=0x7f0d0084;
         public static final int alertTitle=0x7f0d0030;
         public static final int always=0x7f0d0016;
         public static final int angle=0x7f0d00b4;
-        public static final int arc_progress=0x7f0d00a8;
+        public static final int arc_progress=0x7f0d00c1;
         public static final int arm_bend_gifView=0x7f0d0054;
         public static final int arm_straight_gifView=0x7f0d0050;
         public static final int arm_twistLeft_gifView=0x7f0d0056;
@@ -1853,7 +1853,7 @@ containing a value of this type.
         public static final int cali2_next=0x7f0d0055;
         public static final int cali3_next=0x7f0d0057;
         public static final int cali4_done=0x7f0d0059;
-        public static final int calibrate=0x7f0d00c6;
+        public static final int calibrate=0x7f0d00c7;
         public static final int careerlevel=0x7f0d0099;
         public static final int careerlevel_spinner=0x7f0d009a;
         public static final int chart=0x7f0d0066;
@@ -1896,6 +1896,7 @@ containing a value of this type.
         public static final int homeAsUp=0x7f0d000d;
         public static final int home_average_angle=0x7f0d00ab;
         public static final int home_last_angle=0x7f0d00af;
+        public static final int home_legal_to_illegal_ratio=0x7f0d00a8;
         public static final int home_longest_streak=0x7f0d00ad;
         public static final int home_start=0x7f0d00b0;
         public static final int home_totalballs=0x7f0d00aa;
@@ -1903,9 +1904,9 @@ containing a value of this type.
         public static final int ifRoom=0x7f0d0018;
         public static final int image=0x7f0d0028;
         public static final int imageView=0x7f0d005b;
-        public static final int imageView1=0x7f0d00c1;
-        public static final int imageView2=0x7f0d00c3;
-        public static final int imageView3=0x7f0d00c2;
+        public static final int imageView1=0x7f0d00c2;
+        public static final int imageView2=0x7f0d00c4;
+        public static final int imageView3=0x7f0d00c3;
         public static final int imageanim=0x7f0d00a1;
         public static final int layoutDots=0x7f0d00a3;
         public static final int legal=0x7f0d00b5;
@@ -1916,7 +1917,7 @@ containing a value of this type.
         public static final int list_item=0x7f0d002a;
         public static final int list_slidermenu=0x7f0d0074;
         public static final int location=0x7f0d0086;
-        public static final int logout=0x7f0d00c7;
+        public static final int logout=0x7f0d00c8;
         public static final int middle=0x7f0d0015;
         public static final int monitor=0x7f0d00b1;
         public static final int monitor_angle_text=0x7f0d0076;
@@ -1932,7 +1933,7 @@ containing a value of this type.
         public static final int none=0x7f0d000e;
         public static final int normal=0x7f0d000a;
         public static final int parentPanel=0x7f0d002d;
-        public static final int profile=0x7f0d00c4;
+        public static final int profile=0x7f0d00c5;
         public static final int profileBox=0x7f0d0070;
         public static final int profilepicture=0x7f0d0071;
         public static final int progress_circular=0x7f0d0005;
@@ -2002,7 +2003,7 @@ containing a value of this type.
         public static final int up=0x7f0d0008;
         public static final int useLogo=0x7f0d0012;
         public static final int userName=0x7f0d0072;
-        public static final int username=0x7f0d00c5;
+        public static final int username=0x7f0d00c6;
         public static final int view=0x7f0d0083;
         public static final int view1=0x7f0d008e;
         public static final int view2=0x7f0d0090;

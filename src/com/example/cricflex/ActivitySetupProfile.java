@@ -264,7 +264,16 @@ public class ActivitySetupProfile extends Activity implements View.OnClickListen
                         p.setCareerLevel(careerLevel);
 
 
+                        p.setLegalBowls("0");
+                        p.setIllegalBowls("0");
+                        p.setAverageAngle("0");
+                        p.setLongestStreak("0");
+                        p.setLastBowlAngle("0");
+
+
                         saveImage(getApplicationContext(),bitmapImage,username,"jpeg");
+
+
 
 
 
@@ -272,7 +281,12 @@ public class ActivitySetupProfile extends Activity implements View.OnClickListen
                         //helper.addEntry(username,dbBitmapUtility.getBytes(bitmapImage));
 
 
+
+                        helper.insertPlayerStats(p);
                         helper.insertPlayer(p);
+                        helper.insertPlayerAngleValues(p.getUsername(),"");
+
+
                         Toast toast = Toast.makeText(ActivitySetupProfile.this, "Registered Account!" , Toast.LENGTH_SHORT);
 
                         toast.show();

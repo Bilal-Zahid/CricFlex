@@ -12,10 +12,10 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import android.os.Handler;
 import android.os.SystemClock;
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
@@ -41,6 +41,10 @@ import android.bluetooth.BluetoothGatt;
 import android.bluetooth.le.ScanFilter;
 import android.bluetooth.le.ScanSettings;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScanCallback {
 
     //COMITTING ///
@@ -62,6 +66,8 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
     private File accelerationFile = new File("/sdcard/acceleration.txt");
     private long temp;
     private int test1234;
+
+
 /*
     private ScanCallback mScanCallback = new ScanCallback() {
         @Override
@@ -101,7 +107,7 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
     private TextView deviceInfoText;
     //private TextView angleText;
     //private TextView degreeSign;
-    private TextView legal;
+    private TextView monitorLegalText;
     //private TextView ;
     private TextView acceleration;
     //private TextView checkLabel;
@@ -131,7 +137,7 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
     private int counterLegal=0,counterIllegal=0;
 
     private TextView angleText;
-    private TextView monitorStatusText;
+    //private TextView monitorStatusText;
     private Chronometer monitorTimer;
     private ImageButton monitorTimerButton;
     private TextView monitorLegalBalls;
@@ -145,6 +151,18 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
 
     boolean startButtonPressed = false;
 
+//For Stats and home page
+    DatabaseHelper helper = new DatabaseHelper(this);
+    Player p = new Player();
+    String username;
+    ArrayList<Integer> angleValues = new ArrayList<Integer>();
+
+    String legalBalls;
+    String illegalBalls;
+    String totalBalls;
+    String averageAngle;
+    String longestStreak;
+    String lastBallAngle;
 
     private final BroadcastReceiver bluetoothStateReceiver = new BroadcastReceiver() {
         @Override
@@ -204,7 +222,7 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
                 upgradeState(STATE_CONNECTED);
                 Toast.makeText(getApplicationContext(), "Connected to CricFlex Band", Toast.LENGTH_SHORT).show();
                 connectedToBand = true;
-                legal.setText("Straighten the arm");
+                monitorLegalText.setText("Straighten the arm");
                 once = 0;
             } else if (RFDService.ACTION_DISCONNECTED.equals(action)) {
                 downgradeState(STATE_DISCONNECTED);
@@ -218,7 +236,7 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
     private void initializelayoutitems() {
 
         angleText = (TextView)findViewById(R.id.monitor_angle_text);
-        monitorStatusText = (TextView)findViewById(R.id.monitor_status_text);
+        //monitorStatusText = (TextView)findViewById(R.id.monitor_status_text);
         monitorTimer = (Chronometer)findViewById(R.id.monitor_timer);
         monitorTimerButton = (ImageButton)findViewById(R.id.monitor_timer_button);
         monitorLegalBalls = (TextView)findViewById(R.id.monitor_legal_balls);
@@ -254,6 +272,62 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
 //                monitorStatusText.setTextColor(0xFF00FF00);
 //            }
 
+
+            p.setUsername(username);
+
+
+            p.setIllegalBowls(String.valueOf(counterIllegal));
+            p.setLegalBowls(String.valueOf(counterLegal));
+
+
+            System.out.println("Legal Bowls: "+ p.getLegalBowls()+"\nIllegal Bowls:" + p.getIllegalBowls());
+            System.out.println("Angle Values: \n"+ angleValues);
+
+//            Gson gson = new Gson();
+
+//            converting array into JSON
+            JSONObject json = new JSONObject();
+            try {
+                json.put("angleArray", new JSONArray(angleValues));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            String convertedArrayListToString = json.toString();
+
+            System.out.println("Arraylist : " + convertedArrayListToString);
+
+            helper.changeAngleValues(username ,convertedArrayListToString);
+
+            //ArrayList items ;
+
+
+
+
+            // Getting Arraylist back
+//            JSONObject json1 = null;
+//            try {
+//                json1 = new JSONObject(convertedArrayListToString);
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+//            ArrayList<String> list = new ArrayList<String>();
+//            JSONArray jsonArray = (JSONArray)json1.optJSONArray("angleArray");;
+//            if (jsonArray != null) {
+//                int len = jsonArray.length();
+//                for (int i=0;i<len;i++){
+//                    try {
+//                        list.add(jsonArray.get(i).toString());
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            }
+//
+//            System.out.println("Re-Converting to arraylist : " + list);
+
+
+            helper.insertPlayerStats(p);
+            helper.changeStatLegalIllegal(p.getUsername(),p.getLegalBowls(),p.getIllegalBowls());
             Intent i = new Intent(ActivityMonitor.this, ActivityMain.class);
             ActivityMonitor.this.startActivity(i);
 
@@ -279,10 +353,6 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
                 monitorTimerButton.setImageResource(R.drawable.pause_circle_large);
                 timerOn=true;
             }
-
-
-
-
         }
     }
 
@@ -298,7 +368,7 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
             //angleText.setTextSize(100);
 //            angleText.setTextColor(0xFF000000);
 //            degreeSign.setTextColor(0xFF000000);
-//            legal.setTextColor(0xFF000000);
+//            monitorLegalText.setTextColor(0xFF000000);
 
             firstnegativevalueafterpositive = false;
 
@@ -326,16 +396,16 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
 //                angleText.setText(Integer.toString(genFlex)+"\u00b0");
 //                //degreeSign.setTextColor(0xFFFF0000);
 //                //angleText.setTextSize(200);
-//                legal.setText("Illegal");
-//                legal.setTextColor(0xFFFF0000);
+//                monitorLegalText.setText("Illegal");
+//                monitorLegalText.setTextColor(0xFFFF0000);
 //            } else {
 //                stopButtonPressed = true;
 //                angleText.setTextColor(0xFF00FF00);
 //                angleText.setText(Integer.toString(genFlex)+"\u00b0");
 //                //degreeSign.setTextColor(0xFF00FF00);
 //                //angleText.setTextSize(200);
-//                legal.setText("Legal");
-//                legal.setTextColor(0xFF00FF00);
+//                monitorLegalText.setText("Legal");
+//                monitorLegalText.setTextColor(0xFF00FF00);
 //            }
 
 //            Intent i = new Intent(ActivityMonitor.this, ActivityMain.class);
@@ -375,7 +445,7 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
 
         angleText = (TextView) findViewById(R.id.monitor_angle_text);
         //degreeSign = (TextView) findViewById(R.id.degreesign);
-        legal = (TextView) findViewById(R.id.monitor_status_text);
+        monitorLegalText = (TextView) findViewById(R.id.monitor_status_text);
 
         //timerOn=true;
 
@@ -392,6 +462,8 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
 //        timer = (TextView) findViewById(R.id.timer);
 //        connectionStatusText = (TextView) findViewById(R.id.test);
 
+        username = SaveSharedPreference.getUserName(ActivityMonitor.this);
+        System.out.println("Username: "+ username);
 
 
         //initializelayoutitems();
@@ -465,8 +537,8 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
 
             angleText.setTextColor(0xFFFFFFFF);
             angleText.setText(Integer.toString(genFlex)+"\u00b0");
-            legal.setText("Monitoring");
-            legal.setTextColor(0xFFFFFFFF);
+            monitorLegalText.setText("Monitoring");
+            monitorLegalText.setTextColor(0xFFFFFFFF);
 
             int value = 0;
             for (int i = 0; i < data.length; i++)
@@ -478,12 +550,12 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
             {
                 if (incoming==120)
                 {
-                    legal.setText("Bend arm at 45");
+                    monitorLegalText.setText("Bend arm at 45");
                     once=1;
                 }
                 else if (incoming==119)
                 {
-                    legal.setText("Monitoring...");
+                    monitorLegalText.setText("Monitoring...");
                     once=2;
                 }
 
@@ -509,6 +581,7 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
                     monitorStartButton.setVisibility(View.VISIBLE);
                     genFlex = incoming-400;
 
+                    angleValues.add(genFlex);
 
                     if (genFlex > 15) {
                         //stopButtonPressed = true;
@@ -516,8 +589,8 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
                         monitorIllegalBalls.setText(String.valueOf(++counterIllegal));
                         angleText.setTextColor(0xFFFF0000);
                         angleText.setText(Integer.toString(genFlex)+"\u00b0");
-                        legal.setText("Illegal");
-                        legal.setTextColor(0xFFFF0000);
+                        monitorLegalText.setText("Illegal");
+                        monitorLegalText.setTextColor(0xFFFF0000);
                     } else {
                         monitorLegalBalls.setText(String.valueOf(++counterLegal));
                         //stopButtonPressed = true;
@@ -525,8 +598,8 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
                         angleText.setText(Integer.toString(genFlex)+"\u00b0");
                         //degreeSign.setTextColor(0xFF00FF00);
                         //angleText.setTextSize(200);
-                        legal.setText("Legal");
-                        legal.setTextColor(0xFF00FF00);
+                        monitorLegalText.setText("Legal");
+                        monitorLegalText.setTextColor(0xFF00FF00);
                     }
 
 
