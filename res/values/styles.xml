@@ -36,12 +36,12 @@
         <item name="android:src">@drawable/profileicon</item>
     </style>
 
-    <style name="CustomActivityTheme" parent="@android:style/Theme.Holo.Light">
+    <style name="CustomActivityTheme" parent="@android:style/Theme.Holo.Light.DarkActionBar">
 
         <item name="android:homeAsUpIndicator">@drawable/homebutton1</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:actionBarStyle">@style/MyTheme.ActionBar</item>
-        <item name="android:windowBackground">@color/dark</item>
+        <item name="android:windowBackground">@color/light</item>
 
 
     </style>
@@ -52,7 +52,7 @@
         <item name="android:windowActionBarOverlay">true</item>
         <item name="android:actionBarStyle">@style/MyTheme.ActionBar</item>
         <item name="android:windowContentOverlay">@null</item>
-        <item name="android:windowBackground">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/dark</item>
     </style>
     <style name="MyTheme.ActionBar" parent="android:Widget.Holo.ActionBar">
         <item name="android:background">@android:color/transparent</item>
@@ -62,15 +62,26 @@
     </style>
 
     <style name="MyTheme.ActionBar.TitleTextStyle" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
-        <item name="android:fontFamily">sans-serif-light</item>
+        <!--<item name="android:fontFamily">sans-serif-light</item>-->
         <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/light</item>
     </style>
 
-    <style name="MainActivityTheme" parent="Theme.AppCompat.Light">
+    <style name="MyTheme.PopupMenuStyle" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:popupBackground">@color/dark</item>
+    </style>
+
+    <style name="MyTheme.MenuTextApearance" parent="@android:style/TextAppearance.Widget.IconMenu.Item">
+        <item name="android:textColor">@color/text_light</item>
+    </style>
+
+    <style name="MainActivityTheme" parent="Theme.AppCompat.Light.DarkActionBar">
 
         <item name="android:homeAsUpIndicator">@drawable/homebutton1</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:actionBarStyle">@style/MyTheme.ActionBar</item>
+        <item name="actionOverflowMenuStyle">@style/MyTheme.PopupMenuStyle</item>
+        <item name="android:itemTextAppearance">@style/MyTheme.MenuTextApearance</item>
         <item name="android:windowBackground">@color/dark</item>
     </style>
 

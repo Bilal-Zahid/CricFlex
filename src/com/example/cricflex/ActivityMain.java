@@ -17,11 +17,14 @@ import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.text.Html;
 import android.util.Log;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -70,6 +73,7 @@ public class ActivityMain extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getWindow().requestFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
         super.onCreate(savedInstanceState);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         if(SaveSharedPreference.getUserName(ActivityMain.this).length() == 0)
@@ -80,24 +84,28 @@ public class ActivityMain extends ActionBarActivity {
 
         setContentView(R.layout.activity_main);
 
+
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.argb(50, 0, 0, 0)));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+//        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#50000000")));
+
 
 
         // Home
-        navDrawerItems.add(new NavDrawerItem("Home", R.drawable.ball));
+        navDrawerItems.add(new NavDrawerItem("Home", R.drawable.home));
         // History
-        navDrawerItems.add(new NavDrawerItem("History", R.drawable.ball));
+        navDrawerItems.add(new NavDrawerItem("History", R.drawable.history));
         // Awards
-        navDrawerItems.add(new NavDrawerItem("Awards", R.drawable.ball));
+        navDrawerItems.add(new NavDrawerItem("Awards", R.drawable.award));
         // Training
-        navDrawerItems.add(new NavDrawerItem("Training", R.drawable.ball));
+        navDrawerItems.add(new NavDrawerItem("Training", R.drawable.coach));
         // Friends
-        navDrawerItems.add(new NavDrawerItem("Friends", R.drawable.ball));
+        navDrawerItems.add(new NavDrawerItem("Friends", R.drawable.friends));
         // Help
-        navDrawerItems.add(new NavDrawerItem("Help", R.drawable.ball));
+        navDrawerItems.add(new NavDrawerItem("Help", R.drawable.help));
         // About
-        navDrawerItems.add(new NavDrawerItem("About", R.drawable.ball));
+        navDrawerItems.add(new NavDrawerItem("About", R.drawable.about));
 
         //Drawer Layout
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -227,12 +235,12 @@ public class ActivityMain extends ActionBarActivity {
         // if nav drawer is opened, hide the action items
         boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerPane);
         //menu.findItem(R.id.profile).setVisible(!drawerOpen);
-        MenuItem username = menu.findItem(R.id.username);
+        //MenuItem username = menu.findItem(R.id.username);
         //Intent intent = getIntent();
         //String uname = intent.getStringExtra("username");
         String usernamestr = SaveSharedPreference.getUserName(ActivityMain.this);
         //setOptionTitle("username",uname);
-        username.setTitle(usernamestr);
+        //username.setTitle(usernamestr);
 
         //Adding Picture on profile layout
         CircleImageView circleImageView = (CircleImageView) findViewById(R.id.profilepicture);
@@ -242,10 +250,10 @@ public class ActivityMain extends ActionBarActivity {
 
 
         //System.out.println(uname+intent.getStringExtra("email"));
-        MenuItem email = menu.findItem(R.id.email);
+        //MenuItem email = menu.findItem(R.id.email);
         String emailstr = SaveSharedPreference.getEmail(ActivityMain.this);
         //email.setTitle(intent.getStringExtra("email"));
-        email.setTitle(emailstr);
+        //email.setTitle(emailstr);
         return super.onPrepareOptionsMenu(menu);
     }
 
@@ -301,7 +309,9 @@ public class ActivityMain extends ActionBarActivity {
     @Override
     public void setTitle(CharSequence title) {
 //        mTitle = title;
-        getSupportActionBar().setTitle(title);
+        //getSupportActionBar().setTitle(title);
+        getSupportActionBar().setTitle((Html.fromHtml("<font color=\"#FFFFFF\">" + title + "</font>")));
+
     }
 
     /**
