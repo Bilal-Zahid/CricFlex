@@ -144,6 +144,7 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
     private TextView monitorIllegalBalls;
     private Button monitorFinishButton;
     private Button monitorStartButton;
+    private ImageButton instantGraphButton;
 
 
     private boolean timerOn = false;
@@ -415,7 +416,7 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
     }
     class handleGraphButton implements OnClickListener {
         public void onClick(View v) {
-            Intent intent = new Intent(ActivityMonitor.this, ActivityGraph.class);
+            Intent intent = new Intent(ActivityMonitor.this, ActivityGraph5.class);
             startActivity(intent);
         }
     }
@@ -428,7 +429,7 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_monitor);
-
+        getActionBar().hide();
         View decorView = getWindow().getDecorView();
         // Hide the status bar.
         int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
@@ -437,8 +438,12 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
 
         monitorStartButton = (Button) findViewById(R.id.monitor_start_button);
         monitorFinishButton = (Button) findViewById(R.id.monitor_finish_button);
+
+        instantGraphButton = (ImageButton) findViewById(R.id.monitor_graph_button) ;
         //graphButton = (ImageButton) d(R.id.graph);
 
+
+        instantGraphButton.setOnClickListener(new handleGraphButton());
         monitorStartButton.setOnClickListener(new handlemonitorStartButton());
         monitorFinishButton.setOnClickListener(new handlemonitorFinishButton());
         //graphButton.setOnClickListener(new handleGraphButton());
@@ -533,6 +538,8 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
 
     void addData(byte[] data) {
 
+
+
         if(startButtonPressed && timerOn){
 
             angleText.setTextColor(0xFFFFFFFF);
@@ -545,6 +552,8 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
             {
                 value += ((int) data[i] & 0xffL) << (8 * i);
             }
+
+//            System.out.println("Value: "+ value);
             int incoming=(int)value;
             if (once==0 || once==1)
             {

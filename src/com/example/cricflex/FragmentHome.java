@@ -109,7 +109,12 @@ public class FragmentHome extends Fragment {
                 sum += doubleAngleValues[i];
             }
 
-            Double averageAngleOfPlayer = sum / (double) list.size();
+            Double averageAngleOfPlayer;
+            if(list.size()!=0)
+                averageAngleOfPlayer = sum / (double) list.size();
+            else
+                averageAngleOfPlayer = 0.0;
+
             DecimalFormat df = new DecimalFormat("#.##");
             df.setRoundingMode(RoundingMode.HALF_UP);
 
@@ -136,8 +141,14 @@ public class FragmentHome extends Fragment {
 
 
             longestStreak.setText(String.valueOf(maxStreak));
+
             averageAngle.setText(String.valueOf(df.format(averageAngleOfPlayer)) + "\u00b0");
-            lastBowlAngle.setText(String.valueOf(doubleAngleValues[doubleAngleValues.length - 1].intValue()) + "\u00b0");
+
+            if(doubleAngleValues.length!=0)
+                lastBowlAngle.setText(String.valueOf(doubleAngleValues[doubleAngleValues.length - 1].intValue()) + "\u00b0");
+            else
+                lastBowlAngle.setText("0" + "\u00b0");
+
             successRate.setProgress(successRateValue);
         }
         else {

@@ -14,61 +14,53 @@
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-    <uses-feature android:name="android.hardware.camera.front" android:required="false" />
-
+    <uses-feature
+        android:name="android.hardware.camera.front"
+        android:required="false" />
     <uses-feature
         android:name="android.hardware.bluetooth_le"
         android:required="true" />
 
+
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/cricflexlogosmall"
-        android:logo="@mipmap/cricflexlogosmall"
         android:label="@string/app_name"
+        android:logo="@mipmap/cricflexlogosmall"
         android:theme="@style/CustomActivityTheme">
         <activity android:name=".ActivitySplash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-
         <activity
             android:name=".ActivityCalibrate"
             android:label="CricFlex"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ActivitySetupProfile"
             android:label="CricFlex"
-            android:screenOrientation="portrait">
-        </activity>
-
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ActivityMonitor"
             android:label="CricFlex"
-            android:screenOrientation="portrait">
-        </activity>
-
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ActivityWelcome"
             android:label="CricFlex"
-            android:screenOrientation="portrait">
-
-        </activity>
-
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ActivityLogin"
             android:label="CricFlex"
-            android:screenOrientation="portrait">
-
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ActivityMain"
-            android:theme="@style/MainActivityTheme"
             android:label="@string/app_name"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/MainActivityTheme" />
         <activity
             android:name=".ActivityRegister"
             android:label="@string/app_name"
@@ -88,7 +80,6 @@
             android:name=".ActivityAbout"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".ActivityProfile"
             android:label="@string/profile"
@@ -96,9 +87,9 @@
 
         <service android:name=".RFDService" />
 
-
-
-
+        <activity android:name=".ActivityGraph3" />
+        <activity android:name=".ActivityGraph4" />
+        <activity android:name=".ActivityGraph5"></activity>
     </application>
 
 </manifest>

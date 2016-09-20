@@ -42,7 +42,28 @@ public class ActivityLogin extends Activity {
         setContentView(R.layout.activity_login);
 
 
+        final EditText etUsername = (EditText) findViewById(R.id.lgn_username);
+        final EditText etPassword = (EditText) findViewById(R.id.lgn_password);
+        //To hide the keyboard when user touch anywhere else on the screen
 
+        etUsername.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    hideKeyboard(v);
+                }
+            }
+        });
+        etPassword.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    hideKeyboard(v);
+                }
+            }
+        });
+
+        /////////////////////////////////////
         /*
         final EditText etUsername = (EditText) findViewById(R.id.etUsername);
         final EditText etPassword = (EditText) findViewById(R.id.etPassword);
@@ -58,31 +79,6 @@ public class ActivityLogin extends Activity {
         final Button bLogin = (Button) findViewById(R.id.Login);
         bLogin.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
-                final EditText etUsername = (EditText) findViewById(R.id.lgn_username);
-                final EditText etPassword = (EditText) findViewById(R.id.lgn_password);
-
-
-
-                //To hide the keyboard when user touch anywhere else on the screen
-
-                etUsername.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-                    @Override
-                    public void onFocusChange(View v, boolean hasFocus) {
-                        if (!hasFocus) {
-                            hideKeyboard(v);
-                        }
-                    }
-                });
-                etPassword.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-                    @Override
-                    public void onFocusChange(View v, boolean hasFocus) {
-                        if (!hasFocus) {
-                            hideKeyboard(v);
-                        }
-                    }
-                });
-
-                /////////////////////////////////////
 
 
                 final String usernamestr = etUsername.getText().toString();

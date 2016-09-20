@@ -70,6 +70,7 @@ public class ActivityMain extends ActionBarActivity {
     private DrawerLayout mDrawerLayout;
     ArrayList<NavDrawerItem> navDrawerItems = new ArrayList<NavDrawerItem>();
 
+    private TextView usernameText  ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,10 +86,16 @@ public class ActivityMain extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
 
+        usernameText = (TextView) findViewById(R.id.userName);
+        usernameText.setText(SaveSharedPreference.getUserName(ActivityMain.this));
+
+
+
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.argb(50, 0, 0, 0)));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 //        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#50000000")));
+
 
 
 
