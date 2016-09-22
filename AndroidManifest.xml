@@ -22,7 +22,6 @@
         android:required="true" />
 
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/cricflexlogosmall"
@@ -89,7 +88,9 @@
 
         <activity android:name=".ActivityGraph3" />
         <activity android:name=".ActivityGraph4" />
-        <activity android:name=".ActivityGraph5"></activity>
+        <activity android:name=".ActivityGraph5" />
+        <activity android:name=".ActivityMonitor3" />
+        <activity android:name=".ActivitySessionStats"></activity>
     </application>
 
 </manifest>

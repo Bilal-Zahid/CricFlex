@@ -46,14 +46,14 @@ public class ActivityLogin extends Activity {
         final EditText etPassword = (EditText) findViewById(R.id.lgn_password);
         //To hide the keyboard when user touch anywhere else on the screen
 
-        etUsername.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (!hasFocus) {
-                    hideKeyboard(v);
-                }
-            }
-        });
+//        etUsername.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+//            @Override
+//            public void onFocusChange(View v, boolean hasFocus) {
+//                if (!hasFocus) {
+//                    hideKeyboard(v);
+//                }
+//            }
+//        });
         etPassword.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
