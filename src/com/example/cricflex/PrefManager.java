@@ -31,9 +31,9 @@ public class PrefManager {
         editor.commit();
     }
 
-    //for just one time welcome screen change false with true
+    //for just one time welcome screen uncomment
     public boolean isFirstTimeLaunch() {
-        //return pref.getBoolean(IS_FIRST_TIME_LAUNCH, false);
+//        return pref.getBoolean(IS_FIRST_TIME_LAUNCH, true);
         return true;
     }
 

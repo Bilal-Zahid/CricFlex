@@ -153,6 +153,7 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
     boolean startButtonPressed = false;
     boolean monitoringTextChange = true;
     boolean timerWithStart = true;
+    boolean boolForTimerLogic = true;
 
 
 //For Stats and home page
@@ -357,6 +358,7 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
 
             else if(!timerOn){
 
+                boolForTimerLogic = false;
                 monitorTimer.setBase(SystemClock.elapsedRealtime() + timeWhenStopped);
                 startChronometer(null);
                 //
@@ -371,8 +373,15 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
     class handlemonitorStartButton implements OnClickListener {
         public void onClick(View v) {
             if(timerWithStart){
+
+                if(boolForTimerLogic) {
+                    monitorTimer.setBase(SystemClock.elapsedRealtime());
+                    boolForTimerLogic = false;
+                }
+
                 startChronometer(null);
                 //
+
                 monitorTimerButton.setImageResource(R.drawable.pause_circle_large);
                 timerOn=true;
                 timerWithStart = false;
@@ -555,9 +564,8 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
 
     void addData(byte[] data) {
 
-
-
         if(startButtonPressed && timerOn){
+
 
             angleText.setTextColor(0xFFFFFFFF);
             angleText.setText(Integer.toString(genFlex)+"\u00b0");
@@ -572,6 +580,16 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
             {
                 value += ((int) data[i] & 0xffL) << (8 * i);
             }
+
+
+            System.out.print("Receiving: "+ value);
+//            int[] values = new int[10];
+//
+//            for (int i=0 ; i<1 ; i++){
+//                for (int j=0 ; j<2 ; j++){
+//                    values[i] += ((int) data[j + (i*2)] & 0xffL) << (8 * j );
+//                }
+//            }
 
 //            System.out.println("Value: "+ value);
             int incoming=(int)value;
@@ -594,6 +612,10 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
 //                Toast.makeText(ActivityMonitor.this, "Bowl" , Toast.LENGTH_SHORT).show();
                 monitorLegalText.setText("Bowl");
                 monitoringTextChange = false;
+
+//                System.out.println("118 received and this is test print");
+                rfduinoService.send("a".getBytes());
+
             }
 
             // int incoming =(int)((data[1] << 8) + (data[0] & 0xFF));
@@ -609,8 +631,11 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
                 String in=new String();
                 in=String.valueOf(value-400);
                 angleText.setText(in+"\u00b0");
+                rfduinoService.send("a".getBytes());
 //                if(firstnegativevalueafterpositive)
 //                {
+
+
 
                     startButtonPressed = false;
                     monitorStartButton.setVisibility(View.VISIBLE);
