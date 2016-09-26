@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import android.os.Handler;
 import android.os.SystemClock;
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
@@ -331,6 +332,15 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
 
             helper.insertPlayerStats(p);
             helper.changeStatLegalIllegal(p.getUsername(),p.getLegalBowls(),p.getIllegalBowls());
+
+//            Disabling bluetooth connection
+            if(mBluetoothAdapter==null){
+
+            }
+            else if (mBluetoothAdapter.isEnabled()) {
+                mBluetoothAdapter.disable();
+            }
+
             Intent i = new Intent(ActivityMonitor.this, ActivitySessionStats.class);
 
             Bundle extraBundle = new Bundle();
@@ -340,6 +350,7 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
             i.putExtras(extraBundle);
             //i.putExtra("angleValues",angleValues);
             ActivityMonitor.this.startActivity(i);
+            finish();
 
         }
     }
@@ -814,6 +825,26 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
 //        }
 //
 //    }
+
+    @Override
+    public void onBackPressed() {
+
+
+
+        if(mBluetoothAdapter==null){
+
+        }
+        else if (mBluetoothAdapter.isEnabled()) {
+            mBluetoothAdapter.disable();
+        }
+        Intent i = new Intent(ActivityMonitor.this, ActivityMain.class);
+
+        ActivityMonitor.this.startActivity(i);
+        finish();
+
+//        close();
+
+    }
 
 
     private void mappend(String file)

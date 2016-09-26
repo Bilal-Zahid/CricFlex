@@ -27,6 +27,7 @@ public class FragmentHistory extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_history, container, false);
 
+
         BarChart chart = (BarChart) rootView.findViewById(R.id.chart);
         List<BarEntry> entries = new ArrayList<>();
 
