@@ -209,6 +209,7 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
 
         @Override
         public void onServiceDisconnected(ComponentName name) {
+            rfduinoService.send("r".getBytes());
             rfduinoService = null;
             downgradeState(STATE_DISCONNECTED);
         }
@@ -333,6 +334,8 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
             helper.insertPlayerStats(p);
             helper.changeStatLegalIllegal(p.getUsername(),p.getLegalBowls(),p.getIllegalBowls());
 
+
+//            rfduinoService.send("r".getBytes());
 //            Disabling bluetooth connection
             if(mBluetoothAdapter==null){
 
@@ -349,8 +352,11 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
 
             i.putExtras(extraBundle);
             //i.putExtra("angleValues",angleValues);
+            rfduinoService = null;
+            downgradeState(STATE_DISCONNECTED);
             ActivityMonitor.this.startActivity(i);
             finish();
+
 
         }
     }
@@ -831,6 +837,9 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
 
 
 
+//        rfduinoService.send("r".getBytes());
+        rfduinoService = null;
+        downgradeState(STATE_DISCONNECTED);
         if(mBluetoothAdapter==null){
 
         }
