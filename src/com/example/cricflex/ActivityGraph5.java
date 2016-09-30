@@ -46,7 +46,7 @@ public class ActivityGraph5 extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graph5);
-
+        getActionBar().hide();
         instantGraphLayout = (RelativeLayout) findViewById(R.id.instantGraphLayout);
 
         mChart = new LineChart(this);
@@ -78,24 +78,25 @@ public class ActivityGraph5 extends Activity {
         mChart.setTouchEnabled(true);
         mChart.setDragEnabled(true);
         mChart.setScaleEnabled(true);
-        mChart.setDrawGridBackground(true);
+        mChart.setDrawGridBackground(false);
 
         mChart.setPinchZoom(true);
 
-        mChart.setBackgroundColor(Color.LTGRAY);
+        mChart.setBackgroundColor(Color.TRANSPARENT);
+        mChart.setBorderColor(Color.TRANSPARENT);
 
         //DAta Time
 
         LineData data = new LineData();
-        data.setValueTextColor(Color.BLACK);
+        //data.setValueTextColor(Color.WHITE);
 
         mChart.setData(data);
 
         //
 
-        Legend l = mChart.getLegend();
-        l.setForm(Legend.LegendForm.LINE);
-        l.setTextColor(Color.BLACK);
+//        Legend l = mChart.getLegend();
+//        l.setForm(Legend.LegendForm.LINE);
+//        l.setTextColor(Color.BLACK);
 
 
 //        XAxis x1 = mChart.getXAxis();
@@ -105,13 +106,19 @@ public class ActivityGraph5 extends Activity {
         //x1.setEnabled(true);
 
         YAxis y1 = mChart.getAxisLeft();
-        y1.setTextColor(Color.BLACK);
+        y1.setTextColor(Color.WHITE);
         y1.setAxisMaxValue(60f);
-        y1.setDrawGridLines(true);
+        y1.setDrawGridLines(false);
 //        y1.setAxisMaximumValue(100f);
         y1.setAxisMinValue(0f);
 
         y1.setEnabled(true);
+
+
+        XAxis x1 = mChart.getXAxis();
+        x1.setDrawGridLines(false);
+
+
 
 
         mChart.getAxisRight().setDrawLabels(false);
@@ -119,6 +126,9 @@ public class ActivityGraph5 extends Activity {
 
 //        YAxis y12 = mChart.getAxisRight();
         //y12.setEnabled(true);
+
+
+
     }
 
 
@@ -222,15 +232,18 @@ public class ActivityGraph5 extends Activity {
         set.setMode(LineDataSet.Mode.CUBIC_BEZIER);
         set.setCubicIntensity(0.2f);
         set.setAxisDependency(YAxis.AxisDependency.LEFT);
-        set.setColor(ColorTemplate.getHoloBlue());
-        set.setCircleColor(ColorTemplate.getHoloBlue());
-        set.setLineWidth(2f);
-        set.setCircleSize(4f);
+        set.setColor(Color.WHITE);
+        set.setCircleColor(Color.RED);
+        set.setLineWidth(4f);
         set.setFillAlpha(65);
-        set.setFillColor(ColorTemplate.getHoloBlue());
-        set.setHighLightColor(Color.rgb(244,117,177));
+        set.setFillColor(Color.WHITE);
+        //set.setHighLightColor(Color.rgb(244,117,177));
         set.setValueTextColor(Color.WHITE);
         set.setValueTextSize(10f);
+
+        set.setCircleRadius(6f);
+        set.setCircleHoleRadius(3f);
+        set.setHighLightColor(Color.WHITE);
 
 
         return set;
