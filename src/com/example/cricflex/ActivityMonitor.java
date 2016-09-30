@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import android.os.Handler;
 import android.os.SystemClock;
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
@@ -208,6 +209,7 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
 
         @Override
         public void onServiceDisconnected(ComponentName name) {
+            rfduinoService.send("r".getBytes());
             rfduinoService = null;
             downgradeState(STATE_DISCONNECTED);
         }
@@ -331,6 +333,17 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
 
             helper.insertPlayerStats(p);
             helper.changeStatLegalIllegal(p.getUsername(),p.getLegalBowls(),p.getIllegalBowls());
+
+
+//            rfduinoService.send("r".getBytes());
+//            Disabling bluetooth connection
+            if(mBluetoothAdapter==null){
+
+            }
+            else if (mBluetoothAdapter.isEnabled()) {
+                mBluetoothAdapter.disable();
+            }
+
             Intent i = new Intent(ActivityMonitor.this, ActivitySessionStats.class);
 
             Bundle extraBundle = new Bundle();
@@ -339,7 +352,11 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
 
             i.putExtras(extraBundle);
             //i.putExtra("angleValues",angleValues);
+            rfduinoService = null;
+            downgradeState(STATE_DISCONNECTED);
             ActivityMonitor.this.startActivity(i);
+            finish();
+
 
         }
     }
@@ -814,6 +831,29 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
 //        }
 //
 //    }
+
+    @Override
+    public void onBackPressed() {
+
+
+
+//        rfduinoService.send("r".getBytes());
+        rfduinoService = null;
+        downgradeState(STATE_DISCONNECTED);
+        if(mBluetoothAdapter==null){
+
+        }
+        else if (mBluetoothAdapter.isEnabled()) {
+            mBluetoothAdapter.disable();
+        }
+        Intent i = new Intent(ActivityMonitor.this, ActivityMain.class);
+
+        ActivityMonitor.this.startActivity(i);
+        finish();
+
+//        close();
+
+    }
 
 
     private void mappend(String file)

@@ -74,14 +74,32 @@ public class ActivityMain extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
+        int abc = SaveSharedPreference.getUserName(ActivityMain.this).length();
+
+        if(SaveSharedPreference.getUserName(ActivityMain.this).length() == 0)
+        {
+            Intent intent = new Intent(ActivityMain.this, ActivitySplash.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            finish();
+
+            startActivity(intent);
+//            this.finish();
+//            finish();
+////            (Activity).finish();
+//            ActivityMain.this.finish();
+//
+////            onDestroy();
+//            return;
+
+        }
+
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
         super.onCreate(savedInstanceState);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        if(SaveSharedPreference.getUserName(ActivityMain.this).length() == 0)
-        {
-            Intent intent = new Intent(ActivityMain.this, ActivityLogin.class);
-            startActivity(intent);
-        }
+
+
 
         setContentView(R.layout.activity_main);
 

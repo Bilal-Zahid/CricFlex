@@ -28,7 +28,7 @@
         android:label="@string/app_name"
         android:logo="@mipmap/cricflexlogosmall"
         android:theme="@style/CustomActivityTheme">
-        <activity android:name=".ActivitySplash">
+        <activity android:name=".ActivitySplash" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -46,11 +46,23 @@ public class ActivitySplash extends Activity {
             public void onAnimationStart(Animation animation) {}
             public void onAnimationRepeat(Animation animation) {}
             public void onAnimationEnd(Animation animation) {
-                Intent i = new Intent( ActivitySplash.this, ActivityWelcome.class );
-                ActivitySplash.this.startActivity( i );
+
+                if(SaveSharedPreference.getUserName(ActivitySplash.this).length() == 0)
+                {
+                    Intent intent = new Intent(ActivitySplash.this, ActivityWelcome.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    finish();
+                }
+                else {
+                    Intent i = new Intent(ActivitySplash.this, ActivityMain.class);
+                    ActivitySplash.this.startActivity(i);
+                }
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
+
+
 
     }
 
