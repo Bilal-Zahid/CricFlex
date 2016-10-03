@@ -194,7 +194,7 @@
             android:layout_gravity="center"
             android:textColor="#FFFFFF"
             android:textSize="25dp"
-            android:background="@drawable/button_bg"
+            android:background="@drawable/button1_bg"
             android:id="@+id/stp_done"
             android:layout_weight="1"/>
 

@@ -1,11 +1,15 @@
 package com.example.cricflex;
 
+
+
+
 import android.graphics.Color;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v4.view.ViewPager;
+
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -28,10 +32,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.ViewSwitcher;
 
 public class FragmentHistory extends Fragment {
 
+    ViewSwitcher switcher;
+    Button Daily, Monthly;
 
+    Boolean daily_tab_selected;
+    Boolean monthly_tab_selected;
 
     public FragmentHistory(){}
 
@@ -48,42 +58,50 @@ public class FragmentHistory extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_history, container, false);
 
-//        Toolbar toolbar = (Toolbar) rootView.findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
 
-//        final TabLayout tabLayout = (TabLayout) rootView.findViewById(R.id.);
-//        tabLayout.addTab(tabLayout.newTab().setText("Tab 1"));
-//        tabLayout.addTab(tabLayout.newTab().setText("Tab 2"));
-//        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-//
-//
-//
-//        tabLayout.addOnTabSelectedListener (new TabLayout.OnTabSelectedListener() {
-//            @Override
-//            public void onTabSelected(TabLayout.Tab tab) {
-//                if(tabLayout.getSelectedTabPosition() == 0){
-//
-//
-//
-//                }
-//                else if(tabLayout.getSelectedTabPosition() == 1){
-//
-//
-//
-//                }
-//
-//            }
-//
-//            @Override
-//            public void onTabUnselected(TabLayout.Tab tab) {
-//
-//            }
-//
-//            @Override
-//            public void onTabReselected(TabLayout.Tab tab) {
-//
-//            }
-//        });
+
+        switcher = (ViewSwitcher) rootView.findViewById(R.id.ViewSwitcher);
+
+        Daily = (Button) rootView.findViewById(R.id.daily_button);
+        Monthly = (Button) rootView.findViewById(R.id.monthly_button);
+
+        daily_tab_selected=true;
+        monthly_tab_selected=false;
+
+        Daily.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+
+
+                if(!daily_tab_selected)
+                {
+                    switcher.showNext();
+                    daily_tab_selected=true;
+                    monthly_tab_selected=false;
+                }
+            }
+        });
+
+        Monthly.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+
+                if(!monthly_tab_selected)
+                {
+                    switcher.showPrevious();
+                    daily_tab_selected=false;
+                    monthly_tab_selected=true;
+                }
+            }
+        });
+
+        
+        
+        
+
+
 
         return rootView;
     }

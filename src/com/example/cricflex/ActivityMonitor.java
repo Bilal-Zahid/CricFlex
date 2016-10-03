@@ -405,8 +405,11 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
             }
             startButtonPressed = true;
 //            stopButtonPressed = false;
-            monitorStartButton.setVisibility(View.INVISIBLE);
-            monitorFinishButton.setVisibility(View.VISIBLE);
+            //monitorStartButton.setVisibility(View.INVISIBLE);
+
+            monitorStartButton.setPressed(true);
+            monitorStartButton.setSelected(true);
+            //monitorFinishButton.setVisibility(View.VISIBLE);
             //graphButton.setVisibility(View.VISIBLE);
 
             //angleText.setTextSize(100);
@@ -655,7 +658,7 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
 
 
                     startButtonPressed = false;
-                    monitorStartButton.setVisibility(View.VISIBLE);
+                    monitorStartButton.setPressed(false);
                     genFlex = incoming-400;
 
                     angleValues.add(genFlex);

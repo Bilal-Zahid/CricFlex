@@ -304,12 +304,11 @@
             android:layout_marginTop="5dp"
             android:layout_gravity="center"
             android:gravity="center"
-            android:text="Start Bowling !"
+            android:text="START BOWLING !"
             android:textStyle="bold"
             android:textColor="#FFFFFF"
             android:textSize="35dp"
-            android:background="#00aff0"
- />
+            android:background="@drawable/button2_bg"/>
 
 
     </LinearLayout>

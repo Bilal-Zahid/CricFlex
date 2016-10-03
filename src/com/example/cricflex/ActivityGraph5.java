@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.widget.AbsListView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Legend;
@@ -78,12 +79,17 @@ public class ActivityGraph5 extends Activity {
         mChart.setTouchEnabled(true);
         mChart.setDragEnabled(true);
         mChart.setScaleEnabled(true);
-        mChart.setDrawGridBackground(false);
 
         mChart.setPinchZoom(true);
 
+        mChart.getAxisRight().setDrawLabels(false);
+        mChart.getXAxis().setDrawLabels(false);
+        mChart.setBackground(null);
         mChart.setBackgroundColor(Color.TRANSPARENT);
         mChart.setBorderColor(Color.TRANSPARENT);
+        mChart.setDrawBorders(false);
+        mChart.setDrawGridBackground(false);
+        mChart.setGridBackgroundColor(Color.TRANSPARENT);
 
         //DAta Time
 
@@ -105,27 +111,39 @@ public class ActivityGraph5 extends Activity {
 //        x1.setAvoidFirstLastClipping(true);
         //x1.setEnabled(true);
 
+        YAxis y2 = mChart.getAxisRight();
+        y2.setDrawGridLines(false);
+        y2.setDrawAxisLine(false);
+        y2.setDrawLabels(false);
+        y2.setDrawLimitLinesBehindData(false);
+
         YAxis y1 = mChart.getAxisLeft();
         y1.setTextColor(Color.WHITE);
         y1.setAxisMaxValue(60f);
-        y1.setDrawGridLines(false);
-//        y1.setAxisMaximumValue(100f);
         y1.setAxisMinValue(0f);
-
         y1.setEnabled(true);
+
+        //y1.setDrawGridLines(false);
+        y1.setDrawAxisLine(false);
+        //y1.setDrawLabels(false);
+        y1.setDrawLimitLinesBehindData(false);
+        //y1.setDrawTopYLabelEntry(false);
+        y1.setDrawZeroLine(false);
 
 
         XAxis x1 = mChart.getXAxis();
         x1.setDrawGridLines(false);
+        x1.setDrawAxisLine(false);
+        x1.setDrawLabels(false);
+        x1.setDrawLimitLinesBehindData(false);
 
 
 
 
-        mChart.getAxisRight().setDrawLabels(false);
-        mChart.getXAxis().setDrawLabels(false);
 
-//        YAxis y12 = mChart.getAxisRight();
-        //y12.setEnabled(true);
+
+
+
 
 
 
@@ -181,13 +199,14 @@ public class ActivityGraph5 extends Activity {
 
             data.addEntry(new Entry(set.getEntryCount(),(float) incoming), 0);
 
-
-
+            TextView layoutAngleText = (TextView) findViewById(R.id.graph_angle_text);
+            layoutAngleText.setText(""+incoming+"\u00b0");
             //notify chart data has changed
             mChart.notifyDataSetChanged();
 
             // limit no of visible entries
-            mChart.setVisibleXRange(6,6);
+
+            mChart.setVisibleXRange(6,10);
 
             //scroll to the last entry
 //            System.out.println("DataSet Count: " + data.getDataSetCount());
@@ -233,16 +252,17 @@ public class ActivityGraph5 extends Activity {
         set.setCubicIntensity(0.2f);
         set.setAxisDependency(YAxis.AxisDependency.LEFT);
         set.setColor(Color.WHITE);
-        set.setCircleColor(Color.RED);
-        set.setLineWidth(4f);
+        set.setCircleColor(Color.WHITE);
+        set.setLineWidth(5f);
         set.setFillAlpha(65);
         set.setFillColor(Color.WHITE);
         //set.setHighLightColor(Color.rgb(244,117,177));
         set.setValueTextColor(Color.WHITE);
-        set.setValueTextSize(10f);
-
-        set.setCircleRadius(6f);
-        set.setCircleHoleRadius(3f);
+       // set.setValueTextSize(10f);
+        set.setDrawHighlightIndicators(false);
+        set.setDrawValues(false);
+        set.setCircleRadius(1f);
+        set.setCircleHoleRadius(1f);
         set.setHighLightColor(Color.WHITE);
 
 

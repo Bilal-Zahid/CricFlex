@@ -10,35 +10,100 @@
         android:id="@+id/background"
         android:src="@drawable/sk1" />
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal"
-    android:layout_centerInParent="true"
-    android:textAlignment="center"
-    android:layout_gravity="center"
-    android:gravity="fill"
 
-    >
-    <Button
-        android:text="Daily"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/button_daily"
-        android:layout_weight="1"/>
 
-    <Button
-        android:text="Monthly"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/button_monthly"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_weight="1"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-</LinearLayout>
+
+
+
+        <LinearLayout
+            android:id="@+id/tab_buttons"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+
+            <Button
+                android:text="Daily"
+                android:id="@+id/daily_button"
+                android:layout_weight="1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+
+
+                android:textColor="#FFFFFF"
+                android:textSize="25sp"
+                android:background="#0ac578"
+                />
+
+            <Button
+                android:text="Monthly"
+                android:id="@+id/monthly_button"
+                android:layout_weight="1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+
+                android:textColor="#FFFFFF"
+                android:textSize="25sp"
+                android:background="#00aff0"
+
+                />
+
+        </LinearLayout>
+
+
+
+
+        <ViewSwitcher xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/ViewSwitcher"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            >
+
+            <RelativeLayout
+                android:background="#00800d"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                >
+
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/chart"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp" />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:background="#007dc3"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" >
+
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/chart1"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp" />
+
+
+
+            </RelativeLayout>
+
+        </ViewSwitcher>
+
+
+
+
+
+
+
+    </LinearLayout>
+
 
 
 
