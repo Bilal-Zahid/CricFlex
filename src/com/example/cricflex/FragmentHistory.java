@@ -19,6 +19,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -48,8 +49,8 @@ public class FragmentHistory extends Fragment {
     ViewSwitcher switcher;
     Button Daily, Monthly;
 
-    Boolean daily_tab_selected;
-    Boolean monthly_tab_selected;
+    Boolean daily_tab_selected = true;
+    Boolean monthly_tab_selected = false;
 
     public FragmentHistory(){}
 
@@ -79,28 +80,29 @@ public class FragmentHistory extends Fragment {
 
         monthly_tab_selected=false;
 
-        Daily.setOnClickListener(new View.OnClickListener() {
 
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
+        Daily.setOnTouchListener(new View.OnTouchListener() {
 
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
 
                 if(!daily_tab_selected)
                 {
-                    switcher.showNext();
                     daily_tab_selected=true;
                     monthly_tab_selected=false;
+                    switcher.showNext();
                 }
-
-                selecttab();
-
+//                switcher.showNext();
+                Monthly.setPressed(false);
+                Daily.setPressed(true);
+                return true;
             }
         });
 
-        Monthly.setOnClickListener(new View.OnClickListener() {
+        Monthly.setOnTouchListener(new View.OnTouchListener() {
 
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
 
                 if(!monthly_tab_selected)
                 {
@@ -108,32 +110,14 @@ public class FragmentHistory extends Fragment {
                     daily_tab_selected=false;
                     monthly_tab_selected=true;
                 }
-
-                selecttab();
-
+                Monthly.setPressed(true);
+                Daily.setPressed(false);
+                return true;
             }
         });
-
-
-//        selecttab();
-
-
-
         return rootView;
     }
-    private void selecttab(){
 
-        if(daily_tab_selected) {
-
-            Daily.setPressed(true);
-            Monthly.setPressed(false);
-        }
-        else if(monthly_tab_selected) {
-
-            Daily.setPressed(false);
-            Monthly.setPressed(true);
-        }
-    }
 
 
 }
