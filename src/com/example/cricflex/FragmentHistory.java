@@ -3,7 +3,10 @@ package com.example.cricflex;
 
 
 
+import android.app.Activity;
+import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -11,6 +14,8 @@ import android.support.v4.app.FragmentTabHost;
 import android.support.v4.view.ViewPager;
 
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -33,6 +38,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.CalendarView;
+import android.widget.EditText;
+import android.widget.PopupWindow;
 import android.widget.ViewSwitcher;
 
 public class FragmentHistory extends Fragment {
@@ -59,13 +67,16 @@ public class FragmentHistory extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_history, container, false);
 
 
-
         switcher = (ViewSwitcher) rootView.findViewById(R.id.ViewSwitcher);
 
         Daily = (Button) rootView.findViewById(R.id.daily_button);
         Monthly = (Button) rootView.findViewById(R.id.monthly_button);
 
+
+        Daily.setPressed(true);         // Daily tab selected initially
         daily_tab_selected=true;
+
+
         monthly_tab_selected=false;
 
         Daily.setOnClickListener(new View.OnClickListener() {
@@ -80,6 +91,9 @@ public class FragmentHistory extends Fragment {
                     daily_tab_selected=true;
                     monthly_tab_selected=false;
                 }
+
+                selecttab();
+
             }
         });
 
@@ -94,16 +108,31 @@ public class FragmentHistory extends Fragment {
                     daily_tab_selected=false;
                     monthly_tab_selected=true;
                 }
+
+                selecttab();
+
             }
         });
 
-        
-        
-        
+
+//        selecttab();
 
 
 
         return rootView;
+    }
+    private void selecttab(){
+
+        if(daily_tab_selected) {
+
+            Daily.setPressed(true);
+            Monthly.setPressed(false);
+        }
+        else if(monthly_tab_selected) {
+
+            Daily.setPressed(false);
+            Monthly.setPressed(true);
+        }
     }
 
 

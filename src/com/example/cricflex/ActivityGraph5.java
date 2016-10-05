@@ -68,7 +68,7 @@ public class ActivityGraph5 extends Activity {
 //        mChart.setNoDataTextColor(Color.BLACK);
 //        mChart.setNoDataText("no data bro");
 
-        mChart.setDescription("Instant Ball Graph");
+        mChart.setDescription("");
         mChart.setNoDataText("No Chart Data"); // this is the top line
         mChart.setNoDataTextDescription("..."); // this is one line below the no-data-text
         mChart.setNoDataTextColor(Color.BLACK);
@@ -83,7 +83,6 @@ public class ActivityGraph5 extends Activity {
         mChart.setPinchZoom(true);
 
         mChart.getAxisRight().setDrawLabels(false);
-        mChart.getXAxis().setDrawLabels(false);
         mChart.setBackground(null);
         mChart.setBackgroundColor(Color.TRANSPARENT);
         mChart.setBorderColor(Color.TRANSPARENT);
@@ -119,6 +118,7 @@ public class ActivityGraph5 extends Activity {
 
         YAxis y1 = mChart.getAxisLeft();
         y1.setTextColor(Color.WHITE);
+        y1.setTextSize(15f);
         y1.setAxisMaxValue(60f);
         y1.setAxisMinValue(0f);
         y1.setEnabled(true);
@@ -245,7 +245,7 @@ public class ActivityGraph5 extends Activity {
 
     //method to create set
     private LineDataSet createSet(){
-        LineDataSet set = new LineDataSet(null, "Angle Value");
+        LineDataSet set = new LineDataSet(null, "");
         //set.setDrawCubic(true);
 
         set.setMode(LineDataSet.Mode.CUBIC_BEZIER);
