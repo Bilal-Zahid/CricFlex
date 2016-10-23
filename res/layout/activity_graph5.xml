@@ -3,14 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.cricflex.ActivityGraph5">
+    tools:context="com.example.cricflex.ActivityGraph5"
+    android:background="#007dbc">
 
-    <ImageView android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:scaleType="centerCrop"
-        android:id="@+id/background"
-        android:src="@drawable/sk1" />
-
+    <!--<ImageView android:layout_width="fill_parent"-->
+        <!--android:layout_height="fill_parent"-->
+        <!--android:scaleType="centerCrop"-->
+        <!--android:id="@+id/background"-->
+        <!--android:src="@drawable/sk1" />-->
 
     <TextView
         android:layout_width="wrap_content"

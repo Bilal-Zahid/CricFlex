@@ -297,13 +297,17 @@ public class ActivityMain extends ActionBarActivity {
                 fragment = new FragmentHistory();
                 break;
             case 2:
-                fragment = new FragmentAwards();
+                Toast.makeText(this, "Update to premium for this feature.", Toast.LENGTH_SHORT).show();
+                //fragment = new FragmentAwards();
                 break;
             case 3:
-                fragment = new FragmentTraining();
+
+                Toast.makeText(this, "Update to premium for this feature.", Toast.LENGTH_SHORT).show();
+                //fragment = new FragmentTraining();
                 break;
             case 4:
-                fragment = new FragmentFriends();
+                Toast.makeText(this, "Update to premium for this feature.", Toast.LENGTH_SHORT).show();
+                //fragment = new FragmentFriends();
                 break;
             case 5:
                 fragment = new FragmentHelp();

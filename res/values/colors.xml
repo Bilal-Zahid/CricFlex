@@ -66,4 +66,6 @@
     <color name="tab_normal">#555555</color>
     <color name="tab_selected">#00aff0</color>
 
+    <color name="line_graph_color">#ffffff</color>
+
 </resources>
