@@ -18,6 +18,7 @@ import android.support.v4.view.ViewPager;
 
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -45,6 +46,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 
 import android.support.design.widget.TabLayout;
@@ -60,6 +62,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
 import org.json.JSONArray;
@@ -80,6 +83,16 @@ public class FragmentHistory extends Fragment {
     private int mProgressStatus = 0;
     private Handler mHandler = new Handler();
 
+    private TextView currentMonth;
+    private Button prevMonth;
+    private Button prevYear;
+    private Button nextMonth;
+    private Button nextYear;
+
+    private Calendar _calendar;
+    private int month, year;
+    //private final DateFormat dateFormatter = new DateFormat();
+    private static final String dateTemplate = "MMMM yyyy";
 
 
     ArrayList<Integer> angleValues = new ArrayList<Integer>();
@@ -115,94 +128,156 @@ public class FragmentHistory extends Fragment {
 
 
 
+        _calendar = Calendar.getInstance(Locale.getDefault());
+        month = _calendar.get(Calendar.MONTH);
+        year = _calendar.get(Calendar.YEAR);
 
 
-        DatePicker dp_mes = (DatePicker) rootView.findViewById(R.id.date_picker);
 
-        int year    = dp_mes.getYear();
-        int month   = dp_mes.getMonth();
-        int day     = dp_mes.getDayOfMonth();
 
-        dp_mes.init(year, month, day, new DatePicker.OnDateChangedListener() {
-            @Override
-            public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                int month_i = monthOfYear + 1;
-                Log.e("selected month:", Integer.toString(month_i));
-                //Add whatever you need to handle Date changes
+
+        prevYear = (Button) rootView.findViewById(R.id.prevYear);
+        prevYear.setOnClickListener(new Button.OnClickListener() {
+            public void onClick(View v) {
+
+                year--;
+                setGridCellAdapterToDate(month, year);
             }
         });
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
-            int daySpinnerId = Resources.getSystem().getIdentifier("day", "id", "android");
-            if (daySpinnerId != 0)
-            {
-                View daySpinner = dp_mes.findViewById(daySpinnerId);
-                if (daySpinner != null)
-                {
-                    daySpinner.setVisibility(View.GONE);
+        prevMonth = (Button) rootView.findViewById(R.id.prevMonth);
+        prevMonth.setOnClickListener(new Button.OnClickListener() {
+            public void onClick(View v) {
+//                Log.e(TAG, "prevMonth pressed");
+                if (month <= 1) {
+                    month = 12;
+                    year--;
+                } else {
+                    month--;
                 }
+                setGridCellAdapterToDate(month, year);
             }
+        });
 
-            int monthSpinnerId = Resources.getSystem().getIdentifier("month", "id", "android");
-            if (monthSpinnerId != 0)
-            {
-                View monthSpinner = dp_mes.findViewById(monthSpinnerId);
-                if (monthSpinner != null)
-                {
-                    monthSpinner.setVisibility(View.VISIBLE);
+        currentMonth = (TextView) rootView.findViewById(R.id.currentMonth);
+        currentMonth.setText(DateFormat.format(dateTemplate,
+                _calendar.getTime()));
+
+        nextMonth = (Button) rootView.findViewById(R.id.nextMonth);
+        nextMonth.setOnClickListener(new Button.OnClickListener() {
+            public void onClick(View v) {
+
+//                Log.e(TAG, "nextMonth pressed");
+                if (month > 11) {
+                    month = 1;
+                    year++;
+                } else {
+                    month++;
                 }
+                setGridCellAdapterToDate(month, year);
             }
+        });
 
-            int yearSpinnerId = Resources.getSystem().getIdentifier("year", "id", "android");
-            if (yearSpinnerId != 0)
-            {
-                View yearSpinner = dp_mes.findViewById(yearSpinnerId);
-                if (yearSpinner != null)
-                {
-                    yearSpinner.setVisibility(View.VISIBLE);
-                }
+        nextYear = (Button) rootView.findViewById(R.id.nextYear);
+        nextYear.setOnClickListener(new Button.OnClickListener() {
+            public void onClick(View v) {
+
+                year++;
+                setGridCellAdapterToDate(month, year);
             }
-        } else { //Older SDK versions
-            Field f[] = dp_mes.getClass().getDeclaredFields();
-            for (Field field : f)
-            {
-                if(field.getName().equals("mDayPicker") || field.getName().equals("mDaySpinner"))
-                {
-                    field.setAccessible(true);
-                    Object dayPicker = null;
-                    try {
-                        dayPicker = field.get(dp_mes);
-                    } catch (IllegalAccessException e) {
-                        e.printStackTrace();
-                    }
-                    ((View) dayPicker).setVisibility(View.GONE);
-                }
+        });
 
-                if(field.getName().equals("mMonthPicker") || field.getName().equals("mMonthSpinner"))
-                {
-                    field.setAccessible(true);
-                    Object monthPicker = null;
-                    try {
-                        monthPicker = field.get(dp_mes);
-                    } catch (IllegalAccessException e) {
-                        e.printStackTrace();
-                    }
-                    ((View) monthPicker).setVisibility(View.VISIBLE);
-                }
 
-                if(field.getName().equals("mYearPicker") || field.getName().equals("mYearSpinner"))
-                {
-                    field.setAccessible(true);
-                    Object yearPicker = null;
-                    try {
-                        yearPicker = field.get(dp_mes);
-                    } catch (IllegalAccessException e) {
-                        e.printStackTrace();
-                    }
-                    ((View) yearPicker).setVisibility(View.VISIBLE);
-                }
-            }
-        }
+        setGridCellAdapterToDate(month, year);
+
+
+
+//        DatePicker dp_mes = (DatePicker) rootView.findViewById(R.id.date_picker);
+//
+//        int year    = dp_mes.getYear();
+//        int month   = dp_mes.getMonth();
+//        int day     = dp_mes.getDayOfMonth();
+//
+//        dp_mes.init(year, month, day, new DatePicker.OnDateChangedListener() {
+//            @Override
+//            public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+//                int month_i = monthOfYear + 1;
+//                Log.e("selected month:", Integer.toString(month_i));
+//                //Add whatever you need to handle Date changes
+//            }
+//        });
+//
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+//            int daySpinnerId = Resources.getSystem().getIdentifier("day", "id", "android");
+//            if (daySpinnerId != 0)
+//            {
+//                View daySpinner = dp_mes.findViewById(daySpinnerId);
+//                if (daySpinner != null)
+//                {
+//                    daySpinner.setVisibility(View.GONE);
+//                }
+//            }
+//
+//            int monthSpinnerId = Resources.getSystem().getIdentifier("month", "id", "android");
+//            if (monthSpinnerId != 0)
+//            {
+//                View monthSpinner = dp_mes.findViewById(monthSpinnerId);
+//                if (monthSpinner != null)
+//                {
+//                    monthSpinner.setVisibility(View.VISIBLE);
+//                }
+//            }
+//
+//            int yearSpinnerId = Resources.getSystem().getIdentifier("year", "id", "android");
+//            if (yearSpinnerId != 0)
+//            {
+//                View yearSpinner = dp_mes.findViewById(yearSpinnerId);
+//                if (yearSpinner != null)
+//                {
+//                    yearSpinner.setVisibility(View.VISIBLE);
+//                }
+//            }
+//        } else { //Older SDK versions
+//            Field f[] = dp_mes.getClass().getDeclaredFields();
+//            for (Field field : f)
+//            {
+//                if(field.getName().equals("mDayPicker") || field.getName().equals("mDaySpinner"))
+//                {
+//                    field.setAccessible(true);
+//                    Object dayPicker = null;
+//                    try {
+//                        dayPicker = field.get(dp_mes);
+//                    } catch (IllegalAccessException e) {
+//                        e.printStackTrace();
+//                    }
+//                    ((View) dayPicker).setVisibility(View.GONE);
+//                }
+//
+//                if(field.getName().equals("mMonthPicker") || field.getName().equals("mMonthSpinner"))
+//                {
+//                    field.setAccessible(true);
+//                    Object monthPicker = null;
+//                    try {
+//                        monthPicker = field.get(dp_mes);
+//                    } catch (IllegalAccessException e) {
+//                        e.printStackTrace();
+//                    }
+//                    ((View) monthPicker).setVisibility(View.VISIBLE);
+//                }
+//
+//                if(field.getName().equals("mYearPicker") || field.getName().equals("mYearSpinner"))
+//                {
+//                    field.setAccessible(true);
+//                    Object yearPicker = null;
+//                    try {
+//                        yearPicker = field.get(dp_mes);
+//                    } catch (IllegalAccessException e) {
+//                        e.printStackTrace();
+//                    }
+//                    ((View) yearPicker).setVisibility(View.VISIBLE);
+//                }
+//            }
+//        }
 
 
 
@@ -473,6 +548,15 @@ public class FragmentHistory extends Fragment {
 
 
         return rootView;
+    }
+
+    private void setGridCellAdapterToDate(int month, int year) {
+
+        _calendar.set(year, month, _calendar.get(Calendar.DAY_OF_MONTH));
+        currentMonth.setText(DateFormat.format(dateTemplate,
+                _calendar.getTime()));
+
+
     }
 //    private void selecttab(){
 //
