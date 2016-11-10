@@ -40,6 +40,8 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.lang.reflect.Field;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -59,6 +61,10 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.ViewSwitcher;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import static android.view.View.GONE;
 
@@ -205,33 +211,135 @@ public class FragmentHistory extends Fragment {
 
         List<Entry> entries = new ArrayList<Entry>();
 
-        entries.add(new Entry(0, 7));
-        entries.add(new Entry(1, 10));
-        entries.add(new Entry(2, 13));
-        entries.add(new Entry(3, 12));
-        entries.add(new Entry(4, 9));
-        entries.add(new Entry(5, 15));
-        entries.add(new Entry(6, 14));
-        entries.add(new Entry(7, 7));
-        entries.add(new Entry(8, 10));
-        entries.add(new Entry(9, 13));
-        entries.add(new Entry(10, 12));
-        entries.add(new Entry(11, 9));
-        entries.add(new Entry(12, 15));
-        entries.add(new Entry(13, 14));
-        entries.add(new Entry(14, 10));
-        entries.add(new Entry(15, 13));
-        entries.add(new Entry(16, 12));
-        entries.add(new Entry(17, 9));
-        entries.add(new Entry(18, 15));
-        entries.add(new Entry(19, 14));
-        entries.add(new Entry(20, 7));
-        entries.add(new Entry(21, 10));
-        entries.add(new Entry(22, 13));
-        entries.add(new Entry(23, 12));
-        entries.add(new Entry(24, 9));
-        entries.add(new Entry(25, 15));
-        entries.add(new Entry(26, 14));
+
+
+
+
+
+
+
+
+        /////////////////////////////////////////////////////////////
+        //Code for getting angle values
+        DatabaseHelper helper = new DatabaseHelper(getActivity());
+        String username = SaveSharedPreference.getUserName(getActivity());
+        String angleValues = helper.getAngleValues(username);
+
+
+        ArrayList<String> list = new ArrayList<String>();
+
+        if(!angleValues.equals("")) {
+            // Getting Arraylist back
+            JSONObject json1 = null;
+            try {
+                json1 = new JSONObject(angleValues);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            JSONArray jsonArray = json1.optJSONArray("angleArray");
+            ;
+            if (jsonArray != null) {
+                int len = jsonArray.length();
+                for (int i = 0; i < len; i++) {
+                    try {
+                        list.add(jsonArray.get(i).toString());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+
+
+//            Double[] doubleAngleValues = new Double[list.size()];
+
+//            Double sum = 0.0;
+//            for (int i = 0; i < list.size(); i++) {
+//                doubleAngleValues[i] = Double.valueOf(list.get(i));
+//                sum += doubleAngleValues[i];
+//            }
+
+//            Double averageAngleOfPlayer;
+//            if(list.size()!=0)
+//                averageAngleOfPlayer = sum / (double) list.size();
+//            else
+//                averageAngleOfPlayer = 0.0;
+
+//            DecimalFormat df = new DecimalFormat("#.##");
+//            df.setRoundingMode(RoundingMode.HALF_UP);
+
+
+            //System.out.println("Angle Values in Home Screen 2: : " + list);
+            //int[] longestStreak = new int[list.size()];
+
+//            int longestStreakCount = 0;
+//            int noOfStreaks = 0;
+//            int maxStreak = 0;
+//
+//            for (int i = 0; i < list.size(); i++) {
+//                if (doubleAngleValues[i] <= 15.0) {
+//                    longestStreakCount++;
+//                }
+//                if (doubleAngleValues[i] > 15.0 || i == list.size()-1) {
+//                    if (maxStreak < longestStreakCount) {
+//                        maxStreak = longestStreakCount;
+//                    }
+//                    //longestStreak[noOfStreaks++] = longestStreakCount;
+//                    longestStreakCount = 0;
+//                }
+//            }
+
+
+
+        }
+
+
+
+        System.out.println("List of angle values in fragment history : "+ list);
+
+
+
+
+
+        for (int i=0;i<list.size();i++){
+
+            entries.add(new Entry(i,Integer.valueOf(list.get(i))));
+
+        }
+
+
+
+
+
+//        ////////////////////////////////////////////////////////////////////////////////
+//        entries.add(new Entry(0, 7));
+//        entries.add(new Entry(1, 10));
+//        entries.add(new Entry(2, 13));
+//        entries.add(new Entry(3, 12));
+//        entries.add(new Entry(4, 9));
+//        entries.add(new Entry(5, 15));
+//        entries.add(new Entry(6, 14));
+//        entries.add(new Entry(7, 7));
+//        entries.add(new Entry(8, 10));
+//        entries.add(new Entry(9, 13));
+//        entries.add(new Entry(10, 12));
+//        entries.add(new Entry(11, 9));
+//        entries.add(new Entry(12, 15));
+//        entries.add(new Entry(13, 14));
+//        entries.add(new Entry(14, 10));
+//        entries.add(new Entry(15, 13));
+//        entries.add(new Entry(16, 12));
+//        entries.add(new Entry(17, 9));
+//        entries.add(new Entry(18, 15));
+//        entries.add(new Entry(19, 14));
+//        entries.add(new Entry(20, 7));
+//        entries.add(new Entry(21, 10));
+//        entries.add(new Entry(22, 13));
+//        entries.add(new Entry(23, 12));
+//        entries.add(new Entry(24, 9));
+//        entries.add(new Entry(25, 15));
+//        entries.add(new Entry(26, 14));
 
 
         LineDataSet dataset = new LineDataSet(entries, "Labels");

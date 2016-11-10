@@ -12,10 +12,14 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import android.bluetooth.BluetoothProfile;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.app.Activity;
@@ -48,12 +52,9 @@ import org.json.JSONObject;
 
 public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScanCallback {
 
+
     //COMITTING ///
     private static Boolean exit = false;
-
-
-
-    //check commit by bilal zahid 1234
 
     //changings
     private BluetoothAdapter mBluetoothAdapter;
@@ -67,7 +68,6 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
     private File accelerationFile = new File("/sdcard/acceleration.txt");
     private long temp;
     private int test1234;
-
 
 /*
     private ScanCallback mScanCallback = new ScanCallback() {
@@ -127,13 +127,9 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
     private String MacAdd = "yahooooooooooooooooooooooooooooo";
     //private LinearLayout dataLayout;
 
+    boolean isBound = false;
 
     //other variables for new layout
-
-
-
-
-
 
     private int counterLegal=0,counterIllegal=0;
 
@@ -170,10 +166,12 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
     String longestStreak;
     String lastBallAngle;
 
+//    for history maintanance
+
+
     private final BroadcastReceiver bluetoothStateReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-
 
             int state = intent.getIntExtra(BluetoothAdapter.EXTRA_STATE, 0);
             if (state == BluetoothAdapter.STATE_ON) {
@@ -209,7 +207,10 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
 
         @Override
         public void onServiceDisconnected(ComponentName name) {
+//            unbindService(rfduinoServiceConnection);
             rfduinoService.send("r".getBytes());
+            if (isBound)
+                getApplicationContext().unbindService(rfduinoServiceConnection);
             rfduinoService = null;
             downgradeState(STATE_DISCONNECTED);
         }
@@ -262,6 +263,34 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
     class handlemonitorFinishButton implements OnClickListener {
         public void onClick(View v) {
 
+
+//            String [] test = ["abc","efg"];
+
+
+            //checking date time
+            Date curDate = new Date();
+
+            SimpleDateFormat format = new SimpleDateFormat();
+            String DateToStr = format.format(curDate);
+//            System.out.println("Default pattern: " + DateToStr);
+
+            format = new SimpleDateFormat("dd/MM/yyyy");
+            DateToStr = format.format(curDate);
+            System.out.println("date to store: " + DateToStr);
+
+
+            try {
+                Date strToDate = format.parse(DateToStr);
+                System.out.println("Reconverted String to Date: "+strToDate);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+
+
+
+
+
             //genFlex=15;
 
 //            if (genFlex > 15) {
@@ -300,13 +329,12 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
 
             System.out.println("Arraylist : " + convertedArrayListToString);
 
-
             helper.changeAngleValues(username ,convertedArrayListToString);
+            helper.insertPlayerStats(p);
+            helper.changeStatLegalIllegal(p.getUsername(),p.getLegalBowls(),p.getIllegalBowls());
+
 
             //ArrayList items ;
-
-
-
 
             // Getting Arraylist back
 //            JSONObject json1 = null;
@@ -331,8 +359,6 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
 //            System.out.println("Re-Converting to arraylist : " + list);
 
 
-            helper.insertPlayerStats(p);
-            helper.changeStatLegalIllegal(p.getUsername(),p.getLegalBowls(),p.getIllegalBowls());
 
 
 //            rfduinoService.send("r".getBytes());
@@ -352,6 +378,8 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
 
             i.putExtras(extraBundle);
             //i.putExtra("angleValues",angleValues);
+            if (isBound)
+                getApplicationContext().unbindService(rfduinoServiceConnection);
             rfduinoService = null;
             downgradeState(STATE_DISCONNECTED);
             ActivityMonitor.this.startActivity(i);
@@ -467,10 +495,6 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
         }
     }
 
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -552,6 +576,12 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
         super.onDestroy();
 
 
+//        BluetoothAdapter.getDefaultAdapter().closeProfileProxy(BluetoothProfile.A2DP,sBluetoothA2dp);
+//        rfduinoService.send("r".getBytes());
+
+//        unbindService(rfduinoService);
+//        if (isBound)
+//            getApplicationContext().unbindService(rfduinoServiceConnection);
         bluetoothAdapter.stopLeScan(this);
         unregisterReceiver(scanModeReceiver);
         unregisterReceiver(bluetoothStateReceiver);
@@ -561,7 +591,10 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
     @Override
     protected void onStop() {
         super.onStop();
+//        unbindService(rfduinoServiceConnection);
 
+//        if (isBound)
+//            getApplicationContext().unbindService(rfduinoServiceConnection);
     }
 
     private void upgradeState(int newState) {
@@ -602,7 +635,7 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
             }
 
 
-            System.out.print("Receiving: "+ value);
+//            System.out.println("Receiving: "+ value);
 //            int[] values = new int[10];
 //
 //            for (int i=0 ; i<1 ; i++){
@@ -617,6 +650,7 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
             {
                 if (incoming==120)
                 {
+                    angleText.setText("0"+"\u00b0");
                     monitorLegalText.setText("Bend arm at 45");
                     once=1;
                 }
@@ -811,7 +845,8 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
             bluetoothAdapter.startLeScan(new UUID[]{RFDService.UUID_SERVICE}, ActivityMonitor.this);
         } else {
             Intent rfduinoIntent = new Intent(ActivityMonitor.this, RFDService.class);
-            bindService(rfduinoIntent, rfduinoServiceConnection, BIND_AUTO_CREATE);
+//            bindService(rfduinoIntent, rfduinoServiceConnection, BIND_AUTO_CREATE);
+            isBound = getApplicationContext().bindService(rfduinoIntent, rfduinoServiceConnection, BIND_AUTO_CREATE);
         }
 
 
@@ -841,6 +876,8 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
 
 
 //        rfduinoService.send("r".getBytes());
+//        if (isBound)
+//            getApplicationContext().unbindService(rfduinoServiceConnection);
         rfduinoService = null;
         downgradeState(STATE_DISCONNECTED);
         if(mBluetoothAdapter==null){

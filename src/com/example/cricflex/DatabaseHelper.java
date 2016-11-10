@@ -26,6 +26,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String IMAGE_TABLE_NAME = "table_image";
     private static final String STATS_TABLE_NAME = "table_stats";
     private static final String ANGLE_TABLE_NAME = "table_angle";
+    private static final String HISTORY_TABLE_NAME = "table_history";
 
 
     private static final String COLUMN_ID = "id";
@@ -59,6 +60,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //For Angles
     private static final String COLUMN_ANGLE_VALUES = "angle_values";
 
+    //For History
+    private static final String COLUMN_SESSION_DATE = "session_date";
+
     SQLiteDatabase db;
 
     private static final String CREATE_TABLE_PLAYER = "create table " + PLAYER_TABLE_NAME + " (id integer primary key not null  , " +
@@ -77,6 +81,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String CREATE_TABLE_PLAYER_ANGLE = "create table " + ANGLE_TABLE_NAME + " " +
             "(username text not null, angle_values text not null);";
 
+    private static final String CREATE_TABLE_PLAYER_HISTORY = "create table " + HISTORY_TABLE_NAME + " " +
+            "(username text not null, angle_values text not null, session_date text not null);";
+
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -87,6 +94,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_IMAGE);
         db.execSQL(CREATE_TABLE_PLAYER_STATS);
         db.execSQL(CREATE_TABLE_PLAYER_ANGLE);
+        db.execSQL(CREATE_TABLE_PLAYER_HISTORY);
         this.db = db;
     }
 
@@ -96,6 +104,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + IMAGE_TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + STATS_TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + ANGLE_TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + HISTORY_TABLE_NAME);
         db.execSQL(query);
         this.onCreate(db);
     }
@@ -170,6 +179,27 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.insert(ANGLE_TABLE_NAME, null, values);
         db.close();
     }
+
+    public void insertPlayerAngleValuesWithDate(String username, String angleValues , String date) {
+        db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        String query = "select * from " + HISTORY_TABLE_NAME;
+        Cursor cursor = db.rawQuery(query, null);
+
+        cursor.close();
+
+        //values.put(COLUMN_ID,count);
+        //values.put(COLUMN_NAME , p.getName());
+
+        values.put(COLUMN_USERNAME, username);
+        values.put(COLUMN_ANGLE_VALUES, angleValues);
+        values.put(COLUMN_SESSION_DATE, date);
+
+        db.insert(HISTORY_TABLE_NAME, null, values);
+        db.close();
+    }
+
 
     public String getPassword(String username) {
         db = this.getReadableDatabase();
@@ -428,6 +458,27 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return angleValues;
     }
 
+    public String getSessionDates(String username) {
+        db = this.getReadableDatabase();
+        String query = "select username, session_date from " + HISTORY_TABLE_NAME;
+        Cursor cursor = db.rawQuery(query, null);
+        String uname, angleValues;
+        angleValues = "not found";
+        if (cursor.moveToFirst()) {
+            do {
+                uname = cursor.getString(0);
+
+                if (uname.equals(username)) {
+                    angleValues = cursor.getString(1);
+                    break;
+                }
+            }
+            while (cursor.moveToNext());
+        }
+        cursor.close();
+        return angleValues;
+    }
+
 
 
     public void changePassword(String username, String newPassword) {
@@ -620,6 +671,117 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
 
     }
+
+
+    public void changeAngleValuesWithDate(String username, String currentAngleValues , String sessionDate) {
+        db = this.getReadableDatabase();
+
+
+        String totalAngleValues;
+        //db = this.getReadableDatabase();
+
+
+
+//        String query = "select username, angle_values, session_date from " + HISTORY_TABLE_NAME;
+
+        String query = "select  angle_values from " + HISTORY_TABLE_NAME + "where session_date =" + sessionDate
+                +"AND username =" + username;
+        Cursor cursor = db.rawQuery(query, null);
+        String  prevAngleValues = "" ;
+
+        String sessionDateFromDb = "";
+//        legalBowls = "0";
+//        illegalBowls = "0";
+        if (cursor.moveToFirst()) {
+            prevAngleValues = cursor.getString(0);
+        }
+
+        if(prevAngleValues.equals("")){
+            insertPlayerAngleValuesWithDate(username,currentAngleValues,sessionDate);
+        }
+        else{
+            totalAngleValues = prevAngleValues + currentAngleValues;
+
+        }
+        cursor.close();
+
+
+
+
+        ArrayList<String> previousArrayListOfAngles = new ArrayList<String>();
+        if(!prevAngleValues.equals("")) {
+//        getting previous array list from string
+            JSONObject json = null;
+            try {
+                json = new JSONObject(prevAngleValues);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            JSONArray jsonArray = json.optJSONArray("angleArray");
+
+            if (jsonArray != null) {
+                int len = jsonArray.length();
+                for (int i = 0; i < len; i++) {
+                    try {
+                        previousArrayListOfAngles.add(jsonArray.get(i).toString());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+
+//        getting current array list from string
+        ArrayList<String> currentArrayListOfAngles = new ArrayList<String>();
+
+        if(!currentAngleValues.equals("")){
+            JSONObject json1 = null;
+            try {
+                json1 = new JSONObject(currentAngleValues);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            JSONArray jsonArray1 = json1.optJSONArray("angleArray");
+            ;
+            if (jsonArray1 != null) {
+                int len = jsonArray1.length();
+                for (int i = 0; i < len; i++) {
+                    try {
+                        currentArrayListOfAngles.add(jsonArray1.get(i).toString());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+
+
+        //Joining the two lists
+
+        if(!prevAngleValues.equals("") || !currentAngleValues.equals("")) {
+            List<String> arrayListOfTotalValues = new ArrayList<String>(previousArrayListOfAngles);
+            arrayListOfTotalValues.addAll(currentArrayListOfAngles);
+
+
+            //            converting array into JSON
+
+            JSONObject json2 = new JSONObject();
+            try {
+                json2.put("angleArray", new JSONArray(arrayListOfTotalValues));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            totalAngleValues = json2.toString();
+
+            String query1 = "UPDATE " + ANGLE_TABLE_NAME + "  SET angle_values = '" + totalAngleValues + "' WHERE username = '" + username + "'";
+            db.execSQL(query1);
+        }
+
+    }
+
+
 }
 
 

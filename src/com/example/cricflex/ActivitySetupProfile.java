@@ -285,6 +285,7 @@ public class ActivitySetupProfile extends Activity implements View.OnClickListen
                         helper.insertPlayerStats(p);
                         helper.insertPlayer(p);
                         helper.insertPlayerAngleValues(p.getUsername(),"");
+                        helper.insertPlayerAngleValuesWithDate(p.getUsername(),"","");
 
 
                         Toast toast = Toast.makeText(ActivitySetupProfile.this, "Registered Account!" , Toast.LENGTH_SHORT);
