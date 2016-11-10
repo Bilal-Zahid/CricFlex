@@ -43,6 +43,15 @@
         <item name="android:actionBarStyle">@style/MyTheme.ActionBar</item>
         <item name="android:windowBackground">@color/light</item>
 
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
+        <!--<item name="textColorPrimary">@color/text_primary</item>-->
+
+
 
     </style>
 
@@ -83,6 +92,21 @@
         <item name="actionOverflowMenuStyle">@style/MyTheme.PopupMenuStyle</item>
         <item name="android:itemTextAppearance">@style/MyTheme.MenuTextApearance</item>
         <item name="android:windowBackground">@color/dark</item>
+
+
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+
+        <!--<item name="textColorPrimary">@color/text_primary</item>-->
+    </style>
+
+
+    <style name="calendar_event_style" parent="@android:style/TextAppearance.Small">
+        <item name="android:textColor">#FF6600</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">8sp</item>
     </style>
 
 </resources>
