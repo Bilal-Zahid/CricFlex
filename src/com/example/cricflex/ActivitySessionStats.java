@@ -60,6 +60,8 @@ public class ActivitySessionStats extends Activity {
 
 
         List<Entry> entries = new ArrayList<Entry>();
+
+
 //        entries.add(new Entry(4f, 0));
 //        entries.add(new Entry(8f, 1));
 //        entries.add(new Entry(6f, 2));
@@ -67,37 +69,37 @@ public class ActivitySessionStats extends Activity {
 //        entries.add(new Entry(18f, 4));
 //        entries.add(new Entry(9f, 5));
 
-        entries.add(new Entry(0, 7));
-        entries.add(new Entry(1, 10));
-        entries.add(new Entry(2, 13));
-        entries.add(new Entry(3, 12));
-        entries.add(new Entry(4, 9));
-        entries.add(new Entry(5, 15));
-        entries.add(new Entry(6, 14));
-        entries.add(new Entry(7, 7));
-        entries.add(new Entry(8, 10));
-        entries.add(new Entry(9, 13));
-        entries.add(new Entry(10, 12));
-        entries.add(new Entry(11, 9));
-        entries.add(new Entry(12, 15));
-        entries.add(new Entry(13, 14));
-        entries.add(new Entry(14, 10));
-        entries.add(new Entry(15, 13));
-        entries.add(new Entry(16, 12));
-        entries.add(new Entry(17, 9));
-        entries.add(new Entry(18, 15));
-        entries.add(new Entry(19, 14));
-        entries.add(new Entry(20, 7));
-        entries.add(new Entry(21, 10));
-        entries.add(new Entry(22, 13));
-        entries.add(new Entry(23, 12));
-        entries.add(new Entry(24, 9));
-        entries.add(new Entry(25, 15));
-        entries.add(new Entry(26, 14));
-//        for (int i=0; i<angleValues.size();i++){
-//            float value = (float)angleValues.get(i);
-//            entries.add(new Entry(i,value));
-//        }
+//        entries.add(new Entry(0, 7));
+//        entries.add(new Entry(1, 10));
+//        entries.add(new Entry(2, 13));
+//        entries.add(new Entry(3, 12));
+//        entries.add(new Entry(4, 9));
+//        entries.add(new Entry(5, 15));
+//        entries.add(new Entry(6, 14));
+//        entries.add(new Entry(7, 7));
+//        entries.add(new Entry(8, 10));
+//        entries.add(new Entry(9, 13));
+//        entries.add(new Entry(10, 12));
+//        entries.add(new Entry(11, 9));
+//        entries.add(new Entry(12, 15));
+//        entries.add(new Entry(13, 14));
+//        entries.add(new Entry(14, 10));
+//        entries.add(new Entry(15, 13));
+//        entries.add(new Entry(16, 12));
+//        entries.add(new Entry(17, 9));
+//        entries.add(new Entry(18, 15));
+//        entries.add(new Entry(19, 14));
+//        entries.add(new Entry(20, 7));
+//        entries.add(new Entry(21, 10));
+//        entries.add(new Entry(22, 13));
+//        entries.add(new Entry(23, 12));
+//        entries.add(new Entry(24, 9));
+//        entries.add(new Entry(25, 15));
+//        entries.add(new Entry(26, 14));
+        for (int i=0; i<angleValues.size();i++){
+            float value = (float)angleValues.get(i);
+            entries.add(new Entry(i,value));
+        }
 
 
         Collections.sort(entries, new EntryXComparator());
