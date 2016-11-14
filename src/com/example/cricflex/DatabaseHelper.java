@@ -827,7 +827,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 }
                 totalAngleValues = json3.toString();
 
-                String query1 = "UPDATE " + HISTORY_TABLE_NAME + "  SET angle_values = '" + totalAngleValues + "' WHERE username = '" + username + "'";
+                String query1 = "UPDATE " + HISTORY_TABLE_NAME + "  SET angle_values = '" + totalAngleValues + "' WHERE username = '" + username + "'" +
+                        " AND session_date = '" + sessionDate +"'";
                 db.execSQL(query1);
             }
 
