@@ -1,20 +1,10 @@
 package com.example.cricflex;
 
-import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-import android.app.Activity;
+
 import android.app.FragmentManager;
 import android.content.res.Configuration;
-import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -22,38 +12,23 @@ import android.graphics.drawable.ColorDrawable;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.text.Html;
 import android.util.Log;
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
-import android.content.BroadcastReceiver;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.ServiceConnection;
 import android.os.Bundle;
-import android.os.IBinder;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
-import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import android.bluetooth.le.BluetoothLeScanner;
-import android.bluetooth.BluetoothGatt;
-import android.bluetooth.le.ScanFilter;
-import android.bluetooth.le.ScanSettings;
 
 public class ActivityMain extends ActionBarActivity {
 
@@ -223,24 +198,49 @@ public class ActivityMain extends ActionBarActivity {
         // Handle action buttons
         switch(item.getItemId()) {
 
+
+
+            case R.id.tour_cricflex:
+
+                Intent intent0 = new Intent(ActivityMain.this, ActivityMetrics.class);
+
+                Bundle extras = new Bundle();
+                extras.putString("id", "1");
+                extras.putString("city", "2");
+                extras.putString("place", "3");
+                extras.putString("station", "4");
+                intent0.putExtras(extras);
+                startActivity(intent0);
+                return true;
+
             case R.id.calibrate:
 
                 Intent intent1 = new Intent(ActivityMain.this, ActivityCalibrate.class);
                 startActivity(intent1);
                 return true;
 
+
+            case R.id.settings:
+
+
+                Intent intent2 = new Intent(ActivityMain.this, test_asawal.class);
+                startActivity(intent2);
+                return true;
+
+
+
             case R.id.logout:
 
-                Intent intent = new Intent(ActivityMain.this, ActivityLogin.class);
+                Intent intent3 = new Intent(ActivityMain.this, ActivityLogin.class);
                 //ActivityMain.this.finish();
 
 
                 SaveSharedPreference.clearUserName(ActivityMain.this);
 
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent3.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent3.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
-                startActivity(intent);
+                startActivity(intent3);
                 finish();
                 return true;
 

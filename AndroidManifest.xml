@@ -90,7 +90,11 @@
         <activity android:name=".ActivityGraph4" />
         <activity android:name=".ActivityGraph5" />
         <activity android:name=".ActivityMonitor3" />
-        <activity android:name=".ActivitySessionStats"></activity>
+        <activity android:name=".ActivitySessionStats"/>
+        <activity android:name=".test_asawal"/>
+        <activity android:name=".ActivityMetrics"/>
+
+
     </application>
 
 </manifest>

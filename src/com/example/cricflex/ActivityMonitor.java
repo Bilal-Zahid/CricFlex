@@ -33,6 +33,7 @@ import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -153,7 +154,25 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
     boolean boolForTimerLogic = true;
 
 
-//For Stats and home page
+
+    // check for metrics
+    int metric_check=0;
+
+
+    //For Metrics Activity
+
+    String armAngle_value;
+    String armSpeed_value;
+    String actionTime_value;
+    String armTwist_value;
+    String force_value;
+    String runUpDist_value;
+    String runUpSpeed_value;
+    String runUpTime_value;
+
+
+
+    //For Stats and home page
     DatabaseHelper helper = new DatabaseHelper(this);
     Player p = new Player();
     String username;
@@ -608,27 +627,46 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
         // updateUi();
     }
 
+
     void addData(byte[] data) {
 
-        if(startButtonPressed && timerOn){
+        if(startButtonPressed && timerOn) {
 
 
             angleText.setTextColor(0xFFFFFFFF);
-            angleText.setText(Integer.toString(genFlex)+"\u00b0");
+            angleText.setText(Integer.toString(genFlex) + "\u00b0");
 
-            if(monitoringTextChange)
+            if (monitoringTextChange)
                 monitorLegalText.setText("Monitoring");
 
             monitorLegalText.setTextColor(0xFFFFFFFF);
 
+
+//            String s1 = new String(data);
+//            String[] result = s1.split(",");
+//
+//
+//
+//
+//            armAngle_value=result[0];
+//            armSpeed_value=result[1];
+//            armTwist_value=result[2];
+//            force_value=result[3];
+//            acttionTime_value=result[4];
+//
+//            if(result[0].equals("-"))
+//            {
+//
+//            }
+
+
             int value = 0;
-            for (int i = 0; i < data.length; i++)
-            {
+            for (int i = 0; i < data.length; i++) {
                 value += ((int) data[i] & 0xffL) << (8 * i);
             }
 
 
-//            System.out.println("Receiving: "+ value);
+            System.out.print("Receiving: " + value);
 //            int[] values = new int[10];
 //
 //            for (int i=0 ; i<1 ; i++){
@@ -638,55 +676,60 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
 //            }
 
 //            System.out.println("Value: "+ value);
-            int incoming=(int)value;
-            if (once==0 || once==1)
-            {
-                if (incoming==120)
-                {
-                    angleText.setText("0"+"\u00b0");
-                    monitorLegalText.setText("Bend arm at 45");
-                    once=1;
-                }
-                else if (incoming==119)
-                {
-                    monitorLegalText.setText("Monitoring...");
-                    once=2;
-                }
+            int incoming = (int) value;
 
-            }
-            else if( incoming == 118)
-            {
+
+            if (metric_check == 0) {
+
+
+                if (once == 0 || once == 1) {
+                    if (incoming == 120) {
+                        monitorLegalText.setText("Bend arm at 45");
+                        once = 1;
+                    } else if (incoming == 119) {
+                        monitorLegalText.setText("Monitoring...");
+                        once = 2;
+                    }
+
+                } else if (incoming == 118) {
 //                Toast.makeText(ActivityMonitor.this, "Bowl" , Toast.LENGTH_SHORT).show();
-                monitorLegalText.setText("Bowl");
-                monitoringTextChange = false;
+                    monitorLegalText.setText("Bowl");
+                    monitoringTextChange = false;
 
 //                System.out.println("118 received and this is test print");
-                rfduinoService.send("a".getBytes());
+                    rfduinoService.send("a".getBytes());
 
-            }
+                }
 
-            // int incoming =(int)((data[1] << 8) + (data[0] & 0xFF));
-            else if(-128<=incoming && incoming<=127)
-            {
+                // int incoming =(int)((data[1] << 8) + (data[0] & 0xFF));
+                else if (-128 <= incoming && incoming <= 127) {
 //                firstnegativevalueafterpositive=true;
-                String in=new String();
-                in=String.valueOf(value);
-                angleText.setText(in+"\u00b0");
-            }
-            else if(272<=incoming && incoming<=527)
-            {
-                String in=new String();
-                in=String.valueOf(value-400);
-                angleText.setText(in+"\u00b0");
-                rfduinoService.send("a".getBytes());
-//                if(firstnegativevalueafterpositive)
-//                {
+                    String in = new String();
+                    in = String.valueOf(value);
+                    angleText.setText(in + "\u00b0");
+                } else if (272 <= incoming && incoming <= 527) {                //ball release check
+                    String in = new String();
+                    in = String.valueOf(value - 400);
+                    angleText.setText(in + "\u00b0");
+//                    rfduinoService.send("a".getBytes());
 
 
 
-                    startButtonPressed = false;
-                    monitorStartButton.setPressed(false);
-                    genFlex = incoming-400;
+
+
+                    //startButtonPressed = false;
+                    //monitorStartButton.setPressed(false);
+                    genFlex = incoming - 400;
+
+                    metric_check=1;
+                    armAngle_value=Integer.toString(genFlex);
+                    Log.e(TAG, "armAngle_value value= "+armAngle_value);
+                    Log.e(TAG, "metric check value= "+ Integer.toString(metric_check));
+
+
+
+
+
 
                     angleValues.add(genFlex);
 
@@ -695,19 +738,35 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
 
                         monitorIllegalBalls.setText(String.valueOf(++counterIllegal));
                         angleText.setTextColor(0xFFFF0000);
-                        angleText.setText(Integer.toString(genFlex)+"\u00b0");
+                        angleText.setText(Integer.toString(genFlex) + "\u00b0");
                         monitorLegalText.setText("Illegal");
                         monitorLegalText.setTextColor(0xFFFF0000);
                     } else {
                         monitorLegalBalls.setText(String.valueOf(++counterLegal));
                         //stopButtonPressed = true;
                         angleText.setTextColor(0xFF00FF00);
-                        angleText.setText(Integer.toString(genFlex)+"\u00b0");
+                        angleText.setText(Integer.toString(genFlex) + "\u00b0");
                         //degreeSign.setTextColor(0xFF00FF00);
                         //angleText.setTextSize(200);
                         monitorLegalText.setText("Legal");
                         monitorLegalText.setTextColor(0xFF00FF00);
                     }
+
+
+                    ///test/////
+
+
+//                Intent intent = new Intent(this, ActivityMetrics.class);
+//                Bundle extras = new Bundle();
+//                extras.putString("id", "1");
+//                extras.putString("city", "2");
+//                extras.putString("place", "3");
+//                extras.putString("station", "4");
+//                intent.putExtras(extras);
+//                startActivity(intent);
+
+
+                    ///test/////
 
 
 //                    if(getIntent().getStringExtra("StringName").equals("Ajmal"))
@@ -727,9 +786,59 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
 //                    firstnegativevalueafterpositive=false;
 //                }
 
+                }
+
+
             }
+
+            else if(metric_check==1)
+            {
+                force_value=Integer.toString(incoming*4);           // arm mass = 4kg
+                Log.e(TAG, "force_value value= "+force_value);
+                metric_check=2;
+            }
+            else if(metric_check==2)
+            {
+
+                float temp1 = incoming;
+
+                armSpeed_value=Float.toString(temp1*3.6f);      // 1 m/s = 3.6 kph
+                //armSpeed_value=Integer.toString(incoming*4);
+                Log.e(TAG, "armSpeed_value value= "+armSpeed_value);
+                metric_check=3;
+            }
+            else if(metric_check==3)
+            {
+                float temp=incoming;
+                actionTime_value=Float.toString(temp/1000f);  //millisecond to second
+
+
+                //actionTime_value=Integer.toString(incoming/1000);
+                Log.e(TAG, "actionTime_value value= "+actionTime_value);
+                metric_check=4;
+            }
+            else if(metric_check==4)
+            {
+                armTwist_value=Integer.toString(incoming);
+                metric_check=0;
+
+
+                Log.e(TAG, "armtwist value= "+armAngle_value);
+
+                Intent intent = new Intent(this, ActivityMetrics.class);
+                Bundle extras = new Bundle();
+                extras.putString("armAngle", armAngle_value);
+                extras.putString("armSpeed", armSpeed_value);
+                extras.putString("actionTime", actionTime_value);
+                extras.putString("armTwist", armTwist_value);
+                extras.putString("force", force_value);
+                intent.putExtras(extras);
+                startActivity(intent);
+            }
+
         }
     }
+
 
 
     /*
