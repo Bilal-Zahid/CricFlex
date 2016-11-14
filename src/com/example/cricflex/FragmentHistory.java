@@ -43,8 +43,10 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import java.lang.reflect.Field;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -94,6 +96,13 @@ public class FragmentHistory extends Fragment {
     //private final DateFormat dateFormatter = new DateFormat();
     private static final String dateTemplate = "MMMM yyyy";
 
+    private String dateForDatabase = "";
+
+//    DatabaseHelper helper;
+
+    DatabaseHelper helper;
+    View rootView;
+
 
     ArrayList<Integer> angleValues = new ArrayList<Integer>();
 
@@ -104,28 +113,11 @@ public class FragmentHistory extends Fragment {
 
     }
 
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_history, container, false);
-
-
-//        mCalendar = Calendar.getInstance();
-//
-//        DatePicker datePicker = (DatePicker) rootView.findViewById(R.id.date_picker);
-//
-//        datePicker.init(mCalendar.get(Calendar.YEAR),mCalendar.get(Calendar.MONTH),mCalendar.get(Calendar.DAY_OF_MONTH),null);
-//
-//
-//        //datePicker.getChildAt(0).setVisibility(GONE);
-//        //datePicker.getChildAt(0).setVisibility(INVISIBLE);
-//        datePicker.getChildAt(0).setEnabled(false);
-//        //        selecttab();
-
-
+        rootView = inflater.inflate(R.layout.fragment_history, container, false);
 
 
         _calendar = Calendar.getInstance(Locale.getDefault());
@@ -192,122 +184,51 @@ public class FragmentHistory extends Fragment {
 
 
 
-//        DatePicker dp_mes = (DatePicker) rootView.findViewById(R.id.date_picker);
-//
-//        int year    = dp_mes.getYear();
-//        int month   = dp_mes.getMonth();
-//        int day     = dp_mes.getDayOfMonth();
-//
-//        dp_mes.init(year, month, day, new DatePicker.OnDateChangedListener() {
-//            @Override
-//            public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-//                int month_i = monthOfYear + 1;
-//                Log.e("selected month:", Integer.toString(month_i));
-//                //Add whatever you need to handle Date changes
-//            }
-//        });
-//
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
-//            int daySpinnerId = Resources.getSystem().getIdentifier("day", "id", "android");
-//            if (daySpinnerId != 0)
-//            {
-//                View daySpinner = dp_mes.findViewById(daySpinnerId);
-//                if (daySpinner != null)
-//                {
-//                    daySpinner.setVisibility(View.GONE);
-//                }
-//            }
-//
-//            int monthSpinnerId = Resources.getSystem().getIdentifier("month", "id", "android");
-//            if (monthSpinnerId != 0)
-//            {
-//                View monthSpinner = dp_mes.findViewById(monthSpinnerId);
-//                if (monthSpinner != null)
-//                {
-//                    monthSpinner.setVisibility(View.VISIBLE);
-//                }
-//            }
-//
-//            int yearSpinnerId = Resources.getSystem().getIdentifier("year", "id", "android");
-//            if (yearSpinnerId != 0)
-//            {
-//                View yearSpinner = dp_mes.findViewById(yearSpinnerId);
-//                if (yearSpinner != null)
-//                {
-//                    yearSpinner.setVisibility(View.VISIBLE);
-//                }
-//            }
-//        } else { //Older SDK versions
-//            Field f[] = dp_mes.getClass().getDeclaredFields();
-//            for (Field field : f)
-//            {
-//                if(field.getName().equals("mDayPicker") || field.getName().equals("mDaySpinner"))
-//                {
-//                    field.setAccessible(true);
-//                    Object dayPicker = null;
-//                    try {
-//                        dayPicker = field.get(dp_mes);
-//                    } catch (IllegalAccessException e) {
-//                        e.printStackTrace();
-//                    }
-//                    ((View) dayPicker).setVisibility(View.GONE);
-//                }
-//
-//                if(field.getName().equals("mMonthPicker") || field.getName().equals("mMonthSpinner"))
-//                {
-//                    field.setAccessible(true);
-//                    Object monthPicker = null;
-//                    try {
-//                        monthPicker = field.get(dp_mes);
-//                    } catch (IllegalAccessException e) {
-//                        e.printStackTrace();
-//                    }
-//                    ((View) monthPicker).setVisibility(View.VISIBLE);
-//                }
-//
-//                if(field.getName().equals("mYearPicker") || field.getName().equals("mYearSpinner"))
-//                {
-//                    field.setAccessible(true);
-//                    Object yearPicker = null;
-//                    try {
-//                        yearPicker = field.get(dp_mes);
-//                    } catch (IllegalAccessException e) {
-//                        e.printStackTrace();
-//                    }
-//                    ((View) yearPicker).setVisibility(View.VISIBLE);
-//                }
-//            }
-//        }
+        //testing date
+
+//testing date format
+        Date curDate = new Date();
+//            SimpleDateFormat format = new SimpleDateFormat();
+        SimpleDateFormat format = new SimpleDateFormat("MM/yyyy");
+        String DateToStr = format.format(curDate);
+//        if()
+
+        System.out.println("Date in Fragment history: "+ currentMonth.getText().toString());
+
+        mProgress = (ProgressBar) rootView.findViewById(R.id.progress_bar);
+        mProgressStatus = 50;
+        mProgress.setProgress(mProgressStatus);
+
+        makeGraph();
+
+        return rootView;
+    }
 
 
-
+    private void makeGraph(){
 
         LineChart lineChart = (LineChart) rootView.findViewById(R.id.chart);
 
         List<Entry> entries = new ArrayList<Entry>();
 
-
-
-
-
-
-
-
-
         /////////////////////////////////////////////////////////////
         //Code for getting angle values
-        DatabaseHelper helper = new DatabaseHelper(getActivity());
+        helper = new DatabaseHelper(getActivity());
         String username = SaveSharedPreference.getUserName(getActivity());
-        String angleValues = helper.getAngleValues(username);
+//        String angleValues = helper.getAngleValues(username);
+        //Code for getting angle values
+//        helper = new DatabaseHelper(getActivity());
+//        String  = SaveSharedPreference.getUserName(getActivity());
+        String angleValuesWithDate = helper.getAngleValuesWithDate(username,currentMonth.getText().toString());
 
 
-        ArrayList<String> list = new ArrayList<String>();
-
-        if(!angleValues.equals("")) {
+        //making arraylist after getting response from database
+        ArrayList<String> list1 = new ArrayList<String>();
+        if(!angleValuesWithDate.equals("not found")) {
             // Getting Arraylist back
             JSONObject json1 = null;
             try {
-                json1 = new JSONObject(angleValues);
+                json1 = new JSONObject(angleValuesWithDate);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -318,104 +239,19 @@ public class FragmentHistory extends Fragment {
                 int len = jsonArray.length();
                 for (int i = 0; i < len; i++) {
                     try {
-                        list.add(jsonArray.get(i).toString());
+                        list1.add(jsonArray.get(i).toString());
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
                 }
             }
-
-
-
-//            Double[] doubleAngleValues = new Double[list.size()];
-
-//            Double sum = 0.0;
-//            for (int i = 0; i < list.size(); i++) {
-//                doubleAngleValues[i] = Double.valueOf(list.get(i));
-//                sum += doubleAngleValues[i];
-//            }
-
-//            Double averageAngleOfPlayer;
-//            if(list.size()!=0)
-//                averageAngleOfPlayer = sum / (double) list.size();
-//            else
-//                averageAngleOfPlayer = 0.0;
-
-//            DecimalFormat df = new DecimalFormat("#.##");
-//            df.setRoundingMode(RoundingMode.HALF_UP);
-
-
-            //System.out.println("Angle Values in Home Screen 2: : " + list);
-            //int[] longestStreak = new int[list.size()];
-
-//            int longestStreakCount = 0;
-//            int noOfStreaks = 0;
-//            int maxStreak = 0;
-//
-//            for (int i = 0; i < list.size(); i++) {
-//                if (doubleAngleValues[i] <= 15.0) {
-//                    longestStreakCount++;
-//                }
-//                if (doubleAngleValues[i] > 15.0 || i == list.size()-1) {
-//                    if (maxStreak < longestStreakCount) {
-//                        maxStreak = longestStreakCount;
-//                    }
-//                    //longestStreak[noOfStreaks++] = longestStreakCount;
-//                    longestStreakCount = 0;
-//                }
-//            }
-
-
-
         }
 
+        System.out.println("List of angle values with date in fragment history: " + list1);
 
-
-        System.out.println("List of angle values in fragment history : "+ list);
-
-
-
-
-
-        for (int i=0;i<list.size();i++){
-
-            entries.add(new Entry(i,Integer.valueOf(list.get(i))));
-
+        for (int i=0;i<list1.size();i++){
+            entries.add(new Entry(i,Integer.valueOf(list1.get(i))));
         }
-
-
-
-
-
-//        ////////////////////////////////////////////////////////////////////////////////
-//        entries.add(new Entry(0, 7));
-//        entries.add(new Entry(1, 10));
-//        entries.add(new Entry(2, 13));
-//        entries.add(new Entry(3, 12));
-//        entries.add(new Entry(4, 9));
-//        entries.add(new Entry(5, 15));
-//        entries.add(new Entry(6, 14));
-//        entries.add(new Entry(7, 7));
-//        entries.add(new Entry(8, 10));
-//        entries.add(new Entry(9, 13));
-//        entries.add(new Entry(10, 12));
-//        entries.add(new Entry(11, 9));
-//        entries.add(new Entry(12, 15));
-//        entries.add(new Entry(13, 14));
-//        entries.add(new Entry(14, 10));
-//        entries.add(new Entry(15, 13));
-//        entries.add(new Entry(16, 12));
-//        entries.add(new Entry(17, 9));
-//        entries.add(new Entry(18, 15));
-//        entries.add(new Entry(19, 14));
-//        entries.add(new Entry(20, 7));
-//        entries.add(new Entry(21, 10));
-//        entries.add(new Entry(22, 13));
-//        entries.add(new Entry(23, 12));
-//        entries.add(new Entry(24, 9));
-//        entries.add(new Entry(25, 15));
-//        entries.add(new Entry(26, 14));
-
 
         LineDataSet dataset = new LineDataSet(entries, "Labels");
 
@@ -519,42 +355,15 @@ public class FragmentHistory extends Fragment {
 
         lineChart.animateY(2000);
 
-
-
-
-        mProgress = (ProgressBar) rootView.findViewById(R.id.progress_bar);
-        mProgressStatus = 50;
-        mProgress.setProgress(mProgressStatus);
-//        // Start lengthy operation in a background thread
-//        new Thread(new Runnable() {
-//            public void run() {
-//                while (mProgressStatus < 100) {
-//                    mProgressStatus = 50;
-//
-//                    // Update the progress bar
-//                    mHandler.post(new Runnable() {
-//                        public void run() {
-//                            mProgress.setProgress(mProgressStatus);
-//                        }
-//                    });
-//                }
-//            }
-//        }).start();
-
-
-
-
-
-
-
-        return rootView;
     }
+
 
     private void setGridCellAdapterToDate(int month, int year) {
 
         _calendar.set(year, month, _calendar.get(Calendar.DAY_OF_MONTH));
         currentMonth.setText(DateFormat.format(dateTemplate,
                 _calendar.getTime()));
+        makeGraph();
 
 
     }

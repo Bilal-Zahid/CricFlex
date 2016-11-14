@@ -264,48 +264,6 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
         public void onClick(View v) {
 
 
-//            String [] test = ["abc","efg"];
-
-
-            //checking date time
-            Date curDate = new Date();
-
-            SimpleDateFormat format = new SimpleDateFormat();
-            String DateToStr = format.format(curDate);
-//            System.out.println("Default pattern: " + DateToStr);
-
-            format = new SimpleDateFormat("dd/MM/yyyy");
-            DateToStr = format.format(curDate);
-            System.out.println("date to store: " + DateToStr);
-
-
-            try {
-                Date strToDate = format.parse(DateToStr);
-                System.out.println("Reconverted String to Date: "+strToDate);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-
-
-
-
-
-
-            //genFlex=15;
-
-//            if (genFlex > 15) {
-//                angleText.setTextColor(0xFFFF0000);
-//                angleText.setText(Integer.toString(genFlex)+"\u00b0");
-//                monitorStatusText.setText(R.string.illegal_monitor_status);
-//                monitorStatusText.setTextColor(0xFFFF0000);
-//            } else {
-//                angleText.setTextColor(0xFF00FF00);
-//                angleText.setText(Integer.toString(genFlex)+"\u00b0");
-//                monitorStatusText.setText(R.string.legal_monitor_status);
-//                monitorStatusText.setTextColor(0xFF00FF00);
-//            }
-
-
             p.setUsername(username);
 
 
@@ -314,8 +272,16 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
 
 
             System.out.println("Legal Bowls: "+ p.getLegalBowls()+"\nIllegal Bowls:" + p.getIllegalBowls());
+
             System.out.println("Angle Values: \n"+ angleValues);
 
+
+            //testing
+
+            angleValues.add(13);
+            angleValues.add(17);
+            angleValues.add(15);
+            angleValues.add(10);
 //            Gson gson = new Gson();
 
 //            converting array into JSON
@@ -329,7 +295,34 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
 
             System.out.println("Arraylist : " + convertedArrayListToString);
 
+
+
+            //checking date time
+            Date curDate = new Date();
+//            SimpleDateFormat format = new SimpleDateFormat();
+            SimpleDateFormat format = new SimpleDateFormat("MMMM yyyy");
+            String DateToStr = format.format(curDate);
+//            DateToStr = "12/11/2016";
+
+            System.out.println("date to store: " + DateToStr);
+
+
+
+
+            try {
+                Date strToDate = format.parse(DateToStr);
+                System.out.println("Reconverted String to Date: "+strToDate);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+
+
+            //testing
+
+
             helper.changeAngleValues(username ,convertedArrayListToString);
+            helper.changeAngleValuesWithDate(username,convertedArrayListToString,DateToStr);
             helper.insertPlayerStats(p);
             helper.changeStatLegalIllegal(p.getUsername(),p.getLegalBowls(),p.getIllegalBowls());
 
