@@ -458,6 +458,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return angleValues;
     }
 
+    public String getAngleValuesWithDate(String username, String date) {
+        db = this.getReadableDatabase();
+        String query = "select angle_values from " + HISTORY_TABLE_NAME +
+                " where username = '"+ username + "' AND session_date = '" + date +"'";
+        Cursor cursor = db.rawQuery(query, null);
+        String uname, angleValues;
+        angleValues = "not found";
+        if (cursor.moveToFirst()) {
+
+            angleValues = cursor.getString(0);
+        }
+        cursor.close();
+        return angleValues;
+    }
+
+
     public String getSessionDates(String username) {
         db = this.getReadableDatabase();
         String query = "select username, session_date from " + HISTORY_TABLE_NAME;
@@ -625,7 +641,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 //        getting current array list from string
         ArrayList<String> currentArrayListOfAngles = new ArrayList<String>();
-
         if(!currentAngleValues.equals("")){
             JSONObject json1 = null;
             try {
@@ -664,6 +679,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+
+
             totalAngleValues = json2.toString();
 
             String query1 = "UPDATE " + ANGLE_TABLE_NAME + "  SET angle_values = '" + totalAngleValues + "' WHERE username = '" + username + "'";
@@ -677,39 +694,74 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db = this.getReadableDatabase();
 
 
-        String totalAngleValues;
+
+        //Converting current angle values string into arraylist
+
+        ArrayList<String> currentArrayListOfAngles1 = new ArrayList<String>();
+        JSONObject json2 = null;
+        try {
+            json2 = new JSONObject(currentAngleValues);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        JSONArray jsonArray2 = json2.optJSONArray("angleArray");
+        ;
+        if (jsonArray2 != null) {
+            int len = jsonArray2.length();
+            for (int i = 0; i < len; i++) {
+                try {
+                    currentArrayListOfAngles1.add(jsonArray2.get(i).toString());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        //now converting array into string
+        JSONObject json4 = new JSONObject();
+        try {
+            json4.put("angleArray", new JSONArray(currentArrayListOfAngles1));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        String currentAngles= json4.toString();
+
         //db = this.getReadableDatabase();
 
 
 
 //        String query = "select username, angle_values, session_date from " + HISTORY_TABLE_NAME;
 
-        String query = "select  angle_values from " + HISTORY_TABLE_NAME + "where session_date =" + sessionDate
-                +"AND username =" + username;
+        String query = "select  angle_values from " + HISTORY_TABLE_NAME + " where session_date = '" + sessionDate
+                +"' AND username = '" + username +"'";
         Cursor cursor = db.rawQuery(query, null);
         String  prevAngleValues = "" ;
 
         String sessionDateFromDb = "";
 //        legalBowls = "0";
 //        illegalBowls = "0";
+
+
+
         if (cursor.moveToFirst()) {
             prevAngleValues = cursor.getString(0);
         }
 
         if(prevAngleValues.equals("")){
             insertPlayerAngleValuesWithDate(username,currentAngleValues,sessionDate);
+//            insert player angle values
+
+//            INSERT INTO TABLE_NAME
+//            String insertQuery = "INSERT INTO "+HISTORY_TABLE_NAME+" ( username,angle_values,session_date) " +
+//                    "VALUES ( '" +username +"','"+currentAngles +"','" + sessionDate+"' );" ;
+//            db.rawQuery(insertQuery,null);
         }
         else{
-            totalAngleValues = prevAngleValues + currentAngleValues;
+            String totalAngleValues;
+//            totalAngleValues = prevAngleValues + currentAngleValues;
+            ArrayList<String> previousArrayListOfAngles = new ArrayList<String>();
 
-        }
-        cursor.close();
-
-
-
-
-        ArrayList<String> previousArrayListOfAngles = new ArrayList<String>();
-        if(!prevAngleValues.equals("")) {
 //        getting previous array list from string
             JSONObject json = null;
             try {
@@ -730,56 +782,69 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     }
                 }
             }
-        }
+
 
 //        getting current array list from string
-        ArrayList<String> currentArrayListOfAngles = new ArrayList<String>();
+            ArrayList<String> currentArrayListOfAngles = new ArrayList<String>();
 
-        if(!currentAngleValues.equals("")){
-            JSONObject json1 = null;
-            try {
-                json1 = new JSONObject(currentAngleValues);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+            if(!currentAngleValues.equals("")){
+                JSONObject json1 = null;
+                try {
+                    json1 = new JSONObject(currentAngleValues);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
 
-            JSONArray jsonArray1 = json1.optJSONArray("angleArray");
-            ;
-            if (jsonArray1 != null) {
-                int len = jsonArray1.length();
-                for (int i = 0; i < len; i++) {
-                    try {
-                        currentArrayListOfAngles.add(jsonArray1.get(i).toString());
-                    } catch (JSONException e) {
-                        e.printStackTrace();
+                JSONArray jsonArray1 = json1.optJSONArray("angleArray");
+                ;
+                if (jsonArray1 != null) {
+                    int len = jsonArray1.length();
+                    for (int i = 0; i < len; i++) {
+                        try {
+                            currentArrayListOfAngles.add(jsonArray1.get(i).toString());
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
             }
-        }
 
 
-        //Joining the two lists
+            //Joining the two lists
 
-        if(!prevAngleValues.equals("") || !currentAngleValues.equals("")) {
-            List<String> arrayListOfTotalValues = new ArrayList<String>(previousArrayListOfAngles);
-            arrayListOfTotalValues.addAll(currentArrayListOfAngles);
+            if(!prevAngleValues.equals("") || !currentAngleValues.equals("")) {
+                List<String> arrayListOfTotalValues = new ArrayList<String>(previousArrayListOfAngles);
+                arrayListOfTotalValues.addAll(currentArrayListOfAngles);
 
 
-            //            converting array into JSON
+                //            converting array into JSON
 
-            JSONObject json2 = new JSONObject();
-            try {
-                json2.put("angleArray", new JSONArray(arrayListOfTotalValues));
-            } catch (JSONException e) {
-                e.printStackTrace();
+                JSONObject json3 = new JSONObject();
+                try {
+                    json3.put("angleArray", new JSONArray(arrayListOfTotalValues));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                totalAngleValues = json3.toString();
+
+                String query1 = "UPDATE " + HISTORY_TABLE_NAME + "  SET angle_values = '" + totalAngleValues + "' WHERE username = '" + username + "'" +
+                        " AND session_date = '" + sessionDate +"'";
+                db.execSQL(query1);
             }
-            totalAngleValues = json2.toString();
 
-            String query1 = "UPDATE " + ANGLE_TABLE_NAME + "  SET angle_values = '" + totalAngleValues + "' WHERE username = '" + username + "'";
-            db.execSQL(query1);
+
+
         }
+        cursor.close();
+
+
+
+
+
 
     }
+
+
 
 
 }
