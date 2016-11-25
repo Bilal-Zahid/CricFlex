@@ -1,0 +1,7 @@
+#Fri Nov 25 17:00:07 PKT 2016
+base.0=C\:\\CricFlex\\App\\CricFlex\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_eb02c6215e08513e72d52eb9100c312bc771c9b3
+renamed.1=classes2.dex
+renamed.0=classes.dex
+file.1=C\:\\CricFlex\\App\\CricFlex\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_954c54b185bf9236310cc50fc17a67aa98cd2c19\\classes.dex
+base.1=C\:\\CricFlex\\App\\CricFlex\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_954c54b185bf9236310cc50fc17a67aa98cd2c19
+file.0=C\:\\CricFlex\\App\\CricFlex\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_eb02c6215e08513e72d52eb9100c312bc771c9b3\\classes.dex

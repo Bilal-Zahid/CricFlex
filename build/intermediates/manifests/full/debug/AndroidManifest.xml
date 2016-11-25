@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.cricflex"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="19"
+        android:targetSdkVersion="19" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-feature
+        android:name="android.hardware.camera.front"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.bluetooth_le"
+        android:required="true" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/cricflexlogosmall"
+        android:label="@string/app_name"
+        android:logo="@mipmap/cricflexlogosmall"
+        android:theme="@style/CustomActivityTheme" >
+        <activity android:name="com.example.cricflex.ActivitySplash" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.cricflex.ActivityCalibrate"
+            android:label="CricFlex"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.cricflex.ActivitySetupProfile"
+            android:label="CricFlex"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.cricflex.ActivityMonitor"
+            android:label="CricFlex"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.cricflex.ActivityWelcome"
+            android:label="CricFlex"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.cricflex.ActivityLogin"
+            android:label="CricFlex"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.cricflex.ActivityMain"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/MainActivityTheme" />
+        <activity
+            android:name="com.example.cricflex.ActivityRegister"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.cricflex.ActivityMonitor2"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.cricflex.ActivityHelp"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.cricflex.ActivityGraph"
+            android:label="Real Time Graph" />
+        <activity
+            android:name="com.example.cricflex.ActivityAbout"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.cricflex.ActivityProfile"
+            android:label="@string/profile"
+            android:screenOrientation="portrait" />
+
+        <service android:name="com.example.cricflex.RFDService" />
+
+        <activity android:name="com.example.cricflex.ActivityGraph3" />
+        <activity android:name="com.example.cricflex.ActivityGraph4" />
+        <activity android:name="com.example.cricflex.ActivityGraph5" />
+        <activity android:name="com.example.cricflex.ActivityMonitor3" />
+        <activity android:name="com.example.cricflex.ActivitySessionStats" />
+        <activity android:name="com.example.cricflex.test_asawal" />
+        <activity android:name="com.example.cricflex.ActivityMetrics" />
+    </application>
+
+</manifest>
