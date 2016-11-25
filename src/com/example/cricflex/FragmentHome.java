@@ -24,8 +24,8 @@ public class FragmentHome extends Fragment {
     private Button startButton;
     private TextView totalBalls;
     private TextView averageAngle;
-    private TextView lastBowlAngle;
-    private TextView longestStreak;
+//    private TextView lastBowlAngle;
+//    private TextView longestStreak;
     // For Displaying Player Stats
 
     private String username;
@@ -162,7 +162,7 @@ public class FragmentHome extends Fragment {
             successRate.setProgress(successRateValue);
         }
         else {
-            longestStreak.setText("0");
+//            longestStreak.setText("0");
             averageAngle.setText("0" + "\u00b0");
             //lastBowlAngle.setText("0" + "\u00b0");
             successRate.setProgress(0);

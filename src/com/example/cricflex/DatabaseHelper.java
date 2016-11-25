@@ -56,6 +56,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_LONGEST_STREAK = "longest_streak";
     private static final String COLUMN_LAST_BOWL_ANGLE = "last_bowl_angle";
 
+    // For other stats
+
 
     //For Angles
     private static final String COLUMN_ANGLE_VALUES = "angle_values";

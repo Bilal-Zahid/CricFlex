@@ -101,6 +101,9 @@
 
         <!--body-->
 
+
+
+
         <LinearLayout
             android:orientation="horizontal"
             android:id="@+id/body"
@@ -116,19 +119,59 @@
             android:background="@drawable/capsule_background">
 
 
-            <Chronometer
+            <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/monitor_timer"
-                android:layout_marginEnd="5dp"
-                android:layout_gravity="center"
-                android:gravity="center"
+                android:layout_height="wrap_content">
 
-                android:textAlignment="center"
-                android:textSize="@dimen/chronometer_text"
-                android:textColor="@color/text_dark"
-                android:layout_weight="1"
-                />
+
+
+
+                <!--<ImageView-->
+                    <!--android:id="@+id/imgFirst"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:src="@drawable/ic_launcher"/>-->
+
+                <!--<ImageView-->
+                    <!--android:id="@+id/imgSecond"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_gravity="bottom|center"-->
+                    <!--android:src="@drawable/ic_launcher"/>-->
+
+                <Chronometer
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/monitor_timer"
+                    android:layout_marginEnd="5dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+
+                    android:textAlignment="center"
+                    android:textSize="@dimen/chronometer_text"
+                    android:textColor="@color/text_dark"
+                    android:layout_weight="1"
+                    />
+
+                <com.example.cricflex.PlayGifView
+                    android:id="@+id/loading_gif"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerCrop"
+                    android:layout_gravity="bottom|center">
+                    <!--android:layout_weight="2">-->
+
+                    <requestFocus></requestFocus>
+
+                </com.example.cricflex.PlayGifView>
+
+            </FrameLayout>
+
+
+
+
+
+
 
             <ImageButton
                 android:layout_width="50dp"
@@ -258,8 +301,9 @@
             android:layout_marginLeft="0dp"
             android:layout_marginRight="0dp"
             android:layout_gravity="bottom"
-            android:gravity="center"
-            android:layout_weight="1">
+            android:gravity="center">
+            <!--android:layout_weight="1"-->
+
 
 
             <Button
@@ -295,11 +339,7 @@
                 />
 
 
-
         </LinearLayout>
-
-
-
 
 
     </LinearLayout>
