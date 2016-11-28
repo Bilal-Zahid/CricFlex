@@ -4,12 +4,12 @@
         "source": "C:\\CricFlex\\App\\CricFlex\\res\\drawable-ldpi\\custom_progress_bar2.xml"
     },
     {
-        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\divider_right.xml",
-        "source": "C:\\CricFlex\\App\\CricFlex\\res\\drawable-ldpi\\divider_right.xml"
-    },
-    {
         "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\custom_progress_dialog_animation.xml",
         "source": "C:\\CricFlex\\App\\CricFlex\\res\\drawable-ldpi\\custom_progress_dialog_animation.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\divider_right.xml",
+        "source": "C:\\CricFlex\\App\\CricFlex\\res\\drawable-ldpi\\divider_right.xml"
     },
     {
         "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\edittext_default_bg.xml",
@@ -94,6 +94,10 @@
     {
         "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\button_text_color.xml",
         "source": "C:\\CricFlex\\App\\CricFlex\\res\\drawable-ldpi\\button_text_color.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\custom_progress_dialog_animation1.xml",
+        "source": "C:\\CricFlex\\App\\CricFlex\\res\\drawable-ldpi\\custom_progress_dialog_animation1.xml"
     },
     {
         "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\button4_bg.xml",

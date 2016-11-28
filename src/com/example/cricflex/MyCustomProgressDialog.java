@@ -32,7 +32,7 @@ public class MyCustomProgressDialog extends ProgressDialog {
     setContentView(R.layout.view_custom_progress_dialog);
 
     ImageView la = (ImageView) findViewById(R.id.animation);
-    la.setBackgroundResource(R.drawable.custom_progress_dialog_animation);
+    la.setBackgroundResource(R.drawable.custom_progress_dialog_animation1);
     animation = (AnimationDrawable) la.getBackground();
   }
 

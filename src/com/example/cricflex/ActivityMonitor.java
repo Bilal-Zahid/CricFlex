@@ -430,8 +430,26 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
             pdCanceller.postDelayed(progressRunnable, 3000);
             */
 
-            ProgressDialog dialog = new MyCustomProgressDialog(ActivityMonitor.this);
+            final ProgressDialog dialog = new MyCustomProgressDialog(ActivityMonitor.this);
+
+            dialog.setCancelable(false);
             dialog.show();
+
+
+
+            Runnable progressRunnable = new Runnable() {
+
+                @Override
+                public void run() {
+                    dialog.cancel();
+                }
+            };
+
+            Handler pdCanceller = new Handler();
+            pdCanceller.postDelayed(progressRunnable, 1000);
+
+
+
 //            mProgressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
 
 //            ProgressDialog progress = ProgressDialog.show(ActivityMonitor.this, null, null, true);
