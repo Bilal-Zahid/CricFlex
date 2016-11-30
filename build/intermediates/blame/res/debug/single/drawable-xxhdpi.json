@@ -20,16 +20,16 @@
         "source": "C:\\CricFlex\\App\\CricFlex\\res\\drawable-xxhdpi\\actionbarbkd.png"
     },
     {
-        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\bkd8.png",
-        "source": "C:\\CricFlex\\App\\CricFlex\\res\\drawable-xxhdpi\\bkd8.png"
+        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\ball.png",
+        "source": "C:\\CricFlex\\App\\CricFlex\\res\\drawable-xxhdpi\\ball.png"
     },
     {
         "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\password1.png",
         "source": "C:\\CricFlex\\App\\CricFlex\\res\\drawable-xxhdpi\\password1.png"
     },
     {
-        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\ball.png",
-        "source": "C:\\CricFlex\\App\\CricFlex\\res\\drawable-xxhdpi\\ball.png"
+        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\bkd8.png",
+        "source": "C:\\CricFlex\\App\\CricFlex\\res\\drawable-xxhdpi\\bkd8.png"
     },
     {
         "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\bkd100.png",
@@ -52,12 +52,12 @@
         "source": "C:\\CricFlex\\App\\CricFlex\\res\\drawable-xxhdpi\\cricflexlogolarge_stroke.png"
     },
     {
-        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\aboutscreen.png",
-        "source": "C:\\CricFlex\\App\\CricFlex\\res\\drawable-xxhdpi\\aboutscreen.png"
-    },
-    {
         "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\bkd2.png",
         "source": "C:\\CricFlex\\App\\CricFlex\\res\\drawable-xxhdpi\\bkd2.png"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\aboutscreen.png",
+        "source": "C:\\CricFlex\\App\\CricFlex\\res\\drawable-xxhdpi\\aboutscreen.png"
     },
     {
         "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\bkd21.png",

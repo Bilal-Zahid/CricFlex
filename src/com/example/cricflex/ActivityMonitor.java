@@ -446,7 +446,7 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
             };
 
             Handler pdCanceller = new Handler();
-            pdCanceller.postDelayed(progressRunnable, 1000);
+            pdCanceller.postDelayed(progressRunnable, 2048);
 
 
 
