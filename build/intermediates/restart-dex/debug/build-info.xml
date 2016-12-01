@@ -2,32 +2,32 @@
 <instant-run
     abi="armeabi-v7a,armeabi"
     api-level="23"
-    density="hdpi"
+    density="xxhdpi"
     format="8"
     plugin-version="2.2.2"
-    timestamp="61425675962729"
+    timestamp="128613016890381"
     token="3252843610189448626"
     verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
-        duration="498" />
+        duration="1763" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="14" />
+        duration="1480" />
     <task
         name="verifier"
-        duration="2" />
+        duration="393" />
 
     <artifact
         location="C:\CricFlex\App\CricFlex\build\outputs\apk\CricFlex-debug.apk"
         type="MAIN" />
 
     <build
-        timestamp="61425675962729"
+        timestamp="128613016890381"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="C:\CricFlex\App\CricFlex\build\outputs\apk\CricFlex-debug.apk"

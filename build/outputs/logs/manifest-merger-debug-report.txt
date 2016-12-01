@@ -224,3 +224,7 @@ activity#com.example.cricflex.ActivityMetrics
 ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:95:9-52
 	android:name
 		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:95:19-50
+activity#com.example.cricflex.ActivityMetrics1
+ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:96:9-53
+	android:name
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:96:19-51

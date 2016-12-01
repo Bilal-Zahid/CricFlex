@@ -3366,61 +3366,62 @@ containing a value of this type.
         public static final int activity_login=0x7f040028;
         public static final int activity_main=0x7f040029;
         public static final int activity_metrics=0x7f04002a;
-        public static final int activity_monitor=0x7f04002b;
-        public static final int activity_monitor3=0x7f04002c;
-        public static final int activity_profile=0x7f04002d;
-        public static final int activity_profile_setup1=0x7f04002e;
-        public static final int activity_profile_setup2=0x7f04002f;
-        public static final int activity_register=0x7f040030;
-        public static final int activity_session_stats=0x7f040031;
-        public static final int activity_splash=0x7f040032;
-        public static final int activity_welcome=0x7f040033;
-        public static final int calendar_view=0x7f040034;
-        public static final int design_bottom_sheet_dialog=0x7f040035;
-        public static final int design_layout_snackbar=0x7f040036;
-        public static final int design_layout_snackbar_include=0x7f040037;
-        public static final int design_layout_tab_icon=0x7f040038;
-        public static final int design_layout_tab_text=0x7f040039;
-        public static final int design_menu_item_action_area=0x7f04003a;
-        public static final int design_navigation_item=0x7f04003b;
-        public static final int design_navigation_item_header=0x7f04003c;
-        public static final int design_navigation_item_separator=0x7f04003d;
-        public static final int design_navigation_item_subheader=0x7f04003e;
-        public static final int design_navigation_menu=0x7f04003f;
-        public static final int design_navigation_menu_item=0x7f040040;
-        public static final int design_text_input_password_icon=0x7f040041;
-        public static final int drawer_list_item=0x7f040042;
-        public static final int fragment_about=0x7f040043;
-        public static final int fragment_awards=0x7f040044;
-        public static final int fragment_friends=0x7f040045;
-        public static final int fragment_help=0x7f040046;
-        public static final int fragment_history=0x7f040047;
-        public static final int fragment_home=0x7f040048;
-        public static final int fragment_profile=0x7f040049;
-        public static final int fragment_training=0x7f04004a;
-        public static final int notification_media_action=0x7f04004b;
-        public static final int notification_media_cancel_action=0x7f04004c;
-        public static final int notification_template_big_media=0x7f04004d;
-        public static final int notification_template_big_media_narrow=0x7f04004e;
-        public static final int notification_template_lines=0x7f04004f;
-        public static final int notification_template_media=0x7f040050;
-        public static final int notification_template_part_chronometer=0x7f040051;
-        public static final int notification_template_part_time=0x7f040052;
-        public static final int screen_gridcell=0x7f040053;
-        public static final int select_dialog_item_material=0x7f040054;
-        public static final int select_dialog_multichoice_material=0x7f040055;
-        public static final int select_dialog_singlechoice_material=0x7f040056;
-        public static final int spiner_item=0x7f040057;
-        public static final int support_simple_spinner_dropdown_item=0x7f040058;
-        public static final int tab_fragment_1=0x7f040059;
-        public static final int tab_fragment_2=0x7f04005a;
-        public static final int test=0x7f04005b;
-        public static final int test_asawal=0x7f04005c;
-        public static final int view_custom_progress_dialog=0x7f04005d;
-        public static final int welcome_slide1=0x7f04005e;
-        public static final int welcome_slide2=0x7f04005f;
-        public static final int welcome_slide3=0x7f040060;
-        public static final int welcome_slide4=0x7f040061;
+        public static final int activity_metrics1=0x7f04002b;
+        public static final int activity_monitor=0x7f04002c;
+        public static final int activity_monitor3=0x7f04002d;
+        public static final int activity_profile=0x7f04002e;
+        public static final int activity_profile_setup1=0x7f04002f;
+        public static final int activity_profile_setup2=0x7f040030;
+        public static final int activity_register=0x7f040031;
+        public static final int activity_session_stats=0x7f040032;
+        public static final int activity_splash=0x7f040033;
+        public static final int activity_welcome=0x7f040034;
+        public static final int calendar_view=0x7f040035;
+        public static final int design_bottom_sheet_dialog=0x7f040036;
+        public static final int design_layout_snackbar=0x7f040037;
+        public static final int design_layout_snackbar_include=0x7f040038;
+        public static final int design_layout_tab_icon=0x7f040039;
+        public static final int design_layout_tab_text=0x7f04003a;
+        public static final int design_menu_item_action_area=0x7f04003b;
+        public static final int design_navigation_item=0x7f04003c;
+        public static final int design_navigation_item_header=0x7f04003d;
+        public static final int design_navigation_item_separator=0x7f04003e;
+        public static final int design_navigation_item_subheader=0x7f04003f;
+        public static final int design_navigation_menu=0x7f040040;
+        public static final int design_navigation_menu_item=0x7f040041;
+        public static final int design_text_input_password_icon=0x7f040042;
+        public static final int drawer_list_item=0x7f040043;
+        public static final int fragment_about=0x7f040044;
+        public static final int fragment_awards=0x7f040045;
+        public static final int fragment_friends=0x7f040046;
+        public static final int fragment_help=0x7f040047;
+        public static final int fragment_history=0x7f040048;
+        public static final int fragment_home=0x7f040049;
+        public static final int fragment_profile=0x7f04004a;
+        public static final int fragment_training=0x7f04004b;
+        public static final int notification_media_action=0x7f04004c;
+        public static final int notification_media_cancel_action=0x7f04004d;
+        public static final int notification_template_big_media=0x7f04004e;
+        public static final int notification_template_big_media_narrow=0x7f04004f;
+        public static final int notification_template_lines=0x7f040050;
+        public static final int notification_template_media=0x7f040051;
+        public static final int notification_template_part_chronometer=0x7f040052;
+        public static final int notification_template_part_time=0x7f040053;
+        public static final int screen_gridcell=0x7f040054;
+        public static final int select_dialog_item_material=0x7f040055;
+        public static final int select_dialog_multichoice_material=0x7f040056;
+        public static final int select_dialog_singlechoice_material=0x7f040057;
+        public static final int spiner_item=0x7f040058;
+        public static final int support_simple_spinner_dropdown_item=0x7f040059;
+        public static final int tab_fragment_1=0x7f04005a;
+        public static final int tab_fragment_2=0x7f04005b;
+        public static final int test=0x7f04005c;
+        public static final int test_asawal=0x7f04005d;
+        public static final int view_custom_progress_dialog=0x7f04005e;
+        public static final int welcome_slide1=0x7f04005f;
+        public static final int welcome_slide2=0x7f040060;
+        public static final int welcome_slide3=0x7f040061;
+        public static final int welcome_slide4=0x7f040062;
     }
     public static final class menu {
         public static final int main=0x7f0e0000;
@@ -3512,6 +3513,11 @@ containing a value of this type.
         public static final int Animation_Design_BottomSheetDialog=0x7f080091;
         /**  API 11 theme customizations can go here. 
  API 14 theme customizations can go here. 
+
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        
          */
         public static final int AppBaseTheme=0x7f08000c;
         public static final int AppTheme=0x7f080092;
@@ -3669,7 +3675,11 @@ containing a value of this type.
         public static final int Base_Widget_AppCompat_Toolbar_Button_Navigation=0x7f08007f;
         public static final int Base_Widget_Design_AppBarLayout=0x7f0800c5;
         public static final int Base_Widget_Design_TabLayout=0x7f0800c6;
+        /** <item name="textColorPrimary">@color/text_primary</item>
+         */
         public static final int CustomActivityTheme=0x7f0800c7;
+        /** <item name="textColorPrimary">@color/text_primary</item>
+         */
         public static final int MainActivityTheme=0x7f0800c8;
         public static final int MyActionButtonOverflow=0x7f0800c9;
         public static final int MyTheme=0x7f0800ca;

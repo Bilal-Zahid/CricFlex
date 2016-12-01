@@ -298,13 +298,13 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
 
             //testing
 
-            angleValues.add(11);
-            angleValues.add(13);
-            angleValues.add(12);
-            angleValues.add(15);
-            angleValues.add(16);
-            angleValues.add(18);
-            angleValues.add(12);
+//            angleValues.add(11);
+//            angleValues.add(13);
+//            angleValues.add(12);
+//            angleValues.add(15);
+//            angleValues.add(16);
+//            angleValues.add(18);
+//            angleValues.add(12);
 
 //            angleValues.add(15);
 
@@ -772,17 +772,17 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
                 Log.e(TAG, "force_value value= "+force_value);
                 metric_check=2;
             }
+//            else if(metric_check==2)
+//            {
+//
+//                float temp1 = incoming;
+//
+//                armSpeed_value=Float.toString(temp1*3.6f);      // 1 m/s = 3.6 kph
+//                //armSpeed_value=Integer.toString(incoming*4);
+//                Log.e(TAG, "armSpeed_value value= "+armSpeed_value);
+//                metric_check=3;
+//            }
             else if(metric_check==2)
-            {
-
-                float temp1 = incoming;
-
-                armSpeed_value=Float.toString(temp1*3.6f);      // 1 m/s = 3.6 kph
-                //armSpeed_value=Integer.toString(incoming*4);
-                Log.e(TAG, "armSpeed_value value= "+armSpeed_value);
-                metric_check=3;
-            }
-            else if(metric_check==3)
             {
                 float temp=incoming;
                 actionTime_value=Float.toString(temp/1000f);  //millisecond to second
@@ -790,9 +790,9 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
 
                 //actionTime_value=Integer.toString(incoming/1000);
                 Log.e(TAG, "actionTime_value value= "+actionTime_value);
-                metric_check=4;
+                metric_check=3;
             }
-            else if(metric_check==4)
+            else if(metric_check==3)
             {
                 armTwist_value=Integer.toString(incoming);
                 metric_check=0;
@@ -800,10 +800,10 @@ public class ActivityMonitor extends Activity implements BluetoothAdapter.LeScan
 
                 Log.e(TAG, "armtwist value= "+armAngle_value);
 
-                Intent intent = new Intent(this, ActivityMetrics.class);
+                Intent intent = new Intent(this, ActivityMetrics1.class);
                 Bundle extras = new Bundle();
                 extras.putString("armAngle", armAngle_value);
-                extras.putString("armSpeed", armSpeed_value);
+//                extras.putString("armSpeed", armSpeed_value);
                 extras.putString("actionTime", actionTime_value);
                 extras.putString("armTwist", armTwist_value);
                 extras.putString("force", force_value);

@@ -93,7 +93,7 @@
         <activity android:name=".ActivitySessionStats"/>
         <activity android:name=".test_asawal"/>
         <activity android:name=".ActivityMetrics"/>
-
+        <activity android:name=".ActivityMetrics1"/>
 
     </application>
 

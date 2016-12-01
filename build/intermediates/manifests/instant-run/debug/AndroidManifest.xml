@@ -93,6 +93,7 @@
         <activity android:name="com.example.cricflex.ActivitySessionStats" />
         <activity android:name="com.example.cricflex.test_asawal" />
         <activity android:name="com.example.cricflex.ActivityMetrics" />
+        <activity android:name="com.example.cricflex.ActivityMetrics1" />
     </application>
 
 </manifest>
