@@ -1,44 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <instant-run
-    abi="arm64-v8a,armeabi-v7a,armeabi"
-    api-level="25"
-    density="420dpi"
+    abi="armeabi-v7a,armeabi"
+    api-level="23"
+    density="hdpi"
     format="8"
-    plugin-version="2.2.2"
-    timestamp="449053649985167"
-    token="3252843610189448626"
-    verifier="COLD_SWAP_REQUESTED" >
+    plugin-version="2.2.3"
+    timestamp="421372664270"
+    token="7151109752444609980"
+    verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
-        duration="955" />
+        duration="8266" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="107" />
+        duration="5469" />
     <task
         name="verifier"
-        duration="15" />
+        duration="2297" />
 
     <artifact
-        location="C:\CricFlex\App\CricFlex\build\intermediates\transforms\dex\debug\folders\1000\5\slice_5\classes.dex"
-        type="DEX" />
+        location="C:\Users\abcd\AndroidStudioProjects\CricFlex\build\outputs\apk\CricFlex-debug.apk"
+        type="MAIN" />
 
     <build
-        timestamp="448584018343328"
+        timestamp="421372664270"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
-            location="C:\CricFlex\App\CricFlex\build\outputs\apk\CricFlex-debug.apk"
+            location="C:\Users\abcd\AndroidStudioProjects\CricFlex\build\outputs\apk\CricFlex-debug.apk"
             type="MAIN" />
-    </build>
-    <build
-        timestamp="449053649985167"
-        verifier="COLD_SWAP_REQUESTED" >
-        <artifact
-            location="C:\CricFlex\App\CricFlex\build\intermediates\transforms\dex\debug\folders\1000\5\slice_5\classes.dex"
-            type="DEX" />
     </build>
 
 </instant-run>

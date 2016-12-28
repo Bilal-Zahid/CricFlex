@@ -1,7 +1,7 @@
-#Wed Dec 28 13:17:46 PKT 2016
-base.0=C\:\\CricFlex\\App\\CricFlex\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_eb02c6215e08513e72d52eb9100c312bc771c9b3
-renamed.1=classes2.dex
-renamed.0=classes.dex
-file.1=C\:\\CricFlex\\App\\CricFlex\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_954c54b185bf9236310cc50fc17a67aa98cd2c19\\classes.dex
-base.1=C\:\\CricFlex\\App\\CricFlex\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_954c54b185bf9236310cc50fc17a67aa98cd2c19
-file.0=C\:\\CricFlex\\App\\CricFlex\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_eb02c6215e08513e72d52eb9100c312bc771c9b3\\classes.dex
+#Wed Dec 28 18:00:31 PKT 2016
+base.0=C\:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_08d85811a4ddb239a38b53d4908632517ed37114
+renamed.1=classes.dex
+renamed.0=classes2.dex
+file.1=C\:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_351bfd27cb344f6fd9eaa0432ef610abce38b3e6\\classes.dex
+base.1=C\:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_351bfd27cb344f6fd9eaa0432ef610abce38b3e6
+file.0=C\:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_08d85811a4ddb239a38b53d4908632517ed37114\\classes.dex
