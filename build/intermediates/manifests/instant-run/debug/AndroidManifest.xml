@@ -91,6 +91,7 @@
         <activity android:name="com.example.cricflex.ActivityGraph5" />
         <activity android:name="com.example.cricflex.ActivityMonitor3" />
         <activity android:name="com.example.cricflex.ActivitySessionStats" />
+        <activity android:name="com.example.cricflex.ActivitySessionStats2" />
         <activity android:name="com.example.cricflex.test_asawal" />
         <activity android:name="com.example.cricflex.ActivityMetrics" />
         <activity android:name="com.example.cricflex.ActivityMetrics1" />

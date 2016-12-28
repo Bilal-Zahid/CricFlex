@@ -33,6 +33,9 @@ public class ActivitySessionStats extends Activity {
 
     private Button endSessionButton;
     ArrayList<Integer> angleValues = new ArrayList<Integer>();
+    ArrayList<Integer> forceValues = new ArrayList<Integer>();
+    ArrayList<Integer> armTwistValues = new ArrayList<Integer>();
+    ArrayList<Integer> actionTimeValues = new ArrayList<Integer>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +48,9 @@ public class ActivitySessionStats extends Activity {
         final Bundle extraBundle = intent.getExtras();
 
         angleValues = extraBundle.getIntegerArrayList("angleValues");
+        forceValues = extraBundle.getIntegerArrayList("forceValues");
+        armTwistValues = extraBundle.getIntegerArrayList("armTwistValues");
+        actionTimeValues = extraBundle.getIntegerArrayList("actionTimeValues");
 
 //        System.out.println("Values of angles in session stats: "+ angleValues);
 

@@ -1,5 +1,9 @@
 [
     {
+        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout\\activity_session_stats2.xml",
+        "source": "C:\\CricFlex\\App\\CricFlex\\res\\layout\\activity_session_stats2.xml"
+    },
+    {
         "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout\\notification_media_cancel_action.xml",
         "source": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\layout\\notification_media_cancel_action.xml"
     },
@@ -56,6 +60,10 @@
         "source": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\exploded-aar\\com.android.support\\design\\24.2.1\\res\\layout\\design_navigation_menu_item.xml"
     },
     {
+        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout\\activity_monitor2.xml",
+        "source": "C:\\CricFlex\\App\\CricFlex\\res\\layout\\activity_monitor2.xml"
+    },
+    {
         "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_up_container.xml",
         "source": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\layout\\abc_action_bar_up_container.xml"
     },
@@ -78,10 +86,6 @@
     {
         "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout\\activity_forgot_password1.xml",
         "source": "C:\\CricFlex\\App\\CricFlex\\res\\layout\\activity_forgot_password1.xml"
-    },
-    {
-        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout\\test_asawal.xml",
-        "source": "C:\\CricFlex\\App\\CricFlex\\res\\layout\\test_asawal.xml"
     },
     {
         "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media.xml",

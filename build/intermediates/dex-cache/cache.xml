@@ -12,12 +12,57 @@
     </item>
     <item
         is-multidex="true"
+        jar="C:\Users\bilal\.gradle\caches\modules-2\files-2.1\com.github.PhilJay\MPAndroidChart\v3.0.0-beta1\54d65d51b5ebec588a19b2384efb6395b5bf5b18\MPAndroidChart-v3.0.0-beta1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="54d65d51b5ebec588a19b2384efb6395b5bf5b18">
+        <dex dex="C:\CricFlex\App\CricFlex\build\intermediates\transforms\dex\debug\folders\1000\10\MPAndroidChart-v3.0.0-beta1_9b790d4b621ad56fb3f745fc6ec7a0500f57e8e2\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\CricFlex\App\CricFlex\libs\android-support-v4.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="a13f8fe2c278737e2f0b6fcf00f6b2ae4034aacf">
+        <dex dex="C:\CricFlex\App\CricFlex\build\intermediates\transforms\dex\debug\folders\1000\2\android-support-v4_f1d434feb4ddea69c45d5b963c9ecb7a6f9c2f2a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\CricFlex\App\CricFlex\build\intermediates\exploded-aar\com.android.support\support-v4\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\CricFlex\App\CricFlex\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-24.2.1_225f15947b8dce02c5cb5006cf308067dd70b88e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\CricFlex\App\CricFlex\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
+        <dex dex="C:\CricFlex\App\CricFlex\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_8ac4b6e795482d6bad1459c2d41575c5200d8290\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="C:\CricFlex\App\CricFlex\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.2.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="23.0.2"
         sha1="d5c731fc64c03dfe04d51134955b483551c35849">
         <dex dex="C:\CricFlex\App\CricFlex\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-24.2.1_b5f3498dddc5bc64f797c7585d5906e7fa4cfc31\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\CricFlex\App\CricFlex\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
+        <dex dex="C:\CricFlex\App\CricFlex\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-24.2.1_24c7ab4d36cd9610f362d4ba518f407b413c7b94\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -57,6 +102,24 @@
     </item>
     <item
         is-multidex="true"
+        jar="C:\CricFlex\App\CricFlex\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="7521486d9bfd2cd9e756e0cf75ed7d97f2ce2d3b">
+        <dex dex="C:\CricFlex\App\CricFlex\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-24.2.1_6532d82121b40fee583b79433a4cc4d4af937567\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\CricFlex\App\CricFlex\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
+        <dex dex="C:\CricFlex\App\CricFlex\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-fragment-24.2.1_f51cd0c7c63fe0142dfadf66337228080c147618\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="C:\CricFlex\App\CricFlex\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
@@ -70,8 +133,17 @@
         jumboMode="true"
         optimize="true"
         revision="23.0.2"
-        sha1="2c4a90a8cb8a4fa5e517246f17f9f107ba075c5f">
+        sha1="56f26b955010bbe5448e84a78ae9d47d17bb513c">
         <dex dex="C:\CricFlex\App\CricFlex\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_eb02c6215e08513e72d52eb9100c312bc771c9b3\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\CricFlex\App\CricFlex\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="aa33aba2cc59fec967102e24c02e5c8ce7cf3733">
+        <dex dex="C:\CricFlex\App\CricFlex\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_954c54b185bf9236310cc50fc17a67aa98cd2c19\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -90,6 +162,15 @@
         revision="23.0.2"
         sha1="867dad63c33388ff8c7644b236579355036d075f">
         <dex dex="C:\CricFlex\App\CricFlex\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_8c82cddfd5e61fb2cf8099efae84a435204f7531\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\CricFlex\App\CricFlex\libs\GraphView-4.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="8bd182a66f13dedad362bfbf992be96de2be5969">
+        <dex dex="C:\CricFlex\App\CricFlex\build\intermediates\transforms\dex\debug\folders\1000\2\GraphView-4.0.1_a78754ba5aa0c9f57876eafb6928b4045fdb3fa4\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -117,87 +198,6 @@
         revision="23.0.2"
         sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
         <dex dex="C:\CricFlex\App\CricFlex\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-media-compat-24.2.1_caeb5b9718f6a4cbd63cdb54fc15912e3199997f\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\bilal\.gradle\caches\modules-2\files-2.1\com.github.PhilJay\MPAndroidChart\v3.0.0-beta1\54d65d51b5ebec588a19b2384efb6395b5bf5b18\MPAndroidChart-v3.0.0-beta1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="54d65d51b5ebec588a19b2384efb6395b5bf5b18">
-        <dex dex="C:\CricFlex\App\CricFlex\build\intermediates\transforms\dex\debug\folders\1000\10\MPAndroidChart-v3.0.0-beta1_9b790d4b621ad56fb3f745fc6ec7a0500f57e8e2\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\CricFlex\App\CricFlex\libs\android-support-v4.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="a13f8fe2c278737e2f0b6fcf00f6b2ae4034aacf">
-        <dex dex="C:\CricFlex\App\CricFlex\build\intermediates\transforms\dex\debug\folders\1000\2\android-support-v4_f1d434feb4ddea69c45d5b963c9ecb7a6f9c2f2a\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\CricFlex\App\CricFlex\build\intermediates\exploded-aar\com.android.support\support-v4\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="C:\CricFlex\App\CricFlex\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-24.2.1_225f15947b8dce02c5cb5006cf308067dd70b88e\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\CricFlex\App\CricFlex\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
-        <dex dex="C:\CricFlex\App\CricFlex\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_8ac4b6e795482d6bad1459c2d41575c5200d8290\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\CricFlex\App\CricFlex\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
-        <dex dex="C:\CricFlex\App\CricFlex\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-24.2.1_24c7ab4d36cd9610f362d4ba518f407b413c7b94\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\CricFlex\App\CricFlex\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="7521486d9bfd2cd9e756e0cf75ed7d97f2ce2d3b">
-        <dex dex="C:\CricFlex\App\CricFlex\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-24.2.1_6532d82121b40fee583b79433a4cc4d4af937567\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\CricFlex\App\CricFlex\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
-        <dex dex="C:\CricFlex\App\CricFlex\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-fragment-24.2.1_f51cd0c7c63fe0142dfadf66337228080c147618\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\CricFlex\App\CricFlex\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="1aaeb58b09abcb9130e854a13a5a4c8f197e756e">
-        <dex dex="C:\CricFlex\App\CricFlex\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_954c54b185bf9236310cc50fc17a67aa98cd2c19\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\CricFlex\App\CricFlex\libs\GraphView-4.0.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="8bd182a66f13dedad362bfbf992be96de2be5969">
-        <dex dex="C:\CricFlex\App\CricFlex\build\intermediates\transforms\dex\debug\folders\1000\2\GraphView-4.0.1_a78754ba5aa0c9f57876eafb6928b4045fdb3fa4\classes.dex" />
     </item>
 
 </items>

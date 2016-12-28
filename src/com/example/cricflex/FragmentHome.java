@@ -35,9 +35,6 @@ public class FragmentHome extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
-
     }
 
     @Override
@@ -171,7 +168,7 @@ public class FragmentHome extends Fragment {
 
             public void onClick(View view) {
 
-                Intent intent = new Intent(getActivity(), ActivityMonitor.class);
+                Intent intent = new Intent(getActivity(), ActivityMonitor2.class);
                 startActivity(intent);
             }
         });

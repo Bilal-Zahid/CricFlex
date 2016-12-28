@@ -13,7 +13,7 @@ public class test_asawal extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.test_asawal);
+        setContentView(R.layout.activity_monitor2);
         setTitle("Profile");
     }
 }

@@ -203,7 +203,7 @@
                 android:gravity="center"
                 android:layout_gravity="center_vertical"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Run-up Time"
+                android:text="Arm Twist"
                 android:textColor="@color/text_light"/>
             <TextView
                 android:layout_width="wrap_content"
