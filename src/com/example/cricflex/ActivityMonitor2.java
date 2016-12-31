@@ -329,15 +329,40 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
             //Angle Values for database
 
 //            converting array into JSON
+
             JSONObject json = new JSONObject();
             try {
                 json.put("angleArray", new JSONArray(angleValues));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            String convertedArrayListToString = json.toString();
+            String convertedArrayListOfAnglesToString = json.toString();
 
-            System.out.println("Arraylist : " + convertedArrayListToString);
+            JSONObject json1 = new JSONObject();
+            try {
+                json1.put("armTwistArray", new JSONArray(armTwistValues));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            String convertedArrayListOfArmTwistToString = json1.toString();
+
+            JSONObject json2 = new JSONObject();
+            try {
+                json2.put("forceArray", new JSONArray(forceValues));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            String convertedArrayListOfForceToString = json2.toString();
+
+            JSONObject json3 = new JSONObject();
+            try {
+                json3.put("actionTimeArray", new JSONArray(actionTimeValues));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            String convertedArrayListOfActionTimeToString = json3.toString();
+
+//            System.out.println("Arraylist : " + convertedArrayListOfAnglesToString);
 
 
 
@@ -364,8 +389,13 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
             //testing
 
 
-            helper.changeAngleValues(username ,convertedArrayListToString);
-            helper.changeAngleValuesWithDate(username,convertedArrayListToString,DateToStr);
+            helper.changeAngleValues(username ,convertedArrayListOfAnglesToString);
+
+            helper.changeAngleValuesWithDate(username,convertedArrayListOfAnglesToString,DateToStr);
+            helper.changeArmTwistValuesWithDate(username,convertedArrayListOfArmTwistToString,DateToStr);
+            helper.changeActionTimeValuesWithDate(username,convertedArrayListOfActionTimeToString,DateToStr);
+            helper.changeForceValuesWithDate(username,convertedArrayListOfForceToString,DateToStr);
+
             helper.insertPlayerStats(p);
             helper.changeStatLegalIllegal(p.getUsername(),p.getLegalBowls(),p.getIllegalBowls());
 

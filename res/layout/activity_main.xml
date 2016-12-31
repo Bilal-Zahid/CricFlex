@@ -78,7 +78,9 @@
             android:dividerHeight="1dp"
             android:listSelector="@drawable/list_selector"
             android:background="@color/activity_list_slidermenu_bg"
-            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@+id/profileBox"
+            android:layout_below="@+id/profileBox"
+
             android:layout_alignParentStart="true" />
 
     </RelativeLayout>

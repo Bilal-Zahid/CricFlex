@@ -4,7 +4,8 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="fill_parent"
+    android:id="@+id/date_picker">
 
     <ImageView android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -102,174 +103,90 @@
         </LinearLayout>
     </RelativeLayout>
 
-
-    <LinearLayout
-        android:id="@+id/graph_part"
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/container_scroll_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_below="@id/dateSelector"
-        android:layout_above="@id/footer"
-        android:gravity="center">
+        android:layout_height="match_parent"
+        android:layout_below="@id/dateSelector">
 
-
-
-        <com.github.mikephil.charting.charts.LineChart
-            android:id="@+id/chart"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"/>
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:id="@+id/footer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_marginBottom="20dp"
-        android:gravity="left"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true">
-
-        <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
-
-            android:alignmentMode="alignBounds"
-            android:columnCount="2"
-            android:rowCount="3"
-            android:textAlignment="center"
-            android:layout_gravity="center"
-            android:gravity="center_vertical">
-
-            <!--first column body-->
-
-            <TextView
-                android:layout_width="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:id="@+id/graph_part"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                android:layout_marginTop="5dp"
-
-                android:layout_row="0"
-                android:layout_column="0"
-                android:gravity="left"
-                android:layout_gravity="fill_horizontal"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Effort"
-                android:textSize="20sp"
-                android:textColor="@color/text_light"
-                android:textStyle="bold"/>
+                android:orientation="vertical"
+                android:layout_below="@id/dateSelector"
+                android:gravity="center">
 
 
-            <TextView
-                android:layout_width="wrap_content"
+
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/chart0"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/graph_part1"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                android:layout_marginTop="5dp"
+                android:orientation="vertical"
+                android:layout_below="@id/graph_part"
+                android:gravity="center">
 
 
-                android:layout_row="1"
-                android:layout_column="0"
-                android:gravity="left"
-                android:layout_gravity="fill_horizontal"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Stamina"
-                android:textSize="20sp"
-                android:textColor="@color/text_light"
-                android:textStyle="bold"/>
 
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/chart1"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"/>
 
-            <TextView
-                android:layout_width="wrap_content"
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/graph_part2"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                android:layout_marginTop="5dp"
+                android:orientation="vertical"
+                android:layout_below="@id/graph_part1"
+                android:gravity="center">
 
-                android:layout_row="2"
-                android:layout_column="0"
-                android:gravity="left"
-                android:layout_gravity="fill_horizontal"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Improvement"
-                android:textSize="20sp"
-                android:textColor="@color/text_light"
-                android:textStyle="bold"/>
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/chart2"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"/>
 
-            <ProgressBar
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="150dp"
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/graph_part3"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/progress_bar"
+                android:orientation="vertical"
+                android:layout_below="@id/graph_part2"
+                android:gravity="center">
 
-                android:layout_row="0"
-                android:layout_column="1"
-                android:gravity="center"
-                android:layout_gravity="fill_horizontal"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                android:layout_marginTop="5dp"
-                android:padding="3dp"
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/chart3"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"/>
 
-                android:animationResolution="50"
-                android:progress="30"
-                android:progressDrawable="@drawable/custom_progress_bar1" />
+            </LinearLayout>
 
-            <ProgressBar
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/progress_bar2"
-
-                android:layout_row="1"
-                android:layout_column="1"
-                android:gravity="center"
-                android:layout_gravity="fill_horizontal"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                android:layout_marginTop="5dp"
-                android:padding="3dp"
-
-                android:animationResolution="50"
-                android:progress="80"
-                android:progressDrawable="@drawable/custom_progress_bar2" />
-
-            <ProgressBar
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/progress_bar1"
-
-                android:layout_row="2"
-                android:layout_column="1"
-                android:gravity="center"
-                android:layout_gravity="fill_horizontal"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                android:layout_marginTop="5dp"
-                android:padding="3dp"
-
-                android:animationResolution="50"
-                android:progress="50"
-                android:progressDrawable="@drawable/custom_progress_bar3" />
-
-        </GridLayout>
-
-
-
-
-
-    </LinearLayout>
+        </LinearLayout>
+</ScrollView>
 
 
 </RelativeLayout>
