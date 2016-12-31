@@ -1,26 +1,26 @@
 [
     {
-        "merged": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi\\profileicon.png",
-        "source": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\res\\drawable-ldpi\\profileicon.png"
+        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi\\profileicon.png",
+        "source": "C:\\CricFlex\\App\\CricFlex\\res\\drawable-ldpi\\profileicon.png"
     },
     {
-        "merged": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi\\action_search.png",
-        "source": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\res\\drawable-ldpi\\action_search.png"
+        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi\\cricflex_logo.png",
+        "source": "C:\\CricFlex\\App\\CricFlex\\res\\drawable-ldpi\\cricflex_logo.png"
     },
     {
-        "merged": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi\\ic_launcher.png",
-        "source": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\res\\drawable-ldpi\\ic_launcher.png"
+        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi\\drawer_shadow.9.png",
+        "source": "C:\\CricFlex\\App\\CricFlex\\res\\drawable-ldpi\\drawer_shadow.9.png"
     },
     {
-        "merged": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi\\cricflex_logo.png",
-        "source": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\res\\drawable-ldpi\\cricflex_logo.png"
+        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi\\action_search.png",
+        "source": "C:\\CricFlex\\App\\CricFlex\\res\\drawable-ldpi\\action_search.png"
     },
     {
-        "merged": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi\\drawer_shadow.9.png",
-        "source": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\res\\drawable-ldpi\\drawer_shadow.9.png"
+        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi\\ic_launcher.png",
+        "source": "C:\\CricFlex\\App\\CricFlex\\res\\drawable-ldpi\\ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi\\ic_drawer.png",
-        "source": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\res\\drawable-ldpi\\ic_drawer.png"
+        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi\\ic_drawer.png",
+        "source": "C:\\CricFlex\\App\\CricFlex\\res\\drawable-ldpi\\ic_drawer.png"
     }
 ]
