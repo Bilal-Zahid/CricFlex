@@ -173,7 +173,7 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
 
     //For Stats and home page
     DatabaseHelper helper = new DatabaseHelper(this);
-    Player p = new Player();
+    Player playerStats = new Player();
     String username;
     ArrayList<Integer> angleValues = new ArrayList<Integer>();
     ArrayList<Integer> forceValues = new ArrayList<Integer>();
@@ -287,11 +287,11 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
 
 
 
-            p.setUsername(username);
-            p.setIllegalBowls(String.valueOf(counterIllegal));
-            p.setLegalBowls(String.valueOf(counterLegal));
+            playerStats.setUsername(username);
+            playerStats.setIllegalBowls(String.valueOf(counterIllegal));
+            playerStats.setLegalBowls(String.valueOf(counterLegal));
 
-            System.out.println("Legal Bowls: "+ p.getLegalBowls()+"\nIllegal Bowls:" + p.getIllegalBowls());
+            System.out.println("Legal Bowls: "+ playerStats.getLegalBowls()+"\nIllegal Bowls:" + playerStats.getIllegalBowls());
             System.out.println("Angle Values: \n"+ angleValues);
 
 
@@ -390,14 +390,18 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
 
 
             helper.changeAngleValues(username ,convertedArrayListOfAnglesToString);
+            helper.changeArmTwistValues(username,convertedArrayListOfArmTwistToString);
+            helper.changeActionTimeValues(username,convertedArrayListOfActionTimeToString);
+            helper.changeForceValues(username,convertedArrayListOfForceToString);
+
 
             helper.changeAngleValuesWithDate(username,convertedArrayListOfAnglesToString,DateToStr);
             helper.changeArmTwistValuesWithDate(username,convertedArrayListOfArmTwistToString,DateToStr);
             helper.changeActionTimeValuesWithDate(username,convertedArrayListOfActionTimeToString,DateToStr);
             helper.changeForceValuesWithDate(username,convertedArrayListOfForceToString,DateToStr);
 
-            helper.insertPlayerStats(p);
-            helper.changeStatLegalIllegal(p.getUsername(),p.getLegalBowls(),p.getIllegalBowls());
+            helper.insertPlayerStats(playerStats);
+            helper.changeStatLegalIllegal(playerStats.getUsername(), playerStats.getLegalBowls(), playerStats.getIllegalBowls());
 
 
 //            Disabling bluetooth connection

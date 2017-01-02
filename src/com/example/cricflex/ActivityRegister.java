@@ -64,7 +64,7 @@ public class ActivityRegister extends Activity {
                 final String emailstr = reg_email.getText().toString();
                 final String passwordstr = reg_password.getText().toString();
                 final String securitystr = reg_security.getText().toString();
-//                p.setName(namestr);
+//                playerStats.setName(namestr);
                 if(usernamestr.equals("")||passwordstr.equals("")||emailstr.equals("")||securitystr.equals("")){
                     Toast.makeText(ActivityRegister.this, "Empty fields", Toast.LENGTH_SHORT).show();
                     return;
@@ -96,7 +96,7 @@ public class ActivityRegister extends Activity {
                 p.setEmail(emailstr);
                 p.setPassword(passwordstr);
                 p.setSecurity(securitystr);
-                //helper.insertPlayer(p);
+                //helper.insertPlayer(playerStats);
 
                 //Toast.makeText(ActivityRegister.this, "Successfully Registered Account", Toast.LENGTH_SHORT).show();
 

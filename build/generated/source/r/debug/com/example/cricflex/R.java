@@ -3167,11 +3167,11 @@ containing a value of this type.
         public static final int home=0x7f0d0004;
         public static final int homeAsUp=0x7f0d000f;
         public static final int home_action_time=0x7f0d0106;
+        public static final int home_arm_twist=0x7f0d0105;
         public static final int home_average_angle=0x7f0d0104;
         public static final int home_force=0x7f0d0107;
         public static final int home_legal_to_illegal_ratio=0x7f0d0100;
         public static final int home_longest_streak=0x7f0d0123;
-        public static final int home_runup_time=0x7f0d0105;
         public static final int home_start=0x7f0d0108;
         public static final int home_totalballs=0x7f0d0103;
         public static final int icon=0x7f0d0045;

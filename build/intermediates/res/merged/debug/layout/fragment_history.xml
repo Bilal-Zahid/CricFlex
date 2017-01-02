@@ -122,6 +122,13 @@
                 android:gravity="center">
 
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Arm Angle"
+                    android:textColor="#ffffff"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_margin="2dp"/>
 
                 <com.github.mikephil.charting.charts.LineChart
                     android:id="@+id/chart0"
@@ -140,6 +147,13 @@
                 android:layout_below="@id/graph_part"
                 android:gravity="center">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Force"
+                    android:textColor="#ffffff"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_margin="2dp"/>
 
 
                 <com.github.mikephil.charting.charts.LineChart
@@ -159,6 +173,14 @@
                 android:layout_below="@id/graph_part1"
                 android:gravity="center">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Arm Twist"
+                    android:textColor="#ffffff"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_margin="2dp"/>
+
                 <com.github.mikephil.charting.charts.LineChart
                     android:id="@+id/chart2"
                     android:layout_width="match_parent"
@@ -175,6 +197,14 @@
                 android:orientation="vertical"
                 android:layout_below="@id/graph_part2"
                 android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Action Time"
+                    android:textColor="#ffffff"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_margin="2dp"/>
 
                 <com.github.mikephil.charting.charts.LineChart
                     android:id="@+id/chart3"

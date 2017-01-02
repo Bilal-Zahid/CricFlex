@@ -163,7 +163,7 @@ public class FragmentHistory extends Fragment {
 //        mProgressStatus = 50;
 //        mProgress.setProgress(mProgressStatus);
 
-        changeValuesOfGraphs();
+        changeValuesOfGraphsWithDate();
 
         return rootView;
     }
@@ -274,7 +274,7 @@ public class FragmentHistory extends Fragment {
     }
 
 
-    private void changeValuesOfGraphs(){
+    private void changeValuesOfGraphsWithDate(){
 
         LineChart lineChart0 = (LineChart) rootView.findViewById(R.id.chart0);
         List<Entry> entries0 = new ArrayList<Entry>();
@@ -554,7 +554,7 @@ public class FragmentHistory extends Fragment {
         _calendar.set(year, month, _calendar.get(Calendar.DAY_OF_MONTH));
         currentMonth.setText(DateFormat.format(dateTemplate,
                 _calendar.getTime()));
-        changeValuesOfGraphs();
+        changeValuesOfGraphsWithDate();
 
 
     }

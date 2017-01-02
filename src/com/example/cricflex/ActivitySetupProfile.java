@@ -284,7 +284,13 @@ public class ActivitySetupProfile extends Activity implements View.OnClickListen
 
                         helper.insertPlayerStats(p);
                         helper.insertPlayer(p);
+
                         helper.insertPlayerAngleValues(p.getUsername(),"");
+                        helper.insertPlayerActionTimeValues(p.getUsername(),"");
+                        helper.insertPlayerForceValues(p.getUsername(),"");
+                        helper.insertPlayerArmTwistValues(p.getUsername(),"");
+
+
                         helper.insertPlayerAngleValuesWithDate(p.getUsername(),"","");
                         helper.insertPlayerActionTimeValuesWithDate(p.getUsername(),"","");
                         helper.insertPlayerForceValuesWithDate(p.getUsername(),"","");

@@ -28,6 +28,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String STATS_TABLE_NAME = "table_stats";
 
     private static final String ANGLE_TABLE_NAME = "table_angle";
+    private static final String FORCE_TABLE_NAME = "table_force";
+    private static final String ACTION_TIME_TABLE_NAME = "table_action_time";
+    private static final String ARM_TWIST_TABLE_NAME = "table_arm_twist";
+
 
     private static final String ANGLE_HISTORY_TABLE_NAME = "angle_history_table";
     private static final String FORCE_HISTORY_TABLE_NAME = "force_history_table";
@@ -94,6 +98,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String CREATE_TABLE_PLAYER_ANGLE = "create table " + ANGLE_TABLE_NAME + " " +
             "(username text not null, angle_values text not null);";
 
+    private static final String CREATE_TABLE_PLAYER_FORCE = "create table " + FORCE_TABLE_NAME + " " +
+            "(username text not null, force_values text not null);";
+    private static final String CREATE_TABLE_PLAYER_ARM_TWIST = "create table " + ARM_TWIST_TABLE_NAME + " " +
+            "(username text not null, arm_twist_values text not null);";
+    private static final String CREATE_TABLE_PLAYER_ACTION_TIME = "create table " + ACTION_TIME_TABLE_NAME + " " +
+            "(username text not null, action_time_values text not null);";
+
     private static final String CREATE_TABLE_PLAYER_ANGLE_HISTORY = "create table " + ANGLE_HISTORY_TABLE_NAME + " " +
             "(username text not null, angle_values text not null, session_date text not null);";
 
@@ -119,6 +130,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_IMAGE);
         db.execSQL(CREATE_TABLE_PLAYER_STATS);
         db.execSQL(CREATE_TABLE_PLAYER_ANGLE);
+        db.execSQL(CREATE_TABLE_PLAYER_FORCE);
+        db.execSQL(CREATE_TABLE_PLAYER_ACTION_TIME);
+        db.execSQL(CREATE_TABLE_PLAYER_ARM_TWIST);
         db.execSQL(CREATE_TABLE_PLAYER_ANGLE_HISTORY);
         db.execSQL(CREATE_TABLE_PLAYER_FORCE_HISTORY);
         db.execSQL(CREATE_TABLE_PLAYER_ARM_TWIST_HISTORY);
@@ -132,6 +146,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + IMAGE_TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + STATS_TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + ANGLE_TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + FORCE_TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + ARM_TWIST_TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + ACTION_TIME_TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + ANGLE_HISTORY_TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + ARM_TWIST_HISTORY_TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + FORCE_HISTORY_TABLE_NAME);
@@ -150,7 +167,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         int count = cursor.getCount();
         cursor.close();
         values.put(COLUMN_ID, count);
-        //values.put(COLUMN_NAME , p.getName());
+        //values.put(COLUMN_NAME , playerStats.getName());
 
         values.put(COLUMN_EMAIL, p.getEmail());
         values.put(COLUMN_USERNAME, p.getUsername());
@@ -179,7 +196,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
 
         //values.put(COLUMN_ID,count);
-        //values.put(COLUMN_NAME , p.getName());
+        //values.put(COLUMN_NAME , playerStats.getName());
 
         values.put(COLUMN_USERNAME, p.getUsername());
         values.put(COLUMN_LEGAL_BOWLS, p.getLegalBowls());
@@ -202,7 +219,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
 
         //values.put(COLUMN_ID,count);
-        //values.put(COLUMN_NAME , p.getName());
+        //values.put(COLUMN_NAME , playerStats.getName());
 
         values.put(COLUMN_USERNAME, username);
         values.put(COLUMN_ANGLE_VALUES, angleValues);
@@ -210,6 +227,53 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.insert(ANGLE_TABLE_NAME, null, values);
         db.close();
     }
+
+
+    public void insertPlayerForceValues(String username, String forceValues) {
+        db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        String query = "select * from " + FORCE_TABLE_NAME;
+        Cursor cursor = db.rawQuery(query, null);
+        cursor.close();
+
+        values.put(COLUMN_USERNAME, username);
+        values.put(COLUMN_FORCE, forceValues);
+
+        db.insert(FORCE_TABLE_NAME, null, values);
+        db.close();
+    }
+
+    public void insertPlayerArmTwistValues(String username, String armTwistValues) {
+        db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        String query = "select * from " + ARM_TWIST_TABLE_NAME;
+        Cursor cursor = db.rawQuery(query, null);
+        cursor.close();
+
+        values.put(COLUMN_USERNAME, username);
+        values.put(COLUMN_ARM_TWIST, armTwistValues);
+
+        db.insert(ARM_TWIST_TABLE_NAME, null, values);
+        db.close();
+    }
+
+    public void insertPlayerActionTimeValues(String username, String actionTimeValues) {
+        db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        String query = "select * from " + ACTION_TIME_TABLE_NAME;
+        Cursor cursor = db.rawQuery(query, null);
+        cursor.close();
+
+        values.put(COLUMN_USERNAME, username);
+        values.put(COLUMN_ACTION_TIME, actionTimeValues);
+
+        db.insert(ACTION_TIME_TABLE_NAME, null, values);
+        db.close();
+    }
+
 
     public void insertPlayerAngleValuesWithDate(String username, String angleValues , String date) {
         db = this.getWritableDatabase();
@@ -221,7 +285,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
 
         //values.put(COLUMN_ID,count);
-        //values.put(COLUMN_NAME , p.getName());
+        //values.put(COLUMN_NAME , playerStats.getName());
 
         values.put(COLUMN_USERNAME, username);
         values.put(COLUMN_ANGLE_VALUES, angleValues);
@@ -241,7 +305,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
 
         //values.put(COLUMN_ID,count);
-        //values.put(COLUMN_NAME , p.getName());
+        //values.put(COLUMN_NAME , playerStats.getName());
 
         values.put(COLUMN_USERNAME, username);
         values.put(COLUMN_ARM_TWIST, armTwistValues);
@@ -261,7 +325,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
 
         //values.put(COLUMN_ID,count);
-        //values.put(COLUMN_NAME , p.getName());
+        //values.put(COLUMN_NAME , playerStats.getName());
 
         values.put(COLUMN_USERNAME, username);
         values.put(COLUMN_FORCE, forceValues);
@@ -282,7 +346,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
 
         //values.put(COLUMN_ID,count);
-        //values.put(COLUMN_NAME , p.getName());
+        //values.put(COLUMN_NAME , playerStats.getName());
 
         values.put(COLUMN_USERNAME, username);
         values.put(COLUMN_ACTION_TIME, actionTimeValues);
@@ -556,6 +620,123 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return angleValues;
     }
 
+
+
+    public String getForceValues(String username) {
+        db = this.getReadableDatabase();
+        String query = "select username, force_values from " + FORCE_TABLE_NAME;
+        Cursor cursor = db.rawQuery(query, null);
+        String uname, forceValues;
+        forceValues = "not found";
+        if (cursor.moveToFirst()) {
+            do {
+                uname = cursor.getString(0);
+
+                if (uname.equals(username)) {
+                    forceValues = cursor.getString(1);
+                    break;
+                }
+            }
+            while (cursor.moveToNext());
+        }
+        cursor.close();
+        return forceValues;
+    }
+
+
+    public String getArmTwistValues(String username) {
+        db = this.getReadableDatabase();
+        String query = "select username, arm_twist_values from " + ARM_TWIST_TABLE_NAME;
+        Cursor cursor = db.rawQuery(query, null);
+        String uname, armTwistValues;
+        armTwistValues = "not found";
+        if (cursor.moveToFirst()) {
+            do {
+                uname = cursor.getString(0);
+
+                if (uname.equals(username)) {
+                    armTwistValues = cursor.getString(1);
+                    break;
+                }
+            }
+            while (cursor.moveToNext());
+        }
+        cursor.close();
+        return armTwistValues;
+    }
+
+
+    public String getActionTimeValues(String username) {
+        db = this.getReadableDatabase();
+        String query = "select username, action_time_values from " + ACTION_TIME_TABLE_NAME;
+        Cursor cursor = db.rawQuery(query, null);
+        String uname, actionTimeValues;
+        actionTimeValues = "not found";
+        if (cursor.moveToFirst()) {
+            do {
+                uname = cursor.getString(0);
+
+                if (uname.equals(username)) {
+                    actionTimeValues = cursor.getString(1);
+                    break;
+                }
+            }
+            while (cursor.moveToNext());
+        }
+        cursor.close();
+        return actionTimeValues;
+    }
+
+
+
+
+    public String getAllAngleValuesOfPlayer(String username) {
+        db = this.getReadableDatabase();
+        String query = "select username, angle_values, session_date from " + ANGLE_HISTORY_TABLE_NAME;
+        Cursor cursor = db.rawQuery(query, null);
+        String uname, angleValues;
+        angleValues = "not found";
+        if (cursor.moveToFirst()) {
+            do {
+                uname = cursor.getString(0);
+
+                if (uname.equals(username)) {
+                    angleValues = cursor.getString(1);
+                    break;
+                }
+            }
+            while (cursor.moveToNext());
+        }
+        cursor.close();
+        return angleValues;
+    }
+
+
+
+    public String getAllAngleValuesWithDate(String username) {
+        db = this.getReadableDatabase();
+        String query = "select group_concat(angle_values) from " + ANGLE_HISTORY_TABLE_NAME +
+                " where username = '"+ username + "'";
+        Cursor cursor = db.rawQuery(query, null);
+        String uname, angleValues;
+        angleValues = "not found";
+        if (cursor.moveToFirst()) {
+
+            angleValues = cursor.getString(0);
+        }
+        angleValues = angleValues.startsWith(",") ? angleValues.substring(1) : angleValues;
+        System.out.println("Angle Values in database: " + angleValues);
+        System.out.println("Actual Values should be: " + getAngleValues(username));
+
+        cursor.close();
+        return angleValues;
+    }
+
+
+
+
+
+
     public String getAngleValuesWithDate(String username, String date) {
         db = this.getReadableDatabase();
         String query = "select angle_values from " + ANGLE_HISTORY_TABLE_NAME +
@@ -735,29 +916,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public void changeAngleValues(String username, String currentAngleValues) {
         db = this.getReadableDatabase();
-
-
         String totalAngleValues;
         //db = this.getReadableDatabase();
         String query = "select username, angle_values from " + ANGLE_TABLE_NAME;
         Cursor cursor = db.rawQuery(query, null);
         String uname, prevAngleValues = "";
-//        legalBowls = "0";
-//        illegalBowls = "0";
         if (cursor.moveToFirst()) {
             do {
                 uname = cursor.getString(0);
-
                 if (uname.equals(username)) {
                     prevAngleValues = cursor.getString(1);
-//                    illegalBowls = cursor.getString(2);
                     break;
                 }
             }
             while (cursor.moveToNext());
         }
         cursor.close();
-
 
         ArrayList<String> previousArrayListOfAngles = new ArrayList<String>();
         if(!prevAngleValues.equals("")) {
@@ -768,9 +942,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
             JSONArray jsonArray = json.optJSONArray("angleArray");
-
             if (jsonArray != null) {
                 int len = jsonArray.length();
                 for (int i = 0; i < len; i++) {
@@ -782,7 +954,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 }
             }
         }
-
 //        getting current array list from string
         ArrayList<String> currentArrayListOfAngles = new ArrayList<String>();
         if(!currentAngleValues.equals("")){
@@ -806,31 +977,268 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 }
             }
         }
-
-
         //Joining the two lists
-
         if(!prevAngleValues.equals("") || !currentAngleValues.equals("")) {
             List<String> arrayListOfTotalValues = new ArrayList<String>(previousArrayListOfAngles);
             arrayListOfTotalValues.addAll(currentArrayListOfAngles);
-
-
             //            converting array into JSON
-
             JSONObject json2 = new JSONObject();
             try {
                 json2.put("angleArray", new JSONArray(arrayListOfTotalValues));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
-
             totalAngleValues = json2.toString();
 
             String query1 = "UPDATE " + ANGLE_TABLE_NAME + "  SET angle_values = '" + totalAngleValues + "' WHERE username = '" + username + "'";
             db.execSQL(query1);
         }
+    }
 
+
+    public void changeForceValues(String username, String currentForceValues) {
+        db = this.getReadableDatabase();
+        String totalForceValues;
+        //db = this.getReadableDatabase();
+        String query = "select username, force_values from " + FORCE_TABLE_NAME;
+        Cursor cursor = db.rawQuery(query, null);
+        String uname, prevForceValues = "";
+        if (cursor.moveToFirst()) {
+            do {
+                uname = cursor.getString(0);
+                if (uname.equals(username)) {
+                    prevForceValues = cursor.getString(1);
+                    break;
+                }
+            }
+            while (cursor.moveToNext());
+        }
+        cursor.close();
+
+        ArrayList<String> previousArrayListOfForce = new ArrayList<String>();
+        if(!prevForceValues.equals("")) {
+//        getting previous array list from string
+            JSONObject json = null;
+            try {
+                json = new JSONObject(prevForceValues);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            JSONArray jsonArray = json.optJSONArray("forceArray");
+            if (jsonArray != null) {
+                int len = jsonArray.length();
+                for (int i = 0; i < len; i++) {
+                    try {
+                        previousArrayListOfForce.add(jsonArray.get(i).toString());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+//        getting current array list from string
+        ArrayList<String> currentArrayListOfForce = new ArrayList<String>();
+        if(!currentForceValues.equals("")){
+            JSONObject json1 = null;
+            try {
+                json1 = new JSONObject(currentForceValues);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            JSONArray jsonArray1 = json1.optJSONArray("forceArray");
+            ;
+            if (jsonArray1 != null) {
+                int len = jsonArray1.length();
+                for (int i = 0; i < len; i++) {
+                    try {
+                        currentArrayListOfForce.add(jsonArray1.get(i).toString());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+        //Joining the two lists
+        if(!prevForceValues.equals("") || !currentForceValues.equals("")) {
+            List<String> arrayListOfTotalValues = new ArrayList<String>(previousArrayListOfForce);
+            arrayListOfTotalValues.addAll(currentArrayListOfForce);
+            //            converting array into JSON
+            JSONObject json2 = new JSONObject();
+            try {
+                json2.put("forceArray", new JSONArray(arrayListOfTotalValues));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            totalForceValues = json2.toString();
+
+            String query1 = "UPDATE " + FORCE_TABLE_NAME + "  SET force_values = '" + totalForceValues + "' WHERE username = '" + username + "'";
+            db.execSQL(query1);
+        }
+    }
+
+
+    public void changeArmTwistValues(String username, String currentArmTwistValues) {
+        db = this.getReadableDatabase();
+        String totalArmTwistValues;
+        //db = this.getReadableDatabase();
+        String query = "select username, arm_twist_values from " + ARM_TWIST_TABLE_NAME;
+        Cursor cursor = db.rawQuery(query, null);
+        String uname, prevArmTwistValues = "";
+        if (cursor.moveToFirst()) {
+            do {
+                uname = cursor.getString(0);
+                if (uname.equals(username)) {
+                    prevArmTwistValues = cursor.getString(1);
+                    break;
+                }
+            }
+            while (cursor.moveToNext());
+        }
+        cursor.close();
+
+        ArrayList<String> previousArrayListOfArmTwist = new ArrayList<String>();
+        if(!prevArmTwistValues.equals("")) {
+//        getting previous array list from string
+            JSONObject json = null;
+            try {
+                json = new JSONObject(prevArmTwistValues);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            JSONArray jsonArray = json.optJSONArray("armTwistArray");
+            if (jsonArray != null) {
+                int len = jsonArray.length();
+                for (int i = 0; i < len; i++) {
+                    try {
+                        previousArrayListOfArmTwist.add(jsonArray.get(i).toString());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+//        getting current array list from string
+        ArrayList<String> currentArrayListOfArmTwist = new ArrayList<String>();
+        if(!currentArmTwistValues.equals("")){
+            JSONObject json1 = null;
+            try {
+                json1 = new JSONObject(currentArmTwistValues);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            JSONArray jsonArray1 = json1.optJSONArray("armTwistArray");
+            ;
+            if (jsonArray1 != null) {
+                int len = jsonArray1.length();
+                for (int i = 0; i < len; i++) {
+                    try {
+                        currentArrayListOfArmTwist.add(jsonArray1.get(i).toString());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+        //Joining the two lists
+        if(!prevArmTwistValues.equals("") || !currentArmTwistValues.equals("")) {
+            List<String> arrayListOfTotalValues = new ArrayList<String>(previousArrayListOfArmTwist);
+            arrayListOfTotalValues.addAll(currentArrayListOfArmTwist);
+            //            converting array into JSON
+            JSONObject json2 = new JSONObject();
+            try {
+                json2.put("armTwistArray", new JSONArray(arrayListOfTotalValues));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            totalArmTwistValues = json2.toString();
+
+            String query1 = "UPDATE " + ARM_TWIST_TABLE_NAME + "  SET arm_twist_values = '" + totalArmTwistValues + "' WHERE username = '" + username + "'";
+            db.execSQL(query1);
+        }
+    }
+
+
+    public void changeActionTimeValues(String username, String currentActioTimeValues) {
+        db = this.getReadableDatabase();
+        String totalActionTimeValues;
+        //db = this.getReadableDatabase();
+        String query = "select username, action_time_values from " + ACTION_TIME_TABLE_NAME;
+        Cursor cursor = db.rawQuery(query, null);
+        String uname, prevActionTimeValues = "";
+        if (cursor.moveToFirst()) {
+            do {
+                uname = cursor.getString(0);
+                if (uname.equals(username)) {
+                    prevActionTimeValues = cursor.getString(1);
+                    break;
+                }
+            }
+            while (cursor.moveToNext());
+        }
+        cursor.close();
+
+        ArrayList<String> previousArrayListOfActionTime = new ArrayList<String>();
+        if(!prevActionTimeValues.equals("")) {
+//        getting previous array list from string
+            JSONObject json = null;
+            try {
+                json = new JSONObject(prevActionTimeValues);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            JSONArray jsonArray = json.optJSONArray("actionTimeArray");
+            if (jsonArray != null) {
+                int len = jsonArray.length();
+                for (int i = 0; i < len; i++) {
+                    try {
+                        previousArrayListOfActionTime.add(jsonArray.get(i).toString());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+//        getting current array list from string
+        ArrayList<String> currentArrayListOfActionTime = new ArrayList<String>();
+        if(!currentActioTimeValues.equals("")){
+            JSONObject json1 = null;
+            try {
+                json1 = new JSONObject(currentActioTimeValues);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            JSONArray jsonArray1 = json1.optJSONArray("actionTimeArray");
+            ;
+            if (jsonArray1 != null) {
+                int len = jsonArray1.length();
+                for (int i = 0; i < len; i++) {
+                    try {
+                        currentArrayListOfActionTime.add(jsonArray1.get(i).toString());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+        //Joining the two lists
+        if(!prevActionTimeValues.equals("") || !currentActioTimeValues.equals("")) {
+            List<String> arrayListOfTotalValues = new ArrayList<String>(previousArrayListOfActionTime);
+            arrayListOfTotalValues.addAll(currentArrayListOfActionTime);
+            //            converting array into JSON
+            JSONObject json2 = new JSONObject();
+            try {
+                json2.put("actionTimeArray", new JSONArray(arrayListOfTotalValues));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            totalActionTimeValues = json2.toString();
+
+            String query1 = "UPDATE " + ACTION_TIME_TABLE_NAME + "  SET action_time_values = '" + totalActionTimeValues + "' WHERE username = '" + username + "'";
+            db.execSQL(query1);
+        }
     }
 
 

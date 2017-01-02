@@ -1075,11 +1075,11 @@ int id header 0x7f0d0078
 int id home 0x7f0d0004
 int id homeAsUp 0x7f0d000f
 int id home_action_time 0x7f0d0106
+int id home_arm_twist 0x7f0d0105
 int id home_average_angle 0x7f0d0104
 int id home_force 0x7f0d0107
 int id home_legal_to_illegal_ratio 0x7f0d0100
 int id home_longest_streak 0x7f0d0123
-int id home_runup_time 0x7f0d0105
 int id home_start 0x7f0d0108
 int id home_totalballs 0x7f0d0103
 int id icon 0x7f0d0045
