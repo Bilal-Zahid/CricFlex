@@ -178,7 +178,7 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
     ArrayList<Integer> angleValues = new ArrayList<Integer>();
     ArrayList<Integer> forceValues = new ArrayList<Integer>();
     ArrayList<Integer> armTwistValues = new ArrayList<Integer>();
-    ArrayList<Integer> actionTimeValues = new ArrayList<Integer>();
+    ArrayList<Float> actionTimeValues = new ArrayList<Float>();
 
 
     String legalBalls;
@@ -298,23 +298,23 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
             //testing
 
 
-            angleValues.add(1);
-            angleValues.add(3);
-            angleValues.add(2);
-
-            armTwistValues.add(4);
-            armTwistValues.add(5);
-            armTwistValues.add(6);
-
-
-            actionTimeValues.add(7);
-            actionTimeValues.add(7);
-            actionTimeValues.add(7);
-            actionTimeValues.add(7);
-
-            forceValues.add(10);
-            forceValues.add(11);
-            forceValues.add(12);
+//            angleValues.add(1);
+//            angleValues.add(3);
+//            angleValues.add(2);
+//
+//            armTwistValues.add(4);
+//            armTwistValues.add(5);
+//            armTwistValues.add(6);
+//
+//
+//            actionTimeValues.add(7);
+//            actionTimeValues.add(7);
+//            actionTimeValues.add(7);
+//            actionTimeValues.add(7);
+//
+//            forceValues.add(10);
+//            forceValues.add(11);
+//            forceValues.add(12);
 
 //            angleValues.add(15);armTwistValues.add(4);
 //            angleValues.add(16);
@@ -418,8 +418,8 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
             extraBundle.putIntegerArrayList("angleValues", angleValues);
             extraBundle.putIntegerArrayList("armTwistValues", armTwistValues);
             extraBundle.putIntegerArrayList("forceValues", forceValues);
-            extraBundle.putIntegerArrayList("actionTimeValues", actionTimeValues);
-
+//            extraBundle.("actionTimeValues", ArrayList< extends Parcelable> actionTimeValues);
+            i.putExtra("actionTimeValues",actionTimeValues);
             i.putExtras(extraBundle);
 
 //            rfduinoService.send("r".getBytes());
@@ -871,7 +871,7 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
                 angleValues.add(genFlex);
                 forceValues.add(Integer.parseInt(force_value));
                 armTwistValues.add(Integer.parseInt(armTwist_value));
-                actionTimeValues.add(Integer.parseInt(actionTime_value));
+                actionTimeValues.add(Float.valueOf(actionTime_value));
 
 
 

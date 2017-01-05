@@ -49,7 +49,7 @@
         android:textStyle="bold"
         custom:arc_bottom_text=""
         custom:arc_bottom_text_size="15dp"
-        custom:arc_suffix_text_padding="5dp"
+        custom:arc_suffix_text_padding="13dp"
         custom:arc_suffix_text_size="20dp"
         custom:arc_text_size="60dp"
         custom:arc_text_color="@color/text_light"/>

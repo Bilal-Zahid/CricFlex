@@ -406,7 +406,7 @@ public class FragmentHistory extends Fragment {
         LineChart lineChart4 = (LineChart) rootView.findViewById(R.id.chart3);
         List<Entry> entries4 = new ArrayList<Entry>();
         /////////////////////////////////////////////////////////////
-        //Code for getting angle values
+        //Code for getting action Time values
         helper = new DatabaseHelper(getActivity());
 //        String username = SaveSharedPreference.getUserName(getActivity());
         String actionTimeWithDate = helper.getActionTimeValuesWithDate(username,currentMonth.getText().toString());
@@ -436,7 +436,7 @@ public class FragmentHistory extends Fragment {
         }
 //        System.out.println("List of angle values with date in fragment history: " + list1);
         for (int i=0;i<list4.size();i++){
-            entries4.add(new Entry(i,Integer.valueOf(list4.get(i))));
+            entries4.add(new Entry(i,Float.valueOf(list4.get(i))));
         }
         makeGraph(lineChart4,entries4);
 
