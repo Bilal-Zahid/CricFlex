@@ -33,10 +33,30 @@ import android.widget.Toast;
 public class ActivityMain extends ActionBarActivity {
 
 
+//    @Override
+//    public void onBackPressed() {
+//        //super.onBackPressed();
+//
+//
+//        if (getFragmentManager().getBackStackEntryCount() == 0) {
+//            this.finish();
+//            moveTaskToBack(true);
+//        } else {
+//            getFragmentManager().popBackStack();
+//        }
+//    }
+
     @Override
-    public void onBackPressed() {
-        //super.onBackPressed();
-        moveTaskToBack(true);
+    public void onBackPressed(){
+//        FragmentManager fm = ;
+        if (getFragmentManager().getBackStackEntryCount() > 1) {
+            Log.i("MainActivity", "popping backstack");
+            getFragmentManager().popBackStack();
+        } else {
+            Log.i("MainActivity", "nothing on backstack, calling super");
+            moveTaskToBack(true);
+//            super.onBackPressed();
+        }
     }
 
     ListView mDrawerList;
@@ -320,9 +340,18 @@ public class ActivityMain extends ActionBarActivity {
         }
 
         if (fragment != null) {
-            FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction()
-                    .replace(R.id.frame_container, fragment).commit();
+//            FragmentManager fragmentManager = getFragmentManager();
+//            getFragmentManager().beginTransaction()
+//                    .add(R.id.frame_container, fragment).commit();
+//
+//            getFragmentManager().beginTransaction().addToBackStack(null);
+
+
+
+            getFragmentManager().beginTransaction().add(
+                    R.id.frame_container, fragment).
+                    addToBackStack(null).commit();
+
 
             // update selected item and title, then close the drawer
             mDrawerList.setItemChecked(position, true);
@@ -369,10 +398,17 @@ public class ActivityMain extends ActionBarActivity {
         String username = SaveSharedPreference.getUserName(ActivityMain.this);
         bundle.putString("username", username);
         fragment.setArguments(bundle);
+//
+//        FragmentManager fragmentManager = getFragmentManager();
+//        fragmentManager.beginTransaction().replace(R.id.frame_container, fragment).commit();
 
-        FragmentManager fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.frame_container, fragment).commit();
+        getFragmentManager().beginTransaction().add(
+                R.id.frame_container, fragment).
+                addToBackStack(null).commit();
+
+
         setTitle(R.string.profile);
+
 
         mDrawerList.setItemChecked(mDrawerList.getCheckedItemPosition(), false);
         mDrawerLayout.closeDrawer(mDrawerPane);
