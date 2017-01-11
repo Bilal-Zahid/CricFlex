@@ -5,8 +5,10 @@ package com.example.cricflex;
  */
 
 public class Player {
-    // int id;
+//     int id;
     String  email, username,  password, security;
+
+    String name;
 
     String bowlingStyle;
     String bowlingArm;
@@ -23,21 +25,17 @@ public class Player {
     String longestStreak = "0";
     String lastBowlAngle = "0";
 
-
-
+    public String getName() {return name;}
+    public void setName(String name) {this.name = name;}
 
     public String getLegalBowls() {
         return legalBowls;
     }
-
-    public void setLegalBowls(String legalBowls) {
-        this.legalBowls = legalBowls;
-    }
+    public void setLegalBowls(String legalBowls) {this.legalBowls = legalBowls;}
 
     public String getAverageAngle() {
         return averageAngle;
     }
-
     public void setAverageAngle(String averageAngle) {
         this.averageAngle = averageAngle;
     }
@@ -45,7 +43,6 @@ public class Player {
     public String getIllegalBowls() {
         return illegalBowls;
     }
-
     public void setIllegalBowls(String illegalBowls) {
         this.illegalBowls = illegalBowls;
     }
@@ -53,7 +50,6 @@ public class Player {
     public String getLongestStreak() {
         return longestStreak;
     }
-
     public void setLongestStreak(String longestStreak) {
         this.longestStreak = longestStreak;
     }
@@ -127,9 +123,7 @@ public class Player {
     public void setEmail(String email){
         this.email = email;
     }
-    public String getEmail(){
-        return this.email;
-    }
+    public String getEmail(){return this.email;}
 
     public void setPassword(String password){
         this.password = password;
@@ -138,9 +132,7 @@ public class Player {
         return this.password;
     }
 
-    public void setSecurity(String security){
-        this.security = security;
-    }
+    public void setSecurity(String security){this.security = security;}
     public String getSecurity(){
         return this.security;
     }

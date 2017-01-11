@@ -42,7 +42,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     private static final String COLUMN_ID = "id";
-    //private static final String COLUMN_NAME = "name";
+    private static final String COLUMN_NAME = "name";
     private static final String COLUMN_EMAIL = "email";
     private static final String COLUMN_USERNAME = "username";
     private static final String COLUMN_PASSWORD = "password";
@@ -53,6 +53,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_BOWLINGSTYLE = "bowlingstyle";
     private static final String COLUMN_BOWLINGARM = "bowlingarm";
     private static final String COLUMN_CAREERLEVEL = "careerlevel";
+    private static final String COLUMN_WEIGHT = "weight";
+
 
     // For Storing Images
     // column names
@@ -83,8 +85,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     SQLiteDatabase db;
 
     private static final String CREATE_TABLE_PLAYER = "create table " + PLAYER_TABLE_NAME + " (id integer primary key not null  , " +
-            " email text not null , username text not null, password text not null, security text not null, " +
-            " gender text not null, DOB text not null, location text not null, bowlingstyle text not null, bowlingarm text not null, careerlevel text not null);";
+            "name text not null , email text not null , username text not null, password text not null, security text not null, " +
+            " gender text not null, DOB text not null, location text not null, bowlingstyle text not null," +
+            " bowlingarm text not null, careerlevel text not null , weight text not null);";
 
 
     private static final String CREATE_TABLE_IMAGE = "CREATE TABLE " + IMAGE_TABLE_NAME + "(" +
@@ -167,7 +170,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         int count = cursor.getCount();
         cursor.close();
         values.put(COLUMN_ID, count);
-        //values.put(COLUMN_NAME , playerStats.getName());
+        values.put(COLUMN_NAME , p.getName());
 
         values.put(COLUMN_EMAIL, p.getEmail());
         values.put(COLUMN_USERNAME, p.getUsername());
@@ -180,6 +183,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COLUMN_BOWLINGSTYLE, p.getBowlingStyle());
         values.put(COLUMN_BOWLINGARM, p.getBowlingArm());
         values.put(COLUMN_CAREERLEVEL, p.getCareerLevel());
+        values.put(COLUMN_WEIGHT,p.getWeight());
 
 
         db.insert(PLAYER_TABLE_NAME, null, values);
@@ -446,6 +450,51 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         return gender;
     }
+
+    public String getName(String username) {
+        db = this.getReadableDatabase();
+        String query = "select username, name from " + PLAYER_TABLE_NAME;
+        Cursor cursor = db.rawQuery(query, null);
+        String uname, name;
+        name = "not found";
+        if (cursor.moveToFirst()) {
+            do {
+                uname = cursor.getString(0);
+
+                if (uname.equals(username)) {
+                    name = cursor.getString(1);
+                    break;
+                }
+            }
+            while (cursor.moveToNext());
+        }
+        cursor.close();
+        return name;
+    }
+
+
+    public String getWeight(String username) {
+        db = this.getReadableDatabase();
+        String query = "select username, weight from " + PLAYER_TABLE_NAME;
+        Cursor cursor = db.rawQuery(query, null);
+        String uname, weight;
+        weight = "not found";
+        if (cursor.moveToFirst()) {
+            do {
+                uname = cursor.getString(0);
+
+                if (uname.equals(username)) {
+                    weight = cursor.getString(1);
+                    break;
+                }
+            }
+            while (cursor.moveToNext());
+        }
+        cursor.close();
+        return weight;
+    }
+
+
 
     public String getDOB(String username) {
         db = this.getReadableDatabase();

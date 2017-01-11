@@ -43,6 +43,27 @@
         android:layout_centerVertical="true"
         android:layout_centerInParent="true">
 
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/reg_name"
+            android:background="@drawable/edittext_bottom_border_bg"
+            android:drawableStart="@drawable/profile1"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:drawablePadding="10dp"
+            android:hint="Name"
+            android:textSize="20dp"
+            android:textColor="#FFFFFF"
+            android:padding="10dp"
+            android:textColorHint="#CCCCCC"
+            android:layout_weight="1"
+            android:inputType="textPersonName"
+            android:imeOptions="actionNext"
+            android:nextFocusDown="@+id/reg_password"
+            android:textCursorDrawable="@null"/>
+
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

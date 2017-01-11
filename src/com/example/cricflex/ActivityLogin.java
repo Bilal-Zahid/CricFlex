@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,6 +32,10 @@ public class ActivityLogin extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
         super.onCreate(savedInstanceState);
+
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getActionBar().hide();
+
         View decorView = getWindow().getDecorView();
         // Hide the status bar.
         int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;

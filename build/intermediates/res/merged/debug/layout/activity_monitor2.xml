@@ -200,7 +200,7 @@
                     android:gravity="center"
                     android:layout_gravity="fill_horizontal"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="5\u00b0"
+                    android:text="0\u00b0"
                     android:textSize="@dimen/home_medium_text"
                     android:textColor="@color/text_light"
                     android:textStyle="bold"/>
@@ -231,7 +231,7 @@
                     android:gravity="center"
                     android:layout_gravity="fill_horizontal"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="0.5s"
+                    android:text="0.0s"
                     android:textSize="@dimen/home_medium_text"
                     android:textColor="@color/text_light"
                     android:textStyle="bold"/>
@@ -259,7 +259,7 @@
                     android:gravity="center"
                     android:layout_gravity="fill_horizontal"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="24 N"
+                    android:text="0 N"
                     android:textSize="@dimen/home_medium_text"
                     android:textColor="@color/text_light"
                     android:textStyle="bold"/>

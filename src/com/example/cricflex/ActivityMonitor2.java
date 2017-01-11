@@ -29,6 +29,7 @@ import android.os.IBinder;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.ImageButton;
@@ -445,7 +446,7 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
 
 
 
-//            mProgressDialog = ProgressDialog.show(ActivityMonitor.this, null,
+//            mProgressDialog = ProgressDialog.show(TestActivityMonitor.this, null,
 //                    null, false);
 //
 //            final ProgressDialog progress = new ProgressDialog(this);
@@ -474,7 +475,7 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
             //Code that is running is in block comments
 
             /*
-            final ProgressDialog progress = new ProgressDialog(ActivityMonitor.this);
+            final ProgressDialog progress = new ProgressDialog(TestActivityMonitor.this);
             progress.setMessage("Updating Values...");
             progress.show();
 
@@ -512,7 +513,7 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
 
 //            mProgressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
 
-//            ProgressDialog progress = ProgressDialog.show(ActivityMonitor.this, null, null, true);
+//            ProgressDialog progress = ProgressDialog.show(TestActivityMonitor.this, null, null, true);
 //            progress.setContentView(R.layout.elemento_progress_splash);
 //            progress.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
 
@@ -555,9 +556,19 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
         setContentView(R.layout.activity_monitor2);
         getActionBar().hide();
         View decorView = getWindow().getDecorView();
+
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getActionBar().hide();
+
         // Hide the status bar.
         int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
         decorView.setSystemUiVisibility(uiOptions);
+
+
+
+        //initializelayoutitems();
+
+
 
 
 
@@ -604,13 +615,38 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
         System.out.println("Username: "+ username);
 
 
-        //initializelayoutitems();
+//        //initializelayoutitems();
+//        bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+//
+//        if (bluetoothAdapter == null || !bluetoothAdapter.isEnabled()) {
+//            Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+//            startActivityForResult(enableBtIntent, 1);
+//
+//        }
+//
+//
+//        scanStarted = true;
+//
+//        // mLEScanner = mBluetoothAdapter.getBluetoothLeScanner();
+//        // mLEScanner.startScan(filters, settings, mScanCallback);
+//        bluetoothAdapter.startLeScan(
+//                new UUID[]{RFDService.UUID_SERVICE},
+//                ActivityMonitor2.this);
+
+
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
         if (bluetoothAdapter == null || !bluetoothAdapter.isEnabled()) {
             Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
             startActivityForResult(enableBtIntent, 1);
 
+            scanStarted = true;
+
+            // mLEScanner = mBluetoothAdapter.getBluetoothLeScanner();
+            // mLEScanner.startScan(filters, settings, mScanCallback);
+            bluetoothAdapter.startLeScan(
+                    new UUID[]{RFDService.UUID_SERVICE},
+                    ActivityMonitor2.this);
         }
 
 
@@ -896,7 +932,7 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
 
 
 
-//            Intent intent = new Intent(this, ActivityMetrics1.class);
+//            Intent intent = new Intent(this, TestActivityMetrics1.class);
 //            Bundle extras = new Bundle();
 //            extras.putString("armAngle", armAngle_value);
 ////                extras.putString("armSpeed", armSpeed_value);

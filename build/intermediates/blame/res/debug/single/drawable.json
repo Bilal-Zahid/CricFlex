@@ -1,11 +1,11 @@
 [
     {
-        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable\\anim06.gif",
-        "source": "C:\\CricFlex\\App\\CricFlex\\res\\drawable\\anim06.gif"
-    },
-    {
         "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable\\frame_14_delay.gif",
         "source": "C:\\CricFlex\\App\\CricFlex\\res\\drawable\\frame_14_delay.gif"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable\\anim06.gif",
+        "source": "C:\\CricFlex\\App\\CricFlex\\res\\drawable\\anim06.gif"
     },
     {
         "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_text_cursor_material.xml",

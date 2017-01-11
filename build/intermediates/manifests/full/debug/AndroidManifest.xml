@@ -43,7 +43,7 @@
             android:label="CricFlex"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.example.cricflex.ActivityMonitor"
+            android:name="com.example.cricflex.TestActivityMonitor"
             android:label="CricFlex"
             android:screenOrientation="portrait" />
         <activity
@@ -88,12 +88,13 @@
         <activity android:name="com.example.cricflex.ActivityGraph3" />
         <activity android:name="com.example.cricflex.ActivityGraph4" />
         <activity android:name="com.example.cricflex.ActivityGraph5" />
-        <activity android:name="com.example.cricflex.ActivityMonitor3" />
-        <activity android:name="com.example.cricflex.ActivitySessionStats" />
+        <activity android:name="com.example.cricflex.TestActivityMonitor3" />
+        <activity android:name="com.example.cricflex.TestActivitySessionStats" />
         <activity android:name="com.example.cricflex.ActivitySessionStats2" />
         <activity android:name="com.example.cricflex.test_asawal" />
-        <activity android:name="com.example.cricflex.ActivityMetrics" />
-        <activity android:name="com.example.cricflex.ActivityMetrics1" />
+        <activity android:name="com.example.cricflex.TestActivityMetrics" />
+        <activity android:name="com.example.cricflex.TestActivityMetrics1" />
+        <activity android:name="com.example.cricflex.TestActivitySetupProfile" />
     </application>
 
 </manifest>

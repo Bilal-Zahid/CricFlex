@@ -69,16 +69,10 @@
 
 
     <string-array name="bowlingstyle_array">
-        <item>Right-arm fast</item>
-        <item>Right-arm fast medium</item>
-        <item>Right-arm medium fast</item>
-        <item>Right-arm medium</item>
-        <item>Left-arm fast</item>
-        <item>Left-arm fast medium</item>
-        <item>Left-arm medium fast</item>
-        <item>Left-arm medium</item>
-        <item>Off break (right-arm)</item>
-        <item>Leg break (right-arm)</item>
+        <item>fast</item>
+        <item>fast medium</item>
+        <item>Off break </item>
+        <item>Leg break </item>
         <item>Slow left-arm orthodox</item>
         <item>Slow left-arm chinaman</item>
     </string-array>

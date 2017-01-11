@@ -112,14 +112,14 @@ ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:42:9-45:52
 		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:44:13-37
 	android:name
 		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:43:13-49
-activity#com.example.cricflex.ActivityMonitor
+activity#com.example.cricflex.TestActivityMonitor
 ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:46:9-49:52
 	android:screenOrientation
 		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:49:13-49
 	android:label
 		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:48:13-37
 	android:name
-		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:47:13-44
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:47:13-48
 activity#com.example.cricflex.ActivityWelcome
 ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:50:9-53:52
 	android:screenOrientation
@@ -208,27 +208,31 @@ activity#com.example.cricflex.ActivityGraph5
 ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:91:9-52
 	android:name
 		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:91:19-49
-activity#com.example.cricflex.ActivityMonitor3
-ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:92:9-54
+activity#com.example.cricflex.TestActivityMonitor3
+ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:92:9-58
 	android:name
-		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:92:19-51
-activity#com.example.cricflex.ActivitySessionStats
-ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:93:9-57
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:92:19-55
+activity#com.example.cricflex.TestActivitySessionStats
+ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:93:9-62
 	android:name
-		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:93:19-55
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:93:19-59
 activity#com.example.cricflex.ActivitySessionStats2
-ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:94:9-58
+ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:94:9-59
 	android:name
 		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:94:19-56
 activity#com.example.cricflex.test_asawal
-ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:95:9-48
+ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:95:9-49
 	android:name
 		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:95:19-46
-activity#com.example.cricflex.ActivityMetrics
-ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:96:9-52
+activity#com.example.cricflex.TestActivityMetrics
+ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:96:9-57
 	android:name
-		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:96:19-50
-activity#com.example.cricflex.ActivityMetrics1
-ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:97:9-53
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:96:19-54
+activity#com.example.cricflex.TestActivityMetrics1
+ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:97:9-58
 	android:name
-		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:97:19-51
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:97:19-55
+activity#com.example.cricflex.TestActivitySetupProfile
+ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:98:9-71
+	android:name
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:98:19-59

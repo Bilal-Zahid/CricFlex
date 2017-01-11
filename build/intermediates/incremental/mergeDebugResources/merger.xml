@@ -1843,16 +1843,10 @@
         <item>@drawable/password1</item>
         <item>@drawable/email1</item>
     </array><string name="slide_2_desc">Arm angle, start of action and release point detection</string><string name="slide_3_title">Player Profile</string><string name="legal_monitor_status">Legal</string><string name="next">NEXT</string><string name="slide_3_desc">Keeps record of all the balls and also maintain user profile on server</string><string name="action_settings">Settings</string><string name="help1">Wear the band such that the\nwhite dot comes right under\nyour elbow</string><string name="app_name">CricFlex</string><string name="help2">Turn on the device using the\nswitch on the upper part of\nthe band</string><string name="skip">SKIP</string><string name="desc_list_item_icon">Item Icon</string><string-array name="bowlingstyle_array">
-        <item>Right-arm fast</item>
-        <item>Right-arm fast medium</item>
-        <item>Right-arm medium fast</item>
-        <item>Right-arm medium</item>
-        <item>Left-arm fast</item>
-        <item>Left-arm fast medium</item>
-        <item>Left-arm medium fast</item>
-        <item>Left-arm medium</item>
-        <item>Off break (right-arm)</item>
-        <item>Leg break (right-arm)</item>
+        <item>fast</item>
+        <item>fast medium</item>
+        <item>Off break </item>
+        <item>Leg break </item>
         <item>Slow left-arm orthodox</item>
         <item>Slow left-arm chinaman</item>
     </string-array><string name="slide_1_title">What is Cricflex</string><string name="action_viewpager">ViewPager</string><string name="start">GOT IT</string><string name="action_list">List</string><string name="action_arc_tab">Arc Fragment</string><string name="slide_4_desc">Data analytics (DA) is the science of examining raw data with the purpose of drawing conclusions about that information.</string><string name="title_section1">Section 1</string><string name="title_activity_view_pager">ViewPagerActivity</string><string name="title_section3">Section 3</string><string name="title_section2">Section 2</string></file><file path="C:\CricFlex\App\CricFlex\res\values\styles.xml" qualifiers=""><style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">

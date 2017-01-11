@@ -54,18 +54,20 @@ public class ActivityRegister extends Activity {
         button_register.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
 //                final EditText etName = (EditText) findViewById(R.id.etName);
+                final EditText reg_name = (EditText) findViewById(R.id.reg_name);
                 final EditText reg_username = (EditText) findViewById(R.id.reg_username);
                 final EditText reg_email = (EditText) findViewById(R.id.reg_email);
                 final EditText reg_password = (EditText) findViewById(R.id.reg_password);
                 final EditText reg_security = (EditText) findViewById(R.id.reg_security);
 
-//                final String namestr = etName.getText().toString();
+
+                final String namestr = reg_name.getText().toString();
                 final String usernamestr = reg_username.getText().toString();
                 final String emailstr = reg_email.getText().toString();
                 final String passwordstr = reg_password.getText().toString();
                 final String securitystr = reg_security.getText().toString();
 //                playerStats.setName(namestr);
-                if(usernamestr.equals("")||passwordstr.equals("")||emailstr.equals("")||securitystr.equals("")){
+                if(usernamestr.equals("")||passwordstr.equals("")||emailstr.equals("")||securitystr.equals("") || namestr.equals("")){
                     Toast.makeText(ActivityRegister.this, "Empty fields", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -92,6 +94,7 @@ public class ActivityRegister extends Activity {
                     }, 500);
                     return;
                 }
+                p.setName(namestr);
                 p.setUsername(usernamestr);
                 p.setEmail(emailstr);
                 p.setPassword(passwordstr);
@@ -101,6 +104,7 @@ public class ActivityRegister extends Activity {
                 //Toast.makeText(ActivityRegister.this, "Successfully Registered Account", Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(ActivityRegister.this, ActivitySetupProfile.class);
+                intent.putExtra("name",namestr);
                 intent.putExtra("username", usernamestr);
                 intent.putExtra("email", emailstr);
                 intent.putExtra("password", passwordstr);

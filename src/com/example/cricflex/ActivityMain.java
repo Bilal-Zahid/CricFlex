@@ -202,7 +202,7 @@ public class ActivityMain extends ActionBarActivity {
 
             case R.id.tour_cricflex:
 
-                Intent intent0 = new Intent(ActivityMain.this, ActivityMetrics.class);
+                Intent intent0 = new Intent(ActivityMain.this, TestActivityMetrics.class);
 
                 Bundle extras = new Bundle();
                 extras.putString("id", "1");

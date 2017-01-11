@@ -3,24 +3,19 @@ package com.example.cricflex;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
-import android.content.ContextWrapper;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
-import android.graphics.drawable.BitmapDrawable;
 import android.media.ExifInterface;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
-import android.support.v7.app.ActionBar;
 import android.text.InputType;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -29,18 +24,14 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.ByteArrayInputStream;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Locale;
@@ -65,6 +56,8 @@ public class ActivitySetupProfile extends Activity implements View.OnClickListen
     String selectedBowlingArm = "Left";
     String selectedBowlingStyle = "fast";
     String selectedCareerLevel = "international";
+    String weight = "80";
+
     Context ctx;
 
     Bitmap bitmapImage;
@@ -86,7 +79,7 @@ public class ActivitySetupProfile extends Activity implements View.OnClickListen
     private static int RESULT_LOAD_IMG = 1;
     String imgDecodableString;
 
-    final Player p = new Player();
+    final Player player = new Player();
 
 
 //    private ImageView profileImage;
@@ -101,6 +94,10 @@ public class ActivitySetupProfile extends Activity implements View.OnClickListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getActionBar().hide();
+
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getActionBar().hide();
+
         setContentView(R.layout.activity_profile_setup1);
         findViewsById();
 
@@ -230,6 +227,7 @@ public class ActivitySetupProfile extends Activity implements View.OnClickListen
                         selectedCareerLevel = careerLevelSpinner.getSelectedItem().toString();
                         //DataBase Work to do!!!
                         Intent intent = getIntent();
+                        String name = intent.getStringExtra("name");
                         String username = intent.getStringExtra("username");
                         String email = intent.getStringExtra("email");
                         String password = intent.getStringExtra("password");
@@ -240,7 +238,11 @@ public class ActivitySetupProfile extends Activity implements View.OnClickListen
                         String bowlingArm = selectedBowlingArm;
                         String bowlingStyle = selectedBowlingStyle;
                         String careerLevel = selectedCareerLevel;
+                        String weightOfPlayer = weight;
 
+
+
+                        System.out.println("name : " + name);
                         System.out.println("username : "+ username);
                         System.out.println("email : "+ email);
                         System.out.println("password : "+ password);
@@ -252,23 +254,25 @@ public class ActivitySetupProfile extends Activity implements View.OnClickListen
                         System.out.println("bowlingStyle : "+ bowlingStyle);
                         System.out.println("careerLevel : "+ careerLevel);
 
-                        p.setUsername(username);
-                        p.setEmail(email);
-                        p.setPassword(password);
-                        p.setSecurity(security);
-                        p.setGender(gender);
-                        p.setLocation(location);
-                        p.setDOB(DOB);
-                        p.setBowlingArm(bowlingArm);
-                        p.setBowlingStyle(bowlingStyle);
-                        p.setCareerLevel(careerLevel);
+                        player.setName(name);
+                        player.setUsername(username);
+                        player.setEmail(email);
+                        player.setPassword(password);
+                        player.setSecurity(security);
+                        player.setGender(gender);
+                        player.setLocation(location);
+                        player.setDOB(DOB);
+                        player.setBowlingArm(bowlingArm);
+                        player.setBowlingStyle(bowlingStyle);
+                        player.setCareerLevel(careerLevel);
+                        player.setWeight(weightOfPlayer);
 
 
-                        p.setLegalBowls("0");
-                        p.setIllegalBowls("0");
-                        p.setAverageAngle("0");
-                        p.setLongestStreak("0");
-                        p.setLastBowlAngle("0");
+                        player.setLegalBowls("0");
+                        player.setIllegalBowls("0");
+                        player.setAverageAngle("0");
+                        player.setLongestStreak("0");
+                        player.setLastBowlAngle("0");
 
 
                         saveImage(getApplicationContext(),bitmapImage,username,"jpeg");
@@ -282,19 +286,19 @@ public class ActivitySetupProfile extends Activity implements View.OnClickListen
 
 
 
-                        helper.insertPlayerStats(p);
-                        helper.insertPlayer(p);
+                        helper.insertPlayerStats(player);
+                        helper.insertPlayer(player);
 
-                        helper.insertPlayerAngleValues(p.getUsername(),"");
-                        helper.insertPlayerActionTimeValues(p.getUsername(),"");
-                        helper.insertPlayerForceValues(p.getUsername(),"");
-                        helper.insertPlayerArmTwistValues(p.getUsername(),"");
+                        helper.insertPlayerAngleValues(player.getUsername(),"");
+                        helper.insertPlayerActionTimeValues(player.getUsername(),"");
+                        helper.insertPlayerForceValues(player.getUsername(),"");
+                        helper.insertPlayerArmTwistValues(player.getUsername(),"");
 
 
-                        helper.insertPlayerAngleValuesWithDate(p.getUsername(),"","");
-                        helper.insertPlayerActionTimeValuesWithDate(p.getUsername(),"","");
-                        helper.insertPlayerForceValuesWithDate(p.getUsername(),"","");
-                        helper.insertPlayerArmTwistValuesWithDate(p.getUsername(),"","");
+                        helper.insertPlayerAngleValuesWithDate(player.getUsername(),"","");
+                        helper.insertPlayerActionTimeValuesWithDate(player.getUsername(),"","");
+                        helper.insertPlayerForceValuesWithDate(player.getUsername(),"","");
+                        helper.insertPlayerArmTwistValuesWithDate(player.getUsername(),"","");
 
 
                         Toast toast = Toast.makeText(ActivitySetupProfile.this, "Registered Account!" , Toast.LENGTH_SHORT);
@@ -319,11 +323,18 @@ public class ActivitySetupProfile extends Activity implements View.OnClickListen
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        try {
+
+        System.out.println("Before try....");
+
+//        try {
             // When an Image is picked
+
+            System.out.println("Before try if");
             if (requestCode == RESULT_LOAD_IMG && resultCode == RESULT_OK
-                    && null != data) {
+                    && data !=null && data.getData()!=null) {
                 // Get the Image from data
+
+                System.out.println("After try if");
 
 
 
@@ -334,7 +345,11 @@ public class ActivitySetupProfile extends Activity implements View.OnClickListen
                 //selectedImage = Uri.fromFile(f);
                 //ContextWrapper context = new ContextWrapper();
                 //Bitmap b;
-                bitmapImage = handleSamplingAndRotationBitmap( this.getApplicationContext(), selectedImage);
+                try {
+                    bitmapImage = handleSamplingAndRotationBitmap( this.getApplicationContext(), selectedImage);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 //                bitmapImage = b;
                 ImageView profileImage = (ImageView) findViewById(R.id.profilepicture);
                 profileImage.setImageBitmap(bitmapImage);
@@ -421,10 +436,10 @@ public class ActivitySetupProfile extends Activity implements View.OnClickListen
                 Toast.makeText(this, "You haven't picked Image",
                         Toast.LENGTH_LONG).show();
             }
-        } catch (Exception e) {
-            Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT)
-                    .show();
-        }
+//        } catch (Exception e) {
+//            Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT)
+//                    .show();
+//        }
 
     }
 

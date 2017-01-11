@@ -36,6 +36,9 @@ public class FragmentProfile extends Fragment {
             username = bundle.getString("username", "not sent");
         }
 
+        TextView pv_name = (TextView)rootView.findViewById(R.id.pv_name);
+        pv_name.setText(helper.getName(username));
+
         TextView pv_username = (TextView)rootView.findViewById(R.id.pv_username);
         pv_username.setText(username);
 
@@ -60,6 +63,10 @@ public class FragmentProfile extends Fragment {
         TextView pv_DOB = (TextView)rootView.findViewById(R.id.pv_dateofbirth);
         pv_DOB.setText(helper.getDOB(username));
 
+        TextView pv_weight = (TextView)rootView.findViewById(R.id.pv_weight);
+        String weight = helper.getWeight(username) + " kg";
+        pv_weight.setText(weight);
+
         //CircleImageView circleImageView = new CircleImageView(getActivity());
         //circleImageView =
 
@@ -82,7 +89,7 @@ public class FragmentProfile extends Fragment {
         return rootView;
     }
     public Bitmap getImageBitmap(Context context, String name, String extension){
-        name=name+"."+extension;
+            name=name+"."+extension;
         try{
             FileInputStream fis = context.openFileInput(name);
             Bitmap b = BitmapFactory.decodeStream(fis);
