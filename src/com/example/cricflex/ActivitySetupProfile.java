@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
@@ -27,6 +28,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -127,21 +129,29 @@ public class ActivitySetupProfile extends Activity implements View.OnClickListen
 //                startActivityForResult(galleryIntent, RESULT_LOAD_IMG);
 
 
-                Intent pickIntent = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                //pickIntent.setType("image/*");
-                //pickIntent.setAction(Intent.ACTION_GET_CONTENT);
+//                Intent pickIntent = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+//                //pickIntent.setType("image/*");
+//                //pickIntent.setAction(Intent.ACTION_GET_CONTENT);
+//
+//                Intent takePhotoIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//
+//                String pickTitle = "Select or take a new Picture"; // Or get from strings.xml
+//                Intent chooserIntent = Intent.createChooser(pickIntent, pickTitle);
+//                chooserIntent.putExtra
+//                        (
+//                                Intent.EXTRA_INITIAL_INTENTS,
+//                                new Intent[] { takePhotoIntent }
+//                        );
+//
+////                startActivityForResult(chooserIntent, SELECT_PICTURE);
+//                startActivityForResult(pickIntent, SELECT_PICTURE);
 
-                Intent takePhotoIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
-                String pickTitle = "Select or take a new Picture"; // Or get from strings.xml
-                Intent chooserIntent = Intent.createChooser(pickIntent, pickTitle);
-                chooserIntent.putExtra
-                        (
-                                Intent.EXTRA_INITIAL_INTENTS,
-                                new Intent[] { takePhotoIntent }
-                        );
+                Intent i = new Intent(
+                        Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 
-                startActivityForResult(chooserIntent, SELECT_PICTURE);
+                startActivityForResult(i, 1);
 
 
             }
@@ -324,35 +334,103 @@ public class ActivitySetupProfile extends Activity implements View.OnClickListen
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        System.out.println("Before try....");
+        if (requestCode == 1 && resultCode == RESULT_OK && null != data) {
+            Uri selectedImage = data.getData();
+            String[] filePathColumn = { MediaStore.Images.Media.DATA };
 
+            Cursor cursor = getContentResolver().query(selectedImage,
+                    filePathColumn, null, null, null);
+            cursor.moveToFirst();
+
+            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+            String picturePath = cursor.getString(columnIndex);
+            cursor.close();
+
+
+            ImageView profileImage = (ImageView) findViewById(R.id.profilepicture);
+            bitmapImage = BitmapFactory.decodeFile(picturePath);
+            bitmapImage = Bitmap.createScaledBitmap(bitmapImage, 200, 200, true);
+
+
+            profileImage.setImageBitmap(bitmapImage);
+//            ImageView imageView = (ImageView) findViewById(R.id.imgView);
+//            imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+
+        }
+
+
+
+
+//        new code start
 //        try {
-            // When an Image is picked
+//
+//            switch (requestCode) {
+//                case 0:
+//                    if (resultCode == RESULT_OK) {
+//                        Uri selectedImage = data.getData();
+//
+//                        bitmapImage = handleSamplingAndRotationBitmap(this.getApplicationContext(), selectedImage);
+//                        ImageView profileImage = (ImageView) findViewById(R.id.profilepicture);
+//                        profileImage.setImageBitmap(bitmapImage);
+////                    imageview.setImageURI(selectedImage);
+//                    }
+//
+//                    break;
+//                case 1:
+//                    if (resultCode == RESULT_OK) {
+//                        Uri selectedImage = data.getData();
+//                        bitmapImage = handleSamplingAndRotationBitmap(this.getApplicationContext(), selectedImage);
+//                        ImageView profileImage = (ImageView) findViewById(R.id.profilepicture);
+//                        profileImage.setImageBitmap(bitmapImage);
+////                    imageview.setImageURI(selectedImage);
+//                    }
+//                    break;
+//            }
+//        }
+//        catch (Exception e){
+//
+//        }
 
-            System.out.println("Before try if");
-            if (requestCode == RESULT_LOAD_IMG && resultCode == RESULT_OK
-                    && data !=null && data.getData()!=null) {
-                // Get the Image from data
+        // comment start
+//        System.out.println("Before try....");
+//
+////        try {
+//            // When an Image is picked
+//
+//            System.out.println("Before try if");
+//            if (requestCode == RESULT_LOAD_IMG && resultCode == RESULT_OK
+//                    && data !=null && data.getData()!=null) {
+//                // Get the Image from data
+//
+//                System.out.println("After try if");
+//
+//
+//
+//                Uri selectedImage = data.getData();
+//                System.out.print("uri: " + selectedImage.toString());
+//                //File f = new File(selectedImage.getPath());
+//
+//                //selectedImage = Uri.fromFile(f);
+//                //ContextWrapper context = new ContextWrapper();
+//                //Bitmap b;
+//                try {
+//                    bitmapImage = handleSamplingAndRotationBitmap( this.getApplicationContext(), selectedImage);
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+////                bitmapImage = b;
+//                ImageView profileImage = (ImageView) findViewById(R.id.profilepicture);
+//                profileImage.setImageBitmap(bitmapImage);
+//
+//                //saveImage(this.getApplicationContext(),bitmapImage,);
+//
+//
+//            } else {
+//                Toast.makeText(this, "You haven't picked Image",
+//                        Toast.LENGTH_LONG).show();
+//            }
 
-                System.out.println("After try if");
-
-
-
-                Uri selectedImage = data.getData();
-                System.out.print("uri: " + selectedImage.toString());
-                //File f = new File(selectedImage.getPath());
-
-                //selectedImage = Uri.fromFile(f);
-                //ContextWrapper context = new ContextWrapper();
-                //Bitmap b;
-                try {
-                    bitmapImage = handleSamplingAndRotationBitmap( this.getApplicationContext(), selectedImage);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-//                bitmapImage = b;
-                ImageView profileImage = (ImageView) findViewById(R.id.profilepicture);
-                profileImage.setImageBitmap(bitmapImage);
+        //cooment end
 
 
 //                String[] filePathColumn = { MediaStore.Images.Media.DATA };
@@ -427,15 +505,7 @@ public class ActivitySetupProfile extends Activity implements View.OnClickListen
 
 //                bitmapImage  = compressedBitmap;
 
-                profileImage.setImageBitmap(bitmapImage);
 
-                //saveImage(this.getApplicationContext(),bitmapImage,);
-
-
-            } else {
-                Toast.makeText(this, "You haven't picked Image",
-                        Toast.LENGTH_LONG).show();
-            }
 //        } catch (Exception e) {
 //            Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT)
 //                    .show();
@@ -677,6 +747,9 @@ public class ActivitySetupProfile extends Activity implements View.OnClickListen
 
     public void saveImage(Context context, Bitmap b,String name,String extension){
         name=name+"."+extension;
+
+//        Bitmap resized = Bitmap.createScaledBitmap(b, 200, 200, true);
+//        b = resized;
         FileOutputStream out;
         try {
             out = context.openFileOutput(name, Context.MODE_PRIVATE);
@@ -699,6 +772,77 @@ public class ActivitySetupProfile extends Activity implements View.OnClickListen
         }
         return null;
     }
+
+
+
+    private void takePictureFromGallery()
+    {
+        startActivityForResult(
+                Intent.createChooser(
+                        new Intent(Intent.ACTION_GET_CONTENT)
+                                .setType("image/*"), "Choose an image"),
+                1);
+    }
+
+//
+//    private void handleGalleryResult(Intent data)
+//    {
+//        Uri selectedImage = data.getData();
+//        mTmpGalleryPicturePath = getPath(selectedImage);
+//        if(mTmpGalleryPicturePath!=null)
+//            ImageUtils.setPictureOnScreen(mTmpGalleryPicturePath, mImageView);
+//        else
+//        {
+//            try {
+//                InputStream is = getContentResolver().openInputStream(selectedImage);
+//                mImageView.setImageBitmap(BitmapFactory.decodeStream(is));
+//                mTmpGalleryPicturePath = selectedImage.getPath();
+//            } catch (FileNotFoundException e) {
+//                // TODO Auto-generated catch block
+//                e.printStackTrace();
+//            }
+//        }
+//    }
+//
+//    @SuppressLint("NewApi")
+//    private String getPath(Uri uri) {
+//        if( uri == null ) {
+//            return null;
+//        }
+//
+//        String[] projection = { MediaStore.Images.Media.DATA };
+//
+//        Cursor cursor;
+//        if(Build.VERSION.SDK_INT >19)
+//        {
+//            // Will return "image:x*"
+//            String wholeID = DocumentsContract.getDocumentId(uri);
+//            // Split at colon, use second item in the array
+//            String id = wholeID.split(":")[1];
+//            // where id is equal to
+//            String sel = MediaStore.Images.Media._ID + "=?";
+//
+//            cursor = getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+//                    projection, sel, new String[]{ id }, null);
+//        }
+//        else
+//        {
+//            cursor = getContentResolver().query(uri, projection, null, null, null);
+//        }
+//        String path = null;
+//        try
+//        {
+//            int column_index = cursor
+//                    .getColumnIndex(MediaStore.Images.Media.DATA);
+//            cursor.moveToFirst();
+//            path = cursor.getString(column_index).toString();
+//            cursor.close();
+//        }
+//        catch(NullPointerException e) {
+//
+//        }
+//        return path;
+//    }
 
 
 
