@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.util.ArrayList;
 
 import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -45,18 +46,30 @@ public class ActivityMain extends ActionBarActivity {
 //            getFragmentManager().popBackStack();
 //        }
 //    }
-
+    String checkForHome = "in home";
     @Override
     public void onBackPressed(){
 //        FragmentManager fm = ;
-        if (getFragmentManager().getBackStackEntryCount() > 1) {
-            Log.i("MainActivity", "popping backstack");
-            getFragmentManager().popBackStack();
-        } else {
-            Log.i("MainActivity", "nothing on backstack, calling super");
+        if (checkForHome.equals("in home")){
             moveTaskToBack(true);
-//            super.onBackPressed();
+            return;
         }
+
+        else {
+            Intent i = getIntent();
+            finish();
+            startActivity(i);
+            return;
+        }
+//        if (getFragmentManager().getBackStackEntryCount() > 1) {
+//            Log.i("MainActivity", "popping backstack");
+//            getFragmentManager().popBackStack( );
+//
+//        } else {
+//            Log.i("MainActivity", "nothing on backstack, calling super");
+//            moveTaskToBack(true);
+////            super.onBackPressed();
+//        }
     }
 
     ListView mDrawerList;
@@ -69,6 +82,7 @@ public class ActivityMain extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
 
 
         int abc = SaveSharedPreference.getUserName(ActivityMain.this).length();
@@ -302,16 +316,34 @@ public class ActivityMain extends ActionBarActivity {
         return super.onPrepareOptionsMenu(menu);
     }
 
+
+    private void displayHomeAsUp()
+    {
+        int stackCount = getFragmentManager().getBackStackEntryCount();
+        getActionBar().setDisplayHomeAsUpEnabled(stackCount > 0);
+    }
+
+    @Override
+    public boolean onNavigateUp()
+    {
+        getFragmentManager().popBackStack();
+        return true;
+    }
+
+
+
     /**
      * Diplaying fragment view for selected nav drawer list item
      * */
     private void selectItemFromDrawer(int position) {
         // update the main content by replacing fragments
         Fragment fragment = null;
+        checkForHome = "not in home";
         switch (position) {
 
             case 0:
                 fragment = new FragmentHome();
+                checkForHome = "in home";
                 break;
             case 1:
                 fragment = new FragmentHistory();
@@ -347,10 +379,17 @@ public class ActivityMain extends ActionBarActivity {
 //            getFragmentManager().beginTransaction().addToBackStack(null);
 
 
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+            transaction.replace(R.id.frame_container, fragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
+//            return true;
 
-            getFragmentManager().beginTransaction().add(
-                    R.id.frame_container, fragment).
-                    addToBackStack(null).commit();
+
+
+//            getFragmentManager().beginTransaction().replace(
+//                    R.id.frame_container, fragment,checkForHome).
+//                    addToBackStack(null).commit();
 
 
             // update selected item and title, then close the drawer
@@ -405,6 +444,7 @@ public class ActivityMain extends ActionBarActivity {
         getFragmentManager().beginTransaction().add(
                 R.id.frame_container, fragment).
                 addToBackStack(null).commit();
+        checkForHome = "not in home";
 
 
         setTitle(R.string.profile);
@@ -429,6 +469,8 @@ public class ActivityMain extends ActionBarActivity {
         }
         return null;
     }
+
+
 
 
 

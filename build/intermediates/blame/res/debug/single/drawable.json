@@ -204,12 +204,12 @@
         "source": "C:\\CricFlex\\App\\CricFlex\\res\\drawable\\frame_4.png"
     },
     {
-        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable\\anim00.gif",
-        "source": "C:\\CricFlex\\App\\CricFlex\\res\\drawable\\anim00.gif"
-    },
-    {
         "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable\\frame_23.png",
         "source": "C:\\CricFlex\\App\\CricFlex\\res\\drawable\\frame_23.png"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable\\anim00.gif",
+        "source": "C:\\CricFlex\\App\\CricFlex\\res\\drawable\\anim00.gif"
     },
     {
         "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable\\anim14.gif",
@@ -316,12 +316,12 @@
         "source": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\drawable\\abc_seekbar_thumb_material.xml"
     },
     {
-        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable\\frame_11.png",
-        "source": "C:\\CricFlex\\App\\CricFlex\\res\\drawable\\frame_11.png"
-    },
-    {
         "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_voice_search_api_material.xml",
         "source": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\drawable\\abc_ic_voice_search_api_material.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable\\frame_11.png",
+        "source": "C:\\CricFlex\\App\\CricFlex\\res\\drawable\\frame_11.png"
     },
     {
         "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable\\anim08.gif",
