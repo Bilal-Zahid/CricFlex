@@ -27,6 +27,7 @@ MERGED from [com.android.support:support-fragment:25.1.0] C:\Users\abcd\AndroidS
 MERGED from [com.android.support:support-media-compat:25.1.0] C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.1.0\AndroidManifest.xml:21:5-23:63
 MERGED from [com.android.support:support-core-ui:25.1.0] C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.1.0\AndroidManifest.xml:21:5-23:58
 MERGED from [com.android.support:support-core-utils:25.1.0] C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.1.0\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:percent:25.1.0] C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\exploded-aar\com.android.support\percent\25.1.0\AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:support-compat:25.1.0] C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\exploded-aar\com.android.support\support-compat\25.1.0\AndroidManifest.xml:21:5-23:58
 	tools:overrideLibrary
 		ADDED from [com.android.support:design:25.1.0] C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\exploded-aar\com.android.support\design\25.1.0\AndroidManifest.xml:23:9-59
@@ -74,6 +75,7 @@ MERGED from [com.android.support:support-fragment:25.1.0] C:\Users\abcd\AndroidS
 MERGED from [com.android.support:support-media-compat:25.1.0] C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.1.0\AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-core-ui:25.1.0] C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.1.0\AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-core-utils:25.1.0] C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.1.0\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:percent:25.1.0] C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\exploded-aar\com.android.support\percent\25.1.0\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-compat:25.1.0] C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\exploded-aar\com.android.support\support-compat\25.1.0\AndroidManifest.xml:25:5-20
 	android:label
 		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:28:9-41
