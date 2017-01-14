@@ -1,6 +1,5 @@
 package com.example.cricflex;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -8,11 +7,13 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
+import android.graphics.drawable.Drawable;
 import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
+import android.support.v4.app.FragmentActivity;
 import android.text.InputType;
 import android.view.Menu;
 import android.view.View;
@@ -25,23 +26,26 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mukesh.countrypicker.fragments.CountryPicker;
+import com.mukesh.countrypicker.interfaces.CountryPickerListener;
+import com.mukesh.countrypicker.models.Country;
+
+
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.Locale;
 
 /**
  * Created by Asawal on 8/13/2016.      Chah gayay ho aap
  */
-public class ActivitySetupProfile extends Activity implements View.OnClickListener {
+public class ActivitySetupProfile extends FragmentActivity implements View.OnClickListener {
 
     DbBitmapUtility dbBitmapUtility = new DbBitmapUtility();
     DatabaseHelper helper = new DatabaseHelper(this);
@@ -59,6 +63,13 @@ public class ActivitySetupProfile extends Activity implements View.OnClickListen
     String selectedBowlingStyle = "fast";
     String selectedCareerLevel = "international";
     String weight = "80";
+
+    TextView location_text;
+    CountryPicker picker;
+    Country country;
+    Drawable drawable;
+    ImageView country_flag;
+    int scale_height, scale_width;
 
     Context ctx;
 
@@ -82,6 +93,8 @@ public class ActivitySetupProfile extends Activity implements View.OnClickListen
     String imgDecodableString;
 
     final Player player = new Player();
+
+    EditText weightOfPerson;
 
 
 //    private ImageView profileImage;
@@ -109,6 +122,40 @@ public class ActivitySetupProfile extends Activity implements View.OnClickListen
 
         dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
         setDateTimeField();
+
+
+
+        location_text = (TextView) findViewById(R.id.location);
+        country_flag = (ImageView) findViewById(R.id.country_flag);
+
+
+
+        picker = CountryPicker.newInstance("Select Country");
+        country = picker.getUserCountryInfo(this);
+
+
+        weightOfPerson = (EditText) findViewById(R.id.pv_weight);
+
+        location_text.setText(country.getName());
+        country_flag.setImageResource(country.getFlag());
+
+        location_text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                show();
+            }
+        });
+
+        country_flag.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                show();
+            }
+        });
+
+
+
+
 
         ImageView profileImage = (ImageView) findViewById(R.id.profilepicture);
         profileImage.setClickable(true);
@@ -188,7 +235,7 @@ public class ActivitySetupProfile extends Activity implements View.OnClickListen
             public void onClick(View view){
 
                 selectedDOB = birthDate.getText().toString();
-                selectedCountry = CountrySpinner.getSelectedItem().toString();
+                selectedCountry = country.getName();
                 //String selectedGender = gender;
 
                 if(selectedDOB.equals("")){
@@ -201,6 +248,10 @@ public class ActivitySetupProfile extends Activity implements View.OnClickListen
                             toast.cancel();
                         }
                     }, 500);
+                    return;
+                }
+                if(weightOfPerson.getText().toString().equals("")){
+                    Toast.makeText(ActivitySetupProfile.this, "Please Enter Weight." , Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -248,7 +299,16 @@ public class ActivitySetupProfile extends Activity implements View.OnClickListen
                         String bowlingArm = selectedBowlingArm;
                         String bowlingStyle = selectedBowlingStyle;
                         String careerLevel = selectedCareerLevel;
-                        String weightOfPlayer = weight;
+                        String weightOfPlayer;
+                        if(weightOfPerson.getText().toString().equals("")){
+                            Toast.makeText(ActivitySetupProfile.this, "Please Enter Weight." , Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        else{
+                            weightOfPlayer = weightOfPerson.getText().toString();;
+                        }
+//                        String weightOfPlayer = weightOfPerson.getText().toString();
+//                        weightOfPlayer= weightOfPerson.getText().toString();
 
 
 
@@ -645,22 +705,39 @@ public class ActivitySetupProfile extends Activity implements View.OnClickListen
 
     private void initializeCountrySpinner(){
 
-        Locale[] locale = Locale.getAvailableLocales();
-        ArrayList<String> countries = new ArrayList<String>();
-        String country;
-        for( Locale loc : locale ){
-            country = loc.getDisplayCountry();
-            if( country.length() > 0 && !countries.contains(country) ){
-                countries.add( country );
-            }
-        }
-        Collections.sort(countries, String.CASE_INSENSITIVE_ORDER);
+//        Locale[] locale = Locale.getAvailableLocales();
+//        ArrayList<String> countries = new ArrayList<String>();
+//        String country;
+//        for( Locale loc : locale ){
+//            country = loc.getDisplayCountry();
+//            if( country.length() > 0 && !countries.contains(country) ){
+//                countries.add( country );
+//            }
+//        }
+//        Collections.sort(countries, String.CASE_INSENSITIVE_ORDER);
 
-        CountrySpinner = (Spinner)findViewById(R.id.country_spinner);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.spiner_item, countries);
-        CountrySpinner.setAdapter(adapter);
+//        CountrySpinner = (Spinner)findViewById(R.id.country_spinner);
+//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.spiner_item, countries);
+//        CountrySpinner.setAdapter(adapter);
 
         // = CountrySpinner.getSelectedItem().toString();
+
+
+
+
+
+//        drawable = getResources().getDrawable(country.getFlag());
+//
+//        drawable.setBounds(0, 0, (int)(drawable.getIntrinsicWidth()),
+//                (int)(drawable.getIntrinsicHeight()));
+//        ScaleDrawable sd = new ScaleDrawable(drawable, 0, scaleWidth, scaleHeight);
+
+
+        //location_text.setCompoundDrawables(sd.getDrawable(), null, null, null);
+        //location_text.setCompoundDrawablePadding(40);
+        //location_text.setCompoundDrawablesWithIntrinsicBounds(country.getFlag(), 0, 0, 0);
+
+
     }
 
     private void findViewsById() {
@@ -843,7 +920,22 @@ public class ActivitySetupProfile extends Activity implements View.OnClickListen
 //        }
 //        return path;
 //    }
+public void show(){
 
+    picker.show(getSupportFragmentManager(), "COUNTRY_PICKER");
+    picker.setListener(new CountryPickerListener() {
+        @Override
+        public void onSelectCountry(String name, String code, String dialCode, int flagDrawableResID) {
+            // Implement your code here
+
+            location_text.setText(name);
+            country_flag.setImageResource(flagDrawableResID);
+            //location_text.setCompoundDrawablesRelativeWithIntrinsicBounds(flagDrawableResID, 0, 0, 0);
+            //location_text.setCompoundDrawablesWithIntrinsicBounds(flagDrawableResID, 0, 0, 0);
+            picker.dismiss();
+        }
+    });
+}
 
 
 }

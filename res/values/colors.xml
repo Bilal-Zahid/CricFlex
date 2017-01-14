@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#00cc99</color>
 
     <!-- theme colors-->
 
@@ -11,6 +11,67 @@
     <color name="c3">#545761</color>
     <color name="c4">#e0e2ea</color>
     <color name="c5">#d3d3d3</color>
+
+    <color name="c180">#8000cc99</color>
+    <color name="c280">#805271f5</color>
+    <color name="c380">#80545761</color>
+    <color name="c480">#80e0e2ea</color>
+    <color name="c580">#80d3d3d3</color>
+
+    <color name="c150">#5000cc99</color>
+    <color name="c250">#505271f5</color>
+    <color name="c350">#50545761</color>
+    <color name="c450">#50e0e2ea</color>
+    <color name="c550">#50d3d3d3</color>
+
+    <!--actionBar-->
+    <color name="action_bar_color">@color/c3</color>
+
+
+    <!--navigation bar-->
+    <color name="nav_bar_color">@color/c3</color>
+    <color name="nav_icon_color">@color/c5</color>
+
+    <!--menu-->
+    <color name="menu_color">@color/c3</color>
+    <color name="menu_icon_color">@color/c5</color>
+
+    <!--text-->
+    <color name="text_light">@color/c4</color>
+    <color name="text_dark">@color/c3</color>
+    <color name="text_hint">@color/c5</color>
+
+    <!--login-->
+    <color name="login_button_state1">@color/c2</color>
+    <color name="login_button_state0">#50000000</color>
+    <color name="login_button_stroke">@color/c3</color>
+    <color name="login_icons">@color/c5</color>
+
+
+    <!--home-->
+    <color name="home_arc_finished_color">@color/c2</color>
+    <color name="home_arc_unfinished_color">@color/c350</color>
+    <color name="home_arc_text_color">@color/c4</color>
+    <color name="home_start_button_text_color">@color/c4</color>
+    <color name="home_start_button_state1">@color/c1</color>
+    <color name="home_start_button_state0">@color/c2</color>
+    <color name="home_start_button_stroke">@color/c1</color>
+
+
+    <!--monitor-->
+    <color name="monitor_angle_tile_color">@color/c250</color>
+    <color name="monitor_angle_text_color">@color/c4</color>
+    <color name="monitor_status_tile_color">@color/c350</color>
+    <color name="monitor_status_text_color">@color/c4</color>
+    <color name="monitor_arm_force_tile_color">@color/c250</color>
+    <color name="monitor_arm_twist_tile_color">@color/c350</color>
+    <color name="monitor_action_time_tile_color">@color/c250</color>
+    <color name="monitor_legal_tile_color">#5000FF00</color>
+    <color name="monitor_illegal_tile_color">#50FF0000</color>
+    <color name="monitor_finish_button_text_color">@color/c1</color>
+    <color name="monitor_finish_button_state1">@color/c1</color>
+    <color name="monitor_finish_button_state0">@color/c1</color>
+    <color name="monitor_finish_button_stroke">@color/c1</color>
 
 
     <!-- Screens background color-->
@@ -54,16 +115,13 @@
     <color name="activity_list_slidermenu_divider">#333333</color>
 
 
-    <color name="arc_finished_color">#00aff0</color>
-    <color name="arc_unfinished_color">#5000aff0</color>
 
 
 
     <color name="dark">#FF000000</color>
     <color name="light">#FFEEEEEE</color>
 
-    <color name="text_light">#FFEEEEEE</color>
-    <color name="text_dark">#FF222222</color>
+
 
     <color name="illegal_background_color">#50FF0000</color>
     <color name="legal_background_color">#5000FF00</color>

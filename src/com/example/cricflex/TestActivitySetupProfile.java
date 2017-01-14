@@ -106,7 +106,7 @@ public class TestActivitySetupProfile extends Activity implements View.OnClickLi
 
         bitmapImage = BitmapFactory.decodeResource(getResources(), R.drawable.profile_icon_large);
 
-        initializeCountrySpinner();
+//        initializeCountrySpinner();
 
         dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
         setDateTimeField();
@@ -576,11 +576,11 @@ public class TestActivitySetupProfile extends Activity implements View.OnClickLi
                 countries.add( country );
             }
         }
-        Collections.sort(countries, String.CASE_INSENSITIVE_ORDER);
-
-        CountrySpinner = (Spinner)findViewById(R.id.country_spinner);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.spiner_item, countries);
-        CountrySpinner.setAdapter(adapter);
+//        Collections.sort(countries, String.CASE_INSENSITIVE_ORDER);
+//
+//        CountrySpinner = (Spinner)findViewById(R.id.country_spinner);
+//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.spiner_item, countries);
+//        CountrySpinner.setAdapter(adapter);
 
         // = CountrySpinner.getSelectedItem().toString();
     }
