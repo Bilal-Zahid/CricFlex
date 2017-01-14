@@ -48,7 +48,7 @@
         android:layout_centerInParent="true">
         
 
-    <EditText
+    <AutoCompleteTextView
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -68,6 +68,8 @@
         android:imeOptions="actionNext"
         android:nextFocusDown="@+id/etPassword"
         android:textCursorDrawable="@null"
+        android:dropDownHeight = "110dp"
+
         />
 
     <EditText
