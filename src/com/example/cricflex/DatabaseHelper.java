@@ -160,6 +160,29 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         this.onCreate(db);
     }
 
+    public ArrayList<String> getAllUserNames (){
+        ArrayList<String> allUsernames = new ArrayList<>();
+        db = this.getReadableDatabase();
+        String query = "select username from " + PLAYER_TABLE_NAME;
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                allUsernames.add(cursor.getString(0));
+
+//                if (uname.equals(username)) {
+//                    location = cursor.getString(1);
+//                    break;
+//                }
+            }
+            while (cursor.moveToNext());
+        }
+        cursor.close();
+
+
+        return allUsernames;
+    }
+
 
     public void insertPlayer(Player p) {
         db = this.getWritableDatabase();

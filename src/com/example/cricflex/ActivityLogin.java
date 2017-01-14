@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -50,7 +52,19 @@ public class ActivityLogin extends Activity {
         setContentView(R.layout.activity_login);
 
 
-        final EditText etUsername = (EditText) findViewById(R.id.lgn_username);
+        final AutoCompleteTextView etUsername = (AutoCompleteTextView) findViewById(R.id.lgn_username);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                R.layout.dropdown_item, helper.getAllUserNames());
+
+        etUsername.setOnTouchListener(new View.OnTouchListener(){
+            @Override
+            public boolean onTouch(View v, MotionEvent event){
+                etUsername.showDropDown();
+                return false;
+            }
+        });
+        etUsername.setAdapter(adapter);
         final EditText etPassword = (EditText) findViewById(R.id.lgn_password);
         //To hide the keyboard when user touch anywhere else on the screen
 
