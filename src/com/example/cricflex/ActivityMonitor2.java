@@ -644,10 +644,15 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
 
             // mLEScanner = mBluetoothAdapter.getBluetoothLeScanner();
             // mLEScanner.startScan(filters, settings, mScanCallback);
-            bluetoothAdapter.startLeScan(
-                    new UUID[]{RFDService.UUID_SERVICE},
-                    ActivityMonitor2.this);
+
+
+//            bluetoothAdapter.startLeScan(
+//                    new UUID[]{RFDService.UUID_SERVICE},
+//                    ActivityMonitor2.this);
         }
+
+
+
 
 
         scanStarted = true;
@@ -661,6 +666,20 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
 
 
     }
+
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        if (requestCode == REQUEST_ENABLE_BT) {
+//            if (resultCode == RESULT_OK) {
+////                progressToNextCheck();
+//            }
+
+        Intent intent = getIntent();
+        finish();
+        startActivity(intent);
+    }
+
+
 
 
 
