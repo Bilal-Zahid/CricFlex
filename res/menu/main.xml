@@ -10,30 +10,30 @@
         android:title="Options"
         android:orderInCategory="101"
         app:showAsAction="always"
-        android:icon="@drawable/overflow">
+        android:icon="@drawable/overflow_icon">
 
         <menu>
 
             <item android:id="@+id/tour_cricflex"
-                android:icon="@drawable/tour"
+                android:icon="@drawable/tour_icon"
                 android:title="Tour CricFlex"
                 app:showAsAction="ifRoom"/>
 
 
             <item android:id="@+id/calibrate"
-                android:icon="@drawable/calibration"
+                android:icon="@drawable/calibration_icon"
                 android:title="Calibrate"
                 app:showAsAction="ifRoom"/>
 
 
             <item android:id="@+id/settings"
-                android:icon="@drawable/settings"
+                android:icon="@drawable/settings_icon"
                 android:title="Settings"
                 app:showAsAction="ifRoom"/>
 
 
             <item android:id="@+id/logout"
-                android:icon="@drawable/logout"
+                android:icon="@drawable/logout_icon"
                 android:title="Logout"
                 app:showAsAction="ifRoom"/>
 

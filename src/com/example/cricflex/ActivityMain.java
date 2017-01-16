@@ -127,19 +127,19 @@ public class ActivityMain extends ActionBarActivity {
 
 
         // Home
-        navDrawerItems.add(new NavDrawerItem("Home", R.drawable.home));
+        navDrawerItems.add(new NavDrawerItem("Home", R.drawable.home_icon));
         // History
-        navDrawerItems.add(new NavDrawerItem("History", R.drawable.history));
+        navDrawerItems.add(new NavDrawerItem("History", R.drawable.history_icon));
         // Awards
-        navDrawerItems.add(new NavDrawerItem("Awards", R.drawable.award));
+        navDrawerItems.add(new NavDrawerItem("Awards", R.drawable.award_icon));
         // Training
-        navDrawerItems.add(new NavDrawerItem("Training", R.drawable.coach));
+        navDrawerItems.add(new NavDrawerItem("Training", R.drawable.coach_icon));
         // Friends
-        navDrawerItems.add(new NavDrawerItem("Friends", R.drawable.friends));
+        navDrawerItems.add(new NavDrawerItem("Friends", R.drawable.friends_icon));
         // Help
-        navDrawerItems.add(new NavDrawerItem("Help", R.drawable.help));
+        navDrawerItems.add(new NavDrawerItem("Help", R.drawable.help_icon));
         // About
-        navDrawerItems.add(new NavDrawerItem("About", R.drawable.about));
+        navDrawerItems.add(new NavDrawerItem("About", R.drawable.about_icon));
 
         //Drawer Layout
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
