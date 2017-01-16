@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:2:1-103:12
+ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:2:1-105:12
 	package
 		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:3:5-35
 	android:versionName
@@ -67,7 +67,7 @@ ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:24:5-83
 	android:name
 		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:24:30-80
 application
-ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:26:5-101:19
+ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:26:5-103:19
 MERGED from [com.android.support:design:24.2.1] C:\CricFlex\App\CricFlex\build\intermediates\exploded-aar\com.android.support\design\24.2.1\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:appcompat-v7:24.2.1] C:\CricFlex\App\CricFlex\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.2.1\AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:animated-vector-drawable:24.2.1] C:\CricFlex\App\CricFlex\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.2.1\AndroidManifest.xml:22:5-20
@@ -244,6 +244,14 @@ ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:99:9-62
 	android:name
 		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:99:19-59
 activity#com.example.cricflex.ActivitySessionStats
-ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:100:9-67
+ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:100:9-58
 	android:name
 		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:100:19-55
+activity#com.example.cricflex.ActivitySessionGraph
+ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:101:9-58
+	android:name
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:101:19-55
+activity#com.example.cricflex.ActivitySessionGraphActionTime
+ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:102:9-77
+	android:name
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:102:19-65

@@ -94,52 +94,52 @@
         </LinearLayout>
 
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:id="@+id/body"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:layout_marginTop="2dp"
-            android:layout_marginBottom="2dp"
-            android:paddingStart="10dp"
-            android:layout_weight="0"
+        <!--<LinearLayout-->
+            <!--android:orientation="horizontal"-->
+            <!--android:id="@+id/body"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:gravity="center"-->
+            <!--android:layout_marginTop="2dp"-->
+            <!--android:layout_marginBottom="2dp"-->
+            <!--android:paddingStart="10dp"-->
+            <!--android:layout_weight="0"-->
 
-            android:background="@drawable/capsule_background">
-
-
-            <Chronometer
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/monitor_timer"
-                android:layout_marginEnd="5dp"
-                android:layout_gravity="center"
-                android:gravity="center"
-
-                android:textAlignment="center"
-                android:textSize="@dimen/chronometer_text"
-                android:textColor="@color/text_dark"
-                android:layout_weight="1"
-                />
-
-            <ImageButton
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:id="@+id/monitor_timer_button"
-                android:src="@drawable/start_circle_large"
-                android:background="@android:color/transparent"
-                android:scaleType="fitXY"
-                android:layout_marginLeft="5dp"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:layout_weight="1"
-                android:onClick="startChronometer"
-                />
+            <!--android:background="@drawable/capsule_background">-->
 
 
+            <!--<Chronometer-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:id="@+id/monitor_timer"-->
+                <!--android:layout_marginEnd="5dp"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:gravity="center"-->
 
-        </LinearLayout>
+                <!--android:textAlignment="center"-->
+                <!--android:textSize="@dimen/chronometer_text"-->
+                <!--android:textColor="@color/text_dark"-->
+                <!--android:layout_weight="1"-->
+                <!--/>-->
+
+            <!--<ImageButton-->
+                <!--android:layout_width="50dp"-->
+                <!--android:layout_height="50dp"-->
+                <!--android:id="@+id/monitor_timer_button"-->
+                <!--android:src="@drawable/start_circle_large"-->
+                <!--android:background="@android:color/transparent"-->
+                <!--android:scaleType="fitXY"-->
+                <!--android:layout_marginLeft="5dp"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:gravity="center"-->
+                <!--android:layout_weight="1"-->
+                <!--android:onClick="startChronometer"-->
+                <!--/>-->
+
+
+
+        <!--</LinearLayout>-->
 
 
 

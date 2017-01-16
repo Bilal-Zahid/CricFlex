@@ -299,23 +299,23 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
             //testing
 
 
-//            angleValues.add(1);
-//            angleValues.add(3);
-//            angleValues.add(2);
+            angleValues.add(4);
+            angleValues.add(1);
+            angleValues.add(5);
 //
-//            armTwistValues.add(4);
-//            armTwistValues.add(5);
-//            armTwistValues.add(6);
+            armTwistValues.add(4);
+            armTwistValues.add(5);
+            armTwistValues.add(1);
 //
 //
-//            actionTimeValues.add(7);
-//            actionTimeValues.add(7);
-//            actionTimeValues.add(7);
-//            actionTimeValues.add(7);
-//
-//            forceValues.add(10);
-//            forceValues.add(11);
-//            forceValues.add(12);
+            actionTimeValues.add((float)4);
+            actionTimeValues.add((float)1);
+//            actionTimeValues.add((float)1);
+            actionTimeValues.add((float)5);
+////
+            forceValues.add(4);
+            forceValues.add(5);
+            forceValues.add(1);
 
 //            angleValues.add(15);armTwistValues.add(4);
 //            angleValues.add(16);
@@ -419,7 +419,6 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
             extraBundle.putIntegerArrayList("angleValues", angleValues);
             extraBundle.putIntegerArrayList("armTwistValues", armTwistValues);
             extraBundle.putIntegerArrayList("forceValues", forceValues);
-//            extraBundle.("actionTimeValues", ArrayList< extends Parcelable> actionTimeValues);
             i.putExtra("actionTimeValues",actionTimeValues);
             i.putExtras(extraBundle);
 
@@ -601,12 +600,12 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
         monitorForce = (TextView) findViewById(R.id.monitor_force);
         //timerOn=true;
 
-        monitorTimerButton = (ImageButton)findViewById(R.id.monitor_timer_button);
+//        monitorTimerButton = (ImageButton)findViewById(R.id.monitor_timer_button);
 
-        monitorTimerButton.setOnClickListener(new handlemonitorTimerButton());
+//        monitorTimerButton.setOnClickListener(new handlemonitorTimerButton());
 
 
-        monitorTimer = (Chronometer)findViewById(R.id.monitor_timer);
+//        monitorTimer = (Chronometer)findViewById(R.id.monitor_timer);
 
         monitorLegalBalls = (TextView)findViewById(R.id.monitor_legal_balls);
         monitorIllegalBalls = (TextView)findViewById(R.id.monitor_illegal_balls);
@@ -669,14 +668,20 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
 
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        if (requestCode == REQUEST_ENABLE_BT) {
-//            if (resultCode == RESULT_OK) {
-////                progressToNextCheck();
-//            }
+        if (requestCode == REQUEST_ENABLE_BT) {
+            if (resultCode == RESULT_OK) {
+                Intent intent = getIntent();
+                finish();
+                startActivity(intent);
+            }
+        }
+        else {
+            Intent i = new Intent(ActivityMonitor2.this, ActivityMain.class);
+            ActivityMonitor2.this.startActivity(i);
+            finish();
+        }
 
-        Intent intent = getIntent();
-        finish();
-        startActivity(intent);
+
     }
 
 

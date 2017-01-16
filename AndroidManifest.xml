@@ -96,7 +96,9 @@
         <activity android:name=".TestActivityMetrics" />
         <activity android:name=".TestActivityMetrics1" />
         <activity android:name=".TestActivitySetupProfile" />
-        <activity android:name=".ActivitySessionStats"></activity>
+        <activity android:name=".ActivitySessionStats" />
+        <activity android:name=".ActivitySessionGraph" />
+        <activity android:name=".ActivitySessionGraphActionTime"></activity>
     </application>
 
 </manifest>

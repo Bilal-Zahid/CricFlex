@@ -98,6 +98,8 @@
         <activity android:name="com.example.cricflex.TestActivityMetrics1" />
         <activity android:name="com.example.cricflex.TestActivitySetupProfile" />
         <activity android:name="com.example.cricflex.ActivitySessionStats" />
+        <activity android:name="com.example.cricflex.ActivitySessionGraph" />
+        <activity android:name="com.example.cricflex.ActivitySessionGraphActionTime" />
     </application>
 
 </manifest>

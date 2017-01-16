@@ -500,12 +500,12 @@
         "source": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\exploded-aar\\com.github.mukeshsolanki\\country-picker-android\\1.1.6\\res\\drawable\\flag_ac.png"
     },
     {
-        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable\\flag_gq.png",
-        "source": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\exploded-aar\\com.github.mukeshsolanki\\country-picker-android\\1.1.6\\res\\drawable\\flag_gq.png"
-    },
-    {
         "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable\\frame_0_delay.gif",
         "source": "C:\\CricFlex\\App\\CricFlex\\res\\drawable\\frame_0_delay.gif"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable\\flag_gq.png",
+        "source": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\exploded-aar\\com.github.mukeshsolanki\\country-picker-android\\1.1.6\\res\\drawable\\flag_gq.png"
     },
     {
         "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable\\flag_nz.png",
@@ -892,12 +892,12 @@
         "source": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\exploded-aar\\com.github.mukeshsolanki\\country-picker-android\\1.1.6\\res\\drawable\\flag_ru.png"
     },
     {
-        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable\\flag_ne.png",
-        "source": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\exploded-aar\\com.github.mukeshsolanki\\country-picker-android\\1.1.6\\res\\drawable\\flag_ne.png"
-    },
-    {
         "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable\\flag_gn.png",
         "source": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\exploded-aar\\com.github.mukeshsolanki\\country-picker-android\\1.1.6\\res\\drawable\\flag_gn.png"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable\\flag_ne.png",
+        "source": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\exploded-aar\\com.github.mukeshsolanki\\country-picker-android\\1.1.6\\res\\drawable\\flag_ne.png"
     },
     {
         "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_holo_light.xml",
@@ -980,12 +980,12 @@
         "source": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\exploded-aar\\com.github.mukeshsolanki\\country-picker-android\\1.1.6\\res\\drawable\\flag_tv.png"
     },
     {
-        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable\\flag_tk.png",
-        "source": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\exploded-aar\\com.github.mukeshsolanki\\country-picker-android\\1.1.6\\res\\drawable\\flag_tk.png"
-    },
-    {
         "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable\\flag_sa.png",
         "source": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\exploded-aar\\com.github.mukeshsolanki\\country-picker-android\\1.1.6\\res\\drawable\\flag_sa.png"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable\\flag_tk.png",
+        "source": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\exploded-aar\\com.github.mukeshsolanki\\country-picker-android\\1.1.6\\res\\drawable\\flag_tk.png"
     },
     {
         "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable\\flag_ir.png",
