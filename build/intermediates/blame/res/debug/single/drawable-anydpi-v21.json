@@ -1,5 +1,9 @@
 [
     {
+        "merged": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\ic_search.xml",
+        "source": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\exploded-aar\\com.github.mukeshsolanki\\country-picker-android\\1.1.6\\res\\drawable-anydpi-v21\\ic_search.xml"
+    },
+    {
         "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\ic_search.xml",
         "source": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\exploded-aar\\com.github.mukeshsolanki\\country-picker-android\\1.1.6\\res\\drawable-anydpi-v21\\ic_search.xml"
     }
