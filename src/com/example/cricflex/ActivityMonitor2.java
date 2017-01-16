@@ -413,7 +413,7 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
                 mBluetoothAdapter.disable();
             }
 
-            Intent i = new Intent(ActivityMonitor2.this, ActivitySessionStats2.class);
+            Intent i = new Intent(ActivityMonitor2.this, ActivitySessionStats.class);
 
             Bundle extraBundle = new Bundle();
             extraBundle.putIntegerArrayList("angleValues", angleValues);

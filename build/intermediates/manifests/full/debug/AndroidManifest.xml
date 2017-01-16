@@ -21,6 +21,8 @@
         android:name="android.hardware.bluetooth_le"
         android:required="true" />
 
+    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/cricflexlogosmall"
@@ -90,11 +92,12 @@
         <activity android:name="com.example.cricflex.ActivityGraph5" />
         <activity android:name="com.example.cricflex.TestActivityMonitor3" />
         <activity android:name="com.example.cricflex.TestActivitySessionStats" />
-        <activity android:name="com.example.cricflex.ActivitySessionStats2" />
+        <activity android:name="com.example.cricflex.ActivitySessionGraphs" />
         <activity android:name="com.example.cricflex.test_asawal" />
         <activity android:name="com.example.cricflex.TestActivityMetrics" />
         <activity android:name="com.example.cricflex.TestActivityMetrics1" />
         <activity android:name="com.example.cricflex.TestActivitySetupProfile" />
+        <activity android:name="com.example.cricflex.ActivitySessionStats" />
     </application>
 
 </manifest>

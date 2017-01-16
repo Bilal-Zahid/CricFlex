@@ -91,11 +91,12 @@
         <activity android:name=".ActivityGraph5" />
         <activity android:name=".TestActivityMonitor3" />
         <activity android:name=".TestActivitySessionStats" />
-        <activity android:name=".ActivitySessionStats2" />
+        <activity android:name=".ActivitySessionGraphs" />
         <activity android:name=".test_asawal" />
         <activity android:name=".TestActivityMetrics" />
         <activity android:name=".TestActivityMetrics1" />
-        <activity android:name=".TestActivitySetupProfile"></activity>
+        <activity android:name=".TestActivitySetupProfile" />
+        <activity android:name=".ActivitySessionStats"></activity>
     </application>
 
 </manifest>

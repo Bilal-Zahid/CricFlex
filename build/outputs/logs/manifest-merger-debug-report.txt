@@ -1,243 +1,249 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:2:1-101:12
+ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:2:1-103:12
 	package
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:3:5-35
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:3:5-35
 	android:versionName
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:5:5-30
-		INJECTED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml
-		INJECTED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:5:5-30
+		INJECTED from C:\CricFlex\App\CricFlex\AndroidManifest.xml
+		INJECTED from C:\CricFlex\App\CricFlex\AndroidManifest.xml
 	android:versionCode
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:4:5-28
-		INJECTED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml
-		INJECTED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:4:5-28
+		INJECTED from C:\CricFlex\App\CricFlex\AndroidManifest.xml
+		INJECTED from C:\CricFlex\App\CricFlex\AndroidManifest.xml
 	xmlns:android
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:2:11-69
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:2:11-69
 uses-sdk
-ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:7:5-9:41
-MERGED from [com.android.support:design:25.1.0] C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\exploded-aar\com.android.support\design\25.1.0\AndroidManifest.xml:21:5-23:62
-MERGED from [com.android.support:appcompat-v7:25.1.0] C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.1.0\AndroidManifest.xml:21:5-23:78
-MERGED from [com.android.support:animated-vector-drawable:25.1.0] C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.1.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:25.1.0] C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.1.0\AndroidManifest.xml:21:5-43
-MERGED from [com.android.support:recyclerview-v7:25.1.0] C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\25.1.0\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:transition:25.1.0] C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\exploded-aar\com.android.support\transition\25.1.0\AndroidManifest.xml:20:5-44
-MERGED from [com.github.mukeshsolanki:country-picker-android:1.1.6] C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\exploded-aar\com.github.mukeshsolanki\country-picker-android\1.1.6\AndroidManifest.xml:8:5-10:41
-MERGED from [com.android.support:support-v4:25.1.0] C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\exploded-aar\com.android.support\support-v4\25.1.0\AndroidManifest.xml:21:5-23:54
-MERGED from [com.android.support:support-fragment:25.1.0] C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\exploded-aar\com.android.support\support-fragment\25.1.0\AndroidManifest.xml:21:5-23:60
-MERGED from [com.android.support:support-media-compat:25.1.0] C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.1.0\AndroidManifest.xml:21:5-23:63
-MERGED from [com.android.support:support-core-ui:25.1.0] C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.1.0\AndroidManifest.xml:21:5-23:58
-MERGED from [com.android.support:support-core-utils:25.1.0] C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.1.0\AndroidManifest.xml:21:5-23:61
-MERGED from [com.android.support:percent:25.1.0] C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\exploded-aar\com.android.support\percent\25.1.0\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-compat:25.1.0] C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\exploded-aar\com.android.support\support-compat\25.1.0\AndroidManifest.xml:21:5-23:58
+ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:design:24.2.1] C:\CricFlex\App\CricFlex\build\intermediates\exploded-aar\com.android.support\design\24.2.1\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:appcompat-v7:24.2.1] C:\CricFlex\App\CricFlex\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.2.1\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:animated-vector-drawable:24.2.1] C:\CricFlex\App\CricFlex\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.2.1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:24.2.1] C:\CricFlex\App\CricFlex\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.2.1\AndroidManifest.xml:21:5-43
+MERGED from [com.android.support:recyclerview-v7:24.2.1] C:\CricFlex\App\CricFlex\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\24.2.1\AndroidManifest.xml:20:5-43
+MERGED from [com.github.mukeshsolanki:country-picker-android:1.1.6] C:\CricFlex\App\CricFlex\build\intermediates\exploded-aar\com.github.mukeshsolanki\country-picker-android\1.1.6\AndroidManifest.xml:8:5-10:41
+MERGED from [com.android.support:support-v4:24.2.1] C:\CricFlex\App\CricFlex\build\intermediates\exploded-aar\com.android.support\support-v4\24.2.1\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:24.2.1] C:\CricFlex\App\CricFlex\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-media-compat:24.2.1] C:\CricFlex\App\CricFlex\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-ui:24.2.1] C:\CricFlex\App\CricFlex\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-utils:24.2.1] C:\CricFlex\App\CricFlex\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:percent:25.0.0] C:\CricFlex\App\CricFlex\build\intermediates\exploded-aar\com.android.support\percent\25.0.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-compat:25.0.0] C:\CricFlex\App\CricFlex\build\intermediates\exploded-aar\com.android.support\support-compat\25.0.0\AndroidManifest.xml:21:5-23:58
 	tools:overrideLibrary
-		ADDED from [com.android.support:design:25.1.0] C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\exploded-aar\com.android.support\design\25.1.0\AndroidManifest.xml:23:9-59
+		ADDED from [com.android.support:appcompat-v7:24.2.1] C:\CricFlex\App\CricFlex\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.2.1\AndroidManifest.xml:23:9-75
 	android:targetSdkVersion
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:9:9-38
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:9:9-38
 	android:minSdkVersion
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:8:9-35
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:8:9-35
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:11:5-81
+ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:11:5-81
 	android:name
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:11:22-78
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:11:22-78
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
-ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:12:5-80
+ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:12:5-80
 	android:name
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:12:22-77
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:12:22-77
 uses-permission#android.permission.BLUETOOTH
-ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:13:5-68
+ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:13:5-68
 	android:name
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:13:22-65
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:13:22-65
 uses-permission#android.permission.BLUETOOTH_ADMIN
-ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:14:5-74
+ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:14:5-74
 	android:name
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:14:22-71
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:14:22-71
 uses-feature#android.hardware.camera.front
-ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:17:5-19:36
+ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:17:5-19:36
 	android:required
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:19:9-33
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:19:9-33
 	android:name
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:18:9-53
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:18:9-53
 uses-feature#android.hardware.bluetooth_le
-ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:20:5-22:35
+ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:20:5-22:35
 	android:required
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:22:9-32
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:22:9-32
 	android:name
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:21:9-53
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:21:9-53
+android:uses-permission#android.permission.READ_PHONE_STATE
+ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:24:5-83
+	android:name
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:24:30-80
 application
-ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:25:5-99:19
-MERGED from [com.android.support:design:25.1.0] C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\exploded-aar\com.android.support\design\25.1.0\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:appcompat-v7:25.1.0] C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.1.0\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:animated-vector-drawable:25.1.0] C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.1.0\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-vector-drawable:25.1.0] C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.1.0\AndroidManifest.xml:23:5-20
-MERGED from [com.android.support:transition:25.1.0] C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\exploded-aar\com.android.support\transition\25.1.0\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-v4:25.1.0] C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\exploded-aar\com.android.support\support-v4\25.1.0\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-fragment:25.1.0] C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\exploded-aar\com.android.support\support-fragment\25.1.0\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-media-compat:25.1.0] C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.1.0\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-core-ui:25.1.0] C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.1.0\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-core-utils:25.1.0] C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.1.0\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:percent:25.1.0] C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\exploded-aar\com.android.support\percent\25.1.0\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-compat:25.1.0] C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\exploded-aar\com.android.support\support-compat\25.1.0\AndroidManifest.xml:25:5-20
+ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:26:5-101:19
+MERGED from [com.android.support:design:24.2.1] C:\CricFlex\App\CricFlex\build\intermediates\exploded-aar\com.android.support\design\24.2.1\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:appcompat-v7:24.2.1] C:\CricFlex\App\CricFlex\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.2.1\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:animated-vector-drawable:24.2.1] C:\CricFlex\App\CricFlex\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.2.1\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-vector-drawable:24.2.1] C:\CricFlex\App\CricFlex\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.2.1\AndroidManifest.xml:23:5-20
+MERGED from [com.android.support:support-v4:24.2.1] C:\CricFlex\App\CricFlex\build\intermediates\exploded-aar\com.android.support\support-v4\24.2.1\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-fragment:24.2.1] C:\CricFlex\App\CricFlex\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-media-compat:24.2.1] C:\CricFlex\App\CricFlex\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-ui:24.2.1] C:\CricFlex\App\CricFlex\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-utils:24.2.1] C:\CricFlex\App\CricFlex\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:percent:25.0.0] C:\CricFlex\App\CricFlex\build\intermediates\exploded-aar\com.android.support\percent\25.0.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-compat:25.0.0] C:\CricFlex\App\CricFlex\build\intermediates\exploded-aar\com.android.support\support-compat\25.0.0\AndroidManifest.xml:25:5-20
 	android:label
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:28:9-41
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:29:9-41
 	android:allowBackup
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:26:9-35
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:27:9-35
 	android:icon
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:27:9-49
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:28:9-49
 	android:theme
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:30:9-51
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:31:9-51
 	android:logo
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:29:9-49
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:30:9-49
 activity#com.example.cricflex.ActivitySplash
-ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:31:9-37:20
+ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:32:9-38:20
 	android:name
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:31:19-49
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:32:19-49
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:32:13-36:29
+ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:33:13-37:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:33:17-69
+ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:34:17-69
 	android:name
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:33:25-66
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:34:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:35:17-77
+ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:36:17-77
 	android:name
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:35:27-74
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:36:27-74
 activity#com.example.cricflex.ActivityCalibrate
-ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:38:9-41:52
+ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:39:9-42:52
 	android:screenOrientation
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:41:13-49
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:42:13-49
 	android:label
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:40:13-37
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:41:13-37
 	android:name
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:39:13-46
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:40:13-46
 activity#com.example.cricflex.ActivitySetupProfile
-ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:42:9-45:52
+ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:43:9-46:52
 	android:screenOrientation
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:45:13-49
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:46:13-49
 	android:label
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:44:13-37
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:45:13-37
 	android:name
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:43:13-49
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:44:13-49
 activity#com.example.cricflex.TestActivityMonitor
-ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:46:9-49:52
+ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:47:9-50:52
 	android:screenOrientation
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:49:13-49
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:50:13-49
 	android:label
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:48:13-37
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:49:13-37
 	android:name
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:47:13-48
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:48:13-48
 activity#com.example.cricflex.ActivityWelcome
-ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:50:9-53:52
+ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:51:9-54:52
 	android:screenOrientation
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:53:13-49
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:54:13-49
 	android:label
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:52:13-37
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:53:13-37
 	android:name
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:51:13-44
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:52:13-44
 activity#com.example.cricflex.ActivityLogin
-ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:54:9-57:52
+ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:55:9-58:52
 	android:screenOrientation
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:57:13-49
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:58:13-49
 	android:label
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:56:13-37
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:57:13-37
 	android:name
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:55:13-42
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:56:13-42
 activity#com.example.cricflex.ActivityMain
-ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:58:9-62:56
+ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:59:9-63:56
 	android:screenOrientation
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:61:13-49
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:62:13-49
 	android:label
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:60:13-45
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:61:13-45
 	android:theme
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:62:13-53
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:63:13-53
 	android:name
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:59:13-41
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:60:13-41
 activity#com.example.cricflex.ActivityRegister
-ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:63:9-66:52
+ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:64:9-67:52
 	android:screenOrientation
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:66:13-49
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:67:13-49
 	android:label
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:65:13-45
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:66:13-45
 	android:name
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:64:13-45
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:65:13-45
 activity#com.example.cricflex.ActivityMonitor2
-ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:67:9-70:52
+ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:68:9-71:52
 	android:screenOrientation
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:70:13-49
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:71:13-49
 	android:label
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:69:13-45
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:70:13-45
 	android:name
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:68:13-45
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:69:13-45
 activity#com.example.cricflex.ActivityHelp
-ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:71:9-74:52
+ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:72:9-75:52
 	android:screenOrientation
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:74:13-49
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:75:13-49
 	android:label
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:73:13-45
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:74:13-45
 	android:name
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:72:13-41
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:73:13-41
 activity#com.example.cricflex.ActivityGraph
-ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:75:9-77:47
+ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:76:9-78:47
 	android:label
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:77:13-44
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:78:13-44
 	android:name
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:76:13-42
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:77:13-42
 activity#com.example.cricflex.ActivityAbout
-ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:78:9-81:52
+ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:79:9-82:52
 	android:screenOrientation
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:81:13-49
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:82:13-49
 	android:label
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:80:13-45
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:81:13-45
 	android:name
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:79:13-42
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:80:13-42
 activity#com.example.cricflex.ActivityProfile
-ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:82:9-85:52
+ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:83:9-86:52
 	android:screenOrientation
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:85:13-49
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:86:13-49
 	android:label
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:84:13-44
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:85:13-44
 	android:name
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:83:13-44
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:84:13-44
 service#com.example.cricflex.RFDService
-ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:87:9-47
+ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:88:9-47
 	android:name
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:87:18-44
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:88:18-44
 activity#com.example.cricflex.ActivityGraph3
-ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:89:9-52
+ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:90:9-52
 	android:name
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:89:19-49
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:90:19-49
 activity#com.example.cricflex.ActivityGraph4
-ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:90:9-52
+ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:91:9-52
 	android:name
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:90:19-49
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:91:19-49
 activity#com.example.cricflex.ActivityGraph5
-ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:91:9-52
+ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:92:9-52
 	android:name
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:91:19-49
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:92:19-49
 activity#com.example.cricflex.TestActivityMonitor3
-ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:92:9-58
+ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:93:9-58
 	android:name
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:92:19-55
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:93:19-55
 activity#com.example.cricflex.TestActivitySessionStats
-ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:93:9-62
+ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:94:9-62
 	android:name
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:93:19-59
-activity#com.example.cricflex.ActivitySessionStats2
-ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:94:9-59
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:94:19-59
+activity#com.example.cricflex.ActivitySessionGraphs
+ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:95:9-59
 	android:name
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:94:19-56
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:95:19-56
 activity#com.example.cricflex.test_asawal
-ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:95:9-49
+ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:96:9-49
 	android:name
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:95:19-46
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:96:19-46
 activity#com.example.cricflex.TestActivityMetrics
-ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:96:9-57
+ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:97:9-57
 	android:name
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:96:19-54
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:97:19-54
 activity#com.example.cricflex.TestActivityMetrics1
-ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:97:9-58
+ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:98:9-58
 	android:name
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:97:19-55
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:98:19-55
 activity#com.example.cricflex.TestActivitySetupProfile
-ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:98:9-71
+ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:99:9-62
 	android:name
-		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:98:19-59
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:99:19-59
+activity#com.example.cricflex.ActivitySessionStats
+ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:100:9-67
+	android:name
+		ADDED from C:\CricFlex\App\CricFlex\AndroidManifest.xml:100:19-55

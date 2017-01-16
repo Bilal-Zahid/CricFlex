@@ -155,4 +155,18 @@
     <color name="orrange">#e33d1b</color>
     <color name="darkorrange">#cc2303</color>
 
+    <color name="transparent">#00000000</color>
+
+
+    <color name="session_header">#50000000</color>
+    <color name="session_header_text">@color/text_light</color>
+    <color name="session_value_text">@color/text_light</color>
+    <color name="session_desc_text">@color/text_light</color>
+    <color name="session_angle_tile">#500099CC</color>
+    <color name="session_force_tile">#5000800d</color>
+    <color name="session_time_tile">#5000800d</color>
+    <color name="session_twist_tile">#500099CC</color>
+    <color name="session_footer">#ffff8800</color>
+    <color name="session_finish_button_text">@color/text_light</color>
+
 </resources>
