@@ -36,20 +36,20 @@
         "source": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\res\\drawable-nodpi\\techjuice_badge.png"
     },
     {
-        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-nodpi\\bandarm_large.png",
-        "source": "C:\\CricFlex\\App\\CricFlex\\res\\drawable-nodpi\\bandarm_large.png"
-    },
-    {
         "merged": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-nodpi\\previousdouble_small.png",
         "source": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\res\\drawable-nodpi\\previousdouble_small.png"
     },
     {
-        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-nodpi\\friends.png",
-        "source": "C:\\CricFlex\\App\\CricFlex\\res\\drawable-nodpi\\friends.png"
+        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-nodpi\\bandarm_large.png",
+        "source": "C:\\CricFlex\\App\\CricFlex\\res\\drawable-nodpi\\bandarm_large.png"
     },
     {
         "merged": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-nodpi\\calibration.png",
         "source": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\res\\drawable-nodpi\\calibration.png"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-nodpi\\friends.png",
+        "source": "C:\\CricFlex\\App\\CricFlex\\res\\drawable-nodpi\\friends.png"
     },
     {
         "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-nodpi\\previous_white.png",
