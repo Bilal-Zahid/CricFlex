@@ -3,7 +3,6 @@ package com.example.cricflex;
 import java.io.FileInputStream;
 import java.util.ArrayList;
 
-import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
