@@ -1,7 +1,23 @@
 [
     {
+        "merged": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\res\\merged\\debug\\menu\\my.xml",
+        "source": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\res\\menu\\my.xml"
+    },
+    {
+        "merged": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\res\\merged\\debug\\menu\\menu_arc_in.xml",
+        "source": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\res\\menu\\menu_arc_in.xml"
+    },
+    {
+        "merged": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\res\\merged\\debug\\menu\\menu_view_pager.xml",
+        "source": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\res\\menu\\menu_view_pager.xml"
+    },
+    {
         "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\menu\\menu_view_pager.xml",
         "source": "C:\\CricFlex\\App\\CricFlex\\res\\menu\\menu_view_pager.xml"
+    },
+    {
+        "merged": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\res\\merged\\debug\\menu\\main.xml",
+        "source": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\res\\menu\\main.xml"
     },
     {
         "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\menu\\my.xml",
