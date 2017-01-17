@@ -12,12 +12,12 @@
         "source": "C:\\CricFlex\\App\\CricFlex\\res\\drawable-xxhdpi\\sk1.png"
     },
     {
-        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\help_icon.png",
-        "source": "C:\\CricFlex\\App\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\help_icon.png"
-    },
-    {
         "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\bkd26.png",
         "source": "C:\\CricFlex\\App\\CricFlex\\res\\drawable-xxhdpi\\bkd26.png"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\help_icon.png",
+        "source": "C:\\CricFlex\\App\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\help_icon.png"
     },
     {
         "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\friends_icon.png",
@@ -184,12 +184,12 @@
         "source": "C:\\CricFlex\\App\\CricFlex\\res\\drawable-xxhdpi\\welcome1.png"
     },
     {
-        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\graphbutton.png",
-        "source": "C:\\CricFlex\\App\\CricFlex\\res\\drawable-xxhdpi\\graphbutton.png"
-    },
-    {
         "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\overflow_icon.png",
         "source": "C:\\CricFlex\\App\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\overflow_icon.png"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\graphbutton.png",
+        "source": "C:\\CricFlex\\App\\CricFlex\\res\\drawable-xxhdpi\\graphbutton.png"
     },
     {
         "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\aboutbutton.png",
