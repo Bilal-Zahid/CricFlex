@@ -4,15 +4,7 @@
         "source": "C:\\CricFlex\\App\\CricFlex\\res\\mipmap-mdpi\\cricflexlogosmall.png"
     },
     {
-        "merged": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi\\cricflexlogosmall.png",
-        "source": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\res\\mipmap-mdpi\\cricflexlogosmall.png"
-    },
-    {
         "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi\\cricflex_logo.png",
         "source": "C:\\CricFlex\\App\\CricFlex\\res\\mipmap-mdpi\\cricflex_logo.png"
-    },
-    {
-        "merged": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi\\cricflex_logo.png",
-        "source": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\res\\mipmap-mdpi\\cricflex_logo.png"
     }
 ]

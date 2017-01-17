@@ -95,6 +95,9 @@ public class ActivityWelcome extends Activity {
                     // move to next screen
                     viewPager.setCurrentItem(current);
                 } else {
+
+
+
                     launchHomeScreen();
                 }
             }
@@ -127,8 +130,25 @@ public class ActivityWelcome extends Activity {
 
     private void launchHomeScreen() {
         prefManager.setFirstTimeLaunch(false);
-        startActivity(new Intent(ActivityWelcome.this, ActivityLogin.class));
-        finish();
+
+
+        if(SaveSharedPreference.getUserName(ActivityWelcome.this).length() == 0)
+        {
+            Intent intent = new Intent(ActivityWelcome.this, ActivityLogin.class);
+//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            finish();
+        }
+        else {
+            Intent i = new Intent(ActivityWelcome.this, ActivityMain.class);
+            ActivityWelcome.this.startActivity(i);
+        }
+
+
+
+
+//        startActivity(new Intent(ActivityWelcome.this, ActivityLogin.class));
+//        finish();
     }
 
     //  viewpager change listener

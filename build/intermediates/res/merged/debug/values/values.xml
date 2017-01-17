@@ -194,6 +194,10 @@
     <color name="primary_text_disabled_material_dark">#4Dffffff</color>
     <color name="primary_text_disabled_material_light">#39000000</color>
     <color name="reaction_color_selected">#003366</color>
+    <color name="register_button_state0">#50000000</color>
+    <color name="register_button_state1">@color/c2</color>
+    <color name="register_button_stroke">@color/c3</color>
+    <color name="register_icons">@color/c5</color>
     <color name="ripple_material_dark">#33ffffff</color>
     <color name="ripple_material_light">#1f000000</color>
     <color name="secondary_text_default_material_dark">#b3ffffff</color>

@@ -1,18 +1,102 @@
 [
     {
-        "merged": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\ic_search.xml",
-        "source": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\exploded-aar\\com.github.mukeshsolanki\\country-picker-android\\1.1.6\\res\\drawable-anydpi-v21\\ic_search.xml"
+        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\logout_icon.xml",
+        "source": "C:\\CricFlex\\App\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\logout_icon.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\nextdouble_small_icon.xml",
+        "source": "C:\\CricFlex\\App\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\nextdouble_small_icon.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\password_icon.xml",
+        "source": "C:\\CricFlex\\App\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\password_icon.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\calendar_icon.xml",
+        "source": "C:\\CricFlex\\App\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\calendar_icon.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\design_ic_visibility_off.xml",
+        "source": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.1.0\\res\\drawable-anydpi-v21\\design_ic_visibility_off.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\overflow_icon.xml",
+        "source": "C:\\CricFlex\\App\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\overflow_icon.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\next_small_icon.xml",
+        "source": "C:\\CricFlex\\App\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\next_small_icon.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\home_icon.xml",
+        "source": "C:\\CricFlex\\App\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\home_icon.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\history_icon.xml",
+        "source": "C:\\CricFlex\\App\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\history_icon.xml"
     },
     {
         "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\ic_search.xml",
         "source": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\exploded-aar\\com.github.mukeshsolanki\\country-picker-android\\1.1.6\\res\\drawable-anydpi-v21\\ic_search.xml"
     },
     {
-        "merged": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\design_ic_visibility_off.xml",
-        "source": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.1.0\\res\\drawable-anydpi-v21\\design_ic_visibility_off.xml"
+        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\calibration_icon.xml",
+        "source": "C:\\CricFlex\\App\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\calibration_icon.xml"
     },
     {
-        "merged": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\design_ic_visibility.xml",
-        "source": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.1.0\\res\\drawable-anydpi-v21\\design_ic_visibility.xml"
+        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\settings_icon.xml",
+        "source": "C:\\CricFlex\\App\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\settings_icon.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\three_line_icon.xml",
+        "source": "C:\\CricFlex\\App\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\three_line_icon.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\tour_icon.xml",
+        "source": "C:\\CricFlex\\App\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\tour_icon.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\profile_icon.xml",
+        "source": "C:\\CricFlex\\App\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\profile_icon.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\help_icon.xml",
+        "source": "C:\\CricFlex\\App\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\help_icon.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\email_icon.xml",
+        "source": "C:\\CricFlex\\App\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\email_icon.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\previous_small_icon.xml",
+        "source": "C:\\CricFlex\\App\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\previous_small_icon.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\about_icon.xml",
+        "source": "C:\\CricFlex\\App\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\about_icon.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\coach_icon.xml",
+        "source": "C:\\CricFlex\\App\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\coach_icon.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\previousdouble_small_icon.xml",
+        "source": "C:\\CricFlex\\App\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\previousdouble_small_icon.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\friends_icon.xml",
+        "source": "C:\\CricFlex\\App\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\friends_icon.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\design_ic_visibility.xml",
+        "source": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.1.0\\res\\drawable-anydpi-v21\\design_ic_visibility.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\award_icon.xml",
+        "source": "C:\\CricFlex\\App\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\award_icon.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\security_icon.xml",
+        "source": "C:\\CricFlex\\App\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\security_icon.xml"
     }
 ]
