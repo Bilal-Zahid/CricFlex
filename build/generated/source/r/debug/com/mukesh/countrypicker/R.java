@@ -265,14 +265,14 @@ public final class R {
 		public static final int ic_search = 0x7f0201fe;
 	}
 	public static final class id {
-		public static final int country_code_picker_listview = 0x7f0e00f0;
-		public static final int country_code_picker_search = 0x7f0e00ef;
-		public static final int row_icon = 0x7f0e013c;
-		public static final int row_title = 0x7f0e013d;
+		public static final int country_code_picker_listview = 0x7f0e00f1;
+		public static final int country_code_picker_search = 0x7f0e00f0;
+		public static final int row_icon = 0x7f0e013d;
+		public static final int row_title = 0x7f0e013e;
 	}
 	public static final class layout {
-		public static final int country_picker = 0x7f04003a;
-		public static final int row = 0x7f040062;
+		public static final int country_picker = 0x7f04003b;
+		public static final int row = 0x7f040063;
 	}
 	public static final class string {
 		public static final int app_name = 0x7f070025;

@@ -97,7 +97,8 @@
         <activity android:name=".TestActivitySetupProfile" />
         <activity android:name=".ActivitySessionStats" />
         <activity android:name=".ActivitySessionGraph" />
-        <activity android:name=".ActivitySessionGraphActionTime"/>
+        <activity android:name=".ActivitySessionGraphActionTime" />
+        <activity android:name=".ActivityEditProfile"></activity>
     </application>
 
 </manifest>

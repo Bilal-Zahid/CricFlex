@@ -443,7 +443,7 @@ public class ActivityMain extends ActionBarActivity {
         getFragmentManager().beginTransaction().add(
                 R.id.frame_container, fragment).
                 addToBackStack(null).commit();
-        checkForHome = "not in home";
+        checkForHome = "in fragment profile";
 
 
         setTitle(R.string.profile);

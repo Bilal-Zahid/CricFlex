@@ -32,12 +32,12 @@
         "source": "C:\\CricFlex\\App\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\help_icon.png"
     },
     {
-        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\coach_icon.png",
-        "source": "C:\\CricFlex\\App\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\coach_icon.png"
-    },
-    {
         "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\settings_icon.png",
         "source": "C:\\CricFlex\\App\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\settings_icon.png"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\coach_icon.png",
+        "source": "C:\\CricFlex\\App\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\coach_icon.png"
     },
     {
         "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\previousdouble_small_icon.png",

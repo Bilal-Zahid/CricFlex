@@ -40,12 +40,12 @@
         "source": "C:\\CricFlex\\App\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\three_line_icon.png"
     },
     {
-        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi\\home_icon.png",
-        "source": "C:\\CricFlex\\App\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\home_icon.png"
-    },
-    {
         "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi\\friends_icon.png",
         "source": "C:\\CricFlex\\App\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\friends_icon.png"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi\\home_icon.png",
+        "source": "C:\\CricFlex\\App\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\home_icon.png"
     },
     {
         "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi\\logout_icon.png",
