@@ -94,6 +94,14 @@
     <color name="session_footer">#ffff8800</color>
     <color name="session_finish_button_text">@color/text_light</color>
 
+
+    <!--profile-->
+    <color name="edit_profile_button_text">@color/text_light</color>
+    <color name="edit_profile_button_state1">@color/c1</color>
+    <color name="edit_profile_button_state0">@color/c350</color>
+    <color name="edit_profile_button_stroke">@color/c1</color>
+
+
     <!-- Screens background color-->
     <color name="bg_screen1">#002147</color>
     <color name="bg_screen2">#e95e14</color>

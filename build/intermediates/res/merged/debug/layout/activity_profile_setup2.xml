@@ -13,6 +13,7 @@
     tools:context=".ActivitySetupProfile"
     android:background="@drawable/bkd13">
 
+
     <LinearLayout
         android:orientation="vertical"
         android:id="@+id/header"
@@ -52,9 +53,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="Bowling Arm"
+            android:text="@string/bowling_arm"
             android:textColor="#ffffff"
-            android:textSize="15dp"
+            android:textSize="15sp"
             android:textStyle="bold" >
         </TextView>
 
@@ -83,9 +84,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:checked="true"
-                    android:text="Left"
+                    android:text="@string/left"
                     android:textColor="#ffffff"
-                    android:textSize="15dp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <RadioButton
@@ -93,9 +94,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Right"
+                    android:text="@string/right"
                     android:textColor="#ffffff"
-                    android:textSize="15dp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
             </RadioGroup>
         </LinearLayout>
@@ -108,9 +109,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="Bowling Style"
+            android:text="@string/bowling_style"
             android:textColor="#ffffff"
-            android:textSize="15dp"
+            android:textSize="15sp"
             android:textStyle="bold" >
         </TextView>
 
@@ -140,9 +141,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="Career Level"
+            android:text="@string/career_level"
             android:textColor="#ffffff"
-            android:textSize="15dp"
+            android:textSize="15sp"
             android:textStyle="bold" >
         </TextView>
 
@@ -188,12 +189,12 @@
 
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Done"
+            android:layout_height="0dp"
+            android:text="@string/stp_button_done"
             android:layout_marginTop="20dp"
             android:layout_gravity="center"
             android:textColor="#FFFFFF"
-            android:textSize="25dp"
+            android:textSize="25sp"
             android:background="@drawable/button1_bg"
             android:id="@+id/stp_done"
             android:layout_weight="1"/>

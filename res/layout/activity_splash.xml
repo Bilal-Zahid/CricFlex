@@ -14,5 +14,6 @@
         android:scaleType="fitXY"
         android:padding="30dp"
         android:adjustViewBounds="true"
-        android:visibility="invisible"/>
+        android:visibility="invisible"
+        android:contentDescription="@string/content_desc_imageView"/>
 </RelativeLayout>

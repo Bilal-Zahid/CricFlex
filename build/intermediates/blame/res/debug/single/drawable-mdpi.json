@@ -1,18 +1,98 @@
 [
     {
-        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\ic_launcher.png",
-        "source": "C:\\CricFlex\\App\\CricFlex\\res\\drawable-mdpi\\ic_launcher.png"
+        "merged": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\previousdouble_small_icon.png",
+        "source": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\previousdouble_small_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\logout_icon.png",
+        "source": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\logout_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\email_icon.png",
+        "source": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\email_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\overflow_icon.png",
+        "source": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\overflow_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\calendar_icon.png",
+        "source": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\calendar_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\help_icon.png",
+        "source": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\help_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\about_icon.png",
+        "source": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\about_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\profile_icon.png",
+        "source": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\profile_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\history_icon.png",
+        "source": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\history_icon.png"
     },
     {
         "merged": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\ic_launcher.png",
         "source": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\res\\drawable-mdpi\\ic_launcher.png"
     },
     {
+        "merged": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\friends_icon.png",
+        "source": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\friends_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\tour_icon.png",
+        "source": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\tour_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\password_icon.png",
+        "source": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\password_icon.png"
+    },
+    {
         "merged": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\homebutton1.png",
         "source": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\res\\drawable-mdpi\\homebutton1.png"
     },
     {
-        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\homebutton1.png",
-        "source": "C:\\CricFlex\\App\\CricFlex\\res\\drawable-mdpi\\homebutton1.png"
+        "merged": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\three_line_icon.png",
+        "source": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\three_line_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\previous_small_icon.png",
+        "source": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\previous_small_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\settings_icon.png",
+        "source": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\settings_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\next_small_icon.png",
+        "source": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\next_small_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\home_icon.png",
+        "source": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\home_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\nextdouble_small_icon.png",
+        "source": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\nextdouble_small_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\award_icon.png",
+        "source": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\award_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\calibration_icon.png",
+        "source": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\calibration_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\security_icon.png",
+        "source": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\security_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\coach_icon.png",
+        "source": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\coach_icon.png"
     }
 ]

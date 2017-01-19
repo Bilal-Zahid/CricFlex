@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:viewportWidth="512"
+    android:viewportHeight="512"
+    android:width="25dp"
+    android:height="25dp">
+    <group
+        android:scaleX="0.1"
+        android:scaleY="-0.1"
+        android:translateY="512">
+        <path
+            android:pathData="M2476 4323c-1 -1 -24 -5 -52 -8 -51 -6 -57 -7 -131 -25 -277 -67 -550 -295 -677 -565 -181 -385 -112 -843 174 -1148 67 -72 180 -167 199 -167 6 0 11 -4 11 -9 0 -13 177 -97 253 -120 129 -39 337 -59 427 -40 19 4 53 10 75 12 121 16 312 101 432 193 405 310 532 844 307 1298 -66 134 -192 290 -284 353 -14 9 -31 23 -38 30 -22 21 -130 82 -193 108 -152 64 -253 86 -417 89 -46 0 -84 0 -86 -1z"
+            android:fillColor="@color/login_icons" />
+        <path
+            android:pathData="M1620 2376C1176 2106 861 1666 761 1173 723 990 728 954 792 908l33 -23 1725 -3c1666 -2 1726 -2 1760 16 54 29 78 72 73 129 -4 51 -35 208 -55 276 -6 23 -12 47 -14 52 -19 84 -130 314 -210 438 -147 227 -379 451 -599 580 -44 26 -83 48 -87 49 -3 2 -19 -8 -35 -22 -170 -149 -328 -236 -518 -286 -164 -44 -366 -50 -537 -19 -179 34 -422 152 -548 267 -81 74 -65 72 -160 14z"
+            android:fillColor="@color/login_icons" />
+    </group>
+</vector>

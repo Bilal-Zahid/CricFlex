@@ -24,11 +24,11 @@
         android:gravity="center">
 
         <com.example.cricflex.CircleImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
             android:id="@+id/profilepicture"
             android:gravity="center"
-            android:src="@drawable/profile_icon_large"
+            android:src="@drawable/profile_icon"
             app:civ_border_width="2dp"
             app:civ_border_color="@color/light"
             android:layout_weight="1"/>
@@ -36,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Username"
+            android:text="@string/username"
             android:id="@+id/stp_username"
             android:textColor="#FFFFFF"
             android:layout_gravity="center_horizontal"
@@ -70,9 +70,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="Gender"
+            android:text="@string/gender"
             android:textColor="#ffffff"
-            android:textSize="15dp"
+            android:textSize="15sp"
             android:textStyle="bold" >
         </TextView>
 
@@ -100,9 +100,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:checked="true"
-                    android:text="Male"
+                    android:text="@string/male"
                     android:textColor="#ffffff"
-                    android:textSize="15dp"
+                    android:textSize="15sp"
                     android:textStyle="bold"
                     />
 
@@ -111,9 +111,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Female"
+                    android:text="@string/female"
                     android:textColor="#ffffff"
-                    android:textSize="15dp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
             </RadioGroup>
         </LinearLayout>
@@ -126,9 +126,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="Weight"
+            android:text="@string/weight"
             android:textColor="#ffffff"
-            android:textSize="15dp"
+            android:textSize="15sp"
             android:textStyle="bold" >
         </TextView>
 
@@ -147,7 +147,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:inputType="number"
-                android:hint="enter here"
+                android:maxLength="3"
+                android:hint="@string/enter_weight_here"
                 android:textColor="@color/text_light"
                 android:textColorHint="@color/text_hint"
                 android:id="@+id/pv_weight"
@@ -169,9 +170,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="Location"
+            android:text="@string/location"
             android:textColor="#ffffff"
-            android:textSize="15dp"
+            android:textSize="15sp"
             android:textStyle="bold" >
         </TextView>
 
@@ -202,7 +203,7 @@
                 android:layout_marginBottom="5dp"
                 android:textColor="@color/text_light"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:hint="Enter your country"/>
+                android:hint="@string/select_country"/>
 
         </LinearLayout>
 
@@ -214,9 +215,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
-            android:text="Date of Birth"
+            android:text="@string/date_of_birth"
             android:textColor="#ffffff"
-            android:textSize="15dp"
+            android:textSize="15sp"
             android:textStyle="bold" >
         </TextView>
 
@@ -230,26 +231,18 @@
         <EditText
 
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginTop="2dp"
             android:id="@+id/stp_dob"
-            android:drawableStart="@drawable/ic_drawer"
+            android:drawableStart="@drawable/calendar_icon"
             android:drawablePadding="10dp"
             android:textColor="#FFFFFF"
-            android:hint="Select Date"
+            android:hint="@string/select_date"
             android:textColorHint="@color/text_hint"
             android:layout_weight="1"
             />
 
-
-
-
-
     </LinearLayout>
-
-
-
-
 
 
     <LinearLayout
@@ -265,12 +258,12 @@
 
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Next"
+            android:layout_height="0dp"
+            android:text="@string/stp_button_next"
             android:layout_marginTop="20dp"
             android:layout_gravity="center"
             android:textColor="#FFFFFF"
-            android:textSize="25dp"
+            android:textSize="25sp"
             android:background="@drawable/button1_bg"
             android:id="@+id/stp_next"
             android:layout_weight="1"/>

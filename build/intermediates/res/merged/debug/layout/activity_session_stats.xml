@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Session Stats"
+            android:text="@string/session_stats"
             android:textStyle="bold"
             android:textSize="30sp"
             android:textColor="@color/session_header_text"
@@ -55,7 +55,7 @@
             android:gravity="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textStyle="bold"
-            android:text="0\u00b0"
+            android:text="@string/session_armflex"
             android:textSize="50sp"
             android:textColor="@color/session_value_text"
             />
@@ -67,7 +67,7 @@
             android:gravity="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textStyle="bold"
-            android:text="Arm Flex"
+            android:text="@string/session_armflex_text"
             android:textSize="25sp"
             android:textColor="@color/session_desc_text"
             />
@@ -94,7 +94,7 @@
             android:gravity="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textStyle="bold"
-            android:text="0 N"
+            android:text="@string/session_force"
             android:textSize="50sp"
             android:textColor="@color/session_value_text"
             />
@@ -106,7 +106,7 @@
             android:gravity="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textStyle="bold"
-            android:text="Force"
+            android:text="@string/monitor_force_text"
             android:textSize="25sp"
             android:textColor="@color/session_desc_text"
             />
@@ -132,7 +132,7 @@
             android:gravity="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textStyle="bold"
-            android:text="0.0 s"
+            android:text="@string/session_time"
             android:textSize="50sp"
             android:textColor="@color/session_value_text"
             />
@@ -144,7 +144,7 @@
             android:gravity="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textStyle="bold"
-            android:text="Action Time"
+            android:text="@string/session_time_text"
             android:textSize="25sp"
             android:textColor="@color/session_desc_text"
             />
@@ -171,7 +171,7 @@
             android:gravity="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textStyle="bold"
-            android:text="0\u00b0"
+            android:text="@string/session_twist"
             android:textSize="50sp"
             android:textColor="@color/session_value_text"
             />
@@ -183,7 +183,7 @@
             android:gravity="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textStyle="bold"
-            android:text="Arm Twist"
+            android:text="@string/session_twist_text"
             android:textSize="25sp"
             android:textColor="@color/session_desc_text"
             />
@@ -208,7 +208,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
             android:gravity="center"
-            android:text="FINISH"
+            android:text="@string/session_button_finish"
             android:textStyle="bold"
             android:textColor="@color/session_finish_button_text"
             android:textSize="35sp"

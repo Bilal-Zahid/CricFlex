@@ -4,8 +4,9 @@
     <string name="app_name">CricFlex</string>
     <string name="profile">Profile</string>
     <string name="setup_profile">Setup Profile</string>
-
     <string name="action_settings">Settings</string>
+
+    <!--welcome-->
 
     <string name="title_activity_welcome">Home Screen</string>
     <string name="next">NEXT</string>
@@ -27,46 +28,133 @@
     <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
     <string name="play_again">Play Again</string>
 
+
+    <!--login-->
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="forgot_password">forgot password</string>
+    <string name="login_button">Login</string>
+    <string name="register">Register new account</string>
+
+    <!--register-->
+    <string name="rgp_name">Name</string>
+    <string name="rgp_username">Username (6 minimum)</string>
+    <string name="rgp_email">Email</string>
+    <string name="rgp_password">Password (4 minimum)</string>
+    <string name="rgp_security_question">Security Question: \nFavourite Cricketer name?</string>
+    <string name="rgp_button_registe">Register new account</string>
+
+
+
+    <!--setup profile-->
+    <string name="gender">Gender</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="weight">Weight</string>
+    <string name="enter_weight_here">enter here</string>
+    <string name="KG">KG</string>
+    <string name="location">Location</string>
+    <string name="select_country">Select your country</string>
+    <string name="date_of_birth">Date of Birth</string>
+    <string name="select_date">Select Date</string>
+    <string name="stp_button_next">Next</string>
+    <string name="bowling_arm">Bowling Arm</string>
+    <string name="left">Left</string>
+    <string name="right">Right</string>
+    <string name="bowling_style">Bowling Style</string>
+    <string name="career_level">Career Level</string>
+    <string name="stp_button_done">Done</string>
+    <string name="age">Age</string>
+
+
+
+
+    <!--calibrate-->
+    <string name="straighten_arm">Straighten the arm</string>
+    <string name="bend_arm_45">Bend arm at 45\u00b0</string>
+    <string name="twist_left">Twist arm to Left</string>
+    <string name="twist_right">Twist arm to Right</string>
+    <string name="calibrate_button_next">Next</string>
+    <string name="calibrate_button_done">Done</string>
+
+
+    <!--forgot password-->
+
+    <string name="enter_username">Enter Username</string>
+    <string name="security_question">Security Question \nYour Favourite Player?</string>
+    <string name="new_password">Set New Password</string>
+    <string name="fgp_button_next">Next</string>
+    <string name="fgp_button_done">Done</string>
+
+
+    <!--activity main-->
+    <string name="muhammad_asawal">Muhammad Asawal</string>
+    <string name="asawal_email">asawal@cricflex.com</string>
+
+    <!--activity monitor-->
+    <string name="monitor_angle">0\u00b0</string>
+    <string name="monitor_status">Monitoring...</string>
+    <string name="monitor_force">0 N</string>
+    <string name="monitor_time">0.0s</string>
+    <string name="monitor_twist">0\u00b0</string>
+    <string name="monitor_force_text">Force</string>
+    <string name="monitor_time_text">Action Time</string>
+    <string name="monitor_twist_text">Arm Twist</string>
+    <string name="monitor_legal">0</string>
+    <string name="monitor_illegal">0</string>
+    <string name="monitor_legal_text">Legal Balls</string>
+    <string name="monitor_illegal_text">Illegal Balls</string>
+    <string name="monitor_finish_button">FINISH</string>
+
+
+    <!--session stats-->
+
+    <string name="session_stats">Session Stats</string>
+    <string name="session_armflex">0\u00b0</string>
+    <string name="session_force">0 N</string>
+    <string name="session_time">0.0s</string>
+    <string name="session_twist">0\u00b0</string>
+    <string name="session_armflex_text">Arm Flex</string>
+    <string name="session_force_text">Force</string>
+    <string name="session_time_text">Action Time</string>
+    <string name="session_twist_text">Arm Twist</string>
+    <string name="session_button_finish">FINISH</string>
+
+
+    <!--fragment home-->
+    <string name="legal_illegal_ratio">Legal to Illegal Ball Ratio</string>
+    <string name="home_total_balls">0</string>
+    <string name="home_total_balls_text">Total Balls: </string>
+    <string name="home_average_stats">Average\nBowling\nStats</string>
+    <string name="home_armflex">0\u00b0</string>
+    <string name="home_force">0 N</string>
+    <string name="home_time">0.0s</string>
+    <string name="home_twist">0\u00b0</string>
+    <string name="home_armflex_text">Arm Flex</string>
+    <string name="home_force_text">Force</string>
+    <string name="home_time_text">Action Time</string>
+    <string name="home_twist_text">Arm Twist</string>
+    <string name="home_button_start">START BOWLING !</string>
+
+    <!--profile-->
+    <string name="button_edit_profile">Edit Profile</string>
+
+    <!--fragment about-->
+    <string name="team_cricflex">Team CricFlex</string>
+    <string name="asawal">Muhammad\nAsawal</string>
+    <string name="abdullah">Abdullah\nAhmed</string>
+    <string name="jazib">Muhammad\nJazib Khan</string>
+    <string name="waqas">Waqas Ahmad</string>
+    <string name="bilal">Bilal Zahid</string>
+    <string name="www.cricflex.com">www.cricflex.com</string>
+
+
+    <!--gif duration-->
     <string name="duration_frame">32</string>
 
 
-    <!-- Nav Drawer Menu Items -->
-    <string-array name="nav_drawer_items">
-        <item>Home</item>
-        <item>History</item>
-        <item>Awards</item>
-        <item>Training</item>
-        <item>Friends</item>
-        <item>Help</item>
-        <item>About</item>
-    </string-array>
-
-    <!-- Nav Drawer List Item Icons -->
-    <!-- Keep them in order as the titles are in -->
-    <array name="nav_drawer_icons">
-        <item>@drawable/profile1</item>
-        <item>@drawable/password1</item>
-        <item>@drawable/email1</item>
-        <item>@drawable/profile1</item>
-        <item>@drawable/password1</item>
-        <item>@drawable/email1</item>
-    </array>
-
-    <!-- Content Description -->
-    <string name="desc_list_item_icon">Item Icon</string>
-
-
-    <string name="action_viewpager">ViewPager</string>
-    <string name="action_list">List</string>
-    <string name="title_activity_view_pager">ViewPagerActivity</string>
-    <string name="title_section1">Section 1</string>
-    <string name="title_section2">Section 2</string>
-    <string name="title_section3">Section 3</string>
-    <string name="title_item_list">Items</string>
-    <string name="title_item_detail">Item Detail</string>
-    <string name="title_activity_arc_in_fragment">ArcInFragment</string>
-    <string name="action_arc_tab">Arc Fragment</string>
-
+    <!--content_desc_imageView-->
+    <string name="content_desc_imageView">desc</string>
 
     <string-array name="bowlingstyle_array">
         <item>fast</item>
