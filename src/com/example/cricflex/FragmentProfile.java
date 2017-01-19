@@ -1,6 +1,7 @@
 package com.example.cricflex;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
@@ -11,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.io.FileInputStream;
@@ -19,6 +21,7 @@ import java.util.Calendar;
 public class FragmentProfile extends Fragment {
 
 
+    Button editProfileButton;
 
     public FragmentProfile(){}
 
@@ -36,6 +39,9 @@ public class FragmentProfile extends Fragment {
         if (bundle != null) {
             username = bundle.getString("username", "not sent");
         }
+
+
+
 
         TextView pv_name = (TextView)rootView.findViewById(R.id.pv_name);
         pv_name.setText(helper.getName(username));
@@ -92,12 +98,25 @@ public class FragmentProfile extends Fragment {
 
 
 
+        editProfileButton = (Button) rootView.findViewById(R.id.button_edit_profile);
+
+//        editProfileButton.setOnClickListener(new handleEditProfileButton());
+        editProfileButton.setOnClickListener(new View.OnClickListener(){
+
+            public void onClick(View view) {
+
+                Intent intent = new Intent(getActivity(), ActivityEditProfile.class);
+                startActivity(intent);
+            }
+        });
 
 
 
 
         return rootView;
     }
+
+
     public Bitmap getImageBitmap(Context context, String name, String extension){
             name=name+"."+extension;
         try{

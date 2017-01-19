@@ -44,12 +44,12 @@
         "source": "C:\\CricFlex\\App\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\calibration_icon.xml"
     },
     {
-        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\settings_icon.xml",
-        "source": "C:\\CricFlex\\App\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\settings_icon.xml"
-    },
-    {
         "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\three_line_icon.xml",
         "source": "C:\\CricFlex\\App\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\three_line_icon.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\settings_icon.xml",
+        "source": "C:\\CricFlex\\App\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\settings_icon.xml"
     },
     {
         "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\tour_icon.xml",

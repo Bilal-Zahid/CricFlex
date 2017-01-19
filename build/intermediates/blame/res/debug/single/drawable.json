@@ -512,12 +512,12 @@
         "source": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\exploded-aar\\com.github.mukeshsolanki\\country-picker-android\\1.1.6\\res\\drawable\\flag_ac.png"
     },
     {
-        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable\\flag_gq.png",
-        "source": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\exploded-aar\\com.github.mukeshsolanki\\country-picker-android\\1.1.6\\res\\drawable\\flag_gq.png"
-    },
-    {
         "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable\\frame_0_delay.gif",
         "source": "C:\\CricFlex\\App\\CricFlex\\res\\drawable\\frame_0_delay.gif"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable\\flag_gq.png",
+        "source": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\exploded-aar\\com.github.mukeshsolanki\\country-picker-android\\1.1.6\\res\\drawable\\flag_gq.png"
     },
     {
         "merged": "C:\\CricFlex\\App\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable\\flag_nz.png",
