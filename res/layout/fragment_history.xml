@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<RelativeLayout
+<android.support.percent.PercentRelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="fill_parent"
-    android:id="@+id/date_picker">
+    android:layout_height="match_parent">
 
     <ImageView android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -16,23 +16,25 @@
 
     <RelativeLayout
         android:id="@+id/dateSelector"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginTop="10dp"
         android:background="@android:color/transparent"
         android:gravity="fill_horizontal"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+        app:layout_heightPercent="10%"
+        app:layout_widthPercent="100%">
 
 
         <LinearLayout
             android:id="@+id/prev"
             android:layout_width="wrap_content"
-            android:layout_height="60dp"
+            android:layout_height="match_parent"
             android:layout_marginStart="5dp"
             android:background="@android:color/transparent"
             android:orientation="horizontal"
             android:layout_alignParentStart="true"
-            android:gravity="left">
+            android:gravity="center_vertical">
 
 
             <Button
@@ -58,7 +60,7 @@
         <TextView
             android:id="@+id/currentMonth"
             android:layout_width="wrap_content"
-            android:layout_height="60dp"
+            android:layout_height="match_parent"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:gravity="center"
@@ -67,16 +69,15 @@
             android:text="July 2016"
             android:layout_centerInParent="true"/>
 
-
-
         <LinearLayout
             android:id="@+id/next"
             android:layout_width="wrap_content"
-            android:layout_height="60dp"
+            android:layout_height="match_parent"
             android:layout_marginEnd="5dp"
             android:background="@android:color/transparent"
             android:orientation="horizontal"
-            android:layout_alignParentEnd="true">
+            android:layout_alignParentEnd="true"
+            android:gravity="center_vertical">
 
             <Button
                 android:id="@+id/nextMonth"
@@ -101,122 +102,63 @@
 
 
         </LinearLayout>
+
     </RelativeLayout>
 
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/container_scroll_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/dateSelector">
+    <LinearLayout
+        android:id="@+id/tabs"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/dateSelector"
+        android:orientation="horizontal"
+        app:layout_heightPercent="10%"
+        app:layout_widthPercent="100%">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+
+        <Button
+            android:id="@+id/history_angle_tab"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <LinearLayout
-                android:id="@+id/graph_part"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_below="@id/dateSelector"
-                android:gravity="center">
+            android:layout_weight="1"
+            android:text="Angle"
+            android:textColor="@color/text_light"
+            android:background="@drawable/history_button_tab_bg"/>
+        <Button
+            android:id="@+id/history_force_tab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Force"
+            android:textColor="@color/text_light"
+            android:background="@drawable/history_button_tab_bg"/>
+        <Button
+            android:id="@+id/history_time_tab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Time"
+            android:textColor="@color/text_light"
+            android:background="@drawable/history_button_tab_bg"/>
+        <Button
+            android:id="@+id/history_twist_tab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Twist"
+            android:textColor="@color/text_light"
+            android:background="@drawable/history_button_tab_bg"/>
+    </LinearLayout>
 
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Arm Angle"
-                    android:textColor="#ffffff"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:layout_margin="2dp"/>
-
-                <com.github.mikephil.charting.charts.LineChart
-                    android:id="@+id/chart0"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="10dp"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/graph_part1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_below="@id/graph_part"
-                android:gravity="center">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Force"
-                    android:textColor="#ffffff"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:layout_margin="2dp"/>
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/chart"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_heightPercent="60%"
+        app:layout_widthPercent="100%"
+        android:layout_below="@+id/tabs"
+        android:layout_alignParentStart="true" />
 
 
-                <com.github.mikephil.charting.charts.LineChart
-                    android:id="@+id/chart1"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="10dp"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/graph_part2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_below="@id/graph_part1"
-                android:gravity="center">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Arm Twist"
-                    android:textColor="#ffffff"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:layout_margin="2dp"/>
-
-                <com.github.mikephil.charting.charts.LineChart
-                    android:id="@+id/chart2"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="10dp"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/graph_part3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_below="@id/graph_part2"
-                android:gravity="center">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Action Time"
-                    android:textColor="#ffffff"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:layout_margin="2dp"/>
-
-                <com.github.mikephil.charting.charts.LineChart
-                    android:id="@+id/chart3"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="10dp"/>
-
-            </LinearLayout>
-
-        </LinearLayout>
-</ScrollView>
-
-
-</RelativeLayout>
+</android.support.percent.PercentRelativeLayout>

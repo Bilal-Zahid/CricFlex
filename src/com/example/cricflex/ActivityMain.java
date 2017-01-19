@@ -3,7 +3,6 @@ package com.example.cricflex;
 import java.io.FileInputStream;
 import java.util.ArrayList;
 
-import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
@@ -237,6 +236,13 @@ public class ActivityMain extends ActionBarActivity {
             case R.id.tour_cricflex:
 
                 Intent intent0 = new Intent(ActivityMain.this, ActivityWelcome.class);
+
+//                Bundle extras = new Bundle();
+//                extras.putString("id", "1");
+//                extras.putString("city", "2");
+//                extras.putString("place", "3");
+//                extras.putString("station", "4");
+//                intent0.putExtras(extras);
                 startActivity(intent0);
                 return true;
 
@@ -437,7 +443,7 @@ public class ActivityMain extends ActionBarActivity {
         getFragmentManager().beginTransaction().add(
                 R.id.frame_container, fragment).
                 addToBackStack(null).commit();
-        checkForHome = "not in home";
+        checkForHome = "in fragment profile";
 
 
         setTitle(R.string.profile);

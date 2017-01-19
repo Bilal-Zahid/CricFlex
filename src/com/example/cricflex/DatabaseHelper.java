@@ -904,6 +904,78 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         //return flag;
     }
 
+    public void changeBowlingStyle(String username, String newBowlingStyle) {
+        db = this.getReadableDatabase();
+//        String query = "select username, security from " + PLAYER_TABLE_NAME;
+        String query = "UPDATE " + PLAYER_TABLE_NAME + "  SET bowlingstyle = '" + newBowlingStyle + "' WHERE username = '" + username + "'";
+        //db.rawQuery(query,null);
+        db.execSQL(query);
+        //boolean flag = true;
+        //return flag;
+    }
+
+    public void changeCareerLevel(String username, String newCareerLevel) {
+        db = this.getReadableDatabase();
+//        String query = "select username, security from " + PLAYER_TABLE_NAME;
+        String query = "UPDATE " + PLAYER_TABLE_NAME + "  SET careerlevel = '" + newCareerLevel + "' WHERE username = '" + username + "'";
+        //db.rawQuery(query,null);
+        db.execSQL(query);
+        //boolean flag = true;
+        //return flag;
+    }
+
+    public void changeGender(String username, String newGender) {
+        db = this.getReadableDatabase();
+//        String query = "select username, security from " + PLAYER_TABLE_NAME;
+        String query = "UPDATE " + PLAYER_TABLE_NAME + "  SET gender = '" + newGender + "' WHERE username = '" + username + "'";
+        //db.rawQuery(query,null);
+        db.execSQL(query);
+        //boolean flag = true;
+        //return flag;
+    }
+
+
+
+    public void changeLocation(String username, String newLocation) {
+        db = this.getReadableDatabase();
+//        String query = "select username, security from " + PLAYER_TABLE_NAME;
+        String query = "UPDATE " + PLAYER_TABLE_NAME + "  SET location = '" + newLocation + "' WHERE username = '" + username + "'";
+        //db.rawQuery(query,null);
+        db.execSQL(query);
+        //boolean flag = true;
+        //return flag;
+    }
+
+    public void changeEmail(String username, String newEmail) {
+        db = this.getReadableDatabase();
+//        String query = "select username, security from " + PLAYER_TABLE_NAME;
+        String query = "UPDATE " + PLAYER_TABLE_NAME + "  SET email = '" + newEmail + "' WHERE username = '" + username + "'";
+        //db.rawQuery(query,null);
+        db.execSQL(query);
+        //boolean flag = true;
+        //return flag;
+    }
+
+    public void changeDOB(String username, String newDOB) {
+        db = this.getReadableDatabase();
+        String query = "UPDATE " + PLAYER_TABLE_NAME + "  SET DOB = '" + newDOB + "' WHERE username = '" + username + "'";
+        db.execSQL(query);
+    }
+
+    public void changeWeight(String username, String newWeight) {
+        db = this.getReadableDatabase();
+        String query = "UPDATE " + PLAYER_TABLE_NAME + "  SET weight = '" + newWeight + "' WHERE username = '" + username + "'";
+        db.execSQL(query);
+    }
+
+    public void changeBowlingArm(String username, String newBowlingArm) {
+        db = this.getReadableDatabase();
+        String query = "UPDATE " + PLAYER_TABLE_NAME + "  SET bowlingarm = '" + newBowlingArm + "' WHERE username = '" + username + "'";
+        db.execSQL(query);
+    }
+
+
+
     public void changeStatAverageAngle(String username, String averageAngle) {
         db = this.getReadableDatabase();
 //        String query = "select username, security from " + PLAYER_TABLE_NAME;

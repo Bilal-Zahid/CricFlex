@@ -98,6 +98,42 @@ public class ActivityRegister extends Activity {
                     }, 500);
                     return;
                 }
+                if(usernamestr.length()>20){
+                    final Toast toast = Toast.makeText(ActivityRegister.this, "Username length should be within 20 character" , Toast.LENGTH_SHORT);
+                    toast.show();
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            toast.cancel();
+                        }
+                    }, 500);
+                    return;
+                }
+                if(namestr.length()>20){
+                    final Toast toast = Toast.makeText(ActivityRegister.this, "name length should be within 20 character" , Toast.LENGTH_SHORT);
+                    toast.show();
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            toast.cancel();
+                        }
+                    }, 500);
+                    return;
+                }
+                if(passwordstr.length()<5){
+                    final Toast toast = Toast.makeText(ActivityRegister.this, "Password length should be atleast 5 characters" , Toast.LENGTH_SHORT);
+                    toast.show();
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            toast.cancel();
+                        }
+                    }, 1000);
+                    return;
+                }
                 p.setName(namestr);
                 p.setUsername(usernamestr);
                 p.setEmail(emailstr);
