@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Fri Jan 20 18:50:05 PKT 2017
+#Fri Jan 20 18:56:55 PKT 2017
 835.base=C\:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\res\\resources-debug.ap_
 100.set=ANDROID_RESOURCE
 57.file=C\:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\res\\resources-debug.ap_\\res\\mipmap-xxxhdpi-v4\\cricflexlogosmall.png

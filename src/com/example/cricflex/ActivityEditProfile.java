@@ -283,6 +283,7 @@ public class ActivityEditProfile extends FragmentActivity implements View.OnClic
 
 
 
+                Toast.makeText(ActivityEditProfile.this, "Profile Updated" , Toast.LENGTH_SHORT).show();
 
                 saveImage(getApplicationContext(),bitmapImage,username1,"jpeg");
 
