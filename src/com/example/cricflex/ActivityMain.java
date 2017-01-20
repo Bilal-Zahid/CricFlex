@@ -256,7 +256,7 @@ public class ActivityMain extends ActionBarActivity {
             case R.id.settings:
 
 
-                Intent intent2 = new Intent(ActivityMain.this, test_asawal.class);
+                Intent intent2 = new Intent(ActivityMain.this, ActivityEditProfile.class);
                 startActivity(intent2);
                 return true;
 

@@ -2,43 +2,36 @@
 <instant-run
     abi="armeabi-v7a,armeabi"
     api-level="23"
-    density="hdpi"
+    density="xxhdpi"
     format="8"
     plugin-version="2.2.3"
-    timestamp="638610621707737"
-    token="7151109752444609980"
-    verifier="COMPATIBLE" >
+    timestamp="277950022450054"
+    token="-1685597212509240313"
+    verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
-        duration="6260" />
+        duration="951" />
     <task
         name="instant-run-dex"
-        duration="957" />
+        duration="0" />
     <task
         name="instant-run-transform"
-        duration="379" />
+        duration="143" />
     <task
         name="verifier"
-        duration="59" />
+        duration="24" />
 
     <artifact
-        location="C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\reload-dex\debug\classes.dex"
-        type="RELOAD_DEX" />
+        location="C:\CricFlex\Others\Apps\CricFlex\build\outputs\apk\CricFlex-debug.apk"
+        type="MAIN" />
 
     <build
-        timestamp="637925612800860"
+        timestamp="277950022450054"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
-            location="C:\Users\abcd\AndroidStudioProjects\CricFlex\build\outputs\apk\CricFlex-debug.apk"
+            location="C:\CricFlex\Others\Apps\CricFlex\build\outputs\apk\CricFlex-debug.apk"
             type="MAIN" />
-    </build>
-    <build
-        timestamp="638610621707737"
-        verifier="COMPATIBLE" >
-        <artifact
-            location="C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\reload-dex\debug\classes.dex"
-            type="RELOAD_DEX" />
     </build>
 
 </instant-run>

@@ -180,7 +180,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
 
 
+        db.close();
         return allUsernames;
+
     }
 
 
@@ -408,6 +410,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             while (cursor.moveToNext());
         }
         cursor.close();
+        db.close();
         return pass;
     }
 
@@ -429,6 +432,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             while (cursor.moveToNext());
         }
         cursor.close();
+        db.close();
         return email;
     }
 
@@ -450,6 +454,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             while (cursor.moveToNext());
         }
         cursor.close();
+        db.close();
         return security;
     }
 
@@ -471,6 +476,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             while (cursor.moveToNext());
         }
         cursor.close();
+        db.close();
         return gender;
     }
 
@@ -492,6 +498,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             while (cursor.moveToNext());
         }
         cursor.close();
+        db.close();
         return name;
     }
 
@@ -514,6 +521,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             while (cursor.moveToNext());
         }
         cursor.close();
+        db.close();
         return weight;
     }
 
@@ -537,6 +545,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             while (cursor.moveToNext());
         }
         cursor.close();
+        db.close();
         return DOB;
     }
 
@@ -558,6 +567,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             while (cursor.moveToNext());
         }
         cursor.close();
+        db.close();
         return location;
     }
 
@@ -580,6 +590,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             while (cursor.moveToNext());
         }
         cursor.close();
+        db.close();
         return bowlingStyle;
     }
 
@@ -602,6 +613,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             while (cursor.moveToNext());
         }
         cursor.close();
+        db.close();
         return bowlingArm;
     }
 
@@ -624,6 +636,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             while (cursor.moveToNext());
         }
         cursor.close();
+        db.close();
         return careerLevel;
     }
 
@@ -647,6 +660,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             while (cursor.moveToNext());
         }
         cursor.close();
+        db.close();
         return legalBowls;
     }
 
@@ -668,6 +682,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             while (cursor.moveToNext());
         }
         cursor.close();
+        db.close();
         return illegalBowls;
     }
 
@@ -689,6 +704,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             while (cursor.moveToNext());
         }
         cursor.close();
+        db.close();
         return angleValues;
     }
 
@@ -712,6 +728,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             while (cursor.moveToNext());
         }
         cursor.close();
+        db.close();
         return forceValues;
     }
 
@@ -734,6 +751,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             while (cursor.moveToNext());
         }
         cursor.close();
+        db.close();
         return armTwistValues;
     }
 
@@ -756,6 +774,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             while (cursor.moveToNext());
         }
         cursor.close();
+        db.close();
         return actionTimeValues;
     }
 
@@ -780,6 +799,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             while (cursor.moveToNext());
         }
         cursor.close();
+        db.close();
         return angleValues;
     }
 
@@ -801,6 +821,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         System.out.println("Actual Values should be: " + getAngleValues(username));
 
         cursor.close();
+        db.close();
         return angleValues;
     }
 
@@ -821,6 +842,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             angleValues = cursor.getString(0);
         }
         cursor.close();
+        db.close();
         return angleValues;
     }
 
@@ -836,6 +858,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             armTwistValues = cursor.getString(0);
         }
         cursor.close();
+        db.close();
         return armTwistValues;
     }
 
@@ -851,6 +874,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             forceValues= cursor.getString(0);
         }
         cursor.close();
+        db.close();
         return forceValues;
     }
     public String getActionTimeValuesWithDate(String username, String date) {
@@ -865,6 +889,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             actionTimeValues = cursor.getString(0);
         }
         cursor.close();
+        db.close();
         return actionTimeValues;
     }
 
@@ -889,6 +914,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             while (cursor.moveToNext());
         }
         cursor.close();
+        db.close();
         return angleValues;
     }
 
@@ -902,6 +928,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(query);
         //boolean flag = true;
         //return flag;
+        db.close();
     }
 
     public void changeBowlingStyle(String username, String newBowlingStyle) {
@@ -912,6 +939,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(query);
         //boolean flag = true;
         //return flag;
+        db.close();
     }
 
     public void changeCareerLevel(String username, String newCareerLevel) {
@@ -922,6 +950,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(query);
         //boolean flag = true;
         //return flag;
+        db.close();
     }
 
     public void changeGender(String username, String newGender) {
@@ -931,7 +960,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         //db.rawQuery(query,null);
         db.execSQL(query);
         //boolean flag = true;
-        //return flag;
+        //
+        db.close();
     }
 
 
@@ -944,6 +974,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(query);
         //boolean flag = true;
         //return flag;
+        db.close();
     }
 
     public void changeEmail(String username, String newEmail) {
@@ -954,24 +985,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(query);
         //boolean flag = true;
         //return flag;
+        db.close();
     }
 
     public void changeDOB(String username, String newDOB) {
         db = this.getReadableDatabase();
         String query = "UPDATE " + PLAYER_TABLE_NAME + "  SET DOB = '" + newDOB + "' WHERE username = '" + username + "'";
         db.execSQL(query);
+        db.close();
     }
 
     public void changeWeight(String username, String newWeight) {
         db = this.getReadableDatabase();
         String query = "UPDATE " + PLAYER_TABLE_NAME + "  SET weight = '" + newWeight + "' WHERE username = '" + username + "'";
         db.execSQL(query);
+        db.close();
     }
 
     public void changeBowlingArm(String username, String newBowlingArm) {
         db = this.getReadableDatabase();
         String query = "UPDATE " + PLAYER_TABLE_NAME + "  SET bowlingarm = '" + newBowlingArm + "' WHERE username = '" + username + "'";
         db.execSQL(query);
+        db.close();
     }
 
 
@@ -984,6 +1019,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(query);
         //boolean flag = true;
         //return flag;
+        db.close();
     }
 
     public void changeLongestStreak(String username, String longestStreak) {
@@ -994,6 +1030,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(query);
         //boolean flag = true;
         //return flag;
+        db.close();
     }
 
     public void changeLastBowlAngle(String username, String lastBowlAngle) {
@@ -1004,6 +1041,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(query);
         //boolean flag = true;
         //return flag;
+        db.close();
     }
 
     public void changeStatLegalIllegal(String username, String legal, String illegal) {
@@ -1053,6 +1091,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         db.execSQL(query1);
         db.execSQL(query2);
+        db.close();
         //boolean flag = true;
         //return flag;
     }
@@ -1136,6 +1175,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
             String query1 = "UPDATE " + ANGLE_TABLE_NAME + "  SET angle_values = '" + totalAngleValues + "' WHERE username = '" + username + "'";
             db.execSQL(query1);
+            db.close();
         }
     }
 
@@ -1219,6 +1259,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             String query1 = "UPDATE " + FORCE_TABLE_NAME + "  SET force_values = '" + totalForceValues + "' WHERE username = '" + username + "'";
             db.execSQL(query1);
         }
+        db.close();
     }
 
 
@@ -1301,6 +1342,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             String query1 = "UPDATE " + ARM_TWIST_TABLE_NAME + "  SET arm_twist_values = '" + totalArmTwistValues + "' WHERE username = '" + username + "'";
             db.execSQL(query1);
         }
+        db.close();
     }
 
 
@@ -1383,6 +1425,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             String query1 = "UPDATE " + ACTION_TIME_TABLE_NAME + "  SET action_time_values = '" + totalActionTimeValues + "' WHERE username = '" + username + "'";
             db.execSQL(query1);
         }
+        db.close();
     }
 
 
@@ -1493,6 +1536,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
         cursor.close();
+        db.close();
     }
 
     public void changeArmTwistValuesWithDate(String username, String currentArmTwistValues , String sessionDate) {
@@ -1602,6 +1646,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
         cursor.close();
+        db.close();
     }
 
 
@@ -1713,6 +1758,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
         cursor.close();
+        db.close();
     }
 
 
@@ -1823,6 +1869,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
         cursor.close();
+        db.close();
     }
 
 

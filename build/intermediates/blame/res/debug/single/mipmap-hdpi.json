@@ -1,10 +1,10 @@
 [
     {
-        "merged": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi\\cricflex_logo.png",
-        "source": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\res\\mipmap-hdpi\\cricflex_logo.png"
+        "merged": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi\\cricflex_logo.png",
+        "source": "C:\\CricFlex\\Others\\Apps\\CricFlex\\res\\mipmap-hdpi\\cricflex_logo.png"
     },
     {
-        "merged": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi\\cricflexlogosmall.png",
-        "source": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\res\\mipmap-hdpi\\cricflexlogosmall.png"
+        "merged": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi\\cricflexlogosmall.png",
+        "source": "C:\\CricFlex\\Others\\Apps\\CricFlex\\res\\mipmap-hdpi\\cricflexlogosmall.png"
     }
 ]

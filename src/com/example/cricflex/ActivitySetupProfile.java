@@ -239,6 +239,8 @@ public class ActivitySetupProfile extends FragmentActivity implements View.OnCli
 
                 selectedDOB = birthDate.getText().toString();
                 selectedCountry = country.getName();
+
+                System.out.println("Country Name: " + selectedCountry);
                 //String selectedGender = gender;
 
                 if(selectedDOB.equals("")){
@@ -263,6 +265,7 @@ public class ActivitySetupProfile extends FragmentActivity implements View.OnCli
 
                 backCheck = "activity setup profile 2";
 
+                initializeBowlingStylesSpinner("Left");
                 rgBowlingArm.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
                 {
                     public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -270,16 +273,18 @@ public class ActivitySetupProfile extends FragmentActivity implements View.OnCli
                             case R.id.rdbLeft:
                                 // do operations specific to this selection
                                 selectedBowlingArm = "Left";
+                                initializeBowlingStylesSpinner(selectedBowlingArm);
                                 break;
 
                             case R.id.rdbRight:
                                 // do operations specific to this selection
                                 selectedBowlingArm = "Right";
+                                initializeBowlingStylesSpinner(selectedBowlingArm);
                                 break;
                         }
                     }
                 });
-                initializeBowlingStylesSpinner();
+
                 initializeCareerLevelSpinner();
 
 
@@ -412,7 +417,7 @@ public class ActivitySetupProfile extends FragmentActivity implements View.OnCli
 
             ImageView profileImage = (ImageView) findViewById(R.id.profilepicture);
             bitmapImage = BitmapFactory.decodeFile(picturePath);
-            bitmapImage = Bitmap.createScaledBitmap(bitmapImage, 200, 200, true);
+            bitmapImage = Bitmap.createScaledBitmap(bitmapImage, 500, 500, true);
 
 
             profileImage.setImageBitmap(bitmapImage);
@@ -680,18 +685,35 @@ public class ActivitySetupProfile extends FragmentActivity implements View.OnCli
 
 
 
-    private void initializeBowlingStylesSpinner(){
-
+    private void initializeBowlingStylesSpinner(String arm){
 
         Context context=getApplicationContext();
-        String[] bowlingStylesArray = context.getResources().getStringArray(R.array.bowlingstyle_array);
         bowlingStylesSpinner = (Spinner)findViewById(R.id.bowlingstyle_spinner);
-        //ArrayList<String> bowlingStyles = new ArrayList( Arrays.asList( R.array.bowlingstyle_array ) );
-        //System.out.println(R.array.bowlingstyle_array);
+
+        if(arm.equals("Left"))
+        {
+            String[] bowlingStylesArray = context.getResources().getStringArray(R.array.bowlingstyle_left_array);
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(this,R.layout.spiner_item, bowlingStylesArray);
+            bowlingStylesSpinner.setAdapter(adapter);
+        }
+        else if(arm.equals("Right"))
+        {
+            String[] bowlingStylesArray = context.getResources().getStringArray(R.array.bowlingstyle_right_array);
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(this,R.layout.spiner_item, bowlingStylesArray);
+            bowlingStylesSpinner.setAdapter(adapter);
+        }
 
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.spiner_item, bowlingStylesArray);
-        bowlingStylesSpinner.setAdapter(adapter);
+
+//
+//        String[] bowlingStylesArray = context.getResources().getStringArray(R.array.bowlingstyle_array);
+//        bowlingStylesSpinner = (Spinner)findViewById(R.id.bowlingstyle_spinner);
+//        //ArrayList<String> bowlingStyles = new ArrayList( Arrays.asList( R.array.bowlingstyle_array ) );
+//        //System.out.println(R.array.bowlingstyle_array);
+//
+//
+//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.spiner_item, bowlingStylesArray);
+//        bowlingStylesSpinner.setAdapter(adapter);
     }
 
     private void initializeCareerLevelSpinner(){
@@ -932,6 +954,7 @@ public void show(){
             // Implement your code here
 
             location_text.setText(name);
+            selectedCountry = name;
             country_flag.setImageResource(flagDrawableResID);
             //location_text.setCompoundDrawablesRelativeWithIntrinsicBounds(flagDrawableResID, 0, 0, 0);
             //location_text.setCompoundDrawablesWithIntrinsicBounds(flagDrawableResID, 0, 0, 0);

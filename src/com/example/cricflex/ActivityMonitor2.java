@@ -130,13 +130,13 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
 
     private TextView monitorAngleValue;
     //private TextView monitorStatusText;
-    private Chronometer monitorTimer;
-    private ImageButton monitorTimerButton;
+    //private Chronometer monitorTimer;
+    //private ImageButton monitorTimerButton;
     private TextView monitorLegalBalls;
     private TextView monitorIllegalBalls;
     private Button monitorFinishButton;
 //    private Button monitorStartButton;
-    private ImageButton instantGraphButton;
+    //private ImageButton instantGraphButton;
 
     private TextView monitorForce;
     private TextView monitorActionTime;
@@ -265,8 +265,8 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
 
         monitorAngleValue = (TextView)findViewById(R.id.monitor_angle_text);
         //monitorStatusText = (TextView)findViewById(R.id.monitor_status_text);
-        monitorTimer = (Chronometer)findViewById(R.id.monitor_timer);
-        monitorTimerButton = (ImageButton)findViewById(R.id.monitor_timer_button);
+        //monitorTimer = (Chronometer)findViewById(R.id.monitor_timer);
+        //monitorTimerButton = (ImageButton)findViewById(R.id.monitor_timer_button);
         monitorLegalBalls = (TextView)findViewById(R.id.monitor_legal_balls);
         monitorIllegalBalls = (TextView)findViewById(R.id.monitor_illegal_balls);
         monitorFinishButton = (Button)findViewById(R.id.monitor_finish_button);
@@ -275,7 +275,7 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
 
 
         //monitorTimer.setFormat("H:MM:SS");
-        monitorTimerButton.setOnClickListener(new handlemonitorTimerButton());
+        //monitorTimerButton.setOnClickListener(new handlemonitorTimerButton());
         //monitorFinishButton.setOnClickListener(new handlemonitorFinishButton());
 
         //monitorStartButton.setOnClickListener(new handlemonitorStartButton());
@@ -518,23 +518,23 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
 
             //progress.show();
 //            dialog.setProgressDrawable(getDrawable(R.drawable.balls));
-            if(timerOn){
-                timeWhenStopped = monitorTimer.getBase() - SystemClock.elapsedRealtime();
-                stopChronometer(null);
-                monitorTimerButton.setImageResource(R.drawable.start_circle_large);
-                timerOn=false;
-            }
+//            if(timerOn){
+//                timeWhenStopped = monitorTimer.getBase() - SystemClock.elapsedRealtime();
+//                stopChronometer(null);
+//                monitorTimerButton.setImageResource(R.drawable.start_circle_large);
+//                timerOn=false;
+//            }
 
-            else if(!timerOn){
-
-                boolForTimerLogic = false;
-                monitorTimer.setBase(SystemClock.elapsedRealtime() + timeWhenStopped);
-                startChronometer(null);
-                //
-                monitorTimerButton.setImageResource(R.drawable.pause_circle_large);
-                timerOn=true;
-                timerWithStart = false;
-            }
+//            else if(!timerOn){
+//
+//                boolForTimerLogic = false;
+//                monitorTimer.setBase(SystemClock.elapsedRealtime() + timeWhenStopped);
+//                startChronometer(null);
+//                //
+//                monitorTimerButton.setImageResource(R.drawable.pause_circle_large);
+//                timerOn=true;
+//                timerWithStart = false;
+//            }
         }
     }
 
@@ -580,11 +580,11 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
 //        monitorStartButton = (Button) findViewById(R.id.monitor_start_button);
         monitorFinishButton = (Button) findViewById(R.id.monitor_finish_button);
 
-        instantGraphButton = (ImageButton) findViewById(R.id.monitor_graph_button) ;
+        //instantGraphButton = (ImageButton) findViewById(R.id.monitor_graph_button) ;
         //graphButton = (ImageButton) d(R.id.graph);
 
 
-        instantGraphButton.setOnClickListener(new handleGraphButton());
+        //instantGraphButton.setOnClickListener(new handleGraphButton());
 //        monitorStartButton.setOnClickListener(new handlemonitorStartButton());
         monitorFinishButton.setOnClickListener(new handlemonitorFinishButton());
         //graphButton.setOnClickListener(new handleGraphButton());
@@ -1031,12 +1031,12 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
         finish();
 
     }
-
-    public void startChronometer(View view) {
-        ((Chronometer) findViewById(R.id.monitor_timer)).start();
-    }
-
-    public void stopChronometer(View view) {
-        ((Chronometer) findViewById(R.id.monitor_timer)).stop();
-    }
+//
+//    public void startChronometer(View view) {
+//        ((Chronometer) findViewById(R.id.monitor_timer)).start();
+//    }
+//
+//    public void stopChronometer(View view) {
+//        ((Chronometer) findViewById(R.id.monitor_timer)).stop();
+//    }
 }

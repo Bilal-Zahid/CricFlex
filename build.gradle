@@ -23,7 +23,7 @@ dependencies {
     compile 'com.android.support:percent:25.1.0'
 
     compile 'com.github.PhilJay:MPAndroidChart:v3.0.0-beta1'
-    compile 'com.github.mukeshsolanki:country-picker-android:1.1.6'
+    compile 'com.github.mukeshsolanki:country-picker-android:1.1.7'
 
 }
 

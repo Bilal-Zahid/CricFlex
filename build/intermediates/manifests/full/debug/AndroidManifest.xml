@@ -12,6 +12,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <uses-feature
         android:name="android.hardware.camera.front"
@@ -39,10 +40,6 @@
             android:screenOrientation="portrait" />
         <activity
             android:name="com.example.cricflex.ActivitySetupProfile"
-            android:label="CricFlex"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="com.example.cricflex.TestActivityMonitor"
             android:label="CricFlex"
             android:screenOrientation="portrait" />
         <activity
@@ -75,10 +72,8 @@
         <activity android:name="com.example.cricflex.ActivityGraph3" />
         <activity android:name="com.example.cricflex.ActivityGraph4" />
         <activity android:name="com.example.cricflex.ActivityGraph5" />
-        <activity android:name="com.example.cricflex.TestActivityMonitor3" />
         <activity android:name="com.example.cricflex.TestActivitySessionStats" />
         <activity android:name="com.example.cricflex.ActivitySessionGraphs" />
-        <activity android:name="com.example.cricflex.test_asawal" />
         <activity android:name="com.example.cricflex.TestActivitySetupProfile" />
         <activity android:name="com.example.cricflex.ActivitySessionStats" />
         <activity android:name="com.example.cricflex.ActivitySessionGraph" />

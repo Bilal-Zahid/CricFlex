@@ -111,8 +111,6 @@ public class FragmentProfile extends Fragment {
         });
 
 
-
-
         return rootView;
     }
 
