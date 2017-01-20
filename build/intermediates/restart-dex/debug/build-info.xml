@@ -5,7 +5,7 @@
     density="xxhdpi"
     format="8"
     plugin-version="2.2.3"
-    timestamp="277950022450054"
+    timestamp="281499254081583"
     token="-1685597212509240313"
     verifier="FULL_BUILD_REQUESTED" >
 
@@ -17,17 +17,17 @@
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="143" />
+        duration="130" />
     <task
         name="verifier"
-        duration="24" />
+        duration="28" />
 
     <artifact
         location="C:\CricFlex\Others\Apps\CricFlex\build\outputs\apk\CricFlex-debug.apk"
         type="MAIN" />
 
     <build
-        timestamp="277950022450054"
+        timestamp="281499254081583"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="C:\CricFlex\Others\Apps\CricFlex\build\outputs\apk\CricFlex-debug.apk"

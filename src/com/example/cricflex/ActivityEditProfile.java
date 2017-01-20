@@ -38,10 +38,7 @@ import com.mukesh.countrypicker.fragments.CountryPicker;
 import com.mukesh.countrypicker.interfaces.CountryPickerListener;
 import com.mukesh.countrypicker.models.Country;
 
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
@@ -58,34 +55,20 @@ public class ActivityEditProfile extends FragmentActivity implements View.OnClic
     RadioButton rdbLeft, rdbRight;
     RadioGroup rgBowlingArm;
 
-
-
-
-
     TextView location_text;
-
     TextView name;
     CountryPicker picker;
     Country country;
     ImageView country_flag;
-    Bitmap bitmapImage;
+
     private EditText birthDate;
     private DatePickerDialog birthDatePickerDialog;
     private SimpleDateFormat dateFormatter;
 
-    private Spinner CountrySpinner;
     private Spinner bowlingStylesSpinner;
     private Spinner careerLevelSpinner;
 
-    private static int RESULT_LOAD_IMG = 1;
-    String imgDecodableString;
-
-    final Player player = new Player();
-
     EditText weightOfPerson;
-
-    private static final int SELECT_PICTURE = 1;
-
 
     String selectedGender;
     String selectedWeight;
@@ -95,11 +78,13 @@ public class ActivityEditProfile extends FragmentActivity implements View.OnClic
     String selectedBowlingStyle;
     String selectedCareerLevel;
 
-//    String selectedDOB;
-
-
 
     Button saveEditProfile, cancelEditProfile;
+
+
+    ImageView profilePicture;
+    Bitmap bitmapImage;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,9 +93,6 @@ public class ActivityEditProfile extends FragmentActivity implements View.OnClic
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getActionBar().hide();
         findViewsById();
-
-
-
 
         username1 = SaveSharedPreference.getUserName(ActivityEditProfile.this);
 
@@ -141,15 +123,6 @@ public class ActivityEditProfile extends FragmentActivity implements View.OnClic
         else if (selectedBowlingArm.equals("Left")){
             rgBowlingArm.check(R.id.rdbLeft);
         }
-//        rdbFemale.setChecked(true);
-//        if(selectedGender.equals("Male")){
-//            rdbMale.setChecked(true);
-//        }
-//        else if(selectedGender.equals("Female")){
-//            rdbFemale.setChecked(true);
-//        }
-
-
 
 
         initializeBowlingStylesSpinner(selectedBowlingArm);
@@ -180,6 +153,19 @@ public class ActivityEditProfile extends FragmentActivity implements View.OnClic
 
 
         bitmapImage = BitmapFactory.decodeResource(getResources(), R.drawable.profile_icon_large);
+
+        profilePicture = (ImageView) findViewById(R.id.profilepicture);
+        profilePicture.setClickable(true);
+        profilePicture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(
+                        Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(i, 1);
+            }
+
+        });
 
         dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
         setDateTimeField();
@@ -296,6 +282,9 @@ public class ActivityEditProfile extends FragmentActivity implements View.OnClic
                 helper.changeCareerLevel(username1,selectedCareerLevel);
 
 
+
+
+                saveImage(getApplicationContext(),bitmapImage,username1,"jpeg");
 
                 Intent intent = new Intent(ActivityEditProfile.this, ActivityMain.class);
                 startActivity(intent);
@@ -472,42 +461,6 @@ public class ActivityEditProfile extends FragmentActivity implements View.OnClic
         }
     }
 
-    public void saveImage(Context context, Bitmap b,String name,String extension){
-        name=name+"."+extension;
-
-        FileOutputStream out;
-        try {
-            out = context.openFileOutput(name, Context.MODE_PRIVATE);
-            b.compress(Bitmap.CompressFormat.JPEG, 90, out);
-            out.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public Bitmap getImageBitmap(Context context,String name,String extension){
-        name=name+"."+extension;
-        try{
-            FileInputStream fis = context.openFileInput(name);
-            Bitmap b = BitmapFactory.decodeStream(fis);
-            fis.close();
-            return b;
-        }
-        catch(Exception e){
-        }
-        return null;
-    }
-
-
-
-    private void takePictureFromGallery()
-    {
-        startActivityForResult(
-                Intent.createChooser(
-                        new Intent(Intent.ACTION_GET_CONTENT)
-                                .setType("image/*"), "Choose an image"),
-                1);
-    }
 
     public void show(){
 
@@ -543,7 +496,19 @@ public class ActivityEditProfile extends FragmentActivity implements View.OnClic
         return super.dispatchTouchEvent( event );
     }
 
+    public void saveImage(Context context, Bitmap b,String name,String extension){
+        name=name+"."+extension;
 
-    public void getnSetProfileAttr(){}
+//        Bitmap resized = Bitmap.createScaledBitmap(b, 200, 200, true);
+//        b = resized;
+        FileOutputStream out;
+        try {
+            out = context.openFileOutput(name, Context.MODE_PRIVATE);
+            b.compress(Bitmap.CompressFormat.JPEG, 90, out);
+            out.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 }
