@@ -16,7 +16,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="834a4918aec1d6933543293ca3e00744b1da6a83">
+        sha1="682ca30d22e33df0ac8822a5c03b93c0a39dc541">
         <dex dex="C:\CricFlex\Others\Apps\CricFlex\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_f2957b2b30876f4c47990f3af18b3667a6b62229\classes.dex" />
     </item>
     <item
@@ -178,7 +178,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="90282bb99c5efcf134cb2bf11ec3b6fdcbc9b1a8">
+        sha1="165c3f8b4329b69240e13910650806713a705267">
         <dex dex="C:\CricFlex\Others\Apps\CricFlex\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_3f426b26ad2f025feba969dbb428e8cab448fc9d\classes.dex" />
     </item>
 

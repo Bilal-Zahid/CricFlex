@@ -46,6 +46,9 @@ public class ActivityMain extends ActionBarActivity {
 //        }
 //    }
     String checkForHome = "in home";
+    DatabaseHelper helper = new DatabaseHelper(this);
+
+    TextView mainEmail;
     @Override
     public void onBackPressed(){
 //        FragmentManager fm = ;
@@ -86,6 +89,7 @@ public class ActivityMain extends ActionBarActivity {
 
         int abc = SaveSharedPreference.getUserName(ActivityMain.this).length();
 
+
         if(SaveSharedPreference.getUserName(ActivityMain.this).length() == 0)
         {
             Intent intent = new Intent(ActivityMain.this, ActivitySplash.class);
@@ -111,6 +115,8 @@ public class ActivityMain extends ActionBarActivity {
 
         setContentView(R.layout.activity_main);
 
+        mainEmail = (TextView) findViewById(R.id.main_email);
+        mainEmail.setText(helper.getEmail(SaveSharedPreference.getUserName(ActivityMain.this)));
 
         usernameText = (TextView) findViewById(R.id.userName);
         usernameText.setText(SaveSharedPreference.getUserName(ActivityMain.this));

@@ -3635,7 +3635,6 @@ containing a value of this type.
         public static final int dateofbirth=0x7f0e0089;
         public static final int decor_content_parent=0x7f0e0062;
         public static final int default_activity_button=0x7f0e0047;
-        public static final int desc=0x7f0e00b2;
         public static final int design_bottom_sheet=0x7f0e00e9;
         public static final int design_menu_item_action_area=0x7f0e00f0;
         public static final int design_menu_item_action_area_stub=0x7f0e00ef;
@@ -3720,6 +3719,7 @@ containing a value of this type.
         public static final int location=0x7f0e0088;
         public static final int logo=0x7f0e009a;
         public static final int logout=0x7f0e014b;
+        public static final int main_email=0x7f0e00b2;
         public static final int masked=0x7f0e0146;
         public static final int media_actions=0x7f0e0121;
         public static final int middle=0x7f0e0039;
@@ -3756,13 +3756,13 @@ containing a value of this type.
         public static final int profilepicture=0x7f0e007e;
         public static final int progress_circular=0x7f0e0006;
         public static final int progress_horizontal=0x7f0e0007;
-        public static final int pv_age=0x7f0e0116;
+        public static final int pv_age=0x7f0e011a;
         public static final int pv_bowling_style=0x7f0e0113;
         public static final int pv_career_level=0x7f0e0114;
-        public static final int pv_dateofbirth=0x7f0e011a;
-        public static final int pv_email=0x7f0e0119;
-        public static final int pv_gender=0x7f0e0117;
-        public static final int pv_location=0x7f0e0118;
+        public static final int pv_dateofbirth=0x7f0e0119;
+        public static final int pv_email=0x7f0e0118;
+        public static final int pv_gender=0x7f0e0116;
+        public static final int pv_location=0x7f0e0117;
         public static final int pv_name=0x7f0e0112;
         public static final int pv_username=0x7f0e0115;
         public static final int pv_weight=0x7f0e0085;

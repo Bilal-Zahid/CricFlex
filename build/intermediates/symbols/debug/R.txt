@@ -1426,7 +1426,6 @@ int id date_picker 0x7f0e013b
 int id dateofbirth 0x7f0e0089
 int id decor_content_parent 0x7f0e0062
 int id default_activity_button 0x7f0e0047
-int id desc 0x7f0e00b2
 int id design_bottom_sheet 0x7f0e00e9
 int id design_menu_item_action_area 0x7f0e00f0
 int id design_menu_item_action_area_stub 0x7f0e00ef
@@ -1511,6 +1510,7 @@ int id list_slidermenu 0x7f0e00b3
 int id location 0x7f0e0088
 int id logo 0x7f0e009a
 int id logout 0x7f0e014b
+int id main_email 0x7f0e00b2
 int id masked 0x7f0e0146
 int id media_actions 0x7f0e0121
 int id middle 0x7f0e0039
@@ -1547,13 +1547,13 @@ int id profileBox 0x7f0e00b0
 int id profilepicture 0x7f0e007e
 int id progress_circular 0x7f0e0006
 int id progress_horizontal 0x7f0e0007
-int id pv_age 0x7f0e0116
+int id pv_age 0x7f0e011a
 int id pv_bowling_style 0x7f0e0113
 int id pv_career_level 0x7f0e0114
-int id pv_dateofbirth 0x7f0e011a
-int id pv_email 0x7f0e0119
-int id pv_gender 0x7f0e0117
-int id pv_location 0x7f0e0118
+int id pv_dateofbirth 0x7f0e0119
+int id pv_email 0x7f0e0118
+int id pv_gender 0x7f0e0116
+int id pv_location 0x7f0e0117
 int id pv_name 0x7f0e0112
 int id pv_username 0x7f0e0115
 int id pv_weight 0x7f0e0085

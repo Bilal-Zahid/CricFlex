@@ -12,12 +12,12 @@
         "source": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_alert_dialog_button_bar_material.xml"
     },
     {
-        "merged": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout\\activity_forgot_password1.xml",
-        "source": "C:\\CricFlex\\Others\\Apps\\CricFlex\\res\\layout\\activity_forgot_password1.xml"
-    },
-    {
         "merged": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_view_list_nav_layout.xml",
         "source": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout\\abc_action_bar_view_list_nav_layout.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout\\activity_forgot_password1.xml",
+        "source": "C:\\CricFlex\\Others\\Apps\\CricFlex\\res\\layout\\activity_forgot_password1.xml"
     },
     {
         "merged": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_help.xml",
@@ -52,12 +52,12 @@
         "source": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.1.0\\res\\layout\\design_bottom_navigation_item.xml"
     },
     {
-        "merged": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout\\activity_edit_profile.xml",
-        "source": "C:\\CricFlex\\Others\\Apps\\CricFlex\\res\\layout\\activity_edit_profile.xml"
-    },
-    {
         "merged": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout\\design_menu_item_action_area.xml",
         "source": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.1.0\\res\\layout\\design_menu_item_action_area.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout\\activity_edit_profile.xml",
+        "source": "C:\\CricFlex\\Others\\Apps\\CricFlex\\res\\layout\\activity_edit_profile.xml"
     },
     {
         "merged": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple.xml",
@@ -132,12 +132,12 @@
         "source": "C:\\CricFlex\\Others\\Apps\\CricFlex\\res\\layout\\activity_calibrate3.xml"
     },
     {
-        "merged": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_friends.xml",
-        "source": "C:\\CricFlex\\Others\\Apps\\CricFlex\\res\\layout\\fragment_friends.xml"
-    },
-    {
         "merged": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout\\country_picker.xml",
         "source": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\exploded-aar\\com.github.mukeshsolanki\\country-picker-android\\1.1.7\\res\\layout\\country_picker.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_friends.xml",
+        "source": "C:\\CricFlex\\Others\\Apps\\CricFlex\\res\\layout\\fragment_friends.xml"
     },
     {
         "merged": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout\\activity_graph2.xml",

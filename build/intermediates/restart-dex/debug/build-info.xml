@@ -5,33 +5,47 @@
     density="xxhdpi"
     format="8"
     plugin-version="2.2.3"
-    timestamp="281909976312494"
+    timestamp="341985787329031"
     token="-1685597212509240313"
-    verifier="FULL_BUILD_REQUESTED" >
+    verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="772" />
+        duration="717" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="68" />
+        duration="52" />
     <task
         name="verifier"
-        duration="13" />
+        duration="11" />
 
     <artifact
-        location="C:\CricFlex\Others\Apps\CricFlex\build\outputs\apk\CricFlex-debug.apk"
-        type="MAIN" />
+        location="C:\CricFlex\Others\Apps\CricFlex\build\intermediates\transforms\dex\debug\folders\1000\5\slice_5\classes.dex"
+        type="DEX" />
 
     <build
-        timestamp="281909976312494"
+        timestamp="341405375880070"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="C:\CricFlex\Others\Apps\CricFlex\build\outputs\apk\CricFlex-debug.apk"
             type="MAIN" />
+    </build>
+    <build
+        timestamp="341919731618822"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="C:\CricFlex\Others\Apps\CricFlex\build\intermediates\instant-run-resources\resources-debug.ir.ap_"
+            type="RESOURCES" />
+    </build>
+    <build
+        timestamp="341985787329031"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="C:\CricFlex\Others\Apps\CricFlex\build\intermediates\transforms\dex\debug\folders\1000\5\slice_5\classes.dex"
+            type="DEX" />
     </build>
 
 </instant-run>
