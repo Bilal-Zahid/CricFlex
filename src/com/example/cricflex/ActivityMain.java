@@ -8,12 +8,9 @@ import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.app.Fragment;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.text.Html;
@@ -33,8 +30,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
-
 public class ActivityMain extends ActionBarActivity {
 
 
@@ -51,6 +46,9 @@ public class ActivityMain extends ActionBarActivity {
 //        }
 //    }
     String checkForHome = "in home";
+    DatabaseHelper helper = new DatabaseHelper(this);
+
+    TextView mainEmail;
     @Override
     public void onBackPressed(){
 //        FragmentManager fm = ;
@@ -84,13 +82,13 @@ public class ActivityMain extends ActionBarActivity {
 
     private TextView usernameText  ;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
 
 
         int abc = SaveSharedPreference.getUserName(ActivityMain.this).length();
+
 
         if(SaveSharedPreference.getUserName(ActivityMain.this).length() == 0)
         {
@@ -117,15 +115,8 @@ public class ActivityMain extends ActionBarActivity {
 
         setContentView(R.layout.activity_main);
 
-        //Battery percentage
-
-        //setbatterypercentage("57");
-
-
-
-
-
-
+        mainEmail = (TextView) findViewById(R.id.main_email);
+        mainEmail.setText(helper.getEmail(SaveSharedPreference.getUserName(ActivityMain.this)));
 
         usernameText = (TextView) findViewById(R.id.userName);
         usernameText.setText(SaveSharedPreference.getUserName(ActivityMain.this));
@@ -206,10 +197,7 @@ public class ActivityMain extends ActionBarActivity {
 
     }
 
-//    public void setbatterypercentage(String per){
-//
-//        batteryIndicator.setText(""+per+ "%");
-//    }
+
 
 
 
@@ -235,30 +223,6 @@ public class ActivityMain extends ActionBarActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main, menu);
-
-
-
-
-//        MenuItem item = menu.findItem(R.id.badge);
-//        MenuItemCompat.setActionView(item, R.layout.battery_ind_bkd);
-//        RelativeLayout badgeLayout = (RelativeLayout) MenuItemCompat.getActionView(item);
-//
-//        TextView tv = (TextView) badgeLayout.findViewById(R.id.battery_textview);
-//        tv.setText("100%");
-
-
-
-//        TextView batteryIndicator = new TextView(this);
-//        batteryIndicator.setText("100%");
-//        batteryIndicator.setBackground(ContextCompat.getDrawable(this, R.drawable.battery_icon));
-//        //batteryIndicator.setCompoundDrawablesWithIntrinsicBounds(R.drawable.battery_icon,0,0,0);
-//        //batteryIndicator.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.battery_icon,0,0,0);
-//        batteryIndicator.setTextColor(Color.WHITE);
-//        batteryIndicator.setPadding(20,25,20,20);
-//        batteryIndicator.setTypeface(null, Typeface.BOLD);
-//        batteryIndicator.setTextSize(15);
-//        menu.add(0, 1, 0, "abc").setActionView(batteryIndicator).setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
-
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -295,13 +259,13 @@ public class ActivityMain extends ActionBarActivity {
                 return true;
 
 
-//            case R.id.settings:
-//
-//
-//                Intent intent2 = new Intent(ActivityMain.this, test_asawal.class);
-//                startActivity(intent2);
-//                return true;
-//
+            case R.id.settings:
+
+
+                Intent intent2 = new Intent(ActivityMain.this, ActivityEditProfile.class);
+                startActivity(intent2);
+                return true;
+
 
 
             case R.id.logout:

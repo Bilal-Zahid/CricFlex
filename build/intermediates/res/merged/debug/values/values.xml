@@ -13,12 +13,26 @@
         <item>@color/dot_dark_screen4</item>
     </array>
     <string-array name="bowlingstyle_array">
-        <item>fast</item>
-        <item>fast medium</item>
-        <item>Off break </item>
-        <item>Leg break </item>
-        <item>Slow left-arm orthodox</item>
-        <item>Slow left-arm chinaman</item>
+        <item>Left Arm Fast</item>
+        <item>Left Arm Medium Fast</item>
+        <item>Left Arm Off break </item>
+        <item>Left Arm Leg break </item>
+        <item>Slow Left Arm Orthodox</item>
+        <item>Slow Left Arm Chinaman</item>
+    </string-array>
+    <string-array name="bowlingstyle_left_array">
+        <item>Left Arm Fast</item>
+        <item>Left Arm Medium Fast</item>
+        <item>Left Arm Off break</item>
+        <item>Left Arm Leg break</item>
+        <item>Slow Left Arm Orthodox</item>
+        <item>Slow Left Arm Chinaman</item>
+    </string-array>
+    <string-array name="bowlingstyle_right_array">
+        <item>Right Arm Fast</item>
+        <item>Right Arm Medium Fast</item>
+        <item>Right Arm Off break</item>
+        <item>Right Arm Leg break</item>
     </string-array>
     <string-array name="careerlevel_array">
         <item>Club</item>

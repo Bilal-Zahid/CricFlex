@@ -44,10 +44,6 @@
             android:label="CricFlex"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.example.cricflex.TestActivityMonitor"
-            android:label="CricFlex"
-            android:screenOrientation="portrait" />
-        <activity
             android:name="com.example.cricflex.ActivityWelcome"
             android:label="CricFlex"
             android:screenOrientation="portrait" />
@@ -77,14 +73,13 @@
         <activity android:name="com.example.cricflex.ActivityGraph3" />
         <activity android:name="com.example.cricflex.ActivityGraph4" />
         <activity android:name="com.example.cricflex.ActivityGraph5" />
-        <activity android:name="com.example.cricflex.TestActivityMonitor3" />
         <activity android:name="com.example.cricflex.TestActivitySessionStats" />
         <activity android:name="com.example.cricflex.ActivitySessionGraphs" />
-        <activity android:name="com.example.cricflex.test_asawal" />
         <activity android:name="com.example.cricflex.TestActivitySetupProfile" />
         <activity android:name="com.example.cricflex.ActivitySessionStats" />
         <activity android:name="com.example.cricflex.ActivitySessionGraph" />
         <activity android:name="com.example.cricflex.ActivitySessionGraphActionTime" />
+        <activity android:name="com.example.cricflex.ActivityEditProfile" />
     </application>
 
 </manifest>
