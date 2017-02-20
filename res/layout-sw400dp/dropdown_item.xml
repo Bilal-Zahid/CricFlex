@@ -9,5 +9,6 @@
     android:layout_width="match_parent"
     android:layout_height="35dp"
     android:padding="2dp"
-    android:ellipsize="marquee" />
+    android:ellipsize="marquee"
+    android:background="@color/c580"/>
 
