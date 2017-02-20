@@ -40,7 +40,7 @@
     <string name="rgp_name">Name</string>
     <string name="rgp_username">Username (6 minimum)</string>
     <string name="rgp_email">Email</string>
-    <string name="rgp_password">Password (4 minimum)</string>
+    <string name="rgp_password">Password (5 minimum)</string>
     <string name="rgp_security_question">Security Question: \nFavourite Cricketer name?</string>
     <string name="rgp_button_registe">Register new account</string>
 
@@ -66,7 +66,36 @@
     <string name="stp_button_done">Done</string>
     <string name="age">Age</string>
 
+    <string-array name="bowlingstyle_left_array">
+        <item>Left Arm Fast</item>
+        <item>Left Arm Medium Fast</item>
+        <item>Left Arm Off break </item>
+        <item>Left Arm Leg break </item>
+        <item>Slow Left Arm Orthodox</item>
+        <item>Slow Left Arm Chinaman</item>
+    </string-array>
 
+    <string-array name="bowlingstyle_right_array">
+        <item>Right Arm Fast</item>
+        <item>Right Arm Medium Fast</item>
+        <item>Right Arm Off break </item>
+        <item>Right Arm Leg break </item>
+    </string-array>
+    <string-array name="careerlevel_array">
+        <item>Club</item>
+        <item>National</item>
+        <item>International</item>
+    </string-array>
+
+
+    <string-array name="bowlingstyle_array">
+        <item>Left Arm Fast</item>
+        <item>Left Arm Medium Fast</item>
+        <item>Left Arm Off break </item>
+        <item>Left Arm Leg break </item>
+        <item>Slow Left Arm Orthodox</item>
+        <item>Slow Left Arm Chinaman</item>
+    </string-array>
 
 
     <!--calibrate-->
@@ -104,7 +133,7 @@
     <string name="monitor_illegal">0</string>
     <string name="monitor_legal_text">Legal Balls</string>
     <string name="monitor_illegal_text">Illegal Balls</string>
-    <string name="monitor_finish_button">FINISH</string>
+    <string name="monitor_finish_button">END SESSION</string>
 
 
     <!--session stats-->
@@ -148,6 +177,67 @@
     <string name="bilal">Bilal Zahid</string>
     <string name="www.cricflex.com">www.cricflex.com</string>
 
+    <!--help fragment-->
+
+    <string name="we_can_help">We Can Help</string>
+    <string name="please_find">Please find the following tutorial screens to help you on how to use CricFlex Band:</string>
+    <string name="charge_band">Charge your band</string>
+    <string name="position_band">Position your CricFlex Band</string>
+    <string name="connect_band">Connect with your band</string>
+    <string name="calibration">Calibration</string>
+    <string name="definition">Definitions</string>
+    <string name="sync_data">Sync Data</string>
+    <string name="save_session">Save Session</string>
+    <string name="mail_us">Or you can mail us on:</string>
+    <string name="email">info@cricflex.com</string>
+
+    <string name="number_1">1</string>
+    <string name="number_2">2</string>
+    <string name="number_3">3</string>
+    <string name="number_4">4</string>
+    <string name="number_5">5</string>
+    <string name="number_6">6</string>
+    <string name="number_7">7</string>
+
+
+
+
+    <string name="charging_instructions">Charging Instructions:</string>
+    <string name="plug_charger">Plug the charger into power socket</string>
+    <string name="plug_band">Plug the other end of the cable into the port on the top of band</string>
+    <string name="led_red">Make sure that the led on band turns Red when you plug in the cable</string>
+    <string name="led_green">The led will turn green when the band is fully charged</string>
+
+    <string name="band_positioning">Band Positioning:</string>
+    <string name="white_dot">Make sure that the white dot on the band aligns with your elbow</string>
+    <string name="tighten_flaps">Tighten the flaps so that the band does not slip off your arm</string>
+
+    <string name="band_connection">Connect Band:</string>
+    <string name="switch_on">Turn on the switch on the band</string>
+    <string name="start_app">Start the CricFlex app and press "Start Bowling"</string>
+    <string name="ble_connect">See if the connection icon is not green then press the connection button once, it will ask you for turning the Bluetooth on and then the phone will be connected with the band.</string>
+
+    <string name="calibration_heading">Calibration:</string>
+    <string name="accurate_measurement">For more accurate measurement of your bowling metrics, the band needs to be calibrated on your arm whenever you wear it. You will be asked to calibrate whenever you start a new bowling session. You can skip the calibration but it is recommended that you calibrate before every new session.</string>
+    <string name="four_steps">It’s a very simple 4 step process:</string>
+    <string name="calibration_1">Straighten your elbow across the straight strip (provided with the band) and press the OK button on the screen. It will take 3 seconds and when the app shows “tick” proceed to next.</string>
+    <string name="calibration_2">Bend your elbow across the 45° angled strip (provided with the band) and press OK button on the screen. It will take 3 seconds and when the app shows “tick” proceed to next.</string>
+    <string name="calibration_3">Twist your arm towards your right as much as you can and press OK button on the screen. It will take 3 seconds and when the app shows “tick” proceed to next.</string>
+    <string name="calibration_4">Twist your arm towards your left as much as you can and press OK button on the screen. It will take 3 seconds and when the app shows “tick” proceed to next.</string>
+
+    <string name="definition_heading">Definitions:</string>
+    <string name="def_arm_flex">Arm Flex is the change in elbow angle from the start of action to the release point.</string>
+    <string name="def_action_time">Action Time is the time duration between start of action and release point.</string>
+    <string name="def_arm_twist">Arm Twist is the rotation of arm during the action.</string>
+    <string name="def_force">Force is the arm force exerted on the ball.</string>
+
+    <string name="sync_data_heading">Sync Data:</string>
+    <string name="sync_data_desc">You can sync your sessions by pressing the sync button on the top of your main screen. Internet connectivity is required for syncing.</string>
+
+    <string name="save_session_heading">Save Session:</string>
+    <string name="save_session_desc">You can save your bowling session at the session stats screen. You can later see your bowling data in “History” section. If you discard the session, the bowling data of that session will be discarded and will not be saved in your profile. </string>
+
+
 
     <!--gif duration-->
     <string name="duration_frame">32</string>
@@ -156,48 +246,12 @@
     <!--content_desc_imageView-->
     <string name="content_desc_imageView">desc</string>
 
-    <string-array name="bowlingstyle_array">
-        <item>fast</item>
-        <item>fast medium</item>
-        <item>Off break </item>
-        <item>Leg break </item>
-        <item>Slow left-arm orthodox</item>
-        <item>Slow left-arm chinaman</item>
-    </string-array>
 
-    <string-array name="careerlevel_array">
-        <item>Club</item>
-        <item>National</item>
-        <item>International</item>
-    </string-array>
 
     <string name="illegal_monitor_status">Illegal</string>
     <string name="legal_monitor_status">Legal</string>
 
     <string name="help1">Wear the band such that the\nwhite dot comes right under\nyour elbow</string>
     <string name="help2">Turn on the device using the\nswitch on the upper part of\nthe band</string>
-
-
-
-
-    <!--setup profile-->
-    <string name="gender">Gender</string>
-    <string name="male">Male</string>
-    <string name="female">Female</string>
-    <string name="weight">Weight</string>
-    <string name="enter_weight_here">enter here</string>
-    <string name="KG">KG</string>
-    <string name="location">Location</string>
-    <string name="select_country">Select your country</string>
-    <string name="date_of_birth">Date of Birth</string>
-    <string name="select_date">Select Date</string>
-    <string name="stp_button_next">Next</string>
-    <string name="bowling_arm">Bowling Arm</string>
-    <string name="left">Left</string>
-    <string name="right">Right</string>
-    <string name="bowling_style">Bowling Style</string>
-    <string name="career_level">Career Level</string>
-    <string name="stp_button_done">Done</string>
-    <string name="age">Age</string>
 
 </resources>

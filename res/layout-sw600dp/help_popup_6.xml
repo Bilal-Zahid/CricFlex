@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment_help"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/help_popup_bkd">
+
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dp">
+
+        <RelativeLayout
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:gravity="center_vertical"
+            android:background="@color/c1">
+
+            <TextView
+                android:id="@+id/charging_instructions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sync_data_heading"
+                android:textColor="@color/text_light"
+                android:textStyle="bold"
+                android:textSize="30sp"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/header"
+            android:layout_marginTop="20dp"
+            android:gravity="start">
+
+
+            <TextView
+                android:id="@+id/desc_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sync_data_desc"
+                android:textColor="@color/text_light"
+                android:textStyle="normal"
+                android:textSize="25sp"
+                android:layout_gravity="center"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                />
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</ScrollView>

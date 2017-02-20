@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.cricflex.ActivityCalibrate"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
+        android:textAlignment="center"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:background="@color/gif_background_color">
+
+
+        <com.example.cricflex.PlayGifView
+            android:id="@+id/arm_twistRight_gifView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
+            android:layout_marginBottom="2dp"
+            android:id="@+id/text"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/twist_right"
+            android:textColor="@color/text_dark"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textSize="@dimen/monitor_status_text"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_gravity="bottom"
+        android:gravity="bottom">
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/cali4_done"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="@string/calibrate_button_done"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:textSize="35sp"
+        android:background="#000000"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
+
+
+</RelativeLayout>

@@ -44,7 +44,7 @@
             android:label="CricFlex"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".TestActivityMonitor"
+            android:name=".ActivityEditProfile"
             android:label="CricFlex"
             android:screenOrientation="portrait" />
         <activity
@@ -69,36 +69,21 @@
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ActivityHelp"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".ActivityGraph"
             android:label="Real Time Graph" />
-        <activity
-            android:name=".ActivityAbout"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ActivityProfile"
-            android:label="@string/profile"
-            android:screenOrientation="portrait" />
 
         <service android:name=".RFDService" />
 
         <activity android:name=".ActivityGraph3" />
         <activity android:name=".ActivityGraph4" />
         <activity android:name=".ActivityGraph5" />
-        <activity android:name=".TestActivityMonitor3" />
         <activity android:name=".TestActivitySessionStats" />
         <activity android:name=".ActivitySessionGraphs" />
         <activity android:name=".test_asawal" />
-        <activity android:name=".TestActivityMetrics" />
-        <activity android:name=".TestActivityMetrics1" />
         <activity android:name=".TestActivitySetupProfile" />
         <activity android:name=".ActivitySessionStats" />
         <activity android:name=".ActivitySessionGraph" />
-        <activity android:name=".ActivitySessionGraphActionTime"></activity>
+        <activity android:name=".ActivitySessionGraphActionTime"/>
     </application>
 
 </manifest>

@@ -28,7 +28,7 @@ public class ActivitySessionGraphActionTime extends AppCompatActivity {
     TextView parameterNameTextView;
     ArrayList<Float> actionTimeValues = new ArrayList<Float>();
 
-    private Button endSessionButton;
+    // private Button endSessionButton;
 //    ArrayList<Float> values = new ArrayList<Float>();
     String parameterName;
     @Override
@@ -39,7 +39,7 @@ public class ActivitySessionGraphActionTime extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getActionBar().hide();
 
-        endSessionButton = (Button)findViewById(R.id.session_finish_button);
+        //endSessionButton = (Button)findViewById(R.id.graph_finish_button);
 
 
         parameterNameTextView = (TextView) findViewById(R.id.parameter_name);
@@ -57,7 +57,7 @@ public class ActivitySessionGraphActionTime extends AppCompatActivity {
 
 //        System.out.println(parameterName + " " + values);
 
-        endSessionButton.setOnClickListener(new handleEndSessionButton());
+        //endSessionButton.setOnClickListener(new handleEndSessionButton());
 
 
     }

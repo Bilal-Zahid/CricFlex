@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:viewportWidth="344"
+    android:viewportHeight="512"
+    android:width="430dp"
+    android:height="640dp">
+    <group
+        android:scaleX="0.1"
+        android:scaleY="-0.1"
+        android:translateY="512">
+        <path
+            android:pathData="M1605 5109C1059 5074 567 4777 273 4305 156 4117 74 3891 38 3660 19 3536 19 1584 38 1460 107 1015 340 621 690 356 1001 120 1331 9 1720 9c389 0 719 111 1030 347 299 227 523 563 615 924 50 199 50 197 50 1280 0 1083 0 1081 -50 1280 -73 286 -215 537 -429 759 -349 360 -826 543 -1331 510zm190 -739c28 -14 167 -151 450 -445 226 -235 418 -441 428 -458 22 -40 22 -108 1 -150 -15 -28 -181 -204 -608 -644l-108 -112 348 -361c192 -199 357 -378 368 -398 24 -46 18 -128 -11 -166 -12 -14 -205 -217 -430 -451 -440 -458 -447 -464 -533 -452 -48 6 -103 45 -128 90 -15 29 -17 87 -22 670l-5 639 -210 -218c-341 -355 -325 -340 -373 -351 -135 -34 -250 95 -201 224 12 32 26 48 421 456 164 169 298 312 298 317 0 5 -158 172 -351 372 -193 200 -357 377 -365 395 -18 42 -18 106 1 142 31 61 117 107 174 95 62 -13 92 -40 342 -300l264 -275 5 638c6 708 2 673 72 726 55 41 111 47 173 17z"
+            android:fillColor="@color/bluetooth_disconnected" />
+        <path
+            android:pathData="M1890 3393l0 -412 139 142c184 188 251 260 251 270 0 4 -73 83 -161 175 -89 92 -177 183 -195 202l-34 35 0 -412z"
+            android:fillColor="@color/bluetooth_disconnected" />
+        <path
+            android:pathData="M1890 1731l0 -412 182 187c101 102 189 195 196 206 16 23 15 24 -215 262l-163 168 0 -411z"
+            android:fillColor="@color/bluetooth_disconnected" />
+    </group>
+</vector>

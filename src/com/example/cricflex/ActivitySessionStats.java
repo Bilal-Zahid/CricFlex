@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,7 +32,7 @@ public class ActivitySessionStats extends AppCompatActivity {
     TextView averageForce;
 
 
-    LinearLayout angleGraph ;
+    LinearLayout angleGraph ;     ///////////////////////////////////
     LinearLayout forceGraph;
     LinearLayout armTwistGraph;
     LinearLayout actionTimeGraph;
@@ -62,7 +63,7 @@ public class ActivitySessionStats extends AppCompatActivity {
         averageArmTwist = (TextView) findViewById(R.id.session_twist);
 
 
-        angleGraph = (LinearLayout) findViewById(R.id.tile_angle);
+        angleGraph = (LinearLayout) findViewById(R.id.tile_angle); //////////////////////////////////
         forceGraph = (LinearLayout) findViewById(R.id.tile_force);
         actionTimeGraph = (LinearLayout) findViewById(R.id.tile_time);
         armTwistGraph = (LinearLayout) findViewById(R.id.tile_twist);

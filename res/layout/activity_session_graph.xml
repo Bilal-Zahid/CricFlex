@@ -9,7 +9,7 @@
         android:layout_height="fill_parent"
         android:scaleType="centerCrop"
         android:id="@+id/background"
-        android:src="@drawable/bkd18" />
+        android:src="@drawable/bkd16" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,15 +23,19 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:gravity="left|start">
+            android:gravity="center">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id = "@+id/parameter_name"
-                android:textColor="#ffffff"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_margin="2dp"/>
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/text_light"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_margin="5dp"/>
+
+
             <com.github.mikephil.charting.charts.LineChart
                 android:id="@+id/parameter_graph"
                 android:layout_width="match_parent"
@@ -42,19 +46,36 @@
 
     </LinearLayout>
     <Button
-        android:id="@+id/session_finish_button"
+        android:id="@+id/graph_back_button"
         android:layout_width="match_parent"
         android:layout_gravity="bottom"
 
         android:layout_below="@id/graph"
+        android:layout_alignParentStart="true"
+        android:gravity="center"
+        android:text="BACK"
+        android:textStyle="bold"
+        android:textColor="@color/session_finish_button_text"
+        android:textSize="30sp"
+        android:background="@drawable/button2_bg"
+        android:layout_height="wrap_content"
+        app:layout_heightPercent="10%"
+        app:layout_widthPercent="49.75%"/>
+    <Button
+        android:id="@+id/graph_finish_button"
+        android:layout_width="wrap_content"
+        android:layout_gravity="bottom"
+
+        android:layout_below="@id/graph"
+        android:layout_alignParentEnd="true"
         android:gravity="center"
         android:text="FINISH"
         android:textStyle="bold"
         android:textColor="@color/session_finish_button_text"
-        android:textSize="35sp"
+        android:textSize="30sp"
         android:background="@drawable/button2_bg"
         android:layout_height="wrap_content"
         app:layout_heightPercent="10%"
-        app:layout_widthPercent="100%"/>
+        app:layout_widthPercent="49.75%"/>
 
 </android.support.percent.PercentRelativeLayout>
