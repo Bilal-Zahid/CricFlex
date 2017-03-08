@@ -4,6 +4,13 @@
     tools:context="com.example.cricflex.MainActivity" >
 
 
+    <!--<item-->
+        <!--android:id="@+id/badge"-->
+        <!--android:actionLayout="@layout/battery_ind_bkd"-->
+        <!--android:title=""-->
+        <!--app:showAsAction="always">-->
+    <!--</item>-->
+
 
     <item
         android:id="@+id/empty"
@@ -26,10 +33,10 @@
                 app:showAsAction="ifRoom"/>
 
 
-            <item android:id="@+id/settings"
-                android:icon="@drawable/settings_icon"
-                android:title="Settings"
-                app:showAsAction="ifRoom"/>
+            <!--<item android:id="@+id/settings"-->
+                <!--android:icon="@drawable/settings_icon"-->
+                <!--android:title="Settings"-->
+                <!--app:showAsAction="ifRoom"/>-->
 
 
             <item android:id="@+id/logout"

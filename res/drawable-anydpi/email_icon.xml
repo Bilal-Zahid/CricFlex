@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:viewportWidth="512"
+    android:viewportHeight="512"
+    android:width="30dp"
+    android:height="30dp">
+    <group
+        android:scaleX="0.1"
+        android:scaleY="-0.1"
+        android:translateY="512">
+        <path
+            android:pathData="M212 3894l3 -265 1173 -635 1172 -635 1173 635 1172 635 3 265 2 266 -2350 0 -2350 0 2 -266z"
+            android:fillColor="@color/register_icons" />
+        <path
+            android:pathData="M210 2175l0 -1215 2350 0 2350 0 0 1215c0 668 -2 1215 -4 1215 -2 0 -531 -285 -1175 -634L2560 2121 1389 2756c-644 349 -1173 634 -1175 634 -2 0 -4 -547 -4 -1215z"
+            android:fillColor="@color/register_icons" />
+    </group>
+</vector>

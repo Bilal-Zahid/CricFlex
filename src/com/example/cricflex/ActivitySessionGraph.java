@@ -24,10 +24,8 @@ import java.util.List;
 
 public class ActivitySessionGraph extends AppCompatActivity {
 
-
     TextView parameterNameTextView;
-
-    private Button endSessionButton;
+    //private Button endSessionButton;
 
     ArrayList<Integer> values = new ArrayList<Integer>();
     String parameterName;
@@ -39,7 +37,7 @@ public class ActivitySessionGraph extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getActionBar().hide();
 
-        endSessionButton = (Button)findViewById(R.id.session_finish_button);
+        //endSessionButton = (Button)findViewById(R.id.graph_finish_button);
 
 
         parameterNameTextView = (TextView) findViewById(R.id.parameter_name);
@@ -57,7 +55,7 @@ public class ActivitySessionGraph extends AppCompatActivity {
         System.out.println(parameterName + " " + values);
 
 
-        endSessionButton.setOnClickListener(new handleEndSessionButton());
+        //endSessionButton.setOnClickListener(new handleEndSessionButton());
 
     }
 

@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scaleType="centerCrop"
+        android:id="@+id/background"
+        android:src="@drawable/bkd21" />
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:background="@color/session_header"
+        app:layout_heightPercent="10%"
+        app:layout_widthPercent="100%">
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/session_stats"
+            android:textStyle="bold"
+            android:textSize="30sp"
+            android:textColor="@color/session_header_text"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/tile_angle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_below="@id/header"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:background="@color/session_angle_tile"
+        app:layout_heightPercent="40%"
+        app:layout_widthPercent="50%">
+
+        <TextView
+            android:id="@+id/session_angle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textStyle="bold"
+            android:text="@string/session_armflex"
+            android:textSize="50sp"
+            android:textColor="@color/session_value_text"
+            />
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textStyle="bold"
+            android:text="@string/session_armflex_text"
+            android:textSize="25sp"
+            android:textColor="@color/session_desc_text"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/tile_force"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_toEndOf="@id/tile_angle"
+        android:layout_below="@id/header"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:background="@color/transparent"
+        app:layout_heightPercent="40%"
+        app:layout_widthPercent="50%">
+
+        <TextView
+            android:id="@+id/session_force"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textStyle="bold"
+            android:text="@string/session_force"
+            android:textSize="50sp"
+            android:textColor="@color/session_value_text"
+            />
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textStyle="bold"
+            android:text="@string/monitor_force_text"
+            android:textSize="25sp"
+            android:textColor="@color/session_desc_text"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/tile_time"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_below="@id/tile_angle"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:background="@color/transparent"
+        app:layout_heightPercent="40%"
+        app:layout_widthPercent="50%">
+
+        <TextView
+            android:id="@+id/session_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textStyle="bold"
+            android:text="@string/session_time"
+            android:textSize="50sp"
+            android:textColor="@color/session_value_text"
+            />
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textStyle="bold"
+            android:text="@string/session_time_text"
+            android:textSize="25sp"
+            android:textColor="@color/session_desc_text"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/tile_twist"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_below="@id/tile_force"
+        android:layout_toEndOf="@id/tile_time"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:background="@color/session_twist_tile"
+        app:layout_heightPercent="40%"
+        app:layout_widthPercent="50%">
+
+        <TextView
+            android:id="@+id/session_twist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textStyle="bold"
+            android:text="@string/session_twist"
+            android:textSize="50sp"
+            android:textColor="@color/session_value_text"
+            />
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textStyle="bold"
+            android:text="@string/session_twist_text"
+            android:textSize="25sp"
+            android:textColor="@color/session_desc_text"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/footer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_below="@id/tile_time"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:background="@color/transparent"
+        app:layout_heightPercent="10%"
+        app:layout_widthPercent="100%">
+
+        <Button
+            android:id="@+id/session_finish_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:text="@string/session_button_finish"
+            android:textStyle="bold"
+            android:textColor="@color/session_finish_button_text"
+            android:textSize="35sp"
+            android:background="@drawable/button2_bg"/>
+
+    </LinearLayout>
+</android.support.percent.PercentRelativeLayout>

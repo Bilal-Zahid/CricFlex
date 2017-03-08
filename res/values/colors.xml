@@ -81,7 +81,9 @@
     <color name="monitor_finish_button_state1">@color/c1</color>
     <color name="monitor_finish_button_state0">@color/c1</color>
     <color name="monitor_finish_button_stroke">@color/c1</color>
-
+    <color name="bluetooth_icon_color">#1F84CE</color>
+    <color name="bluetooth_disconnected">#222222</color>
+    <color name="bluetooth_connected">@color/text_light</color>
     <!--session-->
     <color name="session_header">#50000000</color>
     <color name="session_header_text">@color/text_light</color>
@@ -100,6 +102,12 @@
     <color name="edit_profile_button_state1">@color/c1</color>
     <color name="edit_profile_button_state0">@color/c350</color>
     <color name="edit_profile_button_stroke">@color/c1</color>
+
+
+    <!--help screen popup background color-->
+    <color name="help_popup_bkd">#333333</color>
+    <color name="number_bkd">@color/c1</color>
+
 
 
     <!-- Screens background color-->

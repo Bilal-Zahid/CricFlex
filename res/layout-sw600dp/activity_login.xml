@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/background"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bkd13"
+        android:contentDescription="@string/content_desc_imageView"/>
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_heightPercent="20%"
+        app:layout_widthPercent="100%"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="top"
+            android:src="@drawable/cricflex_logo_stroke"
+            android:contentDescription="@string/content_desc_imageView"/>
+
+    </LinearLayout>
+
+
+
+
+
+    <LinearLayout
+
+        android:id="@+id/body"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_heightPercent="30%"
+        app:layout_widthPercent="100%"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
+
+        <AutoCompleteTextView
+            android:id="@+id/lgn_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittext_bottom_border_bg"
+            android:drawableStart="@drawable/profile_icon"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:drawablePadding="10dp"
+            android:hint="@string/username"
+            android:textSize="25sp"
+            android:textColor="#FFFFFF"
+            android:padding="10dp"
+            android:textColorHint="#CCCCCC"
+            android:layout_weight="1"
+            android:inputType="textPersonName"
+            android:imeOptions="actionNext"
+            android:nextFocusDown="@+id/etPassword"
+            android:textCursorDrawable="@null"
+            android:dropDownHeight = "110dp"
+
+            />
+
+        <EditText
+            android:id="@+id/lgn_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:inputType="textPassword"
+            android:background="@drawable/edittext_bottom_border_bg"
+            android:drawableStart="@drawable/password_icon"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:drawablePadding="10dp"
+            android:padding="10dp"
+            android:hint="@string/password"
+            android:textSize="25sp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#CCCCCC"
+            android:layout_weight="1"
+            android:textCursorDrawable="@null"/>
+
+        <Button
+            android:id="@+id/button_forgot_password"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/forgot_password"
+            android:onClick="setfgpLayout1"
+            android:textColor="@drawable/button_text_color"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:background="@android:color/transparent"
+            android:layout_gravity="end"
+            android:layout_weight="1" />
+
+
+    </LinearLayout>
+
+
+
+
+
+
+    <LinearLayout
+        android:id="@+id/footer"
+        android:layout_below="@id/body"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_heightPercent="20%"
+        app:layout_widthPercent="100%"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/Login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="@string/login_button"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="center"
+            android:textColor="#FFFFFF"
+            android:textSize="40sp"
+            android:background="@drawable/button1_bg" />
+
+        <Button
+            android:id="@+id/bRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="center"
+            android:text="@string/register"
+            android:textColor="@drawable/button_text_color"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:background="@android:color/transparent" />
+    </LinearLayout>
+
+
+</android.support.percent.PercentRelativeLayout>
