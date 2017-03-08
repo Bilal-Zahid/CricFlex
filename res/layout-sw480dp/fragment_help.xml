@@ -1,188 +1,188 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/container_scroll_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000">
 
-    <LinearLayout
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
-        <LinearLayout
+        <RelativeLayout
+            android:id="@+id/header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
-
+            android:layout_marginTop="20dp"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:gravity="center_vertical"
+            android:background="@color/c350">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/we_can_help"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/help1"
-                android:textColor="#ffffff"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_margin="2dp"/>
+                android:text="@string/we_can_help"
+                android:textColor="@color/text_light"
+                android:textStyle="bold"
+                android:textSize="28sp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/we_can_help"
+                android:layout_marginTop="10dp"
+                android:text="@string/please_find"
+                android:textColor="@color/text_light"
+                android:textStyle="normal"
+                android:textSize="20sp"
+                />
 
+        </RelativeLayout>
 
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/ic_launcher"
-                android:layout_margin="2dp"/>
-        </LinearLayout>
-
-
-        <LinearLayout
+        <RelativeLayout
+            android:id="@+id/body"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
-
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:layout_below="@id/header"
+            android:layout_marginTop="20dp"
+            android:gravity="start">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/charge_band"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/help2"
-                android:textColor="#ffffff"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_margin="2dp"/>
+                android:text="@string/charge_band"
+                android:textColor="@color/text_light"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                />
+            <TextView
+                android:id="@+id/position_band"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/charge_band"
+                android:text="@string/position_band"
+                android:textColor="@color/text_light"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                />
+            <TextView
+                android:id="@+id/connect_band"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/position_band"
+                android:text="@string/connect_band"
+                android:textColor="@color/text_light"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                />
+            <TextView
+                android:id="@+id/calibration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/connect_band"
 
+                android:text="@string/calibration"
+                android:textColor="@color/text_light"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                />
+            <TextView
+                android:id="@+id/definition"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/calibration"
 
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/ic_launcher"
-                android:layout_margin="2dp"/>
-        </LinearLayout>
+                android:text="@string/definition"
+                android:textColor="@color/text_light"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                />
+            <TextView
+                android:id="@+id/sync_data"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/definition"
 
+                android:text="@string/sync_data"
+                android:textColor="@color/text_light"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                />
+            <TextView
+                android:id="@+id/save_session"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/sync_data"
 
-        <LinearLayout
+                android:text="@string/save_session"
+                android:textColor="@color/text_light"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/footer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/help2"
-                android:textColor="#ffffff"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_margin="2dp"/>
-
-
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/ic_launcher"
-                android:layout_margin="2dp"/>
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
-
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:layout_below="@id/body"
+            android:layout_marginTop="40dp">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/mail_us"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/help2"
-                android:textColor="#ffffff"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_margin="2dp"/>
-
-
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/ic_launcher"
-                android:layout_margin="2dp"/>
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
-
-
+                android:text="@string/mail_us"
+                android:textColor="@color/text_light"
+                android:textStyle="normal"
+                android:textSize="25sp"
+                />
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/email"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/help2"
-                android:textColor="#ffffff"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_margin="2dp"/>
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/mail_us"
+                android:layout_marginTop="10dp"
+                android:text="@string/email"
+                android:textColor="@color/text_light"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:gravity="center"
+                />
 
+        </RelativeLayout>
 
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/ic_launcher"
-                android:layout_margin="2dp"/>
-        </LinearLayout>
+    </RelativeLayout>
 
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/help2"
-                android:textColor="#ffffff"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_margin="2dp"/>
-
-
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/ic_launcher"
-                android:layout_margin="2dp"/>
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/help2"
-                android:textColor="#ffffff"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_margin="2dp"/>
-
-
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/ic_launcher"
-                android:layout_margin="2dp"/>
-        </LinearLayout>
-
-    </LinearLayout>
 </ScrollView>

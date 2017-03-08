@@ -23,7 +23,7 @@
         <RelativeLayout
             android:id="@+id/profileBox"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="110dp"
             android:gravity="center_vertical"
             android:background="@color/dark"
             android:padding="8dp"
@@ -51,12 +51,10 @@
                     android:id="@+id/email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/muhammad_asawal"
-                    android:textColor="#fff"
-                    android:textSize="25sp"
-                    android:textStyle="bold" />
-
-
+                    android:layout_gravity="bottom"
+                    android:text="@string/asawal_email"
+                    android:textColor="@color/text_light"
+                    android:textSize="14sp" />
             </LinearLayout>
         </RelativeLayout>
 

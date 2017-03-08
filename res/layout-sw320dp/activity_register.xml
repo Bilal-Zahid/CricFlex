@@ -39,16 +39,40 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/body"
+        android:id="@+id/footer"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_heightPercent="50%"
+        app:layout_heightPercent="10%"
         app:layout_widthPercent="100%"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="5dp"
-        android:layout_centerInParent="true"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/body"
         android:orientation="vertical">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rgp_button_registe"
+            android:id="@+id/button_register"
+            android:layout_gravity="center"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:background="@drawable/button1_bg" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/body"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_heightPercent="30%"
+        app:layout_widthPercent="100%"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="vertical"
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/footer">
 
         <EditText
             android:layout_width="match_parent"
@@ -71,27 +95,7 @@
             android:textCursorDrawable="@null"/>
 
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/reg_username"
-        android:background="@drawable/edittext_bottom_border_bg"
-        android:drawableStart="@drawable/profile_icon"
-        android:paddingStart="15dp"
-        android:paddingEnd="15dp"
-        android:drawablePadding="10dp"
-        android:hint="@string/rgp_username"
-        android:textSize="20sp"
-        android:textColor="#FFFFFF"
-        android:padding="10dp"
-        android:textColorHint="#CCCCCC"
-        android:layout_weight="1"
-        android:inputType="textPersonName"
-        android:imeOptions="actionNext"
-        android:nextFocusDown="@+id/reg_password"
-        android:textCursorDrawable="@null"/>
-
-    <EditText
+        <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/reg_email"
@@ -128,47 +132,6 @@
         android:textColorHint="#CCCCCC"
         android:layout_weight="1"
         android:textCursorDrawable="@null"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/edittext_bottom_border_bg"
-        android:drawableStart="@drawable/security_icon"
-        android:paddingStart="15dp"
-        android:paddingEnd="15dp"
-        android:drawablePadding="10dp"
-        android:padding="10dp"
-        android:inputType="textPersonName"
-        android:id="@+id/reg_security"
-        android:hint="@string/rgp_security_question"
-        android:textSize="20sp"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#CCCCCC"
-        android:layout_weight="1"
-        android:textCursorDrawable="@null"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/footer"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_heightPercent="10%"
-        app:layout_widthPercent="100%"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="20dp"
-        android:layout_below="@id/body"
-        android:orientation="vertical">
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/rgp_button_registe"
-            android:id="@+id/button_register"
-            android:layout_gravity="center"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            android:background="@drawable/button1_bg" />
-
     </LinearLayout>
 
 </android.support.percent.PercentRelativeLayout>

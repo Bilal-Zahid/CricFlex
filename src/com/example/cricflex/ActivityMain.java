@@ -90,8 +90,11 @@ public class ActivityMain extends ActionBarActivity {
         int abc = SaveSharedPreference.getEmail(ActivityMain.this).length();
 
 
+
+
         if(SaveSharedPreference.getEmail(ActivityMain.this).length() == 0)
         {
+
             Intent intent = new Intent(ActivityMain.this, ActivitySplash.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             finish();
@@ -118,8 +121,11 @@ public class ActivityMain extends ActionBarActivity {
 //        mainEmail = (TextView) findViewById(R.id.main_email);
 //        mainEmail.setText("set karni ha Activity main mai");
 
+
+        System.out.println("Main mai agaya!!!");
         emailText = (TextView) findViewById(R.id.email);
         emailText.setText(SaveSharedPreference.getEmail(ActivityMain.this));
+
 
 
 
@@ -259,13 +265,13 @@ public class ActivityMain extends ActionBarActivity {
                 return true;
 
 
-            case R.id.settings:
-
-
-                Intent intent2 = new Intent(ActivityMain.this, ActivityEditProfile.class);
-                startActivity(intent2);
-                return true;
-
+//            case R.id.settings:
+//
+//
+//                Intent intent2 = new Intent(ActivityMain.this, ActivityEditProfile.class);
+//                startActivity(intent2);
+//                return true;
+//
 
 
             case R.id.logout:

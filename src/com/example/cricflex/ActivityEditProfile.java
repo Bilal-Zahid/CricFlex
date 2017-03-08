@@ -421,8 +421,8 @@ public class ActivityEditProfile extends FragmentActivity implements View.OnClic
         rdbLeft = (RadioButton) findViewById(R.id.rdbLeft);
         rdbRight = (RadioButton) findViewById(R.id.rdbRight);
 
-        saveEditProfile = (Button) findViewById(R.id.button_edit_profile_save);
-        cancelEditProfile = (Button) findViewById(R.id.button_edit_profile_cancel);
+        saveEditProfile = (Button) findViewById(R.id.stp_done);
+        cancelEditProfile = (Button) findViewById(R.id.cancel);
     }
 
     private void setDateTimeField() {

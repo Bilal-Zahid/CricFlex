@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<RelativeLayout
+<android.support.percent.PercentRelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -36,34 +36,34 @@
             android:layout_margin="2dp">
 
         <com.example.cricflex.ArcProgress
-            android:layout_width="250dp"
-            android:layout_height="250dp"
+            android:layout_width="175dp"
+            android:layout_height="175dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="-15dp"
             android:id="@+id/home_legal_to_illegal_ratio"
             android:background="@android:color/transparent"
             android:layout_gravity="center"
             custom:arc_angle="260"
-            custom:arc_stroke_width="30dp"
+            custom:arc_stroke_width="20dp"
             custom:arc_max="100"
             custom:arc_finished_color="@color/home_arc_finished_color"
             custom:arc_unfinished_color="@color/home_arc_unfinished_color"
             android:textStyle="bold"
             custom:arc_bottom_text=""
-            custom:arc_bottom_text_size="1dp"
-            custom:arc_suffix_text_padding="10dp"
-            custom:arc_suffix_text_size="30dp"
-            custom:arc_text_size="75dp"
-            custom:arc_text_color="@color/text_light"
-            custom:arc_progress="100"/>
+            custom:arc_bottom_text_size="15dp"
+            custom:arc_suffix_text_padding="13dp"
+            custom:arc_suffix_text_size="20dp"
+            custom:arc_text_size="60dp"
+            custom:arc_text_color="@color/text_light"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
             android:layout_marginBottom="5dp"
             android:id="@+id/textView1"
             android:gravity="center"
             android:layout_gravity="center"
-            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/legal_illegal_ratio"
             android:textColor="@color/text_light" />
 
@@ -77,7 +77,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center_horizontal"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="5dp"
         android:layout_marginBottom="0dp"
         android:layout_weight="1"
         android:weightSum="1">
@@ -92,7 +92,7 @@
             android:layout_gravity="center"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/home_total_balls_text"
-            android:textSize="40sp"
+            android:textSize="30sp"
             android:textColor="@color/text_light"
             android:textStyle="bold"
             />
@@ -106,7 +106,7 @@
             android:layout_gravity="center"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/home_total_balls"
-            android:textSize="40sp"
+            android:textSize="30sp"
             android:textColor="@color/text_light"
             android:textStyle="bold"
             android:id="@+id/home_totalballs" />
@@ -156,7 +156,6 @@
                 android:layout_gravity="center_vertical"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/home_average_stats"
-                android:textSize="30sp"
                 android:textColor="@color/text_light"
                 android:background="@drawable/divider_right"
             />
@@ -178,7 +177,7 @@
                 android:layout_gravity="fill_horizontal"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/home_armflex"
-                android:textSize="50sp"
+                android:textSize="@dimen/home_medium_text"
                 android:textColor="@color/text_light"
                 android:textStyle="bold"/>
 
@@ -192,7 +191,7 @@
                 android:layout_column="1"
                 android:gravity="center"
                 android:layout_gravity="center_vertical"
-                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="@string/home_armflex_text"
                 android:textColor="@color/text_light"/>
 
@@ -210,7 +209,7 @@
                 android:layout_gravity="fill_horizontal"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/home_twist"
-                android:textSize="50sp"
+                android:textSize="@dimen/home_medium_text"
                 android:textColor="@color/text_light"
                 android:textStyle="bold"/>
 
@@ -223,7 +222,7 @@
                 android:layout_column="1"
                 android:gravity="center"
                 android:layout_gravity="center_vertical"
-                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="@string/home_twist_text"
                 android:textColor="@color/text_light"/>
 
@@ -241,7 +240,7 @@
                 android:layout_gravity="fill_horizontal"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/home_time"
-                android:textSize="50sp"
+                android:textSize="@dimen/home_medium_text"
                 android:textColor="@color/text_light"
                 android:textStyle="bold"/>
 
@@ -255,7 +254,7 @@
                 android:layout_column="2"
                 android:gravity="center"
                 android:layout_gravity="center_vertical"
-                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="@string/home_time_text"
                 android:textColor="@color/text_light"/>
 
@@ -271,7 +270,7 @@
                 android:layout_gravity="fill_horizontal"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/home_force"
-                android:textSize="50sp"
+                android:textSize="@dimen/home_medium_text"
                 android:textColor="@color/text_light"
                 android:textStyle="bold"/>
 
@@ -284,7 +283,7 @@
                 android:layout_column="2"
                 android:gravity="center"
                 android:layout_gravity="center_vertical"
-                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="@string/home_force_text"
                 android:textColor="@color/text_light"/>
 
@@ -315,22 +314,22 @@
         <Button
             android:id="@+id/home_start"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="60dp"
             android:layout_marginTop="5dp"
             android:layout_gravity="center"
             android:gravity="center"
             android:text="@string/home_button_start"
             android:textStyle="bold"
             android:textColor="#FFFFFF"
-            android:textSize="40sp"
+            android:textSize="35sp"
             android:background="@drawable/button2_bg"/>
 
 
     </LinearLayout>
-    
+
 
 
 </LinearLayout>
 
 
-</RelativeLayout>
+</android.support.percent.PercentRelativeLayout>

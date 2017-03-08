@@ -211,7 +211,7 @@
                     android:gravity="start"
                     android:layout_gravity="fill_horizontal"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="@string/username"
+                    android:text="@string/email_hint"
                     android:textColor="@color/text_light"/>
 
                 <TextView
@@ -302,7 +302,7 @@
                     android:gravity="end"
                     android:layout_gravity="fill_horizontal"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="@string/username"
+                    android:text="@string/email_hint"
                     android:textColor="@color/text_light"/>
 
                 <TextView

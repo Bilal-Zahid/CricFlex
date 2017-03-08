@@ -42,7 +42,7 @@
         android:id="@+id/body"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_heightPercent="50%"
+        app:layout_heightPercent="30%"
         app:layout_widthPercent="100%"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
@@ -70,26 +70,6 @@
             android:nextFocusDown="@+id/reg_password"
             android:textCursorDrawable="@null"/>
 
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/reg_username"
-            android:background="@drawable/edittext_bottom_border_bg"
-            android:drawableStart="@drawable/profile_icon"
-            android:paddingStart="15dp"
-            android:paddingEnd="15dp"
-            android:drawablePadding="20dp"
-            android:hint="@string/rgp_username"
-            android:textSize="40sp"
-            android:textColor="#FFFFFF"
-            android:padding="10dp"
-            android:textColorHint="#CCCCCC"
-            android:layout_weight="1"
-            android:inputType="textPersonName"
-            android:imeOptions="actionNext"
-            android:nextFocusDown="@+id/reg_password"
-            android:textCursorDrawable="@null"/>
 
         <EditText
             android:layout_width="match_parent"
@@ -123,23 +103,6 @@
             android:inputType="textPassword"
             android:id="@+id/reg_password"
             android:hint="@string/rgp_password"
-            android:textSize="40sp"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#CCCCCC"
-            android:layout_weight="1"
-            android:textCursorDrawable="@null"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/edittext_bottom_border_bg"
-            android:drawableStart="@drawable/security_icon"
-            android:paddingStart="15dp"
-            android:paddingEnd="15dp"
-            android:drawablePadding="20dp"
-            android:padding="10dp"
-            android:inputType="textPersonName"
-            android:id="@+id/reg_security"
-            android:hint="@string/rgp_security_question"
             android:textSize="40sp"
             android:textColor="#FFFFFF"
             android:textColorHint="#CCCCCC"
