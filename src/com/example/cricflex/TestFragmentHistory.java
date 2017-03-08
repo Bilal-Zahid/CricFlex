@@ -285,7 +285,7 @@ public class TestFragmentHistory extends Fragment {
         /////////////////////////////////////////////////////////////
         //Code for getting angle values
         helper = new DatabaseHelper(getActivity());
-        String username = SaveSharedPreference.getUserName(getActivity());
+        String username = SaveSharedPreference.getEmail(getActivity());
         String angleValuesWithDate = helper.getAngleValuesWithDate(username,currentMonth.getText().toString());
 
         //making arraylist after getting response from database
@@ -325,7 +325,7 @@ public class TestFragmentHistory extends Fragment {
         /////////////////////////////////////////////////////////////
         //Code for getting angle values
         helper = new DatabaseHelper(getActivity());
-//        String username = SaveSharedPreference.getUserName(getActivity());
+//        String email = SaveSharedPreference.getEmail(getActivity());
         String forceWithDate = helper.getForceValuesWithDate(username,currentMonth.getText().toString());
 
         //making arraylist after getting response from database
@@ -365,7 +365,7 @@ public class TestFragmentHistory extends Fragment {
         /////////////////////////////////////////////////////////////
         //Code for getting angle values
         helper = new DatabaseHelper(getActivity());
-//        String username = SaveSharedPreference.getUserName(getActivity());
+//        String email = SaveSharedPreference.getEmail(getActivity());
         String armTwistWithDate = helper.getArmTwistValuesWithDate(username,currentMonth.getText().toString());
 
         //making arraylist after getting response from database
@@ -412,7 +412,7 @@ public class TestFragmentHistory extends Fragment {
         /////////////////////////////////////////////////////////////
         //Code for getting action Time values
         helper = new DatabaseHelper(getActivity());
-//        String username = SaveSharedPreference.getUserName(getActivity());
+//        String email = SaveSharedPreference.getEmail(getActivity());
         String actionTimeWithDate = helper.getActionTimeValuesWithDate(username,currentMonth.getText().toString());
 
         //making arraylist after getting response from database

@@ -48,7 +48,7 @@ public class ActivityMain extends ActionBarActivity {
     String checkForHome = "in home";
     DatabaseHelper helper = new DatabaseHelper(this);
 
-    TextView mainEmail;
+//    TextView mainEmail;
     @Override
     public void onBackPressed(){
 //        FragmentManager fm = ;
@@ -80,17 +80,17 @@ public class ActivityMain extends ActionBarActivity {
     private DrawerLayout mDrawerLayout;
     ArrayList<NavDrawerItem> navDrawerItems = new ArrayList<NavDrawerItem>();
 
-    private TextView usernameText  ;
+    private TextView emailText  ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
 
 
-        int abc = SaveSharedPreference.getUserName(ActivityMain.this).length();
+        int abc = SaveSharedPreference.getEmail(ActivityMain.this).length();
 
 
-        if(SaveSharedPreference.getUserName(ActivityMain.this).length() == 0)
+        if(SaveSharedPreference.getEmail(ActivityMain.this).length() == 0)
         {
             Intent intent = new Intent(ActivityMain.this, ActivitySplash.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -115,11 +115,11 @@ public class ActivityMain extends ActionBarActivity {
 
         setContentView(R.layout.activity_main);
 
-        mainEmail = (TextView) findViewById(R.id.main_email);
-        mainEmail.setText(helper.getEmail(SaveSharedPreference.getUserName(ActivityMain.this)));
+//        mainEmail = (TextView) findViewById(R.id.main_email);
+//        mainEmail.setText("set karni ha Activity main mai");
 
-        usernameText = (TextView) findViewById(R.id.userName);
-        usernameText.setText(SaveSharedPreference.getUserName(ActivityMain.this));
+        emailText = (TextView) findViewById(R.id.email);
+        emailText.setText(SaveSharedPreference.getEmail(ActivityMain.this));
 
 
 
@@ -274,7 +274,7 @@ public class ActivityMain extends ActionBarActivity {
                 //ActivityMain.this.finish();
 
 
-                SaveSharedPreference.clearUserName(ActivityMain.this);
+                SaveSharedPreference.clearEmail(ActivityMain.this);
 
                 intent3.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent3.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -299,12 +299,12 @@ public class ActivityMain extends ActionBarActivity {
         // if nav drawer is opened, hide the action items
         boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerPane);
         //menu.findItem(R.id.profile).setVisible(!drawerOpen);
-        //MenuItem username = menu.findItem(R.id.username);
+        //MenuItem email = menu.findItem(R.id.email);
         //Intent intent = getIntent();
-        //String uname = intent.getStringExtra("username");
-        String usernamestr = SaveSharedPreference.getUserName(ActivityMain.this);
-        //setOptionTitle("username",uname);
-        //username.setTitle(usernamestr);
+        //String uname = intent.getStringExtra("email");
+        String usernamestr = SaveSharedPreference.getEmail(ActivityMain.this);
+        //setOptionTitle("email",uname);
+        //email.setTitle(usernamestr);
 
         //Adding Picture on profile layout
         CircleImageView circleImageView = (CircleImageView) findViewById(R.id.profilepicture);
@@ -315,7 +315,7 @@ public class ActivityMain extends ActionBarActivity {
 
         //System.out.println(uname+intent.getStringExtra("email"));
         //MenuItem email = menu.findItem(R.id.email);
-        String emailstr = SaveSharedPreference.getEmail(ActivityMain.this);
+//        String emailstr = SaveSharedPreference.getEmail(ActivityMain.this);
         //email.setTitle(intent.getStringExtra("email"));
         //email.setTitle(emailstr);
         return super.onPrepareOptionsMenu(menu);
@@ -439,8 +439,8 @@ public class ActivityMain extends ActionBarActivity {
         Fragment fragment = null;
         fragment = new FragmentProfile();
         Bundle bundle = new Bundle();
-        String username = SaveSharedPreference.getUserName(ActivityMain.this);
-        bundle.putString("username", username);
+        String username = SaveSharedPreference.getEmail(ActivityMain.this);
+        bundle.putString("email", username);
         fragment.setArguments(bundle);
 //
 //        FragmentManager fragmentManager = getFragmentManager();

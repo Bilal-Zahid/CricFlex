@@ -230,7 +230,7 @@ public class TestActivitySetupProfile extends Activity implements View.OnClickLi
                         selectedCareerLevel = careerLevelSpinner.getSelectedItem().toString();
                         //DataBase Work to do!!!
                         Intent intent = getIntent();
-                        String username = intent.getStringExtra("username");
+                        String username = intent.getStringExtra("email");
                         String email = intent.getStringExtra("email");
                         String password = intent.getStringExtra("password");
                         String security = intent.getStringExtra("security");
@@ -241,7 +241,7 @@ public class TestActivitySetupProfile extends Activity implements View.OnClickLi
                         String bowlingStyle = selectedBowlingStyle;
                         String careerLevel = selectedCareerLevel;
 
-                        System.out.println("username : "+ username);
+                        System.out.println("email : "+ username);
                         System.out.println("email : "+ email);
                         System.out.println("password : "+ password);
                         System.out.println("security : "+ security);
@@ -252,10 +252,10 @@ public class TestActivitySetupProfile extends Activity implements View.OnClickLi
                         System.out.println("bowlingStyle : "+ bowlingStyle);
                         System.out.println("careerLevel : "+ careerLevel);
 
-                        p.setUsername(username);
+//                        p.setUsername(username);
                         p.setEmail(email);
                         p.setPassword(password);
-                        p.setSecurity(security);
+//                        p.setSecurity(security);
                         p.setGender(gender);
                         p.setLocation(location);
                         p.setDOB(DOB);
@@ -278,23 +278,23 @@ public class TestActivitySetupProfile extends Activity implements View.OnClickLi
 
 
 
-                        //helper.addEntry(username,dbBitmapUtility.getBytes(bitmapImage));
+                        //helper.addEntry(email,dbBitmapUtility.getBytes(bitmapImage));
 
 
 
                         helper.insertPlayerStats(p);
                         helper.insertPlayer(p);
 
-                        helper.insertPlayerAngleValues(p.getUsername(),"");
-                        helper.insertPlayerActionTimeValues(p.getUsername(),"");
-                        helper.insertPlayerForceValues(p.getUsername(),"");
-                        helper.insertPlayerArmTwistValues(p.getUsername(),"");
-
-
-                        helper.insertPlayerAngleValuesWithDate(p.getUsername(),"","");
-                        helper.insertPlayerActionTimeValuesWithDate(p.getUsername(),"","");
-                        helper.insertPlayerForceValuesWithDate(p.getUsername(),"","");
-                        helper.insertPlayerArmTwistValuesWithDate(p.getUsername(),"","");
+//                        helper.insertPlayerAngleValues(p.getUsername(),"");
+//                        helper.insertPlayerActionTimeValues(p.getUsername(),"");
+//                        helper.insertPlayerForceValues(p.getUsername(),"");
+//                        helper.insertPlayerArmTwistValues(p.getUsername(),"");
+//
+//
+//                        helper.insertPlayerAngleValuesWithDate(p.getUsername(),"","");
+//                        helper.insertPlayerActionTimeValuesWithDate(p.getUsername(),"","");
+//                        helper.insertPlayerForceValuesWithDate(p.getUsername(),"","");
+//                        helper.insertPlayerArmTwistValuesWithDate(p.getUsername(),"","");
 
 
                         Toast toast = Toast.makeText(TestActivitySetupProfile.this, "Registered Account!" , Toast.LENGTH_SHORT);

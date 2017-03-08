@@ -93,7 +93,7 @@ public class FragmentHistory extends Fragment {
 
     ArrayList<Integer> angleValues = new ArrayList<Integer>();
 
-    String username;
+    String email;
     public FragmentHistory(){}
 
     public void onCreate(Bundle savedInstanceState) {
@@ -110,7 +110,7 @@ public class FragmentHistory extends Fragment {
 
 
 
-        username = SaveSharedPreference.getUserName(getActivity());
+        email = SaveSharedPreference.getEmail(getActivity());
 
         helper = new DatabaseHelper(getActivity());
         //Initializing tabs
@@ -375,8 +375,8 @@ public class FragmentHistory extends Fragment {
         /////////////////////////////////////////////////////////////
         //Code for getting angle values
         helper = new DatabaseHelper(getActivity());
-        String username = SaveSharedPreference.getUserName(getActivity());
-        String angleValuesWithDate = helper.getAngleValuesWithDate(username,currentMonth.getText().toString());
+        String email = SaveSharedPreference.getEmail(getActivity());
+        String angleValuesWithDate = helper.getAngleValuesWithDate(email,currentMonth.getText().toString());
 
         //making arraylist after getting response from database
         ArrayList<String> list1 = new ArrayList<String>();
@@ -415,8 +415,8 @@ public class FragmentHistory extends Fragment {
         /////////////////////////////////////////////////////////////
         //Code for getting angle values
         helper = new DatabaseHelper(getActivity());
-//        String username = SaveSharedPreference.getUserName(getActivity());
-        String forceWithDate = helper.getForceValuesWithDate(username,currentMonth.getText().toString());
+//        String email = SaveSharedPreference.getEmail(getActivity());
+        String forceWithDate = helper.getForceValuesWithDate(email,currentMonth.getText().toString());
 
         //making arraylist after getting response from database
         ArrayList<String> list2 = new ArrayList<String>();
@@ -455,8 +455,8 @@ public class FragmentHistory extends Fragment {
         /////////////////////////////////////////////////////////////
         //Code for getting angle values
         helper = new DatabaseHelper(getActivity());
-//        String username = SaveSharedPreference.getUserName(getActivity());
-        String armTwistWithDate = helper.getArmTwistValuesWithDate(username,currentMonth.getText().toString());
+//        String email = SaveSharedPreference.getEmail(getActivity());
+        String armTwistWithDate = helper.getArmTwistValuesWithDate(email,currentMonth.getText().toString());
 
         //making arraylist after getting response from database
         ArrayList<String> list3 = new ArrayList<String>();
@@ -502,8 +502,8 @@ public class FragmentHistory extends Fragment {
         /////////////////////////////////////////////////////////////
         //Code for getting action Time values
         helper = new DatabaseHelper(getActivity());
-//        String username = SaveSharedPreference.getUserName(getActivity());
-        String actionTimeWithDate = helper.getActionTimeValuesWithDate(username,currentMonth.getText().toString());
+//        String email = SaveSharedPreference.getEmail(getActivity());
+        String actionTimeWithDate = helper.getActionTimeValuesWithDate(email,currentMonth.getText().toString());
 
         //making arraylist after getting response from database
         ArrayList<String> list4 = new ArrayList<String>();
@@ -655,7 +655,7 @@ public class FragmentHistory extends Fragment {
         twistTab.setPressed(false);
 
 
-        String forceWithDate = helper.getForceValuesWithDate(username,currentMonth.getText().toString());
+        String forceWithDate = helper.getForceValuesWithDate(email,currentMonth.getText().toString());
 
         //making arraylist after getting response from database
         ArrayList<String> list2 = new ArrayList<String>();
@@ -700,7 +700,7 @@ public class FragmentHistory extends Fragment {
         twistTab.setSelected(false);
         twistTab.setPressed(false);
 
-        String actionTimeWithDate = helper.getActionTimeValuesWithDate(username,currentMonth.getText().toString());
+        String actionTimeWithDate = helper.getActionTimeValuesWithDate(email,currentMonth.getText().toString());
 
         //making arraylist after getting response from database
         ArrayList<String> list4 = new ArrayList<String>();
@@ -750,7 +750,7 @@ public class FragmentHistory extends Fragment {
 
 
 
-        String armTwistWithDate = helper.getArmTwistValuesWithDate(username,currentMonth.getText().toString());
+        String armTwistWithDate = helper.getArmTwistValuesWithDate(email,currentMonth.getText().toString());
 
         //making arraylist after getting response from database
         ArrayList<String> list3 = new ArrayList<String>();
@@ -803,7 +803,7 @@ public class FragmentHistory extends Fragment {
 
 
 
-        String angleValuesWithDate = helper.getAngleValuesWithDate(username,currentMonth.getText().toString());
+        String angleValuesWithDate = helper.getAngleValuesWithDate(email,currentMonth.getText().toString());
 
         //making arraylist after getting response from database
         ArrayList<String> list1 = new ArrayList<String>();

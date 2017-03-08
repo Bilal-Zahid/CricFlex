@@ -14,7 +14,6 @@ import java.util.UUID;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Handler;
-import android.os.SystemClock;
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -31,8 +30,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.Chronometer;
-import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -175,7 +172,7 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
     //For Stats and home page
     DatabaseHelper helper = new DatabaseHelper(this);
     Player playerStats = new Player();
-    String username;
+    String email;
     ArrayList<Integer> angleValues = new ArrayList<Integer>();
     ArrayList<Integer> forceValues = new ArrayList<Integer>();
     ArrayList<Integer> armTwistValues = new ArrayList<Integer>();
@@ -288,7 +285,7 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
 
 
 
-            playerStats.setUsername(username);
+            playerStats.setEmail(email);
             playerStats.setIllegalBowls(String.valueOf(counterIllegal));
             playerStats.setLegalBowls(String.valueOf(counterLegal));
 
@@ -299,23 +296,23 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
             //testing
 
 
-//            angleValues.add(1);
-//            angleValues.add(2);
-//            angleValues.add(3);
+            angleValues.add(1);
+            angleValues.add(2);
+            angleValues.add(3);
 ////
-//            armTwistValues.add(4);
-//            armTwistValues.add(5);
-//            armTwistValues.add(6);
+            armTwistValues.add(4);
+            armTwistValues.add(5);
+            armTwistValues.add(6);
 ////
 ////
-//            actionTimeValues.add((float)7);
-//            actionTimeValues.add((float)8);
-////            actionTimeValues.add((float)1);
-//            actionTimeValues.add((float)9);
+            actionTimeValues.add((float)7);
+            actionTimeValues.add((float)8);
+//            actionTimeValues.add((float)1);
+            actionTimeValues.add((float)9);
 //////
-//            forceValues.add(10);
-//            forceValues.add(11);
-//            forceValues.add(12);
+            forceValues.add(10);
+            forceValues.add(11);
+            forceValues.add(12);
 
 //            angleValues.add(15);armTwistValues.add(4);
 //            angleValues.add(16);
@@ -390,19 +387,19 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
             //testing
 
 
-            helper.changeAngleValues(username ,convertedArrayListOfAnglesToString);
-            helper.changeArmTwistValues(username,convertedArrayListOfArmTwistToString);
-            helper.changeActionTimeValues(username,convertedArrayListOfActionTimeToString);
-            helper.changeForceValues(username,convertedArrayListOfForceToString);
+            helper.changeAngleValues(email,convertedArrayListOfAnglesToString);
+            helper.changeArmTwistValues(email,convertedArrayListOfArmTwistToString);
+            helper.changeActionTimeValues(email,convertedArrayListOfActionTimeToString);
+            helper.changeForceValues(email,convertedArrayListOfForceToString);
 
 
-            helper.changeAngleValuesWithDate(username,convertedArrayListOfAnglesToString,DateToStr);
-            helper.changeArmTwistValuesWithDate(username,convertedArrayListOfArmTwistToString,DateToStr);
-            helper.changeActionTimeValuesWithDate(username,convertedArrayListOfActionTimeToString,DateToStr);
-            helper.changeForceValuesWithDate(username,convertedArrayListOfForceToString,DateToStr);
+            helper.changeAngleValuesWithDate(email,convertedArrayListOfAnglesToString,DateToStr);
+            helper.changeArmTwistValuesWithDate(email,convertedArrayListOfArmTwistToString,DateToStr);
+            helper.changeActionTimeValuesWithDate(email,convertedArrayListOfActionTimeToString,DateToStr);
+            helper.changeForceValuesWithDate(email,convertedArrayListOfForceToString,DateToStr);
 
             helper.insertPlayerStats(playerStats);
-            helper.changeStatLegalIllegal(playerStats.getUsername(), playerStats.getLegalBowls(), playerStats.getIllegalBowls());
+            helper.changeStatLegalIllegal(playerStats.getEmail(), playerStats.getLegalBowls(), playerStats.getIllegalBowls());
 
 
 //            Disabling bluetooth connection
@@ -610,8 +607,8 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
         monitorLegalBalls = (TextView)findViewById(R.id.monitor_legal_balls);
         monitorIllegalBalls = (TextView)findViewById(R.id.monitor_illegal_balls);
 
-        username = SaveSharedPreference.getUserName(ActivityMonitor2.this);
-        System.out.println("Username: "+ username);
+        email = SaveSharedPreference.getEmail(ActivityMonitor2.this);
+        System.out.println("Username: "+ email);
 
 
 //        //initializelayoutitems();

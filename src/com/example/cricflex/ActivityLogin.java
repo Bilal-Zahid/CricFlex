@@ -1,12 +1,15 @@
 package com.example.cricflex;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
@@ -18,6 +21,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+
 public class ActivityLogin extends Activity {
 
 
@@ -25,14 +33,26 @@ public class ActivityLogin extends Activity {
     private static Boolean exit = false;
     private static String layoutCheck = "login activity";
 
-    private static EditText fgp_username = null;
-    private static String fgpUsername;
+    private static EditText fgp_email = null;
+    private static String fgpEmail;
 
     private static EditText fgp_new_password = null;
     private static String fgpNewPassword;
 
     private static EditText fgp_security = null;
     private static String fgpSecurity;
+
+
+
+
+    AutoCompleteTextView etEmail;
+    EditText etPassword;
+
+
+
+    private ProgressDialog progressDialog ;
+    FirebaseAuth firebaseAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
@@ -40,6 +60,8 @@ public class ActivityLogin extends Activity {
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getActionBar().hide();
+
+
 
         View decorView = getWindow().getDecorView();
         // Hide the status bar.
@@ -52,23 +74,33 @@ public class ActivityLogin extends Activity {
         setContentView(R.layout.activity_login);
 
 
-        final AutoCompleteTextView etUsername = (AutoCompleteTextView) findViewById(R.id.lgn_username);
+//        if(firebaseAuth.getCurrentUser()!=null){
+//            // profile activity
+//
+//            Intent i = new Intent(ActivityLogin.this, ActivityMain.class);
+//            ActivityLogin.this.startActivity(i);
+//        }
+
+//        progressDialog = new ProgressDialog(this);
+//        firebaseAuth = FirebaseAuth.getInstance();
+
+        etEmail = (AutoCompleteTextView) findViewById(R.id.lgn_username);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                R.layout.dropdown_item, helper.getAllUserNames());
+                R.layout.dropdown_item, helper.getAllEmails());
 
-        etUsername.setOnTouchListener(new View.OnTouchListener(){
+        etEmail.setOnTouchListener(new View.OnTouchListener(){
             @Override
             public boolean onTouch(View v, MotionEvent event){
-                etUsername.showDropDown();
+                etEmail.showDropDown();
                 return false;
             }
         });
-        etUsername.setAdapter(adapter);
-        final EditText etPassword = (EditText) findViewById(R.id.lgn_password);
+        etEmail.setAdapter(adapter);
+        etPassword = (EditText) findViewById(R.id.lgn_password);
         //To hide the keyboard when user touch anywhere else on the screen
 
-//        etUsername.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+//        etEmail.setOnFocusChangeListener(new View.OnFocusChangeListener() {
 //            @Override
 //            public void onFocusChange(View v, boolean hasFocus) {
 //                if (!hasFocus) {
@@ -87,11 +119,11 @@ public class ActivityLogin extends Activity {
 
         /////////////////////////////////////
         /*
-        final EditText etUsername = (EditText) findViewById(R.id.etUsername);
+        final EditText etEmail = (EditText) findViewById(R.id.etEmail);
         final EditText etPassword = (EditText) findViewById(R.id.etPassword);
 
 
-        final String usernamestr = etUsername.getText().toString();
+        final String usernamestr = etEmail.getText().toString();
         final String passwordstr = etPassword.getText().toString();
         */
 
@@ -103,10 +135,12 @@ public class ActivityLogin extends Activity {
             public void onClick(View view){
 
 
-                final String usernamestr = etUsername.getText().toString();
+
+//                userLogin();
+                final String emailstr = etEmail.getText().toString();
                 final String passwordstr = etPassword.getText().toString();
 
-                String password = helper.getPassword(usernamestr);
+                String password = helper.getPassword(emailstr);
                 //System.out.print("Dpassword: "+ password + "entered password:"+passwordstr);
                 //Log.v("Dpassword", password);
                 //Log.v("Entered Password", passwordstr);
@@ -118,9 +152,9 @@ public class ActivityLogin extends Activity {
                     Toast.makeText(ActivityLogin.this, "Signed In" ,
                             Toast.LENGTH_SHORT).show();
 
-                    SaveSharedPreference.setUserName(ActivityLogin.this,usernamestr);
-                    SaveSharedPreference.setEmail(ActivityLogin.this,helper.getEmail(usernamestr));
-
+                    SaveSharedPreference.setEmail(ActivityLogin.this,emailstr);
+//                    SaveSharedPreference.setEmail(ActivityLogin.this,helper.getEmail(usernamestr));
+//
                     Intent i = new Intent(ActivityLogin.this, ActivityMain.class);
                     ActivityLogin.this.startActivity(i);
                 }
@@ -142,6 +176,43 @@ public class ActivityLogin extends Activity {
 
     }
 
+    private void userLogin() {
+
+        String email = etEmail.getText().toString().trim();
+        String password = etPassword.getText().toString().trim();
+
+
+        if(TextUtils.isEmpty(email)){
+            Toast.makeText(this,"Please Enter Email",Toast.LENGTH_SHORT).show();
+        }
+        if(TextUtils.isEmpty(password)){
+            Toast.makeText(this,"Please Enter Password",Toast.LENGTH_SHORT).show();
+        }
+
+
+        progressDialog.setMessage("Signing In");
+        progressDialog.show();
+        firebaseAuth.signInWithEmailAndPassword(email,password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+
+                        progressDialog.dismiss();
+
+                        if(task.isSuccessful()){
+                            //logging in
+
+                            finish();
+                            Intent i = new Intent(ActivityLogin.this, ActivityMain.class);
+                            ActivityLogin.this.startActivity(i);
+
+                        }
+
+                    }
+                });
+
+    }
+
     public void hideKeyboard(View view) {
         InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
@@ -155,10 +226,10 @@ public class ActivityLogin extends Activity {
         final Button fgpNext = (Button) findViewById(R.id.fgp_next1);
         fgpNext.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
-                fgp_username = (EditText) findViewById(R.id.fgp_username);
-                fgpUsername = fgp_username.getText().toString();
+                fgp_email = (EditText) findViewById(R.id.fgp_username);
+                fgpEmail = fgp_email.getText().toString();
 
-                if(helper.getPassword(fgpUsername).equals("not found")){
+                if(helper.getPassword(fgpEmail).equals("not found")){
                     Toast.makeText(ActivityLogin.this, "Username doesn't exists", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -181,16 +252,16 @@ public class ActivityLogin extends Activity {
                 fgp_security = (EditText) findViewById(R.id.fgp_security);
                 fgpSecurity = fgp_security.getText().toString();
 
-                if(helper.getSecurity(fgpUsername)==null || helper.getSecurity(fgpUsername).equals("not found")){
+                if(helper.getSecurity(fgpEmail)==null || helper.getSecurity(fgpEmail).equals("not found")){
                     Toast.makeText(ActivityLogin.this, "kaila kalandar", Toast.LENGTH_SHORT).show();
                 }
 
-                else if(!helper.getSecurity(fgpUsername).equals(fgpSecurity)){
+                else if(!helper.getSecurity(fgpEmail).equals(fgpSecurity)){
                     Toast.makeText(ActivityLogin.this, "Answer doesnot match", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                else if(helper.getSecurity(fgpUsername).equals(fgpSecurity)){
+                else if(helper.getSecurity(fgpEmail).equals(fgpSecurity)){
                     setfgpLayout3(null);
                 }
             }
@@ -213,7 +284,7 @@ public class ActivityLogin extends Activity {
                 }
 
                 else{
-                    helper.changePassword(fgpUsername,fgpNewPassword);
+                    helper.changePassword(fgpEmail,fgpNewPassword);
                     setLoginLayout(null);
                 }
             }

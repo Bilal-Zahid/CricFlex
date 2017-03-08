@@ -31,6 +31,7 @@
 
     <!--login-->
     <string name="username">Username</string>
+    <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="forgot_password">forgot password</string>
     <string name="login_button">Login</string>
@@ -40,7 +41,7 @@
     <string name="rgp_name">Name</string>
     <string name="rgp_username">Username (6 minimum)</string>
     <string name="rgp_email">Email</string>
-    <string name="rgp_password">Password (4 minimum)</string>
+    <string name="rgp_password">Password (6 minimum)</string>
     <string name="rgp_security_question">Security Question: \nFavourite Cricketer name?</string>
     <string name="rgp_button_registe">Register new account</string>
 

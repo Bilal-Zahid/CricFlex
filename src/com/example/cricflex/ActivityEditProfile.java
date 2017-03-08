@@ -1,21 +1,16 @@
 package com.example.cricflex;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Matrix;
 import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.Menu;
@@ -46,7 +41,7 @@ import java.util.Locale;
 public class ActivityEditProfile extends FragmentActivity implements View.OnClickListener {
 
 
-    String username1;
+    String email;
     DatabaseHelper helper = new DatabaseHelper(this);
 
     RadioButton rdbMale, rdbFemale;
@@ -94,11 +89,11 @@ public class ActivityEditProfile extends FragmentActivity implements View.OnClic
         getActionBar().hide();
         findViewsById();
 
-        username1 = SaveSharedPreference.getUserName(ActivityEditProfile.this);
+        email = SaveSharedPreference.getEmail(ActivityEditProfile.this);
 
-        name.setText(helper.getName(username1));
+        name.setText(helper.getName(email));
 
-        selectedGender = helper.getGender(username1);
+        selectedGender = helper.getGender(email);
 
 
         System.out.println("Gender: " + selectedGender);
@@ -109,10 +104,10 @@ public class ActivityEditProfile extends FragmentActivity implements View.OnClic
             rgGender.check(R.id.rdbFemale);
 
 
-        birthDate.setText(helper.getDOB(username1).toString());
+        birthDate.setText(helper.getDOB(email).toString());
 
 
-        selectedBowlingArm =helper.getBowlingArm(username1);
+        selectedBowlingArm =helper.getBowlingArm(email);
         System.out.println("Arm: " + selectedBowlingArm);
 
 
@@ -175,7 +170,7 @@ public class ActivityEditProfile extends FragmentActivity implements View.OnClic
         country_flag = (ImageView) findViewById(R.id.country_flag);
 
 
-        selectedLocation = helper.getLocation(username1);
+        selectedLocation = helper.getLocation(email);
 
         picker = CountryPicker.newInstance("Select Country");
         country = picker.getCountryByName(this,selectedLocation);
@@ -186,7 +181,7 @@ public class ActivityEditProfile extends FragmentActivity implements View.OnClic
 
 
         weightOfPerson = (EditText) findViewById(R.id.pv_weight);
-        weightOfPerson.setText(helper.getWeight(username1).toString());
+        weightOfPerson.setText(helper.getWeight(email).toString());
 
 
         location_text.setText(country.getName());
@@ -273,19 +268,19 @@ public class ActivityEditProfile extends FragmentActivity implements View.OnClic
                 selectedBowlingStyle = bowlingStylesSpinner.getSelectedItem().toString();
                 selectedCareerLevel = careerLevelSpinner.getSelectedItem().toString();
 
-                helper.changeGender(username1,selectedGender);
-                helper.changeWeight(username1,selectedWeight);
-                helper.changeLocation(username1,selectedLocation);
-                helper.changeDOB(username1,selectedDOB);
-                helper.changeBowlingArm(username1,selectedBowlingArm);
-                helper.changeBowlingStyle(username1,selectedBowlingStyle);
-                helper.changeCareerLevel(username1,selectedCareerLevel);
+                helper.changeGender(email,selectedGender);
+                helper.changeWeight(email,selectedWeight);
+                helper.changeLocation(email,selectedLocation);
+                helper.changeDOB(email,selectedDOB);
+                helper.changeBowlingArm(email,selectedBowlingArm);
+                helper.changeBowlingStyle(email,selectedBowlingStyle);
+                helper.changeCareerLevel(email,selectedCareerLevel);
 
 
 
                 Toast.makeText(ActivityEditProfile.this, "Profile Updated" , Toast.LENGTH_SHORT).show();
 
-                saveImage(getApplicationContext(),bitmapImage,username1,"jpeg");
+                saveImage(getApplicationContext(),bitmapImage, email,"jpeg");
 
                 Intent intent = new Intent(ActivityEditProfile.this, ActivityMain.class);
                 startActivity(intent);
@@ -335,7 +330,7 @@ public class ActivityEditProfile extends FragmentActivity implements View.OnClic
 
         Context context=getApplicationContext();
 
-        String bowlingStyle = helper.getBowlingStyle(username1);
+        String bowlingStyle = helper.getBowlingStyle(email);
         if(arm.equals("Left"))
         {
             String[] bowlingStylesArray = context.getResources().getStringArray(R.array.bowlingstyle_left_array);
@@ -398,7 +393,7 @@ public class ActivityEditProfile extends FragmentActivity implements View.OnClic
 
         careerLevelSpinner.setAdapter(adapter);
 
-        String careerLevel =  helper.getCareerLevel(username1);
+        String careerLevel =  helper.getCareerLevel(email);
         if(careerLevel.equals("Club")){
             careerLevelSpinner.setSelection(0);
         }

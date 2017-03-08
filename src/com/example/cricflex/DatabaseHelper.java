@@ -43,8 +43,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String COLUMN_ID = "id";
     private static final String COLUMN_NAME = "name";
+    //    private static final String COLUMN_EMAIL = "email";
     private static final String COLUMN_EMAIL = "email";
-    private static final String COLUMN_USERNAME = "username";
     private static final String COLUMN_PASSWORD = "password";
     private static final String COLUMN_SECURITY = "security";
     private static final String COLUMN_GENDER = "gender";
@@ -83,9 +83,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_SESSION_DATE = "session_date";
 
     SQLiteDatabase db;
+//
+//    private static final String CREATE_TABLE_PLAYER = "create table " + PLAYER_TABLE_NAME + " (id integer primary key not null  , " +
+//            "name text not null , email text not null , email text not null, password text not null, security text not null, " +
+//            " gender text not null, DOB text not null, location text not null, bowlingstyle text not null," +
+//            " bowlingarm text not null, careerlevel text not null , weight text not null);";
 
     private static final String CREATE_TABLE_PLAYER = "create table " + PLAYER_TABLE_NAME + " (id integer primary key not null  , " +
-            "name text not null , email text not null , username text not null, password text not null, security text not null, " +
+            "name text not null , email text not null ,  password text not null,  " +
             " gender text not null, DOB text not null, location text not null, bowlingstyle text not null," +
             " bowlingarm text not null, careerlevel text not null , weight text not null);";
 
@@ -95,31 +100,31 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             KEY_IMAGE + " BLOB);";
 
     private static final String CREATE_TABLE_PLAYER_STATS = "create table " + STATS_TABLE_NAME + " " +
-            "(username text not null, legal_bowls text not null, illegal_bowls text not null" +
+            "(email text not null, legal_bowls text not null, illegal_bowls text not null" +
             ",average_angle text not null, longest_streak text not null, last_bowl_angle text not null);";
 
     private static final String CREATE_TABLE_PLAYER_ANGLE = "create table " + ANGLE_TABLE_NAME + " " +
-            "(username text not null, angle_values text not null);";
+            "(email text not null, angle_values text not null);";
 
     private static final String CREATE_TABLE_PLAYER_FORCE = "create table " + FORCE_TABLE_NAME + " " +
-            "(username text not null, force_values text not null);";
+            "(email text not null, force_values text not null);";
     private static final String CREATE_TABLE_PLAYER_ARM_TWIST = "create table " + ARM_TWIST_TABLE_NAME + " " +
-            "(username text not null, arm_twist_values text not null);";
+            "(email text not null, arm_twist_values text not null);";
     private static final String CREATE_TABLE_PLAYER_ACTION_TIME = "create table " + ACTION_TIME_TABLE_NAME + " " +
-            "(username text not null, action_time_values text not null);";
+            "(email text not null, action_time_values text not null);";
 
     private static final String CREATE_TABLE_PLAYER_ANGLE_HISTORY = "create table " + ANGLE_HISTORY_TABLE_NAME + " " +
-            "(username text not null, angle_values text not null, session_date text not null);";
+            "(email text not null, angle_values text not null, session_date text not null);";
 
 
     private static final String CREATE_TABLE_PLAYER_FORCE_HISTORY = "create table " + FORCE_HISTORY_TABLE_NAME + " " +
-            "(username text not null, force_values text not null, session_date text not null);";
+            "(email text not null, force_values text not null, session_date text not null);";
 
     private static final String CREATE_TABLE_PLAYER_ARM_TWIST_HISTORY = "create table " + ARM_TWIST_HISTORY_TABLE_NAME + " " +
-            "(username text not null, arm_twist_values text not null, session_date text not null);";
+            "(email text not null, arm_twist_values text not null, session_date text not null);";
 
     private static final String CREATE_TABLE_PLAYER_ACTION_TIME_HISTORY = "create table " + ACTION_TIME_HISTORY_TABLE_NAME + " " +
-            "(username text not null, action_time_values text not null, session_date text not null);";
+            "(email text not null, action_time_values text not null, session_date text not null);";
 
 
 
@@ -160,17 +165,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         this.onCreate(db);
     }
 
-    public ArrayList<String> getAllUserNames (){
-        ArrayList<String> allUsernames = new ArrayList<>();
+
+    public ArrayList<String> getAllEmails (){
+        ArrayList<String> allEmails = new ArrayList<>();
         db = this.getReadableDatabase();
-        String query = "select username from " + PLAYER_TABLE_NAME;
+        String query = "select email from " + PLAYER_TABLE_NAME;
         Cursor cursor = db.rawQuery(query, null);
 
         if (cursor.moveToFirst()) {
             do {
-                allUsernames.add(cursor.getString(0));
+                allEmails.add(cursor.getString(0));
 
-//                if (uname.equals(username)) {
+//                if (uname.equals(email)) {
 //                    location = cursor.getString(1);
 //                    break;
 //                }
@@ -181,9 +187,33 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
         db.close();
-        return allUsernames;
+        return allEmails;
 
     }
+//    public ArrayList<String> getAllemails (){
+//        ArrayList<String> allemails = new ArrayList<>();
+//        db = this.getReadableDatabase();
+//        String query = "select email from " + PLAYER_TABLE_NAME;
+//        Cursor cursor = db.rawQuery(query, null);
+//
+//        if (cursor.moveToFirst()) {
+//            do {
+//                allemails.add(cursor.getString(0));
+//
+////                if (uname.equals(email)) {
+////                    location = cursor.getString(1);
+////                    break;
+////                }
+//            }
+//            while (cursor.moveToNext());
+//        }
+//        cursor.close();
+//
+//
+//        db.close();
+//        return allemails;
+//
+//    }
 
 
     public void insertPlayer(Player p) {
@@ -198,9 +228,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COLUMN_NAME , p.getName());
 
         values.put(COLUMN_EMAIL, p.getEmail());
-        values.put(COLUMN_USERNAME, p.getUsername());
+//        values.put(COLUMN_email, p.getemail());
         values.put(COLUMN_PASSWORD, p.getPassword());
-        values.put(COLUMN_SECURITY, p.getSecurity());
+//        values.put(COLUMN_SECURITY, p.getSecurity());
 
         values.put(COLUMN_GENDER, p.getGender());
         values.put(COLUMN_DOB, p.getDOB());
@@ -227,7 +257,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         //values.put(COLUMN_ID,count);
         //values.put(COLUMN_NAME , playerStats.getName());
 
-        values.put(COLUMN_USERNAME, p.getUsername());
+        values.put(COLUMN_EMAIL, p.getEmail());
         values.put(COLUMN_LEGAL_BOWLS, p.getLegalBowls());
         values.put(COLUMN_ILLEGAL_BOWLS, p.getIllegalBowls());
         values.put(COLUMN_AVERAGE_ANGLE, p.getAverageAngle());
@@ -238,7 +268,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void insertPlayerAngleValues(String username, String angleValues) {
+    public void insertPlayerAngleValues(String email, String angleValues) {
         db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
@@ -250,7 +280,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         //values.put(COLUMN_ID,count);
         //values.put(COLUMN_NAME , playerStats.getName());
 
-        values.put(COLUMN_USERNAME, username);
+        values.put(COLUMN_EMAIL, email);
         values.put(COLUMN_ANGLE_VALUES, angleValues);
 
         db.insert(ANGLE_TABLE_NAME, null, values);
@@ -258,7 +288,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public void insertPlayerForceValues(String username, String forceValues) {
+    public void insertPlayerForceValues(String email, String forceValues) {
         db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
@@ -266,14 +296,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(query, null);
         cursor.close();
 
-        values.put(COLUMN_USERNAME, username);
+        values.put(COLUMN_EMAIL, email);
         values.put(COLUMN_FORCE, forceValues);
 
         db.insert(FORCE_TABLE_NAME, null, values);
         db.close();
     }
 
-    public void insertPlayerArmTwistValues(String username, String armTwistValues) {
+    public void insertPlayerArmTwistValues(String email, String armTwistValues) {
         db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
@@ -281,14 +311,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(query, null);
         cursor.close();
 
-        values.put(COLUMN_USERNAME, username);
+        values.put(COLUMN_EMAIL, email);
         values.put(COLUMN_ARM_TWIST, armTwistValues);
 
         db.insert(ARM_TWIST_TABLE_NAME, null, values);
         db.close();
     }
 
-    public void insertPlayerActionTimeValues(String username, String actionTimeValues) {
+    public void insertPlayerActionTimeValues(String email, String actionTimeValues) {
         db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
@@ -296,7 +326,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(query, null);
         cursor.close();
 
-        values.put(COLUMN_USERNAME, username);
+        values.put(COLUMN_EMAIL, email);
         values.put(COLUMN_ACTION_TIME, actionTimeValues);
 
         db.insert(ACTION_TIME_TABLE_NAME, null, values);
@@ -304,7 +334,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public void insertPlayerAngleValuesWithDate(String username, String angleValues , String date) {
+    public void insertPlayerAngleValuesWithDate(String email, String angleValues , String date) {
         db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
@@ -316,7 +346,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         //values.put(COLUMN_ID,count);
         //values.put(COLUMN_NAME , playerStats.getName());
 
-        values.put(COLUMN_USERNAME, username);
+        values.put(COLUMN_EMAIL, email);
         values.put(COLUMN_ANGLE_VALUES, angleValues);
         values.put(COLUMN_SESSION_DATE, date);
 
@@ -324,7 +354,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void insertPlayerArmTwistValuesWithDate(String username, String armTwistValues , String date) {
+    public void insertPlayerArmTwistValuesWithDate(String email, String armTwistValues , String date) {
         db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
@@ -336,7 +366,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         //values.put(COLUMN_ID,count);
         //values.put(COLUMN_NAME , playerStats.getName());
 
-        values.put(COLUMN_USERNAME, username);
+        values.put(COLUMN_EMAIL, email);
         values.put(COLUMN_ARM_TWIST, armTwistValues);
         values.put(COLUMN_SESSION_DATE, date);
 
@@ -344,7 +374,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void insertPlayerForceValuesWithDate(String username, String forceValues , String date) {
+    public void insertPlayerForceValuesWithDate(String email, String forceValues , String date) {
         db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
@@ -356,7 +386,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         //values.put(COLUMN_ID,count);
         //values.put(COLUMN_NAME , playerStats.getName());
 
-        values.put(COLUMN_USERNAME, username);
+        values.put(COLUMN_EMAIL, email);
         values.put(COLUMN_FORCE, forceValues);
         values.put(COLUMN_SESSION_DATE, date);
 
@@ -365,7 +395,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public void insertPlayerActionTimeValuesWithDate(String username, String actionTimeValues , String date) {
+    public void insertPlayerActionTimeValuesWithDate(String email, String actionTimeValues , String date) {
         db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
@@ -377,7 +407,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         //values.put(COLUMN_ID,count);
         //values.put(COLUMN_NAME , playerStats.getName());
 
-        values.put(COLUMN_USERNAME, username);
+        values.put(COLUMN_EMAIL, email);
         values.put(COLUMN_ACTION_TIME, actionTimeValues);
         values.put(COLUMN_SESSION_DATE, date);
 
@@ -392,9 +422,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
 
-    public String getPassword(String username) {
+    public String getPassword(String email) {
         db = this.getReadableDatabase();
-        String query = "select username, password from " + PLAYER_TABLE_NAME;
+        String query = "select email, password from " + PLAYER_TABLE_NAME;
         Cursor cursor = db.rawQuery(query, null);
         String uname, pass;
         pass = "not found";
@@ -402,7 +432,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             do {
                 uname = cursor.getString(0);
 
-                if (uname.equals(username)) {
+                if (uname.equals(email)) {
                     pass = cursor.getString(1);
                     break;
                 }
@@ -414,31 +444,31 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return pass;
     }
 
-    public String getEmail(String username) {
-        db = this.getReadableDatabase();
-        String query = "select username, email from " + PLAYER_TABLE_NAME;
-        Cursor cursor = db.rawQuery(query, null);
-        String uname, email;
-        email = "not found";
-        if (cursor.moveToFirst()) {
-            do {
-                uname = cursor.getString(0);
+//    public String getEmail(String email) {
+//        db = this.getReadableDatabase();
+//        String query = "select email, email from " + PLAYER_TABLE_NAME;
+//        Cursor cursor = db.rawQuery(query, null);
+//        String uname, email;
+//        email = "not found";
+//        if (cursor.moveToFirst()) {
+//            do {
+//                uname = cursor.getString(0);
+//
+//                if (uname.equals(email)) {
+//                    email = cursor.getString(1);
+//                    break;
+//                }
+//            }
+//            while (cursor.moveToNext());
+//        }
+//        cursor.close();
+//        db.close();
+//        return email;
+//    }
 
-                if (uname.equals(username)) {
-                    email = cursor.getString(1);
-                    break;
-                }
-            }
-            while (cursor.moveToNext());
-        }
-        cursor.close();
-        db.close();
-        return email;
-    }
-
-    public String getSecurity(String username) {
+    public String getSecurity(String email) {
         db = this.getReadableDatabase();
-        String query = "select username, security from " + PLAYER_TABLE_NAME;
+        String query = "select email, security from " + PLAYER_TABLE_NAME;
         Cursor cursor = db.rawQuery(query, null);
         String uname, security;
         security = "not found";
@@ -446,7 +476,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             do {
                 uname = cursor.getString(0);
 
-                if (uname.equals(username)) {
+                if (uname.equals(email)) {
                     security = cursor.getString(1);
                     break;
                 }
@@ -458,9 +488,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return security;
     }
 
-    public String getGender(String username) {
+    public String getGender(String email) {
         db = this.getReadableDatabase();
-        String query = "select username, gender from " + PLAYER_TABLE_NAME;
+        String query = "select email, gender from " + PLAYER_TABLE_NAME;
         Cursor cursor = db.rawQuery(query, null);
         String uname, gender;
         gender = "not found";
@@ -468,7 +498,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             do {
                 uname = cursor.getString(0);
 
-                if (uname.equals(username)) {
+                if (uname.equals(email)) {
                     gender = cursor.getString(1);
                     break;
                 }
@@ -480,9 +510,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return gender;
     }
 
-    public String getName(String username) {
+    public String getName(String email) {
         db = this.getReadableDatabase();
-        String query = "select username, name from " + PLAYER_TABLE_NAME;
+        String query = "select email, name from " + PLAYER_TABLE_NAME;
         Cursor cursor = db.rawQuery(query, null);
         String uname, name;
         name = "not found";
@@ -490,7 +520,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             do {
                 uname = cursor.getString(0);
 
-                if (uname.equals(username)) {
+                if (uname.equals(email)) {
                     name = cursor.getString(1);
                     break;
                 }
@@ -503,9 +533,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public String getWeight(String username) {
+    public String getWeight(String email) {
         db = this.getReadableDatabase();
-        String query = "select username, weight from " + PLAYER_TABLE_NAME;
+        String query = "select email, weight from " + PLAYER_TABLE_NAME;
         Cursor cursor = db.rawQuery(query, null);
         String uname, weight;
         weight = "not found";
@@ -513,7 +543,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             do {
                 uname = cursor.getString(0);
 
-                if (uname.equals(username)) {
+                if (uname.equals(email)) {
                     weight = cursor.getString(1);
                     break;
                 }
@@ -527,9 +557,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
 
-    public String getDOB(String username) {
+    public String getDOB(String email) {
         db = this.getReadableDatabase();
-        String query = "select username, DOB from " + PLAYER_TABLE_NAME;
+        String query = "select email, DOB from " + PLAYER_TABLE_NAME;
         Cursor cursor = db.rawQuery(query, null);
         String uname, DOB;
         DOB = "not found";
@@ -537,7 +567,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             do {
                 uname = cursor.getString(0);
 
-                if (uname.equals(username)) {
+                if (uname.equals(email)) {
                     DOB = cursor.getString(1);
                     break;
                 }
@@ -549,9 +579,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return DOB;
     }
 
-    public String getLocation(String username) {
+    public String getLocation(String email) {
         db = this.getReadableDatabase();
-        String query = "select username, location from " + PLAYER_TABLE_NAME;
+        String query = "select email, location from " + PLAYER_TABLE_NAME;
         Cursor cursor = db.rawQuery(query, null);
         String uname, location;
         location = "not found";
@@ -559,7 +589,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             do {
                 uname = cursor.getString(0);
 
-                if (uname.equals(username)) {
+                if (uname.equals(email)) {
                     location = cursor.getString(1);
                     break;
                 }
@@ -572,9 +602,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public String getBowlingStyle(String username) {
+    public String getBowlingStyle(String email) {
         db = this.getReadableDatabase();
-        String query = "select username, bowlingstyle from " + PLAYER_TABLE_NAME;
+        String query = "select email, bowlingstyle from " + PLAYER_TABLE_NAME;
         Cursor cursor = db.rawQuery(query, null);
         String uname, bowlingStyle;
         bowlingStyle = "not found";
@@ -582,7 +612,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             do {
                 uname = cursor.getString(0);
 
-                if (uname.equals(username)) {
+                if (uname.equals(email)) {
                     bowlingStyle = cursor.getString(1);
                     break;
                 }
@@ -595,9 +625,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public String getBowlingArm(String username) {
+    public String getBowlingArm(String email) {
         db = this.getReadableDatabase();
-        String query = "select username, bowlingarm from " + PLAYER_TABLE_NAME;
+        String query = "select email, bowlingarm from " + PLAYER_TABLE_NAME;
         Cursor cursor = db.rawQuery(query, null);
         String uname, bowlingArm;
         bowlingArm = "not found";
@@ -605,7 +635,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             do {
                 uname = cursor.getString(0);
 
-                if (uname.equals(username)) {
+                if (uname.equals(email)) {
                     bowlingArm = cursor.getString(1);
                     break;
                 }
@@ -618,9 +648,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public String getCareerLevel(String username) {
+    public String getCareerLevel(String email) {
         db = this.getReadableDatabase();
-        String query = "select username, careerlevel from " + PLAYER_TABLE_NAME;
+        String query = "select email, careerlevel from " + PLAYER_TABLE_NAME;
         Cursor cursor = db.rawQuery(query, null);
         String uname, careerLevel;
         careerLevel = "not found";
@@ -628,7 +658,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             do {
                 uname = cursor.getString(0);
 
-                if (uname.equals(username)) {
+                if (uname.equals(email)) {
                     careerLevel = cursor.getString(1);
                     break;
                 }
@@ -642,9 +672,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     //Player stats getter and setter
-    public String getLegalCount(String username) {
+    public String getLegalCount(String email) {
         db = this.getReadableDatabase();
-        String query = "select username, legal_bowls from " + STATS_TABLE_NAME;
+        String query = "select email, legal_bowls from " + STATS_TABLE_NAME;
         Cursor cursor = db.rawQuery(query, null);
         String uname, legalBowls;
         legalBowls = "not found";
@@ -652,7 +682,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             do {
                 uname = cursor.getString(0);
 
-                if (uname.equals(username)) {
+                if (uname.equals(email)) {
                     legalBowls = cursor.getString(1);
                     break;
                 }
@@ -664,9 +694,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return legalBowls;
     }
 
-    public String getIllegalCount(String username) {
+    public String getIllegalCount(String email) {
         db = this.getReadableDatabase();
-        String query = "select username, illegal_bowls from " + STATS_TABLE_NAME;
+        String query = "select email, illegal_bowls from " + STATS_TABLE_NAME;
         Cursor cursor = db.rawQuery(query, null);
         String uname, illegalBowls;
         illegalBowls = "not found";
@@ -674,7 +704,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             do {
                 uname = cursor.getString(0);
 
-                if (uname.equals(username)) {
+                if (uname.equals(email)) {
                     illegalBowls = cursor.getString(1);
                     break;
                 }
@@ -686,9 +716,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return illegalBowls;
     }
 
-    public String getAngleValues(String username) {
+    public String getAngleValues(String email) {
         db = this.getReadableDatabase();
-        String query = "select username, angle_values from " + ANGLE_TABLE_NAME;
+        String query = "select email, angle_values from " + ANGLE_TABLE_NAME;
         Cursor cursor = db.rawQuery(query, null);
         String uname, angleValues;
         angleValues = "not found";
@@ -696,7 +726,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             do {
                 uname = cursor.getString(0);
 
-                if (uname.equals(username)) {
+                if (uname.equals(email)) {
                     angleValues = cursor.getString(1);
                     break;
                 }
@@ -710,9 +740,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
 
-    public String getForceValues(String username) {
+    public String getForceValues(String email) {
         db = this.getReadableDatabase();
-        String query = "select username, force_values from " + FORCE_TABLE_NAME;
+        String query = "select email, force_values from " + FORCE_TABLE_NAME;
         Cursor cursor = db.rawQuery(query, null);
         String uname, forceValues;
         forceValues = "not found";
@@ -720,7 +750,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             do {
                 uname = cursor.getString(0);
 
-                if (uname.equals(username)) {
+                if (uname.equals(email)) {
                     forceValues = cursor.getString(1);
                     break;
                 }
@@ -733,9 +763,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public String getArmTwistValues(String username) {
+    public String getArmTwistValues(String email) {
         db = this.getReadableDatabase();
-        String query = "select username, arm_twist_values from " + ARM_TWIST_TABLE_NAME;
+        String query = "select email, arm_twist_values from " + ARM_TWIST_TABLE_NAME;
         Cursor cursor = db.rawQuery(query, null);
         String uname, armTwistValues;
         armTwistValues = "not found";
@@ -743,7 +773,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             do {
                 uname = cursor.getString(0);
 
-                if (uname.equals(username)) {
+                if (uname.equals(email)) {
                     armTwistValues = cursor.getString(1);
                     break;
                 }
@@ -756,9 +786,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public String getActionTimeValues(String username) {
+    public String getActionTimeValues(String email) {
         db = this.getReadableDatabase();
-        String query = "select username, action_time_values from " + ACTION_TIME_TABLE_NAME;
+        String query = "select email, action_time_values from " + ACTION_TIME_TABLE_NAME;
         Cursor cursor = db.rawQuery(query, null);
         String uname, actionTimeValues;
         actionTimeValues = "not found";
@@ -766,7 +796,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             do {
                 uname = cursor.getString(0);
 
-                if (uname.equals(username)) {
+                if (uname.equals(email)) {
                     actionTimeValues = cursor.getString(1);
                     break;
                 }
@@ -781,9 +811,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
 
-    public String getAllAngleValuesOfPlayer(String username) {
+    public String getAllAngleValuesOfPlayer(String email) {
         db = this.getReadableDatabase();
-        String query = "select username, angle_values, session_date from " + ANGLE_HISTORY_TABLE_NAME;
+        String query = "select email, angle_values, session_date from " + ANGLE_HISTORY_TABLE_NAME;
         Cursor cursor = db.rawQuery(query, null);
         String uname, angleValues;
         angleValues = "not found";
@@ -791,7 +821,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             do {
                 uname = cursor.getString(0);
 
-                if (uname.equals(username)) {
+                if (uname.equals(email)) {
                     angleValues = cursor.getString(1);
                     break;
                 }
@@ -805,10 +835,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
 
-    public String getAllAngleValuesWithDate(String username) {
+    public String getAllAngleValuesWithDate(String email) {
         db = this.getReadableDatabase();
         String query = "select group_concat(angle_values) from " + ANGLE_HISTORY_TABLE_NAME +
-                " where username = '"+ username + "'";
+                " where email = '"+ email + "'";
         Cursor cursor = db.rawQuery(query, null);
         String uname, angleValues;
         angleValues = "not found";
@@ -818,7 +848,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         angleValues = angleValues.startsWith(",") ? angleValues.substring(1) : angleValues;
         System.out.println("Angle Values in database: " + angleValues);
-        System.out.println("Actual Values should be: " + getAngleValues(username));
+        System.out.println("Actual Values should be: " + getAngleValues(email));
 
         cursor.close();
         db.close();
@@ -830,10 +860,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
 
-    public String getAngleValuesWithDate(String username, String date) {
+    public String getAngleValuesWithDate(String email, String date) {
         db = this.getReadableDatabase();
         String query = "select angle_values from " + ANGLE_HISTORY_TABLE_NAME +
-                " where username = '"+ username + "' AND session_date = '" + date +"'";
+                " where email = '"+ email + "' AND session_date = '" + date +"'";
         Cursor cursor = db.rawQuery(query, null);
         String uname, angleValues;
         angleValues = "not found";
@@ -846,10 +876,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return angleValues;
     }
 
-    public String getArmTwistValuesWithDate(String username, String date) {
+    public String getArmTwistValuesWithDate(String email, String date) {
         db = this.getReadableDatabase();
         String query = "select arm_twist_values from " + ARM_TWIST_HISTORY_TABLE_NAME +
-                " where username = '"+ username + "' AND session_date = '" + date +"'";
+                " where email = '"+ email + "' AND session_date = '" + date +"'";
         Cursor cursor = db.rawQuery(query, null);
         String uname, armTwistValues;
         armTwistValues = "not found";
@@ -862,10 +892,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return armTwistValues;
     }
 
-    public String getForceValuesWithDate(String username, String date) {
+    public String getForceValuesWithDate(String email, String date) {
         db = this.getReadableDatabase();
         String query = "select force_values from " + FORCE_HISTORY_TABLE_NAME +
-                " where username = '"+ username + "' AND session_date = '" + date +"'";
+                " where email = '"+ email + "' AND session_date = '" + date +"'";
         Cursor cursor = db.rawQuery(query, null);
         String uname, forceValues;
         forceValues = "not found";
@@ -877,10 +907,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return forceValues;
     }
-    public String getActionTimeValuesWithDate(String username, String date) {
+    public String getActionTimeValuesWithDate(String email, String date) {
         db = this.getReadableDatabase();
         String query = "select action_time_values from " + ACTION_TIME_HISTORY_TABLE_NAME +
-                " where username = '"+ username + "' AND session_date = '" + date +"'";
+                " where email = '"+ email + "' AND session_date = '" + date +"'";
         Cursor cursor = db.rawQuery(query, null);
         String uname, actionTimeValues;
         actionTimeValues = "not found";
@@ -896,9 +926,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
 
-    public String getSessionDates(String username) {
+    public String getSessionDates(String email) {
         db = this.getReadableDatabase();
-        String query = "select username, session_date from " + ANGLE_HISTORY_TABLE_NAME;
+        String query = "select email, session_date from " + ANGLE_HISTORY_TABLE_NAME;
         Cursor cursor = db.rawQuery(query, null);
         String uname, angleValues;
         angleValues = "not found";
@@ -906,7 +936,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             do {
                 uname = cursor.getString(0);
 
-                if (uname.equals(username)) {
+                if (uname.equals(email)) {
                     angleValues = cursor.getString(1);
                     break;
                 }
@@ -920,10 +950,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
 
-    public void changePassword(String username, String newPassword) {
+    public void changePassword(String email, String newPassword) {
         db = this.getReadableDatabase();
-//        String query = "select username, security from " + PLAYER_TABLE_NAME;
-        String query = "UPDATE " + PLAYER_TABLE_NAME + "  SET password = '" + newPassword + "' WHERE username = '" + username + "'";
+//        String query = "select email, security from " + PLAYER_TABLE_NAME;
+        String query = "UPDATE " + PLAYER_TABLE_NAME + "  SET password = '" + newPassword + "' WHERE email = '" + email + "'";
         //db.rawQuery(query,null);
         db.execSQL(query);
         //boolean flag = true;
@@ -931,10 +961,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void changeBowlingStyle(String username, String newBowlingStyle) {
+    public void changeBowlingStyle(String email, String newBowlingStyle) {
         db = this.getReadableDatabase();
-//        String query = "select username, security from " + PLAYER_TABLE_NAME;
-        String query = "UPDATE " + PLAYER_TABLE_NAME + "  SET bowlingstyle = '" + newBowlingStyle + "' WHERE username = '" + username + "'";
+//        String query = "select email, security from " + PLAYER_TABLE_NAME;
+        String query = "UPDATE " + PLAYER_TABLE_NAME + "  SET bowlingstyle = '" + newBowlingStyle + "' WHERE email = '" + email + "'";
         //db.rawQuery(query,null);
         db.execSQL(query);
         //boolean flag = true;
@@ -942,10 +972,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void changeCareerLevel(String username, String newCareerLevel) {
+    public void changeCareerLevel(String email, String newCareerLevel) {
         db = this.getReadableDatabase();
-//        String query = "select username, security from " + PLAYER_TABLE_NAME;
-        String query = "UPDATE " + PLAYER_TABLE_NAME + "  SET careerlevel = '" + newCareerLevel + "' WHERE username = '" + username + "'";
+//        String query = "select email, security from " + PLAYER_TABLE_NAME;
+        String query = "UPDATE " + PLAYER_TABLE_NAME + "  SET careerlevel = '" + newCareerLevel + "' WHERE email = '" + email + "'";
         //db.rawQuery(query,null);
         db.execSQL(query);
         //boolean flag = true;
@@ -953,10 +983,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void changeGender(String username, String newGender) {
+    public void changeGender(String email, String newGender) {
         db = this.getReadableDatabase();
-//        String query = "select username, security from " + PLAYER_TABLE_NAME;
-        String query = "UPDATE " + PLAYER_TABLE_NAME + "  SET gender = '" + newGender + "' WHERE username = '" + username + "'";
+//        String query = "select email, security from " + PLAYER_TABLE_NAME;
+        String query = "UPDATE " + PLAYER_TABLE_NAME + "  SET gender = '" + newGender + "' WHERE email = '" + email + "'";
         //db.rawQuery(query,null);
         db.execSQL(query);
         //boolean flag = true;
@@ -966,10 +996,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
 
-    public void changeLocation(String username, String newLocation) {
+    public void changeLocation(String email, String newLocation) {
         db = this.getReadableDatabase();
-//        String query = "select username, security from " + PLAYER_TABLE_NAME;
-        String query = "UPDATE " + PLAYER_TABLE_NAME + "  SET location = '" + newLocation + "' WHERE username = '" + username + "'";
+//        String query = "select email, security from " + PLAYER_TABLE_NAME;
+        String query = "UPDATE " + PLAYER_TABLE_NAME + "  SET location = '" + newLocation + "' WHERE email = '" + email + "'";
         //db.rawQuery(query,null);
         db.execSQL(query);
         //boolean flag = true;
@@ -977,10 +1007,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void changeEmail(String username, String newEmail) {
+    public void changeEmail(String email, String newEmail) {
         db = this.getReadableDatabase();
-//        String query = "select username, security from " + PLAYER_TABLE_NAME;
-        String query = "UPDATE " + PLAYER_TABLE_NAME + "  SET email = '" + newEmail + "' WHERE username = '" + username + "'";
+//        String query = "select email, security from " + PLAYER_TABLE_NAME;
+        String query = "UPDATE " + PLAYER_TABLE_NAME + "  SET email = '" + newEmail + "' WHERE email = '" + email + "'";
         //db.rawQuery(query,null);
         db.execSQL(query);
         //boolean flag = true;
@@ -988,33 +1018,33 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void changeDOB(String username, String newDOB) {
+    public void changeDOB(String email, String newDOB) {
         db = this.getReadableDatabase();
-        String query = "UPDATE " + PLAYER_TABLE_NAME + "  SET DOB = '" + newDOB + "' WHERE username = '" + username + "'";
+        String query = "UPDATE " + PLAYER_TABLE_NAME + "  SET DOB = '" + newDOB + "' WHERE email = '" + email + "'";
         db.execSQL(query);
         db.close();
     }
 
-    public void changeWeight(String username, String newWeight) {
+    public void changeWeight(String email, String newWeight) {
         db = this.getReadableDatabase();
-        String query = "UPDATE " + PLAYER_TABLE_NAME + "  SET weight = '" + newWeight + "' WHERE username = '" + username + "'";
+        String query = "UPDATE " + PLAYER_TABLE_NAME + "  SET weight = '" + newWeight + "' WHERE email = '" + email + "'";
         db.execSQL(query);
         db.close();
     }
 
-    public void changeBowlingArm(String username, String newBowlingArm) {
+    public void changeBowlingArm(String email, String newBowlingArm) {
         db = this.getReadableDatabase();
-        String query = "UPDATE " + PLAYER_TABLE_NAME + "  SET bowlingarm = '" + newBowlingArm + "' WHERE username = '" + username + "'";
+        String query = "UPDATE " + PLAYER_TABLE_NAME + "  SET bowlingarm = '" + newBowlingArm + "' WHERE email = '" + email + "'";
         db.execSQL(query);
         db.close();
     }
 
 
 
-    public void changeStatAverageAngle(String username, String averageAngle) {
+    public void changeStatAverageAngle(String email, String averageAngle) {
         db = this.getReadableDatabase();
-//        String query = "select username, security from " + PLAYER_TABLE_NAME;
-        String query = "UPDATE " + STATS_TABLE_NAME + "  SET average_angle = '" + averageAngle + "' WHERE username = '" + username + "'";
+//        String query = "select email, security from " + PLAYER_TABLE_NAME;
+        String query = "UPDATE " + STATS_TABLE_NAME + "  SET average_angle = '" + averageAngle + "' WHERE email = '" + email + "'";
         //db.rawQuery(query,null);
         db.execSQL(query);
         //boolean flag = true;
@@ -1022,10 +1052,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void changeLongestStreak(String username, String longestStreak) {
+    public void changeLongestStreak(String email, String longestStreak) {
         db = this.getReadableDatabase();
-//        String query = "select username, security from " + PLAYER_TABLE_NAME;
-        String query = "UPDATE " + STATS_TABLE_NAME + "  SET average_angle = '" + longestStreak + "' WHERE username = '" + username + "'";
+//        String query = "select email, security from " + PLAYER_TABLE_NAME;
+        String query = "UPDATE " + STATS_TABLE_NAME + "  SET average_angle = '" + longestStreak + "' WHERE email = '" + email + "'";
         //db.rawQuery(query,null);
         db.execSQL(query);
         //boolean flag = true;
@@ -1033,10 +1063,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void changeLastBowlAngle(String username, String lastBowlAngle) {
+    public void changeLastBowlAngle(String email, String lastBowlAngle) {
         db = this.getReadableDatabase();
-//        String query = "select username, security from " + PLAYER_TABLE_NAME;
-        String query = "UPDATE " + STATS_TABLE_NAME + "  SET average_angle = '" + lastBowlAngle + "' WHERE username = '" + username + "'";
+//        String query = "select email, security from " + PLAYER_TABLE_NAME;
+        String query = "UPDATE " + STATS_TABLE_NAME + "  SET average_angle = '" + lastBowlAngle + "' WHERE email = '" + email + "'";
         //db.rawQuery(query,null);
         db.execSQL(query);
         //boolean flag = true;
@@ -1044,12 +1074,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void changeStatLegalIllegal(String username, String legal, String illegal) {
+    public void changeStatLegalIllegal(String email, String legal, String illegal) {
         db = this.getReadableDatabase();
 
 
         //db = this.getReadableDatabase();
-        String query = "select username, legal_bowls, illegal_bowls from " + STATS_TABLE_NAME;
+        String query = "select email, legal_bowls, illegal_bowls from " + STATS_TABLE_NAME;
         Cursor cursor = db.rawQuery(query, null);
         String uname, legalBowls, illegalBowls;
         legalBowls = "0";
@@ -1058,7 +1088,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             do {
                 uname = cursor.getString(0);
 
-                if (uname.equals(username)) {
+                if (uname.equals(email)) {
                     legalBowls = cursor.getString(1);
                     illegalBowls = cursor.getString(2);
                     break;
@@ -1086,8 +1116,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         illegal = String.valueOf(totalIllegalBowls);
 
 
-        String query1 = "UPDATE " + STATS_TABLE_NAME + "  SET legal_bowls = '" + legal + "' WHERE username = '" + username + "'";
-        String query2 = "UPDATE " + STATS_TABLE_NAME + "  SET illegal_bowls = '" + illegal + "' WHERE username = '" + username + "'";
+        String query1 = "UPDATE " + STATS_TABLE_NAME + "  SET legal_bowls = '" + legal + "' WHERE email = '" + email + "'";
+        String query2 = "UPDATE " + STATS_TABLE_NAME + "  SET illegal_bowls = '" + illegal + "' WHERE email = '" + email + "'";
 
         db.execSQL(query1);
         db.execSQL(query2);
@@ -1097,17 +1127,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public void changeAngleValues(String username, String currentAngleValues) {
+    public void changeAngleValues(String email, String currentAngleValues) {
         db = this.getReadableDatabase();
         String totalAngleValues;
         //db = this.getReadableDatabase();
-        String query = "select username, angle_values from " + ANGLE_TABLE_NAME;
+        String query = "select email, angle_values from " + ANGLE_TABLE_NAME;
         Cursor cursor = db.rawQuery(query, null);
         String uname, prevAngleValues = "";
         if (cursor.moveToFirst()) {
             do {
                 uname = cursor.getString(0);
-                if (uname.equals(username)) {
+                if (uname.equals(email)) {
                     prevAngleValues = cursor.getString(1);
                     break;
                 }
@@ -1173,24 +1203,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
             totalAngleValues = json2.toString();
 
-            String query1 = "UPDATE " + ANGLE_TABLE_NAME + "  SET angle_values = '" + totalAngleValues + "' WHERE username = '" + username + "'";
+            String query1 = "UPDATE " + ANGLE_TABLE_NAME + "  SET angle_values = '" + totalAngleValues + "' WHERE email = '" + email + "'";
             db.execSQL(query1);
             db.close();
         }
     }
 
 
-    public void changeForceValues(String username, String currentForceValues) {
+    public void changeForceValues(String email, String currentForceValues) {
         db = this.getReadableDatabase();
         String totalForceValues;
         //db = this.getReadableDatabase();
-        String query = "select username, force_values from " + FORCE_TABLE_NAME;
+        String query = "select email, force_values from " + FORCE_TABLE_NAME;
         Cursor cursor = db.rawQuery(query, null);
         String uname, prevForceValues = "";
         if (cursor.moveToFirst()) {
             do {
                 uname = cursor.getString(0);
-                if (uname.equals(username)) {
+                if (uname.equals(email)) {
                     prevForceValues = cursor.getString(1);
                     break;
                 }
@@ -1256,24 +1286,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
             totalForceValues = json2.toString();
 
-            String query1 = "UPDATE " + FORCE_TABLE_NAME + "  SET force_values = '" + totalForceValues + "' WHERE username = '" + username + "'";
+            String query1 = "UPDATE " + FORCE_TABLE_NAME + "  SET force_values = '" + totalForceValues + "' WHERE email = '" + email + "'";
             db.execSQL(query1);
         }
         db.close();
     }
 
 
-    public void changeArmTwistValues(String username, String currentArmTwistValues) {
+    public void changeArmTwistValues(String email, String currentArmTwistValues) {
         db = this.getReadableDatabase();
         String totalArmTwistValues;
         //db = this.getReadableDatabase();
-        String query = "select username, arm_twist_values from " + ARM_TWIST_TABLE_NAME;
+        String query = "select email, arm_twist_values from " + ARM_TWIST_TABLE_NAME;
         Cursor cursor = db.rawQuery(query, null);
         String uname, prevArmTwistValues = "";
         if (cursor.moveToFirst()) {
             do {
                 uname = cursor.getString(0);
-                if (uname.equals(username)) {
+                if (uname.equals(email)) {
                     prevArmTwistValues = cursor.getString(1);
                     break;
                 }
@@ -1339,24 +1369,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
             totalArmTwistValues = json2.toString();
 
-            String query1 = "UPDATE " + ARM_TWIST_TABLE_NAME + "  SET arm_twist_values = '" + totalArmTwistValues + "' WHERE username = '" + username + "'";
+            String query1 = "UPDATE " + ARM_TWIST_TABLE_NAME + "  SET arm_twist_values = '" + totalArmTwistValues + "' WHERE email = '" + email + "'";
             db.execSQL(query1);
         }
         db.close();
     }
 
 
-    public void changeActionTimeValues(String username, String currentActioTimeValues) {
+    public void changeActionTimeValues(String email, String currentActioTimeValues) {
         db = this.getReadableDatabase();
         String totalActionTimeValues;
         //db = this.getReadableDatabase();
-        String query = "select username, action_time_values from " + ACTION_TIME_TABLE_NAME;
+        String query = "select email, action_time_values from " + ACTION_TIME_TABLE_NAME;
         Cursor cursor = db.rawQuery(query, null);
         String uname, prevActionTimeValues = "";
         if (cursor.moveToFirst()) {
             do {
                 uname = cursor.getString(0);
-                if (uname.equals(username)) {
+                if (uname.equals(email)) {
                     prevActionTimeValues = cursor.getString(1);
                     break;
                 }
@@ -1422,14 +1452,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
             totalActionTimeValues = json2.toString();
 
-            String query1 = "UPDATE " + ACTION_TIME_TABLE_NAME + "  SET action_time_values = '" + totalActionTimeValues + "' WHERE username = '" + username + "'";
+            String query1 = "UPDATE " + ACTION_TIME_TABLE_NAME + "  SET action_time_values = '" + totalActionTimeValues + "' WHERE email = '" + email + "'";
             db.execSQL(query1);
         }
         db.close();
     }
 
 
-    public void changeAngleValuesWithDate(String username, String currentAngleValues , String sessionDate) {
+    public void changeAngleValuesWithDate(String email, String currentAngleValues , String sessionDate) {
 
         db = this.getReadableDatabase();
         //Converting current angle values string into arraylist
@@ -1460,7 +1490,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             e.printStackTrace();
         }
         String query = "select  angle_values from " + ANGLE_HISTORY_TABLE_NAME + " where session_date = '" + sessionDate
-                +"' AND username = '" + username +"'";
+                +"' AND email = '" + email +"'";
         Cursor cursor = db.rawQuery(query, null);
         String  prevAngleValues = "" ;
 
@@ -1468,7 +1498,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             prevAngleValues = cursor.getString(0);
         }
         if(prevAngleValues.equals("")){
-            insertPlayerAngleValuesWithDate(username,currentAngleValues,sessionDate);
+            insertPlayerAngleValuesWithDate(email,currentAngleValues,sessionDate);
         }
         else{
             String totalAngleValues;
@@ -1530,7 +1560,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 }
                 totalAngleValues = json3.toString();
 
-                String query1 = "UPDATE " + ANGLE_HISTORY_TABLE_NAME + "  SET angle_values = '" + totalAngleValues + "' WHERE username = '" + username + "'" +
+                String query1 = "UPDATE " + ANGLE_HISTORY_TABLE_NAME + "  SET angle_values = '" + totalAngleValues + "' WHERE email = '" + email + "'" +
                         " AND session_date = '" + sessionDate +"'";
                 db.execSQL(query1);
             }
@@ -1539,7 +1569,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void changeArmTwistValuesWithDate(String username, String currentArmTwistValues , String sessionDate) {
+    public void changeArmTwistValuesWithDate(String email, String currentArmTwistValues , String sessionDate) {
 
         db = this.getReadableDatabase();
         //Converting current angle values string into arraylist
@@ -1570,7 +1600,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             e.printStackTrace();
         }
         String query = "select  arm_twist_values from " + ARM_TWIST_HISTORY_TABLE_NAME + " where session_date = '" + sessionDate
-                +"' AND username = '" + username +"'";
+                +"' AND email = '" + email +"'";
         Cursor cursor = db.rawQuery(query, null);
         String  prevArmTwistValues = "" ;
 
@@ -1578,7 +1608,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             prevArmTwistValues = cursor.getString(0);
         }
         if(prevArmTwistValues.equals("")){
-            insertPlayerArmTwistValuesWithDate(username,currentArmTwistValues,sessionDate);
+            insertPlayerArmTwistValuesWithDate(email,currentArmTwistValues,sessionDate);
         }
         else{
             String totalArmTwistValues;
@@ -1640,7 +1670,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 }
                 totalArmTwistValues = json3.toString();
 
-                String query1 = "UPDATE " + ARM_TWIST_HISTORY_TABLE_NAME + "  SET arm_twist_values = '" + totalArmTwistValues + "' WHERE username = '" + username + "'" +
+                String query1 = "UPDATE " + ARM_TWIST_HISTORY_TABLE_NAME + "  SET arm_twist_values = '" + totalArmTwistValues + "' WHERE email = '" + email + "'" +
                         " AND session_date = '" + sessionDate +"'";
                 db.execSQL(query1);
             }
@@ -1651,7 +1681,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
 
-    public void changeForceValuesWithDate(String username, String currentForceValues , String sessionDate) {
+    public void changeForceValuesWithDate(String email, String currentForceValues , String sessionDate) {
 
         db = this.getReadableDatabase();
         //Converting current angle values string into arraylist
@@ -1682,7 +1712,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             e.printStackTrace();
         }
         String query = "select  force_values from " + FORCE_HISTORY_TABLE_NAME + " where session_date = '" + sessionDate
-                +"' AND username = '" + username +"'";
+                +"' AND email = '" + email +"'";
         Cursor cursor = db.rawQuery(query, null);
         String  prevForceValues = "" ;
 
@@ -1690,7 +1720,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             prevForceValues = cursor.getString(0);
         }
         if(prevForceValues.equals("")){
-            insertPlayerForceValuesWithDate(username,currentForceValues,sessionDate);
+            insertPlayerForceValuesWithDate(email,currentForceValues,sessionDate);
         }
         else{
             String totalForceValues;
@@ -1752,7 +1782,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 }
                 totalForceValues = json3.toString();
 
-                String query1 = "UPDATE " + FORCE_HISTORY_TABLE_NAME + "  SET force_values = '" + totalForceValues + "' WHERE username = '" + username + "'" +
+                String query1 = "UPDATE " + FORCE_HISTORY_TABLE_NAME + "  SET force_values = '" + totalForceValues + "' WHERE email = '" + email + "'" +
                         " AND session_date = '" + sessionDate +"'";
                 db.execSQL(query1);
             }
@@ -1762,7 +1792,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public void changeActionTimeValuesWithDate(String username, String currentActionTimeValues , String sessionDate) {
+    public void changeActionTimeValuesWithDate(String email, String currentActionTimeValues , String sessionDate) {
 
         db = this.getReadableDatabase();
         //Converting current angle values string into arraylist
@@ -1793,7 +1823,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             e.printStackTrace();
         }
         String query = "select  action_time_values from " + ACTION_TIME_HISTORY_TABLE_NAME + " where session_date = '" + sessionDate
-                +"' AND username = '" + username +"'";
+                +"' AND email = '" + email +"'";
         Cursor cursor = db.rawQuery(query, null);
         String  prevActionTimeValues = "" ;
 
@@ -1801,7 +1831,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             prevActionTimeValues = cursor.getString(0);
         }
         if(prevActionTimeValues.equals("")){
-            insertPlayerActionTimeValuesWithDate(username,currentActionTimeValues,sessionDate);
+            insertPlayerActionTimeValuesWithDate(email,currentActionTimeValues,sessionDate);
         }
         else{
             String totalActionTimeValues;
@@ -1863,7 +1893,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 }
                 totalActionTimeValues = json3.toString();
 
-                String query1 = "UPDATE " + ACTION_TIME_HISTORY_TABLE_NAME + "  SET action_time_values = '" + totalActionTimeValues + "' WHERE username = '" + username + "'" +
+                String query1 = "UPDATE " + ACTION_TIME_HISTORY_TABLE_NAME + "  SET action_time_values = '" + totalActionTimeValues + "' WHERE email = '" + email + "'" +
                         " AND session_date = '" + sessionDate +"'";
                 db.execSQL(query1);
             }
@@ -1887,7 +1917,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 //
 //
 //
-//    public Bitmap getImage(String username){
+//    public Bitmap getImage(String email){
 //        db = this.getReadableDatabase();
 //        String query = "select image_name , image_data  from " + IMAGE_TABLE_NAME;
 //        Cursor cursor = db.rawQuery(query,null);
@@ -1906,7 +1936,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 //        if(cursor.moveToFirst()){
 //            do{
 //                imageName = cursor.getString(0);
-//                if(imageName.equals(username)){
+//                if(imageName.equals(email)){
 //                    imageData = cursor.getBlob(1);
 //                    bitmapImage = BitmapFactory.decodeByteArray(imageData, 0, imageData.length);
 //

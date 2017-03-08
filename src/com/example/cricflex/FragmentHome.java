@@ -28,7 +28,7 @@
 ////    private TextView longestStreak;
 //    // For Displaying Player Stats
 //
-//    private String username;
+//    private String email;
 //    private String legalBalls,illegalBalls;
 //
 //
@@ -41,7 +41,7 @@
 //    public View onCreateView(LayoutInflater inflater, ViewGroup container,
 //                             Bundle savedInstanceState) {
 //        DatabaseHelper helper = new DatabaseHelper(getActivity());
-//        username = SaveSharedPreference.getUserName(getActivity());
+//        email = SaveSharedPreference.getEmail(getActivity());
 //        View rootView = inflater.inflate(R.layout.fragment_home, container, false);
 //
 //        totalBalls = (TextView) rootView.findViewById(R.id.home_totalballs);
@@ -53,8 +53,8 @@
 //        //arcProgress.setProgress(50);
 //        startButton = (Button) rootView.findViewById(R.id.home_start);
 //
-//        legalBalls = helper.getLegalCount(username);
-//        illegalBalls = helper.getIllegalCount(username);
+//        legalBalls = helper.getLegalCount(email);
+//        illegalBalls = helper.getIllegalCount(email);
 //
 //        int totalBowls;
 //        totalBowls = Integer.valueOf(legalBalls) + Integer.valueOf(illegalBalls);
@@ -71,7 +71,7 @@
 //        int successRateValue = (int)ratio;
 //
 //
-//        String angleValues = helper.getAngleValues(username);
+//        String angleValues = helper.getAngleValues(email);
 //
 //        System.out.println("Angle Values in Home Screen: "+ angleValues);
 //
@@ -217,7 +217,7 @@ public class FragmentHome extends Fragment {
 //    private TextView longestStreak;
     // For Displaying Player Stats
 
-    private String username;
+    private String email;
     private String legalBalls,illegalBalls;
 
 
@@ -230,7 +230,7 @@ public class FragmentHome extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         DatabaseHelper helper = new DatabaseHelper(getActivity());
-        username = SaveSharedPreference.getUserName(getActivity());
+        email = SaveSharedPreference.getEmail(getActivity());
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
 
         totalBalls = (TextView) rootView.findViewById(R.id.home_totalballs);
@@ -245,8 +245,8 @@ public class FragmentHome extends Fragment {
         //arcProgress.setProgress(50);
         startButton = (Button) rootView.findViewById(R.id.home_start);
 
-        legalBalls = helper.getLegalCount(username);
-        illegalBalls = helper.getIllegalCount(username);
+        legalBalls = helper.getLegalCount(email);
+        illegalBalls = helper.getIllegalCount(email);
 
         int totalBowls;
         totalBowls = Integer.valueOf(legalBalls) + Integer.valueOf(illegalBalls);
@@ -264,7 +264,7 @@ public class FragmentHome extends Fragment {
 
 
         // For Average Angle
-        String angleValues = helper.getAngleValues(username);
+        String angleValues = helper.getAngleValues(email);
         ArrayList<String> list = new ArrayList<String>();
         if(!angleValues.equals("")) {
             // Getting Arraylist back
@@ -352,7 +352,7 @@ public class FragmentHome extends Fragment {
 
 
         //For Average Force
-        String forceValues = helper.getForceValues(username);
+        String forceValues = helper.getForceValues(email);
         System.out.println("Force Values in Fragment Home: "  + forceValues);
         ArrayList<String> list1 = new ArrayList<String>();
         if(!forceValues.equals("")) {
@@ -439,13 +439,13 @@ public class FragmentHome extends Fragment {
 
 
         // for Arm Twist
-        String armTwistValues = helper.getArmTwistValues(username);
+        String armTwistValues = helper.getArmTwistValues(email);
         calculateAverageValuesOfParameters(averageArmTwist,armTwistValues,"armTwistArray","\u00b0");
 
 
         // for Average Action Time
 
-        String actionTimeValues = helper.getActionTimeValues(username);
+        String actionTimeValues = helper.getActionTimeValues(email);
         calculateAverageValuesOfParameters(averageActionTime,actionTimeValues,"actionTimeArray"," s");
 
 

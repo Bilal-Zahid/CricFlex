@@ -47,7 +47,7 @@ public class ActivitySplash extends Activity {
             public void onAnimationRepeat(Animation animation) {}
             public void onAnimationEnd(Animation animation) {
 
-                if(SaveSharedPreference.getUserName(ActivitySplash.this).length() == 0)
+                if(SaveSharedPreference.getEmail(ActivitySplash.this).length() == 0)
                 {
                     Intent intent = new Intent(ActivitySplash.this, ActivityWelcome.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

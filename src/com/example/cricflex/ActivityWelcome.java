@@ -132,7 +132,7 @@ public class ActivityWelcome extends Activity {
         prefManager.setFirstTimeLaunch(false);
 
 
-        if(SaveSharedPreference.getUserName(ActivityWelcome.this).length() == 0)
+        if(SaveSharedPreference.getEmail(ActivityWelcome.this).length() == 0)
         {
             Intent intent = new Intent(ActivityWelcome.this, ActivityLogin.class);
 //            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

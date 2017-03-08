@@ -6,7 +6,9 @@ package com.example.cricflex;
 
 public class Player {
 //     int id;
-    String  email, username,  password, security;
+    String  email,  password;
+
+//    security;
 
     String name;
 
@@ -113,12 +115,12 @@ public class Player {
         Location = location;
     }
 
-    public void setUsername(String username){
-        this.username = username;
-    }
-    public String getUsername(){
-        return this.username;
-    }
+//    public void setUsername(String email){
+//        this.email = email;
+//    }
+//    public String getUsername(){
+//        return this.email;
+//    }
 
     public void setEmail(String email){
         this.email = email;
@@ -132,10 +134,10 @@ public class Player {
         return this.password;
     }
 
-    public void setSecurity(String security){this.security = security;}
-    public String getSecurity(){
-        return this.security;
-    }
+//    public void setSecurity(String security){this.security = security;}
+//    public String getSecurity(){
+//        return this.security;
+//    }
 
 
 }

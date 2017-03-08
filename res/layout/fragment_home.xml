@@ -54,7 +54,8 @@
             custom:arc_suffix_text_padding="13dp"
             custom:arc_suffix_text_size="20dp"
             custom:arc_text_size="60dp"
-            custom:arc_text_color="@color/text_light"/>
+            custom:arc_text_color="@color/text_light"
+            custom:arc_progress="0"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

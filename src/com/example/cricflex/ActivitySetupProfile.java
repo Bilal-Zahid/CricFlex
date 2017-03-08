@@ -32,6 +32,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.mukesh.countrypicker.fragments.CountryPicker;
 import com.mukesh.countrypicker.interfaces.CountryPickerListener;
 import com.mukesh.countrypicker.models.Country;
@@ -103,6 +108,11 @@ public class ActivitySetupProfile extends FragmentActivity implements View.OnCli
 //    private ImageView profileImage;
 
 
+    //Firebase Things
+    private DatabaseReference rootDatabaseReference = FirebaseDatabase.getInstance().getReference();
+    DatabaseReference userRef = rootDatabaseReference.child("Users");
+    DatabaseReference userNameReference = userRef.child("name");
+    DatabaseReference userValuesReference = userNameReference.child("values");
 
 
     private static final int SELECT_PICTURE = 1;
@@ -297,10 +307,10 @@ public class ActivitySetupProfile extends FragmentActivity implements View.OnCli
                         //DataBase Work to do!!!
                         Intent intent = getIntent();
                         String name = intent.getStringExtra("name");
-                        String username = intent.getStringExtra("username");
+//                        String username = intent.getStringExtra("email");
                         String email = intent.getStringExtra("email");
                         String password = intent.getStringExtra("password");
-                        String security = intent.getStringExtra("security");
+//                        String security = intent.getStringExtra("security");
                         String gender = selectedGender;
                         String location = selectedCountry;
                         String DOB = selectedDOB;
@@ -321,10 +331,10 @@ public class ActivitySetupProfile extends FragmentActivity implements View.OnCli
 
 
                         System.out.println("name : " + name);
-                        System.out.println("username : "+ username);
+//                        System.out.println("email : "+ username);
                         System.out.println("email : "+ email);
                         System.out.println("password : "+ password);
-                        System.out.println("security : "+ security);
+//                        System.out.println("security : "+ security);
                         System.out.println("gender : "+ gender);
                         System.out.println("location : "+ location);
                         System.out.println("DOB : "+ DOB);
@@ -333,10 +343,10 @@ public class ActivitySetupProfile extends FragmentActivity implements View.OnCli
                         System.out.println("careerLevel : "+ careerLevel);
 
                         player.setName(name);
-                        player.setUsername(username);
+//                        player.setUsername(username);
                         player.setEmail(email);
                         player.setPassword(password);
-                        player.setSecurity(security);
+//                        player.setSecurity(security);
                         player.setGender(gender);
                         player.setLocation(location);
                         player.setDOB(DOB);
@@ -353,30 +363,33 @@ public class ActivitySetupProfile extends FragmentActivity implements View.OnCli
                         player.setLastBowlAngle("0");
 
 
-                        saveImage(getApplicationContext(),bitmapImage,username,"jpeg");
+                        saveImage(getApplicationContext(),bitmapImage,email,"jpeg");
 
 
 
 
 
 
-                        //helper.addEntry(username,dbBitmapUtility.getBytes(bitmapImage));
+
+//                        userRef.child("name").setValue(player);
+//                        userRef.child("name").child("values").setValue(player);
+                        //helper.addEntry(email,dbBitmapUtility.getBytes(bitmapImage));
 
 
 
                         helper.insertPlayerStats(player);
                         helper.insertPlayer(player);
 
-                        helper.insertPlayerAngleValues(player.getUsername(),"");
-                        helper.insertPlayerActionTimeValues(player.getUsername(),"");
-                        helper.insertPlayerForceValues(player.getUsername(),"");
-                        helper.insertPlayerArmTwistValues(player.getUsername(),"");
+                        helper.insertPlayerAngleValues(player.getEmail(),"");
+                        helper.insertPlayerActionTimeValues(player.getEmail(),"");
+                        helper.insertPlayerForceValues(player.getEmail(),"");
+                        helper.insertPlayerArmTwistValues(player.getEmail(),"");
 
 
-                        helper.insertPlayerAngleValuesWithDate(player.getUsername(),"","");
-                        helper.insertPlayerActionTimeValuesWithDate(player.getUsername(),"","");
-                        helper.insertPlayerForceValuesWithDate(player.getUsername(),"","");
-                        helper.insertPlayerArmTwistValuesWithDate(player.getUsername(),"","");
+                        helper.insertPlayerAngleValuesWithDate(player.getEmail(),"","");
+                        helper.insertPlayerActionTimeValuesWithDate(player.getEmail(),"","");
+                        helper.insertPlayerForceValuesWithDate(player.getEmail(),"","");
+                        helper.insertPlayerArmTwistValuesWithDate(player.getEmail(),"","");
 
 
                         Toast toast = Toast.makeText(ActivitySetupProfile.this, "Registered Account!" , Toast.LENGTH_SHORT);
@@ -979,5 +992,20 @@ public void show(){
         return super.dispatchTouchEvent( event );
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
 
+        userRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+//               Player p = dataSnapshot.getClass();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
 }

@@ -34,43 +34,40 @@ public class FragmentProfile extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        String username = "";
+        String email = "";
         Bundle bundle = this.getArguments();
         if (bundle != null) {
-            username = bundle.getString("username", "not sent");
+            email = bundle.getString("email", "not sent");
         }
 
 
 
 
         TextView pv_name = (TextView)rootView.findViewById(R.id.pv_name);
-        pv_name.setText(helper.getName(username));
+        pv_name.setText(helper.getName(email));
 
         TextView pv_username = (TextView)rootView.findViewById(R.id.pv_username);
-        pv_username.setText(username);
+        pv_username.setText(email);
 
         TextView pv_bowling_style = (TextView)rootView.findViewById(R.id.pv_bowling_style);
-        pv_bowling_style.setText(helper.getBowlingStyle(username));
+        pv_bowling_style.setText(helper.getBowlingStyle(email));
 
         TextView pv_career_level = (TextView)rootView.findViewById(R.id.pv_career_level);
-        pv_career_level.setText(helper.getCareerLevel(username));
+        pv_career_level.setText(helper.getCareerLevel(email));
 
 
         TextView pv_gender = (TextView)rootView.findViewById(R.id.pv_gender);
-        pv_gender.setText(helper.getGender(username));
+        pv_gender.setText(helper.getGender(email));
 
         TextView pv_location = (TextView)rootView.findViewById(R.id.pv_location);
-        pv_location.setText(helper.getLocation(username));
-
-        TextView pv_email = (TextView)rootView.findViewById(R.id.pv_email);
-        pv_email.setText(helper.getEmail(username));
+        pv_location.setText(helper.getLocation(email));
 
         TextView pv_DOB = (TextView)rootView.findViewById(R.id.pv_dateofbirth);
-        String DOB = helper.getDOB(username);
+        String DOB = helper.getDOB(email);
         pv_DOB.setText(DOB);
 
         TextView pv_weight = (TextView)rootView.findViewById(R.id.pv_weight);
-        String weight = helper.getWeight(username) + " kg";
+        String weight = helper.getWeight(email) + " kg";
         pv_weight.setText(weight);
 
 
@@ -89,11 +86,11 @@ public class FragmentProfile extends Fragment {
 
 
         CircleImageView circleImageView = (CircleImageView) rootView.findViewById(R.id.profilepicture);
-        //Bitmap bitmapImage1 = helper.getImage(username);
+        //Bitmap bitmapImage1 = helper.getImage(email);
 
         //circleImageView.setImageBitmap(bitmapImage1);
 
-        Bitmap b = getImageBitmap(this.getActivity(),username,"jpeg");
+        Bitmap b = getImageBitmap(this.getActivity(),email,"jpeg");
         circleImageView.setImageBitmap(b);
 
 

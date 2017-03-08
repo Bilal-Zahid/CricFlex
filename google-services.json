@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "356227795165",
+    "firebase_url": "https://cricflex-f23cc.firebaseio.com",
+    "project_id": "cricflex-f23cc",
+    "storage_bucket": "cricflex-f23cc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:356227795165:android:4ec178141d62e2ce",
+        "android_client_info": {
+          "package_name": "com.example.cricflex"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "356227795165-pipsbbgmarnd7eau8bveunoha36cnj32.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvUjJPrBwkZ-njNz2Q5Y-Df5b19OcHdE8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
