@@ -1,6 +1,222 @@
 [
     {
-        "merged": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\design_layout_snackbar.xml",
-        "source": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.1.0\\res\\layout-sw600dp-v13\\design_layout_snackbar.xml"
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\help_popup_7.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\help_popup_7.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\activity_graph.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\activity_graph.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\activity_profile_setup2.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\activity_profile_setup2.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\activity_graph2.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\activity_graph2.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\fragment_profile.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\fragment_profile.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\activity_forgot_password2.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\activity_forgot_password2.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\fragment_about.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\fragment_about.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\screen_gridcell.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\screen_gridcell.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\activity_forgot_password1.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\activity_forgot_password1.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\activity_calibrate1.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\activity_calibrate1.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\fragment_training.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\fragment_training.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\fragment_home.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\fragment_home.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\welcome_slide4.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\welcome_slide4.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\drawer_list_item.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\drawer_list_item.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\fragment_awards.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\fragment_awards.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\help_popup_1.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\help_popup_1.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\test_fragment_history.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\test_fragment_history.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\activity_calibrate2.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\activity_calibrate2.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\welcome_slide3.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\welcome_slide3.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\calendar_view.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\calendar_view.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\test_asawal.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\test_asawal.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\activity_register.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\activity_register.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\fragment_friends.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\fragment_friends.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\activity_main.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\activity_login.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\activity_login.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\fragment_help.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\fragment_help.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\activity_session_graph.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\activity_session_graph.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\activity_welcome.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\activity_welcome.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\help_popup_3.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\help_popup_3.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\help_popup_6.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\help_popup_6.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\activity_session_graphs.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\activity_session_graphs.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\activity_forgot_password3.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\activity_forgot_password3.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\tab_fragment_1.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\tab_fragment_1.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\activity_graph4.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\activity_graph4.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\spiner_item.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\spiner_item.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\help_popup_4.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\help_popup_4.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\activity_graph5.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\activity_graph5.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\welcome_slide2.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\welcome_slide2.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\activity_calibrate4.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\activity_calibrate4.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\welcome_slide1.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\welcome_slide1.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\activity_splash.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\activity_splash.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\tab_fragment_2.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\tab_fragment_2.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\design_layout_snackbar.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.1.0\\res\\layout-sw600dp-v13\\design_layout_snackbar.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\activity_monitor2.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\activity_monitor2.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\activity_edit_profile.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\activity_edit_profile.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\view_custom_progress_dialog.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\view_custom_progress_dialog.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\activity_graph3.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\activity_graph3.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\help_popup_5.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\help_popup_5.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\activity_profile_setup1.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\activity_profile_setup1.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\test.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\test.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\activity_session_stats.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\activity_session_stats.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\help_popup_2.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\help_popup_2.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\activity_calibrate3.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\activity_calibrate3.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\fragment_history.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\fragment_history.xml"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\dropdown_item.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\layout-sw600dp\\dropdown_item.xml"
     }
 ]

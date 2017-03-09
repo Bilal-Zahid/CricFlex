@@ -35,6 +35,8 @@
 
     </LinearLayout>
 
+
+
     <LinearLayout
         android:id="@+id/tile_angle"
         android:layout_width="0dp"
@@ -72,7 +74,11 @@
             android:textColor="@color/session_desc_text"
             />
 
+
+
     </LinearLayout>
+
+
     <LinearLayout
         android:id="@+id/tile_force"
         android:layout_width="0dp"

@@ -377,19 +377,19 @@ public class ActivitySetupProfile extends FragmentActivity implements View.OnCli
 
 
 
-                        helper.insertPlayerStats(player);
-                        helper.insertPlayer(player);
+                        helper.changePlayerInfo(player);
+//                        helper.insertPlayer(player);
 
-                        helper.insertPlayerAngleValues(player.getEmail(),"");
-                        helper.insertPlayerActionTimeValues(player.getEmail(),"");
-                        helper.insertPlayerForceValues(player.getEmail(),"");
-                        helper.insertPlayerArmTwistValues(player.getEmail(),"");
-
-
-                        helper.insertPlayerAngleValuesWithDate(player.getEmail(),"","");
-                        helper.insertPlayerActionTimeValuesWithDate(player.getEmail(),"","");
-                        helper.insertPlayerForceValuesWithDate(player.getEmail(),"","");
-                        helper.insertPlayerArmTwistValuesWithDate(player.getEmail(),"","");
+//                        helper.insertPlayerAngleValues(player.getEmail(),"");
+//                        helper.insertPlayerActionTimeValues(player.getEmail(),"");
+//                        helper.insertPlayerForceValues(player.getEmail(),"");
+//                        helper.insertPlayerArmTwistValues(player.getEmail(),"");
+//
+//
+//                        helper.insertPlayerAngleValuesWithDate(player.getEmail(),"","");
+//                        helper.insertPlayerActionTimeValuesWithDate(player.getEmail(),"","");
+//                        helper.insertPlayerForceValuesWithDate(player.getEmail(),"","");
+//                        helper.insertPlayerArmTwistValuesWithDate(player.getEmail(),"","");
 
 
                         Toast toast = Toast.makeText(ActivitySetupProfile.this, "Registered Account!" , Toast.LENGTH_SHORT);

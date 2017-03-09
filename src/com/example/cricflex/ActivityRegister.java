@@ -114,10 +114,10 @@ public class ActivityRegister extends Activity{
                     Toast.makeText(ActivityRegister.this, "Invalid Email Address", Toast.LENGTH_SHORT).show();
                     return;
                 }
-//                if(!helper.getPassword(usernamestr).equals("not found")){
-//                    Toast.makeText(ActivityRegister.this, "Username Already Exists", Toast.LENGTH_SHORT).show();
-//                    return;
-//                }
+                if(!helper.getPassword(emailstr).equals("not found")){
+                    Toast.makeText(ActivityRegister.this, "Email Already Exists", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 //                if(usernamestr.contains(" ")){
 //                    final Toast toast = Toast.makeText(ActivityRegister.this, "Username cannot contain spaces" , Toast.LENGTH_SHORT);
 //                    toast.show();
@@ -177,35 +177,107 @@ public class ActivityRegister extends Activity{
 
 
 //firebase
-//                progressDialog.setMessage("Registering User: ");
-//                progressDialog.show();
-//
-//                firebaseAuth.createUserWithEmailAndPassword(emailstr,passwordstr)
-//                        .addOnCompleteListener(ActivityRegister.this, new OnCompleteListener<AuthResult>() {
-//                            @Override
-//                            public void onComplete(@NonNull Task<AuthResult> task) {
-//                                if(task.isSuccessful()){
-//                                    //user is successfully registered
-//                                    Toast.makeText(ActivityRegister.this,"Registered Successfully on firebase",Toast.LENGTH_SHORT).show();
-//                                }
-//                                else{
-//                                    Toast.makeText(ActivityRegister.this,"Unable to register on firebase",Toast.LENGTH_SHORT).show();
-//
-//                                }
-//                            }
-//                        });
+                progressDialog.setMessage("Registering User: ");
+                progressDialog.show();
+
+                firebaseAuth.createUserWithEmailAndPassword(emailstr,passwordstr)
+                        .addOnCompleteListener(ActivityRegister.this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if(task.isSuccessful()){
+                                    //user is successfully registered
+                                    progressDialog.dismiss();
+                                    Toast.makeText(ActivityRegister.this,"Registered Successfully on firebase",Toast.LENGTH_SHORT).show();
 
 
 
 
-                Intent intent = new Intent(ActivityRegister.this, ActivitySetupProfile.class);
-                intent.putExtra("name",namestr);
+                                    Player player = new Player();
+                                    player.setName(namestr);
+//                        player.setUsername(username);
+                                    player.setEmail(emailstr);
+                                    player.setPassword(passwordstr);
+//                        player.setSecurity(security);
+                                    player.setGender("male");
+                                    player.setLocation("Pakistan");
+                                    player.setDOB("01-01-2000");
+                                    player.setBowlingArm("Left");
+                                    player.setBowlingStyle("Left Arm Fast");
+                                    player.setCareerLevel("Club");
+                                    player.setWeight("100");
+
+
+                                    player.setLegalBowls("0");
+                                    player.setIllegalBowls("0");
+                                    player.setAverageAngle("0");
+                                    player.setLongestStreak("0");
+                                    player.setLastBowlAngle("0");
+
+
+//                                    saveImage(getApplicationContext(),bitmapImage,email,"jpeg");
+
+
+
+
+
+
+
+//                        userRef.child("name").setValue(player);
+//                        userRef.child("name").child("values").setValue(player);
+                                    //helper.addEntry(email,dbBitmapUtility.getBytes(bitmapImage));
+
+
+
+                                    helper.insertPlayerStats(player);
+                                    helper.insertPlayer(player);
+
+                                    helper.insertPlayerAngleValues(player.getEmail(),"");
+                                    helper.insertPlayerActionTimeValues(player.getEmail(),"");
+                                    helper.insertPlayerForceValues(player.getEmail(),"");
+                                    helper.insertPlayerArmTwistValues(player.getEmail(),"");
+
+
+                                    helper.insertPlayerAngleValuesWithDate(player.getEmail(),"","");
+                                    helper.insertPlayerActionTimeValuesWithDate(player.getEmail(),"","");
+                                    helper.insertPlayerForceValuesWithDate(player.getEmail(),"","");
+                                    helper.insertPlayerArmTwistValuesWithDate(player.getEmail(),"","");
+
+
+
+
+
+                                    Intent intent = new Intent(ActivityRegister.this, ActivitySetupProfile.class);
+                                    intent.putExtra("name",namestr);
 //                intent.putExtra("email", usernamestr);
-                intent.putExtra("email", emailstr);
-                intent.putExtra("password", passwordstr);
+                                    intent.putExtra("email", emailstr);
+                                    intent.putExtra("password", passwordstr);
 //                intent.putExtra("security", securitystr);
 //                Intent intent = new Intent(ActivityRegister.this, ActivityLogin.class);
-                startActivity(intent);
+                                    startActivity(intent);
+//                                    Intent intent = new Intent(ActivityRegister.this, ActivityLogin.class);
+//                                    startActivity(intent);
+                                    finish();
+                                }
+                                else{
+                                    progressDialog.dismiss();
+
+                                    Toast.makeText(ActivityRegister.this, task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+
+                                }
+                            }
+                        });
+
+
+
+
+//                Intent intent = new Intent(ActivityRegister.this, ActivitySetupProfile.class);
+//                intent.putExtra("name",namestr);
+////                intent.putExtra("email", usernamestr);
+//                intent.putExtra("email", emailstr);
+//                intent.putExtra("password", passwordstr);
+////                intent.putExtra("security", securitystr);
+////                Intent intent = new Intent(ActivityRegister.this, ActivityLogin.class);
+//                startActivity(intent);
             }
         });
 

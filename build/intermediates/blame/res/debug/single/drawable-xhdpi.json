@@ -1,98 +1,118 @@
 [
     {
-        "merged": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\three_line_icon.png",
-        "source": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\three_line_icon.png"
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\award_icon.png",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\award_icon.png"
     },
     {
-        "merged": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\tour_icon.png",
-        "source": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\tour_icon.png"
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\security_icon.png",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\security_icon.png"
     },
     {
-        "merged": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\settings_icon.png",
-        "source": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\settings_icon.png"
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_launcher.png",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\drawable-xhdpi\\ic_launcher.png"
     },
     {
-        "merged": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\help_icon.png",
-        "source": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\help_icon.png"
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\three_line_icon.png",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\three_line_icon.png"
     },
     {
-        "merged": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\history_icon.png",
-        "source": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\history_icon.png"
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\coach_icon.png",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\coach_icon.png"
     },
     {
-        "merged": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\homebutton1.png",
-        "source": "C:\\CricFlex\\Others\\Apps\\CricFlex\\res\\drawable-xhdpi\\homebutton1.png"
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\friends_icon.png",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\friends_icon.png"
     },
     {
-        "merged": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\previous_small_icon.png",
-        "source": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\previous_small_icon.png"
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\nextdouble_small_icon.png",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\nextdouble_small_icon.png"
     },
     {
-        "merged": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_launcher.png",
-        "source": "C:\\CricFlex\\Others\\Apps\\CricFlex\\res\\drawable-xhdpi\\ic_launcher.png"
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\settings_icon.png",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\settings_icon.png"
     },
     {
-        "merged": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\calibration_icon.png",
-        "source": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\calibration_icon.png"
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\email_icon.png",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\email_icon.png"
     },
     {
-        "merged": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\email_icon.png",
-        "source": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\email_icon.png"
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\previousdouble_small_icon.png",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\previousdouble_small_icon.png"
     },
     {
-        "merged": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\coach_icon.png",
-        "source": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\coach_icon.png"
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\overflow_icon.png",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\overflow_icon.png"
     },
     {
-        "merged": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\friends_icon.png",
-        "source": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\friends_icon.png"
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\profile_icon.png",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\profile_icon.png"
     },
     {
-        "merged": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\logout_icon.png",
-        "source": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\logout_icon.png"
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\graph_icon.png",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\graph_icon.png"
     },
     {
-        "merged": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\profile_icon.png",
-        "source": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\profile_icon.png"
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\previous_small_icon.png",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\previous_small_icon.png"
     },
     {
-        "merged": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\password_icon.png",
-        "source": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\password_icon.png"
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\help_icon.png",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\help_icon.png"
     },
     {
-        "merged": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\home_icon.png",
-        "source": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\home_icon.png"
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\calendar_icon.png",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\calendar_icon.png"
     },
     {
-        "merged": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\security_icon.png",
-        "source": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\security_icon.png"
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\password_icon.png",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\password_icon.png"
     },
     {
-        "merged": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\next_small_icon.png",
-        "source": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\next_small_icon.png"
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\logout_icon.png",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\logout_icon.png"
     },
     {
-        "merged": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\nextdouble_small_icon.png",
-        "source": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\nextdouble_small_icon.png"
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\circle_icon.png",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\circle_icon.png"
     },
     {
-        "merged": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\award_icon.png",
-        "source": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\award_icon.png"
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\next_small_icon.png",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\next_small_icon.png"
     },
     {
-        "merged": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\previousdouble_small_icon.png",
-        "source": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\previousdouble_small_icon.png"
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\history_icon.png",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\history_icon.png"
     },
     {
-        "merged": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\overflow_icon.png",
-        "source": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\overflow_icon.png"
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\tour_icon.png",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\tour_icon.png"
     },
     {
-        "merged": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\calendar_icon.png",
-        "source": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\calendar_icon.png"
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\battery_icon.png",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\battery_icon.png"
     },
     {
-        "merged": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\about_icon.png",
-        "source": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\about_icon.png"
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\bluetooth_connected_icon.png",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\bluetooth_connected_icon.png"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\calibration_icon.png",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\calibration_icon.png"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\homebutton1.png",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\drawable-xhdpi\\homebutton1.png"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\about_icon.png",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\about_icon.png"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\bluetooth_disconnected_icon.png",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\bluetooth_disconnected_icon.png"
+    },
+    {
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\home_icon.png",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\home_icon.png"
     }
 ]

@@ -1,211 +1,367 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:2:1-87:12
+ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:2:1-90:12
 	package
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:3:5-35
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:3:5-35
 	android:versionName
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:5:5-30
-		INJECTED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml
-		INJECTED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:5:5-30
+		INJECTED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml
+		INJECTED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml
 	android:versionCode
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:4:5-28
-		INJECTED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml
-		INJECTED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:4:5-28
+		INJECTED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml
+		INJECTED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml
 	xmlns:android
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:2:11-69
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:2:11-69
 uses-sdk
-ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:7:5-9:41
-MERGED from [com.android.support:design:25.1.0] C:\CricFlex\Others\Apps\CricFlex\build\intermediates\exploded-aar\com.android.support\design\25.1.0\AndroidManifest.xml:21:5-23:62
-MERGED from [com.android.support:appcompat-v7:25.1.0] C:\CricFlex\Others\Apps\CricFlex\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.1.0\AndroidManifest.xml:21:5-23:78
-MERGED from [com.android.support:animated-vector-drawable:25.1.0] C:\CricFlex\Others\Apps\CricFlex\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.1.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:25.1.0] C:\CricFlex\Others\Apps\CricFlex\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.1.0\AndroidManifest.xml:21:5-43
-MERGED from [com.android.support:recyclerview-v7:25.1.0] C:\CricFlex\Others\Apps\CricFlex\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\25.1.0\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:transition:25.1.0] C:\CricFlex\Others\Apps\CricFlex\build\intermediates\exploded-aar\com.android.support\transition\25.1.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:percent:25.1.0] C:\CricFlex\Others\Apps\CricFlex\build\intermediates\exploded-aar\com.android.support\percent\25.1.0\AndroidManifest.xml:20:5-43
-MERGED from [com.github.mukeshsolanki:country-picker-android:1.1.7] C:\CricFlex\Others\Apps\CricFlex\build\intermediates\exploded-aar\com.github.mukeshsolanki\country-picker-android\1.1.7\AndroidManifest.xml:8:5-10:41
-MERGED from [com.android.support:support-v4:25.1.0] C:\CricFlex\Others\Apps\CricFlex\build\intermediates\exploded-aar\com.android.support\support-v4\25.1.0\AndroidManifest.xml:21:5-23:54
-MERGED from [com.android.support:support-fragment:25.1.0] C:\CricFlex\Others\Apps\CricFlex\build\intermediates\exploded-aar\com.android.support\support-fragment\25.1.0\AndroidManifest.xml:21:5-23:60
-MERGED from [com.android.support:support-media-compat:25.1.0] C:\CricFlex\Others\Apps\CricFlex\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.1.0\AndroidManifest.xml:21:5-23:63
-MERGED from [com.android.support:support-core-ui:25.1.0] C:\CricFlex\Others\Apps\CricFlex\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.1.0\AndroidManifest.xml:21:5-23:58
-MERGED from [com.android.support:support-core-utils:25.1.0] C:\CricFlex\Others\Apps\CricFlex\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.1.0\AndroidManifest.xml:21:5-23:61
-MERGED from [com.android.support:support-compat:25.1.0] C:\CricFlex\Others\Apps\CricFlex\build\intermediates\exploded-aar\com.android.support\support-compat\25.1.0\AndroidManifest.xml:21:5-23:58
+ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:design:25.1.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\design\25.1.0\AndroidManifest.xml:21:5-23:62
+MERGED from [com.android.support:appcompat-v7:25.1.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.1.0\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:animated-vector-drawable:25.1.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.1.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:25.1.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.1.0\AndroidManifest.xml:21:5-43
+MERGED from [com.android.support:recyclerview-v7:25.1.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\25.1.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:transition:25.1.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\transition\25.1.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:percent:25.1.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\percent\25.1.0\AndroidManifest.xml:20:5-43
+MERGED from [com.github.mukeshsolanki:country-picker-android:1.1.7] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.github.mukeshsolanki\country-picker-android\1.1.7\AndroidManifest.xml:8:5-10:41
+MERGED from [com.google.firebase:firebase-auth:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-auth\9.4.0\AndroidManifest.xml:18:5-43
+MERGED from [com.google.firebase:firebase-auth-common:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-auth-common\9.4.0\AndroidManifest.xml:18:5-43
+MERGED from [com.google.firebase:firebase-auth-module:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-auth-module\9.4.0\AndroidManifest.xml:4:5-43
+MERGED from [com.google.firebase:firebase-database:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-database\9.4.0\AndroidManifest.xml:5:5-43
+MERGED from [com.google.firebase:firebase-database-connection:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-database-connection\9.4.0\AndroidManifest.xml:5:5-43
+MERGED from [com.google.android.gms:play-services-base:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\9.4.0\AndroidManifest.xml:18:5-42
+MERGED from [com.google.firebase:firebase-core:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-core\9.4.0\AndroidManifest.xml:4:5-42
+MERGED from [com.google.firebase:firebase-analytics:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\9.4.0\AndroidManifest.xml:18:5-42
+MERGED from [com.google.firebase:firebase-analytics-impl:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics-impl\9.4.0\AndroidManifest.xml:18:5-42
+MERGED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:18:5-42
+MERGED from [com.google.firebase:firebase-common:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-common\9.4.0\AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-tasks:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.android.gms\play-services-tasks\9.4.0\AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-basement:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\9.4.0\AndroidManifest.xml:18:5-42
+MERGED from [com.android.support:support-v4:25.1.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\support-v4\25.1.0\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:25.1.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\support-fragment\25.1.0\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-media-compat:25.1.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.1.0\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-ui:25.1.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.1.0\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-utils:25.1.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.1.0\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-compat:25.1.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\support-compat\25.1.0\AndroidManifest.xml:21:5-23:58
 	tools:overrideLibrary
-		ADDED from [com.android.support:design:25.1.0] C:\CricFlex\Others\Apps\CricFlex\build\intermediates\exploded-aar\com.android.support\design\25.1.0\AndroidManifest.xml:23:9-59
+		ADDED from [com.android.support:design:25.1.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\design\25.1.0\AndroidManifest.xml:23:9-59
 	android:targetSdkVersion
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:9:9-38
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:9:9-38
 	android:minSdkVersion
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:8:9-35
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:8:9-35
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:11:5-81
+ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:11:5-81
 	android:name
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:11:22-78
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:11:22-78
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
-ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:12:5-80
+ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:12:5-80
 	android:name
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:12:22-77
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:12:22-77
 uses-permission#android.permission.BLUETOOTH
-ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:13:5-68
+ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:13:5-68
 	android:name
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:13:22-65
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:13:22-65
 uses-permission#android.permission.BLUETOOTH_ADMIN
-ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:14:5-74
+ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:14:5-74
 	android:name
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:14:22-71
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:14:22-71
+uses-permission#android.permission.INTERNET
+ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:16:5-67
+MERGED from [com.google.firebase:firebase-analytics:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\9.4.0\AndroidManifest.xml:21:5-67
+MERGED from [com.google.firebase:firebase-analytics-impl:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics-impl\9.4.0\AndroidManifest.xml:21:5-67
+MERGED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:21:5-67
+	android:name
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:16:22-64
 uses-feature#android.hardware.camera.front
-ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:17:5-19:36
+ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:18:5-20:36
 	android:required
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:19:9-33
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:20:9-33
 	android:name
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:18:9-53
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:19:9-53
 uses-feature#android.hardware.bluetooth_le
-ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:20:5-22:35
+ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:21:5-23:35
 	android:required
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:22:9-32
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:23:9-32
 	android:name
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:21:9-53
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:22:9-53
 application
-ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:25:5-85:19
-MERGED from [com.android.support:design:25.1.0] C:\CricFlex\Others\Apps\CricFlex\build\intermediates\exploded-aar\com.android.support\design\25.1.0\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:appcompat-v7:25.1.0] C:\CricFlex\Others\Apps\CricFlex\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.1.0\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:animated-vector-drawable:25.1.0] C:\CricFlex\Others\Apps\CricFlex\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.1.0\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-vector-drawable:25.1.0] C:\CricFlex\Others\Apps\CricFlex\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.1.0\AndroidManifest.xml:23:5-20
-MERGED from [com.android.support:transition:25.1.0] C:\CricFlex\Others\Apps\CricFlex\build\intermediates\exploded-aar\com.android.support\transition\25.1.0\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:percent:25.1.0] C:\CricFlex\Others\Apps\CricFlex\build\intermediates\exploded-aar\com.android.support\percent\25.1.0\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-v4:25.1.0] C:\CricFlex\Others\Apps\CricFlex\build\intermediates\exploded-aar\com.android.support\support-v4\25.1.0\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-fragment:25.1.0] C:\CricFlex\Others\Apps\CricFlex\build\intermediates\exploded-aar\com.android.support\support-fragment\25.1.0\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-media-compat:25.1.0] C:\CricFlex\Others\Apps\CricFlex\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.1.0\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-core-ui:25.1.0] C:\CricFlex\Others\Apps\CricFlex\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.1.0\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-core-utils:25.1.0] C:\CricFlex\Others\Apps\CricFlex\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.1.0\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-compat:25.1.0] C:\CricFlex\Others\Apps\CricFlex\build\intermediates\exploded-aar\com.android.support\support-compat\25.1.0\AndroidManifest.xml:25:5-20
+ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:26:5-88:19
+MERGED from [com.android.support:design:25.1.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\design\25.1.0\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:appcompat-v7:25.1.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.1.0\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:animated-vector-drawable:25.1.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.1.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-vector-drawable:25.1.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.1.0\AndroidManifest.xml:23:5-20
+MERGED from [com.android.support:transition:25.1.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\transition\25.1.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:percent:25.1.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\percent\25.1.0\AndroidManifest.xml:22:5-20
+MERGED from [com.google.firebase:firebase-auth:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-auth\9.4.0\AndroidManifest.xml:20:5-21:19
+MERGED from [com.google.firebase:firebase-auth-common:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-auth-common\9.4.0\AndroidManifest.xml:20:5-21:19
+MERGED from [com.google.android.gms:play-services-base:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\9.4.0\AndroidManifest.xml:19:5-23:19
+MERGED from [com.google.firebase:firebase-core:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-core\9.4.0\AndroidManifest.xml:5:5-20
+MERGED from [com.google.firebase:firebase-analytics:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\9.4.0\AndroidManifest.xml:26:5-41:19
+MERGED from [com.google.firebase:firebase-analytics-impl:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics-impl\9.4.0\AndroidManifest.xml:26:5-41:19
+MERGED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:30:5-59:19
+MERGED from [com.google.firebase:firebase-common:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-common\9.4.0\AndroidManifest.xml:5:5-12:19
+MERGED from [com.google.android.gms:play-services-tasks:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.android.gms\play-services-tasks\9.4.0\AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-basement:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\9.4.0\AndroidManifest.xml:20:5-24:19
+MERGED from [com.android.support:support-v4:25.1.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\support-v4\25.1.0\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-fragment:25.1.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\support-fragment\25.1.0\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-media-compat:25.1.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.1.0\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-ui:25.1.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.1.0\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-utils:25.1.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.1.0\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-compat:25.1.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\support-compat\25.1.0\AndroidManifest.xml:25:5-20
 	android:label
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:28:9-41
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:29:9-41
 	android:allowBackup
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:26:9-35
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:27:9-35
 	android:icon
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:27:9-49
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:28:9-49
 	android:theme
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:30:9-51
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:31:9-51
 	android:logo
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:29:9-49
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:30:9-49
 activity#com.example.cricflex.ActivitySplash
-ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:31:9-37:20
+ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:32:9-38:20
 	android:name
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:31:19-49
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:32:19-49
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:32:13-36:29
+ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:33:13-37:29
 action#android.intent.action.MAIN
-ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:33:17-69
+ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:34:17-69
 	android:name
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:33:25-66
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:34:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:35:17-77
+ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:36:17-77
 	android:name
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:35:27-74
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:36:27-74
 activity#com.example.cricflex.ActivityCalibrate
-ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:38:9-41:52
+ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:39:9-42:52
 	android:screenOrientation
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:41:13-49
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:42:13-49
 	android:label
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:40:13-37
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:41:13-37
 	android:name
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:39:13-46
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:40:13-46
 activity#com.example.cricflex.ActivitySetupProfile
-ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:42:9-45:52
+ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:43:9-46:52
 	android:screenOrientation
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:45:13-49
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:46:13-49
 	android:label
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:44:13-37
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:45:13-37
 	android:name
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:43:13-49
-activity#com.example.cricflex.ActivityWelcome
-ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:46:9-49:52
-	android:screenOrientation
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:49:13-49
-	android:label
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:48:13-37
-	android:name
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:47:13-44
-activity#com.example.cricflex.ActivityLogin
-ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:50:9-53:52
-	android:screenOrientation
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:53:13-49
-	android:label
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:52:13-37
-	android:name
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:51:13-42
-activity#com.example.cricflex.ActivityMain
-ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:54:9-58:56
-	android:screenOrientation
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:57:13-49
-	android:label
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:56:13-45
-	android:theme
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:58:13-53
-	android:name
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:55:13-41
-activity#com.example.cricflex.ActivityRegister
-ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:59:9-62:52
-	android:screenOrientation
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:62:13-49
-	android:label
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:61:13-45
-	android:name
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:60:13-45
-activity#com.example.cricflex.ActivityMonitor2
-ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:63:9-66:52
-	android:screenOrientation
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:66:13-49
-	android:label
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:65:13-45
-	android:name
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:64:13-45
-activity#com.example.cricflex.ActivityGraph
-ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:67:9-69:47
-	android:label
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:69:13-44
-	android:name
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:68:13-42
-service#com.example.cricflex.RFDService
-ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:71:9-47
-	android:name
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:71:18-44
-activity#com.example.cricflex.ActivityGraph3
-ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:73:9-52
-	android:name
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:73:19-49
-activity#com.example.cricflex.ActivityGraph4
-ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:74:9-52
-	android:name
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:74:19-49
-activity#com.example.cricflex.ActivityGraph5
-ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:75:9-52
-	android:name
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:75:19-49
-activity#com.example.cricflex.TestActivitySessionStats
-ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:76:9-62
-	android:name
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:76:19-59
-activity#com.example.cricflex.ActivitySessionGraphs
-ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:77:9-59
-	android:name
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:77:19-56
-activity#com.example.cricflex.TestActivitySetupProfile
-ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:78:9-62
-	android:name
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:78:19-59
-activity#com.example.cricflex.ActivitySessionStats
-ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:79:9-58
-	android:name
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:79:19-55
-activity#com.example.cricflex.ActivitySessionGraph
-ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:80:9-58
-	android:name
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:80:19-55
-activity#com.example.cricflex.ActivitySessionGraphActionTime
-ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:81:9-67
-	android:name
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:81:19-65
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:44:13-49
 activity#com.example.cricflex.ActivityEditProfile
-ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:82:9-56
+ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:47:9-50:52
+	android:screenOrientation
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:50:13-49
+	android:label
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:49:13-37
 	android:name
-		ADDED from C:\CricFlex\Others\Apps\CricFlex\AndroidManifest.xml:82:19-54
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:48:13-48
+activity#com.example.cricflex.ActivityWelcome
+ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:51:9-54:52
+	android:screenOrientation
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:54:13-49
+	android:label
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:53:13-37
+	android:name
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:52:13-44
+activity#com.example.cricflex.ActivityLogin
+ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:55:9-58:52
+	android:screenOrientation
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:58:13-49
+	android:label
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:57:13-37
+	android:name
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:56:13-42
+activity#com.example.cricflex.ActivityMain
+ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:59:9-63:56
+	android:screenOrientation
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:62:13-49
+	android:label
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:61:13-45
+	android:theme
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:63:13-53
+	android:name
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:60:13-41
+activity#com.example.cricflex.ActivityRegister
+ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:64:9-67:52
+	android:screenOrientation
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:67:13-49
+	android:label
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:66:13-45
+	android:name
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:65:13-45
+activity#com.example.cricflex.ActivityMonitor2
+ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:68:9-71:52
+	android:screenOrientation
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:71:13-49
+	android:label
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:70:13-45
+	android:name
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:69:13-45
+activity#com.example.cricflex.ActivityGraph
+ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:72:9-74:47
+	android:label
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:74:13-44
+	android:name
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:73:13-42
+service#com.example.cricflex.RFDService
+ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:76:9-47
+	android:name
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:76:18-44
+activity#com.example.cricflex.ActivityGraph3
+ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:78:9-52
+	android:name
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:78:19-49
+activity#com.example.cricflex.ActivityGraph4
+ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:79:9-52
+	android:name
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:79:19-49
+activity#com.example.cricflex.ActivityGraph5
+ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:80:9-52
+	android:name
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:80:19-49
+activity#com.example.cricflex.TestActivitySessionStats
+ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:81:9-62
+	android:name
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:81:19-59
+activity#com.example.cricflex.ActivitySessionGraphs
+ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:82:9-59
+	android:name
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:82:19-56
+activity#com.example.cricflex.test_asawal
+ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:83:9-49
+	android:name
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:83:19-46
+activity#com.example.cricflex.TestActivitySetupProfile
+ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:84:9-62
+	android:name
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:84:19-59
+activity#com.example.cricflex.ActivitySessionStats
+ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:85:9-58
+	android:name
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:85:19-55
+activity#com.example.cricflex.ActivitySessionGraph
+ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:86:9-58
+	android:name
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:86:19-55
+activity#com.example.cricflex.ActivitySessionGraphActionTime
+ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:87:9-67
+	android:name
+		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:87:19-65
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\9.4.0\AndroidManifest.xml:20:9-22:45
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\9.4.0\AndroidManifest.xml:22:19-43
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\9.4.0\AndroidManifest.xml:21:19-78
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\9.4.0\AndroidManifest.xml:20:19-85
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from [com.google.firebase:firebase-analytics:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\9.4.0\AndroidManifest.xml:22:5-79
+MERGED from [com.google.firebase:firebase-analytics-impl:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics-impl\9.4.0\AndroidManifest.xml:22:5-79
+MERGED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:20:5-79
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\9.4.0\AndroidManifest.xml:22:22-76
+uses-permission#android.permission.WAKE_LOCK
+ADDED from [com.google.firebase:firebase-analytics:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\9.4.0\AndroidManifest.xml:24:5-67
+MERGED from [com.google.firebase:firebase-analytics-impl:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics-impl\9.4.0\AndroidManifest.xml:24:5-67
+MERGED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:22:5-68
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\9.4.0\AndroidManifest.xml:24:22-65
+receiver#com.google.android.gms.measurement.AppMeasurementReceiver
+ADDED from [com.google.firebase:firebase-analytics:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\9.4.0\AndroidManifest.xml:28:7-34:18
+MERGED from [com.google.firebase:firebase-analytics-impl:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics-impl\9.4.0\AndroidManifest.xml:28:7-34:18
+	android:enabled
+		ADDED from [com.google.firebase:firebase-analytics:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\9.4.0\AndroidManifest.xml:30:11-33
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\9.4.0\AndroidManifest.xml:29:11-83
+intent-filter#com.google.android.gms.measurement.UPLOAD
+ADDED from [com.google.firebase:firebase-analytics:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\9.4.0\AndroidManifest.xml:31:9-33:25
+action#com.google.android.gms.measurement.UPLOAD
+ADDED from [com.google.firebase:firebase-analytics:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\9.4.0\AndroidManifest.xml:32:11-77
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\9.4.0\AndroidManifest.xml:32:19-75
+service#com.google.android.gms.measurement.AppMeasurementService
+ADDED from [com.google.firebase:firebase-analytics:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\9.4.0\AndroidManifest.xml:36:7-39:37
+MERGED from [com.google.firebase:firebase-analytics-impl:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics-impl\9.4.0\AndroidManifest.xml:36:7-39:37
+	android:enabled
+		ADDED from [com.google.firebase:firebase-analytics:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\9.4.0\AndroidManifest.xml:38:11-33
+	android:exported
+		ADDED from [com.google.firebase:firebase-analytics:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\9.4.0\AndroidManifest.xml:39:11-35
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\9.4.0\AndroidManifest.xml:37:11-82
+uses-permission#com.google.android.c2dm.permission.RECEIVE
+ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:23:5-82
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:23:22-79
+permission#${applicationId}.permission.C2D_MESSAGE
+ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:25:5-26:47
+	android:protectionLevel
+		ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:26:9-44
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:25:17-71
+		INJECTED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml
+uses-permission#${applicationId}.permission.C2D_MESSAGE
+ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:28:5-79
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:28:22-76
+		INJECTED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml
+receiver#com.google.firebase.iid.FirebaseInstanceIdReceiver
+ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:32:9-41:20
+	android:exported
+		ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:34:13-36
+	android:permission
+		ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:35:13-73
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:33:13-78
+intent-filter#${applicationId}+com.google.android.c2dm.intent.RECEIVE+com.google.android.c2dm.intent.REGISTRATION
+ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:36:13-40:29
+action#com.google.android.c2dm.intent.RECEIVE
+ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:37:17-81
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:37:25-78
+action#com.google.android.c2dm.intent.REGISTRATION
+ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:38:17-86
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:38:25-83
+category#${applicationId}
+ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:39:17-61
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:39:27-58
+		INJECTED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml
+receiver#com.google.firebase.iid.FirebaseInstanceIdInternalReceiver
+ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:45:9-47:40
+	android:exported
+		ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:47:13-37
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:46:13-86
+service#com.google.firebase.iid.FirebaseInstanceIdService
+ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:51:9-57:19
+	android:exported
+		ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:53:13-36
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:52:13-77
+intent-filter#com.google.firebase.INSTANCE_ID_EVENT
+ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:54:13-56:29
+	android:priority
+		ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:54:28-51
+action#com.google.firebase.INSTANCE_ID_EVENT
+ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:55:17-80
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:55:25-77
+provider#com.google.firebase.provider.FirebaseInitProvider
+ADDED from [com.google.firebase:firebase-common:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-common\9.4.0\AndroidManifest.xml:7:9-11:39
+	android:authorities
+		ADDED from [com.google.firebase:firebase-common:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-common\9.4.0\AndroidManifest.xml:8:13-72
+		INJECTED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml
+	android:exported
+		ADDED from [com.google.firebase:firebase-common:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-common\9.4.0\AndroidManifest.xml:10:13-37
+	android:initOrder
+		ADDED from [com.google.firebase:firebase-common:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-common\9.4.0\AndroidManifest.xml:11:13-36
+	android:name
+		ADDED from [com.google.firebase:firebase-common:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-common\9.4.0\AndroidManifest.xml:9:13-58
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\9.4.0\AndroidManifest.xml:21:9-23:69
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\9.4.0\AndroidManifest.xml:23:13-66
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\9.4.0\AndroidManifest.xml:22:13-58

@@ -1,51 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <instant-run
-    abi="armeabi-v7a,armeabi"
+    abi="arm64-v8a,armeabi-v7a,armeabi"
     api-level="23"
     density="xxhdpi"
     format="8"
     plugin-version="2.2.3"
-    timestamp="341985787329031"
-    token="-1685597212509240313"
-    verifier="COLD_SWAP_REQUESTED" >
+    timestamp="1214141616375598"
+    token="-3779755893907101547"
+    verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
-        duration="717" />
+        duration="0" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="52" />
+        duration="0" />
     <task
         name="verifier"
-        duration="11" />
+        duration="0" />
 
     <artifact
-        location="C:\CricFlex\Others\Apps\CricFlex\build\intermediates\transforms\dex\debug\folders\1000\5\slice_5\classes.dex"
-        type="DEX" />
+        location="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\outputs\apk\CricFlex-debug.apk"
+        type="MAIN" />
 
     <build
-        timestamp="341405375880070"
+        timestamp="1214141616375598"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
-            location="C:\CricFlex\Others\Apps\CricFlex\build\outputs\apk\CricFlex-debug.apk"
+            location="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\outputs\apk\CricFlex-debug.apk"
             type="MAIN" />
-    </build>
-    <build
-        timestamp="341919731618822"
-        verifier="COLD_SWAP_REQUESTED" >
-        <artifact
-            location="C:\CricFlex\Others\Apps\CricFlex\build\intermediates\instant-run-resources\resources-debug.ir.ap_"
-            type="RESOURCES" />
-    </build>
-    <build
-        timestamp="341985787329031"
-        verifier="COLD_SWAP_REQUESTED" >
-        <artifact
-            location="C:\CricFlex\Others\Apps\CricFlex\build\intermediates\transforms\dex\debug\folders\1000\5\slice_5\classes.dex"
-            type="DEX" />
     </build>
 
 </instant-run>

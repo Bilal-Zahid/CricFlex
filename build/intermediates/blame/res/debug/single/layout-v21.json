@@ -1,18 +1,18 @@
 [
     {
-        "merged": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_action_tombstone.xml",
-        "source": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout-v21\\notification_action_tombstone.xml"
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_action_tombstone.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout-v21\\notification_action_tombstone.xml"
     },
     {
-        "merged": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_template_icon_group.xml",
-        "source": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout-v21\\notification_template_icon_group.xml"
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_template_custom_big.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout-v21\\notification_template_custom_big.xml"
     },
     {
-        "merged": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_action.xml",
-        "source": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout-v21\\notification_action.xml"
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_action.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout-v21\\notification_action.xml"
     },
     {
-        "merged": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_template_custom_big.xml",
-        "source": "C:\\CricFlex\\Others\\Apps\\CricFlex\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout-v21\\notification_template_custom_big.xml"
+        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_template_icon_group.xml",
+        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\layout-v21\\notification_template_icon_group.xml"
     }
 ]

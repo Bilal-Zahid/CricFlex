@@ -245,6 +245,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+
+    public void changePlayerInfo(Player p) {
+        db = this.getReadableDatabase();
+//        String query = "select email, security from " + PLAYER_TABLE_NAME;
+        String query = "UPDATE " + PLAYER_TABLE_NAME + "  SET gender = '" + p.getGender() + "'"
+                + ", DOB = '" + p.getDOB() +"' " +
+                " , location = '" + p.getLocation() +"' " +
+                " , bowlingstyle = '" + p.getBowlingStyle() +"' " +
+                " , bowlingarm = '" + p.getBowlingArm() +"' " +
+                " , careerlevel = '" + p.getCareerLevel() +"' " +
+                " , weight = '" + p.getWeight() +"' " +
+                "WHERE email = '" + p.getEmail() + "'";
+        //db.rawQuery(query,null);
+        db.execSQL(query);
+        //boolean flag = true;
+        //return flag;
+        db.close();
+    }
+
+
+
+
     public void insertPlayerStats(Player p) {
         db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
