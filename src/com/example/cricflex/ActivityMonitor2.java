@@ -512,6 +512,7 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
 
 
             FirebaseUser user = firebaseAuth.getCurrentUser();
+            databaseReference.child("Metrics").child(user.getUid()).child("Email").setValue(email);
             databaseReference.child("Metrics").child(user.getUid()).child("Angle Values").setValue(ArrayListOfAngles);
             databaseReference.child("Metrics").child(user.getUid()).child("Force Values").setValue(ArrayListOfForces);
             databaseReference.child("Metrics").child(user.getUid()).child("Arm Twist Values").setValue(ArrayListOfArmTwist);
