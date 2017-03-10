@@ -38,6 +38,11 @@ import android.bluetooth.BluetoothGatt;
 import android.bluetooth.le.ScanFilter;
 import android.bluetooth.le.ScanSettings;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -187,6 +192,10 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
     String lastBallAngle;
 
 //    for history maintanance
+
+
+    private DatabaseReference databaseReference;
+    FirebaseAuth firebaseAuth;
 
 
     private final BroadcastReceiver bluetoothStateReceiver = new BroadcastReceiver() {
@@ -393,10 +402,124 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
             helper.changeForceValues(email,convertedArrayListOfForceToString);
 
 
+
+
+
+
+
             helper.changeAngleValuesWithDate(email,convertedArrayListOfAnglesToString,DateToStr);
             helper.changeArmTwistValuesWithDate(email,convertedArrayListOfArmTwistToString,DateToStr);
             helper.changeActionTimeValuesWithDate(email,convertedArrayListOfActionTimeToString,DateToStr);
             helper.changeForceValuesWithDate(email,convertedArrayListOfForceToString,DateToStr);
+
+
+
+
+            String angleValuesFromDatabase = helper.getAngleValues(email);
+            ArrayList<String> ArrayListOfAngles = new ArrayList<String>();
+            if(!angleValuesFromDatabase.equals("")) {
+//        getting previous array list from string
+                JSONObject jsonAngleValues = null;
+                try {
+                    jsonAngleValues = new JSONObject(angleValuesFromDatabase);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                JSONArray jsonArray = jsonAngleValues.optJSONArray("angleArray");
+                if (jsonArray != null) {
+                    int len = jsonArray.length();
+                    for (int i = 0; i < len; i++) {
+                        try {
+                            ArrayListOfAngles.add(jsonArray.get(i).toString());
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+
+
+            String forceValuesFromDatabase = helper.getForceValues(email);
+            ArrayList<String> ArrayListOfForces = new ArrayList<String>();
+            if(!forceValuesFromDatabase.equals("")) {
+//        getting previous array list from string
+                JSONObject jsonForceValues = null;
+                try {
+                    jsonForceValues = new JSONObject(forceValuesFromDatabase);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                JSONArray jsonArray = jsonForceValues.optJSONArray("forceArray");
+                if (jsonArray != null) {
+                    int len = jsonArray.length();
+                    for (int i = 0; i < len; i++) {
+                        try {
+                            ArrayListOfForces.add(jsonArray.get(i).toString());
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+
+            String actionTimeValuesFromDatabase = helper.getActionTimeValues(email);
+            ArrayList<String> ArrayListOfActionTime = new ArrayList<String>();
+            if(!actionTimeValuesFromDatabase.equals("")) {
+//        getting previous array list from string
+                JSONObject jsonActionTimeValues = null;
+                try {
+                    jsonActionTimeValues = new JSONObject(actionTimeValuesFromDatabase);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                JSONArray jsonArray = jsonActionTimeValues.optJSONArray("actionTimeArray");
+                if (jsonArray != null) {
+                    int len = jsonArray.length();
+                    for (int i = 0; i < len; i++) {
+                        try {
+                            ArrayListOfActionTime.add(jsonArray.get(i).toString());
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+
+            String armTwistFromDatabase = helper.getArmTwistValues(email);
+            ArrayList<String> ArrayListOfArmTwist = new ArrayList<String>();
+            if(!armTwistFromDatabase.equals("")) {
+//        getting previous array list from string
+                JSONObject jsonArmTwistValues = null;
+                try {
+                    jsonArmTwistValues = new JSONObject(armTwistFromDatabase);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                JSONArray jsonArray = jsonArmTwistValues.optJSONArray("armTwistArray");
+                if (jsonArray != null) {
+                    int len = jsonArray.length();
+                    for (int i = 0; i < len; i++) {
+                        try {
+                            ArrayListOfArmTwist.add(jsonArray.get(i).toString());
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+
+
+
+
+            FirebaseUser user = firebaseAuth.getCurrentUser();
+            databaseReference.child("Metrics").child(user.getUid()).child("Angle Values").setValue(ArrayListOfAngles);
+            databaseReference.child("Metrics").child(user.getUid()).child("Force Values").setValue(ArrayListOfForces);
+            databaseReference.child("Metrics").child(user.getUid()).child("Arm Twist Values").setValue(ArrayListOfArmTwist);
+            databaseReference.child("Metrics").child(user.getUid()).child("Action Time Values").setValue(ArrayListOfActionTime);
+
+
+
+
 
             helper.insertPlayerStats(playerStats);
             helper.changeStatLegalIllegal(playerStats.getEmail(), playerStats.getLegalBowls(), playerStats.getIllegalBowls());
@@ -560,6 +683,10 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
         int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
         decorView.setSystemUiVisibility(uiOptions);
 
+
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        databaseReference = FirebaseDatabase.getInstance().getReference();
 
 
         //initializelayoutitems();

@@ -179,13 +179,17 @@ public class ActivityRegister extends Activity{
 //firebase
                 progressDialog.setMessage("Registering User: ");
                 progressDialog.show();
+                progressDialog.setCancelable(false);
+                progressDialog.setCanceledOnTouchOutside(false);
 
                 firebaseAuth.createUserWithEmailAndPassword(emailstr,passwordstr)
                         .addOnCompleteListener(ActivityRegister.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
+
                                 if(task.isSuccessful()){
                                     //user is successfully registered
+
                                     progressDialog.dismiss();
                                     Toast.makeText(ActivityRegister.this,"Registered Successfully on firebase",Toast.LENGTH_SHORT).show();
 

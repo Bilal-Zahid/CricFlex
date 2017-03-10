@@ -11,6 +11,8 @@ import android.view.animation.AnimationSet;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 
+import com.google.firebase.database.FirebaseDatabase;
+
 /**
  * Created by Asawal on 8/9/2016.
  */
@@ -23,6 +25,7 @@ public class ActivitySplash extends Activity {
         setContentView(R.layout.activity_splash);
         getActionBar().hide();
 
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
 
         final ImageView image = (ImageView)findViewById(R.id.imageanim);
 

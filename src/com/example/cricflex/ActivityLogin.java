@@ -25,6 +25,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 
 public class ActivityLogin extends Activity {
 
@@ -47,6 +51,11 @@ public class ActivityLogin extends Activity {
 
     AutoCompleteTextView etEmail;
     EditText etPassword;
+
+    String emailstr;
+
+
+    private DatabaseReference databaseReference;
 
 
 
@@ -74,6 +83,9 @@ public class ActivityLogin extends Activity {
         setContentView(R.layout.activity_login);
 
 
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        databaseReference = FirebaseDatabase.getInstance().getReference();
 //        if(firebaseAuth.getCurrentUser()!=null){
 //            // profile activity
 //
@@ -81,7 +93,7 @@ public class ActivityLogin extends Activity {
 //            ActivityLogin.this.startActivity(i);
 //        }
 
-//        progressDialog = new ProgressDialog(this);
+        progressDialog = new ProgressDialog(this);
 //        firebaseAuth = FirebaseAuth.getInstance();
 
         etEmail = (AutoCompleteTextView) findViewById(R.id.lgn_username);
@@ -136,8 +148,8 @@ public class ActivityLogin extends Activity {
 
 
 
-//                userLogin();
-                final String emailstr = etEmail.getText().toString();
+//
+                emailstr = etEmail.getText().toString();
                 final String passwordstr = etPassword.getText().toString();
 
                 String password = helper.getPassword(emailstr);
@@ -149,14 +161,9 @@ public class ActivityLogin extends Activity {
                     //Toast message = Toast.makeText(ActivityLogin.this, "Right Password! ", Toast.LENGTH_SHORT);
                     //CharSequence text1 = password;
                     // text2 = passwordstr;
-                    Toast.makeText(ActivityLogin.this, "Signed In" ,
-                            Toast.LENGTH_SHORT).show();
 
-                    SaveSharedPreference.setEmail(ActivityLogin.this,emailstr);
-//                    SaveSharedPreference.setEmail(ActivityLogin.this,helper.getEmail(usernamestr));
-//
-                    Intent i = new Intent(ActivityLogin.this, ActivityMain.class);
-                    ActivityLogin.this.startActivity(i);
+                    userLogin();
+
                 }
                 else{
                     //Toast message = Toast.makeText(ActivityLogin.this, "Wrong Password! ", Toast.LENGTH_SHORT);
@@ -178,7 +185,7 @@ public class ActivityLogin extends Activity {
 
     private void userLogin() {
 
-        String email = etEmail.getText().toString().trim();
+        final String email = etEmail.getText().toString().trim();
         String password = etPassword.getText().toString().trim();
 
 
@@ -192,6 +199,8 @@ public class ActivityLogin extends Activity {
 
         progressDialog.setMessage("Signing In");
         progressDialog.show();
+        progressDialog.setCancelable(false);
+        progressDialog.setCanceledOnTouchOutside(false);
         firebaseAuth.signInWithEmailAndPassword(email,password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -202,9 +211,38 @@ public class ActivityLogin extends Activity {
                         if(task.isSuccessful()){
                             //logging in
 
-                            finish();
+
+                            Toast.makeText(ActivityLogin.this, "Signed In" ,
+                                    Toast.LENGTH_SHORT).show();
+
+                            SaveSharedPreference.setEmail(ActivityLogin.this,emailstr);
+//                    SaveSharedPreference.setEmail(ActivityLogin.this,helper.getEmail(usernamestr));
+//
+
+
+                            FirebaseUser user = firebaseAuth.getCurrentUser();
+
+                            Player player = new Player();
+
+                            player.setName(helper.getName(email));
+                            player.setGender(helper.getGender(email));
+                            player.setEmail(email);
+                            player.setWeight(helper.getWeight(email));
+                            player.setLocation(helper.getLocation(email));
+                            player.setDOB(helper.getDOB(email));
+                            player.setBowlingArm(helper.getBowlingArm(email));
+                            player.setBowlingStyle(helper.getBowlingStyle(email));
+                            player.setCareerLevel(helper.getCareerLevel(email));
+
+
+
+
+                            databaseReference.child("Users").child(user.getUid()).setValue(player);
+
                             Intent i = new Intent(ActivityLogin.this, ActivityMain.class);
                             ActivityLogin.this.startActivity(i);
+                            finish();
+
 
                         }
 
