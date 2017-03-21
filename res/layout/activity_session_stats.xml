@@ -9,7 +9,8 @@
         android:layout_height="fill_parent"
         android:scaleType="centerCrop"
         android:id="@+id/background"
-        android:src="@drawable/bkd21" />
+        android:src="@drawable/bkd21"
+        android:contentDescription="@string/content_desc_imageView"/>
 
     <LinearLayout
         android:id="@+id/header"
@@ -34,7 +35,6 @@
             />
 
     </LinearLayout>
-
 
 
     <LinearLayout

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:label="@string/setup_profile"
-    tools:context=".ActivitySetupProfile">
+    tools:context=".ActivityProfileSetup">
 
     <ImageView
         android:layout_width="fill_parent"
@@ -23,7 +23,7 @@
         android:layout_height="0dp"
         app:layout_heightPercent="20%"
         app:layout_widthPercent="100%"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="35dp"
         android:orientation="vertical"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true">

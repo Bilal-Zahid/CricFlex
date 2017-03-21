@@ -2,16 +2,12 @@ package com.example.cricflex;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -50,59 +46,26 @@ public class ActivityRegister extends Activity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        getActionBar().hide();
 
 
         setContentView(R.layout.activity_register);
         firebaseAuth = FirebaseAuth.getInstance();
         progressDialog = new ProgressDialog(this);
         pattern = Pattern.compile(EMAIL_PATTERN);
-/*
-        final EditText etName = (EditText) findViewById(R.id.etName);
-        final EditText reg_username = (EditText) findViewById(R.id.reg_username);
-        final EditText reg_email = (EditText) findViewById(R.id.reg_email);
-        final EditText reg_password = (EditText) findViewById(R.id.reg_password);
-*/
-        final Button button_register = (Button) findViewById(R.id.button_register);
-        //final Button bLogin = (Button) findViewById(R.id.clogin);
-        //bLogin.setPaintFlags(bLogin.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG); // underline button text
-/*
-        final String namestr = etName.getText().toString();
-        final String usernamestr = reg_username.getText().toString();
-        final String emailstr = reg_email.getText().toString();
-        final String passwordstr = reg_password.getText().toString();
-*/
-        final Player p = new Player();
 
+        final Button button_register = (Button) findViewById(R.id.button_register);
 
         button_register.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
 
-
-
-
-
-
-//                final EditText etName = (EditText) findViewById(R.id.etName);
                 final EditText reg_name = (EditText) findViewById(R.id.reg_name);
-//                final EditText reg_username = (EditText) findViewById(R.id.reg_username);
                 final EditText reg_email = (EditText) findViewById(R.id.reg_email);
                 final EditText reg_password = (EditText) findViewById(R.id.reg_password);
-//                final EditText reg_security = (EditText) findViewById(R.id.reg_security);
-
-
-
-
-
-
-
 
                 final String namestr = reg_name.getText().toString();
-//                final String usernamestr = reg_username.getText().toString();
                 final String emailstr = reg_email.getText().toString();
                 final String passwordstr = reg_password.getText().toString();
-//                final String securitystr = reg_security.getText().toString();
-//                playerStats.setName(namestr);
+
                 if(emailstr.equals("")||passwordstr.equals("") || namestr.equals("")){
                     Toast.makeText(ActivityRegister.this, "Empty fields", Toast.LENGTH_SHORT).show();
                     return;
@@ -118,32 +81,9 @@ public class ActivityRegister extends Activity{
                     Toast.makeText(ActivityRegister.this, "Email Already Exists", Toast.LENGTH_SHORT).show();
                     return;
                 }
-//                if(usernamestr.contains(" ")){
-//                    final Toast toast = Toast.makeText(ActivityRegister.this, "Username cannot contain spaces" , Toast.LENGTH_SHORT);
-//                    toast.show();
-//                    Handler handler = new Handler();
-//                    handler.postDelayed(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            toast.cancel();
-//                        }
-//                    }, 500);
-//                    return;
-//                }
-//                if(usernamestr.length()>20){
-//                    final Toast toast = Toast.makeText(ActivityRegister.this, "Username length should be within 20 character" , Toast.LENGTH_SHORT);
-//                    toast.show();
-//                    Handler handler = new Handler();
-//                    handler.postDelayed(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            toast.cancel();
-//                        }
-//                    }, 500);
-//                    return;
-//                }
+
                 if(namestr.length()>20){
-                    final Toast toast = Toast.makeText(ActivityRegister.this, "name length should be within 20 character" , Toast.LENGTH_SHORT);
+                    final Toast toast = Toast.makeText(ActivityRegister.this, "Name length should be within 20 character" , Toast.LENGTH_SHORT);
                     toast.show();
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
@@ -155,7 +95,7 @@ public class ActivityRegister extends Activity{
                     return;
                 }
                 if(passwordstr.length()<6){
-                    final Toast toast = Toast.makeText(ActivityRegister.this, "Password length should be atleast 6 characters" , Toast.LENGTH_SHORT);
+                    final Toast toast = Toast.makeText(ActivityRegister.this, "Password should be atleast 6 characters long" , Toast.LENGTH_SHORT);
                     toast.show();
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
@@ -166,18 +106,9 @@ public class ActivityRegister extends Activity{
                     }, 1000);
                     return;
                 }
-//                p.setName(namestr);
-//                p.setUsername(usernamestr);
-//                p.setEmail(emailstr);
-//                p.setPassword(passwordstr);
-//                p.setSecurity(securitystr);
-                //helper.insertPlayer(playerStats);
-
-                //Toast.makeText(ActivityRegister.this, "Successfully Registered Account", Toast.LENGTH_SHORT).show();
-
 
 //firebase
-                progressDialog.setMessage("Registering User: ");
+                progressDialog.setMessage("Registering User...");
                 progressDialog.show();
                 progressDialog.setCancelable(false);
                 progressDialog.setCanceledOnTouchOutside(false);
@@ -191,24 +122,22 @@ public class ActivityRegister extends Activity{
                                     //user is successfully registered
 
                                     progressDialog.dismiss();
-                                    Toast.makeText(ActivityRegister.this,"Registered Successfully on firebase",Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(ActivityRegister.this,"You have been successfully registered.",Toast.LENGTH_SHORT).show();
 
 
 
 
                                     Player player = new Player();
                                     player.setName(namestr);
-//                        player.setUsername(username);
                                     player.setEmail(emailstr);
                                     player.setPassword(passwordstr);
-//                        player.setSecurity(security);
-                                    player.setGender("male");
-                                    player.setLocation("Pakistan");
-                                    player.setDOB("01-01-2000");
-                                    player.setBowlingArm("Left");
-                                    player.setBowlingStyle("Left Arm Fast");
-                                    player.setCareerLevel("Club");
-                                    player.setWeight("100");
+                                    player.setGender("-");
+                                    player.setLocation("-");
+                                    player.setDOB("-");
+                                    player.setBowlingArm("-");
+                                    player.setBowlingStyle("-");
+                                    player.setCareerLevel("-");
+                                    player.setWeight("-");
 
 
                                     player.setLegalBowls("0");
@@ -250,7 +179,7 @@ public class ActivityRegister extends Activity{
 
 
 
-                                    Intent intent = new Intent(ActivityRegister.this, ActivitySetupProfile.class);
+                                    Intent intent = new Intent(ActivityRegister.this, ActivityProfileSetup.class);
                                     intent.putExtra("name",namestr);
 //                intent.putExtra("email", usernamestr);
                                     intent.putExtra("email", emailstr);
@@ -266,31 +195,15 @@ public class ActivityRegister extends Activity{
                                     progressDialog.dismiss();
 
                                     Toast.makeText(ActivityRegister.this, task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+//                                    Toast.makeText(ActivityRegister.this, "Cannot connect to server. Please make sure you have internet connectivity",Toast.LENGTH_LONG).show();
 
                                 }
                             }
                         });
 
 
-
-
-//                Intent intent = new Intent(ActivityRegister.this, ActivitySetupProfile.class);
-//                intent.putExtra("name",namestr);
-////                intent.putExtra("email", usernamestr);
-//                intent.putExtra("email", emailstr);
-//                intent.putExtra("password", passwordstr);
-////                intent.putExtra("security", securitystr);
-////                Intent intent = new Intent(ActivityRegister.this, ActivityLogin.class);
-//                startActivity(intent);
             }
         });
-
-//        bLogin.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View view) {
-//                Intent i = new Intent(ActivityRegister.this, ActivityLogin.class);
-//                ActivityRegister.this.startActivity(i);
-//            }
-//        });
 
 
     }
@@ -302,22 +215,22 @@ public class ActivityRegister extends Activity{
         finish();
     }
 
-    @Override
-    public boolean dispatchTouchEvent(MotionEvent event) {
-        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            View v = getCurrentFocus();
-            if ( v instanceof EditText) {
-                Rect outRect = new Rect();
-                v.getGlobalVisibleRect(outRect);
-                if (!outRect.contains((int)event.getRawX(), (int)event.getRawY())) {
-                    v.clearFocus();
-                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-                }
-            }
-        }
-        return super.dispatchTouchEvent( event );
-    }
+//    @Override
+//    public boolean dispatchTouchEvent(MotionEvent event) {
+//        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+//            View v = getCurrentFocus();
+//            if ( v instanceof EditText) {
+//                Rect outRect = new Rect();
+//                v.getGlobalVisibleRect(outRect);
+//                if (!outRect.contains((int)event.getRawX(), (int)event.getRawY())) {
+//                    v.clearFocus();
+//                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+//                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+//                }
+//            }
+//        }
+//        return super.dispatchTouchEvent( event );
+//    }
 
 
 }

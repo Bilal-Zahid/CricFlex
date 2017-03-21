@@ -26,7 +26,6 @@ public class test_asawal extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.test_asawal);
-        getActionBar().hide();
         setTitle("Profile");
 
         rgBowlingArm = (RadioGroup) findViewById(R.id.rgBowlingArm);

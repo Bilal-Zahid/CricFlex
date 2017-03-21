@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.LineChart;
@@ -27,7 +28,7 @@ public class ActivitySessionGraphActionTime extends AppCompatActivity {
 
     TextView parameterNameTextView;
     ArrayList<Float> actionTimeValues = new ArrayList<Float>();
-
+    ImageButton backButton;
     // private Button endSessionButton;
 //    ArrayList<Float> values = new ArrayList<Float>();
     String parameterName;
@@ -37,8 +38,14 @@ public class ActivitySessionGraphActionTime extends AppCompatActivity {
         setContentView(R.layout.activity_session_graph);
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        getActionBar().hide();
 
+        backButton = (ImageButton) findViewById(R.id.graph_back_button);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         //endSessionButton = (Button)findViewById(R.id.graph_finish_button);
 
 

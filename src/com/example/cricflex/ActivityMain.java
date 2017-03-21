@@ -1,211 +1,138 @@
 package com.example.cricflex;
 
 import java.io.FileInputStream;
-import java.util.ArrayList;
 
 import android.app.FragmentTransaction;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.support.v4.app.ActionBarDrawerToggle;
 import android.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
 import android.text.Html;
 import android.util.Log;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.AdapterView;
-import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 
-public class ActivityMain extends ActionBarActivity {
 
 
-//    @Override
-//    public void onBackPressed() {
-//        //super.onBackPressed();
-//
-//
-//        if (getFragmentManager().getBackStackEntryCount() == 0) {
-//            this.finish();
-//            moveTaskToBack(true);
-//        } else {
-//            getFragmentManager().popBackStack();
-//        }
-//    }
-    String checkForHome = "in home";
+public class ActivityMain extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener  {
+
+
+    Boolean inHome = true;
+    Boolean inHistory = false;
+    Boolean inAwards = false;
+    Boolean inTraining = false;
+    Boolean inFriends = false;
+    Boolean inHelp = false;
+    Boolean inAbout = false;
+
     DatabaseHelper helper = new DatabaseHelper(this);
-
 //    TextView mainEmail;
-    @Override
-    public void onBackPressed(){
-//        FragmentManager fm = ;
-        if (checkForHome.equals("in home")){
-            moveTaskToBack(true);
-            return;
-        }
-
-        else {
-            Intent i = getIntent();
-            finish();
-            startActivity(i);
-            return;
-        }
-//        if (getFragmentManager().getBackStackEntryCount() > 1) {
-//            Log.i("MainActivity", "popping backstack");
-//            getFragmentManager().popBackStack( );
-//
-//        } else {
-//            Log.i("MainActivity", "nothing on backstack, calling super");
-//            moveTaskToBack(true);
-////            super.onBackPressed();
-//        }
-    }
-
-    ListView mDrawerList;
-    RelativeLayout mDrawerPane;
-    private ActionBarDrawerToggle mDrawerToggle;
-    private DrawerLayout mDrawerLayout;
-    ArrayList<NavDrawerItem> navDrawerItems = new ArrayList<NavDrawerItem>();
-
-    private TextView emailText  ;
+    private TextView emailText ;
+    private TextView nameText;
+    Fragment fragment = null;
+    NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
+        super.onCreate(savedInstanceState);
+        getWindow().requestFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        setContentView(R.layout.activity_main);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         int abc = SaveSharedPreference.getEmail(ActivityMain.this).length();
 
 
-
-
         if(SaveSharedPreference.getEmail(ActivityMain.this).length() == 0)
         {
-
             Intent intent = new Intent(ActivityMain.this, ActivitySplash.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             finish();
-
             startActivity(intent);
-//            this.finish();
-//            finish();
-////            (Activity).finish();
-//            ActivityMain.this.finish();
-//
-////            onDestroy();
-//            return;
-
         }
 
-        getWindow().requestFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
-        super.onCreate(savedInstanceState);
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-
-
-        setContentView(R.layout.activity_main);
-
-//        mainEmail = (TextView) findViewById(R.id.main_email);
-//        mainEmail.setText("set karni ha Activity main mai");
-
-
-        System.out.println("Main mai agaya!!!");
-        emailText = (TextView) findViewById(R.id.email);
+        View inflatedView = getLayoutInflater().inflate(R.layout.nav_header_main, null);
+        emailText = (TextView) inflatedView.findViewById(R.id.email);
         emailText.setText(SaveSharedPreference.getEmail(ActivityMain.this));
+        nameText = (TextView) inflatedView.findViewById(R.id.name);
+        nameText.setText(R.string.name);            //////////////////////////////////////////////////// from database
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
+
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
 
 
+        if(inHome)
+        {
+            fragment = new FragmentHome();
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+            transaction.replace(R.id.frame_container, fragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
+            setTitle("Home");
+            navigationView.setCheckedItem(R.id.nav_home);
 
-
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.argb(50, 0, 0, 0)));
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
-//        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#50000000")));
-
-
-
-
-        // Home
-        navDrawerItems.add(new NavDrawerItem("Home", R.drawable.home_icon));
-        // History
-        navDrawerItems.add(new NavDrawerItem("History", R.drawable.history_icon));
-        // Awards
-        navDrawerItems.add(new NavDrawerItem("Awards", R.drawable.award_icon));
-        // Training
-        navDrawerItems.add(new NavDrawerItem("Training", R.drawable.coach_icon));
-        // Friends
-        navDrawerItems.add(new NavDrawerItem("Friends", R.drawable.friends_icon));
-        // Help
-        navDrawerItems.add(new NavDrawerItem("Help", R.drawable.help_icon));
-        // About
-        navDrawerItems.add(new NavDrawerItem("About", R.drawable.about_icon));
-
-        //Drawer Layout
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-
-        // Populate the Navigtion Drawer with options
-
-        mDrawerPane = (RelativeLayout) findViewById(R.id.drawerPane);
-        mDrawerList = (ListView) findViewById(R.id.list_slidermenu);
-        NavDrawerListAdapter adapter = new NavDrawerListAdapter(this, navDrawerItems);
-        mDrawerList.setAdapter(adapter);
-
-
-        // Drawer Item click listeners
-        mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                selectItemFromDrawer(position);
-            }
-        });
-
-
-        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
-                R.drawable.ic_drawer, //nav menu toggle icon
-                R.string.app_name, // nav drawer open - description for accessibility
-                R.string.app_name // nav drawer close - description for accessibility
-        ) {
-            @Override
-            public void onDrawerOpened(View drawerView) {
-                super.onDrawerOpened(drawerView);
-                // calling onPrepareOptionsMenu() to show action bar icons
-                invalidateOptionsMenu();
-            }
-
-            @Override
-            public void onDrawerClosed(View drawerView) {
-                super.onDrawerClosed(drawerView);
-//                Log.d(TAG, "onDrawerClosed: " + getTitle());
-
-                invalidateOptionsMenu();
-            }
-        };
-
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
-
-        if (savedInstanceState == null) {
-            // on first time display view for first nav item
-            selectItemFromDrawer(0);
         }
-
 
     }
 
 
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        }
+
+        else if(!drawer.isDrawerOpen(GravityCompat.START) && inHome){
+            moveTaskToBack(true);
+        }
+
+        else if(inHistory || inAwards || inTraining || inFriends || inFriends || inHelp || inAbout){
+
+            fragment = new FragmentHome();
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+            transaction.replace(R.id.frame_container, fragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
+            setTitle("Home");
+            navigationView.setCheckedItem(R.id.nav_home);
+            inHome = true;
+        }
+
+        else {
+            super.onBackPressed();
+        }
+    }
 
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
 
 
     @Override
@@ -225,21 +152,16 @@ public class ActivityMain extends ActionBarActivity {
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
+
 
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // The action bar home/up action should open or close the drawer.
         // ActionBarDrawerToggle will take care of this.
-        if (mDrawerToggle.onOptionsItemSelected(item)) {
-            return true;
-        }
+//        if (mDrawerToggle.onOptionsItemSelected(item)) {
+//            return true;
+//        }
         // Handle action buttons
         switch(item.getItemId()) {
 
@@ -249,12 +171,6 @@ public class ActivityMain extends ActionBarActivity {
 
                 Intent intent0 = new Intent(ActivityMain.this, ActivityWelcome.class);
 
-//                Bundle extras = new Bundle();
-//                extras.putString("id", "1");
-//                extras.putString("city", "2");
-//                extras.putString("place", "3");
-//                extras.putString("station", "4");
-//                intent0.putExtras(extras);
                 startActivity(intent0);
                 return true;
 
@@ -264,14 +180,6 @@ public class ActivityMain extends ActionBarActivity {
                 startActivity(intent1);
                 return true;
 
-
-//            case R.id.settings:
-//
-//
-//                Intent intent2 = new Intent(ActivityMain.this, ActivityEditProfile.class);
-//                startActivity(intent2);
-//                return true;
-//
 
 
             case R.id.logout:
@@ -294,45 +202,162 @@ public class ActivityMain extends ActionBarActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-
-
-
-    /*
-     * Called when invalidateOptionsMenu() is triggered
-     */
+    @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        // if nav drawer is opened, hide the action items
-        boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerPane);
-        //menu.findItem(R.id.profile).setVisible(!drawerOpen);
-        //MenuItem email = menu.findItem(R.id.email);
-        //Intent intent = getIntent();
-        //String uname = intent.getStringExtra("email");
-        String usernamestr = SaveSharedPreference.getEmail(ActivityMain.this);
-        //setOptionTitle("email",uname);
-        //email.setTitle(usernamestr);
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
 
-        //Adding Picture on profile layout
-        CircleImageView circleImageView = (CircleImageView) findViewById(R.id.profilepicture);
-        Bitmap b = getImageBitmap(this,usernamestr,"jpeg");
-        circleImageView.setImageBitmap(b);
+        inHome = false;
 
 
+        if (id == R.id.nav_home) {
+            fragment = new FragmentHome();
+            inHome = true;
+            inHistory = false;
+            inAwards = false;
+            inTraining = false;
+            inFriends = false;
+            inHelp = false;
+            inAbout = false;
 
-        //System.out.println(uname+intent.getStringExtra("email"));
-        //MenuItem email = menu.findItem(R.id.email);
+        }
+        else if (id == R.id.nav_history) {
+            fragment = new FragmentHistory();
+
+            inHome = false;
+            inHistory = true;
+            inAwards = false;
+            inTraining = false;
+            inFriends = false;
+            inHelp = false;
+            inAbout = false;
+        }
+
+        else if (id == R.id.nav_awards) {
+            Toast.makeText(this, "Update to premium for this feature.", Toast.LENGTH_SHORT).show();
+            //fragment = new FragmentAwards();
+
+            inHome = false;
+            inHistory = false;
+            inAwards = true;
+            inTraining = false;
+            inFriends = false;
+            inHelp = false;
+            inAbout = false;
+
+            return true;
+        }
+
+        else if (id == R.id.nav_training) {
+            Toast.makeText(this, "Update to premium for this feature.", Toast.LENGTH_SHORT).show();
+            //fragment = new FragmentTraining();
+
+            inHome = false;
+            inHistory = false;
+            inAwards = false;
+            inTraining = true;
+            inFriends = false;
+            inHelp = false;
+            inAbout = false;
+
+            return true;
+        }
+
+        else if (id == R.id.nav_friends) {
+            Toast.makeText(this, "Update to premium for this feature.", Toast.LENGTH_SHORT).show();
+            //fragment = new FragmentFriends();
+
+            inHome = false;
+            inHistory = false;
+            inAwards = false;
+            inTraining = false;
+            inFriends = true;
+            inHelp = false;
+            inAbout = false;
+
+            return true;
+        }
+
+        else if (id == R.id.nav_help) {
+            fragment = new FragmentHelp();
+
+            inHome = false;
+            inHistory = false;
+            inAwards = false;
+            inTraining = false;
+            inFriends = false;
+            inHelp = true;
+            inAbout = false;
+
+        }
+
+        else if (id == R.id.nav_about) {
+            fragment = new FragmentAbout();
+
+            inHome = false;
+            inHistory = false;
+            inAwards = false;
+            inTraining = false;
+            inFriends = false;
+            inHelp = false;
+            inAbout = true;
+
+        }
+
+
+        if (fragment != null) {
+
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+            transaction.replace(R.id.frame_container, fragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
+
+            setTitle(item.getTitle());
+            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            // error in creating fragment
+            Log.e("ActivityMain", "Error in creating fragment");
+
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+//
+//    /*
+//     * Called when invalidateOptionsMenu() is triggered
+//     */
+//    @Override
+//    public boolean onPrepareOptionsMenu(Menu menu) {
+//        // if nav drawer is opened, hide the action items
+//        boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerPane);
+//        //menu.findItem(R.id.profile).setVisible(!drawerOpen);
+//        //MenuItem username = menu.findItem(R.id.username);
+//        //Intent intent = getIntent();
+//        //String uname = intent.getStringExtra("username");
+//        String usernamestr = SaveSharedPreference.getEmail(ActivityMain.this);
+//        //setOptionTitle("username",uname);
+//        //username.setTitle(usernamestr);
+//
+//        //Adding Picture on profile layout
+//        CircleImageView circleImageView = (CircleImageView) findViewById(R.id.profilepicture);
+//        Bitmap b = getImageBitmap(this,usernamestr,"jpeg");
+//        circleImageView.setImageBitmap(b);
+//
+//
+//
+//        //System.out.println(uname+intent.getStringExtra("email"));
+//        //MenuItem email = menu.findItem(R.id.email);
 //        String emailstr = SaveSharedPreference.getEmail(ActivityMain.this);
-        //email.setTitle(intent.getStringExtra("email"));
-        //email.setTitle(emailstr);
-        return super.onPrepareOptionsMenu(menu);
-    }
+//        //email.setTitle(intent.getStringExtra("email"));
+//        //email.setTitle(emailstr);
+//        return super.onPrepareOptionsMenu(menu);
+//    }
 
-
-    private void displayHomeAsUp()
-    {
-        int stackCount = getFragmentManager().getBackStackEntryCount();
-        getActionBar().setDisplayHomeAsUpEnabled(stackCount > 0);
-    }
 
     @Override
     public boolean onNavigateUp()
@@ -341,78 +366,6 @@ public class ActivityMain extends ActionBarActivity {
         return true;
     }
 
-
-
-    /**
-     * Diplaying fragment view for selected nav drawer list item
-     * */
-    private void selectItemFromDrawer(int position) {
-        // update the main content by replacing fragments
-        Fragment fragment = null;
-        checkForHome = "not in home";
-        switch (position) {
-
-            case 0:
-                fragment = new FragmentHome();
-                checkForHome = "in home";
-                break;
-            case 1:
-                fragment = new FragmentHistory();
-                break;
-            case 2:
-                Toast.makeText(this, "Update to premium for this feature.", Toast.LENGTH_SHORT).show();
-                //fragment = new FragmentAwards();
-                break;
-            case 3:
-
-                Toast.makeText(this, "Update to premium for this feature.", Toast.LENGTH_SHORT).show();
-                //fragment = new FragmentTraining();
-                break;
-            case 4:
-                Toast.makeText(this, "Update to premium for this feature.", Toast.LENGTH_SHORT).show();
-                //fragment = new FragmentFriends();
-                break;
-            case 5:
-                fragment = new FragmentHelp();
-                break;
-            case 6:
-                fragment = new FragmentAbout();
-                break;
-            default:
-                break;
-        }
-
-        if (fragment != null) {
-//            FragmentManager fragmentManager = getFragmentManager();
-//            getFragmentManager().beginTransaction()
-//                    .add(R.id.frame_container, fragment).commit();
-//
-//            getFragmentManager().beginTransaction().addToBackStack(null);
-
-
-            FragmentTransaction transaction = getFragmentManager().beginTransaction();
-            transaction.replace(R.id.frame_container, fragment);
-            transaction.addToBackStack(null);
-            transaction.commit();
-//            return true;
-
-
-
-//            getFragmentManager().beginTransaction().replace(
-//                    R.id.frame_container, fragment,checkForHome).
-//                    addToBackStack(null).commit();
-
-
-            // update selected item and title, then close the drawer
-            mDrawerList.setItemChecked(position, true);
-            mDrawerList.setSelection(position);
-            setTitle(navDrawerItems.get(position).getTitle());
-            mDrawerLayout.closeDrawer(mDrawerPane);
-        } else {
-            // error in creating fragment
-            Log.e("ActivityMain", "Error in creating fragment");
-        }
-    }
 
     @Override
     public void setTitle(CharSequence title) {
@@ -431,40 +384,19 @@ public class ActivityMain extends ActionBarActivity {
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         // Sync the toggle state after onRestoreInstanceState has occurred.
-        mDrawerToggle.syncState();
+//        mDrawerToggle.syncState();
     }
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         // Pass any configuration change to the drawer toggls
-        mDrawerToggle.onConfigurationChanged(newConfig);
+//        mDrawerToggle.onConfigurationChanged(newConfig);
     }
 
     public void viewProfile(View v){
-        Fragment fragment = null;
-        fragment = new FragmentProfile();
-        Bundle bundle = new Bundle();
-        String username = SaveSharedPreference.getEmail(ActivityMain.this);
-        bundle.putString("email", username);
-        fragment.setArguments(bundle);
-//
-//        FragmentManager fragmentManager = getFragmentManager();
-//        fragmentManager.beginTransaction().replace(R.id.frame_container, fragment).commit();
-
-        getFragmentManager().beginTransaction().add(
-                R.id.frame_container, fragment).
-                addToBackStack(null).commit();
-        checkForHome = "in fragment profile";
-
-
-        setTitle(R.string.profile);
-
-
-        mDrawerList.setItemChecked(mDrawerList.getCheckedItemPosition(), false);
-        mDrawerLayout.closeDrawer(mDrawerPane);
-
-
+        Intent intent = new Intent(ActivityMain.this, ActivityProfile.class);
+        startActivity(intent);
 
     }
 

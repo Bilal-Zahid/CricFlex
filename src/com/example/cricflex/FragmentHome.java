@@ -213,13 +213,8 @@ public class FragmentHome extends Fragment {
     private TextView averageForce;
     private TextView averageArmTwist;
     private TextView averageActionTime;
-//    private TextView lastBowlAngle;
-//    private TextView longestStreak;
-    // For Displaying Player Stats
-
     private String email;
     private String legalBalls,illegalBalls;
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -238,11 +233,8 @@ public class FragmentHome extends Fragment {
         averageForce = (TextView) rootView.findViewById(R.id.home_force);
         averageActionTime = (TextView) rootView.findViewById(R.id.home_action_time);
         averageArmTwist = (TextView) rootView.findViewById(R.id.home_arm_twist);
-        //lastBowlAngle = (TextView) rootView.findViewById(R.id.home_last_angle);
-        //longestStreak = (TextView) rootView.findViewById(R.id.home_longest_streak);
         successRate = (ArcProgress) rootView.findViewById(R.id.home_legal_to_illegal_ratio);
 
-        //arcProgress.setProgress(50);
         startButton = (Button) rootView.findViewById(R.id.home_start);
 
         legalBalls = helper.getLegalCount(email);
@@ -252,10 +244,6 @@ public class FragmentHome extends Fragment {
         totalBowls = Integer.valueOf(legalBalls) + Integer.valueOf(illegalBalls);
 
         totalBalls.setText(Integer.toString(totalBowls));
-
-
-
-//        successRate.setProgress(totalBowls);
 
         float ratio = (float)Integer.valueOf(legalBalls) / (float) totalBowls;
         ratio *= 100;
@@ -300,47 +288,7 @@ public class FragmentHome extends Fragment {
             df.setRoundingMode(RoundingMode.HALF_UP);
 
 
-
-
-
-            //System.out.println("Angle Values in Home Screen 2: : " + list);
-            //int[] longestStreak = new int[list.size()];
-
-
-            //####################
-
-
-//            int longestStreakCount = 0;
-//            int noOfStreaks = 0;
-//            int maxStreak = 0;
-//
-//            for (int i = 0; i < list.size(); i++) {
-//                if (doubleAngleValues[i] <= 15.0) {
-//                    longestStreakCount++;
-//                }
-//                if (doubleAngleValues[i] > 15.0 || i == list.size()-1) {
-//                    if (maxStreak < longestStreakCount) {
-//                        maxStreak = longestStreakCount;
-//                    }
-//                    //longestStreak[noOfStreaks++] = longestStreakCount;
-//                    longestStreakCount = 0;
-//                }
-//            }
-//
-//
-//            longestStreak.setText(String.valueOf(maxStreak));
-
-
-            //#########
-
-
             averageAngle.setText(String.valueOf(df.format(averageAngleOfPlayer)) + "\u00b0");
-
-//            if(doubleAngleValues.length!=0)
-//                lastBowlAngle.setText(String.valueOf(doubleAngleValues[doubleAngleValues.length - 1].intValue()) + "\u00b0");
-//            else
-//                lastBowlAngle.setText("0" + "\u00b0");
-
             successRate.setProgress(successRateValue);
         }
         else {
@@ -389,47 +337,7 @@ public class FragmentHome extends Fragment {
             df.setRoundingMode(RoundingMode.HALF_UP);
 
 
-
-
-
-            //System.out.println("Angle Values in Home Screen 2: : " + list);
-            //int[] longestStreak = new int[list.size()];
-
-
-            //####################
-
-
-//            int longestStreakCount = 0;
-//            int noOfStreaks = 0;
-//            int maxStreak = 0;
-//
-//            for (int i = 0; i < list.size(); i++) {
-//                if (doubleAngleValues[i] <= 15.0) {
-//                    longestStreakCount++;
-//                }
-//                if (doubleAngleValues[i] > 15.0 || i == list.size()-1) {
-//                    if (maxStreak < longestStreakCount) {
-//                        maxStreak = longestStreakCount;
-//                    }
-//                    //longestStreak[noOfStreaks++] = longestStreakCount;
-//                    longestStreakCount = 0;
-//                }
-//            }
-//
-//
-//            longestStreak.setText(String.valueOf(maxStreak));
-
-
-            //#########
-
-
             averageForce.setText(String.valueOf(df.format(averageForceOfPlayer)) + " N");
-
-//            if(doubleAngleValues.length!=0)
-//                lastBowlAngle.setText(String.valueOf(doubleAngleValues[doubleAngleValues.length - 1].intValue()) + "\u00b0");
-//            else
-//                lastBowlAngle.setText("0" + "\u00b0");
-
         }
         else {
             averageForce.setText("0" + " N");
@@ -447,10 +355,6 @@ public class FragmentHome extends Fragment {
 
         String actionTimeValues = helper.getActionTimeValues(email);
         calculateAverageValuesOfParameters(averageActionTime,actionTimeValues,"actionTimeArray"," s");
-
-
-
-
 
         startButton.setOnClickListener(new View.OnClickListener(){
 
@@ -503,47 +407,7 @@ public class FragmentHome extends Fragment {
             DecimalFormat df = new DecimalFormat("#.##");
             df.setRoundingMode(RoundingMode.HALF_UP);
 
-
-
-
-
-            //System.out.println("Angle Values in Home Screen 2: : " + list);
-            //int[] longestStreak = new int[list.size()];
-
-
-            //####################
-
-
-//            int longestStreakCount = 0;
-//            int noOfStreaks = 0;
-//            int maxStreak = 0;
-//
-//            for (int i = 0; i < list.size(); i++) {
-//                if (doubleAngleValues[i] <= 15.0) {
-//                    longestStreakCount++;
-//                }
-//                if (doubleAngleValues[i] > 15.0 || i == list.size()-1) {
-//                    if (maxStreak < longestStreakCount) {
-//                        maxStreak = longestStreakCount;
-//                    }
-//                    //longestStreak[noOfStreaks++] = longestStreakCount;
-//                    longestStreakCount = 0;
-//                }
-//            }
-//
-//
-//            longestStreak.setText(String.valueOf(maxStreak));
-
-
-            //#########
-
-
             metricToChange.setText(String.valueOf(df.format(averageForceOfPlayer)) + sign);
-
-//            if(doubleAngleValues.length!=0)
-//                lastBowlAngle.setText(String.valueOf(doubleAngleValues[doubleAngleValues.length - 1].intValue()) + "\u00b0");
-//            else
-//                lastBowlAngle.setText("0" + "\u00b0");
 
         }
         else {

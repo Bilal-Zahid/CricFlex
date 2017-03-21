@@ -23,7 +23,6 @@ public class ActivitySplash extends Activity {
         super.onCreate(savedInstanceState);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
-        getActionBar().hide();
 
         FirebaseDatabase.getInstance().setPersistenceEnabled(true);
 

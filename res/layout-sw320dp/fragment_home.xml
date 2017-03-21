@@ -93,7 +93,7 @@
             android:layout_gravity="center"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/home_total_balls_text"
-            android:textSize="30sp"
+            android:textSize="25sp"
             android:textColor="@color/text_light"
             android:textStyle="bold"
             />
@@ -108,7 +108,7 @@
             android:layout_gravity="center"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/home_total_balls"
-            android:textSize="30sp"
+            android:textSize="25sp"
             android:textColor="@color/text_light"
             android:textStyle="bold"
             android:id="@+id/home_totalballs" />
@@ -156,7 +156,7 @@
                 android:layout_column="0"
                 android:gravity="center"
                 android:layout_gravity="center_vertical"
-                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="20sp"
                 android:text="@string/home_average_stats"
                 android:textColor="@color/text_light"
                 android:background="@drawable/divider_right"
@@ -179,7 +179,7 @@
                 android:layout_gravity="fill_horizontal"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/home_armflex"
-                android:textSize="@dimen/home_medium_text"
+                android:textSize="30sp"
                 android:textColor="@color/text_light"
                 android:textStyle="bold"/>
 
@@ -192,7 +192,7 @@
                 android:layout_row="1"
                 android:layout_column="1"
                 android:gravity="center"
-                android:layout_gravity="center_vertical"
+                android:layout_gravity="fill_horizontal"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="@string/home_armflex_text"
                 android:textColor="@color/text_light"/>
@@ -211,7 +211,7 @@
                 android:layout_gravity="fill_horizontal"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/home_twist"
-                android:textSize="@dimen/home_medium_text"
+                android:textSize="30sp"
                 android:textColor="@color/text_light"
                 android:textStyle="bold"/>
 
@@ -223,7 +223,7 @@
                 android:layout_row="3"
                 android:layout_column="1"
                 android:gravity="center"
-                android:layout_gravity="center_vertical"
+                android:layout_gravity="fill_horizontal"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="@string/home_twist_text"
                 android:textColor="@color/text_light"/>
@@ -242,7 +242,7 @@
                 android:layout_gravity="fill_horizontal"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/home_time"
-                android:textSize="@dimen/home_medium_text"
+                android:textSize="30sp"
                 android:textColor="@color/text_light"
                 android:textStyle="bold"/>
 
@@ -255,7 +255,7 @@
                 android:layout_row="1"
                 android:layout_column="2"
                 android:gravity="center"
-                android:layout_gravity="center_vertical"
+                android:layout_gravity="fill_horizontal"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="@string/home_time_text"
                 android:textColor="@color/text_light"/>
@@ -272,7 +272,7 @@
                 android:layout_gravity="fill_horizontal"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/home_force"
-                android:textSize="@dimen/home_medium_text"
+                android:textSize="30sp"
                 android:textColor="@color/text_light"
                 android:textStyle="bold"/>
 
@@ -284,7 +284,7 @@
                 android:layout_row="3"
                 android:layout_column="2"
                 android:gravity="center"
-                android:layout_gravity="center_vertical"
+                android:layout_gravity="fill_horizontal"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="@string/home_force_text"
                 android:textColor="@color/text_light"/>
@@ -311,19 +311,19 @@
         android:layout_marginLeft="0dp"
         android:layout_marginRight="0dp"
         android:layout_gravity="bottom"
-        android:gravity="bottom">
+        android:gravity="center">
 
         <Button
             android:id="@+id/home_start"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="5dp"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
             android:layout_gravity="center"
             android:gravity="center"
             android:text="@string/home_button_start"
             android:textStyle="bold"
             android:textColor="#FFFFFF"
-            android:textSize="35sp"
+            android:textSize="25sp"
             android:background="@drawable/button2_bg"/>
 
 

@@ -1,9 +1,5 @@
 package com.example.cricflex;
 
-/**
- * Created by bilal on 8/21/2016.
- */
-
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -49,8 +45,6 @@ import org.json.JSONObject;
 
 public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeScanCallback {
 
-
-    //COMITTING ///
     private static Boolean exit = false;
 
     //changings
@@ -100,29 +94,11 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
     private BluetoothDevice bluetoothDevice;
     // private LeDeviceListAdapter mLeDeviceListAdapter;
     private RFDService rfduinoService;
-    private TextView connectionStatusText;
-    private TextView scanStatusText;
-    private TextView deviceInfoText;
-    //private TextView monitorAngleValue;
-    //private TextView degreeSign;
     private TextView monitorLegalText;
-    //private TextView ;
-    private TextView acceleration;
-    //private TextView checkLabel;
-    private TextView timer;
-    private TextView rssiValue;
-    //private Button scanButton;
-    private Button stopButton;
-    private Button startButton;
-    //private ImageButton graphButton;
-    //private Button connectButton;
-    private EditData valueEdit;
     private static final String TAG = "MyActivity";
 
-    //final Button checkLabel = (Button) findViewById(R.id.checkLabel);
     private String in = new String();
     private String MacAdd = "yahooooooooooooooooooooooooooooo";
-    //private LinearLayout dataLayout;
 
     boolean isBound = false;
 
@@ -131,28 +107,15 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
     private int counterLegal=0,counterIllegal=0;
 
     private TextView monitorAngleValue;
-    //private TextView monitorStatusText;
-    //private Chronometer monitorTimer;
-    //private ImageButton monitorTimerButton;
     private TextView monitorLegalBalls;
     private TextView monitorIllegalBalls;
-    private Button monitorFinishButton;
-//    private Button monitorStartButton;
-    //private ImageButton instantGraphButton;
-
     private TextView monitorForce;
     private TextView monitorActionTime;
     private TextView monitorArmTwist;
 
+    private Button monitorFinishButton;
 
-
-    private boolean timerOn = false;
-    private long timeWhenStopped = 0;
-
-    boolean startButtonPressed = false;
     boolean monitoringTextChange = true;
-    boolean timerWithStart = true;
-    boolean boolForTimerLogic = true;
 
 
 
@@ -164,13 +127,10 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
     //For Metrics Activity
 
     String armAngle_value;
-    String armSpeed_value;
     String actionTime_value;
     String armTwist_value;
     String force_value;
-    String runUpDist_value;
-    String runUpSpeed_value;
-    String runUpTime_value;
+
 
 
 
@@ -184,15 +144,7 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
     ArrayList<Float> actionTimeValues = new ArrayList<Float>();
 
 
-    String legalBalls;
-    String illegalBalls;
-    String totalBalls;
-    String averageAngle;
-    String longestStreak;
-    String lastBallAngle;
-
 //    for history maintanance
-
 
     private DatabaseReference databaseReference;
     FirebaseAuth firebaseAuth;
@@ -270,21 +222,9 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
     private void initializelayoutitems() {
 
         monitorAngleValue = (TextView)findViewById(R.id.monitor_angle_text);
-        //monitorStatusText = (TextView)findViewById(R.id.monitor_status_text);
-        //monitorTimer = (Chronometer)findViewById(R.id.monitor_timer);
-        //monitorTimerButton = (ImageButton)findViewById(R.id.monitor_timer_button);
         monitorLegalBalls = (TextView)findViewById(R.id.monitor_legal_balls);
         monitorIllegalBalls = (TextView)findViewById(R.id.monitor_illegal_balls);
         monitorFinishButton = (Button)findViewById(R.id.monitor_finish_button);
-
-        //monitorStartButton = (Button)findViewById(R.id.monitor_start_button);
-
-
-        //monitorTimer.setFormat("H:MM:SS");
-        //monitorTimerButton.setOnClickListener(new handlemonitorTimerButton());
-        //monitorFinishButton.setOnClickListener(new handlemonitorFinishButton());
-
-        //monitorStartButton.setOnClickListener(new handlemonitorStartButton());
     }
 
 
@@ -557,165 +497,25 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
         }
     }
 
-    class handlemonitorTimerButton implements OnClickListener {
-        public void onClick(View v) {
-
-//            PlayGifView pGif = (PlayGifView) findViewById(R.id.loading_gif);
-//            pGif.setImageResource(R.drawable.loading_balls);
-
-
-
-
-//            mProgressDialog = ProgressDialog.show(TestActivityMonitor.this, null,
-//                    null, false);
-//
-//            final ProgressDialog progress = new ProgressDialog(this);
-//            progress.setTitle("Connecting");
-//            progress.setMessage("Please wait while we connect to devices...");
-//            progress.show();
-//            Runnable progressRunnable = new Runnable() {
-//
-//                @Override
-//                public void run() {
-//                    mProgressDialog.cancel();
-//                }
-//            };
-//
-//
-//            Handler pdCanceller = new Handler();
-//            pdCanceller.postDelayed(progressRunnable, 3000);
-
-//            ProgressDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-//                @Override
-//                public void onCancel(DialogInterface dialog) {
-//                    theLayout.setVisibility(View.GONE);
-//                }
-//            });
-
-            //Code that is running is in block comments
-
-            /*
-            final ProgressDialog progress = new ProgressDialog(TestActivityMonitor.this);
-            progress.setMessage("Updating Values...");
-            progress.show();
-
-            Runnable progressRunnable = new Runnable() {
-
-                @Override
-                public void run() {
-                    progress.cancel();
-                }
-            };
-
-            Handler pdCanceller = new Handler();
-            pdCanceller.postDelayed(progressRunnable, 3000);
-            */
-
-//            final ProgressDialog dialog = new MyCustomProgressDialog(ActivityMonitor2.this);
-
-//            dialog.setCancelable(false);
-//            dialog.show();
-//
-//
-//
-//            Runnable progressRunnable = new Runnable() {
-//
-//                @Override
-//                public void run() {
-//                    dialog.cancel();
-//                }
-//            };
-//
-//            Handler pdCanceller = new Handler();
-//            pdCanceller.postDelayed(progressRunnable, 2048);
-
-
-
-//            mProgressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-
-//            ProgressDialog progress = ProgressDialog.show(TestActivityMonitor.this, null, null, true);
-//            progress.setContentView(R.layout.elemento_progress_splash);
-//            progress.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-
-            //progress.show();
-//            dialog.setProgressDrawable(getDrawable(R.drawable.balls));
-//            if(timerOn){
-//                timeWhenStopped = monitorTimer.getBase() - SystemClock.elapsedRealtime();
-//                stopChronometer(null);
-//                monitorTimerButton.setImageResource(R.drawable.start_circle_large);
-//                timerOn=false;
-//            }
-
-//            else if(!timerOn){
-//
-//                boolForTimerLogic = false;
-//                monitorTimer.setBase(SystemClock.elapsedRealtime() + timeWhenStopped);
-//                startChronometer(null);
-//                //
-//                monitorTimerButton.setImageResource(R.drawable.pause_circle_large);
-//                timerOn=true;
-//                timerWithStart = false;
-//            }
-        }
-    }
-
-
-//    on
-
-
-    class handleGraphButton implements OnClickListener {
-        public void onClick(View v) {
-            Intent intent = new Intent(ActivityMonitor2.this, ActivityGraph5.class);
-            startActivity(intent);
-        }
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_monitor2);
-        getActionBar().hide();
         View decorView = getWindow().getDecorView();
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        getActionBar().hide();
-
         // Hide the status bar.
         int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
         decorView.setSystemUiVisibility(uiOptions);
 
-
-
         firebaseAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
-
-        //initializelayoutitems();
-
-
-
-
-
-
-
-
-
-
-
-//        monitorStartButton = (Button) findViewById(R.id.monitor_start_button);
         monitorFinishButton = (Button) findViewById(R.id.monitor_finish_button);
-
-        //instantGraphButton = (ImageButton) findViewById(R.id.monitor_graph_button) ;
-        //graphButton = (ImageButton) d(R.id.graph);
-
-
-        //instantGraphButton.setOnClickListener(new handleGraphButton());
-//        monitorStartButton.setOnClickListener(new handlemonitorStartButton());
         monitorFinishButton.setOnClickListener(new handlemonitorFinishButton());
-        //graphButton.setOnClickListener(new handleGraphButton());
 
         monitorAngleValue = (TextView) findViewById(R.id.monitor_angle_text);
-        //degreeSign = (TextView) findViewById(R.id.degreesign);
+
         monitorLegalText = (TextView) findViewById(R.id.monitor_status_text);
 
 
@@ -723,40 +523,12 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
         monitorActionTime = (TextView) findViewById(R.id.monitor_action_time);
         monitorArmTwist = (TextView) findViewById(R.id.monitor_arm_twist);
         monitorForce = (TextView) findViewById(R.id.monitor_force);
-        //timerOn=true;
-
-//        monitorTimerButton = (ImageButton)findViewById(R.id.monitor_timer_button);
-
-//        monitorTimerButton.setOnClickListener(new handlemonitorTimerButton());
-
-
-//        monitorTimer = (Chronometer)findViewById(R.id.monitor_timer);
 
         monitorLegalBalls = (TextView)findViewById(R.id.monitor_legal_balls);
         monitorIllegalBalls = (TextView)findViewById(R.id.monitor_illegal_balls);
 
         email = SaveSharedPreference.getEmail(ActivityMonitor2.this);
         System.out.println("Username: "+ email);
-
-
-//        //initializelayoutitems();
-//        bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-//
-//        if (bluetoothAdapter == null || !bluetoothAdapter.isEnabled()) {
-//            Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-//            startActivityForResult(enableBtIntent, 1);
-//
-//        }
-//
-//
-//        scanStarted = true;
-//
-//        // mLEScanner = mBluetoothAdapter.getBluetoothLeScanner();
-//        // mLEScanner.startScan(filters, settings, mScanCallback);
-//        bluetoothAdapter.startLeScan(
-//                new UUID[]{RFDService.UUID_SERVICE},
-//                ActivityMonitor2.this);
-
 
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
@@ -1007,6 +779,7 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
 
             Log.e(TAG, "armtwist value= "+armAngle_value);
 
+
             final ProgressDialog dialog = new MyCustomProgressDialog(ActivityMonitor2.this);
 
             dialog.setCancelable(false);
@@ -1065,31 +838,9 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
                 monitorArmTwist.setText(armTwist_value);
                 monitorForce.setText(force_value);
                 monitorActionTime.setText(actionTime_value);
-            }
-        });
+                }
+            });
 
-//            this.dialog.setOnDismissListener(new OnDismissListener() {
-//
-//                @Override
-//                public void onDismiss(DialogInterface arg0) {
-//                    // TODO Auto-generated method stub
-//                    Toast.makeText(getApplicationContext(), "Text of Toast", Toast.LENGTH_SHORT).show();
-//                }
-//            });
-
-
-
-
-
-//            Intent intent = new Intent(this, TestActivityMetrics1.class);
-//            Bundle extras = new Bundle();
-//            extras.putString("armAngle", armAngle_value);
-////                extras.putString("armSpeed", armSpeed_value);
-//            extras.putString("actionTime", actionTime_value);
-//            extras.putString("armTwist", armTwist_value);
-//            extras.putString("force", force_value);
-//            intent.putExtras(extras);
-//            startActivity(intent);
         }
 
     }
@@ -1118,6 +869,9 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
             }
         });
 
+
+        //####################################################################################################################################################################################################
+
         if (!(bluetoothDevice.getName().equals("Abdullah"))) {
             bluetoothAdapter.startLeScan(new UUID[]{RFDService.UUID_SERVICE}, ActivityMonitor2.this);
         } else {
@@ -1125,6 +879,8 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
 //            bindService(rfduinoIntent, rfduinoServiceConnection, BIND_AUTO_CREATE);
             isBound = getApplicationContext().bindService(rfduinoIntent, rfduinoServiceConnection, BIND_AUTO_CREATE);
         }
+
+        //####################################################################################################################################################################################################
 
     }
 
@@ -1156,12 +912,4 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
         finish();
 
     }
-//
-//    public void startChronometer(View view) {
-//        ((Chronometer) findViewById(R.id.monitor_timer)).start();
-//    }
-//
-//    public void stopChronometer(View view) {
-//        ((Chronometer) findViewById(R.id.monitor_timer)).stop();
-//    }
 }

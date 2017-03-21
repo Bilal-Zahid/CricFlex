@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:label="@string/setup_profile"
-    tools:context=".ActivitySetupProfile">
+    tools:context=".ActivityProfileSetup">
 
     <ImageView
         android:layout_width="fill_parent"
@@ -23,42 +23,18 @@
         android:layout_height="0dp"
         app:layout_heightPercent="20%"
         app:layout_widthPercent="100%"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:orientation="vertical"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true">
 
         <ImageView
+            android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="top"
-            android:id="@+id/imageView"
-            android:src="@drawable/cricflex_logo_stroke"
-            android:contentDescription="@string/content_desc_imageView"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/footer"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_heightPercent="10%"
-        app:layout_widthPercent="100%"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="20dp"
-        android:layout_below="@id/body"
-        android:orientation="vertical">
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/rgp_button_registe"
-            android:id="@+id/button_register"
-            android:layout_gravity="center"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            android:background="@drawable/button1_bg" />
+            android:contentDescription="@string/content_desc_imageView"
+            android:src="@drawable/cricflex_logo_stroke" />
 
     </LinearLayout>
 
@@ -70,9 +46,9 @@
         app:layout_widthPercent="100%"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:orientation="vertical"
-        android:layout_centerVertical="true"
-        android:layout_alignStart="@+id/footer">
+        android:layout_marginTop="5dp"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
 
         <EditText
             android:layout_width="match_parent"
@@ -84,7 +60,7 @@
             android:paddingEnd="15dp"
             android:drawablePadding="10dp"
             android:hint="@string/rgp_name"
-            android:textSize="20sp"
+            android:textSize="17sp"
             android:textColor="#FFFFFF"
             android:padding="10dp"
             android:textColorHint="#CCCCCC"
@@ -106,7 +82,7 @@
         android:drawablePadding="10dp"
         android:padding="10dp"
         android:hint="@string/rgp_email"
-        android:textSize="20sp"
+        android:textSize="17sp"
         android:textColor="#FFFFFF"
         android:textColorHint="#CCCCCC"
         android:layout_weight="1"
@@ -127,11 +103,35 @@
         android:inputType="textPassword"
         android:id="@+id/reg_password"
         android:hint="@string/rgp_password"
-        android:textSize="20sp"
+        android:textSize="17sp"
         android:textColor="#FFFFFF"
         android:textColorHint="#CCCCCC"
         android:layout_weight="1"
         android:textCursorDrawable="@null"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/footer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_heightPercent="10%"
+        app:layout_widthPercent="100%"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/body"
+        android:orientation="vertical">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rgp_button_registe"
+            android:id="@+id/button_register"
+            android:layout_gravity="center"
+            android:textColor="#FFFFFF"
+            android:textSize="17sp"
+            android:background="@drawable/button1_bg" />
+
     </LinearLayout>
 
 </android.support.percent.PercentRelativeLayout>

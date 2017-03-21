@@ -3,13 +3,8 @@ package com.example.cricflex;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
-import android.widget.RadioGroup;
-import android.widget.Toast;
-
 
 public class ActivityCalibrate extends Activity {
 
@@ -24,7 +19,7 @@ public class ActivityCalibrate extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        getActionBar().hide();
+//        getActionBar().hide();
 
         setContentView(R.layout.activity_calibrate1);
 
