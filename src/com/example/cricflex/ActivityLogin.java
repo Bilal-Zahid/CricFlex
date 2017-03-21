@@ -62,6 +62,9 @@ public class ActivityLogin extends Activity {
     private ProgressDialog progressDialog ;
     FirebaseAuth firebaseAuth;
 
+
+//    private FirebaseAuth.AuthStateListener mAuthListener;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
@@ -395,6 +398,24 @@ public class ActivityLogin extends Activity {
         }
         return super.dispatchTouchEvent( event );
     }
+
+
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//        firebaseAuth.addAuthStateListener(mAuthListener);
+//        // ...
+//    }
+//
+//    @Override
+//    public void onStop() {
+//        super.onStop();
+//        if (mAuthListener != null) {
+//            firebaseAuth.removeAuthStateListener(mAuthListener);
+//        }
+//        // ...
+//    }
+
 }
         /*
         final TextView registerLink = (TextView) findViewById(R.id.tvRegisterHere);

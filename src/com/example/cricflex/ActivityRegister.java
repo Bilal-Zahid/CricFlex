@@ -20,6 +20,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -44,7 +45,14 @@ public class ActivityRegister extends Activity{
 
     //Firebase
     private FirebaseAuth firebaseAuth;
+//    private FirebaseAuth.AuthStateListener mAuthListener;
 
+//    private FirebaseAuth mAuth;
+
+
+    String namestr;
+    String emailstr;
+    String passwordstr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +65,10 @@ public class ActivityRegister extends Activity{
         firebaseAuth = FirebaseAuth.getInstance();
         progressDialog = new ProgressDialog(this);
         pattern = Pattern.compile(EMAIL_PATTERN);
+
+
+
+//        createAuthStateListener();
 /*
         final EditText etName = (EditText) findViewById(R.id.etName);
         final EditText reg_username = (EditText) findViewById(R.id.reg_username);
@@ -97,10 +109,10 @@ public class ActivityRegister extends Activity{
 
 
 
-                final String namestr = reg_name.getText().toString();
+                namestr = reg_name.getText().toString();
 //                final String usernamestr = reg_username.getText().toString();
-                final String emailstr = reg_email.getText().toString();
-                final String passwordstr = reg_password.getText().toString();
+                emailstr = reg_email.getText().toString();
+                passwordstr = reg_password.getText().toString();
 //                final String securitystr = reg_security.getText().toString();
 //                playerStats.setName(namestr);
                 if(emailstr.equals("")||passwordstr.equals("") || namestr.equals("")){
@@ -187,35 +199,44 @@ public class ActivityRegister extends Activity{
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
 
-                                if(task.isSuccessful()){
-                                    //user is successfully registered
+                                if(!task.isSuccessful()){
+
 
                                     progressDialog.dismiss();
-                                    Toast.makeText(ActivityRegister.this,"Registered Successfully on firebase",Toast.LENGTH_SHORT).show();
+
+                                    Toast.makeText(ActivityRegister.this, task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+
+                                    return;
+
+
+                                }
+
+                                progressDialog.dismiss();
+                                Toast.makeText(ActivityRegister.this,"Registered Successfully on firebase",Toast.LENGTH_SHORT).show();
 
 
 
 
-                                    Player player = new Player();
-                                    player.setName(namestr);
+                                Player player = new Player();
+                                player.setName(namestr);
 //                        player.setUsername(username);
-                                    player.setEmail(emailstr);
-                                    player.setPassword(passwordstr);
+                                player.setEmail(emailstr);
+                                player.setPassword(passwordstr);
 //                        player.setSecurity(security);
-                                    player.setGender("male");
-                                    player.setLocation("Pakistan");
-                                    player.setDOB("01-01-2000");
-                                    player.setBowlingArm("Left");
-                                    player.setBowlingStyle("Left Arm Fast");
-                                    player.setCareerLevel("Club");
-                                    player.setWeight("100");
+                                player.setGender("male");
+                                player.setLocation("Pakistan");
+                                player.setDOB("01-01-2000");
+                                player.setBowlingArm("Left");
+                                player.setBowlingStyle("Left Arm Fast");
+                                player.setCareerLevel("Club");
+                                player.setWeight("100");
 
 
-                                    player.setLegalBowls("0");
-                                    player.setIllegalBowls("0");
-                                    player.setAverageAngle("0");
-                                    player.setLongestStreak("0");
-                                    player.setLastBowlAngle("0");
+                                player.setLegalBowls("0");
+                                player.setIllegalBowls("0");
+                                player.setAverageAngle("0");
+                                player.setLongestStreak("0");
+                                player.setLastBowlAngle("0");
 
 
 //                                    saveImage(getApplicationContext(),bitmapImage,email,"jpeg");
@@ -228,46 +249,46 @@ public class ActivityRegister extends Activity{
 
 //                        userRef.child("name").setValue(player);
 //                        userRef.child("name").child("values").setValue(player);
-                                    //helper.addEntry(email,dbBitmapUtility.getBytes(bitmapImage));
+                                //helper.addEntry(email,dbBitmapUtility.getBytes(bitmapImage));
 
 
 
-                                    helper.insertPlayerStats(player);
-                                    helper.insertPlayer(player);
+                                helper.insertPlayerStats(player);
+                                helper.insertPlayer(player);
 
-                                    helper.insertPlayerAngleValues(player.getEmail(),"");
-                                    helper.insertPlayerActionTimeValues(player.getEmail(),"");
-                                    helper.insertPlayerForceValues(player.getEmail(),"");
-                                    helper.insertPlayerArmTwistValues(player.getEmail(),"");
-
-
-                                    helper.insertPlayerAngleValuesWithDate(player.getEmail(),"","");
-                                    helper.insertPlayerActionTimeValuesWithDate(player.getEmail(),"","");
-                                    helper.insertPlayerForceValuesWithDate(player.getEmail(),"","");
-                                    helper.insertPlayerArmTwistValuesWithDate(player.getEmail(),"","");
+                                helper.insertPlayerAngleValues(player.getEmail(),"");
+                                helper.insertPlayerActionTimeValues(player.getEmail(),"");
+                                helper.insertPlayerForceValues(player.getEmail(),"");
+                                helper.insertPlayerArmTwistValues(player.getEmail(),"");
 
 
+                                helper.insertPlayerAngleValuesWithDate(player.getEmail(),"","");
+                                helper.insertPlayerActionTimeValuesWithDate(player.getEmail(),"","");
+                                helper.insertPlayerForceValuesWithDate(player.getEmail(),"","");
+                                helper.insertPlayerArmTwistValuesWithDate(player.getEmail(),"","");
 
 
 
-                                    Intent intent = new Intent(ActivityRegister.this, ActivitySetupProfile.class);
-                                    intent.putExtra("name",namestr);
+
+
+                                System.out.println("Writing in database!!!");
+
+                                Intent intent = new Intent(ActivityRegister.this, ActivitySetupProfile.class);
+                                intent.putExtra("name",namestr);
 //                intent.putExtra("email", usernamestr);
-                                    intent.putExtra("email", emailstr);
-                                    intent.putExtra("password", passwordstr);
+                                intent.putExtra("email", emailstr);
+                                intent.putExtra("password", passwordstr);
 //                intent.putExtra("security", securitystr);
 //                Intent intent = new Intent(ActivityRegister.this, ActivityLogin.class);
-                                    startActivity(intent);
+                                startActivity(intent);
 //                                    Intent intent = new Intent(ActivityRegister.this, ActivityLogin.class);
 //                                    startActivity(intent);
-                                    finish();
-                                }
-                                else{
-                                    progressDialog.dismiss();
+                                finish();
 
-                                    Toast.makeText(ActivityRegister.this, task.getException().getMessage(),Toast.LENGTH_SHORT).show();
 
-                                }
+
+
+
                             }
                         });
 
@@ -318,6 +339,50 @@ public class ActivityRegister extends Activity{
         }
         return super.dispatchTouchEvent( event );
     }
+
+
+
+//    private void createAuthStateListener() {
+//        mAuthListener = new FirebaseAuth.AuthStateListener() {
+//
+//            @Override
+//            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+//                final FirebaseUser user = firebaseAuth.getCurrentUser();
+//                if (user != null) {
+////                    Intent intent = new Intent(CreateAccountActivity.this, MainActivity.class);
+////                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+////                    startActivity(intent);
+////                    finish();
+//
+//                    //user is successfully registered
+//
+//
+//
+//
+//
+//                }
+//            }
+//
+//        };
+//    }
+
+
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//        firebaseAuth.addAuthStateListener(mAuthListener);
+//    }
+//
+//    @Override
+//    public void onStop() {
+//        super.onStop();
+//        if (mAuthListener != null) {
+//            firebaseAuth.removeAuthStateListener(mAuthListener);
+//        }
+//    }
+
+
+
 
 
 }
