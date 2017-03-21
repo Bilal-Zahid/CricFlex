@@ -40,13 +40,14 @@
     <string name="rgp_name">Name</string>
     <string name="rgp_username">Username (6 minimum)</string>
     <string name="rgp_email">Email</string>
-    <string name="rgp_password">Password (5 minimum)</string>
+    <string name="rgp_password">Password(6 minimum)</string>
     <string name="rgp_security_question">Security Question: \nFavourite Cricketer name?</string>
     <string name="rgp_button_registe">Register new account</string>
 
 
 
     <!--setup profile-->
+    <string name="name">Name</string>
     <string name="gender">Gender</string>
     <string name="male">Male</string>
     <string name="female">Female</string>
@@ -252,5 +253,13 @@
 
     <string name="illegal_monitor_status">Illegal</string>
     <string name="legal_monitor_status">Legal</string>
+
+
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+
+
 
 </resources>

@@ -31,12 +31,18 @@ import java.util.Locale;
 
 
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+
+import android.support.percent.PercentRelativeLayout;
+import android.widget.Toast;
+
 
 public class FragmentHistory extends Fragment {
 
@@ -51,10 +57,10 @@ public class FragmentHistory extends Fragment {
     private Handler mHandler = new Handler();
 
     private TextView currentMonth;
-    private Button prevMonth;
-    private Button prevYear;
-    private Button nextMonth;
-    private Button nextYear;
+    private ImageButton prevMonth;
+    private ImageButton prevYear;
+    private ImageButton nextMonth;
+    private ImageButton nextYear;
 
     private Calendar _calendar;
     private int month, year;
@@ -70,7 +76,7 @@ public class FragmentHistory extends Fragment {
 
 
 
-    String checkForTab = "";
+    String checkForTab = "angle";
 
 
     private String dateForDatabase = "";
@@ -91,6 +97,13 @@ public class FragmentHistory extends Fragment {
     View rootView;
 
 
+    // swipes
+
+
+    PercentRelativeLayout swipeLayout;
+
+
+
     ArrayList<Integer> angleValues = new ArrayList<Integer>();
 
     String email;
@@ -107,8 +120,43 @@ public class FragmentHistory extends Fragment {
 
         rootView = inflater.inflate(R.layout.fragment_history, container, false);
 
+        //swipes
+        swipeLayout = (PercentRelativeLayout) rootView.findViewById(R.id.fragment_history_layout);
+        swipeLayout.setOnTouchListener(new OnSwipeTouchListener(getActivity()) {
 
+            public void onSwipeRight() {
+                //Toast.makeText(getActivity(), "right", Toast.LENGTH_SHORT).show();
 
+                if(checkForTab.equals("twist"))
+                    actionTimeButtonMethod();
+
+                else if(checkForTab.equals("time"))
+                    forceButtonMethod();
+
+                else if(checkForTab.equals("force"))
+                    angleButtonMethod();
+
+                else if(checkForTab.equals("angle"))
+                    armTwistButtonMethod();
+
+            }
+            public void onSwipeLeft() {
+                //Toast.makeText(getActivity(), "left", Toast.LENGTH_SHORT).show();
+
+                if(checkForTab.equals("angle"))
+                    forceButtonMethod();
+
+                else if(checkForTab.equals("force"))
+                    actionTimeButtonMethod();
+
+                else if(checkForTab.equals("time"))
+                    armTwistButtonMethod();
+
+                else if(checkForTab.equals("twist"))
+                    angleButtonMethod();
+            }
+
+        });
 
         email = SaveSharedPreference.getEmail(getActivity());
 
@@ -130,7 +178,7 @@ public class FragmentHistory extends Fragment {
         month = _calendar.get(Calendar.MONTH);
         year = _calendar.get(Calendar.YEAR);
 
-        prevYear = (Button) rootView.findViewById(R.id.prevYear);
+        prevYear = (ImageButton) rootView.findViewById(R.id.prevYear);
         prevYear.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
 
@@ -139,7 +187,7 @@ public class FragmentHistory extends Fragment {
             }
         });
 
-        prevMonth = (Button) rootView.findViewById(R.id.prevMonth);
+        prevMonth = (ImageButton) rootView.findViewById(R.id.prevMonth);
         prevMonth.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
 //                Log.e(TAG, "prevMonth pressed");
@@ -157,7 +205,7 @@ public class FragmentHistory extends Fragment {
         currentMonth.setText(DateFormat.format(dateTemplate,
                 _calendar.getTime()));
 
-        nextMonth = (Button) rootView.findViewById(R.id.nextMonth);
+        nextMonth = (ImageButton) rootView.findViewById(R.id.nextMonth);
         nextMonth.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
 
@@ -172,7 +220,7 @@ public class FragmentHistory extends Fragment {
             }
         });
 
-        nextYear = (Button) rootView.findViewById(R.id.nextYear);
+        nextYear = (ImageButton) rootView.findViewById(R.id.nextYear);
         nextYear.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
 
@@ -366,282 +414,283 @@ public class FragmentHistory extends Fragment {
     }
 
 
-
-
-    private void changeValuesOfGraphsWithDate(){
-
-        LineChart lineChart0 = (LineChart) rootView.findViewById(R.id.chart0);
-
-        /////////////////////////////////////////////////////////////
-        //Code for getting angle values
-        helper = new DatabaseHelper(getActivity());
-        String email = SaveSharedPreference.getEmail(getActivity());
-        String angleValuesWithDate = helper.getAngleValuesWithDate(email,currentMonth.getText().toString());
-
-        //making arraylist after getting response from database
-        ArrayList<String> list1 = new ArrayList<String>();
-        if(!angleValuesWithDate.equals("not found")) {
-            // Getting Arraylist back
-            JSONObject json1 = null;
-            try {
-                json1 = new JSONObject(angleValuesWithDate);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-            JSONArray jsonArray = json1.optJSONArray("angleArray");
-            if (jsonArray != null) {
-                int len = jsonArray.length();
-                for (int i = 0; i < len; i++) {
-                    try {
-                        list1.add(jsonArray.get(i).toString());
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
-        System.out.println("List of angle values with date in fragment history: " + list1);
-        for (int i=0;i<list1.size();i++){
-            entriesAngle.add(new Entry(i,Integer.valueOf(list1.get(i))));
-        }
-//        makeGraph(lineChart0,entriesAngle);
-
-
-        ////////////////////////////////////////////
-
-        LineChart lineChart1 = (LineChart) rootView.findViewById(R.id.chart1);
-//        List<Entry> entriesForce = new ArrayList<Entry>();
-        /////////////////////////////////////////////////////////////
-        //Code for getting angle values
-        helper = new DatabaseHelper(getActivity());
+//
+//
+//    private void changeValuesOfGraphsWithDate(){
+//
+//        LineChart lineChart0 = (LineChart) rootView.findViewById(R.id.chart0);
+//
+//        /////////////////////////////////////////////////////////////
+//        //Code for getting angle values
+//        helper = new DatabaseHelper(getActivity());
 //        String email = SaveSharedPreference.getEmail(getActivity());
-        String forceWithDate = helper.getForceValuesWithDate(email,currentMonth.getText().toString());
-
-        //making arraylist after getting response from database
-        ArrayList<String> list2 = new ArrayList<String>();
-        if(!forceWithDate.equals("not found")) {
-            // Getting Arraylist back
-            JSONObject json1 = null;
-            try {
-                json1 = new JSONObject(forceWithDate);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-            JSONArray jsonArray = json1.optJSONArray("forceArray");
-            if (jsonArray != null) {
-                int len = jsonArray.length();
-                for (int i = 0; i < len; i++) {
-                    try {
-                        list2.add(jsonArray.get(i).toString());
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
+//        String angleValuesWithDate = helper.getAngleValuesWithDate(email,currentMonth.getText().toString());
+//
+//        //making arraylist after getting response from database
+//        ArrayList<String> list1 = new ArrayList<String>();
+//        if(!angleValuesWithDate.equals("not found")) {
+//            // Getting Arraylist back
+//            JSONObject json1 = null;
+//            try {
+//                json1 = new JSONObject(angleValuesWithDate);
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+//
+//            JSONArray jsonArray = json1.optJSONArray("angleArray");
+//            if (jsonArray != null) {
+//                int len = jsonArray.length();
+//                for (int i = 0; i < len; i++) {
+//                    try {
+//                        list1.add(jsonArray.get(i).toString());
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            }
+//        }
 //        System.out.println("List of angle values with date in fragment history: " + list1);
-        for (int i=0;i<list2.size();i++){
-            entriesForce.add(new Entry(i,Integer.valueOf(list2.get(i))));
-        }
-//        makeGraph(lineChart1,entriesForce);
-
-
-        ////////////////////////////////////////////
-
-        LineChart lineChart3 = (LineChart) rootView.findViewById(R.id.chart2);
-//        List<Entry> entriesArmTwist = new ArrayList<Entry>();
-        /////////////////////////////////////////////////////////////
-        //Code for getting angle values
-        helper = new DatabaseHelper(getActivity());
-//        String email = SaveSharedPreference.getEmail(getActivity());
-        String armTwistWithDate = helper.getArmTwistValuesWithDate(email,currentMonth.getText().toString());
-
-        //making arraylist after getting response from database
-        ArrayList<String> list3 = new ArrayList<String>();
-        if(!armTwistWithDate.equals("not found")) {
-            // Getting Arraylist back
-            JSONObject json1 = null;
-            try {
-                json1 = new JSONObject(armTwistWithDate);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-            JSONArray jsonArray = json1.optJSONArray("armTwistArray");
-            if (jsonArray != null) {
-                int len = jsonArray.length();
-                for (int i = 0; i < len; i++) {
-                    try {
-                        list3.add(jsonArray.get(i).toString());
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
-//        System.out.println("List of angle values with date in fragment history: " + list1);
-        for (int i=0;i<list3.size();i++){
-            entriesArmTwist.add(new Entry(i,Integer.valueOf(list3.get(i))));
-        }
-//        makeGraph(lineChart3,entriesArmTwist);
-
-
-
-
-
-
-
-
-
-        ////////////////////////////////////////////
-
-        LineChart lineChart4 = (LineChart) rootView.findViewById(R.id.chart3);
-//        List<Entry> entriesActionTime = new ArrayList<Entry>();
-        /////////////////////////////////////////////////////////////
-        //Code for getting action Time values
-        helper = new DatabaseHelper(getActivity());
-//        String email = SaveSharedPreference.getEmail(getActivity());
-        String actionTimeWithDate = helper.getActionTimeValuesWithDate(email,currentMonth.getText().toString());
-
-        //making arraylist after getting response from database
-        ArrayList<String> list4 = new ArrayList<String>();
-        if(!actionTimeWithDate.equals("not found")) {
-            // Getting Arraylist back
-            JSONObject json1 = null;
-            try {
-                json1 = new JSONObject(actionTimeWithDate);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-            JSONArray jsonArray = json1.optJSONArray("actionTimeArray");
-            if (jsonArray != null) {
-                int len = jsonArray.length();
-                for (int i = 0; i < len; i++) {
-                    try {
-                        list4.add(jsonArray.get(i).toString());
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
-//        System.out.println("List of angle values with date in fragment history: " + list1);
-        for (int i=0;i<list4.size();i++){
-            entriesActionTime.add(new Entry(i,Float.valueOf(list4.get(i))));
-        }
-//        makeGraph(lineChart4,entriesActionTime);
-
-
-
-
-//        LineDataSet dataset = new LineDataSet(entries, "Labels");
+//        for (int i=0;i<list1.size();i++){
+//            entriesAngle.add(new Entry(i,Integer.valueOf(list1.get(i))));
+//        }
+////        makeGraph(lineChart0,entriesAngle);
 //
 //
-
-//        dataset.setMode(LineDataSet.Mode.CUBIC_BEZIER);
-//        dataset.setCubicIntensity(0.001f);
-//        dataset.setAxisDependency(YAxis.AxisDependency.LEFT);
+//        ////////////////////////////////////////////
 //
-//        dataset.setColor(Color.parseColor("#00aff0"));
-//        dataset.setLineWidth(2);
+//        LineChart lineChart1 = (LineChart) rootView.findViewById(R.id.chart1);
+////        List<Entry> entriesForce = new ArrayList<Entry>();
+//        /////////////////////////////////////////////////////////////
+//        //Code for getting angle values
+//        helper = new DatabaseHelper(getActivity());
+////        String email = SaveSharedPreference.getEmail(getActivity());
+//        String forceWithDate = helper.getForceValuesWithDate(email,currentMonth.getText().toString());
 //
-//        dataset.setDrawFilled(false);
-//        dataset.setFillAlpha(80);
-//        dataset.setFillColor(Color.WHITE);
+//        //making arraylist after getting response from database
+//        ArrayList<String> list2 = new ArrayList<String>();
+//        if(!forceWithDate.equals("not found")) {
+//            // Getting Arraylist back
+//            JSONObject json1 = null;
+//            try {
+//                json1 = new JSONObject(forceWithDate);
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
 //
-//        dataset.setValueTextColor(Color.WHITE);
-//        dataset.setDrawValues(false);
-//        dataset.setCircleColor(Color.WHITE);
-//        dataset.setCircleRadius(4);
-//        dataset.setCircleHoleRadius(2);
+//            JSONArray jsonArray = json1.optJSONArray("forceArray");
+//            if (jsonArray != null) {
+//                int len = jsonArray.length();
+//                for (int i = 0; i < len; i++) {
+//                    try {
+//                        list2.add(jsonArray.get(i).toString());
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            }
+//        }
+////        System.out.println("List of angle values with date in fragment history: " + list1);
+//        for (int i=0;i<list2.size();i++){
+//            entriesForce.add(new Entry(i,Integer.valueOf(list2.get(i))));
+//        }
+////        makeGraph(lineChart1,entriesForce);
 //
-//        dataset.setHighlightEnabled(true); // allow highlighting for DataSet
 //
-//        // set this to false to disable the drawing of highlight indicator (lines)
-//        //dataset.setDrawHighlightIndicators(true);
-//        dataset.setHighLightColor(Color.RED); // color for highlight indicator
+//        ////////////////////////////////////////////
+//
+//        LineChart lineChart3 = (LineChart) rootView.findViewById(R.id.chart2);
+////        List<Entry> entriesArmTwist = new ArrayList<Entry>();
+//        /////////////////////////////////////////////////////////////
+//        //Code for getting angle values
+//        helper = new DatabaseHelper(getActivity());
+////        String email = SaveSharedPreference.getEmail(getActivity());
+//        String armTwistWithDate = helper.getArmTwistValuesWithDate(email,currentMonth.getText().toString());
+//
+//        //making arraylist after getting response from database
+//        ArrayList<String> list3 = new ArrayList<String>();
+//        if(!armTwistWithDate.equals("not found")) {
+//            // Getting Arraylist back
+//            JSONObject json1 = null;
+//            try {
+//                json1 = new JSONObject(armTwistWithDate);
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+//
+//            JSONArray jsonArray = json1.optJSONArray("armTwistArray");
+//            if (jsonArray != null) {
+//                int len = jsonArray.length();
+//                for (int i = 0; i < len; i++) {
+//                    try {
+//                        list3.add(jsonArray.get(i).toString());
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            }
+//        }
+////        System.out.println("List of angle values with date in fragment history: " + list1);
+//        for (int i=0;i<list3.size();i++){
+//            entriesArmTwist.add(new Entry(i,Integer.valueOf(list3.get(i))));
+//        }
+////        makeGraph(lineChart3,entriesArmTwist);
 //
 //
 //
-//        LineData data = new LineData(dataset);
-//
-//        //dataset.setColors(ColorTemplate.COLORFUL_COLORS); //
 //
 //
-////        LimitLine l;
-////        l.enableDashedLine(30,5,2);
 //
 //
-//        lineChart.setData(data);
-//
-//        lineChart.setDescription("");
-//        lineChart.setNoDataText("No Chart Data"); // this is the top line
-//        lineChart.setNoDataTextDescription("..."); // this is one line below the no-data-text
-//        lineChart.setNoDataTextColor(Color.BLACK);
-//        lineChart.invalidate();
-//
-//        //enable value highlighting
-//        //lineChart.setHighlightPerTapEnabled(true);
-//        lineChart.setTouchEnabled(true);
-//        lineChart.setDragEnabled(true);
-//        lineChart.setScaleEnabled(true);
-//        lineChart.setAutoScaleMinMaxEnabled(true);
-//        lineChart.setPinchZoom(true);
-//
-//        lineChart.setBackground(null);
-//        lineChart.setBackgroundColor(Color.TRANSPARENT);
-//        lineChart.setBorderColor(Color.TRANSPARENT);
-//        lineChart.setDrawBorders(false);
-//        lineChart.setDrawGridBackground(false);
-//        lineChart.setGridBackgroundColor(Color.TRANSPARENT);
 //
 //
-//        float upperLimit=15f;
-//        LimitLine ll = new LimitLine(upperLimit, "");
-//        ll.setLineColor(Color.RED);
-//        ll.setLineWidth(3f);
-//        ll.enableDashedLine(10f,10f,0f);
+//        ////////////////////////////////////////////
+//
+//        LineChart lineChart4 = (LineChart) rootView.findViewById(R.id.chart3);
+////        List<Entry> entriesActionTime = new ArrayList<Entry>();
+//        /////////////////////////////////////////////////////////////
+//        //Code for getting action Time values
+//        helper = new DatabaseHelper(getActivity());
+////        String email = SaveSharedPreference.getEmail(getActivity());
+//        String actionTimeWithDate = helper.getActionTimeValuesWithDate(email,currentMonth.getText().toString());
+//
+//        //making arraylist after getting response from database
+//        ArrayList<String> list4 = new ArrayList<String>();
+//        if(!actionTimeWithDate.equals("not found")) {
+//            // Getting Arraylist back
+//            JSONObject json1 = null;
+//            try {
+//                json1 = new JSONObject(actionTimeWithDate);
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+//
+//            JSONArray jsonArray = json1.optJSONArray("actionTimeArray");
+//            if (jsonArray != null) {
+//                int len = jsonArray.length();
+//                for (int i = 0; i < len; i++) {
+//                    try {
+//                        list4.add(jsonArray.get(i).toString());
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            }
+//        }
+////        System.out.println("List of angle values with date in fragment history: " + list1);
+//        for (int i=0;i<list4.size();i++){
+//            entriesActionTime.add(new Entry(i,Float.valueOf(list4.get(i))));
+//        }
+////        makeGraph(lineChart4,entriesActionTime);
 //
 //
-////        ll.setTextColor(Color.WHITE);
-////        ll.setTextSize(12f);
-//
-//        YAxis y2 = lineChart.getAxisRight();
-//        y2.setDrawGridLines(false);
-//        y2.setDrawAxisLine(false);
-//        y2.setDrawLabels(false);
-//        y2.setDrawLimitLinesBehindData(false);
-//
-//        YAxis y1 = lineChart.getAxisLeft();
-//        y1.setTextColor(Color.WHITE);
-//        y1.setTextSize(15f);
-//        //y1.setAxisMaxValue(30);
-//        y1.setAxisMinValue(0);
-//        y1.setEnabled(true);
-//
-//        //y1.setDrawGridLines(false);
-//        y1.setDrawAxisLine(true);
-//        //y1.setDrawLabels(false);
-//
-//        y1.setDrawLimitLinesBehindData(true);
-//        //y1.setDrawTopYLabelEntry(false);
-//        y1.setDrawZeroLine(false);
-//        y1.addLimitLine(ll);
-//
-//        XAxis x1 = lineChart.getXAxis();
-//        x1.setDrawGridLines(false);
-//        x1.setDrawAxisLine(false);
-//        x1.setDrawLabels(false);
-//        x1.setDrawLimitLinesBehindData(false);
 //
 //
-//        lineChart.animateY(2000);
-
-    }
-
+////        LineDataSet dataset = new LineDataSet(entries, "Labels");
+////
+////
+//
+////        dataset.setMode(LineDataSet.Mode.CUBIC_BEZIER);
+////        dataset.setCubicIntensity(0.001f);
+////        dataset.setAxisDependency(YAxis.AxisDependency.LEFT);
+////
+////        dataset.setColor(Color.parseColor("#00aff0"));
+////        dataset.setLineWidth(2);
+////
+////        dataset.setDrawFilled(false);
+////        dataset.setFillAlpha(80);
+////        dataset.setFillColor(Color.WHITE);
+////
+////        dataset.setValueTextColor(Color.WHITE);
+////        dataset.setDrawValues(false);
+////        dataset.setCircleColor(Color.WHITE);
+////        dataset.setCircleRadius(4);
+////        dataset.setCircleHoleRadius(2);
+////
+////        dataset.setHighlightEnabled(true); // allow highlighting for DataSet
+////
+////        // set this to false to disable the drawing of highlight indicator (lines)
+////        //dataset.setDrawHighlightIndicators(true);
+////        dataset.setHighLightColor(Color.RED); // color for highlight indicator
+////
+////
+////
+////        LineData data = new LineData(dataset);
+////
+////        //dataset.setColors(ColorTemplate.COLORFUL_COLORS); //
+////
+////
+//////        LimitLine l;
+//////        l.enableDashedLine(30,5,2);
+////
+////
+////        lineChart.setData(data);
+////
+////        lineChart.setDescription("");
+////        lineChart.setNoDataText("No Chart Data"); // this is the top line
+////        lineChart.setNoDataTextDescription("..."); // this is one line below the no-data-text
+////        lineChart.setNoDataTextColor(Color.BLACK);
+////        lineChart.invalidate();
+////
+////        //enable value highlighting
+////        //lineChart.setHighlightPerTapEnabled(true);
+////        lineChart.setTouchEnabled(true);
+////        lineChart.setDragEnabled(true);
+////        lineChart.setScaleEnabled(true);
+////        lineChart.setAutoScaleMinMaxEnabled(true);
+////        lineChart.setPinchZoom(true);
+////
+////        lineChart.setBackground(null);
+////        lineChart.setBackgroundColor(Color.TRANSPARENT);
+////        lineChart.setBorderColor(Color.TRANSPARENT);
+////        lineChart.setDrawBorders(false);
+////        lineChart.setDrawGridBackground(false);
+////        lineChart.setGridBackgroundColor(Color.TRANSPARENT);
+////
+////
+////        float upperLimit=15f;
+////        LimitLine ll = new LimitLine(upperLimit, "");
+////        ll.setLineColor(Color.RED);
+////        ll.setLineWidth(3f);
+////        ll.enableDashedLine(10f,10f,0f);
+////
+////
+//////        ll.setTextColor(Color.WHITE);
+//////        ll.setTextSize(12f);
+////
+////        YAxis y2 = lineChart.getAxisRight();
+////        y2.setDrawGridLines(false);
+////        y2.setDrawAxisLine(false);
+////        y2.setDrawLabels(false);
+////        y2.setDrawLimitLinesBehindData(false);
+////
+////        YAxis y1 = lineChart.getAxisLeft();
+////        y1.setTextColor(Color.WHITE);
+////        y1.setTextSize(15f);
+////        //y1.setAxisMaxValue(30);
+////        y1.setAxisMinValue(0);
+////        y1.setEnabled(true);
+////
+////        //y1.setDrawGridLines(false);
+////        y1.setDrawAxisLine(true);
+////        //y1.setDrawLabels(false);
+////
+////        y1.setDrawLimitLinesBehindData(true);
+////        //y1.setDrawTopYLabelEntry(false);
+////        y1.setDrawZeroLine(false);
+////        y1.addLimitLine(ll);
+////
+////        XAxis x1 = lineChart.getXAxis();
+////        x1.setDrawGridLines(false);
+////        x1.setDrawAxisLine(false);
+////        x1.setDrawLabels(false);
+////        x1.setDrawLimitLinesBehindData(false);
+////
+////
+////        lineChart.animateY(2000);
+//
+//    }
+//
+//
     public void forceButtonMethod(){
         entriesForce.clear();
         checkForTab = "force";

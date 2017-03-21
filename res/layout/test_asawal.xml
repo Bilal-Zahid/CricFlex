@@ -162,7 +162,7 @@
             android:gravity="center"
             android:spinnerMode="dropdown"
             android:dropDownWidth="wrap_content"
-            android:drawableStart="@drawable/profile1"
+            android:drawableStart="@drawable/profile_icon"
             android:popupBackground="@android:color/black"
             />
 

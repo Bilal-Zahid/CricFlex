@@ -73,7 +73,7 @@
                 android:bottomRightRadius="0dp"
                 />
             <solid
-                android:color="#00aff0"
+                android:color="@color/c2"
                 />
 
             <stroke

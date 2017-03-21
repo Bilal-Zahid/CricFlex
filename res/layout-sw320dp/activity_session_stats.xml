@@ -58,7 +58,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textStyle="bold"
             android:text="@string/session_armflex"
-            android:textSize="50sp"
+            android:textSize="45sp"
             android:textColor="@color/session_value_text"
             />
         <TextView
@@ -101,7 +101,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textStyle="bold"
             android:text="@string/session_force"
-            android:textSize="50sp"
+            android:textSize="45sp"
             android:textColor="@color/session_value_text"
             />
         <TextView
@@ -139,7 +139,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textStyle="bold"
             android:text="@string/session_time"
-            android:textSize="50sp"
+            android:textSize="45sp"
             android:textColor="@color/session_value_text"
             />
         <TextView
@@ -178,7 +178,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textStyle="bold"
             android:text="@string/session_twist"
-            android:textSize="50sp"
+            android:textSize="45sp"
             android:textColor="@color/session_value_text"
             />
         <TextView
@@ -217,7 +217,7 @@
             android:text="@string/session_button_finish"
             android:textStyle="bold"
             android:textColor="@color/session_finish_button_text"
-            android:textSize="35sp"
+            android:textSize="30sp"
             android:background="@drawable/button2_bg"/>
 
     </LinearLayout>

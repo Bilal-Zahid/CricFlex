@@ -9,6 +9,7 @@ import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.support.percent.PercentRelativeLayout;
 import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
@@ -48,7 +49,6 @@ public class ActivityLogin extends Activity {
 
 
 
-
     AutoCompleteTextView etEmail;
     EditText etPassword;
 
@@ -62,29 +62,19 @@ public class ActivityLogin extends Activity {
     private ProgressDialog progressDialog ;
     FirebaseAuth firebaseAuth;
 
-
-//    private FirebaseAuth.AuthStateListener mAuthListener;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
         super.onCreate(savedInstanceState);
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        getActionBar().hide();
-
-
 
         View decorView = getWindow().getDecorView();
         // Hide the status bar.
         int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
         decorView.setSystemUiVisibility(uiOptions);
-        //hide action bar
-
-        getActionBar().hide();
 
         setContentView(R.layout.activity_login);
-
 
 
         firebaseAuth = FirebaseAuth.getInstance();
@@ -99,59 +89,21 @@ public class ActivityLogin extends Activity {
         progressDialog = new ProgressDialog(this);
 //        firebaseAuth = FirebaseAuth.getInstance();
 
-        etEmail = (AutoCompleteTextView) findViewById(R.id.lgn_username);
+        etEmail = (AutoCompleteTextView) findViewById(R.id.lgn_email);
+        etEmail.setThreshold(1);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 R.layout.dropdown_item, helper.getAllEmails());
 
-        etEmail.setOnTouchListener(new View.OnTouchListener(){
-            @Override
-            public boolean onTouch(View v, MotionEvent event){
-                etEmail.showDropDown();
-                return false;
-            }
-        });
+
         etEmail.setAdapter(adapter);
         etPassword = (EditText) findViewById(R.id.lgn_password);
-        //To hide the keyboard when user touch anywhere else on the screen
-
-//        etEmail.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-//            @Override
-//            public void onFocusChange(View v, boolean hasFocus) {
-//                if (!hasFocus) {
-//                    hideKeyboard(v);
-//                }
-//            }
-//        });
-        etPassword.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (!hasFocus) {
-                    hideKeyboard(v);
-                }
-            }
-        });
-
-        /////////////////////////////////////
-        /*
-        final EditText etEmail = (EditText) findViewById(R.id.etEmail);
-        final EditText etPassword = (EditText) findViewById(R.id.etPassword);
-
-
-        final String usernamestr = etEmail.getText().toString();
-        final String passwordstr = etPassword.getText().toString();
-        */
-
-        //Button button_forgot_password = (Button) findViewById(R.id.button_forgot_password);
-        //button_forgot_password.setOnClickListener(new handleForgotPasswordButton());
 
         final Button bLogin = (Button) findViewById(R.id.Login);
         bLogin.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
 
 
-
-//
                 emailstr = etEmail.getText().toString();
                 final String passwordstr = etPassword.getText().toString();
 
@@ -237,15 +189,11 @@ public class ActivityLogin extends Activity {
                             player.setBowlingStyle(helper.getBowlingStyle(email));
                             player.setCareerLevel(helper.getCareerLevel(email));
 
-
-
-
                             databaseReference.child("Users").child(user.getUid()).setValue(player);
 
                             Intent i = new Intent(ActivityLogin.this, ActivityMain.class);
                             ActivityLogin.this.startActivity(i);
                             finish();
-
 
                         }
 
@@ -253,12 +201,6 @@ public class ActivityLogin extends Activity {
                 });
 
     }
-
-    public void hideKeyboard(View view) {
-        InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
-        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
-    }
-
 
     public void setfgpLayout1(View view) {
         setContentView(R.layout.activity_forgot_password1);
@@ -382,62 +324,30 @@ public class ActivityLogin extends Activity {
 
 
     }
-    @Override
-    public boolean dispatchTouchEvent(MotionEvent event) {
-        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            View v = getCurrentFocus();
-            if ( v instanceof EditText) {
-                Rect outRect = new Rect();
-                v.getGlobalVisibleRect(outRect);
-                if (!outRect.contains((int)event.getRawX(), (int)event.getRawY())) {
-                    v.clearFocus();
-                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-                }
-            }
-        }
-        return super.dispatchTouchEvent( event );
-    }
-
-
 //    @Override
-//    public void onStart() {
-//        super.onStart();
-//        firebaseAuth.addAuthStateListener(mAuthListener);
-//        // ...
-//    }
-//
-//    @Override
-//    public void onStop() {
-//        super.onStop();
-//        if (mAuthListener != null) {
-//            firebaseAuth.removeAuthStateListener(mAuthListener);
+//    public boolean dispatchTouchEvent(MotionEvent event) {
+//        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+//            View v = getCurrentFocus();
+//            if ( !(v instanceof EditText)) {
+//                Rect outRect = new Rect();
+//                v.getGlobalVisibleRect(outRect);
+//                if (!outRect.contains((int)event.getRawX(), (int)event.getRawY())) {
+//                    v.clearFocus();
+//                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+//                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+//                }
+//            }
 //        }
-//        // ...
+//        return super.dispatchTouchEvent( event );
 //    }
 
+//    @Override
+//    public boolean onTouchEvent(MotionEvent event) {
+//        if ( !(getCurrentFocus() instanceof EditText)) {
+//            InputMethodManager imm = (InputMethodManager) getSystemService(Context.
+//                    INPUT_METHOD_SERVICE);
+//            imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+//        }
+//        return true;
+//    }
 }
-        /*
-        final TextView registerLink = (TextView) findViewById(R.id.tvRegisterHere);
-
-
-        registerLink.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent registerIntent = new Intent(ActivityLogin.this, ActivityRegister.class);
-                ActivityLogin.this.startActivity(registerIntent);
-            }
-        });
-
-
-
-    public void onButtonClick(View v) {
-        if (v.getId() == R.id.bRegister) {
-
-            Intent i = new Intent(ActivityLogin.this, ActivityRegister.class);
-            ActivityLogin.this.startActivity(i);
-        }
-    }
-    */
-

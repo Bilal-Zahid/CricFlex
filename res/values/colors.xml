@@ -1,26 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#333333</color>
+    <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#00cc99</color>
 
+    <color name="toolbar_color">#000000</color>
+
+    <color name="dark">#333333</color>
+    <color name="light">#cccccc</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
     <!-- theme colors-->
+
+    <!--#545761-->
 
     <color name="c1">#00cc99</color>
     <color name="c2">#5271f5</color>
-    <color name="c3">#545761</color>
+    <color name="c3">#333333</color>
     <color name="c4">#e0e2ea</color>
     <color name="c5">#d3d3d3</color>
 
     <color name="c180">#8000cc99</color>
     <color name="c280">#805271f5</color>
-    <color name="c380">#80545761</color>
+    <color name="c380">#80333333</color>
     <color name="c480">#80e0e2ea</color>
     <color name="c580">#80d3d3d3</color>
 
     <color name="c150">#5000cc99</color>
     <color name="c250">#505271f5</color>
-    <color name="c350">#50545761</color>
+    <color name="c350">#50333333</color>
     <color name="c450">#50e0e2ea</color>
     <color name="c550">#50d3d3d3</color>
 
@@ -31,12 +39,16 @@
     <color name="action_bar_color">@color/c3</color>
 
 
-    <!--navigation bar-->
-    <color name="nav_bar_color">@color/c3</color>
+    <!--navigation-->
+    <color name="nav_bar_color">#000000</color>
     <color name="nav_icon_color">@color/c5</color>
-
+    <color name="nav_header_color">@color/c3</color>
+    <color name="nav_header_start_color">@color/c2</color>
+    <color name="nav_header_end_color">#0099CC</color>
+    <color name="nav_item_bkd">@color/colorPrimaryDark</color>
+    <color name="nav_item_selected_bkd">@color/colorAccent</color>
     <!--menu-->
-    <color name="menu_color">@color/c3</color>
+    <color name="menu_bkd_color">@color/black</color>
     <color name="menu_icon_color">@color/c5</color>
 
     <!--text-->
@@ -84,6 +96,7 @@
     <color name="bluetooth_icon_color">#1F84CE</color>
     <color name="bluetooth_disconnected">#222222</color>
     <color name="bluetooth_connected">@color/text_light</color>
+    <color name="monitor_metric_bar_color">#aa002147</color>
     <!--session-->
     <color name="session_header">#50000000</color>
     <color name="session_header_text">@color/text_light</color>
@@ -95,7 +108,7 @@
     <color name="session_twist_tile">#500099CC</color>
     <color name="session_footer">#ffff8800</color>
     <color name="session_finish_button_text">@color/text_light</color>
-
+    <color name="session_graph_back_button_color">@color/c5</color>
 
     <!--profile-->
     <color name="edit_profile_button_text">@color/text_light</color>
@@ -108,6 +121,10 @@
     <color name="help_popup_bkd">#333333</color>
     <color name="number_bkd">@color/c1</color>
 
+
+    <!--history-->
+
+    <color name="date_arrow_icon_color">@color/c5</color>
 
 
     <!-- Screens background color-->
@@ -144,8 +161,8 @@
 
     <color name="list_item_bg_normal_start">#000000</color>
     <color name="list_item_bg_normal_end">#000000</color>
-    <color name="list_item_bg_pressed_start">#00a1f1</color>
-    <color name="list_item_bg_pressed_end">#00a1f1</color>
+    <color name="list_item_bg_pressed_start">@color/c2</color>
+    <color name="list_item_bg_pressed_end">@color/c2</color>
 
     <color name="activity_list_slidermenu_bg">#000000</color>
     <color name="activity_list_slidermenu_divider">#333333</color>
@@ -154,8 +171,7 @@
 
 
 
-    <color name="dark">#FF000000</color>
-    <color name="light">#FFEEEEEE</color>
+
 
 
 
@@ -174,16 +190,10 @@
 
 
 
-    <color name="white">#FFFFFF</color>
-    <color name="black">#000000</color>
-    <color name="symptom_color_selected">#003366</color>
-    <color name="reaction_color_selected">#003366</color>
-    <color name="static_text_color">#003366</color>
-    <color name="journal_entry_listitem_text_color">#003366</color>
-    <color name="note_text_disabled">#333333</color>
+
     <color name="blue">#0000FF</color>
     <color name="navy">#6699FF</color>
-    <color name="sky">#0099CC</color>
+
     <color name="gray">#808080</color>
     <color name="lightgray">#e7e7e7</color>
     <color name="lightgray02">#bfbfbf</color>

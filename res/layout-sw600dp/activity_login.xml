@@ -19,7 +19,7 @@
         android:layout_height="0dp"
         app:layout_heightPercent="20%"
         app:layout_widthPercent="100%"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:orientation="vertical"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true">
@@ -53,7 +53,7 @@
 
 
         <AutoCompleteTextView
-            android:id="@+id/lgn_username"
+            android:id="@+id/lgn_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/edittext_bottom_border_bg"
@@ -67,11 +67,11 @@
             android:padding="10dp"
             android:textColorHint="#CCCCCC"
             android:layout_weight="1"
-            android:inputType="textPersonName"
+            android:inputType="textNoSuggestions"
             android:imeOptions="actionNext"
             android:nextFocusDown="@+id/etPassword"
             android:textCursorDrawable="@null"
-            android:dropDownHeight = "110dp"
+            android:dropDownHeight = "wrap_content"
 
             />
 

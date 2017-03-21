@@ -3,6 +3,7 @@
 <android.support.percent.PercentRelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fragment_history_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -10,7 +11,7 @@
         android:layout_height="fill_parent"
         android:scaleType="centerCrop"
         android:id="@+id/background"
-        android:src="@drawable/bkd17" />
+        android:src="@drawable/bkd16" />
 
 
     <RelativeLayout
@@ -18,8 +19,10 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
         android:background="@android:color/transparent"
-        android:gravity="fill_horizontal"
+        android:gravity="center_vertical"
         android:orientation="horizontal"
         app:layout_heightPercent="10%"
         app:layout_widthPercent="100%">
@@ -29,76 +32,79 @@
             android:id="@+id/prev"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginStart="5dp"
             android:background="@android:color/transparent"
             android:orientation="horizontal"
             android:layout_alignParentStart="true"
             android:gravity="center_vertical">
 
 
-            <Button
+            <ImageButton
                 android:id="@+id/prevYear"
-                android:layout_width="90sp"
-                android:layout_height="90sp"
-                android:text="\u25c2\u25c2"
-                android:textSize="80sp"
-                android:textColor="#ffffff"
-                android:background="@android:color/transparent" />
+                android:layout_width="85dp"
+                android:layout_height="80dp"
+                android:padding="20dp"
+                android:src="@drawable/previous_double_icon"
+                android:scaleType="fitXY"
+                android:background="@android:color/transparent"
+                android:layout_gravity="center"
+                android:gravity="center"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/prevMonth"
-                android:layout_width="90sp"
-                android:layout_height="90sp"
-                android:text="\u25c2"
-                android:textSize="80sp"
-                android:textColor="#ffffff"
-                android:background="@android:color/transparent"/>
+                android:layout_width="85dp"
+                android:layout_height="80dp"
+                android:padding="20dp"
+                android:src="@drawable/previous_icon"
+                android:scaleType="fitXY"
+                android:background="@android:color/transparent"
+                android:layout_gravity="center"
+                android:gravity="center"/>
 
         </LinearLayout>
         <!--\u25b8-->
         <TextView
             android:id="@+id/currentMonth"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="50sp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="#FFFFFF"
-            android:text="July 2016"
-            android:textSize="45sp"
+            android:text="January 1995"
+            android:textSize="40sp"
             android:layout_centerInParent="true"/>
 
         <LinearLayout
             android:id="@+id/next"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginEnd="5dp"
             android:background="@android:color/transparent"
             android:orientation="horizontal"
             android:layout_alignParentEnd="true"
             android:gravity="center_vertical">
 
-            <Button
+            <ImageButton
                 android:id="@+id/nextMonth"
-                android:layout_width="90sp"
-                android:layout_height="90sp"
-                android:layout_marginEnd="3dp"
-                android:text="\u25b8"
-                android:textSize="80sp"
-                android:textColor="#ffffff"
-                android:background="@android:color/transparent" />
+                android:layout_width="85dp"
+                android:layout_height="80dp"
+                android:padding="20dp"
+                android:src="@drawable/next_icon"
+                android:scaleType="fitXY"
+                android:background="@android:color/transparent"
+                android:layout_gravity="center"
+                android:gravity="center"/>
 
-
-            <Button
+            <ImageButton
                 android:id="@+id/nextYear"
-                android:layout_width="90sp"
-                android:layout_height="90sp"
-
-                android:text="\u25b8\u25b8"
-                android:textSize="80sp"
-                android:textColor="#ffffff"
-                android:background="@android:color/transparent" />
+                android:layout_width="85dp"
+                android:layout_height="80dp"
+                android:padding="20dp"
+                android:src="@drawable/next_double_icon"
+                android:scaleType="fitXY"
+                android:background="@android:color/transparent"
+                android:layout_gravity="center"
+                android:gravity="center"/>
 
 
         </LinearLayout>

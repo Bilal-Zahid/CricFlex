@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.LineChart;
@@ -26,6 +27,7 @@ public class ActivitySessionGraph extends AppCompatActivity {
 
     TextView parameterNameTextView;
     //private Button endSessionButton;
+    ImageButton backButton;
 
     ArrayList<Integer> values = new ArrayList<Integer>();
     String parameterName;
@@ -35,10 +37,15 @@ public class ActivitySessionGraph extends AppCompatActivity {
         setContentView(R.layout.activity_session_graph);
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        getActionBar().hide();
 
         //endSessionButton = (Button)findViewById(R.id.graph_finish_button);
-
+        backButton = (ImageButton) findViewById(R.id.graph_back_button);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         parameterNameTextView = (TextView) findViewById(R.id.parameter_name);
         final Intent intent = getIntent();

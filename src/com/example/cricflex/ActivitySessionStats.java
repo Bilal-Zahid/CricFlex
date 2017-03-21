@@ -45,7 +45,6 @@ public class ActivitySessionStats extends AppCompatActivity {
         setContentView(R.layout.activity_session_stats);
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        getActionBar().hide();
 
         final Intent intent = getIntent();
         final Bundle extraBundle = intent.getExtras();

@@ -19,7 +19,7 @@
         android:layout_height="0dp"
         app:layout_heightPercent="20%"
         app:layout_widthPercent="100%"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:orientation="vertical"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true">
@@ -50,49 +50,58 @@
         android:layout_centerHorizontal="true"
         android:layout_centerInParent="true"
         android:orientation="vertical">
-        
 
-        <AutoCompleteTextView
-            android:id="@+id/lgn_username"
+
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/edittext_bottom_border_bg"
-            android:drawableStart="@drawable/profile_icon"
-            android:paddingStart="15dp"
-            android:paddingEnd="15dp"
-            android:drawablePadding="10dp"
-            android:hint="@string/email_hint"
-            android:textSize="20sp"
-            android:textColor="#FFFFFF"
-            android:padding="10dp"
-            android:textColorHint="#CCCCCC"
-            android:layout_weight="1"
-            android:inputType="textPersonName"
-            android:imeOptions="actionNext"
-            android:nextFocusDown="@+id/etPassword"
-            android:textCursorDrawable="@null"
-            android:dropDownHeight = "110dp"
+            android:layout_height="wrap_content">
 
-            />
+            <AutoCompleteTextView
+                android:id="@+id/lgn_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edittext_bottom_border_bg"
+                android:drawableStart="@drawable/profile_icon"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:drawablePadding="10dp"
+                android:hint="@string/email_hint"
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:padding="10dp"
+                android:textColorHint="#CCCCCC"
+                android:layout_weight="1"
+                android:inputType="text"
+                android:imeOptions="actionNext"
+                android:nextFocusDown="@+id/etPassword"
+                android:dropDownHeight = "wrap_content"
+                />
+        </android.support.design.widget.TextInputLayout>
 
-        <EditText
-            android:id="@+id/lgn_password"
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:inputType="textPassword"
-            android:background="@drawable/edittext_bottom_border_bg"
-            android:drawableStart="@drawable/password_icon"
-            android:paddingStart="15dp"
-            android:paddingEnd="15dp"
-            android:drawablePadding="10dp"
-            android:padding="10dp"
-            android:hint="@string/password"
-            android:textSize="20sp"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#CCCCCC"
-            android:layout_weight="1"
-            android:textCursorDrawable="@null"/>
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/lgn_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:inputType="textPassword"
+                android:background="@drawable/edittext_bottom_border_bg"
+                android:drawableStart="@drawable/password_icon"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:drawablePadding="10dp"
+                android:padding="10dp"
+                android:hint="@string/password"
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#CCCCCC"
+                android:layout_weight="1"
+                android:maxLines="1"/>
+
+    </android.support.design.widget.TextInputLayout>
 
         <Button
             android:id="@+id/button_forgot_password"

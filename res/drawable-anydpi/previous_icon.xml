@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:viewportWidth="512"
+    android:viewportHeight="512"
+    android:width="48dp"
+    android:height="48dp">
+    <group
+        android:scaleX="0.1"
+        android:scaleY="-0.1"
+        android:translateY="512">
+        <path
+            android:pathData="M3595 5107c-22 -8 -56 -22 -75 -31C3501 5066 2967 4540 2333 3906 1041 2615 1125 2709 1125 2560 1125 2411 1041 2505 2333 1213 3625 -80 3531 5 3680 5c56 1 88 6 127 24 66 29 143 110 169 176 19 49 19 103 19 2355 0 2252 0 2306 -19 2355 -26 67 -103 147 -169 175 -63 27 -158 35 -212 17z"
+            android:fillColor="@color/date_arrow_icon_color" />
+    </group>
+</vector>
