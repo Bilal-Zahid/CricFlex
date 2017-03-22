@@ -81,6 +81,26 @@ public class ActivityMain extends AppCompatActivity
         toggle.syncState();
 
         navigationView = (NavigationView) findViewById(R.id.nav_view);
+
+        View nav_header =  navigationView.getHeaderView(0);
+        TextView name = (TextView)nav_header.findViewById(R.id.name);
+        name.setText(helper.getName(SaveSharedPreference.getEmail(ActivityMain.this)));
+        TextView email = (TextView)nav_header.findViewById(R.id.email);
+        email.setText(SaveSharedPreference.getEmail(ActivityMain.this));
+
+
+        nav_header.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+
+                System.out.println("In Click Listener!!!");
+                Intent i = new Intent(ActivityMain.this, ActivityProfile.class);
+                startActivity(i);
+//                finish();
+            }
+        });
+
+
+
         navigationView.setNavigationItemSelectedListener(this);
 
 
@@ -212,7 +232,6 @@ public class ActivityMain extends AppCompatActivity
         int id = item.getItemId();
 
         inHome = false;
-
 
         if (id == R.id.nav_home) {
             fragment = new FragmentHome();

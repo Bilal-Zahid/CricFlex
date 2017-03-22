@@ -51,6 +51,14 @@
             android:label="CricFlex"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity
+            android:name=".ActivityProfile"
+            android:label="CricFlex"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+
         <activity
             android:name=".ActivityProfileSetup"
             android:label="CricFlex"

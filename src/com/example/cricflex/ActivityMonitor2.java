@@ -247,23 +247,23 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
             //testing
 
 
-            angleValues.add(1);
-            angleValues.add(2);
-            angleValues.add(3);
-////
-            armTwistValues.add(4);
-            armTwistValues.add(5);
-            armTwistValues.add(6);
-////
-////
-            actionTimeValues.add((float)7);
-            actionTimeValues.add((float)8);
-//            actionTimeValues.add((float)1);
-            actionTimeValues.add((float)9);
+//            angleValues.add(1);
+//            angleValues.add(2);
+//            angleValues.add(3);
 //////
-            forceValues.add(10);
-            forceValues.add(11);
-            forceValues.add(12);
+//            armTwistValues.add(4);
+//            armTwistValues.add(5);
+//            armTwistValues.add(6);
+//////
+//////
+//            actionTimeValues.add((float)7);
+//            actionTimeValues.add((float)8);
+////            actionTimeValues.add((float)1);
+//            actionTimeValues.add((float)9);
+////////
+//            forceValues.add(10);
+//            forceValues.add(11);
+//            forceValues.add(12);
 
 //            angleValues.add(15);armTwistValues.add(4);
 //            angleValues.add(16);

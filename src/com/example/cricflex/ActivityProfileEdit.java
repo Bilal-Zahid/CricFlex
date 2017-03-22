@@ -83,6 +83,8 @@ public class ActivityProfileEdit extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_edit);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+
         findViewsById();
 
         email = SaveSharedPreference.getEmail(ActivityProfileEdit.this);

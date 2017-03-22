@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -14,23 +15,34 @@ import android.widget.TextView;
 import java.io.FileInputStream;
 import java.util.Calendar;
 
-public class ActivityProfile extends Activity {
+public class ActivityProfile extends AppCompatActivity {
 
 
     Button editProfileButton;
 
-    public ActivityProfile(){}
+//    public ActivityProfile(){}
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        System.out.println("In Profile Activity!!!");
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+
+
         DatabaseHelper helper = new DatabaseHelper(ActivityProfile.this);
+
+
 
         setContentView(R.layout.activity_profile);
 
-        String email = "";
+
+
+
+
+        String email = SaveSharedPreference.getEmail(ActivityProfile.this);;
 
         ///// CHECK THIS
 
@@ -41,6 +53,8 @@ public class ActivityProfile extends Activity {
 
 
         ///// CHECK THIS
+
+
 
 
         TextView pv_name = (TextView)findViewById(R.id.pv_name);
@@ -72,16 +86,23 @@ public class ActivityProfile extends Activity {
 
 
 
+
+
+
         String str[] = DOB.split("-");
         int day = Integer.parseInt(str[0]);
         int month = Integer.parseInt(str[1]);
         int year = Integer.parseInt(str[2]);
+
+        System.out.println("In Profile Activity 2!!!");
+
 
         TextView pv_age = (TextView)findViewById(R.id.pv_age);
         pv_age.setText(getAge(year,month,day));
 
         //CircleImageView circleImageView = new CircleImageView(getActivity());
         //circleImageView =
+
 
 
 
@@ -106,7 +127,6 @@ public class ActivityProfile extends Activity {
                 startActivity(intent);
             }
         });
-
     }
 
 
