@@ -79,6 +79,8 @@ public class ActivityLogin extends Activity {
 
         firebaseAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference();
+
+
 //        if(firebaseAuth.getCurrentUser()!=null){
 //            // profile activity
 //
@@ -144,6 +146,9 @@ public class ActivityLogin extends Activity {
         String password = etPassword.getText().toString().trim();
 
 
+
+
+
         if(TextUtils.isEmpty(email)){
             Toast.makeText(this,"Please Enter Email",Toast.LENGTH_SHORT).show();
         }
@@ -156,10 +161,14 @@ public class ActivityLogin extends Activity {
         progressDialog.show();
         progressDialog.setCancelable(false);
         progressDialog.setCanceledOnTouchOutside(false);
+
         firebaseAuth.signInWithEmailAndPassword(email,password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+
+
+
 
                         progressDialog.dismiss();
 
@@ -167,6 +176,8 @@ public class ActivityLogin extends Activity {
                             //logging in
 
 
+
+//                            System.out.println("Email: " + email);
                             Toast.makeText(ActivityLogin.this, "Signed In" ,
                                     Toast.LENGTH_SHORT).show();
 
@@ -188,8 +199,62 @@ public class ActivityLogin extends Activity {
                             player.setBowlingArm(helper.getBowlingArm(email));
                             player.setBowlingStyle(helper.getBowlingStyle(email));
                             player.setCareerLevel(helper.getCareerLevel(email));
+                            player.setPassword(helper.getPassword(email));
+                            player.setHeight("6");
 
-                            databaseReference.child("Users").child(user.getUid()).setValue(player);
+
+                            databaseReference.child("Users").child(user.getUid()).child("Name").setValue(player.getName());
+                            databaseReference.child("Users").child(user.getUid()).child("Gender").setValue(player.getGender());
+                            databaseReference.child("Users").child(user.getUid()).child("Email").setValue(player.getEmail());
+                            databaseReference.child("Users").child(user.getUid()).child("Weight").setValue(player.getWeight());
+                            databaseReference.child("Users").child(user.getUid()).child("Location").setValue(player.getLocation());
+                            databaseReference.child("Users").child(user.getUid()).child("DOB").setValue(player.getDOB());
+                            databaseReference.child("Users").child(user.getUid()).child("Bowling Arm").setValue(player.getBowlingArm());
+                            databaseReference.child("Users").child(user.getUid()).child("Bowling Style").setValue(player.getBowlingStyle());
+                            databaseReference.child("Users").child(user.getUid()).child("Career Level").setValue(player.getCareerLevel());
+//                            databaseReference.child("Users").child(user.getUid()).child("name").setValue(player.getName());
+//                            databaseReference.child("Users").child(user.getUid()).child("name").setValue(player.getName());
+
+//                            Player player = new Player();
+//
+//                            player.setName(helper.getName(email));
+//                            player.setGender(helper.getGender(email));
+//                            player.setEmail(email);
+//                            player.setWeight(helper.getWeight(email));
+//                            player.setLocation(helper.getLocation(email));
+//                            player.setDOB(helper.getDOB(email));
+//                            player.setBowlingArm(helper.getBowlingArm(email));
+//                            player.setBowlingStyle(helper.getBowlingStyle(email));
+//                            player.setCareerLevel(helper.getCareerLevel(email));
+
+
+
+                            System.out.println(
+                                    "name: " + player.getName() +
+                                    "gender: " + player.getGender() +
+                                    "email: " + player.getEmail() +
+                                    "weight: " + player.getWeight() +
+                                    "location: " + player.getLocation() +
+                                    "bowling Arm: " + player.getBowlingArm() +
+                                    "bowling Style: " + player.getBowlingStyle() +
+                                    "career level: " + player.getCareerLevel()
+                            );
+
+
+
+
+
+
+//
+//                            databaseReference = FirebaseDatabase.getInstance().getReference();
+//                            databaseReference.child("Users").child(user.getUid()).setValue(player);
+
+
+
+
+
+
+
 
                             Intent i = new Intent(ActivityLogin.this, ActivityMain.class);
                             ActivityLogin.this.startActivity(i);
@@ -236,7 +301,7 @@ public class ActivityLogin extends Activity {
                 fgpSecurity = fgp_security.getText().toString();
 
                 if(helper.getSecurity(fgpEmail)==null || helper.getSecurity(fgpEmail).equals("not found")){
-                    Toast.makeText(ActivityLogin.this, "kaila kalandar", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ActivityLogin.this, "Something went wrong!", Toast.LENGTH_SHORT).show();
                 }
 
                 else if(!helper.getSecurity(fgpEmail).equals(fgpSecurity)){
@@ -324,30 +389,30 @@ public class ActivityLogin extends Activity {
 
 
     }
-//    @Override
-//    public boolean dispatchTouchEvent(MotionEvent event) {
-//        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-//            View v = getCurrentFocus();
-//            if ( !(v instanceof EditText)) {
-//                Rect outRect = new Rect();
-//                v.getGlobalVisibleRect(outRect);
-//                if (!outRect.contains((int)event.getRawX(), (int)event.getRawY())) {
-//                    v.clearFocus();
-//                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-//                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-//                }
-//            }
-//        }
-//        return super.dispatchTouchEvent( event );
-//    }
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            View v = getCurrentFocus();
+            if ( !(v instanceof EditText)) {
+                Rect outRect = new Rect();
+                v.getGlobalVisibleRect(outRect);
+                if (!outRect.contains((int)event.getRawX(), (int)event.getRawY())) {
+                    v.clearFocus();
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                }
+            }
+        }
+        return super.dispatchTouchEvent( event );
+    }
 
-//    @Override
-//    public boolean onTouchEvent(MotionEvent event) {
-//        if ( !(getCurrentFocus() instanceof EditText)) {
-//            InputMethodManager imm = (InputMethodManager) getSystemService(Context.
-//                    INPUT_METHOD_SERVICE);
-//            imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
-//        }
-//        return true;
-//    }
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        if ( !(getCurrentFocus() instanceof EditText)) {
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.
+                    INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        }
+        return true;
+    }
 }
