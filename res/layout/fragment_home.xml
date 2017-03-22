@@ -4,6 +4,7 @@
 <android.support.percent.PercentRelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:autofit="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -93,7 +94,7 @@
                 android:layout_gravity="center"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/home_total_balls_text"
-                android:textSize="30sp"
+                android:textSize="25sp"
                 android:textColor="@color/text_light"
                 android:textStyle="bold"
                 />
@@ -108,7 +109,7 @@
                 android:layout_gravity="center"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/home_total_balls"
-                android:textSize="30sp"
+                android:textSize="25sp"
                 android:textColor="@color/text_light"
                 android:textStyle="bold"
                 android:id="@+id/home_totalballs" />
@@ -156,7 +157,7 @@
                     android:layout_column="0"
                     android:gravity="center"
                     android:layout_gravity="center_vertical"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textSize="20sp"
                     android:text="@string/home_average_stats"
                     android:textColor="@color/text_light"
                     android:background="@drawable/divider_right"
@@ -167,7 +168,7 @@
 
                 <!--second column body-->
 
-                <TextView
+                <me.grantland.widget.AutofitTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
@@ -179,7 +180,9 @@
                     android:layout_gravity="fill_horizontal"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="@string/home_armflex"
-                    android:textSize="@dimen/home_medium_text"
+                    android:textSize="30sp"
+                    autofit:minTextSize="20sp"
+                    android:maxLines="1"
                     android:textColor="@color/text_light"
                     android:textStyle="bold"/>
 
@@ -199,7 +202,7 @@
 
 
 
-                <TextView
+                <me.grantland.widget.AutofitTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
@@ -211,7 +214,9 @@
                     android:layout_gravity="fill_horizontal"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="@string/home_twist"
-                    android:textSize="@dimen/home_medium_text"
+                    android:textSize="30sp"
+                    autofit:minTextSize="20sp"
+                    android:maxLines="1"
                     android:textColor="@color/text_light"
                     android:textStyle="bold"/>
 
@@ -230,7 +235,7 @@
 
                 <!--third column body-->
 
-                <TextView
+                <me.grantland.widget.AutofitTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
@@ -242,7 +247,9 @@
                     android:layout_gravity="fill_horizontal"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="@string/home_time"
-                    android:textSize="@dimen/home_medium_text"
+                    android:textSize="30sp"
+                    autofit:minTextSize="20sp"
+                    android:maxLines="1"
                     android:textColor="@color/text_light"
                     android:textStyle="bold"/>
 
@@ -260,7 +267,7 @@
                     android:text="@string/home_time_text"
                     android:textColor="@color/text_light"/>
 
-                <TextView
+                <me.grantland.widget.AutofitTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
@@ -272,7 +279,9 @@
                     android:layout_gravity="fill_horizontal"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="@string/home_force"
-                    android:textSize="@dimen/home_medium_text"
+                    android:textSize="30sp"
+                    autofit:minTextSize="20sp"
+                    android:maxLines="1"
                     android:textColor="@color/text_light"
                     android:textStyle="bold"/>
 
