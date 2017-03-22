@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<android.support.percent.PercentRelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:autofit="http://schemas.android.com/tools">
 
     <ImageView
         android:layout_width="fill_parent"
@@ -167,7 +167,7 @@
 
                 <!--second column body-->
 
-                <TextView
+                <me.grantland.widget.AutofitTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
@@ -180,6 +180,8 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="@string/home_armflex"
                     android:textSize="60sp"
+                    autofit:minTextSize="50sp"
+                    android:maxLines="1"
                     android:textColor="@color/text_light"
                     android:textStyle="bold"/>
 
@@ -193,13 +195,13 @@
                     android:layout_column="1"
                     android:gravity="center"
                     android:layout_gravity="fill_horizontal"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textSize="30sp"
                     android:text="@string/home_armflex_text"
                     android:textColor="@color/text_light"/>
 
 
 
-                <TextView
+                <me.grantland.widget.AutofitTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
@@ -212,6 +214,8 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="@string/home_twist"
                     android:textSize="60sp"
+                    autofit:minTextSize="50sp"
+                    android:maxLines="1"
                     android:textColor="@color/text_light"
                     android:textStyle="bold"/>
 
@@ -224,13 +228,13 @@
                     android:layout_column="1"
                     android:gravity="center"
                     android:layout_gravity="fill_horizontal"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textSize="30sp"
                     android:text="@string/home_twist_text"
                     android:textColor="@color/text_light"/>
 
                 <!--third column body-->
 
-                <TextView
+                <me.grantland.widget.AutofitTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
@@ -243,6 +247,8 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="@string/home_time"
                     android:textSize="60sp"
+                    autofit:minTextSize="50sp"
+                    android:maxLines="1"
                     android:textColor="@color/text_light"
                     android:textStyle="bold"/>
 
@@ -256,11 +262,11 @@
                     android:layout_column="2"
                     android:gravity="center"
                     android:layout_gravity="fill_horizontal"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textSize="30sp"
                     android:text="@string/home_time_text"
                     android:textColor="@color/text_light"/>
 
-                <TextView
+                <me.grantland.widget.AutofitTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
@@ -273,6 +279,8 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="@string/home_force"
                     android:textSize="60sp"
+                    autofit:minTextSize="50sp"
+                    android:maxLines="1"
                     android:textColor="@color/text_light"
                     android:textStyle="bold"/>
 
@@ -285,7 +293,7 @@
                     android:layout_column="2"
                     android:gravity="center"
                     android:layout_gravity="fill_horizontal"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textSize="30sp"
                     android:text="@string/home_force_text"
                     android:textColor="@color/text_light"/>
 

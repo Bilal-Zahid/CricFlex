@@ -43,6 +43,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import me.grantland.widget.AutofitTextView;
+
 public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeScanCallback {
 
     private static Boolean exit = false;
@@ -109,9 +111,9 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
     private TextView monitorAngleValue;
     private TextView monitorLegalBalls;
     private TextView monitorIllegalBalls;
-    private TextView monitorForce;
-    private TextView monitorActionTime;
-    private TextView monitorArmTwist;
+    private AutofitTextView monitorForce;
+    private AutofitTextView monitorActionTime;
+    private AutofitTextView monitorArmTwist;
 
     private Button monitorFinishButton;
 
@@ -520,9 +522,9 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
 
 
 
-        monitorActionTime = (TextView) findViewById(R.id.monitor_action_time);
-        monitorArmTwist = (TextView) findViewById(R.id.monitor_arm_twist);
-        monitorForce = (TextView) findViewById(R.id.monitor_force);
+        monitorActionTime = (AutofitTextView) findViewById(R.id.monitor_action_time);
+        monitorArmTwist = (AutofitTextView) findViewById(R.id.monitor_arm_twist);
+        monitorForce = (AutofitTextView) findViewById(R.id.monitor_force);
 
         monitorLegalBalls = (TextView)findViewById(R.id.monitor_legal_balls);
         monitorIllegalBalls = (TextView)findViewById(R.id.monitor_illegal_balls);

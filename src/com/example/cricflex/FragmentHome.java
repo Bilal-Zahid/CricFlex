@@ -203,16 +203,18 @@ import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+import me.grantland.widget.AutofitTextView;
+
 public class FragmentHome extends Fragment {
 
     public FragmentHome(){}
     private ArcProgress successRate;
     private Button startButton;
     private TextView totalBalls;
-    private TextView averageAngle;
-    private TextView averageForce;
-    private TextView averageArmTwist;
-    private TextView averageActionTime;
+    private AutofitTextView averageAngle;
+    private AutofitTextView averageForce;
+    private AutofitTextView averageArmTwist;
+    private AutofitTextView averageActionTime;
     private String email;
     private String legalBalls,illegalBalls;
 
@@ -229,10 +231,10 @@ public class FragmentHome extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
 
         totalBalls = (TextView) rootView.findViewById(R.id.home_totalballs);
-        averageAngle = (TextView) rootView.findViewById(R.id.home_average_angle);
-        averageForce = (TextView) rootView.findViewById(R.id.home_force);
-        averageActionTime = (TextView) rootView.findViewById(R.id.home_action_time);
-        averageArmTwist = (TextView) rootView.findViewById(R.id.home_arm_twist);
+        averageAngle = (AutofitTextView) rootView.findViewById(R.id.home_average_angle);
+        averageForce = (AutofitTextView) rootView.findViewById(R.id.home_force);
+        averageActionTime = (AutofitTextView) rootView.findViewById(R.id.home_action_time);
+        averageArmTwist = (AutofitTextView) rootView.findViewById(R.id.home_arm_twist);
         successRate = (ArcProgress) rootView.findViewById(R.id.home_legal_to_illegal_ratio);
 
         startButton = (Button) rootView.findViewById(R.id.home_start);
