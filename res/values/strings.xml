@@ -11,7 +11,7 @@
     <string name="title_activity_welcome">Home Screen</string>
     <string name="next">NEXT</string>
     <string name="skip">SKIP</string>
-    <string name="start">GOT IT</string>
+    <string name="got_it">GOT IT</string>
 
     <string name="slide_1_title">What is Cricflex</string>
     <string name="slide_1_desc">World\'s first wearable to detect illegal bowling action in cricket</string>
@@ -43,7 +43,6 @@
     <string name="rgp_password">Password(6 minimum)</string>
     <string name="rgp_security_question">Security Question: \nFavourite Cricketer name?</string>
     <string name="rgp_button_registe">Register new account</string>
-
 
 
     <!--setup profile-->
@@ -203,8 +202,6 @@
     <string name="number_7">7</string>
 
 
-
-
     <string name="charging_instructions">Charging Instructions:</string>
     <string name="plug_charger">Plug the charger into power socket</string>
     <string name="plug_band">Plug the other end of the cable into the port on the top of band</string>
@@ -241,7 +238,6 @@
     <string name="save_session_desc">You can save your bowling session at the session stats screen. You can later see your bowling data in “History” section. If you discard the session, the bowling data of that session will be discarded and will not be saved in your profile. </string>
 
 
-
     <!--gif duration-->
     <string name="duration_frame">32</string>
 
@@ -250,16 +246,12 @@
     <string name="content_desc_imageView">desc</string>
 
 
-
     <string name="illegal_monitor_status">Illegal</string>
     <string name="legal_monitor_status">Legal</string>
 
 
-
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
-
 
 
 </resources>

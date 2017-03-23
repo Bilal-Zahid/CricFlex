@@ -68,11 +68,7 @@ public class ActivityMain extends AppCompatActivity
             startActivity(intent);
         }
 
-        View inflatedView = getLayoutInflater().inflate(R.layout.nav_header_main, null);
-        emailText = (TextView) inflatedView.findViewById(R.id.email);
-        emailText.setText(SaveSharedPreference.getEmail(ActivityMain.this));
-        nameText = (TextView) inflatedView.findViewById(R.id.name);
-        nameText.setText(R.string.name);            //////////////////////////////////////////////////// from database
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -190,7 +186,7 @@ public class ActivityMain extends AppCompatActivity
 
             case R.id.tour_cricflex:
 
-                Intent intent0 = new Intent(ActivityMain.this, ActivityWelcome.class);
+                Intent intent0 = new Intent(ActivityMain.this, ActivityTour.class);
 
                 startActivity(intent0);
                 return true;
