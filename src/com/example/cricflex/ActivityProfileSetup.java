@@ -238,6 +238,8 @@ public class ActivityProfileSetup extends FragmentActivity {
                 selectedBowlingStyle = bowlingStylesSpinner.getSelectedItem().toString();
                 selectedCareerLevel = careerLevelSpinner.getSelectedItem().toString();
                 //DataBase Work to do!!!
+
+                selectedDOB = birthDate.getText().toString();
                 Intent intent = getIntent();
                 String name = intent.getStringExtra("name");
 //                        String username = intent.getStringExtra("email");
@@ -255,8 +257,11 @@ public class ActivityProfileSetup extends FragmentActivity {
 
 
                 selectedDOB = birthDate.getText().toString();
+
+                country = picker.getUserCountryInfo(ActivityProfileSetup.this);
                 selectedCountry = country.getName();
 
+                location = selectedCountry;
                 System.out.println("Country Name: " + selectedCountry);
                 //String selectedGender = gender;
 

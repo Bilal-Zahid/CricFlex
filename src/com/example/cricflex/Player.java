@@ -5,12 +5,34 @@ package com.example.cricflex;
  */
 
 public class Player {
-//     int id;
+    public Player() {
+    }
+
+    //     int id;
     String  email,  password;
 
 //    security;
 
     String name;
+
+    public Player(String email, String password, String name, String bowlingStyle, String bowlingArm, String DOB, String height, String weight, String careerLevel, String gender, String location, String legalBowls, String illegalBowls, String averageAngle, String longestStreak, String lastBowlAngle) {
+        this.email = email;
+        this.password = password;
+        this.name = name;
+        this.bowlingStyle = bowlingStyle;
+        this.bowlingArm = bowlingArm;
+        this.DOB = DOB;
+        Height = height;
+        Weight = weight;
+        this.careerLevel = careerLevel;
+        Gender = gender;
+        Location = location;
+        this.legalBowls = legalBowls;
+        this.illegalBowls = illegalBowls;
+        this.averageAngle = averageAngle;
+        this.longestStreak = longestStreak;
+        this.lastBowlAngle = lastBowlAngle;
+    }
 
     String bowlingStyle;
     String bowlingArm;

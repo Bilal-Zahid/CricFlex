@@ -2,12 +2,16 @@ package com.example.cricflex;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -131,13 +135,13 @@ public class ActivityRegister extends Activity{
                                     player.setName(namestr);
                                     player.setEmail(emailstr);
                                     player.setPassword(passwordstr);
-                                    player.setGender("-");
-                                    player.setLocation("-");
-                                    player.setDOB("-");
-                                    player.setBowlingArm("-");
-                                    player.setBowlingStyle("-");
-                                    player.setCareerLevel("-");
-                                    player.setWeight("-");
+                                    player.setGender("male");
+                                    player.setLocation("Pakistan");
+                                    player.setDOB("01-01-2000");
+                                    player.setBowlingArm("Right");
+                                    player.setBowlingStyle("Right Arm Fast");
+                                    player.setCareerLevel("Club");
+                                    player.setWeight("100");
 
 
                                     player.setLegalBowls("0");
@@ -215,22 +219,22 @@ public class ActivityRegister extends Activity{
         finish();
     }
 
-//    @Override
-//    public boolean dispatchTouchEvent(MotionEvent event) {
-//        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-//            View v = getCurrentFocus();
-//            if ( v instanceof EditText) {
-//                Rect outRect = new Rect();
-//                v.getGlobalVisibleRect(outRect);
-//                if (!outRect.contains((int)event.getRawX(), (int)event.getRawY())) {
-//                    v.clearFocus();
-//                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-//                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-//                }
-//            }
-//        }
-//        return super.dispatchTouchEvent( event );
-//    }
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            View v = getCurrentFocus();
+            if ( v instanceof EditText) {
+                Rect outRect = new Rect();
+                v.getGlobalVisibleRect(outRect);
+                if (!outRect.contains((int)event.getRawX(), (int)event.getRawY())) {
+                    v.clearFocus();
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                }
+            }
+        }
+        return super.dispatchTouchEvent( event );
+    }
 
 
 }
