@@ -17,9 +17,9 @@
         android:id="@+id/header"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_heightPercent="20%"
+        app:layout_heightPercent="17%"
         app:layout_widthPercent="100%"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="80dp"
         android:orientation="vertical"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true">
@@ -52,61 +52,71 @@
         android:orientation="vertical">
 
 
-        <AutoCompleteTextView
-            android:id="@+id/lgn_email"
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/edittext_bottom_border_bg"
-            android:drawableStart="@drawable/profile_icon"
-            android:paddingStart="15dp"
-            android:paddingEnd="15dp"
-            android:drawablePadding="20dp"
-            android:hint="@string/email_hint"
-            android:textSize="40sp"
-            android:textColor="#FFFFFF"
-            android:padding="10dp"
-            android:textColorHint="#CCCCCC"
-            android:layout_weight="1"
-            android:inputType="textNoSuggestions"
-            android:imeOptions="actionNext"
-            android:nextFocusDown="@+id/etPassword"
-            android:textCursorDrawable="@null"
-            android:dropDownHeight = "wrap_content"
+            android:layout_height="wrap_content">
 
-            />
+            <AutoCompleteTextView
+                android:id="@+id/lgn_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edittext_bottom_border_bg"
+                android:drawableStart="@drawable/profile_icon"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:drawablePadding="20dp"
+                android:hint="@string/email_hint"
+                android:textSize="40sp"
+                android:textColor="#FFFFFF"
+                android:padding="10dp"
+                android:textColorHint="#CCCCCC"
+                android:layout_weight="1"
+                android:inputType="textNoSuggestions"
+                android:imeOptions="actionNext"
+                android:nextFocusDown="@+id/etPassword"
+                android:textCursorDrawable="@null"
+                android:dropDownHeight = "wrap_content"
 
-        <EditText
-            android:id="@+id/lgn_password"
+                />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:inputType="textPassword"
-            android:background="@drawable/edittext_bottom_border_bg"
-            android:drawableStart="@drawable/password_icon"
-            android:paddingStart="15dp"
-            android:paddingEnd="15dp"
-            android:drawablePadding="20dp"
-            android:padding="10dp"
-            android:hint="@string/password"
-            android:textSize="40sp"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#CCCCCC"
-            android:layout_weight="1"
-            android:textCursorDrawable="@null"/>
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/lgn_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:inputType="textPassword"
+                android:background="@drawable/edittext_bottom_border_bg"
+                android:drawableStart="@drawable/password_icon"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:drawablePadding="20dp"
+                android:padding="10dp"
+                android:hint="@string/password"
+                android:textSize="40sp"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#CCCCCC"
+                android:layout_weight="1"
+                android:textCursorDrawable="@null"/>
+        </android.support.design.widget.TextInputLayout>
 
         <Button
             android:id="@+id/button_forgot_password"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
             android:text="@string/forgot_password"
             android:onClick="setfgpLayout1"
             android:textColor="@drawable/button_text_color"
-            android:textSize="30sp"
-            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="25sp"
             android:background="@android:color/transparent"
-            android:layout_gravity="end"
-            android:layout_weight="1" />
+            android:layout_gravity="end" />
 
 
     </LinearLayout>
@@ -118,23 +128,22 @@
 
     <LinearLayout
         android:id="@+id/footer"
-        android:layout_below="@id/body"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_heightPercent="20%"
+        app:layout_heightPercent="22%"
         app:layout_widthPercent="100%"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerInParent="true"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_below="@+id/body"
+        android:layout_alignStart="@+id/body">
 
         <Button
             android:id="@+id/Login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
             android:text="@string/login_button"
             android:layout_marginTop="5dp"
             android:layout_gravity="center"
@@ -146,12 +155,12 @@
             android:id="@+id/bRegister"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:padding="20dp"
+            android:layout_marginTop="45dp"
             android:layout_gravity="center"
             android:text="@string/register"
             android:textColor="@drawable/button_text_color"
             android:textSize="30sp"
-            android:textAppearance="?android:attr/textAppearanceLarge"
             android:background="@android:color/transparent" />
     </LinearLayout>
 
