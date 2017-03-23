@@ -285,6 +285,18 @@ public class ActivityProfileSetup extends FragmentActivity {
                 else{
                     weightOfPlayer = weightOfPerson.getText().toString();;
                 }
+
+
+                String str[] = DOB.split("-");
+                int day = Integer.parseInt(str[0]);
+                int month = Integer.parseInt(str[1]);
+                int year = Integer.parseInt(str[2]);
+
+
+                if(getAge(year,month,day)<10){
+                    Toast.makeText(ActivityProfileSetup.this, "Player's age should be atleast 10" , Toast.LENGTH_SHORT).show();
+                    return;
+                }
 //                        String weightOfPlayer = weightOfPerson.getText().toString();
 //                        weightOfPlayer= weightOfPerson.getText().toString();
 
@@ -785,5 +797,23 @@ public void show(){
 
             }
         });
+    }
+
+
+    private int getAge(int year, int month, int day){
+        Calendar dob = Calendar.getInstance();
+        Calendar today = Calendar.getInstance();
+
+        dob.set(year, month, day);
+
+        int age = today.get(Calendar.YEAR) - dob.get(Calendar.YEAR);
+
+        System.out.println("Day today ,"+today.get(Calendar.DAY_OF_YEAR)  +"DOB DAY : " +dob.get(Calendar.DAY_OF_YEAR));
+        if (today.get(Calendar.DAY_OF_YEAR) < (dob.get(Calendar.DAY_OF_YEAR)-31)){
+            age--;
+        }
+
+        Integer ageInt = new Integer(age);
+        return  ageInt;
     }
 }

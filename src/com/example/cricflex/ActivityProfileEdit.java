@@ -279,6 +279,8 @@ public class ActivityProfileEdit extends FragmentActivity {
                     return;
                 }
 
+
+
                 selectedGender = selectedGender;
                 selectedWeight = weightOfPerson.getText().toString();
 //                selectedLocation = country.getName();
@@ -286,6 +288,22 @@ public class ActivityProfileEdit extends FragmentActivity {
                 selectedBowlingArm = selectedBowlingArm  ;
                 selectedBowlingStyle = bowlingStylesSpinner.getSelectedItem().toString();
                 selectedCareerLevel = careerLevelSpinner.getSelectedItem().toString();
+
+
+
+
+                String str[] = selectedDOB.split("-");
+                int day = Integer.parseInt(str[0]);
+                int month = Integer.parseInt(str[1]);
+                int year = Integer.parseInt(str[2]);
+
+
+                if(getAge(year,month,day)<10){
+                    Toast.makeText(ActivityProfileEdit.this, "Player's age should be atleast 10" +selectedDOB , Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+
 
                 helper.changeGender(email,selectedGender);
                 helper.changeWeight(email,selectedWeight);
@@ -532,6 +550,23 @@ public class ActivityProfileEdit extends FragmentActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private int getAge(int year, int month, int day){
+        Calendar dob = Calendar.getInstance();
+        Calendar today = Calendar.getInstance();
+
+        dob.set(year, month, day);
+
+        int age = today.get(Calendar.YEAR) - dob.get(Calendar.YEAR);
+
+        System.out.println("Day today ,"+today.get(Calendar.DAY_OF_YEAR)  +"DOB DAY : " +dob.get(Calendar.DAY_OF_YEAR));
+        if (today.get(Calendar.DAY_OF_YEAR) < (dob.get(Calendar.DAY_OF_YEAR)-31)){
+            age--;
+        }
+
+        Integer ageInt = new Integer(age);
+        return  ageInt;
     }
 
 }
