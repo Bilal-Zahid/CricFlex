@@ -1,6 +1,7 @@
 package com.example.cricflex;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -26,6 +27,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.mukesh.countrypicker.fragments.CountryPicker;
 import com.mukesh.countrypicker.interfaces.CountryPickerListener;
 import com.mukesh.countrypicker.models.Country;
@@ -78,6 +83,12 @@ public class ActivityProfileEdit extends FragmentActivity {
     Bitmap bitmapImage;
 
 
+    //firebase things
+    private DatabaseReference databaseReference;
+    private ProgressDialog progressDialog ;
+    FirebaseAuth firebaseAuth;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,6 +97,10 @@ public class ActivityProfileEdit extends FragmentActivity {
 
 
         findViewsById();
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+        progressDialog = new ProgressDialog(this);
 
         email = SaveSharedPreference.getEmail(ActivityProfileEdit.this);
 
@@ -280,6 +295,14 @@ public class ActivityProfileEdit extends FragmentActivity {
                 helper.changeBowlingStyle(email,selectedBowlingStyle);
                 helper.changeCareerLevel(email,selectedCareerLevel);
 
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                databaseReference.child("Users").child(user.getUid()).child("Gender").setValue(selectedGender);
+                databaseReference.child("Users").child(user.getUid()).child("Weight").setValue(selectedWeight);
+                databaseReference.child("Users").child(user.getUid()).child("Location").setValue(selectedLocation);
+                databaseReference.child("Users").child(user.getUid()).child("DOB").setValue(selectedDOB);
+                databaseReference.child("Users").child(user.getUid()).child("Bowling Arm").setValue(selectedBowlingArm);
+                databaseReference.child("Users").child(user.getUid()).child("Bowling Style").setValue(selectedBowlingStyle);
+                databaseReference.child("Users").child(user.getUid()).child("Career Level").setValue(selectedCareerLevel);
 
 
                 Toast.makeText(ActivityProfileEdit.this, "Profile Updated" , Toast.LENGTH_SHORT).show();
