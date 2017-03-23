@@ -413,7 +413,7 @@ public class ActivityProfileEdit extends FragmentActivity {
 
         name = (TextView) findViewById(R.id.edp_name);
         bowlingStylesSpinner = (Spinner)findViewById(R.id.bowlingstyle_spinner);
-        birthDate = (EditText) findViewById(R.id.stp_dob);
+        birthDate = (EditText) findViewById(R.id.edp_dob);
         birthDate.setInputType(InputType.TYPE_NULL);
         birthDate.requestFocus();
 

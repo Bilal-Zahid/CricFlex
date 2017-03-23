@@ -50,7 +50,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="@string/name"
-                    android:id="@+id/stp_username"
+                    android:id="@+id/edp_name"
                     android:textColor="#FFFFFF"
                     android:layout_gravity="center_horizontal"
                     android:layout_weight="1" />
