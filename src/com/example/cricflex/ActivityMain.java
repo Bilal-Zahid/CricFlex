@@ -1,6 +1,8 @@
 package com.example.cricflex;
 
 import java.io.FileInputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import android.app.FragmentTransaction;
 import android.content.res.Configuration;
@@ -57,19 +59,60 @@ public class ActivityMain extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+
+
+
+
+
         int abc = SaveSharedPreference.getEmail(ActivityMain.this).length();
 
         System.out.println("email list in main activity: " + SaveSharedPreference.getEmailList(ActivityMain.this));
 
+        String emailInSharedPreferance = SaveSharedPreference.getEmail(ActivityMain.this);
 
-
-        if(SaveSharedPreference.getEmail(ActivityMain.this).length() == 0)
+        if(emailInSharedPreferance.length() == 0)
         {
             Intent intent = new Intent(ActivityMain.this, ActivitySplash.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             finish();
             startActivity(intent);
         }
+
+
+
+        List<String> prevEmails = new ArrayList<String>(SaveSharedPreference.getEmailList(ActivityMain.this));
+//        prevEmails = ;
+
+        boolean emailExistCheck = true;
+        System.out.println("Previous mails: " + prevEmails);
+
+        int j;
+        for( j=0;j<prevEmails.size();j++){
+            if(prevEmails.get(j).equals(emailInSharedPreferance)){
+                System.out.println("In if of Previous mails for loop: ");
+
+                emailExistCheck = false;
+            }
+            System.out.println("In Previous mails for loop: " + prevEmails.get(j));
+        }
+
+        if(emailExistCheck){
+            System.out.println("In Email exist check: " + emailInSharedPreferance);
+
+            prevEmails.add(emailInSharedPreferance);
+
+            System.out.println("bhinot: ");
+
+            System.out.println("Kabhi yahan bhi aao" + prevEmails);
+            SaveSharedPreference.setEmailList(ActivityMain.this,prevEmails);
+        }
+
+
+
+
+
+
 
 
 

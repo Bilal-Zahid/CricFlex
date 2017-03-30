@@ -75,6 +75,10 @@ public class ActivityLogin extends Activity {
     private ProgressDialog progressDialog ;
     FirebaseAuth firebaseAuth;
 
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
@@ -109,7 +113,7 @@ public class ActivityLogin extends Activity {
         etEmail = (AutoCompleteTextView) findViewById(R.id.lgn_email);
         etEmail.setThreshold(1);
 
-        System.out.println("Aisay hi print" );
+        System.out.println("Aisay hi print" + SaveSharedPreference.getEmail(ActivityLogin.this) );
         emailList = SaveSharedPreference.getEmailList(ActivityLogin.this);
 
         System.out.println("Email List in login: " + SaveSharedPreference.getEmailList(ActivityLogin.this));
@@ -259,24 +263,6 @@ public class ActivityLogin extends Activity {
 
 
 
-                            List<String> prevEmails = SaveSharedPreference.getEmailList(ActivityLogin.this);
-
-                            boolean emailExistCheck = true;
-
-                            for(int i=0;i<prevEmails.size();i++){
-                                if(prevEmails.get(i).equals(email)){
-                                    emailExistCheck = false;
-                                }
-                            }
-
-                            if(emailExistCheck){
-                                prevEmails.add(email);
-
-
-
-                                System.out.println("Kabhi yahan bhi aao");
-                                SaveSharedPreference.setEmailList(ActivityLogin.this,prevEmails);
-                            }
 
 
 //                            System.out.println("Email: " + email);
