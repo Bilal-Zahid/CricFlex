@@ -59,6 +59,9 @@ public class ActivityMain extends AppCompatActivity
 
         int abc = SaveSharedPreference.getEmail(ActivityMain.this).length();
 
+        System.out.println("email list in main activity: " + SaveSharedPreference.getEmailList(ActivityMain.this));
+
+
 
         if(SaveSharedPreference.getEmail(ActivityMain.this).length() == 0)
         {
