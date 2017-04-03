@@ -87,6 +87,7 @@ public class ActivityProfileSetup extends FragmentActivity {
     //private String location = "not set";
 
     private EditText birthDate;
+
     private DatePickerDialog birthDatePickerDialog;
     private SimpleDateFormat dateFormatter;
 
@@ -99,6 +100,7 @@ public class ActivityProfileSetup extends FragmentActivity {
 
     final Player player = new Player();
 
+    private EditText nameOfPerson;
     EditText weightOfPerson;
 
 
@@ -150,6 +152,8 @@ public class ActivityProfileSetup extends FragmentActivity {
 
 
         weightOfPerson = (EditText) findViewById(R.id.pv_weight);
+        nameOfPerson = (EditText) findViewById(R.id.stp_name);
+
 
         location_text.setText(country.getName());
         country_flag.setImageResource(country.getFlag());
@@ -241,7 +245,8 @@ public class ActivityProfileSetup extends FragmentActivity {
 
                 selectedDOB = birthDate.getText().toString();
                 Intent intent = getIntent();
-                String name = intent.getStringExtra("name");
+                String name;
+//                String name = intent.getStringExtra("name");
 //                        String username = intent.getStringExtra("email");
                 String email = intent.getStringExtra("email");
                 String password = intent.getStringExtra("password");
@@ -258,6 +263,7 @@ public class ActivityProfileSetup extends FragmentActivity {
 
                 selectedDOB = birthDate.getText().toString();
 
+                name = nameOfPerson.getText().toString();
                 country = picker.getUserCountryInfo(ActivityProfileSetup.this);
                 selectedCountry = country.getName();
 
@@ -285,6 +291,12 @@ public class ActivityProfileSetup extends FragmentActivity {
                 else{
                     weightOfPlayer = weightOfPerson.getText().toString();;
                 }
+
+                if(name.equals("")){
+                    Toast.makeText(ActivityProfileSetup.this, "Please Enter Name." , Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
 
 
                 String str[] = DOB.split("-");

@@ -249,7 +249,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void changePlayerInfo(Player p) {
         db = this.getReadableDatabase();
 //        String query = "select email, security from " + PLAYER_TABLE_NAME;
-        String query = "UPDATE " + PLAYER_TABLE_NAME + "  SET gender = '" + p.getGender() + "'"
+        String query = "UPDATE " + PLAYER_TABLE_NAME + "  SET "
+                + "name = '" + p.getName() + "'"
+                + ",gender = '" + p.getGender() + "'"
                 + ", DOB = '" + p.getDOB() +"' " +
                 " , location = '" + p.getLocation() +"' " +
                 " , bowlingstyle = '" + p.getBowlingStyle() +"' " +

@@ -62,15 +62,13 @@ public class ActivityRegister extends Activity{
         button_register.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
 
-                final EditText reg_name = (EditText) findViewById(R.id.reg_name);
                 final EditText reg_email = (EditText) findViewById(R.id.reg_email);
                 final EditText reg_password = (EditText) findViewById(R.id.reg_password);
 
-                final String namestr = reg_name.getText().toString();
                 final String emailstr = reg_email.getText().toString();
                 final String passwordstr = reg_password.getText().toString();
 
-                if(emailstr.equals("")||passwordstr.equals("") || namestr.equals("")){
+                if(emailstr.equals("")||passwordstr.equals("") ){
                     Toast.makeText(ActivityRegister.this, "Empty fields", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -86,18 +84,7 @@ public class ActivityRegister extends Activity{
                     return;
                 }
 
-                if(namestr.length()>20){
-                    final Toast toast = Toast.makeText(ActivityRegister.this, "Name length should be within 20 character" , Toast.LENGTH_SHORT);
-                    toast.show();
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            toast.cancel();
-                        }
-                    }, 500);
-                    return;
-                }
+
                 if(passwordstr.length()<6){
                     final Toast toast = Toast.makeText(ActivityRegister.this, "Password should be atleast 6 characters long" , Toast.LENGTH_SHORT);
                     toast.show();
@@ -132,7 +119,7 @@ public class ActivityRegister extends Activity{
 
 
                                     Player player = new Player();
-                                    player.setName(namestr);
+                                    player.setName("Unknown");
                                     player.setEmail(emailstr);
                                     player.setPassword(passwordstr);
                                     player.setGender("male");
@@ -184,7 +171,7 @@ public class ActivityRegister extends Activity{
 
 
                                     Intent intent = new Intent(ActivityRegister.this, ActivityProfileSetup.class);
-                                    intent.putExtra("name",namestr);
+
 //                intent.putExtra("email", usernamestr);
                                     intent.putExtra("email", emailstr);
                                     intent.putExtra("password", passwordstr);
