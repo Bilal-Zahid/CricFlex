@@ -66,14 +66,14 @@ public class ActivityLogin extends Activity {
     List<String> emailList = new ArrayList<>();
     String emailstr;
 
-
+    FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
 
     private DatabaseReference usersDatabaseReference;
 
 
     private ProgressDialog progressDialog ;
-    FirebaseAuth firebaseAuth;
+
 
 
 
@@ -133,7 +133,7 @@ public class ActivityLogin extends Activity {
 //                List messages = dataSnapshot.getValue(t);
 //                if( messages == null ) {
 //                    System.out.println("No email" + dataSnapshot.getValue());
-//                }
+//             }
 //                else {
 //                    System.out.println("The first email is: " + messages.get(0) );
 //                }
@@ -291,18 +291,46 @@ public class ActivityLogin extends Activity {
                             player.setHeight("6");
 
 
-                            databaseReference.child("Users").child(user.getUid()).child("Name").setValue(player.getName());
-                            databaseReference.child("Users").child(user.getUid()).child("Gender").setValue(player.getGender());
-                            databaseReference.child("Users").child(user.getUid()).child("Email").setValue(player.getEmail());
-                            databaseReference.child("Users").child(user.getUid()).child("Weight").setValue(player.getWeight());
-                            databaseReference.child("Users").child(user.getUid()).child("Location").setValue(player.getLocation());
-                            databaseReference.child("Users").child(user.getUid()).child("DOB").setValue(player.getDOB());
-                            databaseReference.child("Users").child(user.getUid()).child("Bowling Arm").setValue(player.getBowlingArm());
-                            databaseReference.child("Users").child(user.getUid()).child("Bowling Style").setValue(player.getBowlingStyle());
-                            databaseReference.child("Users").child(user.getUid()).child("Career Level").setValue(player.getCareerLevel());
-//                            databaseReference.child("Users").child(user.getUid()).child("Device Id").setValue(FirebaseInstanceID.getToken());
-//                            databaseReference.child("Users").child(user.getUid()).child("name").setValue(player.getName());
-//                            databaseReference.child("Users").child(user.getUid()).child("name").setValue(player.getName());
+                            databaseReference.child("Players").child(user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+
+                                    if(dataSnapshot.exists()){
+                                        Intent i = new Intent(ActivityLogin.this, ActivityMain.class);
+                                        ActivityLogin.this.startActivity(i);
+                                        finish();
+
+                                    }
+                                    else {
+                                        Intent i = new Intent(ActivityLogin.this, ActivityProfileSetup.class);
+
+                                        i.putExtra("email", email);
+                                        ActivityLogin.this.startActivity(i);
+                                        finish();
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+
+                                }
+                            });
+
+
+
+
+//                            usersDatabaseReference.child("Users").child(user.getUid()).child("Name").setValue(player.getName());
+//                            usersDatabaseReference.child("Users").child(user.getUid()).child("Gender").setValue(player.getGender());
+//                            usersDatabaseReference.child("Users").child(user.getUid()).child("Email").setValue(player.getEmail());
+//                            usersDatabaseReference.child("Users").child(user.getUid()).child("Weight").setValue(player.getWeight());
+//                            usersDatabaseReference.child("Users").child(user.getUid()).child("Location").setValue(player.getLocation());
+//                            usersDatabaseReference.child("Users").child(user.getUid()).child("DOB").setValue(player.getDOB());
+//                            usersDatabaseReference.child("Users").child(user.getUid()).child("Bowling Arm").setValue(player.getBowlingArm());
+//                            usersDatabaseReference.child("Users").child(user.getUid()).child("Bowling Style").setValue(player.getBowlingStyle());
+//                            usersDatabaseReference.child("Users").child(user.getUid()).child("Career Level").setValue(player.getCareerLevel());
+//                            usersDatabaseReference.child("Users").child(user.getUid()).child("Device Id").setValue(FirebaseInstanceID.getToken());
+//                            usersDatabaseReference.child("Users").child(user.getUid()).child("name").setValue(player.getName());
+//                            usersDatabaseReference.child("Users").child(user.getUid()).child("name").setValue(player.getName());
 
 //                            Player player = new Player();
 //
@@ -335,8 +363,8 @@ public class ActivityLogin extends Activity {
 
 
 //
-//                            databaseReference = FirebaseDatabase.getInstance().getReference();
-//                            databaseReference.child("Users").child(user.getUid()).setValue(player);
+//                            usersDatabaseReference = FirebaseDatabase.getInstance().getReference();
+//                            usersDatabaseReference.child("Users").child(user.getUid()).setValue(player);
 
 
 
