@@ -29,6 +29,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import static android.content.ContentValues.TAG;
 
 
 public class ActivityMain extends AppCompatActivity
@@ -129,6 +136,41 @@ public class ActivityMain extends AppCompatActivity
         name.setText(helper.getName(SaveSharedPreference.getEmail(ActivityMain.this)));
         TextView email = (TextView)nav_header.findViewById(R.id.email);
         email.setText(SaveSharedPreference.getEmail(ActivityMain.this));
+
+        ValueEventListener userListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                System.out.println("Datasnapshot mai ara hai : ");
+                User playerProfile = new User();
+
+                playerProfile = dataSnapshot.getValue(User.class);
+                View nav_header =  navigationView.getHeaderView(0);
+                TextView name = (TextView)nav_header.findViewById(R.id.name);
+                name.setText(playerProfile.nameOfPerson);
+                TextView email = (TextView)nav_header.findViewById(R.id.email);
+                email.setText(SaveSharedPreference.getEmail(ActivityMain.this));
+
+
+
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+                // ...
+            }
+        };
+
+        DatabaseReference usersDatabaseReference = FirebaseDatabase.getInstance().getReference().child("Players").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+
+        usersDatabaseReference.addValueEventListener(userListener);
+
+
+
+
 
 
         nav_header.setOnClickListener(new View.OnClickListener() {

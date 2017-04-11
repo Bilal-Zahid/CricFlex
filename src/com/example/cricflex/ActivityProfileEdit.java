@@ -13,6 +13,7 @@ import android.provider.MediaStore;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.WindowManager;
@@ -29,8 +30,11 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.mukesh.countrypicker.fragments.CountryPicker;
 import com.mukesh.countrypicker.interfaces.CountryPickerListener;
 import com.mukesh.countrypicker.models.Country;
@@ -39,6 +43,8 @@ import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
+
+import static android.content.ContentValues.TAG;
 
 public class ActivityProfileEdit extends FragmentActivity {
 
@@ -57,6 +63,9 @@ public class ActivityProfileEdit extends FragmentActivity {
     CountryPicker picker;
     Country country;
     ImageView country_flag;
+
+
+    String bowlingStyleFromFirebase;
 
     private EditText birthDate;
     private DatePickerDialog birthDatePickerDialog;
@@ -88,6 +97,7 @@ public class ActivityProfileEdit extends FragmentActivity {
     private ProgressDialog progressDialog ;
     FirebaseAuth firebaseAuth;
 
+    User playerProfile = new User();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,73 +106,172 @@ public class ActivityProfileEdit extends FragmentActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 
+        setDateTimeField();
+
         findViewsById();
+
+        email = SaveSharedPreference.getEmail(ActivityProfileEdit.this);
+
 
         firebaseAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference();
         progressDialog = new ProgressDialog(this);
 
-        email = SaveSharedPreference.getEmail(ActivityProfileEdit.this);
 
-        name.setText(helper.getName(email));
-
-        selectedGender = helper.getGender(email);
-
-
-        System.out.println("Gender: " + selectedGender);
-
-        if(selectedGender.equals("male"))
-            rgGender.check(R.id.rdbMale);
-        else if(selectedGender.equals("female"))
-            rgGender.check(R.id.rdbFemale);
-
-        dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
-        setDateTimeField();
-        birthDate.setText(helper.getDOB(email).toString());
-        birthDate.setOnClickListener(new View.OnClickListener() {
+        ValueEventListener userListener = new ValueEventListener() {
             @Override
-            public void onClick(View v) {
-                birthDatePickerDialog.show();
-            }
-        });
-
-
-        selectedBowlingArm =helper.getBowlingArm(email);
-        System.out.println("Arm: " + selectedBowlingArm);
-
-
-        initializeBowlingStylesSpinner(selectedBowlingArm);
-        if(selectedBowlingArm.equals("Right")){
-            rgBowlingArm.check(R.id.rdbRight);
-        }
-        else if (selectedBowlingArm.equals("Left")){
-            rgBowlingArm.check(R.id.rdbLeft);
-        }
-
-
-        initializeBowlingStylesSpinner(selectedBowlingArm);
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Get Profile  object and use the values to update the UI
+                // ...
 
 
 
-        rgBowlingArm.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
-        {
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switch(checkedId){
-                    case R.id.rdbLeft:
-                        // do operations specific to this selection
-                        selectedBowlingArm = "Left";
-                        initializeBowlingStylesSpinner(selectedBowlingArm);
-                        break;
 
-                    case R.id.rdbRight:
-                        // do operations specific to this selection
-                        selectedBowlingArm = "Right";
-                        initializeBowlingStylesSpinner(selectedBowlingArm);
-                        break;
+
+                playerProfile = dataSnapshot.getValue(User.class);
+
+                System.out.println("Datasnapshot mai ara hai : " + playerProfile.bowlingArm );
+                if(playerProfile==null){
+                    System.out.println("Cant fetch data");
+                    return;
                 }
+
+                name.setText(playerProfile.nameOfPerson);
+                initializeBowlingStylesSpinner(playerProfile.bowlingArm,playerProfile.bowlingStyle);
+
+                if(playerProfile.gender.equals("male"))
+                    rgGender.check(R.id.rdbMale);
+                else if(playerProfile.gender.equals("female"))
+                    rgGender.check(R.id.rdbFemale);
+
+                if(playerProfile.bowlingArm.equals("Right")){
+                    rgBowlingArm.check(R.id.rdbRight);
+                }
+                else if (playerProfile.bowlingArm.equals("Left")){
+                    rgBowlingArm.check(R.id.rdbLeft);
+                }
+
+                dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
+
+                birthDate.setText(playerProfile.DOB);
+                birthDate.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        birthDatePickerDialog.show();
+                    }
+                });
+
+
+
+
+
+                initializeCareerLevelSpinner(playerProfile.careerLevel);
+
+
+
+
+                selectedBowlingArm = playerProfile.bowlingArm;
+                rgBowlingArm.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+                {
+                    public void onCheckedChanged(RadioGroup group, int checkedId) {
+                        switch(checkedId){
+                            case R.id.rdbLeft:
+                                // do operations specific to this selection
+                                selectedBowlingArm = "Left";
+                                initializeBowlingStylesSpinner(selectedBowlingArm,playerProfile.bowlingStyle);
+                                break;
+
+                            case R.id.rdbRight:
+                                // do operations specific to this selection
+                                selectedBowlingArm = "Right";
+                                initializeBowlingStylesSpinner(selectedBowlingArm,playerProfile.bowlingStyle);
+                                break;
+                        }
+                    }
+                });
+
+
+                weightOfPerson.setText(playerProfile.weight);
+
+
+
+                location_text = (TextView) findViewById(R.id.location);
+                country_flag = (ImageView) findViewById(R.id.country_flag);
+
+
+
+                picker = CountryPicker.newInstance("Select Country");
+                country = picker.getCountryByName(ActivityProfileEdit.this,playerProfile.location);
+
+
+                location_text.setText(country.getName());
+                country_flag.setImageResource(country.getFlag());
+
+                location_text.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        show();
+                    }
+                });
+
+                country_flag.setOnClickListener(new View.OnClickListener(){
+                    @Override
+                    public void onClick(View v) {
+                        show();
+                    }
+                });
+
             }
-        });
-        initializeCareerLevelSpinner();
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+                // ...
+            }
+        };
+
+        DatabaseReference usersDatabaseReference = FirebaseDatabase.getInstance().getReference().child("Players").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+
+        usersDatabaseReference.addValueEventListener(userListener);
+
+
+//        email = SaveSharedPreference.getEmail(ActivityProfileEdit.this);
+
+//        name.setText(helper.getName(email));
+
+//        selectedGender = helper.getGender(email);
+
+
+//        System.out.println("Gender: " + selectedGender);
+
+//        if(selectedGender.equals("male"))
+//            rgGender.check(R.id.rdbMale);
+//        else if(selectedGender.equals("female"))
+//            rgGender.check(R.id.rdbFemale);
+
+
+
+
+//        selectedBowlingArm =helper.getBowlingArm(email);
+//        System.out.println("Arm: " + selectedBowlingArm);
+
+
+//        initializeBowlingStylesSpinner(selectedBowlingArm);
+//        if(selectedBowlingArm.equals("Right")){
+//            rgBowlingArm.check(R.id.rdbRight);
+//        }
+//        else if (selectedBowlingArm.equals("Left")){
+//            rgBowlingArm.check(R.id.rdbLeft);
+//        }
+
+
+//        initializeBowlingStylesSpinner(selectedBowlingArm);
+
+
+
+
+//        initializeCareerLevelSpinner(helper.getCareerLevel(email));
 
 
 
@@ -185,41 +294,18 @@ public class ActivityProfileEdit extends FragmentActivity {
 
 
 
-        location_text = (TextView) findViewById(R.id.location);
-        country_flag = (ImageView) findViewById(R.id.country_flag);
 
-
-        selectedLocation = helper.getLocation(email);
-
-        picker = CountryPicker.newInstance("Select Country");
-        country = picker.getCountryByName(this,selectedLocation);
 
 //        Country necountry;
 //        necountry.set
-        System.out.println("Code: "+country.getCode());
+//        System.out.println("Code: "+country.getCode());
 
 
-        weightOfPerson = (EditText) findViewById(R.id.pv_weight);
-        weightOfPerson.setText(helper.getWeight(email).toString());
+//        weightOfPerson = (EditText) findViewById(R.id.pv_weight);
+//        weightOfPerson.setText(helper.getWeight(email).toString());
 
 
-        location_text.setText(country.getName());
-//        location_text.setText(se);
-        country_flag.setImageResource(country.getFlag());
 
-        location_text.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                show();
-            }
-        });
-
-        country_flag.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                show();
-            }
-        });
 
         rgGender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
         {
@@ -240,22 +326,22 @@ public class ActivityProfileEdit extends FragmentActivity {
 
 
 
-        selectedDOB = birthDate.getText().toString();
-//        selectedCountry = country.getName();
-        //String selectedGender = gender;
-
-        if(selectedDOB.equals("")){
-            final Toast toast = Toast.makeText(ActivityProfileEdit.this, "Date Of Birth Not Selected" , Toast.LENGTH_SHORT);
-            toast.show();
-            Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    toast.cancel();
-                }
-            }, 500);
-            return;
-        }
+//        selectedDOB = birthDate.getText().toString();
+////        selectedCountry = country.getName();
+//        //String selectedGender = gender;
+//
+//        if(selectedDOB.equals("")){
+//            final Toast toast = Toast.makeText(ActivityProfileEdit.this, "Date Of Birth Not Selected" , Toast.LENGTH_SHORT);
+//            toast.show();
+//            Handler handler = new Handler();
+//            handler.postDelayed(new Runnable() {
+//                @Override
+//                public void run() {
+//                    toast.cancel();
+//                }
+//            }, 500);
+//            return;
+//        }
 
 
 
@@ -283,12 +369,21 @@ public class ActivityProfileEdit extends FragmentActivity {
 
                 selectedGender = selectedGender;
                 selectedWeight = weightOfPerson.getText().toString();
-//                selectedLocation = country.getName();
+                selectedLocation = country.getName();
                 selectedDOB = birthDate.getText().toString();
                 selectedBowlingArm = selectedBowlingArm  ;
                 selectedBowlingStyle = bowlingStylesSpinner.getSelectedItem().toString();
                 selectedCareerLevel = careerLevelSpinner.getSelectedItem().toString();
+                String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
+
+
+                System.out.println("Email: " + email + " Bowling arm: " + selectedBowlingArm) ;
+
+
+                User playerEditedProfile = new User (selectedBowlingArm,selectedBowlingStyle,selectedCareerLevel,
+                        selectedDOB,SaveSharedPreference.getEmail(ActivityProfileEdit.this),selectedGender,selectedLocation,name.getText().toString(),selectedWeight,
+                        FirebaseAuth.getInstance().getCurrentUser().getUid());
 
 
 
@@ -314,13 +409,27 @@ public class ActivityProfileEdit extends FragmentActivity {
                 helper.changeCareerLevel(email,selectedCareerLevel);
 
                 FirebaseUser user = firebaseAuth.getCurrentUser();
-                databaseReference.child("Users").child(user.getUid()).child("Gender").setValue(selectedGender);
-                databaseReference.child("Users").child(user.getUid()).child("Weight").setValue(selectedWeight);
-                databaseReference.child("Users").child(user.getUid()).child("Location").setValue(selectedLocation);
-                databaseReference.child("Users").child(user.getUid()).child("DOB").setValue(selectedDOB);
-                databaseReference.child("Users").child(user.getUid()).child("Bowling Arm").setValue(selectedBowlingArm);
-                databaseReference.child("Users").child(user.getUid()).child("Bowling Style").setValue(selectedBowlingStyle);
-                databaseReference.child("Users").child(user.getUid()).child("Career Level").setValue(selectedCareerLevel);
+
+
+
+                databaseReference.child("Players").child(user.getUid()).setValue(playerEditedProfile, new DatabaseReference.CompletionListener() {
+                    @Override
+                    public void onComplete(DatabaseError databaseError, DatabaseReference reference) {
+                        if (databaseError != null) {
+//                            Log.e("Tag", "Failed to write message", databaseError.toException());
+                            System.out.println("Error in writing to database: " + databaseError.toException() );
+                        }
+                    }
+                });
+
+
+//                databaseReference.child("Users").child(user.getUid()).child("Gender").setValue(selectedGender);
+//                databaseReference.child("Users").child(user.getUid()).child("Weight").setValue(selectedWeight);
+//                databaseReference.child("Users").child(user.getUid()).child("Location").setValue(selectedLocation);
+//                databaseReference.child("Users").child(user.getUid()).child("DOB").setValue(selectedDOB);
+//                databaseReference.child("Users").child(user.getUid()).child("Bowling Arm").setValue(selectedBowlingArm);
+//                databaseReference.child("Users").child(user.getUid()).child("Bowling Style").setValue(selectedBowlingStyle);
+//                databaseReference.child("Users").child(user.getUid()).child("Career Level").setValue(selectedCareerLevel);
 
 
                 Toast.makeText(ActivityProfileEdit.this, "Profile Updated" , Toast.LENGTH_SHORT).show();
@@ -371,11 +480,11 @@ public class ActivityProfileEdit extends FragmentActivity {
 
 
 
-    private void initializeBowlingStylesSpinner(String arm){
+    private void initializeBowlingStylesSpinner(String arm,String bowlingStyle){
 
         Context context=getApplicationContext();
 
-        String bowlingStyle = helper.getBowlingStyle(email);
+//        String bowlingStyle = helper.getBowlingStyle(email);
         if(arm.equals("Left"))
         {
             String[] bowlingStylesArray = context.getResources().getStringArray(R.array.bowlingstyle_left_array);
@@ -425,7 +534,7 @@ public class ActivityProfileEdit extends FragmentActivity {
 
     }
 
-    private void initializeCareerLevelSpinner(){
+    private void initializeCareerLevelSpinner(String careerLevel){
         Context context=getApplicationContext();
         String[] careerLevels = context.getResources().getStringArray(R.array.careerlevel_array);
         careerLevelSpinner = (Spinner)findViewById(R.id.careerlevel_spinner);
@@ -438,7 +547,7 @@ public class ActivityProfileEdit extends FragmentActivity {
 
         careerLevelSpinner.setAdapter(adapter);
 
-        String careerLevel =  helper.getCareerLevel(email);
+
         if(careerLevel.equals("Club")){
             careerLevelSpinner.setSelection(0);
         }
@@ -468,6 +577,8 @@ public class ActivityProfileEdit extends FragmentActivity {
 
         saveEditProfile = (Button) findViewById(R.id.button_edit_profile_save);
         cancelEditProfile = (Button) findViewById(R.id.button_edit_profile_cancel);
+
+        weightOfPerson = (EditText)findViewById(R.id.pv_weight);
     }
 
     private void setDateTimeField() {

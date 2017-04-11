@@ -272,8 +272,8 @@ public class ActivityProfileSetup extends FragmentActivity {
                 selectedDOB = birthDate.getText().toString();
 
                 name = nameOfPerson.getText().toString();
-                country = picker.getUserCountryInfo(ActivityProfileSetup.this);
-                selectedCountry = country.getName();
+//                country = picker.getUserCountryInfo(ActivityProfileSetup.this);
+//                selectedCountry = country.getName();
 
                 location = selectedCountry;
                 System.out.println("Country Name: " + selectedCountry);
@@ -866,6 +866,7 @@ public void show(){
             location_text.setText(name);
             selectedCountry = name;
             country_flag.setImageResource(flagDrawableResID);
+
             //location_text.setCompoundDrawablesRelativeWithIntrinsicBounds(flagDrawableResID, 0, 0, 0);
             //location_text.setCompoundDrawablesWithIntrinsicBounds(flagDrawableResID, 0, 0, 0);
             picker.dismiss();

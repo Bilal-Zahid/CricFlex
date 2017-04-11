@@ -58,18 +58,9 @@ public class ActivityProfile extends AppCompatActivity {
         ValueEventListener userListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                // Get Post object and use the values to update the UI
+                // Get Profile  object and use the values to update the UI
                 // ...
-//                GenericTypeIndicator<List<String>> t = new GenericTypeIndicator ?<List<String>>() {};
-//                List messages = dataSnapshot.getValue(t);
-//                if( messages == null ) {
-//                    System.out.println("No email" + dataSnapshot.getValue());
-//             }
-//                else {
-//                    System.out.println("The first email is: " + messages.get(0) );
-//                }
 
-//                collectEmails((Map<String,Object>) dataSnapshot.getValue());
 
                 System.out.println("Datasnapshot mai ara hai : ");
                 User playerProfile = new User();
