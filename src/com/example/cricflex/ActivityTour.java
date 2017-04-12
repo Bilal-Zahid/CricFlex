@@ -1,5 +1,6 @@
 package com.example.cricflex;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -18,7 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
-public class ActivityWelcome extends AppCompatActivity {
+public class ActivityTour extends AppCompatActivity {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -46,10 +47,7 @@ public class ActivityWelcome extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         prefManager = new PrefManager(this);
-        if (!prefManager.isFirstTimeLaunch()) {
-            launchHomeScreen();
-            finish();
-        }
+
 
         // Making notification bar transparent
         if (Build.VERSION.SDK_INT >= 21) {
@@ -89,7 +87,9 @@ public class ActivityWelcome extends AppCompatActivity {
                     mViewPager.setCurrentItem(current);
                 } else {
 
-                    launchHomeScreen();
+                    startActivity(new Intent(ActivityTour.this,ActivityMain.class));
+                    finish();
+
                 }
             }
         });
@@ -98,7 +98,8 @@ public class ActivityWelcome extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                launchHomeScreen();
+                startActivity(new Intent(ActivityTour.this,ActivityMain.class));
+                finish();
             }
         });
 
@@ -258,23 +259,7 @@ public class ActivityWelcome extends AppCompatActivity {
             dots[currentPage].setTextColor(colorsActive[currentPage]);
     }
 
-    private void launchHomeScreen() {
-        prefManager.setFirstTimeLaunch(false);
 
-
-        if(SaveSharedPreference.getEmail(ActivityWelcome.this).length() == 0)
-        {
-            Intent intent = new Intent(ActivityWelcome.this, ActivityLogin.class);
-//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
-            finish();
-        }
-        else {
-            Intent i = new Intent(ActivityWelcome.this, ActivityMain.class);
-            ActivityWelcome.this.startActivity(i);
-        }
-
-    }
 
 
 }

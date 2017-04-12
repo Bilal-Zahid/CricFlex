@@ -11,6 +11,7 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.percent.PercentRelativeLayout;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
@@ -27,8 +28,18 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.GenericTypeIndicator;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import static android.content.ContentValues.TAG;
 
 
 public class ActivityLogin extends Activity {
@@ -52,15 +63,21 @@ public class ActivityLogin extends Activity {
     AutoCompleteTextView etEmail;
     EditText etPassword;
 
+    List<String> emailList = new ArrayList<>();
     String emailstr;
 
-
+    FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
 
+    private DatabaseReference usersDatabaseReference;
 
 
     private ProgressDialog progressDialog ;
-    FirebaseAuth firebaseAuth;
+
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +88,13 @@ public class ActivityLogin extends Activity {
 
         View decorView = getWindow().getDecorView();
         // Hide the status bar.
+
+
+
+
+
+
+
         int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
         decorView.setSystemUiVisibility(uiOptions);
 
@@ -79,7 +103,55 @@ public class ActivityLogin extends Activity {
 
         firebaseAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference();
+        usersDatabaseReference = databaseReference.child("Users");
 
+
+
+
+
+
+        etEmail = (AutoCompleteTextView) findViewById(R.id.lgn_email);
+        etEmail.setThreshold(1);
+
+        System.out.println("Aisay hi print" + SaveSharedPreference.getEmail(ActivityLogin.this) );
+        emailList = SaveSharedPreference.getEmailList(ActivityLogin.this);
+
+        System.out.println("Email List in login: " + SaveSharedPreference.getEmailList(ActivityLogin.this));
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                R.layout.dropdown_item, emailList);
+
+
+        etEmail.setAdapter(adapter);
+
+        ValueEventListener userListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Get Post object and use the values to update the UI
+                // ...
+//                GenericTypeIndicator<List<String>> t = new GenericTypeIndicator ?<List<String>>() {};
+//                List messages = dataSnapshot.getValue(t);
+//                if( messages == null ) {
+//                    System.out.println("No email" + dataSnapshot.getValue());
+//             }
+//                else {
+//                    System.out.println("The first email is: " + messages.get(0) );
+//                }
+
+//                collectEmails((Map<String,Object>) dataSnapshot.getValue());
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+                // ...
+            }
+        };
+//
+
+        usersDatabaseReference.addValueEventListener(userListener);
 
 //        if(firebaseAuth.getCurrentUser()!=null){
 //            // profile activity
@@ -91,14 +163,7 @@ public class ActivityLogin extends Activity {
         progressDialog = new ProgressDialog(this);
 //        firebaseAuth = FirebaseAuth.getInstance();
 
-        etEmail = (AutoCompleteTextView) findViewById(R.id.lgn_email);
-        etEmail.setThreshold(1);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                R.layout.dropdown_item, helper.getAllEmails());
-
-
-        etEmail.setAdapter(adapter);
         etPassword = (EditText) findViewById(R.id.lgn_password);
 
         final Button bLogin = (Button) findViewById(R.id.Login);
@@ -137,8 +202,29 @@ public class ActivityLogin extends Activity {
                 ActivityLogin.this.startActivity(i);
             }
         });
-
+        System.out.println("List of all emails123: " +emailList);
     }
+
+//    private void collectEmails(Map<String, Object> users) {
+//
+//
+//        emailList = new ArrayList<>();
+//
+//        //iterate through each user, ignoring their UID
+//        for (Map.Entry<String, Object> entry : users.entrySet()){
+//
+//            //Get user map
+//            Map singleUser = (Map) entry.getValue();
+//            //Get phone field and append to list
+//            emailList.add((String) singleUser.get("Email"));
+//        }
+//
+//
+//
+
+
+//        System.out.println(emailList.toString());
+//    }
 
     private void userLogin() {
 
@@ -177,6 +263,8 @@ public class ActivityLogin extends Activity {
 
 
 
+
+
 //                            System.out.println("Email: " + email);
                             Toast.makeText(ActivityLogin.this, "Signed In" ,
                                     Toast.LENGTH_SHORT).show();
@@ -203,17 +291,46 @@ public class ActivityLogin extends Activity {
                             player.setHeight("6");
 
 
-                            databaseReference.child("Users").child(user.getUid()).child("Name").setValue(player.getName());
-                            databaseReference.child("Users").child(user.getUid()).child("Gender").setValue(player.getGender());
-                            databaseReference.child("Users").child(user.getUid()).child("Email").setValue(player.getEmail());
-                            databaseReference.child("Users").child(user.getUid()).child("Weight").setValue(player.getWeight());
-                            databaseReference.child("Users").child(user.getUid()).child("Location").setValue(player.getLocation());
-                            databaseReference.child("Users").child(user.getUid()).child("DOB").setValue(player.getDOB());
-                            databaseReference.child("Users").child(user.getUid()).child("Bowling Arm").setValue(player.getBowlingArm());
-                            databaseReference.child("Users").child(user.getUid()).child("Bowling Style").setValue(player.getBowlingStyle());
-                            databaseReference.child("Users").child(user.getUid()).child("Career Level").setValue(player.getCareerLevel());
-//                            databaseReference.child("Users").child(user.getUid()).child("name").setValue(player.getName());
-//                            databaseReference.child("Users").child(user.getUid()).child("name").setValue(player.getName());
+                            databaseReference.child("Players").child(user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+
+                                    if(dataSnapshot.exists()){
+                                        Intent i = new Intent(ActivityLogin.this, ActivityMain.class);
+                                        ActivityLogin.this.startActivity(i);
+                                        finish();
+
+                                    }
+                                    else {
+                                        Intent i = new Intent(ActivityLogin.this, ActivityProfileSetup.class);
+
+                                        i.putExtra("email", email);
+                                        ActivityLogin.this.startActivity(i);
+                                        finish();
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+
+                                }
+                            });
+
+
+
+
+//                            usersDatabaseReference.child("Users").child(user.getUid()).child("Name").setValue(player.getName());
+//                            usersDatabaseReference.child("Users").child(user.getUid()).child("Gender").setValue(player.getGender());
+//                            usersDatabaseReference.child("Users").child(user.getUid()).child("Email").setValue(player.getEmail());
+//                            usersDatabaseReference.child("Users").child(user.getUid()).child("Weight").setValue(player.getWeight());
+//                            usersDatabaseReference.child("Users").child(user.getUid()).child("Location").setValue(player.getLocation());
+//                            usersDatabaseReference.child("Users").child(user.getUid()).child("DOB").setValue(player.getDOB());
+//                            usersDatabaseReference.child("Users").child(user.getUid()).child("Bowling Arm").setValue(player.getBowlingArm());
+//                            usersDatabaseReference.child("Users").child(user.getUid()).child("Bowling Style").setValue(player.getBowlingStyle());
+//                            usersDatabaseReference.child("Users").child(user.getUid()).child("Career Level").setValue(player.getCareerLevel());
+//                            usersDatabaseReference.child("Users").child(user.getUid()).child("Device Id").setValue(FirebaseInstanceID.getToken());
+//                            usersDatabaseReference.child("Users").child(user.getUid()).child("name").setValue(player.getName());
+//                            usersDatabaseReference.child("Users").child(user.getUid()).child("name").setValue(player.getName());
 
 //                            Player player = new Player();
 //
@@ -246,8 +363,8 @@ public class ActivityLogin extends Activity {
 
 
 //
-//                            databaseReference = FirebaseDatabase.getInstance().getReference();
-//                            databaseReference.child("Users").child(user.getUid()).setValue(player);
+//                            usersDatabaseReference = FirebaseDatabase.getInstance().getReference();
+//                            usersDatabaseReference.child("Users").child(user.getUid()).setValue(player);
 
 
 

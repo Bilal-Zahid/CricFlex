@@ -15,6 +15,7 @@ import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.v4.app.FragmentActivity;
 import android.text.InputType;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.WindowManager;
@@ -29,6 +30,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -87,6 +90,7 @@ public class ActivityProfileSetup extends FragmentActivity {
     //private String location = "not set";
 
     private EditText birthDate;
+
     private DatePickerDialog birthDatePickerDialog;
     private SimpleDateFormat dateFormatter;
 
@@ -99,7 +103,10 @@ public class ActivityProfileSetup extends FragmentActivity {
 
     final Player player = new Player();
 
+    private EditText nameOfPerson;
     EditText weightOfPerson;
+
+    User playerProfile = new User();
 
 
 //    private ImageView profileImage;
@@ -150,6 +157,8 @@ public class ActivityProfileSetup extends FragmentActivity {
 
 
         weightOfPerson = (EditText) findViewById(R.id.pv_weight);
+        nameOfPerson = (EditText) findViewById(R.id.stp_name);
+
 
         location_text.setText(country.getName());
         country_flag.setImageResource(country.getFlag());
@@ -172,7 +181,7 @@ public class ActivityProfileSetup extends FragmentActivity {
 
 
 
-        ImageView profileImage = (ImageView) findViewById(R.id.profilepicture);
+        final ImageView profileImage = (ImageView) findViewById(R.id.profilepicture);
         profileImage.setClickable(true);
 
         profileImage.setOnClickListener(new View.OnClickListener() {
@@ -235,13 +244,17 @@ public class ActivityProfileSetup extends FragmentActivity {
         final Button setupProfileDoneButton = (Button) findViewById(R.id.stp_done);
         setupProfileDoneButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
+
+                int ijp = 0;
+                Log.d("MyApp","I am here " + ijp++);
                 selectedBowlingStyle = bowlingStylesSpinner.getSelectedItem().toString();
                 selectedCareerLevel = careerLevelSpinner.getSelectedItem().toString();
                 //DataBase Work to do!!!
 
                 selectedDOB = birthDate.getText().toString();
                 Intent intent = getIntent();
-                String name = intent.getStringExtra("name");
+                String name;
+//                String name = intent.getStringExtra("name");
 //                        String username = intent.getStringExtra("email");
                 String email = intent.getStringExtra("email");
                 String password = intent.getStringExtra("password");
@@ -258,13 +271,16 @@ public class ActivityProfileSetup extends FragmentActivity {
 
                 selectedDOB = birthDate.getText().toString();
 
-                country = picker.getUserCountryInfo(ActivityProfileSetup.this);
-                selectedCountry = country.getName();
+                name = nameOfPerson.getText().toString();
+//                country = picker.getUserCountryInfo(ActivityProfileSetup.this);
+//                selectedCountry = country.getName();
 
                 location = selectedCountry;
                 System.out.println("Country Name: " + selectedCountry);
                 //String selectedGender = gender;
 
+
+                Log.d("MyApp","I am here" + ijp++);
                 if(selectedDOB.equals("")){
                     final Toast toast = Toast.makeText(ActivityProfileSetup.this, "Date Of Birth Not Selected" , Toast.LENGTH_SHORT);
                     toast.show();
@@ -285,22 +301,38 @@ public class ActivityProfileSetup extends FragmentActivity {
                 else{
                     weightOfPlayer = weightOfPerson.getText().toString();;
                 }
+
+                if(name.equals("")){
+                    Toast.makeText(ActivityProfileSetup.this, "Please Enter Name." , Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                Log.d("MyApp","I am here" + ijp++);
+
+                String str[] = DOB.split("-");
+                int day = Integer.parseInt(str[0]);
+                int month = Integer.parseInt(str[1]);
+                int year = Integer.parseInt(str[2]);
+
+
+                if(getAge(year,month,day)<10){
+                    Toast.makeText(ActivityProfileSetup.this, "Player's age should be atleast 10" , Toast.LENGTH_SHORT).show();
+                    return;
+                }
 //                        String weightOfPlayer = weightOfPerson.getText().toString();
 //                        weightOfPlayer= weightOfPerson.getText().toString();
 
 
 
-                System.out.println("name : " + name);
-//                        System.out.println("email : "+ username);
-                System.out.println("email : "+ email);
-                System.out.println("password : "+ password);
-//                        System.out.println("security : "+ security);
-                System.out.println("gender : "+ gender);
-                System.out.println("location : "+ location);
-                System.out.println("DOB : "+ DOB);
-                System.out.println("bowlingArm : "+ bowlingArm);
-                System.out.println("bowlingStyle : "+ bowlingStyle);
-                System.out.println("careerLevel : "+ careerLevel);
+                Log.d("MyApp","I am here" + ijp++);
+
+
+
+
+
+
+
+
 
                 player.setName(name);
 //                        player.setUsername(username);
@@ -321,10 +353,95 @@ public class ActivityProfileSetup extends FragmentActivity {
                 player.setAverageAngle("0");
                 player.setLongestStreak("0");
                 player.setLastBowlAngle("0");
+                Log.d("MyApp","I am here" + ijp++);
+
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+                if(user==null){
+                    System.out.println("User not registered!");
+                    return;
+                }
+                else{
+                    System.out.println("User Id: " + user.getUid());
+                }
+                Log.d("MyApp","I am here" + ijp++);
+//                this.bowlingArm = bowlingArm;
+//                this.bowlingStyle = bowlingStyle;
+//                this.careerLevel = careerLevel;
+//                this.DOB = DOB;
+//                this.emailId = emailId;
+//                this.gender = gender;
+//                this.location = location;
+//                this.nameOfPerson = nameOfPerson;
+//                this.weight = weight;
+
+                User playerProfile = new User(bowlingArm,bowlingStyle,careerLevel,DOB,email,gender,location,name,weightOfPlayer,user.getUid());
+//                playerProfile.setNameOfPerson(name);
+//                playerProfile.setCareerLevel(careerLevel);
+//                playerProfile.setBowlingArm(bowlingArm);
+//                playerProfile.setBowlingStyle(bowlingStyle);
+//                playerProfile.setDOB(DOB);
+//                playerProfile.setEmailId(email);
+//                playerProfile.setGender(gender);
+//                playerProfile.setLocation(location);
+//                playerProfile.setWeight(weightOfPlayer);
+//                playerProfile.setUserId(user.getUid());
+//
+//                playerProfile.setNameOfPerson(name);
+                Log.d("MyApp","I am here" + ijp++);
+//                System.out.println("L hogya");
+                if(playerProfile == null){
+                    System.out.println("L hogya");
+                }
 
 
+//                System.out.println("name : " + playerProfile.getNameOfPerson() );
+//                System.out.println("email : " + playerProfile.getEmailId());
+//                System.out.println("gender : "+ playerProfile.getGender());
+//                System.out.println("location : "+ playerProfile.getLocation());
+//                System.out.println("DOB : "+ playerProfile.getDOB());
+//                System.out.println("bowlingArm : "+ playerProfile.getBowlingArm());
+//                System.out.println("bowlingStyle : "+ playerProfile.getBowlingStyle());
+//                System.out.println("careerLevel : "+ playerProfile.getCareerLevel());
+//                System.out.println("weight : "+ playerProfile.getWeight());
+//                System.out.println("UUID : " + playerProfile.getUserId()  );
+
+
+//                System.out.println("had hogae ha " + user.getUid());
+//                System.out.println("User id Bhinot: " + user.getUid());
+                Log.d("MyApp","I am here" + ijp++);
+
+
+
+                //
+//                rootDatabaseReference.child("Players").child(user.getEmail()).child("Name").setValue(player.getName());
+//                rootDatabaseReference.child("Players").child(user.getEmail()).child("Gender").setValue(player.getGender());
+//                rootDatabaseReference.child("Players").child(user.getEmail()).child("Email").setValue(player.getEmail());
+//                rootDatabaseReference.child("Players").child(user.getEmail()).child("Weight").setValue(player.getWeight());
+//                rootDatabaseReference.child("Players").child(user.getEmail()).child("Location").setValue(player.getLocation());
+//                rootDatabaseReference.child("Players").child(user.getEmail()).child("DOB").setValue(player.getDOB());
+//                rootDatabaseReference.child("Players").child(user.getEmail()).child("Bowling Arm").setValue(player.getBowlingArm());
+//                rootDatabaseReference.child("Players").child(user.getEmail()).child("Bowling Style").setValue(player.getBowlingStyle());
+//                rootDatabaseReference.child("Players").child(user.getEmail()).child("Career Level").setValue(player.getCareerLevel());
+
+
+
+//                rootDatabaseReference.child("Players").child(user.getUid()).push().setValue(playerProfile);
+//                Log.d("MyApp","I am here" + ijp++);
+
+                rootDatabaseReference.child("Players").child(user.getUid()).setValue(playerProfile, new DatabaseReference.CompletionListener() {
+                    @Override
+                    public void onComplete(DatabaseError databaseError, DatabaseReference reference) {
+                        if (databaseError != null) {
+//                            Log.e("Tag", "Failed to write message", databaseError.toException());
+                            System.out.println("Error in writing to database: " + databaseError.toException() );
+                        }
+                    }
+                });
+
+
+                Log.d("MyApp","I am here" + ijp++);
                 saveImage(getApplicationContext(),bitmapImage,email,"jpeg");
-
 
 
 
@@ -357,6 +474,8 @@ public class ActivityProfileSetup extends FragmentActivity {
                 toast.show();
                 Intent i = new Intent(ActivityProfileSetup.this, ActivityLogin.class);
                 ActivityProfileSetup.this.startActivity(i);
+
+                FirebaseAuth.getInstance().signOut();
 
 
             }
@@ -747,6 +866,7 @@ public void show(){
             location_text.setText(name);
             selectedCountry = name;
             country_flag.setImageResource(flagDrawableResID);
+
             //location_text.setCompoundDrawablesRelativeWithIntrinsicBounds(flagDrawableResID, 0, 0, 0);
             //location_text.setCompoundDrawablesWithIntrinsicBounds(flagDrawableResID, 0, 0, 0);
             picker.dismiss();
@@ -785,5 +905,23 @@ public void show(){
 
             }
         });
+    }
+
+
+    private int getAge(int year, int month, int day){
+        Calendar dob = Calendar.getInstance();
+        Calendar today = Calendar.getInstance();
+
+        dob.set(year, month, day);
+
+        int age = today.get(Calendar.YEAR) - dob.get(Calendar.YEAR);
+
+        System.out.println("Day today ,"+today.get(Calendar.DAY_OF_YEAR)  +"DOB DAY : " +dob.get(Calendar.DAY_OF_YEAR));
+        if (today.get(Calendar.DAY_OF_YEAR) < (dob.get(Calendar.DAY_OF_YEAR)-31)){
+            age--;
+        }
+
+        Integer ageInt = new Integer(age);
+        return  ageInt;
     }
 }

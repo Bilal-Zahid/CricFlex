@@ -1,6 +1,8 @@
 package com.example.cricflex;
 
 import java.io.FileInputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import android.app.FragmentTransaction;
 import android.content.res.Configuration;
@@ -27,6 +29,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import static android.content.ContentValues.TAG;
 
 
 public class ActivityMain extends AppCompatActivity
@@ -57,10 +66,19 @@ public class ActivityMain extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+
+
+
+
+
         int abc = SaveSharedPreference.getEmail(ActivityMain.this).length();
 
+        System.out.println("email list in main activity: " + SaveSharedPreference.getEmailList(ActivityMain.this));
 
-        if(SaveSharedPreference.getEmail(ActivityMain.this).length() == 0)
+        String emailInSharedPreferance = SaveSharedPreference.getEmail(ActivityMain.this);
+
+        if(emailInSharedPreferance.length() == 0)
         {
             Intent intent = new Intent(ActivityMain.this, ActivitySplash.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -68,11 +86,42 @@ public class ActivityMain extends AppCompatActivity
             startActivity(intent);
         }
 
-        View inflatedView = getLayoutInflater().inflate(R.layout.nav_header_main, null);
-        emailText = (TextView) inflatedView.findViewById(R.id.email);
-        emailText.setText(SaveSharedPreference.getEmail(ActivityMain.this));
-        nameText = (TextView) inflatedView.findViewById(R.id.name);
-        nameText.setText(R.string.name);            //////////////////////////////////////////////////// from database
+
+
+        List<String> prevEmails = new ArrayList<String>(SaveSharedPreference.getEmailList(ActivityMain.this));
+//        prevEmails = ;
+
+        boolean emailExistCheck = true;
+        System.out.println("Previous mails: " + prevEmails);
+
+        int j;
+        for( j=0;j<prevEmails.size();j++){
+            if(prevEmails.get(j).equals(emailInSharedPreferance)){
+                System.out.println("In if of Previous mails for loop: ");
+
+                emailExistCheck = false;
+            }
+            System.out.println("In Previous mails for loop: " + prevEmails.get(j));
+        }
+
+        if(emailExistCheck){
+            System.out.println("In Email exist check: " + emailInSharedPreferance);
+
+            prevEmails.add(emailInSharedPreferance);
+
+            System.out.println("bhinot: ");
+
+            System.out.println("Kabhi yahan bhi aao" + prevEmails);
+            SaveSharedPreference.setEmailList(ActivityMain.this,prevEmails);
+        }
+
+
+
+
+
+
+
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -87,6 +136,41 @@ public class ActivityMain extends AppCompatActivity
         name.setText(helper.getName(SaveSharedPreference.getEmail(ActivityMain.this)));
         TextView email = (TextView)nav_header.findViewById(R.id.email);
         email.setText(SaveSharedPreference.getEmail(ActivityMain.this));
+
+        ValueEventListener userListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                System.out.println("Datasnapshot mai ara hai : ");
+                User playerProfile = new User();
+
+                playerProfile = dataSnapshot.getValue(User.class);
+                View nav_header =  navigationView.getHeaderView(0);
+                TextView name = (TextView)nav_header.findViewById(R.id.name);
+                name.setText(playerProfile.nameOfPerson);
+                TextView email = (TextView)nav_header.findViewById(R.id.email);
+                email.setText(SaveSharedPreference.getEmail(ActivityMain.this));
+
+
+
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+                // ...
+            }
+        };
+
+        DatabaseReference usersDatabaseReference = FirebaseDatabase.getInstance().getReference().child("Players").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+
+        usersDatabaseReference.addValueEventListener(userListener);
+
+
+
+
 
 
         nav_header.setOnClickListener(new View.OnClickListener() {
@@ -190,7 +274,7 @@ public class ActivityMain extends AppCompatActivity
 
             case R.id.tour_cricflex:
 
-                Intent intent0 = new Intent(ActivityMain.this, ActivityWelcome.class);
+                Intent intent0 = new Intent(ActivityMain.this, ActivityTour.class);
 
                 startActivity(intent0);
                 return true;
