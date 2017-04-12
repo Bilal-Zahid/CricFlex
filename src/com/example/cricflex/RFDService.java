@@ -1,7 +1,5 @@
 package com.example.cricflex;
 
-
-
 import java.util.UUID;
 
 import android.Manifest;
@@ -21,6 +19,7 @@ import android.content.IntentFilter;
 import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
+import android.widget.Toast;
 
 public class RFDService extends Service{
 	private final static String TAG = RFDService.class.getSimpleName();
@@ -32,14 +31,22 @@ public class RFDService extends Service{
     private BluetoothGattService mBluetoothGattService;
 
     public final static String ACTION_CONNECTED =
-            "com.rfduino.ACTION_CONNECTED";
+            "com.cricflex.ACTION_CONNECTED";
     public final static String ACTION_DISCONNECTED =
-            "com.rfduino.ACTION_DISCONNECTED";
+            "com.cricflex.ACTION_DISCONNECTED";
     public final static String ACTION_DATA_AVAILABLE =
-            "com.rfduino.ACTION_DATA_AVAILABLE";
+            "com.cricflex.ACTION_DATA_AVAILABLE";
     public final static String EXTRA_DATA =
-            "com.rfduino.EXTRA_DATA";
+            "com.cricflex.EXTRA_DATA";
 
+    // for Simblee
+//    public final static UUID UUID_SERVICE = UUID.fromString("0000FE84-0000-1000-8000-00805F9B34FB");
+//    public final static UUID UUID_RECEIVE = UUID.fromString("2D30C082-F39F-4CE6-923F-3484EA480596");
+//    public final static UUID UUID_SEND = UUID.fromString("2D30C083-F39F-4CE6-923F-3484EA480596");
+//    public final static UUID UUID_DISCONNECT = UUID.fromString("2D30C084-F39F-4CE6-923F-3484EA480596");
+//    public final static UUID UUID_CLIENT_CONFIGURATION = UUID.fromString("00002902-0000-1000-8000-00805F9B34FB");
+
+    //for RFduino
     public final static UUID UUID_SERVICE = CricFlex_Bluetooth.sixteenBitUuid(0x2220);
     public final static UUID UUID_RECEIVE = CricFlex_Bluetooth.sixteenBitUuid(0x2221);
     public final static UUID UUID_SEND = CricFlex_Bluetooth.sixteenBitUuid(0x2222);
@@ -52,11 +59,11 @@ public class RFDService extends Service{
         @Override
         public void onConnectionStateChange(BluetoothGatt gatt, int status, int newState) {
             if (newState == BluetoothProfile.STATE_CONNECTED) {
-                Log.i(TAG, "Connected to RFduino.");
+                Log.i(TAG, "Connected to BLE Device.");
                 Log.i(TAG, "Attempting to start service discovery:" +
                         mBluetoothGatt.discoverServices());
             } else if (newState == BluetoothProfile.STATE_DISCONNECTED) {
-                Log.i(TAG, "Disconnected from RFduino.");
+                Log.i(TAG, "Disconnected from BLE Device.");
                 broadcastUpdate(ACTION_DISCONNECTED);
             }
         }
@@ -66,9 +73,21 @@ public class RFDService extends Service{
             if (status == BluetoothGatt.GATT_SUCCESS) {
                 mBluetoothGattService = gatt.getService(UUID_SERVICE);
                 if (mBluetoothGattService == null) {
-                    Log.e(TAG, "RFduino GATT service not found!");
+                    Log.e(TAG, "BLE Device GATT service not found!");
                     return;
                 }
+
+                ///// for test purposes
+//                for (BluetoothGattService gattService : gatt.getServices()) {
+//                    for (BluetoothGattCharacteristic mCharacteristic : gattService.getCharacteristics()) {
+//                        Log.i(TAG, "Found Characteristic: " + mCharacteristic.getUuid().toString());
+//                    }
+//                    Log.i(TAG, "onServicesDiscovered UUID: " + gattService.getUuid().toString());
+//                }
+
+                ///// for test purposes
+
+
 
                 BluetoothGattCharacteristic receiveCharacteristic =
                         mBluetoothGattService.getCharacteristic(UUID_RECEIVE);
@@ -82,11 +101,11 @@ public class RFDService extends Service{
                                 BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
                         gatt.writeDescriptor(receiveConfigDescriptor);
                     } else {
-                        Log.e(TAG, "RFduino receive config descriptor not found!");
+                        Log.e(TAG, "BLE Device receive config descriptor not found!");
                     }
 
                 } else {
-                    Log.e(TAG, "RFduino receive characteristic not found!");
+                    Log.e(TAG, "BLE Device receive characteristic not found!");
                 }
 
                 broadcastUpdate(ACTION_CONNECTED);
@@ -200,11 +219,11 @@ public class RFDService extends Service{
         // parameter to false.
         if( device.getName().equals("Abdullah"))
         {
-        mBluetoothGatt = device.connectGatt(this, false, mGattCallback);
-            Log.d(TAG, "FOUND THE REQUIRED DEVICE");
-        Log.d(TAG, "Trying to create a new connection.");
-        mBluetoothDeviceAddress = address;
-        return true;
+            mBluetoothGatt = device.connectGatt(this, false, mGattCallback);
+                Log.d(TAG, "FOUND THE REQUIRED DEVICE");
+            Log.d(TAG, "Trying to create a new connection.");
+            mBluetoothDeviceAddress = address;
+            return true;
         }
         else 
         	return false;
@@ -249,6 +268,7 @@ public class RFDService extends Service{
     }
 
     public boolean send(byte[] data) {
+        System.out.println("inside send()");
         if (mBluetoothGatt == null || mBluetoothGattService == null) {
             Log.w(TAG, "BluetoothGatt not initialized");
             return false;
@@ -261,6 +281,27 @@ public class RFDService extends Service{
             Log.w(TAG, "Send characteristic not found");
             return false;
         }
+
+
+        characteristic.setValue(data);
+        characteristic.setWriteType(BluetoothGattCharacteristic.WRITE_TYPE_NO_RESPONSE);
+        return mBluetoothGatt.writeCharacteristic(characteristic);
+    }
+    public boolean send(String data) {
+        System.out.println("inside send()");
+        if (mBluetoothGatt == null || mBluetoothGattService == null) {
+            Log.w(TAG, "BluetoothGatt not initialized");
+            return false;
+        }
+
+        BluetoothGattCharacteristic characteristic =
+                mBluetoothGattService.getCharacteristic(UUID_SEND);
+
+        if (characteristic == null) {
+            Log.w(TAG, "Send characteristic not found");
+            return false;
+        }
+
 
         characteristic.setValue(data);
         characteristic.setWriteType(BluetoothGattCharacteristic.WRITE_TYPE_NO_RESPONSE);

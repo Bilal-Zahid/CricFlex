@@ -6,7 +6,6 @@ import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.widget.ImageView;
 
-//import com.example.customprogressdialog.R;
 
 public class MyCustomProgressDialog extends ProgressDialog {
   private AnimationDrawable animation;
@@ -29,11 +28,15 @@ public class MyCustomProgressDialog extends ProgressDialog {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.view_custom_progress_dialog);
+    setContentView(R.layout.anim_custom_dialog);
 
     ImageView la = (ImageView) findViewById(R.id.animation);
     la.setBackgroundResource(R.drawable.custom_progress_dialog_animation1);
     animation = (AnimationDrawable) la.getBackground();
+
+//    ImageView la = (ImageView) findViewById(R.id.animation);
+//    la.setImageResource(R.drawable.custom_progress_dialog_animation1);
+//    animation = (AnimationDrawable) la.getDrawable();
   }
 
   @Override

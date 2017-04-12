@@ -99,7 +99,7 @@
         android:paddingBottom="5dp"
         android:layout_marginBottom="2dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/monitor_status"
+        android:text="@string/monitor_monitoring"
         android:textColor="@color/text_light"
         android:textAlignment="center"
         android:textStyle="bold"

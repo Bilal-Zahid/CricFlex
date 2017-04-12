@@ -122,8 +122,9 @@
     <string name="asawal_email">asawal@cricflex.com</string>
 
     <!--activity monitor-->
+    <string name="monitor_monitoring">Monitoring&#8230;</string>
+    <string name="monitor_connecting">Connecting&#8230;</string>
     <string name="monitor_angle">0\u00b0</string>
-    <string name="monitor_status">Monitoring...</string>
     <string name="monitor_force">0 N</string>
     <string name="monitor_time">0.0s</string>
     <string name="monitor_twist">0\u00b0</string>

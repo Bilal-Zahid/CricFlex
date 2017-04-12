@@ -1,17 +1,26 @@
 package com.example.cricflex;
 
-import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import android.annotation.TargetApi;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothManager;
+import android.bluetooth.le.ScanCallback;
+import android.bluetooth.le.ScanResult;
 import android.content.DialogInterface;
+import android.content.IntentSender;
+import android.content.pm.PackageManager;
+import android.location.LocationManager;
+import android.os.Build;
 import android.os.Handler;
 import android.app.Activity;
-import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -26,6 +35,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,34 +56,41 @@ import org.json.JSONObject;
 
 import me.grantland.widget.AutofitTextView;
 
-public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeScanCallback {
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
+import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
+import com.google.android.gms.common.api.PendingResult;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.LocationSettingsRequest;
+import com.google.android.gms.location.LocationSettingsResult;
+import com.google.android.gms.location.LocationSettingsStatusCodes;
+
+import java.text.DateFormat;
+import java.util.Date;
+
+
+@TargetApi(21)
+public class ActivityMonitor2 extends Activity {
 
     private static Boolean exit = false;
 
-    //changings
+    protected static final int REQUEST_CHECK_SETTINGS = 0x1;
+    LocationManager locationManager;
     private BluetoothAdapter mBluetoothAdapter;
     private int REQUEST_ENABLE_BT = 1;
-
     private static final long SCAN_PERIOD = 10000;
     private BluetoothLeScanner mLEScanner;
     private ScanSettings settings;
     private List<ScanFilter> filters;
     private BluetoothGatt mGatt;
-    private File accelerationFile = new File("/sdcard/acceleration.txt");
-    private long temp;
-    private int test1234;
-
-/*
-    private ScanCallback mScanCallback = new ScanCallback() {
-        @Override
-        public void onScanResult(int callbackType, ScanResult result) {
-            Log.i("callbackType", String.valueOf(callbackType));
-            Log.i("result", result.toString());
-            BluetoothDevice btDevice = result.getDevice();
-            connectToDevice(btDevice);
-        }
-*/    //changings
-
+    private Handler mHandler;
+    private BluetoothDevice bluetoothDevice;
+    private RFDService rfduinoService;
 
     // State machine
     public static int genFlex = 0;
@@ -80,27 +98,15 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
     final private static int STATE_DISCONNECTED = 2;
     final private static int STATE_CONNECTING = 3;
     final private static int STATE_CONNECTED = 4;
-    public static int AjmalFlex = -1;
-    public static int IshantFlex = -1;
     public static int once = 0;
-    //    public static boolean firstnegativevalueafterpositive = false;
     private int state;
-    private int ref;
-
-    private boolean scanStarted;
-    private boolean scanning;
-    private boolean stopButtonPressed = false;
     private boolean connectedToBand = false;
+    private boolean calibrationDone = false;
+    private boolean monitoring = false;
 
-    private BluetoothAdapter bluetoothAdapter;
-    private BluetoothDevice bluetoothDevice;
-    // private LeDeviceListAdapter mLeDeviceListAdapter;
-    private RFDService rfduinoService;
-    private TextView monitorLegalText;
+
+
     private static final String TAG = "MyActivity";
-
-    private String in = new String();
-    private String MacAdd = "yahooooooooooooooooooooooooooooo";
 
     boolean isBound = false;
 
@@ -108,6 +114,11 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
 
     private int counterLegal=0,counterIllegal=0;
 
+
+    ProgressBar batteryProgressBar;
+    TextView batteryProgressText;
+    ImageView ble_indicator;
+    private TextView monitorStatusText;
     private TextView monitorAngleValue;
     private TextView monitorLegalBalls;
     private TextView monitorIllegalBalls;
@@ -124,7 +135,6 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
     // check for metrics
     int metric_check=0;
 
-    final ProgressDialog mProgressDialog = null ;
 
     //For Metrics Activity
 
@@ -150,52 +160,99 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
 
     private DatabaseReference databaseReference;
     FirebaseAuth firebaseAuth;
-
+    
 
     private final BroadcastReceiver bluetoothStateReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
 
+            System.out.println("inside BroadcastReceiver bluetoothStateReceiver");
+
             int state = intent.getIntExtra(BluetoothAdapter.EXTRA_STATE, 0);
+
             if (state == BluetoothAdapter.STATE_ON) {
                 upgradeState(STATE_DISCONNECTED);
-            } else if (state == BluetoothAdapter.STATE_OFF) {
+
+            }
+            else if (state == BluetoothAdapter.STATE_OFF) {
                 downgradeState(STATE_BLUETOOTH_OFF);
+                bluetoothDisabled();
             }
         }
     };
 
+    private final BroadcastReceiver BleConnectionReceiver =  new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            System.out.println("inside BroadcastReceiver BleConnectionReceiver");
+
+            String action = intent.getAction();
+            BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+
+
+            if (BluetoothDevice.ACTION_ACL_CONNECTED.equals(action)) {
+                //Device is now connected
+            }
+
+            else if (BluetoothDevice.ACTION_ACL_DISCONNECTED.equals(action)) {
+                //Device has disconnected
+                bandDisconnected();
+            }
+
+//            if (BluetoothDevice.ACTION_FOUND.equals(action)) {
+//                //Device found
+//            }
+//
+//            else if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED.equals(action)) {
+//                //Done searching
+//            }
+//            else if (BluetoothDevice.ACTION_ACL_DISCONNECT_REQUESTED.equals(action)) {
+//                //Device is about to disconnect
+//            }
+
+        }
+    };
     private final BroadcastReceiver scanModeReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-
-            scanning = (bluetoothAdapter.getScanMode() != BluetoothAdapter.SCAN_MODE_NONE);
-            scanStarted &= scanning;
+            System.out.println("inside BroadcastReceiver scanModeReceiver");
 
         }
     };
 
-    private final ServiceConnection rfduinoServiceConnection = new ServiceConnection() {
+    private final ServiceConnection bleServiceConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
 
+
+            System.out.println("inside ServiceConnection bleServiceConnection");
 
             rfduinoService = ((RFDService.LocalBinder) service).getService();
             if (rfduinoService.initialize()) {
                 if (rfduinoService.connect(bluetoothDevice.getAddress())) {
                     upgradeState(STATE_CONNECTING);
+
                 }
             }
         }
 
         @Override
         public void onServiceDisconnected(ComponentName name) {
-//            unbindService(rfduinoServiceConnection);
-            rfduinoService.send("r".getBytes());
+
+
+            System.out.println("inside onServiceDisconnected");
             if (isBound)
-                getApplicationContext().unbindService(rfduinoServiceConnection);
-            rfduinoService = null;
+                getApplicationContext().unbindService(bleServiceConnection);
+
+            if(rfduinoService != null){
+                rfduinoService.disconnect();
+                rfduinoService.close();
+                rfduinoService.stopSelf();
+                rfduinoService = null;
+            }
+
             downgradeState(STATE_DISCONNECTED);
+
         }
     };
 
@@ -209,295 +266,29 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
             if (RFDService.ACTION_CONNECTED.equals(action)) {
                 upgradeState(STATE_CONNECTED);
                 Toast.makeText(getApplicationContext(), "Connected to CricFlex Band", Toast.LENGTH_SHORT).show();
+                ble_indicator.setImageResource(R.drawable.bluetooth_connected_icon);
                 connectedToBand = true;
-                monitorLegalText.setText("Straighten the arm");
+                scanLeDevice(false);
+                monitorStatusText.setText(R.string.straighten_arm);        ////////////////////
                 once = 0;
-            } else if (RFDService.ACTION_DISCONNECTED.equals(action)) {
+            }
+            else if (RFDService.ACTION_DISCONNECTED.equals(action)) {
+                ble_indicator.setImageResource(R.drawable.bluetooth_disconnected_icon);
+                Toast.makeText(getApplicationContext(), "Disconnected from CricFlex Band", Toast.LENGTH_SHORT).show();
+                monitorStatusText.setText(R.string.monitor_connecting);
+                connectedToBand = false;
                 downgradeState(STATE_DISCONNECTED);
-            } else if (RFDService.ACTION_DATA_AVAILABLE.equals(action)) {
-                addData(intent.getByteArrayExtra(RFDService.EXTRA_DATA));
+            }
+            else if (RFDService.ACTION_DATA_AVAILABLE.equals(action)) {
+
+//                intent.getDataString();
+//                convert(intent.getByteArrayExtra(RFDService.EXTRA_DATA));
+//                dataRecieved(intent.getByteArrayExtra(RFDService.EXTRA_DATA));
+//                addData(intent.getByteArrayExtra(RFDService.EXTRA_DATA));
+                viewData(intent.getByteArrayExtra(RFDService.EXTRA_DATA));
             }
         }
     };
-
-
-    private void initializelayoutitems() {
-
-        monitorAngleValue = (TextView)findViewById(R.id.monitor_angle_text);
-        monitorLegalBalls = (TextView)findViewById(R.id.monitor_legal_balls);
-        monitorIllegalBalls = (TextView)findViewById(R.id.monitor_illegal_balls);
-        monitorFinishButton = (Button)findViewById(R.id.monitor_finish_button);
-    }
-
-
-
-    class handlemonitorFinishButton implements OnClickListener {
-        public void onClick(View v) {
-
-
-
-            playerStats.setEmail(email);
-            playerStats.setIllegalBowls(String.valueOf(counterIllegal));
-            playerStats.setLegalBowls(String.valueOf(counterLegal));
-
-            System.out.println("Legal Bowls: "+ playerStats.getLegalBowls()+"\nIllegal Bowls:" + playerStats.getIllegalBowls());
-            System.out.println("Angle Values: \n"+ angleValues);
-
-
-            //testing
-
-
-//            angleValues.add(1);
-//            angleValues.add(2);
-//            angleValues.add(3);
-//////
-//            armTwistValues.add(4);
-//            armTwistValues.add(5);
-//            armTwistValues.add(6);
-//////
-//////
-//            actionTimeValues.add((float)7);
-//            actionTimeValues.add((float)8);
-////            actionTimeValues.add((float)1);
-//            actionTimeValues.add((float)9);
-////////
-//            forceValues.add(10);
-//            forceValues.add(11);
-//            forceValues.add(12);
-
-//            angleValues.add(15);armTwistValues.add(4);
-//            angleValues.add(16);
-//            angleValues.add(18);
-//            angleValues.add(12);
-
-
-//            angleValues.add(15);
-
-
-
-            //Angle Values for database
-
-//            converting array into JSON
-
-            JSONObject json = new JSONObject();
-            try {
-                json.put("angleArray", new JSONArray(angleValues));
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            String convertedArrayListOfAnglesToString = json.toString();
-
-            JSONObject json1 = new JSONObject();
-            try {
-                json1.put("armTwistArray", new JSONArray(armTwistValues));
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            String convertedArrayListOfArmTwistToString = json1.toString();
-
-            JSONObject json2 = new JSONObject();
-            try {
-                json2.put("forceArray", new JSONArray(forceValues));
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            String convertedArrayListOfForceToString = json2.toString();
-
-            JSONObject json3 = new JSONObject();
-            try {
-                json3.put("actionTimeArray", new JSONArray(actionTimeValues));
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            String convertedArrayListOfActionTimeToString = json3.toString();
-
-//            System.out.println("Arraylist : " + convertedArrayListOfAnglesToString);
-
-
-
-            //checking date time
-            Date curDate = new Date();
-//            SimpleDateFormat format = new SimpleDateFormat();
-            SimpleDateFormat format = new SimpleDateFormat("MMMM yyyy");
-            String DateToStr = format.format(curDate);
-
-            System.out.println("date to store: " + DateToStr);
-
-
-
-
-//            try {
-//                Date strToDate = format.parse(DateToStr);
-//                System.out.println("Reconverted String to Date: "+strToDate);
-//            } catch (ParseException e) {
-//                e.printStackTrace();
-//            }
-
-
-
-            //testing
-
-
-            helper.changeAngleValues(email,convertedArrayListOfAnglesToString);
-            helper.changeArmTwistValues(email,convertedArrayListOfArmTwistToString);
-            helper.changeActionTimeValues(email,convertedArrayListOfActionTimeToString);
-            helper.changeForceValues(email,convertedArrayListOfForceToString);
-
-
-
-
-
-
-
-            helper.changeAngleValuesWithDate(email,convertedArrayListOfAnglesToString,DateToStr);
-            helper.changeArmTwistValuesWithDate(email,convertedArrayListOfArmTwistToString,DateToStr);
-            helper.changeActionTimeValuesWithDate(email,convertedArrayListOfActionTimeToString,DateToStr);
-            helper.changeForceValuesWithDate(email,convertedArrayListOfForceToString,DateToStr);
-
-
-
-
-            String angleValuesFromDatabase = helper.getAngleValues(email);
-            ArrayList<String> ArrayListOfAngles = new ArrayList<String>();
-            if(!angleValuesFromDatabase.equals("")) {
-//        getting previous array list from string
-                JSONObject jsonAngleValues = null;
-                try {
-                    jsonAngleValues = new JSONObject(angleValuesFromDatabase);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                JSONArray jsonArray = jsonAngleValues.optJSONArray("angleArray");
-                if (jsonArray != null) {
-                    int len = jsonArray.length();
-                    for (int i = 0; i < len; i++) {
-                        try {
-                            ArrayListOfAngles.add(jsonArray.get(i).toString());
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
-            }
-
-
-            String forceValuesFromDatabase = helper.getForceValues(email);
-            ArrayList<String> ArrayListOfForces = new ArrayList<String>();
-            if(!forceValuesFromDatabase.equals("")) {
-//        getting previous array list from string
-                JSONObject jsonForceValues = null;
-                try {
-                    jsonForceValues = new JSONObject(forceValuesFromDatabase);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                JSONArray jsonArray = jsonForceValues.optJSONArray("forceArray");
-                if (jsonArray != null) {
-                    int len = jsonArray.length();
-                    for (int i = 0; i < len; i++) {
-                        try {
-                            ArrayListOfForces.add(jsonArray.get(i).toString());
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
-            }
-
-            String actionTimeValuesFromDatabase = helper.getActionTimeValues(email);
-            ArrayList<String> ArrayListOfActionTime = new ArrayList<String>();
-            if(!actionTimeValuesFromDatabase.equals("")) {
-//        getting previous array list from string
-                JSONObject jsonActionTimeValues = null;
-                try {
-                    jsonActionTimeValues = new JSONObject(actionTimeValuesFromDatabase);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                JSONArray jsonArray = jsonActionTimeValues.optJSONArray("actionTimeArray");
-                if (jsonArray != null) {
-                    int len = jsonArray.length();
-                    for (int i = 0; i < len; i++) {
-                        try {
-                            ArrayListOfActionTime.add(jsonArray.get(i).toString());
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
-            }
-
-            String armTwistFromDatabase = helper.getArmTwistValues(email);
-            ArrayList<String> ArrayListOfArmTwist = new ArrayList<String>();
-            if(!armTwistFromDatabase.equals("")) {
-//        getting previous array list from string
-                JSONObject jsonArmTwistValues = null;
-                try {
-                    jsonArmTwistValues = new JSONObject(armTwistFromDatabase);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                JSONArray jsonArray = jsonArmTwistValues.optJSONArray("armTwistArray");
-                if (jsonArray != null) {
-                    int len = jsonArray.length();
-                    for (int i = 0; i < len; i++) {
-                        try {
-                            ArrayListOfArmTwist.add(jsonArray.get(i).toString());
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
-            }
-
-
-
-
-            FirebaseUser user = firebaseAuth.getCurrentUser();
-            databaseReference.child("Metrics").child(user.getUid()).child("Email").setValue(email);
-            databaseReference.child("Metrics").child(user.getUid()).child("Angle Values").setValue(ArrayListOfAngles);
-            databaseReference.child("Metrics").child(user.getUid()).child("Force Values").setValue(ArrayListOfForces);
-            databaseReference.child("Metrics").child(user.getUid()).child("Arm Twist Values").setValue(ArrayListOfArmTwist);
-            databaseReference.child("Metrics").child(user.getUid()).child("Action Time Values").setValue(ArrayListOfActionTime);
-
-
-
-
-
-            helper.insertPlayerStats(playerStats);
-            helper.changeStatLegalIllegal(playerStats.getEmail(), playerStats.getLegalBowls(), playerStats.getIllegalBowls());
-
-
-//            Disabling bluetooth connection
-            if(mBluetoothAdapter==null){
-
-            }
-            else if (mBluetoothAdapter.isEnabled()) {
-                mBluetoothAdapter.disable();
-            }
-
-            Intent i = new Intent(ActivityMonitor2.this, ActivitySessionStats.class);
-
-            Bundle extraBundle = new Bundle();
-            extraBundle.putIntegerArrayList("angleValues", angleValues);
-            extraBundle.putIntegerArrayList("armTwistValues", armTwistValues);
-            extraBundle.putIntegerArrayList("forceValues", forceValues);
-            i.putExtra("actionTimeValues",actionTimeValues);
-            i.putExtras(extraBundle);
-
-//            rfduinoService.send("r".getBytes());
-
-
-            if (isBound)
-                getApplicationContext().unbindService(rfduinoServiceConnection);
-            rfduinoService = null;
-            downgradeState(STATE_DISCONNECTED);
-            ActivityMonitor2.this.startActivity(i);
-            finish();
-
-
-        }
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -513,15 +304,29 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
         firebaseAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
+
+        batteryProgressBar = (ProgressBar)findViewById(R.id.battery_progress);
+        batteryProgressText = (TextView)findViewById(R.id.battery_text);
+        ble_indicator = (ImageView)findViewById(R.id.monitor_ble_icon);
+        ble_indicator.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String abc = "123";
+//                rfduinoService.send(abc);
+                rfduinoService.send(abc.getBytes());
+            }
+        });
+
         monitorFinishButton = (Button) findViewById(R.id.monitor_finish_button);
-        monitorFinishButton.setOnClickListener(new handlemonitorFinishButton());
+        monitorFinishButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                endSession();
+            }
+        });
 
         monitorAngleValue = (TextView) findViewById(R.id.monitor_angle_text);
-
-        monitorLegalText = (TextView) findViewById(R.id.monitor_status_text);
-
-
-
+        monitorStatusText = (TextView) findViewById(R.id.monitor_status_text);
         monitorActionTime = (AutofitTextView) findViewById(R.id.monitor_action_time);
         monitorArmTwist = (AutofitTextView) findViewById(R.id.monitor_arm_twist);
         monitorForce = (AutofitTextView) findViewById(R.id.monitor_force);
@@ -532,101 +337,230 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
         email = SaveSharedPreference.getEmail(ActivityMonitor2.this);
         System.out.println("Username: "+ email);
 
-        bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-
-        if (bluetoothAdapter == null || !bluetoothAdapter.isEnabled()) {
-            Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-            startActivityForResult(enableBtIntent, 1);
-
-            scanStarted = true;
-
-            // mLEScanner = mBluetoothAdapter.getBluetoothLeScanner();
-            // mLEScanner.startScan(filters, settings, mScanCallback);
-
-
-//            bluetoothAdapter.startLeScan(
-//                    new UUID[]{RFDService.UUID_SERVICE},
-//                    ActivityMonitor2.this);
-        }
-
-
-
-
-
-        scanStarted = true;
-
-        // mLEScanner = mBluetoothAdapter.getBluetoothLeScanner();
-        // mLEScanner.startScan(filters, settings, mScanCallback);
-        bluetoothAdapter.startLeScan(
-                new UUID[]{RFDService.UUID_SERVICE},
-                ActivityMonitor2.this);
-
-
-
-    }
-
-
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_ENABLE_BT) {
-            if (resultCode == RESULT_OK) {
-                Intent intent = getIntent();
-                finish();
-                startActivity(intent);
-            }
-        }
-        else {
-            Intent i = new Intent(ActivityMonitor2.this, ActivityMain.class);
-            ActivityMonitor2.this.startActivity(i);
+//        mHandler = new Handler();
+        if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH_LE)) {
+            Toast.makeText(this, "BLE Not Supported", Toast.LENGTH_SHORT).show();
             finish();
         }
+        final BluetoothManager bluetoothManager =
+                (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
+        mBluetoothAdapter = bluetoothManager.getAdapter();
+
+        locationManager = (LocationManager)getApplicationContext().getSystemService(Context.LOCATION_SERVICE);
 
 
-    }
+        monitorStatusText.setText(R.string.monitor_connecting);
+        monitorStatusText.setTextColor(0xFFFFFFFF);
 
 
-
-
+    }  /// END onCreate
 
 
     @Override
-    protected void onStart() {
-        super.onStart();
+    protected void onResume() {
+        super.onResume();
 
+        if (mBluetoothAdapter == null || !mBluetoothAdapter.isEnabled()) {
+            Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+            startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
+        }
 
-        registerReceiver(scanModeReceiver, new IntentFilter(BluetoothAdapter.ACTION_SCAN_MODE_CHANGED));
-        registerReceiver(bluetoothStateReceiver, new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED));
-        registerReceiver(rfduinoReceiver, RFDService.getIntentFilter());
-        updateState(bluetoothAdapter.isEnabled() ? STATE_DISCONNECTED : STATE_BLUETOOTH_OFF);
+        if(!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
+            displayLocationSettingsRequest(getApplicationContext());    // ask user to turn on location
+        }
 
+        else
+            {
 
+            if (Build.VERSION.SDK_INT >= 21)
+
+                {
+                    mLEScanner = mBluetoothAdapter.getBluetoothLeScanner();
+                    settings = new ScanSettings.Builder()
+                            .setScanMode(ScanSettings.SCAN_MODE_LOW_LATENCY)    ///This mode uses the highest power, when compared to other modes. Also detects the BLE devices fastest, hence should be used when the app is in foreground
+                            .build();
+                    filters = new ArrayList<ScanFilter>();
+            }
+            System.out.println("scanLeDevice(true) called in onResume() ");
+            scanLeDevice(true);
+
+        }
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (mBluetoothAdapter != null && mBluetoothAdapter.isEnabled()) {
+            System.out.println("scanLeDevice(false) called in onPause() ");
+            scanLeDevice(false);
+        }
+    }
+    @Override
+    protected void onStop() {
+        super.onStop();
 
+    }
     @Override
     protected void onDestroy() {
         super.onDestroy();
 
+//        System.out.println("scanLeDevice(false) called in onDestroy() ");
+//        scanLeDevice(false);
 
-//        BluetoothAdapter.getDefaultAdapter().closeProfileProxy(BluetoothProfile.A2DP,sBluetoothA2dp);
-//        rfduinoService.send("r".getBytes());
+        connectedToBand=false;
 
-//        unbindService(rfduinoService);
-//        if (isBound)
-//            getApplicationContext().unbindService(rfduinoServiceConnection);
-        bluetoothAdapter.stopLeScan(this);
+        if(rfduinoService!=null){
+            rfduinoService.disconnect();
+            rfduinoService.close();
+            rfduinoService.stopSelf();
+            rfduinoService=null;
+        }
+
+
         unregisterReceiver(scanModeReceiver);
         unregisterReceiver(bluetoothStateReceiver);
         unregisterReceiver(rfduinoReceiver);
-    }
 
+    }
     @Override
-    protected void onStop() {
-        super.onStop();
-//        unbindService(rfduinoServiceConnection);
-
-//        if (isBound)
-//            getApplicationContext().unbindService(rfduinoServiceConnection);
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_ENABLE_BT) {
+            if (resultCode == Activity.RESULT_CANCELED) {
+                //Bluetooth not enabled.
+                finish();
+                return;
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
+
+    private void scanLeDevice(final boolean enable) {
+        System.out.println("inside scanLeDevice()");
+        if (enable) {
+
+            System.out.println("SCANNING TRUE");
+
+            if (Build.VERSION.SDK_INT < 21) {
+
+                if(mBluetoothAdapter != null && mBluetoothAdapter.isEnabled())
+                    mBluetoothAdapter.startLeScan(new UUID[]{RFDService.UUID_SERVICE}, mLeScanCallback);
+
+            } else {
+
+                if(mLEScanner != null)
+                    mLEScanner.startScan(mScanCallback);
+
+            }
+        }
+        else {
+            System.out.println("SCANNING FALSE");
+
+            if (Build.VERSION.SDK_INT < 21) {
+
+                if(mBluetoothAdapter != null && mBluetoothAdapter.isEnabled())
+                    mBluetoothAdapter.stopLeScan(mLeScanCallback);
+            }
+
+            else {
+
+                if(mLEScanner != null)
+                    mLEScanner.stopScan(mScanCallback);
+
+            }
+        }
+    }
+
+    private ScanCallback mScanCallback = new ScanCallback() {
+        @Override
+        public void onScanResult(int callbackType, ScanResult result) {
+            Log.i("callbackType", String.valueOf(callbackType));
+            Log.i("result", result.toString());
+            System.out.println("ScanCallback mScanCallback device name:" + result.getDevice().getName());
+            BluetoothDevice device = result.getDevice();
+            if (device.getName() != null ) {
+
+                if (device.getName().equals("Abdullah")) {
+
+                    bluetoothDevice = device;
+                    Intent rfduinoIntent = new Intent(ActivityMonitor2.this, RFDService.class);
+                    isBound = getApplicationContext().bindService(rfduinoIntent, bleServiceConnection, BIND_AUTO_CREATE);
+                    System.out.println("scanLeDevice(false) called in ScanCallback mScanCallback ");
+                    scanLeDevice(false);
+
+                }
+                else {
+                    System.out.println("scanLeDevice(true) called in ScanCallback mScanCallback ");
+                    scanLeDevice(true);
+                }
+            }
+            else{
+                System.out.println("scanned device does not have name ");
+            }
+
+        }
+
+        @Override
+        public void onBatchScanResults(List<ScanResult> results) {
+            for (ScanResult sr : results) {
+                Log.i("ScanResult - Results", sr.toString());
+            }
+        }
+
+        @Override
+        public void onScanFailed(int errorCode) {
+            Log.e("Scan Failed", "Error Code: " + errorCode);
+        }
+    };
+
+    private BluetoothAdapter.LeScanCallback mLeScanCallback =
+            new BluetoothAdapter.LeScanCallback() {
+                @Override
+                public void onLeScan(final BluetoothDevice device, int rssi,
+                                     byte[] scanRecord) {
+
+
+                    mBluetoothAdapter.stopLeScan(this);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Log.i("onLeScan", device.toString());
+
+                            if(device.getName() != null) {
+
+                                if (device.getName().equals("Abdullah")) {
+
+
+                                    bluetoothDevice = device;
+                                    Intent rfduinoIntent = new Intent(ActivityMonitor2.this, RFDService.class);
+                                    isBound = getApplicationContext().bindService(rfduinoIntent, bleServiceConnection, BIND_AUTO_CREATE);
+                                    scanLeDevice(false);
+                                } else {
+                                    System.out.println("scanLeDevice(true) called in BluetoothAdapter.LeScanCallback mLeScanCallback ");
+                                    scanLeDevice(true);
+                                }
+                            }
+                            else{
+                                System.out.println("scanned device does not have name ");
+                            }
+
+                        }
+                    });
+                }
+            };
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        registerReceiver(scanModeReceiver, new IntentFilter(BluetoothAdapter.ACTION_SCAN_MODE_CHANGED));
+        registerReceiver(bluetoothStateReceiver, new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED));
+        registerReceiver(BleConnectionReceiver, new IntentFilter(BluetoothDevice.ACTION_ACL_CONNECTED));
+        registerReceiver(BleConnectionReceiver, new IntentFilter(BluetoothDevice.ACTION_ACL_DISCONNECTED));
+        registerReceiver(rfduinoReceiver, RFDService.getIntentFilter());
+        updateState(mBluetoothAdapter.isEnabled() ? STATE_DISCONNECTED : STATE_BLUETOOTH_OFF);
+
+    }
+
+
 
     private void upgradeState(int newState) {
         if (newState > state) {
@@ -646,35 +580,299 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
         // updateUi();
     }
 
+    @Override
+    public void onBackPressed() {
+
+
+        connectedToBand=false;
+
+        if(rfduinoService!=null)
+            rfduinoService.close();
+        Intent i = new Intent(ActivityMonitor2.this, ActivityMain.class);
+
+        ActivityMonitor2.this.startActivity(i);
+        finish();
+
+    }
+
+    void bandDisconnected(){
+        AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+        alertDialog.setCancelable(false);
+        alertDialog.setTitle("Session Ended !");
+        alertDialog.setMessage("This session has ended due to disconnection from the Band. Please make sure that the band is turned on and in range.");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        endSession();
+                        dialog.dismiss();
+                    }
+                }); // OK button listener end
+
+        alertDialog.show();
+    }
+    void bluetoothDisabled(){
+        AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+        alertDialog.setCancelable(false);
+        alertDialog.setTitle("Session Ended !");
+        alertDialog.setMessage("This session has ended because your bluetooth is turned off. Please make sure that your bluetooth is turned on and start a new session.");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        endSession();
+                        dialog.dismiss();
+                    }
+                    }); // OK button listener end
+
+        alertDialog.show();
+    }
+
+    void endSession(){
+
+        playerStats.setEmail(email);
+        playerStats.setIllegalBowls(String.valueOf(counterIllegal));
+        playerStats.setLegalBowls(String.valueOf(counterLegal));
+
+        System.out.println("Legal Bowls: "+ playerStats.getLegalBowls()+"\nIllegal Bowls:" + playerStats.getIllegalBowls());
+        System.out.println("Angle Values: \n"+ angleValues);
+
+
+        //Angle Values for database
+
+//            converting array into JSON
+
+        JSONObject json = new JSONObject();
+        try {
+            json.put("angleArray", new JSONArray(angleValues));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        String convertedArrayListOfAnglesToString = json.toString();
+
+        JSONObject json1 = new JSONObject();
+        try {
+            json1.put("armTwistArray", new JSONArray(armTwistValues));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        String convertedArrayListOfArmTwistToString = json1.toString();
+
+        JSONObject json2 = new JSONObject();
+        try {
+            json2.put("forceArray", new JSONArray(forceValues));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        String convertedArrayListOfForceToString = json2.toString();
+
+        JSONObject json3 = new JSONObject();
+        try {
+            json3.put("actionTimeArray", new JSONArray(actionTimeValues));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        String convertedArrayListOfActionTimeToString = json3.toString();
+
+//            System.out.println("Arraylist : " + convertedArrayListOfAnglesToString);
+
+
+
+        //checking date time
+        Date curDate = new Date();
+//            SimpleDateFormat format = new SimpleDateFormat();
+        SimpleDateFormat format = new SimpleDateFormat("MMMM yyyy");
+        String DateToStr = format.format(curDate);
+
+        System.out.println("date to store: " + DateToStr);
+
+
+        helper.changeAngleValues(email,convertedArrayListOfAnglesToString);
+        helper.changeArmTwistValues(email,convertedArrayListOfArmTwistToString);
+        helper.changeActionTimeValues(email,convertedArrayListOfActionTimeToString);
+        helper.changeForceValues(email,convertedArrayListOfForceToString);
+
+        helper.changeAngleValuesWithDate(email,convertedArrayListOfAnglesToString,DateToStr);
+        helper.changeArmTwistValuesWithDate(email,convertedArrayListOfArmTwistToString,DateToStr);
+        helper.changeActionTimeValuesWithDate(email,convertedArrayListOfActionTimeToString,DateToStr);
+        helper.changeForceValuesWithDate(email,convertedArrayListOfForceToString,DateToStr);
+
+        String angleValuesFromDatabase = helper.getAngleValues(email);
+        ArrayList<String> ArrayListOfAngles = new ArrayList<String>();
+        if(!angleValuesFromDatabase.equals("")) {
+//        getting previous array list from string
+            JSONObject jsonAngleValues = null;
+            try {
+                jsonAngleValues = new JSONObject(angleValuesFromDatabase);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            JSONArray jsonArray = jsonAngleValues.optJSONArray("angleArray");
+            if (jsonArray != null) {
+                int len = jsonArray.length();
+                for (int i = 0; i < len; i++) {
+                    try {
+                        ArrayListOfAngles.add(jsonArray.get(i).toString());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+
+
+        String forceValuesFromDatabase = helper.getForceValues(email);
+        ArrayList<String> ArrayListOfForces = new ArrayList<String>();
+        if(!forceValuesFromDatabase.equals("")) {
+//        getting previous array list from string
+            JSONObject jsonForceValues = null;
+            try {
+                jsonForceValues = new JSONObject(forceValuesFromDatabase);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            JSONArray jsonArray = jsonForceValues.optJSONArray("forceArray");
+            if (jsonArray != null) {
+                int len = jsonArray.length();
+                for (int i = 0; i < len; i++) {
+                    try {
+                        ArrayListOfForces.add(jsonArray.get(i).toString());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+
+        String actionTimeValuesFromDatabase = helper.getActionTimeValues(email);
+        ArrayList<String> ArrayListOfActionTime = new ArrayList<String>();
+        if(!actionTimeValuesFromDatabase.equals("")) {
+//        getting previous array list from string
+            JSONObject jsonActionTimeValues = null;
+            try {
+                jsonActionTimeValues = new JSONObject(actionTimeValuesFromDatabase);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            JSONArray jsonArray = jsonActionTimeValues.optJSONArray("actionTimeArray");
+            if (jsonArray != null) {
+                int len = jsonArray.length();
+                for (int i = 0; i < len; i++) {
+                    try {
+                        ArrayListOfActionTime.add(jsonArray.get(i).toString());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+
+        String armTwistFromDatabase = helper.getArmTwistValues(email);
+        ArrayList<String> ArrayListOfArmTwist = new ArrayList<String>();
+        if(!armTwistFromDatabase.equals("")) {
+//        getting previous array list from string
+            JSONObject jsonArmTwistValues = null;
+            try {
+                jsonArmTwistValues = new JSONObject(armTwistFromDatabase);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            JSONArray jsonArray = jsonArmTwistValues.optJSONArray("armTwistArray");
+            if (jsonArray != null) {
+                int len = jsonArray.length();
+                for (int i = 0; i < len; i++) {
+                    try {
+                        ArrayListOfArmTwist.add(jsonArray.get(i).toString());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+
+
+
+
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        databaseReference.child("Metrics").child(user.getUid()).child("Email").setValue(email);
+        databaseReference.child("Metrics").child(user.getUid()).child("Angle Values").setValue(ArrayListOfAngles);
+        databaseReference.child("Metrics").child(user.getUid()).child("Force Values").setValue(ArrayListOfForces);
+        databaseReference.child("Metrics").child(user.getUid()).child("Arm Twist Values").setValue(ArrayListOfArmTwist);
+        databaseReference.child("Metrics").child(user.getUid()).child("Action Time Values").setValue(ArrayListOfActionTime);
+
+        helper.insertPlayerStats(playerStats);
+        helper.changeStatLegalIllegal(playerStats.getEmail(), playerStats.getLegalBowls(), playerStats.getIllegalBowls());
+
+        Intent i = new Intent(ActivityMonitor2.this, ActivitySessionStats.class);
+
+        Bundle extraBundle = new Bundle();
+        extraBundle.putIntegerArrayList("angleValues", angleValues);
+        extraBundle.putIntegerArrayList("armTwistValues", armTwistValues);
+        extraBundle.putIntegerArrayList("forceValues", forceValues);
+        i.putExtra("actionTimeValues",actionTimeValues);
+        i.putExtras(extraBundle);
+
+        connectedToBand=false;
+
+        if (isBound)
+            getApplicationContext().unbindService(bleServiceConnection);
+
+        if(rfduinoService != null){
+            rfduinoService.disconnect();
+            rfduinoService.close();
+            rfduinoService.stopSelf();
+            rfduinoService = null;
+        }
+        downgradeState(STATE_DISCONNECTED);
+
+
+        ActivityMonitor2.this.startActivity(i);
+        finish();
+
+
+
+    }
+
+    private void displayLocationSettingsRequest(Context context) {
+        GoogleApiClient googleApiClient = new GoogleApiClient.Builder(context)
+                .addApi(LocationServices.API).build();
+        googleApiClient.connect();
+
+        LocationRequest locationRequest = LocationRequest.create();
+        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        locationRequest.setInterval(10000);
+        locationRequest.setFastestInterval(10000 / 2);
+
+        LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder().addLocationRequest(locationRequest);
+        builder.setAlwaysShow(true);
+
+        PendingResult<LocationSettingsResult> result = LocationServices.SettingsApi.checkLocationSettings(googleApiClient, builder.build());
+        result.setResultCallback(new ResultCallback<LocationSettingsResult>() {
+            @Override
+            public void onResult(LocationSettingsResult result) {
+                final Status status = result.getStatus();
+                switch (status.getStatusCode()) {
+                    case LocationSettingsStatusCodes.SUCCESS:
+                        Log.i(TAG, "All location settings are satisfied.");
+                        break;
+                    case LocationSettingsStatusCodes.RESOLUTION_REQUIRED:
+                        Log.i(TAG, "Location settings are not satisfied. Show the user a dialog to upgrade location settings ");
+
+                        try {
+                            // Show the dialog by calling startResolutionForResult(), and check the result
+                            // in onActivityResult().
+                            status.startResolutionForResult(ActivityMonitor2.this, REQUEST_CHECK_SETTINGS);
+                        } catch (IntentSender.SendIntentException e) {
+                            Log.i(TAG, "PendingIntent unable to execute request.");
+                        }
+                        break;
+                    case LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE:
+                        Log.i(TAG, "Location settings are inadequate, and cannot be fixed here. Dialog not created.");
+                        break;
+                }
+            }
+        });
+    }
 
     void addData(byte[] data) {
-
-        monitorAngleValue.setTextColor(0xFFFFFFFF);
-//        monitorAngleValue.setText(Integer.toString(genFlex) + "\u00b0");
-
-        if (monitoringTextChange)
-            monitorLegalText.setText("Monitoring");
-
-        monitorLegalText.setTextColor(0xFFFFFFFF);
-
-
-//            String s1 = new String(data);
-//            String[] result = s1.split(",");
-//
-//
-//
-//
-//            armAngle_value=result[0];
-//            armSpeed_value=result[1];
-//            armTwist_value=result[2];
-//            force_value=result[3];
-//            acttionTime_value=result[4];
-//
-//            if(result[0].equals("-"))
-//            {
-//
-//            }
-
 
         int value = 0;
         for (int i = 0; i < data.length; i++) {
@@ -682,16 +880,9 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
         }
 
 
+//        monitorAngleValue.setText(String.valueOf(value));
         System.out.print("Receiving: " + value);
-//            int[] values = new int[10];
-//
-//            for (int i=0 ; i<1 ; i++){
-//                for (int j=0 ; j<2 ; j++){
-//                    values[i] += ((int) data[j + (i*2)] & 0xffL) << (8 * j );
-//                }
-//            }
 
-//            System.out.println("Value: "+ value);
         int incoming = (int) value;
 
 
@@ -700,16 +891,16 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
 
             if (once == 0 || once == 1) {
                 if (incoming == 120) {
-                    monitorLegalText.setText("Bend arm at 45");
+                    monitorStatusText.setText("Bend arm at 45");
                     once = 1;
                 } else if (incoming == 119) {
-                    monitorLegalText.setText("Monitoring...");
+                    monitorStatusText.setText("Monitoring...");
                     once = 2;
                 }
 
             } else if (incoming == 118) {
 //                Toast.makeText(ActivityMonitor2.this, "Bowl" , Toast.LENGTH_SHORT).show();
-                monitorLegalText.setText("Bowl");
+                monitorStatusText.setText("Bowl");
                 monitoringTextChange = false;
 
 //                System.out.println("118 received and this is test print");
@@ -738,11 +929,6 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
                 Log.e(TAG, "armAngle_value value= "+armAngle_value);
                 Log.e(TAG, "metric check value= "+ Integer.toString(metric_check));
 
-
-
-
-
-
             }
 
         }
@@ -753,16 +939,7 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
             Log.e(TAG, "force_value value= "+force_value);
             metric_check=2;
         }
-//            else if(metric_check==2)
-//            {
-//
-//                float temp1 = incoming;
-//
-//                armSpeed_value=Float.toString(temp1*3.6f);      // 1 m/s = 3.6 kph
-//                //armSpeed_value=Integer.toString(incoming*4);
-//                Log.e(TAG, "armSpeed_value value= "+armSpeed_value);
-//                metric_check=3;
-//            }
+
         else if(metric_check==2)
         {
             float temp=incoming;
@@ -782,13 +959,10 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
             Log.e(TAG, "armtwist value= "+armAngle_value);
 
 
-            final ProgressDialog dialog = new MyCustomProgressDialog(ActivityMonitor2.this);
+            final ProgressDialog dialog = new MyCustomProgressDialog(ActivityMonitor2.this, R.style.AnimDialogTheme);
 
             dialog.setCancelable(false);
             dialog.show();
-
-
-
             Runnable progressRunnable = new Runnable() {
 
                 @Override
@@ -800,6 +974,8 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
             Handler pdCanceller = new Handler();
             pdCanceller.postDelayed(progressRunnable, 1024);
 
+
+
             dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
 
             @Override
@@ -807,35 +983,22 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
 
 
                 if (genFlex > 15) {
-                    //stopButtonPressed = true;
-
                     monitorIllegalBalls.setText(String.valueOf(++counterIllegal));
                     monitorAngleValue.setTextColor(0xFFFF0000);
-//                    monitorAngleValue.setText(Integer.toString(genFlex) + "\u00b0");
-                    monitorLegalText.setText("Illegal");
-                    monitorLegalText.setTextColor(0xFFFF0000);
+                    monitorStatusText.setText("Illegal");
+                    monitorStatusText.setTextColor(0xFFFF0000);
                 } else {
                     monitorLegalBalls.setText(String.valueOf(++counterLegal));
-                    //stopButtonPressed = true;
                     monitorAngleValue.setTextColor(0xFF00FF00);
-//                    monitorAngleValue.setText(Integer.toString(genFlex) + "\u00b0");
-                    //degreeSign.setTextColor(0xFF00FF00);
-                    //monitorAngleValue.setTextSize(200);
-                    monitorLegalText.setText("Legal");
-                    monitorLegalText.setTextColor(0xFF00FF00);
+                    monitorStatusText.setText("Legal");
+                    monitorStatusText.setTextColor(0xFF00FF00);
                 }
-
-
-
 
                 angleValues.add(genFlex);
                 forceValues.add(Integer.parseInt(force_value));
                 armTwistValues.add(Integer.parseInt(armTwist_value));
                 actionTimeValues.add(Float.valueOf(actionTime_value));
 
-
-
-//                showAlertDialog(this, "Feedback recieved", "Thank you for your FeedBack :):):)", true);
                 monitorAngleValue.setText(Integer.toString(genFlex) + "\u00b0");
                 monitorArmTwist.setText(armTwist_value);
                 monitorForce.setText(force_value);
@@ -847,71 +1010,274 @@ public class ActivityMonitor2 extends Activity implements BluetoothAdapter.LeSca
 
     }
 
-    //my code
-    public void onLeScan(BluetoothDevice device, final int rssi, final byte[] scanRecord) {
+    void viewData(byte[] data){
 
-        bluetoothDevice = device;
-    /*
-        Context mContext = getBaseContext();
-        BluetoothAdapter mAdapter = (BluetoothManager) mContext.getSystemService(Context.BLUETOOTH_SERVICE).getAdapter;
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-            BluetoothLeScanner mLeScanner = mAdapter.getBluetoothLeScanner();
+        String temp = bytesToHex(data);
+        System.out.println("bytes recieving: " + temp);
+        String msg;
+        //            final byte[] data = characteristic.getValue();
+        if (data != null && data.length > 0) {
+            final StringBuilder stringBuilder = new StringBuilder(data.length);
+            for(byte byteChar : data)
+                stringBuilder.append(String.format("%02X ", byteChar));
+
+            msg = new String(data) + "\n" + stringBuilder.toString();
+            monitorAngleValue.setText(msg);
+            System.out.println("string receiving: " + msg);
         }
-    BluetoothAdapter.getBluetoothLeScanner();
-    */
+    }
 
-        bluetoothAdapter.stopLeScan(this);
+    public static String bytesToHex(byte[] data) {
+        return bytesToHex(data, 0, data.length);
+    }
 
-        ActivityMonitor2.this.runOnUiThread(new Runnable() {
+    public static String bytesToHex(byte[] data, int offset, int length) {
+        if (length <= 0) {
+            return "";
+        }
+
+        StringBuilder hex = new StringBuilder();
+        for (int i = offset; i < offset + length; i++) {
+            hex.append(String.format(" %02X", data[i] % 0xFF));
+        }
+        hex.deleteCharAt(0);
+        return hex.toString();
+    }
+
+
+    void dataRecieved(byte[] temp){
+
+
+
+
+        try {
+
+        String data = new String(temp,"UTF-8");
+        System.out.println("data recieved: " + data);
+
+        String[] parts = data.split("-");    // split string into 2 parts separated by -
+
+
+        String part1 = parts[0];    // first part
+        System.out.println("part1: " + part1);
+
+        String part2 = parts[1];    // second part
+        System.out.println("part2" + part2);
+
+
+//        System.out.println("data recieved: " + data);
+//        System.out.println("part1: " + part1);
+//        System.out.println("part2" + part2);
+
+        if(!monitoring) {
+
+            if (part1.equals("bat")) {
+                System.out.println("setting battery progress: " + part2);
+                batteryProgressBar.setProgress(Integer.parseInt(part2));
+                batteryProgressText.setText(part2);
+            }
+            else if (part1.equals("cal")) {
+
+                System.out.println("calibrating");
+
+                if (part2.equals("1")) {
+
+                    System.out.println("straight arm");
+                    monitorStatusText.setText(R.string.straighten_arm);
+
+                }
+                else if (part2.equals("2")) {
+
+                    System.out.println("bend arm");
+                    monitorStatusText.setText(R.string.bend_arm_45);
+
+                }
+                else if (part2.equals("done")) {
+
+                    System.out.println("calibration done");
+                    calibrationDone = true;
+                    monitoring=true;
+                    Toast.makeText(getApplicationContext(), "Calibration Done", Toast.LENGTH_SHORT).show();
+
+                }
+
+            }
+        }
+        else if(monitoring){
+
+
+            monitorStatusText.setText("Monitoring...");
+            monitorStatusText.setTextColor(0xFFFFFFFF);
+
+            if(part1.equals("ang")){
+
+                System.out.println("armAngle_value set: " + part2);
+                armAngle_value=part2;
+            }
+            else if(part1.equals("frc")){
+
+                System.out.println("force_value set: " + part2);
+                force_value=part2;
+            }
+            else if(part1.equals("tim")){
+
+                System.out.println("actionTime_value set: " + part2);
+                actionTime_value=part2;
+            }
+            else if(part1.equals("tws")){
+
+                System.out.println("armTwist_value set: " + part2);
+                armTwist_value=part2;
+                updateMetrics();
+            }
+
+
+//            if(metric_check==1){
+//                armAngle_value=data;
+//                metric_check=2;
+//            }
+//            else if(metric_check==2){
+//                force_value=data;
+//                metric_check=3;
+//            }
+//            else if(metric_check==3){
+//                actionTime_value=data;
+//                metric_check=4;
+//            }
+//            else if(metric_check==4){
+//                armTwist_value=data;
+//                metric_check=1;
+//                updateMetrics();
+//            }
+
+
+        }
+
+        }catch(IOException ex) {
+            //Do something witht the exception
+            System.out.println("NOT RIGHT ENCODING!!!");
+        }
+
+    }
+
+    void updateMetrics(){
+
+        System.out.println("updating metrics");
+
+        final ProgressDialog dialog = new MyCustomProgressDialog(ActivityMonitor2.this);
+
+        dialog.setCancelable(false);
+        dialog.show();
+
+
+
+        Runnable progressRunnable = new Runnable() {
+
             @Override
             public void run() {
-                //connectionStatusText.setText(bluetoothDevice.getName());
-                String a = String.valueOf(rssi);
-                //connectionStatusText.setText(a);
+                dialog.cancel();
+            }
+        };
+
+        Handler pdCanceller = new Handler();
+        pdCanceller.postDelayed(progressRunnable, 1024);
+
+        dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+
+
+                if (Integer.parseInt(armAngle_value) > 15) {
+                    //stopButtonPressed = true;
+
+                    monitorIllegalBalls.setText(String.valueOf(++counterIllegal));
+                    monitorAngleValue.setTextColor(0xFFFF0000);
+//                    monitorAngleValue.setText(Integer.toString(genFlex) + "\u00b0");
+                    monitorStatusText.setText("Illegal");
+                    monitorStatusText.setTextColor(0xFFFF0000);
+                } else {
+                    monitorLegalBalls.setText(String.valueOf(++counterLegal));
+                    //stopButtonPressed = true;
+                    monitorAngleValue.setTextColor(0xFF00FF00);
+//                    monitorAngleValue.setText(Integer.toString(genFlex) + "\u00b0");
+                    //degreeSign.setTextColor(0xFF00FF00);
+                    //monitorAngleValue.setTextSize(200);
+                    monitorStatusText.setText("Legal");
+                    monitorStatusText.setTextColor(0xFF00FF00);
+                }
+
+                angleValues.add(Integer.parseInt(armAngle_value));
+                forceValues.add(Integer.parseInt(force_value));
+                armTwistValues.add(Integer.parseInt(armTwist_value));
+                actionTimeValues.add(Float.valueOf(actionTime_value));
+
+
+
+//                showAlertDialog(this, "Feedback recieved", "Thank you for your FeedBack :):):)", true);
+                monitorAngleValue.setText(armAngle_value + "\u00b0");
+                monitorArmTwist.setText(armTwist_value + "\u00b0");
+                monitorForce.setText(force_value + "N");
+                monitorActionTime.setText(actionTime_value + "s");
             }
         });
 
+    }
 
-        //####################################################################################################################################################################################################
 
-        if (!(bluetoothDevice.getName().equals("Abdullah"))) {
-            bluetoothAdapter.startLeScan(new UUID[]{RFDService.UUID_SERVICE}, ActivityMonitor2.this);
-        } else {
-            Intent rfduinoIntent = new Intent(ActivityMonitor2.this, RFDService.class);
-//            bindService(rfduinoIntent, rfduinoServiceConnection, BIND_AUTO_CREATE);
-            isBound = getApplicationContext().bindService(rfduinoIntent, rfduinoServiceConnection, BIND_AUTO_CREATE);
+
+    void convert(byte[] data) {
+
+        System.out.println(data);
+
+        int value = 0;
+        for (int i = 0; i < data.length; i++) {
+            value += ((int) data[i] & 0xffL) << (8 * i);
+        }
+        System.out.print("int Receiving: " + String.valueOf(value));
+
+
+        String msg;
+        //            final byte[] data = characteristic.getValue();
+        if (data != null && data.length > 0) {
+            final StringBuilder stringBuilder = new StringBuilder(data.length);
+            for(byte byteChar : data)
+                stringBuilder.append(String.format("%02X ", byteChar));
+
+            msg = new String(data) + "\n" + stringBuilder.toString();
+            monitorAngleValue.setText(msg);
+            System.out.println("string receiving: " + msg);
         }
 
-        //####################################################################################################################################################################################################
+//        try {
+//
+//
+//            String data1 = new String(data, "US-ASCII");
+//            String data2 = new String(data, "ISO-8859-1");
+//            String data3 = new String(data, "UTF-8");
+//            String data4 = new String(data, "UTF-16BE");
+//            String data5 = new String(data, "UTF-16LE");
+//            String data6 = new String(data, "UTF-16");
+//            String data7 = new String(data, "Windows-1252");
+//
+//
+//
+//            System.out.println("data recieved: " + data1);
+//            System.out.println("data recieved: " + data2);
+//            System.out.println("data recieved: " + data3);
+//            System.out.println("data recieved: " + data4);
+//            System.out.println("data recieved: " + data5);
+//            System.out.println("data recieved: " + data6);
+//            System.out.println("data recieved: " + data7);
+////            monitorStatusText.setText(data1);
+//        }
+//        catch (IOException ex){}
+//
+////        CharBuffer cBuffer = ByteBuffer.wrap(abc).asCharBuffer();
+////        System.out.println("data recieved: " + cBuffer.toString());
+////        monitorStatusText.setText(cBuffer.toString());
 
     }
 
 
-    @Override
-    public void onBackPressed() {
-
-//        rfduinoService.send("r".getBytes());
-
-//        rfduinoService.send("r".getBytes());
-        if (isBound)
-            getApplicationContext().unbindService(rfduinoServiceConnection);
-        rfduinoService = null;
-        downgradeState(STATE_DISCONNECTED);
-
-
-
-        rfduinoService = null;
-        downgradeState(STATE_DISCONNECTED);
-        if(mBluetoothAdapter==null){
-
-        }
-        else if (mBluetoothAdapter.isEnabled()) {
-            mBluetoothAdapter.disable();
-        }
-        Intent i = new Intent(ActivityMonitor2.this, ActivityMain.class);
-
-        ActivityMonitor2.this.startActivity(i);
-        finish();
-
-    }
 }
