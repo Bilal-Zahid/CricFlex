@@ -284,8 +284,8 @@ public class ActivityMonitor2 extends Activity {
 //                intent.getDataString();
 //                convert(intent.getByteArrayExtra(RFDService.EXTRA_DATA));
 //                dataRecieved(intent.getByteArrayExtra(RFDService.EXTRA_DATA));
-//                addData(intent.getByteArrayExtra(RFDService.EXTRA_DATA));
-                viewData(intent.getByteArrayExtra(RFDService.EXTRA_DATA));
+                addData(intent.getByteArrayExtra(RFDService.EXTRA_DATA));
+//                viewData(intent.getByteArrayExtra(RFDService.EXTRA_DATA));
             }
         }
     };
