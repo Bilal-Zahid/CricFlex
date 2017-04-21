@@ -3,39 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.cricflex.ActivityMain" >
 
-    <item
-        android:id="@+id/empty"
-        android:title="Options"
-        app:showAsAction="always"
-        android:icon="@drawable/overflow_icon">
-
-        <menu>
-
-            <item android:id="@+id/tour_cricflex"
-                android:icon="@drawable/tour_icon"
-                android:title="Tour CricFlex"
-                app:showAsAction="always"/>
 
 
-            <item android:id="@+id/calibrate"
-                android:icon="@drawable/calibration_icon"
-                android:title="Calibrate"
-                app:showAsAction="always"/>
+    <item android:id="@+id/tour_cricflex"
+        android:icon="@drawable/tour_icon"
+        android:title="Tour CricFlex"
+        app:showAsAction="never"/>
 
 
-            <!--<item android:id="@+id/settings"-->
-                <!--android:icon="@drawable/settings_icon"-->
-                <!--android:title="Settings"-->
-                <!--app:showAsAction="ifRoom"/>-->
+    <item android:id="@+id/calibrate"
+        android:icon="@drawable/calibration_icon"
+        android:title="Calibrate"
+        app:showAsAction="never"/>
 
 
-            <item android:id="@+id/logout"
-                android:icon="@drawable/logout_icon"
-                android:title="Logout"
-                app:showAsAction="always"/>
+    <item android:id="@+id/logout"
+        android:icon="@drawable/logout_icon"
+        android:title="Logout"
+        app:showAsAction="never"/>
 
-        </menu>
-
-    </item>
 
 </menu>

@@ -50,7 +50,7 @@
         android:layout_alignParentEnd="true"
         android:background="@null"
         android:text="@string/next"
-        android:textColor="@color/text_light"
+        android:textColor="@color/white"
         android:textSize="20sp"
         android:padding="15dp"/>
 
@@ -62,16 +62,16 @@
         android:layout_alignParentStart="true"
         android:background="@null"
         android:text="@string/skip"
-        android:textColor="@color/text_light"
+        android:textColor="@color/white"
         android:textSize="20sp"
         android:padding="15dp"/>
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:alpha=".5"
-        android:layout_above="@id/btn_next"
-        android:background="@android:color/white"
+        android:layout_height="0dp"
+        android:layout_alignTop="@id/btn_next"
+        android:layout_alignParentBottom="true"
+        android:background="@color/welcome_footer_color"
         android:id="@+id/view" />
 
 </RelativeLayout>

@@ -241,7 +241,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginTop="2dp"
-                    android:id="@+id/stp_dob"
+                    android:id="@+id/edp_dob"
                     android:drawableStart="@drawable/calendar_icon"
                     android:drawablePadding="10dp"
                     android:textColor="#FFFFFF"

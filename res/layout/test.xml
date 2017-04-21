@@ -17,7 +17,7 @@
     android:gravity="fill">
 
 
-    <com.example.cricflex.ArcProgress
+    <com.example.cricflex_ui.ArcProgress
 
         android:layout_width="100dp"
         android:layout_height="100dp"

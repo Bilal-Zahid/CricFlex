@@ -35,21 +35,7 @@
             android:name=".ActivityMain"
             android:label="@string/app_name" >
         </activity>
-        
-        <activity
-            android:name=".ActivityHelp"
-            android:label="@string/app_name" >
-        </activity>
-        
-        <activity
-            android:name=".ActivityGraph"
-            android:label="Real Time Graph" >
-        </activity>
-        
-        <activity
-            android:name=".ActivityAbout"
-            android:label="@string/app_name" >
-        </activity>
+
         
          <service android:name=".RFDService" />
     </application>
