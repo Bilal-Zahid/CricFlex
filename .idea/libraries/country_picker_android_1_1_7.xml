@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="country-picker-android-1.1.7">
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/build/intermediates/exploded-aar/com.github.mukeshsolanki/country-picker-android/1.1.7/res" />
-      <root url="jar://$PROJECT_DIR$/build/intermediates/exploded-aar/com.github.mukeshsolanki/country-picker-android/1.1.7/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/69c81ef06acd55007079a7bf01faa2b23772401f/output/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/69c81ef06acd55007079a7bf01faa2b23772401f/output/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

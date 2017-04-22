@@ -2,265 +2,31 @@
 <items version="2" >
 
     <item
-        is-multidex="false"
-        jar="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\transition\25.1.0\jars\classes.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="d38084015027549951cbaea5d5f6fb795cc81151">
-        <dex dex="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\pre-dexed\debug\com.android.support-transition-25.1.0_163ab24505e3622e691e1bd57152f07b79ca5674.jar" />
+        sha1="510aa6efc159983dfbffa676a0dae37568c0a46f">
+        <dex dex="C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_351bfd27cb344f6fd9eaa0432ef610abce38b3e6\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\9.4.0\jars\classes.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="3dee4ce5844d39d843d503fb8fe04e51e5bfffac">
-        <dex dex="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-base-9.4.0_5d5dc2fc339399bc906ce76b39bdb287f2fafee0.jar" />
+        sha1="7393b17a4b830bb8826a9322f773f857adbe7ac2">
+        <dex dex="C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_08d85811a4ddb239a38b53d4908632517ed37114\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.github.mukeshsolanki\country-picker-android\1.1.7\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="a74e1b133ab8ffc44201c5c44e272549061d3ca6">
-        <dex dex="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\pre-dexed\debug\com.github.mukeshsolanki-country-picker-android-1.1.7_c658efdea5e48dc841e83fa66242dd1067a37f6c.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.1.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="aee64634871d88a419d59eb743c1258a60f19700">
-        <dex dex="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\pre-dexed\debug\com.android.support-support-core-ui-25.1.0_7167c68717fb1b569952c4d07bac39a22631307c.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\design\25.1.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="30103d98fa5ed824b54af839c85e2111f9bde8ec">
-        <dex dex="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\pre-dexed\debug\com.android.support-design-25.1.0_6442e3d4d73cb8480da13424d0d4cf22d83f9f71.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.1.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="1630658fbc2d222b988603c27b4a4249586fbfe7">
-        <dex dex="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-25.1.0_6f5d8601af6b02409ef56be4b784ec0191329cb2.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="3b7173b3df4c7029699919414400041f64519e34">
-        <dex dex="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-iid-9.4.0_15afe1bc50150c2b8cc57bd6fb54fd9a84f8b34e.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\support-compat\25.1.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="ca3c7aa31e2726a400a6e552b93cb9f63c9a1e6d">
-        <dex dex="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\pre-dexed\debug\com.android.support-support-compat-25.1.0_74e3beeac6ce70a96eda8d744eb5381c765ea079.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.1.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="e79aa3d9a16f8c9f16377c0608de70a8f31e5d80">
-        <dex dex="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-25.1.0_a48b0c340b336d57d97b0224c9f334977a6a696e.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.android.gms\play-services-tasks\9.4.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="8a36d229011e75f0caef408e1adf0d3fd4d94e02">
-        <dex dex="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-tasks-9.4.0_62d5135ccd6fb3e7e6b69c2318c49cb0183e9fff.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\CricFlex\App\Cricflex+Firebase\CricFlex\libs\GraphView-4.0.1.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="C:\Users\abcd\AndroidStudioProjects\CricFlex\libs\GraphView-4.0.1.jar"
+        jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="8bd182a66f13dedad362bfbf992be96de2be5969">
-        <dex dex="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\pre-dexed\debug\GraphView-4.0.1_17f0e30005ce1fe241f32ca3f9ec03464ef27d28.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\9.4.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="88848548ab56d4fbf3d2d1b0c85bf1ff9b4c1f4b">
-        <dex dex="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-analytics-9.4.0_c3cbbb079434c4ee720b51fa3dee06f61557e406.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\bilal\.gradle\caches\modules-2\files-2.1\com.github.PhilJay\MPAndroidChart\v3.0.0-beta1\54d65d51b5ebec588a19b2384efb6395b5bf5b18\MPAndroidChart-v3.0.0-beta1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="54d65d51b5ebec588a19b2384efb6395b5bf5b18">
-        <dex dex="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\pre-dexed\debug\MPAndroidChart-v3.0.0-beta1_9b790d4b621ad56fb3f745fc6ec7a0500f57e8e2.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-database-connection\9.4.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="0e4d53465cc141bec58f18a894e4c4e80633fa32">
-        <dex dex="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-database-connection-9.4.0_55c7dce8c6c5df8baf0f987df2628654aac9deeb.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics-impl\9.4.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="a440fb3fec30ff925e9f601cc458fb6671834cb2">
-        <dex dex="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-analytics-impl-9.4.0_68a04b7ffc82b62243f2b8650609dec03bce552b.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.1.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="0a0ef86b7fa568a52bf6214a0326ca1f1d618da7">
-        <dex dex="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\pre-dexed\debug\com.android.support-support-core-utils-25.1.0_bc16fe05aa06b42db9722a11f938cc3f5bfb7daa.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-common\9.4.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="18b5697c65c4fe5b7381613b8b8ae9ac52e26fa7">
-        <dex dex="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-common-9.4.0_80a6735c3597b0fc7e27a0ab9a86a614af0889c6.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\9.4.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="618485fef3ebe12127f7622abbc9b5b39057b5c2">
-        <dex dex="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-basement-9.4.0_e039e70dad997ef693440d27f0d2469997996c76.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\percent\25.1.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="01acd167d64a3835490f0d058c9e9052a514797c">
-        <dex dex="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\pre-dexed\debug\com.android.support-percent-25.1.0_b69686146a6cb846bd12bbcaada8d968aef46bef.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-database\9.4.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="84bf369090a8f7e293817efbd6ccf31ada1be32b">
-        <dex dex="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-database-9.4.0_23334c470db69bea8b5942975428a2b585b781eb.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\bilal\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\25.1.0\support-annotations-25.1.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="64cb6b229a8bdfd907bc8dd46839a0053e4c018d">
-        <dex dex="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\pre-dexed\debug\support-annotations-25.1.0_e362af92181ec763bdeaac397d6e59ec6e90d2a1.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\support-v4\25.1.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\pre-dexed\debug\com.android.support-support-v4-25.1.0_59c5e6e49ed8a13cc7a1604848dde955f91a9f68.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.1.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="6fb6ac3e8d3b9013819920d9ea11f3803c4c0033">
-        <dex dex="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-25.1.0_d465058d0ca7b0c2f273990645939480258457dd.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-auth-module\9.4.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="6bc41d9d6fd12d2ef23c785a259011001f4a1a5b">
-        <dex dex="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-auth-module-9.4.0_bc805a2eb4d600b641aab2c12159b938a4489e84.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-auth\9.4.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="4b630471536351be7c3c3100735c75b7ad2cbd84">
-        <dex dex="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-auth-9.4.0_9e6ea37f59dae0df9ebc411bbcecb6d497df6ff8.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\support-fragment\25.1.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="2a53c4f3518116b8c6aee0e477233f0f7da8616f">
-        <dex dex="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\pre-dexed\debug\com.android.support-support-fragment-25.1.0_3c75cfe773fffdd582dfc6edf101fffccd0810a3.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\25.1.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="b266c8faa5af72e579b9da36ef35053ffed6ac64">
-        <dex dex="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\pre-dexed\debug\com.android.support-recyclerview-v7-25.1.0_ea1d0966fc3fc3b4f486268228362445b834d814.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.1.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="f02263e35e52668dd17b73bf961437e3d562b35f">
-        <dex dex="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\pre-dexed\debug\com.android.support-support-media-compat-25.1.0_6fcbff60873a11cf3ca15550fa88895fa1e754cc.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-auth-common\9.4.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="34762013d39dbe6c656050589c44e8b61b9a2c5d">
-        <dex dex="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-auth-common-9.4.0_1a72547b813971e4fc24ddb6cf371b3dd9cfb06c.jar" />
+        <dex dex="C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\transforms\dex\debug\folders\1000\2\GraphView-4.0.1_9963cab51b98b78b487f292992008eae234d1c2e\classes.dex" />
     </item>
 
 </items>

@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <com.example.cricflex.CircleImageView
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="125dp"
                     android:layout_height="125dp"
                     android:layout_margin="2dp"

@@ -34,6 +34,7 @@ public class ActivityProfile extends AppCompatActivity {
 
     FirebaseAuth firebaseAuth;
     DatabaseReference usersDatabaseReference;
+    de.hdodenhof.circleimageview.CircleImageView profilePicture;
 
 
     @Override
@@ -206,13 +207,13 @@ public class ActivityProfile extends AppCompatActivity {
 
 
 
-        CircleImageView circleImageView = (CircleImageView) findViewById(R.id.profilepicture);
+        profilePicture = (de.hdodenhof.circleimageview.CircleImageView) findViewById(R.id.profilepicture);
         //Bitmap bitmapImage1 = helper.getImage(email);
 
         //circleImageView.setImageBitmap(bitmapImage1);
 
         Bitmap b = getImageBitmap(ActivityProfile.this,email,"jpeg");
-        circleImageView.setImageBitmap(b);
+        profilePicture.setImageBitmap(b);
 
 
 

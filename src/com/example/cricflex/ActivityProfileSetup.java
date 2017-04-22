@@ -82,6 +82,7 @@ public class ActivityProfileSetup extends FragmentActivity {
     Context ctx;
 
     Bitmap bitmapImage;
+    de.hdodenhof.circleimageview.CircleImageView profileImage;
 
     String backCheck = "activity setup profile 1";
 
@@ -178,10 +179,7 @@ public class ActivityProfileSetup extends FragmentActivity {
         });
 
 
-
-
-
-        final ImageView profileImage = (ImageView) findViewById(R.id.profilepicture);
+        profileImage = (de.hdodenhof.circleimageview.CircleImageView) findViewById(R.id.profilepicture);
         profileImage.setClickable(true);
 
         profileImage.setOnClickListener(new View.OnClickListener() {
