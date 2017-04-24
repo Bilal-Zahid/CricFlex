@@ -47,6 +47,8 @@ import android.bluetooth.le.ScanSettings;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -56,22 +58,16 @@ import org.json.JSONObject;
 
 import me.grantland.widget.AutofitTextView;
 
-import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
-import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
 import com.google.android.gms.common.api.PendingResult;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
-import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.LocationSettingsResult;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
-
-import java.text.DateFormat;
-import java.util.Date;
+import com.google.firebase.database.ValueEventListener;
 
 
 @TargetApi(21)
@@ -305,6 +301,41 @@ public class ActivityMonitor2 extends Activity {
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
 
+
+
+        //Metrics listener
+        ValueEventListener metricsListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Get Profile  object and use the values to update the UI
+                // ...
+
+
+                System.out.println("Datasnapshot mai ara hai : ");
+                AllMetrics allMetrics = new AllMetrics();
+
+                allMetrics = dataSnapshot.getValue(AllMetrics.class);
+
+
+                if(allMetrics==null){
+                    System.out.println("Cant fetch metrics");
+                    return;
+                }
+
+
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+                // ...
+            }
+        };
+
+
+
         batteryProgressBar = (ProgressBar)findViewById(R.id.battery_progress);
         batteryProgressText = (TextView)findViewById(R.id.battery_text);
         ble_indicator = (ImageView)findViewById(R.id.monitor_ble_icon);
@@ -365,9 +396,9 @@ public class ActivityMonitor2 extends Activity {
             startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
         }
 
-        if(!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
-            displayLocationSettingsRequest(getApplicationContext());    // ask user to turn on location
-        }
+//        if(!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
+//            displayLocationSettingsRequest(getApplicationContext());    // ask user to turn on location
+//        }
 
         else
             {

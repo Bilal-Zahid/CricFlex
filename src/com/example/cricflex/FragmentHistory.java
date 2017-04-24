@@ -230,7 +230,7 @@ public class FragmentHistory extends Fragment {
         });
 
 
-        setGridCellAdapterToDate(month, year);
+//        setGridCellAdapterToDate(month, year);
 
 
 
@@ -255,7 +255,7 @@ public class FragmentHistory extends Fragment {
 
         angleTab.setSelected(true);
         angleTab.setPressed(true);
-        angleButtonMethod();
+//        angleButtonMethod();
 
         angleTab.setOnTouchListener(new View.OnTouchListener() {
             @Override
