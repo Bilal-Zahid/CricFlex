@@ -12,11 +12,13 @@
         android:src="@drawable/bkd16" />
 
     <ImageButton
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_margin="10dp"
-        android:src="@drawable/previous_small_icon"
+        android:id="@+id/graph_back_button"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_margin="15dp"
+        android:src="@drawable/arrow_left_icon"
         android:background="@color/transparent"
+        android:scaleType="fitXY"
         />
 
     <LinearLayout
@@ -24,7 +26,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:id = "@+id/graph"
-        app:layout_heightPercent="90%"
+        app:layout_heightPercent="95%"
         app:layout_widthPercent="100%">
 
         <LinearLayout
@@ -34,56 +36,58 @@
             android:gravity="center">
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id = "@+id/parameter_name"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:textColor="@color/text_light"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:layout_margin="5dp"/>
+                android:layout_margin="15dp"
+                android:textSize="25sp" />
 
 
             <com.github.mikephil.charting.charts.LineChart
                 android:id="@+id/parameter_graph"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"/>
 
         </LinearLayout>
 
 
     </LinearLayout>
     <!--<Button-->
-        <!--android:id="@+id/graph_back_button"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_gravity="bottom"-->
+    <!--android:id="@+id/graph_back_button"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_gravity="bottom"-->
 
-        <!--android:layout_below="@id/graph"-->
-        <!--android:layout_alignParentStart="true"-->
-        <!--android:gravity="center"-->
-        <!--android:text="BACK"-->
-        <!--android:textStyle="bold"-->
-        <!--android:textColor="@color/session_finish_button_text"-->
-        <!--android:textSize="30sp"-->
-        <!--android:background="@drawable/button2_bg"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--app:layout_heightPercent="10%"-->
-        <!--app:layout_widthPercent="49.75%"/>-->
+    <!--android:layout_below="@id/graph"-->
+    <!--android:layout_alignParentStart="true"-->
+    <!--android:gravity="center"-->
+    <!--android:text="BACK"-->
+    <!--android:textStyle="bold"-->
+    <!--android:textColor="@color/session_finish_button_text"-->
+    <!--android:textSize="30sp"-->
+    <!--android:background="@drawable/button2_bg"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--app:layout_heightPercent="10%"-->
+    <!--app:layout_widthPercent="49.75%"/>-->
     <!--<Button-->
-        <!--android:id="@+id/graph_finish_button"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_gravity="bottom"-->
+    <!--android:id="@+id/graph_finish_button"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_gravity="bottom"-->
 
-        <!--android:layout_below="@id/graph"-->
-        <!--android:layout_alignParentEnd="true"-->
-        <!--android:gravity="center"-->
-        <!--android:text="FINISH"-->
-        <!--android:textStyle="bold"-->
-        <!--android:textColor="@color/session_finish_button_text"-->
-        <!--android:textSize="30sp"-->
-        <!--android:background="@drawable/button2_bg"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--app:layout_heightPercent="10%"-->
-        <!--app:layout_widthPercent="49.75%"/>-->
+    <!--android:layout_below="@id/graph"-->
+    <!--android:layout_alignParentEnd="true"-->
+    <!--android:gravity="center"-->
+    <!--android:text="FINISH"-->
+    <!--android:textStyle="bold"-->
+    <!--android:textColor="@color/session_finish_button_text"-->
+    <!--android:textSize="30sp"-->
+    <!--android:background="@drawable/button2_bg"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--app:layout_heightPercent="10%"-->
+    <!--app:layout_widthPercent="49.75%"/>-->
 
 </android.support.percent.PercentRelativeLayout>

@@ -1,10 +1,26 @@
 [
     {
-        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\common_ic_googleplayservices.png",
-        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.4.0\\res\\drawable-ldpi-v4\\common_ic_googleplayservices.png"
+        "merged": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\edittext_top_bg.xml",
+        "source": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\res\\drawable-ldpi\\edittext_top_bg.xml"
     },
     {
-        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\ic_search.png",
-        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\exploded-aar\\com.github.mukeshsolanki\\country-picker-android\\1.1.7\\res\\drawable-ldpi-v4\\ic_search.png"
+        "merged": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\ic_search.png",
+        "source": "C:\\Users\\abcd\\.android\\build-cache\\69c81ef06acd55007079a7bf01faa2b23772401f\\output\\res\\drawable-ldpi-v4\\ic_search.png"
+    },
+    {
+        "merged": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\edittext_default_bg.xml",
+        "source": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\res\\drawable-ldpi\\edittext_default_bg.xml"
+    },
+    {
+        "merged": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\edittext_bottom_bg.xml",
+        "source": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\res\\drawable-ldpi\\edittext_bottom_bg.xml"
+    },
+    {
+        "merged": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\edittext_bottom_border_bg.xml",
+        "source": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\res\\drawable-ldpi\\edittext_bottom_border_bg.xml"
+    },
+    {
+        "merged": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\button_text_color.xml",
+        "source": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\res\\drawable-ldpi\\button_text_color.xml"
     }
 ]

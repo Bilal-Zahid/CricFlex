@@ -1,6 +1,10 @@
 [
     {
-        "merged": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\build\\intermediates\\res\\merged\\debug\\menu\\main.xml",
-        "source": "C:\\CricFlex\\App\\Cricflex+Firebase\\CricFlex\\res\\menu\\main.xml"
+        "merged": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\res\\merged\\debug\\menu\\main.xml",
+        "source": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\res\\menu\\main.xml"
+    },
+    {
+        "merged": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\build\\intermediates\\res\\merged\\debug\\menu\\activity_main_drawer.xml",
+        "source": "C:\\Users\\abcd\\AndroidStudioProjects\\CricFlex\\res\\menu\\activity_main_drawer.xml"
     }
 ]

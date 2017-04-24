@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<android.support.percent.PercentRelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:autofit="http://schemas.android.com/tools"
     android:id="@+id/fragment_history_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/history_fragment_background_color">
 
-    <ImageView android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:scaleType="centerCrop"
-        android:id="@+id/background"
-        android:src="@drawable/bkd16" />
+    <!--<ImageView android:layout_width="fill_parent"-->
+        <!--android:layout_height="fill_parent"-->
+        <!--android:scaleType="centerCrop"-->
+        <!--android:id="@+id/background"-->
+        <!--android:src="@drawable/bkd18" />-->
 
 
     <RelativeLayout
@@ -47,7 +48,8 @@
                 android:scaleType="fitXY"
                 android:background="@android:color/transparent"
                 android:layout_gravity="center"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:contentDescription="@string/content_desc_imageView"/>
 
             <ImageButton
                 android:id="@+id/prevMonth"
@@ -58,10 +60,11 @@
                 android:scaleType="fitXY"
                 android:background="@android:color/transparent"
                 android:layout_gravity="center"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:contentDescription="@string/content_desc_imageView"/>
 
         </LinearLayout>
-        <!--\u25b8-->
+
         <TextView
             android:id="@+id/currentMonth"
             android:layout_width="wrap_content"
@@ -71,7 +74,7 @@
             android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="#FFFFFF"
-            android:text="January 1995"
+            android:text="@string/history_month_year"
             android:textSize="40sp"
             android:layout_centerInParent="true"/>
 
@@ -93,7 +96,8 @@
                 android:scaleType="fitXY"
                 android:background="@android:color/transparent"
                 android:layout_gravity="center"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:contentDescription="@string/content_desc_imageView"/>
 
             <ImageButton
                 android:id="@+id/nextYear"
@@ -104,7 +108,8 @@
                 android:scaleType="fitXY"
                 android:background="@android:color/transparent"
                 android:layout_gravity="center"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:contentDescription="@string/content_desc_imageView"/>
 
 
         </LinearLayout>
@@ -127,38 +132,44 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Angle"
+            android:text="@string/history_tab_angle"
             android:textColor="@color/text_light"
-            android:textSize="40sp"
-            android:background="@drawable/history_button_tab_bg"/>
+            android:textSize="30sp"
+            android:background="@drawable/history_button_tab_bg"
+            style="?android:buttonBarStyle"/>
         <Button
             android:id="@+id/history_force_tab"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Force"
+            android:text="@string/history_tab_force"
             android:textColor="@color/text_light"
-            android:textSize="40sp"
-            android:background="@drawable/history_button_tab_bg"/>
+            android:textSize="30sp"
+            android:background="@drawable/history_button_tab_bg"
+            style="?android:buttonBarStyle"/>
         <Button
             android:id="@+id/history_time_tab"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Time"
+            android:text="@string/history_tab_time"
             android:textColor="@color/text_light"
-            android:textSize="40sp"
-            android:background="@drawable/history_button_tab_bg"/>
+            android:textSize="30sp"
+            android:background="@drawable/history_button_tab_bg"
+            style="?android:buttonBarStyle"/>
         <Button
             android:id="@+id/history_twist_tab"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Twist"
+            android:text="@string/history_tab_twist"
             android:textColor="@color/text_light"
-            android:textSize="40sp"
-            android:background="@drawable/history_button_tab_bg"/>
+            android:textSize="30sp"
+            android:background="@drawable/history_button_tab_bg"
+            style="?android:buttonBarStyle"/>
+
     </LinearLayout>
+
 
 
     <com.github.mikephil.charting.charts.LineChart
@@ -169,6 +180,141 @@
         app:layout_widthPercent="100%"
         android:layout_below="@+id/tabs"
         android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/textViewOver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/chart"
+        android:textSize="30sp"
+        android:text="@string/history_over"
+        android:textColor="@color/text_light"
+        />
+
+
+
+    <!--stats-->
+
+    <LinearLayout
+        android:id="@+id/stat1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="5dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        app:layout_heightPercent="12%"
+        app:layout_widthPercent="33.333333333%"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <me.grantland.widget.AutofitTextView
+            android:id="@+id/history_stat_maximum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+            android:gravity="center"
+            android:text="@string/history_stat_maximum_value"
+            android:textColor="@color/text_light"
+            android:maxLines="1"
+            android:textSize="55sp"
+            autofit:minTextSize="25sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+            android:gravity="center"
+            android:text="@string/history_stat_maximum"
+            android:textSize="25sp"
+            android:textColor="@color/text_light" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/stat2"
+        android:layout_toEndOf="@id/stat1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="5dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        app:layout_heightPercent="12%"
+        app:layout_widthPercent="33.333333333%"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <me.grantland.widget.AutofitTextView
+            android:id="@+id/history_stat_minimum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+            android:gravity="center"
+            android:text="@string/history_stat_minimum_value"
+            android:textColor="@color/text_light"
+            android:maxLines="1"
+            android:textSize="55sp"
+            autofit:minTextSize="25sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+            android:gravity="center"
+            android:text="@string/history_stat_minimum"
+            android:textSize="25sp"
+            android:textColor="@color/text_light" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/stat3"
+        android:layout_toEndOf="@id/stat2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="5dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        app:layout_heightPercent="12%"
+        app:layout_widthPercent="33.333333333%"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <me.grantland.widget.AutofitTextView
+            android:id="@+id/history_stat_average"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+            android:gravity="center"
+            android:text="@string/history_stat_average_value"
+            android:textColor="@color/text_light"
+            android:maxLines="1"
+            android:textSize="55sp"
+            autofit:minTextSize="25sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+            android:gravity="center"
+            android:text="@string/history_stat_average"
+            android:textSize="25sp"
+            android:textColor="@color/text_light" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_above="@id/stat1"
+        android:background="@color/light"
+        />
 
 
 </android.support.percent.PercentRelativeLayout>

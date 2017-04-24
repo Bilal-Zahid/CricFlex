@@ -1,37 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
 <instant-run
-    abi="arm64-v8a,armeabi-v7a,armeabi"
+    abi="armeabi-v7a,armeabi"
     api-level="23"
-    density="xxhdpi"
-    format="8"
-    plugin-version="2.2.3"
-    timestamp="1214141616375598"
-    token="-3779755893907101547"
+    build-mode="FULL"
+    density="hdpi"
+    format="10"
+    plugin-version="2.3.1"
+    timestamp="1492780938426"
+    token="7151109752444609980"
     verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
-        duration="0" />
+        duration="26453" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="0" />
+        duration="13355" />
     <task
         name="verifier"
-        duration="0" />
+        duration="1923" />
 
     <artifact
-        location="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\outputs\apk\CricFlex-debug.apk"
-        type="MAIN" />
+        location="C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\split-apk\debug\dep\dependencies.apk"
+        type="SPLIT" />
+    <artifact
+        location="C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\split-apk\debug\slices\slice_2.apk"
+        type="SPLIT" />
+    <artifact
+        location="C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\split-apk\debug\slices\slice_3.apk"
+        type="SPLIT" />
+    <artifact
+        location="C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\split-apk\debug\slices\slice_0.apk"
+        type="SPLIT" />
+    <artifact
+        location="C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\split-apk\debug\slices\slice_1.apk"
+        type="SPLIT" />
+    <artifact
+        location="C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\split-apk\debug\slices\slice_7.apk"
+        type="SPLIT" />
+    <artifact
+        location="C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\split-apk\debug\slices\slice_4.apk"
+        type="SPLIT" />
+    <artifact
+        location="C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\split-apk\debug\slices\slice_5.apk"
+        type="SPLIT" />
+    <artifact
+        location="C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\split-apk\debug\slices\slice_6.apk"
+        type="SPLIT" />
+    <artifact
+        location="C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\split-apk\debug\slices\slice_9.apk"
+        type="SPLIT" />
+    <artifact
+        location="C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\split-apk\debug\slices\slice_8.apk"
+        type="SPLIT" />
+    <artifact
+        location="C:\Users\abcd\AndroidStudioProjects\CricFlex\build\outputs\apk\CricFlex-debug.apk"
+        type="SPLIT_MAIN" />
 
     <build
-        timestamp="1214141616375598"
+        build-mode="FULL"
+        timestamp="1492780938426"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
-            location="C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\outputs\apk\CricFlex-debug.apk"
-            type="MAIN" />
+            location="C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\split-apk\debug\dep\dependencies.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\split-apk\debug\slices\slice_2.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\split-apk\debug\slices\slice_3.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\split-apk\debug\slices\slice_0.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\split-apk\debug\slices\slice_1.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\split-apk\debug\slices\slice_7.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\split-apk\debug\slices\slice_4.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\split-apk\debug\slices\slice_5.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\split-apk\debug\slices\slice_6.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\split-apk\debug\slices\slice_9.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\abcd\AndroidStudioProjects\CricFlex\build\intermediates\split-apk\debug\slices\slice_8.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\abcd\AndroidStudioProjects\CricFlex\build\outputs\apk\CricFlex-debug.apk"
+            type="SPLIT_MAIN" />
     </build>
 
 </instant-run>

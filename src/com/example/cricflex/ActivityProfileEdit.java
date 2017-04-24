@@ -88,7 +88,7 @@ public class ActivityProfileEdit extends FragmentActivity {
     Button saveEditProfile, cancelEditProfile;
 
 
-    ImageView profilePicture;
+    de.hdodenhof.circleimageview.CircleImageView profilePicture;
     Bitmap bitmapImage;
 
 
@@ -282,7 +282,7 @@ public class ActivityProfileEdit extends FragmentActivity {
 
         bitmapImage = BitmapFactory.decodeResource(getResources(), R.drawable.profile_icon_large);
 
-        profilePicture = (ImageView) findViewById(R.id.profilepicture);
+        profilePicture = (de.hdodenhof.circleimageview.CircleImageView) findViewById(R.id.profilepicture);
         profilePicture.setClickable(true);
         profilePicture.setOnClickListener(new View.OnClickListener() {
             @Override

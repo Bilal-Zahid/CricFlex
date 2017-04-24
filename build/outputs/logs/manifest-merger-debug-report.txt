@@ -1,367 +1,648 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:2:1-90:12
+ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:2:1-129:12
 	package
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:3:5-35
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:3:5-35
 	android:versionName
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:5:5-30
-		INJECTED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml
-		INJECTED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:5:5-30
+		INJECTED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml
+		INJECTED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml
 	android:versionCode
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:4:5-28
-		INJECTED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml
-		INJECTED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:4:5-28
+		INJECTED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml
+		INJECTED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml
 	xmlns:android
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:2:11-69
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:2:11-69
 uses-sdk
-ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:7:5-9:41
-MERGED from [com.android.support:design:25.1.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\design\25.1.0\AndroidManifest.xml:21:5-23:62
-MERGED from [com.android.support:appcompat-v7:25.1.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.1.0\AndroidManifest.xml:21:5-23:78
-MERGED from [com.android.support:animated-vector-drawable:25.1.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.1.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:25.1.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.1.0\AndroidManifest.xml:21:5-43
-MERGED from [com.android.support:recyclerview-v7:25.1.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\25.1.0\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:transition:25.1.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\transition\25.1.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:percent:25.1.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\percent\25.1.0\AndroidManifest.xml:20:5-43
-MERGED from [com.github.mukeshsolanki:country-picker-android:1.1.7] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.github.mukeshsolanki\country-picker-android\1.1.7\AndroidManifest.xml:8:5-10:41
-MERGED from [com.google.firebase:firebase-auth:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-auth\9.4.0\AndroidManifest.xml:18:5-43
-MERGED from [com.google.firebase:firebase-auth-common:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-auth-common\9.4.0\AndroidManifest.xml:18:5-43
-MERGED from [com.google.firebase:firebase-auth-module:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-auth-module\9.4.0\AndroidManifest.xml:4:5-43
-MERGED from [com.google.firebase:firebase-database:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-database\9.4.0\AndroidManifest.xml:5:5-43
-MERGED from [com.google.firebase:firebase-database-connection:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-database-connection\9.4.0\AndroidManifest.xml:5:5-43
-MERGED from [com.google.android.gms:play-services-base:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\9.4.0\AndroidManifest.xml:18:5-42
-MERGED from [com.google.firebase:firebase-core:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-core\9.4.0\AndroidManifest.xml:4:5-42
-MERGED from [com.google.firebase:firebase-analytics:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\9.4.0\AndroidManifest.xml:18:5-42
-MERGED from [com.google.firebase:firebase-analytics-impl:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics-impl\9.4.0\AndroidManifest.xml:18:5-42
-MERGED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:18:5-42
-MERGED from [com.google.firebase:firebase-common:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-common\9.4.0\AndroidManifest.xml:4:5-43
-MERGED from [com.google.android.gms:play-services-tasks:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.android.gms\play-services-tasks\9.4.0\AndroidManifest.xml:4:5-43
-MERGED from [com.google.android.gms:play-services-basement:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\9.4.0\AndroidManifest.xml:18:5-42
-MERGED from [com.android.support:support-v4:25.1.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\support-v4\25.1.0\AndroidManifest.xml:21:5-23:54
-MERGED from [com.android.support:support-fragment:25.1.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\support-fragment\25.1.0\AndroidManifest.xml:21:5-23:60
-MERGED from [com.android.support:support-media-compat:25.1.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.1.0\AndroidManifest.xml:21:5-23:63
-MERGED from [com.android.support:support-core-ui:25.1.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.1.0\AndroidManifest.xml:21:5-23:58
-MERGED from [com.android.support:support-core-utils:25.1.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.1.0\AndroidManifest.xml:21:5-23:61
-MERGED from [com.android.support:support-compat:25.1.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\support-compat\25.1.0\AndroidManifest.xml:21:5-23:58
+ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:design:25.3.1] C:\Users\abcd\.android\build-cache\c2d1e7097bedb5270f47adbbbafb1d261dea6e21\output\AndroidManifest.xml:21:5-23:62
+MERGED from [com.android.support:recyclerview-v7:25.3.1] C:\Users\abcd\.android\build-cache\3968e9a3470ef8e7acdd1281fef8928fd9e326fc\output\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:transition:25.3.1] C:\Users\abcd\.android\build-cache\ff3671352f96a8ab52bba3c252fce9033a054671\output\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:percent:25.3.1] C:\Users\abcd\.android\build-cache\4507b30f4f6a3ddce9bc208d32c67fd8ea40c7af\output\AndroidManifest.xml:20:5-43
+MERGED from [de.hdodenhof:circleimageview:2.1.0] C:\Users\abcd\.android\build-cache\45cfeafbcf78798fb7bfa4b253413f910555787e\output\AndroidManifest.xml:5:5-7:41
+MERGED from [com.google.android.gms:play-services:10.2.0] C:\Users\abcd\.android\build-cache\6e62bbad5ffe3c81d8fc12be8fcc5882c4b1a56b\output\AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-ads:10.2.0] C:\Users\abcd\.android\build-cache\b0b2fb4346aa2b83f7c75415c05905ac84a9fc71\output\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-ads-lite:10.2.0] C:\Users\abcd\.android\build-cache\16bab3d94a3c5c5c970062cd8a5d7c8317008520\output\AndroidManifest.xml:22:5-43
+MERGED from [com.google.android.gms:play-services-analytics:10.2.0] C:\Users\abcd\.android\build-cache\25321f4257bc51fc02ed2e495cd78a6b1fe15e1d\output\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-appinvite:10.2.0] C:\Users\abcd\.android\build-cache\d8eff5583782de58127721de0f2282a23e2469ca\output\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-auth:10.2.0] C:\Users\abcd\.android\build-cache\62fbaa02f92c12cc6eee3b7000a618de5e7e7fc7\output\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-auth-base:10.2.0] C:\Users\abcd\.android\build-cache\65c94e4b7b2999dec75eb726ce3820c3cba6b90d\output\AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-cast-framework:10.2.0] C:\Users\abcd\.android\build-cache\e75106f263df150f0cd37d426b48050697a77889\output\AndroidManifest.xml:3:5-43
+MERGED from [com.google.android.gms:play-services-cast:10.2.0] C:\Users\abcd\.android\build-cache\ebb1bf7912d3318c2a98ac1f8345dadee8d6a74c\output\AndroidManifest.xml:17:5-43
+MERGED from [com.android.support:mediarouter-v7:24.0.0] C:\Users\abcd\.android\build-cache\f2cbda03acb8a6142add5ccc5590ff7392fcec6a\output\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:palette-v7:24.0.0] C:\Users\abcd\.android\build-cache\d77dec3e32f540743c312deb66b1e52f06ced77b\output\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\abcd\.android\build-cache\e12459b98615706619a0fcc998e30e6bf83e00dd\output\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\abcd\.android\build-cache\3fcf4b516e7d05c4908d9d4c9a4a8f2a315b6f5c\output\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\abcd\.android\build-cache\6d010dceb9813b422bfe87b94543114aec42ee52\output\AndroidManifest.xml:20:5-43
+MERGED from [com.google.android.gms:play-services-clearcut:10.2.0] C:\Users\abcd\.android\build-cache\51dc5ea5f6e5fc33c13d24b44f9db40df6098ab5\output\AndroidManifest.xml:17:5-43
+MERGED from [com.google.firebase:firebase-config:10.2.0] C:\Users\abcd\.android\build-cache\4fecefa58aa9f683ac4e397436d05991d65e61bd\output\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-awareness:10.2.0] C:\Users\abcd\.android\build-cache\224b0b7e0f08b7513d801ca5debc76d19adcc555\output\AndroidManifest.xml:17:5-43
+MERGED from [com.google.firebase:firebase-crash:10.2.0] C:\Users\abcd\.android\build-cache\e638f6e8413649e8c6e1e77d527f4bde5038c7ca\output\AndroidManifest.xml:20:5-43
+MERGED from [com.google.firebase:firebase-storage:10.2.0] C:\Users\abcd\.android\build-cache\515bd420f4dba1bcb54e81d25b9999e294cc4e12\output\AndroidManifest.xml:3:5-43
+MERGED from [com.google.firebase:firebase-storage-common:10.2.0] C:\Users\abcd\.android\build-cache\b9886dab609248bc471dba0ee4ea9c81efb4ec4c\output\AndroidManifest.xml:3:5-43
+MERGED from [com.google.android.gms:play-services-fitness:10.2.0] C:\Users\abcd\.android\build-cache\91b710155b1f7f21f4b8804716b03b4badb22b15\output\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-games:10.2.0] C:\Users\abcd\.android\build-cache\a32eebc0591c8913e4c8cc944936eaa7023efd71\output\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-drive:10.2.0] C:\Users\abcd\.android\build-cache\2a9224da30858cbde66513c3ff845a2f7a4b0cb9\output\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-gass:10.2.0] C:\Users\abcd\.android\build-cache\226cc715c123df2bd242effb709168d997a0b5d6\output\AndroidManifest.xml:3:5-43
+MERGED from [com.google.android.gms:play-services-gcm:10.2.0] C:\Users\abcd\.android\build-cache\ec79e489724ed074d250a53870dda770752946ef\output\AndroidManifest.xml:17:5-43
+MERGED from [com.google.firebase:firebase-appindexing:10.2.0] C:\Users\abcd\.android\build-cache\ce7a514588155e9f47e08a66cbc2d3f18e460a4e\output\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-iid:10.2.0] C:\Users\abcd\.android\build-cache\3a5477333325bfec5d0d99644ed35f5c68089bde\output\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-instantapps:10.2.0] C:\Users\abcd\.android\build-cache\f7f393ed9a97ffac04df470f2e96886078c9f0b1\output\AndroidManifest.xml:3:5-43
+MERGED from [com.google.android.gms:play-services-location:10.2.0] C:\Users\abcd\.android\build-cache\bfd7cf511a924a9f6e40c38904f9aecda43bbe02\output\AndroidManifest.xml:3:5-43
+MERGED from [com.google.android.gms:play-services-nearby:10.2.0] C:\Users\abcd\.android\build-cache\f858ca5d8f81d5923a92e58214df318592a4fccb\output\AndroidManifest.xml:3:5-43
+MERGED from [com.google.android.gms:play-services-panorama:10.2.0] C:\Users\abcd\.android\build-cache\403d52025c7f9668dbac72ea14cb6efea48128f9\output\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-places:10.2.0] C:\Users\abcd\.android\build-cache\66a036cc95412d425c4dd3292dbfd09c615d4e8c\output\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-plus:10.2.0] C:\Users\abcd\.android\build-cache\2aa7ed4293c1d7d9a850e42b1df0c13a888c2bb3\output\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-safetynet:10.2.0] C:\Users\abcd\.android\build-cache\e258630f28cc320137240fcf137c5d04b265dc4d\output\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-tagmanager:10.2.0] C:\Users\abcd\.android\build-cache\2c7fa48a894991a244d963c6e701d46b6da3cdef\output\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-tagmanager-api:10.2.0] C:\Users\abcd\.android\build-cache\6c297d12f730ad387325234b8fff694ad36875e9\output\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-tagmanager-v4-impl:10.2.0] C:\Users\abcd\.android\build-cache\bed8b205ccff567adc93b0ed45f72bfbe747e7cb\output\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-analytics-impl:10.2.0] C:\Users\abcd\.android\build-cache\3f2f888ccc1a91d97ec9ab8fbbb0d340c0a5c305\output\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-vision:10.2.0] C:\Users\abcd\.android\build-cache\eb37eb00ce6f862c0cd763e9b982dc92b5fd3ee7\output\AndroidManifest.xml:3:5-43
+MERGED from [com.google.android.gms:play-services-wallet:10.2.0] C:\Users\abcd\.android\build-cache\e20ccbda44a2b9b43b67d25649992bdf777064bc\output\AndroidManifest.xml:18:5-43
+MERGED from [com.google.android.gms:play-services-identity:10.2.0] C:\Users\abcd\.android\build-cache\03b1aee0dabee7c29c4b31b3046fc510dd188bde\output\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-maps:10.2.0] C:\Users\abcd\.android\build-cache\20d77bc9967b29b439bbf67ca16bee00fd6ff557\output\AndroidManifest.xml:23:5-43
+MERGED from [com.google.android.gms:play-services-wearable:10.2.0] C:\Users\abcd\.android\build-cache\ca17234563071b662768f4158a63e98290db487c\output\AndroidManifest.xml:17:5-43
+MERGED from [com.github.mukeshsolanki:country-picker-android:1.1.7] C:\Users\abcd\.android\build-cache\69c81ef06acd55007079a7bf01faa2b23772401f\output\AndroidManifest.xml:8:5-10:41
+MERGED from [me.grantland:autofittextview:0.2.1] C:\Users\abcd\.android\build-cache\52f9ee8be7fbb754627d371d7577877492571597\output\AndroidManifest.xml:7:5-9:41
+MERGED from [com.google.firebase:firebase-auth:10.2.0] C:\Users\abcd\.android\build-cache\82de2a16e59eec0d30d40ee73a6cd6db8e756c1f\output\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-base:10.2.0] C:\Users\abcd\.android\build-cache\2be9c39d20e428a5df89db44da6c36a7af61602e\output\AndroidManifest.xml:17:5-43
+MERGED from [com.google.firebase:firebase-database:10.2.0] C:\Users\abcd\.android\build-cache\8da17bed1a64dea5b0508533ceaa087171d11857\output\AndroidManifest.xml:3:5-43
+MERGED from [com.google.firebase:firebase-database-connection:10.2.0] C:\Users\abcd\.android\build-cache\03260940d9d3a5264f7b155b934f446251980deb\output\AndroidManifest.xml:3:5-43
+MERGED from [com.google.firebase:firebase-messaging:10.2.0] C:\Users\abcd\.android\build-cache\0aea3ff0a4c5835750e5ba77ab0a94c36dcb8ebe\output\AndroidManifest.xml:17:5-43
+MERGED from [com.google.firebase:firebase-core:10.2.0] C:\Users\abcd\.android\build-cache\75b078a3569aceeaccfecb9ccc91c62991cfeb11\output\AndroidManifest.xml:4:5-43
+MERGED from [com.google.firebase:firebase-analytics:10.2.0] C:\Users\abcd\.android\build-cache\cb9beb599a9adfa6ff72535604c1d09f2344dca0\output\AndroidManifest.xml:17:5-43
+MERGED from [com.google.firebase:firebase-analytics-impl:10.2.0] C:\Users\abcd\.android\build-cache\8b280b1d6fe763b1787f53596801681942f5bfed\output\AndroidManifest.xml:17:5-43
+MERGED from [com.google.firebase:firebase-iid:10.2.0] C:\Users\abcd\.android\build-cache\3efa61bab28e7e9333a6c077c0b415ab9d540f62\output\AndroidManifest.xml:17:5-43
+MERGED from [com.google.firebase:firebase-common:10.2.0] C:\Users\abcd\.android\build-cache\40c3e7bb9692f3d2517bdc22644e0b356d1a6f36\output\AndroidManifest.xml:3:5-43
+MERGED from [com.google.android.gms:play-services-tasks:10.2.0] C:\Users\abcd\.android\build-cache\b0e6931ef1860c5e8e125bd0e4667a0691b9eacd\output\AndroidManifest.xml:3:5-43
+MERGED from [com.google.android.gms:play-services-basement:10.2.0] C:\Users\abcd\.android\build-cache\5239ea8b3ca7d4b519e1b38ce85084006055717b\output\AndroidManifest.xml:17:5-43
+MERGED from [com.android.support:support-v4:25.3.1] C:\Users\abcd\.android\build-cache\d1adbbf09b085d5a1602df0f6c45766c3d47969c\output\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\abcd\.android\build-cache\fd6f07c234bdf7bd32e8f313d15af8da20007293\output\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\abcd\.android\build-cache\7fca8b139eba1fc3fe3b1302d5770450ea66462f\output\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\abcd\.android\build-cache\305a14b3606e035f415002159b15e6a78396cb05\output\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\abcd\.android\build-cache\c2703be34ddd2a9ee04f4c7adde29fb016ac4806\output\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-compat:25.3.1] C:\Users\abcd\.android\build-cache\9d9d77e19fe8a3981ecf58b9a3bd3293fe80821f\output\AndroidManifest.xml:21:5-23:58
 	tools:overrideLibrary
-		ADDED from [com.android.support:design:25.1.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\design\25.1.0\AndroidManifest.xml:23:9-59
+		ADDED from [com.android.support:design:25.3.1] C:\Users\abcd\.android\build-cache\c2d1e7097bedb5270f47adbbbafb1d261dea6e21\output\AndroidManifest.xml:23:9-59
 	android:targetSdkVersion
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:9:9-38
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:9:9-38
 	android:minSdkVersion
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:8:9-35
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:8:9-35
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:11:5-81
+ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:11:5-81
 	android:name
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:11:22-78
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:11:22-78
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
-ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:12:5-80
+ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:12:5-80
 	android:name
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:12:22-77
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:12:22-77
 uses-permission#android.permission.BLUETOOTH
-ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:13:5-68
+ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:13:5-68
 	android:name
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:13:22-65
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:13:22-65
 uses-permission#android.permission.BLUETOOTH_ADMIN
-ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:14:5-74
+ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:14:5-74
 	android:name
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:14:22-71
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:14:22-71
 uses-permission#android.permission.INTERNET
-ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:16:5-67
-MERGED from [com.google.firebase:firebase-analytics:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\9.4.0\AndroidManifest.xml:21:5-67
-MERGED from [com.google.firebase:firebase-analytics-impl:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics-impl\9.4.0\AndroidManifest.xml:21:5-67
-MERGED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:21:5-67
+ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:16:5-67
+MERGED from [com.google.android.gms:play-services-ads-lite:10.2.0] C:\Users\abcd\.android\build-cache\16bab3d94a3c5c5c970062cd8a5d7c8317008520\output\AndroidManifest.xml:19:5-66
+MERGED from [com.google.android.gms:play-services-analytics:10.2.0] C:\Users\abcd\.android\build-cache\25321f4257bc51fc02ed2e495cd78a6b1fe15e1d\output\AndroidManifest.xml:20:5-66
+MERGED from [com.google.android.gms:play-services-appinvite:10.2.0] C:\Users\abcd\.android\build-cache\d8eff5583782de58127721de0f2282a23e2469ca\output\AndroidManifest.xml:18:5-66
+MERGED from [com.google.firebase:firebase-crash:10.2.0] C:\Users\abcd\.android\build-cache\e638f6e8413649e8c6e1e77d527f4bde5038c7ca\output\AndroidManifest.xml:18:5-66
+MERGED from [com.google.android.gms:play-services-gcm:10.2.0] C:\Users\abcd\.android\build-cache\ec79e489724ed074d250a53870dda770752946ef\output\AndroidManifest.xml:21:5-66
+MERGED from [com.google.android.gms:play-services-iid:10.2.0] C:\Users\abcd\.android\build-cache\3a5477333325bfec5d0d99644ed35f5c68089bde\output\AndroidManifest.xml:21:5-66
+MERGED from [com.google.android.gms:play-services-tagmanager-api:10.2.0] C:\Users\abcd\.android\build-cache\6c297d12f730ad387325234b8fff694ad36875e9\output\AndroidManifest.xml:20:5-66
+MERGED from [com.google.android.gms:play-services-analytics-impl:10.2.0] C:\Users\abcd\.android\build-cache\3f2f888ccc1a91d97ec9ab8fbbb0d340c0a5c305\output\AndroidManifest.xml:20:5-66
+MERGED from [com.google.android.gms:play-services-maps:10.2.0] C:\Users\abcd\.android\build-cache\20d77bc9967b29b439bbf67ca16bee00fd6ff557\output\AndroidManifest.xml:20:5-66
+MERGED from [com.google.firebase:firebase-analytics:10.2.0] C:\Users\abcd\.android\build-cache\cb9beb599a9adfa6ff72535604c1d09f2344dca0\output\AndroidManifest.xml:20:5-66
+MERGED from [com.google.firebase:firebase-analytics-impl:10.2.0] C:\Users\abcd\.android\build-cache\8b280b1d6fe763b1787f53596801681942f5bfed\output\AndroidManifest.xml:20:5-66
+MERGED from [com.google.firebase:firebase-iid:10.2.0] C:\Users\abcd\.android\build-cache\3efa61bab28e7e9333a6c077c0b415ab9d540f62\output\AndroidManifest.xml:20:5-66
 	android:name
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:16:22-64
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:16:22-64
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:17:5-79
+	android:name
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:17:22-76
+uses-feature#android.hardware.location.gps
+ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:20:5-66
+	android:name
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:20:19-63
 uses-feature#android.hardware.camera.front
-ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:18:5-20:36
+ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:22:5-24:36
 	android:required
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:20:9-33
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:24:9-33
 	android:name
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:19:9-53
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:23:9-53
 uses-feature#android.hardware.bluetooth_le
-ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:21:5-23:35
+ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:25:5-27:35
 	android:required
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:23:9-32
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:27:9-32
 	android:name
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:22:9-53
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:26:9-53
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:29:5-75
+	android:name
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:29:22-72
 application
-ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:26:5-88:19
-MERGED from [com.android.support:design:25.1.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\design\25.1.0\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:appcompat-v7:25.1.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.1.0\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:animated-vector-drawable:25.1.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.1.0\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-vector-drawable:25.1.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.1.0\AndroidManifest.xml:23:5-20
-MERGED from [com.android.support:transition:25.1.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\transition\25.1.0\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:percent:25.1.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\percent\25.1.0\AndroidManifest.xml:22:5-20
-MERGED from [com.google.firebase:firebase-auth:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-auth\9.4.0\AndroidManifest.xml:20:5-21:19
-MERGED from [com.google.firebase:firebase-auth-common:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-auth-common\9.4.0\AndroidManifest.xml:20:5-21:19
-MERGED from [com.google.android.gms:play-services-base:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\9.4.0\AndroidManifest.xml:19:5-23:19
-MERGED from [com.google.firebase:firebase-core:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-core\9.4.0\AndroidManifest.xml:5:5-20
-MERGED from [com.google.firebase:firebase-analytics:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\9.4.0\AndroidManifest.xml:26:5-41:19
-MERGED from [com.google.firebase:firebase-analytics-impl:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics-impl\9.4.0\AndroidManifest.xml:26:5-41:19
-MERGED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:30:5-59:19
-MERGED from [com.google.firebase:firebase-common:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-common\9.4.0\AndroidManifest.xml:5:5-12:19
-MERGED from [com.google.android.gms:play-services-tasks:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.android.gms\play-services-tasks\9.4.0\AndroidManifest.xml:5:5-20
-MERGED from [com.google.android.gms:play-services-basement:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\9.4.0\AndroidManifest.xml:20:5-24:19
-MERGED from [com.android.support:support-v4:25.1.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\support-v4\25.1.0\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-fragment:25.1.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\support-fragment\25.1.0\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-media-compat:25.1.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.1.0\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-core-ui:25.1.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.1.0\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-core-utils:25.1.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.1.0\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-compat:25.1.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.android.support\support-compat\25.1.0\AndroidManifest.xml:25:5-20
+ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:31:5-127:19
+MERGED from [com.android.support:design:25.3.1] C:\Users\abcd\.android\build-cache\c2d1e7097bedb5270f47adbbbafb1d261dea6e21\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:transition:25.3.1] C:\Users\abcd\.android\build-cache\ff3671352f96a8ab52bba3c252fce9033a054671\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:percent:25.3.1] C:\Users\abcd\.android\build-cache\4507b30f4f6a3ddce9bc208d32c67fd8ea40c7af\output\AndroidManifest.xml:26:5-20
+MERGED from [de.hdodenhof:circleimageview:2.1.0] C:\Users\abcd\.android\build-cache\45cfeafbcf78798fb7bfa4b253413f910555787e\output\AndroidManifest.xml:9:5-20
+MERGED from [com.google.android.gms:play-services:10.2.0] C:\Users\abcd\.android\build-cache\6e62bbad5ffe3c81d8fc12be8fcc5882c4b1a56b\output\AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-ads-lite:10.2.0] C:\Users\abcd\.android\build-cache\16bab3d94a3c5c5c970062cd8a5d7c8317008520\output\AndroidManifest.xml:23:5-27:19
+MERGED from [com.google.android.gms:play-services-analytics:10.2.0] C:\Users\abcd\.android\build-cache\25321f4257bc51fc02ed2e495cd78a6b1fe15e1d\output\AndroidManifest.xml:26:5-19
+MERGED from [com.google.android.gms:play-services-appinvite:10.2.0] C:\Users\abcd\.android\build-cache\d8eff5583782de58127721de0f2282a23e2469ca\output\AndroidManifest.xml:19:5-26:19
+MERGED from [com.google.android.gms:play-services-auth:10.2.0] C:\Users\abcd\.android\build-cache\62fbaa02f92c12cc6eee3b7000a618de5e7e7fc7\output\AndroidManifest.xml:19:5-25:19
+MERGED from [com.google.android.gms:play-services-cast-framework:10.2.0] C:\Users\abcd\.android\build-cache\e75106f263df150f0cd37d426b48050697a77889\output\AndroidManifest.xml:4:5-8:19
+MERGED from [com.google.android.gms:play-services-cast:10.2.0] C:\Users\abcd\.android\build-cache\ebb1bf7912d3318c2a98ac1f8345dadee8d6a74c\output\AndroidManifest.xml:18:5-19
+MERGED from [com.android.support:mediarouter-v7:24.0.0] C:\Users\abcd\.android\build-cache\f2cbda03acb8a6142add5ccc5590ff7392fcec6a\output\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:palette-v7:24.0.0] C:\Users\abcd\.android\build-cache\d77dec3e32f540743c312deb66b1e52f06ced77b\output\AndroidManifest.xml:22:5-23:19
+MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\abcd\.android\build-cache\e12459b98615706619a0fcc998e30e6bf83e00dd\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\abcd\.android\build-cache\3fcf4b516e7d05c4908d9d4c9a4a8f2a315b6f5c\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\abcd\.android\build-cache\6d010dceb9813b422bfe87b94543114aec42ee52\output\AndroidManifest.xml:26:5-20
+MERGED from [com.google.android.gms:play-services-clearcut:10.2.0] C:\Users\abcd\.android\build-cache\51dc5ea5f6e5fc33c13d24b44f9db40df6098ab5\output\AndroidManifest.xml:18:5-19
+MERGED from [com.google.firebase:firebase-config:10.2.0] C:\Users\abcd\.android\build-cache\4fecefa58aa9f683ac4e397436d05991d65e61bd\output\AndroidManifest.xml:18:5-19
+MERGED from [com.google.android.gms:play-services-awareness:10.2.0] C:\Users\abcd\.android\build-cache\224b0b7e0f08b7513d801ca5debc76d19adcc555\output\AndroidManifest.xml:18:5-19
+MERGED from [com.google.firebase:firebase-crash:10.2.0] C:\Users\abcd\.android\build-cache\e638f6e8413649e8c6e1e77d527f4bde5038c7ca\output\AndroidManifest.xml:22:5-23:19
+MERGED from [com.google.android.gms:play-services-fitness:10.2.0] C:\Users\abcd\.android\build-cache\91b710155b1f7f21f4b8804716b03b4badb22b15\output\AndroidManifest.xml:18:5-19
+MERGED from [com.google.android.gms:play-services-games:10.2.0] C:\Users\abcd\.android\build-cache\a32eebc0591c8913e4c8cc944936eaa7023efd71\output\AndroidManifest.xml:18:5-19
+MERGED from [com.google.android.gms:play-services-drive:10.2.0] C:\Users\abcd\.android\build-cache\2a9224da30858cbde66513c3ff845a2f7a4b0cb9\output\AndroidManifest.xml:18:5-19
+MERGED from [com.google.android.gms:play-services-gass:10.2.0] C:\Users\abcd\.android\build-cache\226cc715c123df2bd242effb709168d997a0b5d6\output\AndroidManifest.xml:4:5-19
+MERGED from [com.google.android.gms:play-services-gcm:10.2.0] C:\Users\abcd\.android\build-cache\ec79e489724ed074d250a53870dda770752946ef\output\AndroidManifest.xml:23:5-19
+MERGED from [com.google.firebase:firebase-appindexing:10.2.0] C:\Users\abcd\.android\build-cache\ce7a514588155e9f47e08a66cbc2d3f18e460a4e\output\AndroidManifest.xml:18:5-19
+MERGED from [com.google.android.gms:play-services-iid:10.2.0] C:\Users\abcd\.android\build-cache\3a5477333325bfec5d0d99644ed35f5c68089bde\output\AndroidManifest.xml:23:5-19
+MERGED from [com.google.android.gms:play-services-location:10.2.0] C:\Users\abcd\.android\build-cache\bfd7cf511a924a9f6e40c38904f9aecda43bbe02\output\AndroidManifest.xml:4:5-19
+MERGED from [com.google.android.gms:play-services-nearby:10.2.0] C:\Users\abcd\.android\build-cache\f858ca5d8f81d5923a92e58214df318592a4fccb\output\AndroidManifest.xml:5:5-19
+MERGED from [com.google.android.gms:play-services-panorama:10.2.0] C:\Users\abcd\.android\build-cache\403d52025c7f9668dbac72ea14cb6efea48128f9\output\AndroidManifest.xml:18:5-19
+MERGED from [com.google.android.gms:play-services-places:10.2.0] C:\Users\abcd\.android\build-cache\66a036cc95412d425c4dd3292dbfd09c615d4e8c\output\AndroidManifest.xml:18:5-19
+MERGED from [com.google.android.gms:play-services-plus:10.2.0] C:\Users\abcd\.android\build-cache\2aa7ed4293c1d7d9a850e42b1df0c13a888c2bb3\output\AndroidManifest.xml:18:5-19
+MERGED from [com.google.android.gms:play-services-safetynet:10.2.0] C:\Users\abcd\.android\build-cache\e258630f28cc320137240fcf137c5d04b265dc4d\output\AndroidManifest.xml:18:5-19
+MERGED from [com.google.android.gms:play-services-tagmanager-api:10.2.0] C:\Users\abcd\.android\build-cache\6c297d12f730ad387325234b8fff694ad36875e9\output\AndroidManifest.xml:23:5-33:19
+MERGED from [com.google.android.gms:play-services-tagmanager-v4-impl:10.2.0] C:\Users\abcd\.android\build-cache\bed8b205ccff567adc93b0ed45f72bfbe747e7cb\output\AndroidManifest.xml:19:5-19
+MERGED from [com.google.android.gms:play-services-analytics-impl:10.2.0] C:\Users\abcd\.android\build-cache\3f2f888ccc1a91d97ec9ab8fbbb0d340c0a5c305\output\AndroidManifest.xml:26:5-19
+MERGED from [com.google.android.gms:play-services-vision:10.2.0] C:\Users\abcd\.android\build-cache\eb37eb00ce6f862c0cd763e9b982dc92b5fd3ee7\output\AndroidManifest.xml:4:5-19
+MERGED from [com.google.android.gms:play-services-identity:10.2.0] C:\Users\abcd\.android\build-cache\03b1aee0dabee7c29c4b31b3046fc510dd188bde\output\AndroidManifest.xml:18:5-19
+MERGED from [com.google.android.gms:play-services-maps:10.2.0] C:\Users\abcd\.android\build-cache\20d77bc9967b29b439bbf67ca16bee00fd6ff557\output\AndroidManifest.xml:24:5-19
+MERGED from [com.google.android.gms:play-services-wearable:10.2.0] C:\Users\abcd\.android\build-cache\ca17234563071b662768f4158a63e98290db487c\output\AndroidManifest.xml:18:5-19
+MERGED from [com.google.firebase:firebase-auth:10.2.0] C:\Users\abcd\.android\build-cache\82de2a16e59eec0d30d40ee73a6cd6db8e756c1f\output\AndroidManifest.xml:19:5-20:19
+MERGED from [com.google.android.gms:play-services-base:10.2.0] C:\Users\abcd\.android\build-cache\2be9c39d20e428a5df89db44da6c36a7af61602e\output\AndroidManifest.xml:18:5-20:19
+MERGED from [com.google.firebase:firebase-messaging:10.2.0] C:\Users\abcd\.android\build-cache\0aea3ff0a4c5835750e5ba77ab0a94c36dcb8ebe\output\AndroidManifest.xml:19:5-29:19
+MERGED from [com.google.firebase:firebase-core:10.2.0] C:\Users\abcd\.android\build-cache\75b078a3569aceeaccfecb9ccc91c62991cfeb11\output\AndroidManifest.xml:5:5-20
+MERGED from [com.google.firebase:firebase-analytics:10.2.0] C:\Users\abcd\.android\build-cache\cb9beb599a9adfa6ff72535604c1d09f2344dca0\output\AndroidManifest.xml:24:5-33:19
+MERGED from [com.google.firebase:firebase-analytics-impl:10.2.0] C:\Users\abcd\.android\build-cache\8b280b1d6fe763b1787f53596801681942f5bfed\output\AndroidManifest.xml:24:5-28:19
+MERGED from [com.google.firebase:firebase-iid:10.2.0] C:\Users\abcd\.android\build-cache\3efa61bab28e7e9333a6c077c0b415ab9d540f62\output\AndroidManifest.xml:28:5-50:19
+MERGED from [com.google.firebase:firebase-common:10.2.0] C:\Users\abcd\.android\build-cache\40c3e7bb9692f3d2517bdc22644e0b356d1a6f36\output\AndroidManifest.xml:4:5-7:19
+MERGED from [com.google.android.gms:play-services-tasks:10.2.0] C:\Users\abcd\.android\build-cache\b0e6931ef1860c5e8e125bd0e4667a0691b9eacd\output\AndroidManifest.xml:4:5-19
+MERGED from [com.google.android.gms:play-services-basement:10.2.0] C:\Users\abcd\.android\build-cache\5239ea8b3ca7d4b519e1b38ce85084006055717b\output\AndroidManifest.xml:19:5-21:19
+MERGED from [com.android.support:support-v4:25.3.1] C:\Users\abcd\.android\build-cache\d1adbbf09b085d5a1602df0f6c45766c3d47969c\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\abcd\.android\build-cache\fd6f07c234bdf7bd32e8f313d15af8da20007293\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\abcd\.android\build-cache\7fca8b139eba1fc3fe3b1302d5770450ea66462f\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\abcd\.android\build-cache\305a14b3606e035f415002159b15e6a78396cb05\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\abcd\.android\build-cache\c2703be34ddd2a9ee04f4c7adde29fb016ac4806\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-compat:25.3.1] C:\Users\abcd\.android\build-cache\9d9d77e19fe8a3981ecf58b9a3bd3293fe80821f\output\AndroidManifest.xml:29:5-20
 	android:label
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:29:9-41
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:35:9-41
+	android:supportsRtl
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:38:9-35
+	android:hardwareAccelerated
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:33:9-44
 	android:allowBackup
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:27:9-35
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:32:9-35
 	android:icon
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:28:9-49
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:34:9-49
+	android:largeHeap
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:36:9-33
 	android:theme
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:31:9-51
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:39:9-40
 	android:logo
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:30:9-49
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:37:9-49
 activity#com.example.cricflex.ActivitySplash
-ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:32:9-38:20
+ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:40:9-49:20
+	android:screenOrientation
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:42:13-49
 	android:name
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:32:19-49
-intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:33:13-37:29
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:41:13-43
+intent-filter#android.bluetooth.device.action.ACL_CONNECTED+android.bluetooth.device.action.ACL_DISCONNECTED+android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:43:13-48:29
 action#android.intent.action.MAIN
-ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:34:17-69
+ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:44:17-69
 	android:name
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:34:25-66
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:44:25-66
+action#android.bluetooth.device.action.ACL_CONNECTED
+ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:45:17-88
+	android:name
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:45:25-85
+action#android.bluetooth.device.action.ACL_DISCONNECTED
+ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:46:17-91
+	android:name
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:46:25-88
 category#android.intent.category.LAUNCHER
-ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:36:17-77
+ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:47:17-77
 	android:name
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:36:27-74
-activity#com.example.cricflex.ActivityCalibrate
-ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:39:9-42:52
-	android:screenOrientation
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:42:13-49
-	android:label
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:41:13-37
-	android:name
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:40:13-46
-activity#com.example.cricflex.ActivitySetupProfile
-ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:43:9-46:52
-	android:screenOrientation
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:46:13-49
-	android:label
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:45:13-37
-	android:name
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:44:13-49
-activity#com.example.cricflex.ActivityEditProfile
-ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:47:9-50:52
-	android:screenOrientation
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:50:13-49
-	android:label
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:49:13-37
-	android:name
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:48:13-48
-activity#com.example.cricflex.ActivityWelcome
-ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:51:9-54:52
-	android:screenOrientation
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:54:13-49
-	android:label
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:53:13-37
-	android:name
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:52:13-44
-activity#com.example.cricflex.ActivityLogin
-ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:55:9-58:52
-	android:screenOrientation
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:58:13-49
-	android:label
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:57:13-37
-	android:name
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:56:13-42
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:47:27-74
 activity#com.example.cricflex.ActivityMain
-ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:59:9-63:56
+ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:50:9-54:59
 	android:screenOrientation
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:62:13-49
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:53:13-49
 	android:label
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:61:13-45
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:52:13-45
 	android:theme
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:63:13-53
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:54:13-56
 	android:name
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:60:13-41
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:51:13-41
+activity#com.example.cricflex.ActivityCalibrate
+ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:55:9-59:59
+	android:screenOrientation
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:58:13-49
+	android:label
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:57:13-37
+	android:theme
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:59:13-56
+	android:name
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:56:13-46
+activity#com.example.cricflex.ActivityProfile
+ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:60:9-64:59
+	android:screenOrientation
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:63:13-49
+	android:label
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:62:13-37
+	android:theme
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:64:13-56
+	android:name
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:61:13-44
+activity#com.example.cricflex.ActivityProfileSetup
+ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:65:9-69:59
+	android:screenOrientation
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:68:13-49
+	android:label
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:67:13-37
+	android:theme
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:69:13-56
+	android:name
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:66:13-49
+activity#com.example.cricflex.ActivityProfileEdit
+ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:70:9-74:59
+	android:screenOrientation
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:73:13-49
+	android:label
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:72:13-37
+	android:theme
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:74:13-56
+	android:name
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:71:13-48
+activity#com.example.cricflex.ActivityWelcome
+ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:75:9-79:59
+	android:screenOrientation
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:78:13-49
+	android:label
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:77:13-37
+	android:theme
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:79:13-56
+	android:name
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:76:13-44
+activity#com.example.cricflex.ActivityLogin
+ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:80:9-84:59
+	android:screenOrientation
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:83:13-49
+	android:label
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:82:13-37
+	android:theme
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:84:13-56
+	android:name
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:81:13-42
 activity#com.example.cricflex.ActivityRegister
-ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:64:9-67:52
+ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:85:9-90:58
 	android:screenOrientation
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:67:13-49
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:88:13-49
 	android:label
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:66:13-45
-	android:name
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:65:13-45
-activity#com.example.cricflex.ActivityMonitor2
-ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:68:9-71:52
-	android:screenOrientation
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:71:13-49
-	android:label
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:70:13-45
-	android:name
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:69:13-45
-activity#com.example.cricflex.ActivityGraph
-ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:72:9-74:47
-	android:label
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:74:13-44
-	android:name
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:73:13-42
-service#com.example.cricflex.RFDService
-ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:76:9-47
-	android:name
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:76:18-44
-activity#com.example.cricflex.ActivityGraph3
-ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:78:9-52
-	android:name
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:78:19-49
-activity#com.example.cricflex.ActivityGraph4
-ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:79:9-52
-	android:name
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:79:19-49
-activity#com.example.cricflex.ActivityGraph5
-ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:80:9-52
-	android:name
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:80:19-49
-activity#com.example.cricflex.TestActivitySessionStats
-ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:81:9-62
-	android:name
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:81:19-59
-activity#com.example.cricflex.ActivitySessionGraphs
-ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:82:9-59
-	android:name
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:82:19-56
-activity#com.example.cricflex.test_asawal
-ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:83:9-49
-	android:name
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:83:19-46
-activity#com.example.cricflex.TestActivitySetupProfile
-ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:84:9-62
-	android:name
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:84:19-59
-activity#com.example.cricflex.ActivitySessionStats
-ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:85:9-58
-	android:name
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:85:19-55
-activity#com.example.cricflex.ActivitySessionGraph
-ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:86:9-58
-	android:name
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:86:19-55
-activity#com.example.cricflex.ActivitySessionGraphActionTime
-ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:87:9-67
-	android:name
-		ADDED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml:87:19-65
-activity#com.google.android.gms.common.api.GoogleApiActivity
-ADDED from [com.google.android.gms:play-services-base:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\9.4.0\AndroidManifest.xml:20:9-22:45
-	android:exported
-		ADDED from [com.google.android.gms:play-services-base:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\9.4.0\AndroidManifest.xml:22:19-43
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:87:13-45
+	android:windowSoftInputMode
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:90:13-55
 	android:theme
-		ADDED from [com.google.android.gms:play-services-base:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\9.4.0\AndroidManifest.xml:21:19-78
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:89:13-56
 	android:name
-		ADDED from [com.google.android.gms:play-services-base:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\9.4.0\AndroidManifest.xml:20:19-85
-uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from [com.google.firebase:firebase-analytics:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\9.4.0\AndroidManifest.xml:22:5-79
-MERGED from [com.google.firebase:firebase-analytics-impl:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics-impl\9.4.0\AndroidManifest.xml:22:5-79
-MERGED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:20:5-79
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:86:13-45
+activity#com.example.cricflex.ActivityMonitor2
+ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:91:9-95:59
+	android:screenOrientation
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:94:13-49
+	android:label
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:93:13-45
+	android:theme
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:95:13-56
 	android:name
-		ADDED from [com.google.firebase:firebase-analytics:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\9.4.0\AndroidManifest.xml:22:22-76
-uses-permission#android.permission.WAKE_LOCK
-ADDED from [com.google.firebase:firebase-analytics:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\9.4.0\AndroidManifest.xml:24:5-67
-MERGED from [com.google.firebase:firebase-analytics-impl:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics-impl\9.4.0\AndroidManifest.xml:24:5-67
-MERGED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:22:5-68
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:92:13-45
+activity#com.example.cricflex.ActivitySessionStats
+ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:96:9-99:59
+	android:screenOrientation
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:98:13-49
+	android:theme
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:99:13-56
 	android:name
-		ADDED from [com.google.firebase:firebase-analytics:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\9.4.0\AndroidManifest.xml:24:22-65
-receiver#com.google.android.gms.measurement.AppMeasurementReceiver
-ADDED from [com.google.firebase:firebase-analytics:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\9.4.0\AndroidManifest.xml:28:7-34:18
-MERGED from [com.google.firebase:firebase-analytics-impl:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics-impl\9.4.0\AndroidManifest.xml:28:7-34:18
-	android:enabled
-		ADDED from [com.google.firebase:firebase-analytics:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\9.4.0\AndroidManifest.xml:30:11-33
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:97:13-49
+activity#com.example.cricflex.ActivitySessionGraph
+ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:100:9-103:59
+	android:screenOrientation
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:102:13-49
+	android:theme
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:103:13-56
 	android:name
-		ADDED from [com.google.firebase:firebase-analytics:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\9.4.0\AndroidManifest.xml:29:11-83
-intent-filter#com.google.android.gms.measurement.UPLOAD
-ADDED from [com.google.firebase:firebase-analytics:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\9.4.0\AndroidManifest.xml:31:9-33:25
-action#com.google.android.gms.measurement.UPLOAD
-ADDED from [com.google.firebase:firebase-analytics:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\9.4.0\AndroidManifest.xml:32:11-77
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:101:13-49
+activity#com.example.cricflex.ActivitySessionGraphActionTime
+ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:104:9-107:59
+	android:screenOrientation
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:106:13-49
+	android:theme
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:107:13-56
 	android:name
-		ADDED from [com.google.firebase:firebase-analytics:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\9.4.0\AndroidManifest.xml:32:19-75
-service#com.google.android.gms.measurement.AppMeasurementService
-ADDED from [com.google.firebase:firebase-analytics:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\9.4.0\AndroidManifest.xml:36:7-39:37
-MERGED from [com.google.firebase:firebase-analytics-impl:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics-impl\9.4.0\AndroidManifest.xml:36:7-39:37
-	android:enabled
-		ADDED from [com.google.firebase:firebase-analytics:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\9.4.0\AndroidManifest.xml:38:11-33
-	android:exported
-		ADDED from [com.google.firebase:firebase-analytics:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\9.4.0\AndroidManifest.xml:39:11-35
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:105:13-59
+activity#com.example.cricflex.test_asawal
+ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:108:9-110:52
+	android:screenOrientation
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:110:13-49
 	android:name
-		ADDED from [com.google.firebase:firebase-analytics:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\9.4.0\AndroidManifest.xml:37:11-82
-uses-permission#com.google.android.c2dm.permission.RECEIVE
-ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:23:5-82
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:109:13-40
+activity#com.example.cricflex.ActivityTour
+ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:112:9-115:59
+	android:screenOrientation
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:114:13-49
+	android:theme
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:115:13-56
 	android:name
-		ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:23:22-79
-permission#${applicationId}.permission.C2D_MESSAGE
-ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:25:5-26:47
-	android:protectionLevel
-		ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:26:9-44
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:113:13-41
+service#com.example.cricflex.RFDService
+ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:117:9-47
 	android:name
-		ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:25:17-71
-		INJECTED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml
-uses-permission#${applicationId}.permission.C2D_MESSAGE
-ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:28:5-79
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:117:18-44
+service#com.example.cricflex.MyFirebaseInstanceIDService
+ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:121:9-126:19
 	android:name
-		ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:28:22-76
-		INJECTED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml
-receiver#com.google.firebase.iid.FirebaseInstanceIdReceiver
-ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:32:9-41:20
-	android:exported
-		ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:34:13-36
-	android:permission
-		ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:35:13-73
-	android:name
-		ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:33:13-78
-intent-filter#${applicationId}+com.google.android.c2dm.intent.RECEIVE+com.google.android.c2dm.intent.REGISTRATION
-ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:36:13-40:29
-action#com.google.android.c2dm.intent.RECEIVE
-ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:37:17-81
-	android:name
-		ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:37:25-78
-action#com.google.android.c2dm.intent.REGISTRATION
-ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:38:17-86
-	android:name
-		ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:38:25-83
-category#${applicationId}
-ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:39:17-61
-	android:name
-		ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:39:27-58
-		INJECTED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml
-receiver#com.google.firebase.iid.FirebaseInstanceIdInternalReceiver
-ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:45:9-47:40
-	android:exported
-		ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:47:13-37
-	android:name
-		ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:46:13-86
-service#com.google.firebase.iid.FirebaseInstanceIdService
-ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:51:9-57:19
-	android:exported
-		ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:53:13-36
-	android:name
-		ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:52:13-77
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:122:13-56
 intent-filter#com.google.firebase.INSTANCE_ID_EVENT
-ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:54:13-56:29
-	android:priority
-		ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:54:28-51
+ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:123:13-125:29
 action#com.google.firebase.INSTANCE_ID_EVENT
-ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:55:17-80
+ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:124:17-79
 	android:name
-		ADDED from [com.google.firebase:firebase-iid:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.4.0\AndroidManifest.xml:55:25-77
-provider#com.google.firebase.provider.FirebaseInitProvider
-ADDED from [com.google.firebase:firebase-common:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-common\9.4.0\AndroidManifest.xml:7:9-11:39
-	android:authorities
-		ADDED from [com.google.firebase:firebase-common:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-common\9.4.0\AndroidManifest.xml:8:13-72
-		INJECTED from C:\CricFlex\App\Cricflex+Firebase\CricFlex\AndroidManifest.xml
-	android:exported
-		ADDED from [com.google.firebase:firebase-common:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-common\9.4.0\AndroidManifest.xml:10:13-37
-	android:initOrder
-		ADDED from [com.google.firebase:firebase-common:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-common\9.4.0\AndroidManifest.xml:11:13-36
-	android:name
-		ADDED from [com.google.firebase:firebase-common:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.firebase\firebase-common\9.4.0\AndroidManifest.xml:9:13-58
-meta-data#com.google.android.gms.version
-ADDED from [com.google.android.gms:play-services-basement:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\9.4.0\AndroidManifest.xml:21:9-23:69
+		ADDED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml:124:25-77
+meta-data#android.support.VERSION
+ADDED from [com.android.support:design:25.3.1] C:\Users\abcd\.android\build-cache\c2d1e7097bedb5270f47adbbbafb1d261dea6e21\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:recyclerview-v7:25.3.1] C:\Users\abcd\.android\build-cache\3968e9a3470ef8e7acdd1281fef8928fd9e326fc\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:transition:25.3.1] C:\Users\abcd\.android\build-cache\ff3671352f96a8ab52bba3c252fce9033a054671\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:percent:25.3.1] C:\Users\abcd\.android\build-cache\4507b30f4f6a3ddce9bc208d32c67fd8ea40c7af\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\abcd\.android\build-cache\e12459b98615706619a0fcc998e30e6bf83e00dd\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\abcd\.android\build-cache\3fcf4b516e7d05c4908d9d4c9a4a8f2a315b6f5c\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\abcd\.android\build-cache\6d010dceb9813b422bfe87b94543114aec42ee52\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:support-v4:25.3.1] C:\Users\abcd\.android\build-cache\d1adbbf09b085d5a1602df0f6c45766c3d47969c\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\abcd\.android\build-cache\fd6f07c234bdf7bd32e8f313d15af8da20007293\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\abcd\.android\build-cache\7fca8b139eba1fc3fe3b1302d5770450ea66462f\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\abcd\.android\build-cache\305a14b3606e035f415002159b15e6a78396cb05\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\abcd\.android\build-cache\c2703be34ddd2a9ee04f4c7adde29fb016ac4806\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-compat:25.3.1] C:\Users\abcd\.android\build-cache\9d9d77e19fe8a3981ecf58b9a3bd3293fe80821f\output\AndroidManifest.xml:25:5-27:34
 	android:value
-		ADDED from [com.google.android.gms:play-services-basement:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\9.4.0\AndroidManifest.xml:23:13-66
+		ADDED from [com.android.support:design:25.3.1] C:\Users\abcd\.android\build-cache\c2d1e7097bedb5270f47adbbbafb1d261dea6e21\output\AndroidManifest.xml:27:9-31
 	android:name
-		ADDED from [com.google.android.gms:play-services-basement:9.4.0] C:\CricFlex\App\Cricflex+Firebase\CricFlex\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\9.4.0\AndroidManifest.xml:22:13-58
+		ADDED from [com.android.support:design:25.3.1] C:\Users\abcd\.android\build-cache\c2d1e7097bedb5270f47adbbbafb1d261dea6e21\output\AndroidManifest.xml:26:9-47
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from [com.google.android.gms:play-services-ads-lite:10.2.0] C:\Users\abcd\.android\build-cache\16bab3d94a3c5c5c970062cd8a5d7c8317008520\output\AndroidManifest.xml:20:5-78
+MERGED from [com.google.android.gms:play-services-analytics:10.2.0] C:\Users\abcd\.android\build-cache\25321f4257bc51fc02ed2e495cd78a6b1fe15e1d\output\AndroidManifest.xml:21:5-78
+MERGED from [com.google.android.gms:play-services-nearby:10.2.0] C:\Users\abcd\.android\build-cache\f858ca5d8f81d5923a92e58214df318592a4fccb\output\AndroidManifest.xml:4:5-78
+MERGED from [com.google.android.gms:play-services-tagmanager-api:10.2.0] C:\Users\abcd\.android\build-cache\6c297d12f730ad387325234b8fff694ad36875e9\output\AndroidManifest.xml:21:5-78
+MERGED from [com.google.android.gms:play-services-analytics-impl:10.2.0] C:\Users\abcd\.android\build-cache\3f2f888ccc1a91d97ec9ab8fbbb0d340c0a5c305\output\AndroidManifest.xml:21:5-78
+MERGED from [com.google.android.gms:play-services-maps:10.2.0] C:\Users\abcd\.android\build-cache\20d77bc9967b29b439bbf67ca16bee00fd6ff557\output\AndroidManifest.xml:19:5-78
+MERGED from [com.google.firebase:firebase-analytics:10.2.0] C:\Users\abcd\.android\build-cache\cb9beb599a9adfa6ff72535604c1d09f2344dca0\output\AndroidManifest.xml:21:5-78
+MERGED from [com.google.firebase:firebase-analytics-impl:10.2.0] C:\Users\abcd\.android\build-cache\8b280b1d6fe763b1787f53596801681942f5bfed\output\AndroidManifest.xml:21:5-78
+MERGED from [com.google.firebase:firebase-iid:10.2.0] C:\Users\abcd\.android\build-cache\3efa61bab28e7e9333a6c077c0b415ab9d540f62\output\AndroidManifest.xml:19:5-78
+	android:name
+		ADDED from [com.google.android.gms:play-services-ads-lite:10.2.0] C:\Users\abcd\.android\build-cache\16bab3d94a3c5c5c970062cd8a5d7c8317008520\output\AndroidManifest.xml:20:22-76
+activity#com.google.android.gms.ads.AdActivity
+ADDED from [com.google.android.gms:play-services-ads-lite:10.2.0] C:\Users\abcd\.android\build-cache\16bab3d94a3c5c5c970062cd8a5d7c8317008520\output\AndroidManifest.xml:25:9-232
+	android:configChanges
+		ADDED from [com.google.android.gms:play-services-ads-lite:10.2.0] C:\Users\abcd\.android\build-cache\16bab3d94a3c5c5c970062cd8a5d7c8317008520\output\AndroidManifest.xml:25:72-181
+	android:theme
+		ADDED from [com.google.android.gms:play-services-ads-lite:10.2.0] C:\Users\abcd\.android\build-cache\16bab3d94a3c5c5c970062cd8a5d7c8317008520\output\AndroidManifest.xml:25:182-230
+	android:name
+		ADDED from [com.google.android.gms:play-services-ads-lite:10.2.0] C:\Users\abcd\.android\build-cache\16bab3d94a3c5c5c970062cd8a5d7c8317008520\output\AndroidManifest.xml:25:19-71
+activity#com.google.android.gms.ads.purchase.InAppPurchaseActivity
+ADDED from [com.google.android.gms:play-services-ads-lite:10.2.0] C:\Users\abcd\.android\build-cache\16bab3d94a3c5c5c970062cd8a5d7c8317008520\output\AndroidManifest.xml:26:9-131
+	android:theme
+		ADDED from [com.google.android.gms:play-services-ads-lite:10.2.0] C:\Users\abcd\.android\build-cache\16bab3d94a3c5c5c970062cd8a5d7c8317008520\output\AndroidManifest.xml:26:92-129
+	android:name
+		ADDED from [com.google.android.gms:play-services-ads-lite:10.2.0] C:\Users\abcd\.android\build-cache\16bab3d94a3c5c5c970062cd8a5d7c8317008520\output\AndroidManifest.xml:26:19-91
+uses-permission#android.permission.WAKE_LOCK
+ADDED from [com.google.android.gms:play-services-analytics:10.2.0] C:\Users\abcd\.android\build-cache\25321f4257bc51fc02ed2e495cd78a6b1fe15e1d\output\AndroidManifest.xml:24:5-67
+MERGED from [com.google.android.gms:play-services-analytics-impl:10.2.0] C:\Users\abcd\.android\build-cache\3f2f888ccc1a91d97ec9ab8fbbb0d340c0a5c305\output\AndroidManifest.xml:24:5-67
+MERGED from [com.google.firebase:firebase-analytics:10.2.0] C:\Users\abcd\.android\build-cache\cb9beb599a9adfa6ff72535604c1d09f2344dca0\output\AndroidManifest.xml:22:5-67
+MERGED from [com.google.firebase:firebase-analytics-impl:10.2.0] C:\Users\abcd\.android\build-cache\8b280b1d6fe763b1787f53596801681942f5bfed\output\AndroidManifest.xml:22:5-67
+MERGED from [com.google.firebase:firebase-iid:10.2.0] C:\Users\abcd\.android\build-cache\3efa61bab28e7e9333a6c077c0b415ab9d540f62\output\AndroidManifest.xml:21:5-67
+	android:name
+		ADDED from [com.google.android.gms:play-services-analytics:10.2.0] C:\Users\abcd\.android\build-cache\25321f4257bc51fc02ed2e495cd78a6b1fe15e1d\output\AndroidManifest.xml:24:22-65
+activity#com.google.android.gms.appinvite.PreviewActivity
+ADDED from [com.google.android.gms:play-services-appinvite:10.2.0] C:\Users\abcd\.android\build-cache\d8eff5583782de58127721de0f2282a23e2469ca\output\AndroidManifest.xml:20:9-25:20
+	android:exported
+		ADDED from [com.google.android.gms:play-services-appinvite:10.2.0] C:\Users\abcd\.android\build-cache\d8eff5583782de58127721de0f2282a23e2469ca\output\AndroidManifest.xml:20:51-74
+	android:theme
+		ADDED from [com.google.android.gms:play-services-appinvite:10.2.0] C:\Users\abcd\.android\build-cache\d8eff5583782de58127721de0f2282a23e2469ca\output\AndroidManifest.xml:20:75-121
+	android:name
+		ADDED from [com.google.android.gms:play-services-appinvite:10.2.0] C:\Users\abcd\.android\build-cache\d8eff5583782de58127721de0f2282a23e2469ca\output\AndroidManifest.xml:20:19-50
+intent-filter#android.intent.category.DEFAULT+com.google.android.gms.appinvite.ACTION_PREVIEW
+ADDED from [com.google.android.gms:play-services-appinvite:10.2.0] C:\Users\abcd\.android\build-cache\d8eff5583782de58127721de0f2282a23e2469ca\output\AndroidManifest.xml:21:13-24:29
+action#com.google.android.gms.appinvite.ACTION_PREVIEW
+ADDED from [com.google.android.gms:play-services-appinvite:10.2.0] C:\Users\abcd\.android\build-cache\d8eff5583782de58127721de0f2282a23e2469ca\output\AndroidManifest.xml:22:17-89
+	android:name
+		ADDED from [com.google.android.gms:play-services-appinvite:10.2.0] C:\Users\abcd\.android\build-cache\d8eff5583782de58127721de0f2282a23e2469ca\output\AndroidManifest.xml:22:25-87
+category#android.intent.category.DEFAULT
+ADDED from [com.google.android.gms:play-services-appinvite:10.2.0] C:\Users\abcd\.android\build-cache\d8eff5583782de58127721de0f2282a23e2469ca\output\AndroidManifest.xml:23:17-75
+	android:name
+		ADDED from [com.google.android.gms:play-services-appinvite:10.2.0] C:\Users\abcd\.android\build-cache\d8eff5583782de58127721de0f2282a23e2469ca\output\AndroidManifest.xml:23:27-73
+activity#com.google.android.gms.auth.api.signin.internal.SignInHubActivity
+ADDED from [com.google.android.gms:play-services-auth:10.2.0] C:\Users\abcd\.android\build-cache\62fbaa02f92c12cc6eee3b7000a618de5e7e7fc7\output\AndroidManifest.xml:20:9-189
+	android:excludeFromRecents
+		ADDED from [com.google.android.gms:play-services-auth:10.2.0] C:\Users\abcd\.android\build-cache\62fbaa02f92c12cc6eee3b7000a618de5e7e7fc7\output\AndroidManifest.xml:20:129-162
+	android:exported
+		ADDED from [com.google.android.gms:play-services-auth:10.2.0] C:\Users\abcd\.android\build-cache\62fbaa02f92c12cc6eee3b7000a618de5e7e7fc7\output\AndroidManifest.xml:20:163-187
+	android:theme
+		ADDED from [com.google.android.gms:play-services-auth:10.2.0] C:\Users\abcd\.android\build-cache\62fbaa02f92c12cc6eee3b7000a618de5e7e7fc7\output\AndroidManifest.xml:20:69-128
+	android:name
+		ADDED from [com.google.android.gms:play-services-auth:10.2.0] C:\Users\abcd\.android\build-cache\62fbaa02f92c12cc6eee3b7000a618de5e7e7fc7\output\AndroidManifest.xml:20:19-68
+service#com.google.android.gms.auth.api.signin.RevocationBoundService
+ADDED from [com.google.android.gms:play-services-auth:10.2.0] C:\Users\abcd\.android\build-cache\62fbaa02f92c12cc6eee3b7000a618de5e7e7fc7\output\AndroidManifest.xml:24:9-184
+	android:exported
+		ADDED from [com.google.android.gms:play-services-auth:10.2.0] C:\Users\abcd\.android\build-cache\62fbaa02f92c12cc6eee3b7000a618de5e7e7fc7\output\AndroidManifest.xml:24:64-87
+	android:permission
+		ADDED from [com.google.android.gms:play-services-auth:10.2.0] C:\Users\abcd\.android\build-cache\62fbaa02f92c12cc6eee3b7000a618de5e7e7fc7\output\AndroidManifest.xml:24:88-182
+	android:name
+		ADDED from [com.google.android.gms:play-services-auth:10.2.0] C:\Users\abcd\.android\build-cache\62fbaa02f92c12cc6eee3b7000a618de5e7e7fc7\output\AndroidManifest.xml:24:18-63
+receiver#com.google.android.gms.cast.framework.media.MediaIntentReceiver
+ADDED from [com.google.android.gms:play-services-cast-framework:10.2.0] C:\Users\abcd\.android\build-cache\e75106f263df150f0cd37d426b48050697a77889\output\AndroidManifest.xml:5:9-99
+	android:name
+		ADDED from [com.google.android.gms:play-services-cast-framework:10.2.0] C:\Users\abcd\.android\build-cache\e75106f263df150f0cd37d426b48050697a77889\output\AndroidManifest.xml:5:19-97
+service#com.google.android.gms.cast.framework.media.MediaNotificationService
+ADDED from [com.google.android.gms:play-services-cast-framework:10.2.0] C:\Users\abcd\.android\build-cache\e75106f263df150f0cd37d426b48050697a77889\output\AndroidManifest.xml:6:9-103
+	android:name
+		ADDED from [com.google.android.gms:play-services-cast-framework:10.2.0] C:\Users\abcd\.android\build-cache\e75106f263df150f0cd37d426b48050697a77889\output\AndroidManifest.xml:6:18-101
+service#com.google.android.gms.cast.framework.ReconnectionService
+ADDED from [com.google.android.gms:play-services-cast-framework:10.2.0] C:\Users\abcd\.android\build-cache\e75106f263df150f0cd37d426b48050697a77889\output\AndroidManifest.xml:7:9-92
+	android:name
+		ADDED from [com.google.android.gms:play-services-cast-framework:10.2.0] C:\Users\abcd\.android\build-cache\e75106f263df150f0cd37d426b48050697a77889\output\AndroidManifest.xml:7:18-90
+uses-permission#com.google.android.c2dm.permission.RECEIVE
+ADDED from [com.google.android.gms:play-services-gcm:10.2.0] C:\Users\abcd\.android\build-cache\ec79e489724ed074d250a53870dda770752946ef\output\AndroidManifest.xml:20:5-81
+MERGED from [com.google.android.gms:play-services-iid:10.2.0] C:\Users\abcd\.android\build-cache\3a5477333325bfec5d0d99644ed35f5c68089bde\output\AndroidManifest.xml:20:5-81
+MERGED from [com.google.firebase:firebase-iid:10.2.0] C:\Users\abcd\.android\build-cache\3efa61bab28e7e9333a6c077c0b415ab9d540f62\output\AndroidManifest.xml:22:5-81
+	android:name
+		ADDED from [com.google.android.gms:play-services-gcm:10.2.0] C:\Users\abcd\.android\build-cache\ec79e489724ed074d250a53870dda770752946ef\output\AndroidManifest.xml:20:22-79
+service#com.google.android.gms.tagmanager.TagManagerService
+ADDED from [com.google.android.gms:play-services-tagmanager-api:10.2.0] C:\Users\abcd\.android\build-cache\6c297d12f730ad387325234b8fff694ad36875e9\output\AndroidManifest.xml:24:9-134
+	android:enabled
+		ADDED from [com.google.android.gms:play-services-tagmanager-api:10.2.0] C:\Users\abcd\.android\build-cache\6c297d12f730ad387325234b8fff694ad36875e9\output\AndroidManifest.xml:24:110-132
+	android:exported
+		ADDED from [com.google.android.gms:play-services-tagmanager-api:10.2.0] C:\Users\abcd\.android\build-cache\6c297d12f730ad387325234b8fff694ad36875e9\output\AndroidManifest.xml:24:85-109
+	android:name
+		ADDED from [com.google.android.gms:play-services-tagmanager-api:10.2.0] C:\Users\abcd\.android\build-cache\6c297d12f730ad387325234b8fff694ad36875e9\output\AndroidManifest.xml:24:18-84
+activity#com.google.android.gms.tagmanager.TagManagerPreviewActivity
+ADDED from [com.google.android.gms:play-services-tagmanager-api:10.2.0] C:\Users\abcd\.android\build-cache\6c297d12f730ad387325234b8fff694ad36875e9\output\AndroidManifest.xml:25:9-32:20
+	android:noHistory
+		ADDED from [com.google.android.gms:play-services-tagmanager-api:10.2.0] C:\Users\abcd\.android\build-cache\6c297d12f730ad387325234b8fff694ad36875e9\output\AndroidManifest.xml:25:94-118
+	android:name
+		ADDED from [com.google.android.gms:play-services-tagmanager-api:10.2.0] C:\Users\abcd\.android\build-cache\6c297d12f730ad387325234b8fff694ad36875e9\output\AndroidManifest.xml:25:19-93
+intent-filter#android.intent.action.VIEW+android.intent.category.BROWSABLE+android.intent.category.DEFAULT
+ADDED from [com.google.android.gms:play-services-tagmanager-api:10.2.0] C:\Users\abcd\.android\build-cache\6c297d12f730ad387325234b8fff694ad36875e9\output\AndroidManifest.xml:26:13-31:29
+data
+ADDED from [com.google.android.gms:play-services-tagmanager-api:10.2.0] C:\Users\abcd\.android\build-cache\6c297d12f730ad387325234b8fff694ad36875e9\output\AndroidManifest.xml:27:17-71
+	android:scheme
+		ADDED from [com.google.android.gms:play-services-tagmanager-api:10.2.0] C:\Users\abcd\.android\build-cache\6c297d12f730ad387325234b8fff694ad36875e9\output\AndroidManifest.xml:27:23-69
+		INJECTED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml
+action#android.intent.action.VIEW
+ADDED from [com.google.android.gms:play-services-tagmanager-api:10.2.0] C:\Users\abcd\.android\build-cache\6c297d12f730ad387325234b8fff694ad36875e9\output\AndroidManifest.xml:28:17-68
+	android:name
+		ADDED from [com.google.android.gms:play-services-tagmanager-api:10.2.0] C:\Users\abcd\.android\build-cache\6c297d12f730ad387325234b8fff694ad36875e9\output\AndroidManifest.xml:28:25-66
+category#android.intent.category.BROWSABLE
+ADDED from [com.google.android.gms:play-services-tagmanager-api:10.2.0] C:\Users\abcd\.android\build-cache\6c297d12f730ad387325234b8fff694ad36875e9\output\AndroidManifest.xml:30:17-77
+	android:name
+		ADDED from [com.google.android.gms:play-services-tagmanager-api:10.2.0] C:\Users\abcd\.android\build-cache\6c297d12f730ad387325234b8fff694ad36875e9\output\AndroidManifest.xml:30:27-75
+uses-feature#0x00020000
+ADDED from [com.google.android.gms:play-services-maps:10.2.0] C:\Users\abcd\.android\build-cache\20d77bc9967b29b439bbf67ca16bee00fd6ff557\output\AndroidManifest.xml:21:5-77
+	android:glEsVersion
+		ADDED from [com.google.android.gms:play-services-maps:10.2.0] C:\Users\abcd\.android\build-cache\20d77bc9967b29b439bbf67ca16bee00fd6ff557\output\AndroidManifest.xml:21:19-51
+	android:required
+		ADDED from [com.google.android.gms:play-services-maps:10.2.0] C:\Users\abcd\.android\build-cache\20d77bc9967b29b439bbf67ca16bee00fd6ff557\output\AndroidManifest.xml:21:52-75
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:10.2.0] C:\Users\abcd\.android\build-cache\2be9c39d20e428a5df89db44da6c36a7af61602e\output\AndroidManifest.xml:19:9-172
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:10.2.0] C:\Users\abcd\.android\build-cache\2be9c39d20e428a5df89db44da6c36a7af61602e\output\AndroidManifest.xml:19:146-170
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:10.2.0] C:\Users\abcd\.android\build-cache\2be9c39d20e428a5df89db44da6c36a7af61602e\output\AndroidManifest.xml:19:86-145
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:10.2.0] C:\Users\abcd\.android\build-cache\2be9c39d20e428a5df89db44da6c36a7af61602e\output\AndroidManifest.xml:19:19-85
+service#com.google.firebase.messaging.FirebaseMessagingService
+ADDED from [com.google.firebase:firebase-messaging:10.2.0] C:\Users\abcd\.android\build-cache\0aea3ff0a4c5835750e5ba77ab0a94c36dcb8ebe\output\AndroidManifest.xml:23:9-27:19
+	android:exported
+		ADDED from [com.google.firebase:firebase-messaging:10.2.0] C:\Users\abcd\.android\build-cache\0aea3ff0a4c5835750e5ba77ab0a94c36dcb8ebe\output\AndroidManifest.xml:23:88-111
+	android:name
+		ADDED from [com.google.firebase:firebase-messaging:10.2.0] C:\Users\abcd\.android\build-cache\0aea3ff0a4c5835750e5ba77ab0a94c36dcb8ebe\output\AndroidManifest.xml:23:18-87
+intent-filter#com.google.firebase.MESSAGING_EVENT
+ADDED from [com.google.firebase:firebase-messaging:10.2.0] C:\Users\abcd\.android\build-cache\0aea3ff0a4c5835750e5ba77ab0a94c36dcb8ebe\output\AndroidManifest.xml:24:13-26:29
+	android:priority
+		ADDED from [com.google.firebase:firebase-messaging:10.2.0] C:\Users\abcd\.android\build-cache\0aea3ff0a4c5835750e5ba77ab0a94c36dcb8ebe\output\AndroidManifest.xml:24:28-51
+action#com.google.firebase.MESSAGING_EVENT
+ADDED from [com.google.firebase:firebase-messaging:10.2.0] C:\Users\abcd\.android\build-cache\0aea3ff0a4c5835750e5ba77ab0a94c36dcb8ebe\output\AndroidManifest.xml:25:17-77
+	android:name
+		ADDED from [com.google.firebase:firebase-messaging:10.2.0] C:\Users\abcd\.android\build-cache\0aea3ff0a4c5835750e5ba77ab0a94c36dcb8ebe\output\AndroidManifest.xml:25:25-75
+receiver#com.google.android.gms.measurement.AppMeasurementReceiver
+ADDED from [com.google.firebase:firebase-analytics:10.2.0] C:\Users\abcd\.android\build-cache\cb9beb599a9adfa6ff72535604c1d09f2344dca0\output\AndroidManifest.xml:25:7-26:18
+MERGED from [com.google.firebase:firebase-analytics-impl:10.2.0] C:\Users\abcd\.android\build-cache\8b280b1d6fe763b1787f53596801681942f5bfed\output\AndroidManifest.xml:25:7-26:18
+	android:enabled
+		ADDED from [com.google.firebase:firebase-analytics:10.2.0] C:\Users\abcd\.android\build-cache\cb9beb599a9adfa6ff72535604c1d09f2344dca0\output\AndroidManifest.xml:25:90-112
+	android:exported
+		ADDED from [com.google.firebase:firebase-analytics:10.2.0] C:\Users\abcd\.android\build-cache\cb9beb599a9adfa6ff72535604c1d09f2344dca0\output\AndroidManifest.xml:25:113-137
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:10.2.0] C:\Users\abcd\.android\build-cache\cb9beb599a9adfa6ff72535604c1d09f2344dca0\output\AndroidManifest.xml:25:17-89
+receiver#com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver
+ADDED from [com.google.firebase:firebase-analytics:10.2.0] C:\Users\abcd\.android\build-cache\cb9beb599a9adfa6ff72535604c1d09f2344dca0\output\AndroidManifest.xml:27:7-31:18
+	android:enabled
+		ADDED from [com.google.firebase:firebase-analytics:10.2.0] C:\Users\abcd\.android\build-cache\cb9beb599a9adfa6ff72535604c1d09f2344dca0\output\AndroidManifest.xml:27:162-184
+	android:permission
+		ADDED from [com.google.firebase:firebase-analytics:10.2.0] C:\Users\abcd\.android\build-cache\cb9beb599a9adfa6ff72535604c1d09f2344dca0\output\AndroidManifest.xml:27:105-161
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:10.2.0] C:\Users\abcd\.android\build-cache\cb9beb599a9adfa6ff72535604c1d09f2344dca0\output\AndroidManifest.xml:27:17-104
+intent-filter#com.android.vending.INSTALL_REFERRER
+ADDED from [com.google.firebase:firebase-analytics:10.2.0] C:\Users\abcd\.android\build-cache\cb9beb599a9adfa6ff72535604c1d09f2344dca0\output\AndroidManifest.xml:28:11-30:27
+action#com.android.vending.INSTALL_REFERRER
+ADDED from [com.google.firebase:firebase-analytics:10.2.0] C:\Users\abcd\.android\build-cache\cb9beb599a9adfa6ff72535604c1d09f2344dca0\output\AndroidManifest.xml:29:15-76
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:10.2.0] C:\Users\abcd\.android\build-cache\cb9beb599a9adfa6ff72535604c1d09f2344dca0\output\AndroidManifest.xml:29:23-74
+service#com.google.android.gms.measurement.AppMeasurementService
+ADDED from [com.google.firebase:firebase-analytics:10.2.0] C:\Users\abcd\.android\build-cache\cb9beb599a9adfa6ff72535604c1d09f2344dca0\output\AndroidManifest.xml:32:7-137
+MERGED from [com.google.firebase:firebase-analytics-impl:10.2.0] C:\Users\abcd\.android\build-cache\8b280b1d6fe763b1787f53596801681942f5bfed\output\AndroidManifest.xml:27:7-137
+	android:enabled
+		ADDED from [com.google.firebase:firebase-analytics:10.2.0] C:\Users\abcd\.android\build-cache\cb9beb599a9adfa6ff72535604c1d09f2344dca0\output\AndroidManifest.xml:32:88-110
+	android:exported
+		ADDED from [com.google.firebase:firebase-analytics:10.2.0] C:\Users\abcd\.android\build-cache\cb9beb599a9adfa6ff72535604c1d09f2344dca0\output\AndroidManifest.xml:32:111-135
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:10.2.0] C:\Users\abcd\.android\build-cache\cb9beb599a9adfa6ff72535604c1d09f2344dca0\output\AndroidManifest.xml:32:16-87
+permission#${applicationId}.permission.C2D_MESSAGE
+ADDED from [com.google.firebase:firebase-iid:10.2.0] C:\Users\abcd\.android\build-cache\3efa61bab28e7e9333a6c077c0b415ab9d540f62\output\AndroidManifest.xml:24:5-109
+	android:protectionLevel
+		ADDED from [com.google.firebase:firebase-iid:10.2.0] C:\Users\abcd\.android\build-cache\3efa61bab28e7e9333a6c077c0b415ab9d540f62\output\AndroidManifest.xml:24:72-107
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:10.2.0] C:\Users\abcd\.android\build-cache\3efa61bab28e7e9333a6c077c0b415ab9d540f62\output\AndroidManifest.xml:24:17-71
+		INJECTED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml
+uses-permission#${applicationId}.permission.C2D_MESSAGE
+ADDED from [com.google.firebase:firebase-iid:10.2.0] C:\Users\abcd\.android\build-cache\3efa61bab28e7e9333a6c077c0b415ab9d540f62\output\AndroidManifest.xml:26:5-78
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:10.2.0] C:\Users\abcd\.android\build-cache\3efa61bab28e7e9333a6c077c0b415ab9d540f62\output\AndroidManifest.xml:26:22-76
+		INJECTED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml
+receiver#com.google.firebase.iid.FirebaseInstanceIdReceiver
+ADDED from [com.google.firebase:firebase-iid:10.2.0] C:\Users\abcd\.android\build-cache\3efa61bab28e7e9333a6c077c0b415ab9d540f62\output\AndroidManifest.xml:30:9-36:20
+	android:exported
+		ADDED from [com.google.firebase:firebase-iid:10.2.0] C:\Users\abcd\.android\build-cache\3efa61bab28e7e9333a6c077c0b415ab9d540f62\output\AndroidManifest.xml:30:85-108
+	android:permission
+		ADDED from [com.google.firebase:firebase-iid:10.2.0] C:\Users\abcd\.android\build-cache\3efa61bab28e7e9333a6c077c0b415ab9d540f62\output\AndroidManifest.xml:30:109-169
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:10.2.0] C:\Users\abcd\.android\build-cache\3efa61bab28e7e9333a6c077c0b415ab9d540f62\output\AndroidManifest.xml:30:19-84
+intent-filter#${applicationId}+com.google.android.c2dm.intent.RECEIVE+com.google.android.c2dm.intent.REGISTRATION
+ADDED from [com.google.firebase:firebase-iid:10.2.0] C:\Users\abcd\.android\build-cache\3efa61bab28e7e9333a6c077c0b415ab9d540f62\output\AndroidManifest.xml:31:13-35:29
+action#com.google.android.c2dm.intent.RECEIVE
+ADDED from [com.google.firebase:firebase-iid:10.2.0] C:\Users\abcd\.android\build-cache\3efa61bab28e7e9333a6c077c0b415ab9d540f62\output\AndroidManifest.xml:32:17-80
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:10.2.0] C:\Users\abcd\.android\build-cache\3efa61bab28e7e9333a6c077c0b415ab9d540f62\output\AndroidManifest.xml:32:25-78
+action#com.google.android.c2dm.intent.REGISTRATION
+ADDED from [com.google.firebase:firebase-iid:10.2.0] C:\Users\abcd\.android\build-cache\3efa61bab28e7e9333a6c077c0b415ab9d540f62\output\AndroidManifest.xml:33:17-85
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:10.2.0] C:\Users\abcd\.android\build-cache\3efa61bab28e7e9333a6c077c0b415ab9d540f62\output\AndroidManifest.xml:33:25-83
+category#${applicationId}
+ADDED from [com.google.firebase:firebase-iid:10.2.0] C:\Users\abcd\.android\build-cache\3efa61bab28e7e9333a6c077c0b415ab9d540f62\output\AndroidManifest.xml:34:17-60
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:10.2.0] C:\Users\abcd\.android\build-cache\3efa61bab28e7e9333a6c077c0b415ab9d540f62\output\AndroidManifest.xml:34:27-58
+		INJECTED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml
+receiver#com.google.firebase.iid.FirebaseInstanceIdInternalReceiver
+ADDED from [com.google.firebase:firebase-iid:10.2.0] C:\Users\abcd\.android\build-cache\3efa61bab28e7e9333a6c077c0b415ab9d540f62\output\AndroidManifest.xml:40:9-119
+	android:exported
+		ADDED from [com.google.firebase:firebase-iid:10.2.0] C:\Users\abcd\.android\build-cache\3efa61bab28e7e9333a6c077c0b415ab9d540f62\output\AndroidManifest.xml:40:93-117
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:10.2.0] C:\Users\abcd\.android\build-cache\3efa61bab28e7e9333a6c077c0b415ab9d540f62\output\AndroidManifest.xml:40:19-92
+service#com.google.firebase.iid.FirebaseInstanceIdService
+ADDED from [com.google.firebase:firebase-iid:10.2.0] C:\Users\abcd\.android\build-cache\3efa61bab28e7e9333a6c077c0b415ab9d540f62\output\AndroidManifest.xml:44:9-48:19
+	android:exported
+		ADDED from [com.google.firebase:firebase-iid:10.2.0] C:\Users\abcd\.android\build-cache\3efa61bab28e7e9333a6c077c0b415ab9d540f62\output\AndroidManifest.xml:44:83-106
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:10.2.0] C:\Users\abcd\.android\build-cache\3efa61bab28e7e9333a6c077c0b415ab9d540f62\output\AndroidManifest.xml:44:18-82
+provider#com.google.firebase.provider.FirebaseInitProvider
+ADDED from [com.google.firebase:firebase-common:10.2.0] C:\Users\abcd\.android\build-cache\40c3e7bb9692f3d2517bdc22644e0b356d1a6f36\output\AndroidManifest.xml:6:9-194
+	android:authorities
+		ADDED from [com.google.firebase:firebase-common:10.2.0] C:\Users\abcd\.android\build-cache\40c3e7bb9692f3d2517bdc22644e0b356d1a6f36\output\AndroidManifest.xml:6:19-78
+		INJECTED from C:\Users\abcd\AndroidStudioProjects\CricFlex\AndroidManifest.xml
+	android:exported
+		ADDED from [com.google.firebase:firebase-common:10.2.0] C:\Users\abcd\.android\build-cache\40c3e7bb9692f3d2517bdc22644e0b356d1a6f36\output\AndroidManifest.xml:6:144-168
+	android:initOrder
+		ADDED from [com.google.firebase:firebase-common:10.2.0] C:\Users\abcd\.android\build-cache\40c3e7bb9692f3d2517bdc22644e0b356d1a6f36\output\AndroidManifest.xml:6:169-192
+	android:name
+		ADDED from [com.google.firebase:firebase-common:10.2.0] C:\Users\abcd\.android\build-cache\40c3e7bb9692f3d2517bdc22644e0b356d1a6f36\output\AndroidManifest.xml:6:79-143
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:10.2.0] C:\Users\abcd\.android\build-cache\5239ea8b3ca7d4b519e1b38ce85084006055717b\output\AndroidManifest.xml:20:9-121
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:10.2.0] C:\Users\abcd\.android\build-cache\5239ea8b3ca7d4b519e1b38ce85084006055717b\output\AndroidManifest.xml:20:66-119
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:10.2.0] C:\Users\abcd\.android\build-cache\5239ea8b3ca7d4b519e1b38ce85084006055717b\output\AndroidManifest.xml:20:20-65

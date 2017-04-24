@@ -280,8 +280,8 @@ public class ActivityMonitor2 extends Activity {
 //                intent.getDataString();
 //                convert(intent.getByteArrayExtra(RFDService.EXTRA_DATA));
 //                dataRecieved(intent.getByteArrayExtra(RFDService.EXTRA_DATA));
-                addData(intent.getByteArrayExtra(RFDService.EXTRA_DATA));
-//                viewData(intent.getByteArrayExtra(RFDService.EXTRA_DATA));
+//                addData(intent.getByteArrayExtra(RFDService.EXTRA_DATA));
+                viewData(intent.getByteArrayExtra(RFDService.EXTRA_DATA));
             }
         }
     };
@@ -289,7 +289,7 @@ public class ActivityMonitor2 extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_monitor2);
+        setContentView(R.layout.activity_monitor);
         View decorView = getWindow().getDecorView();
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);

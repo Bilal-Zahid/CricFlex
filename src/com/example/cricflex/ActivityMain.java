@@ -41,14 +41,8 @@ import static android.content.ContentValues.TAG;
 public class ActivityMain extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener  {
 
-
-    Boolean inHome = true;
-    Boolean inHistory = false;
-    Boolean inAwards = false;
-    Boolean inTraining = false;
-    Boolean inFriends = false;
-    Boolean inHelp = false;
-    Boolean inAbout = false;
+    String inFragment = "Home";
+    Boolean changeFragment = false;
 
     DatabaseHelper helper = new DatabaseHelper(this);
 //    TextView mainEmail;
@@ -56,6 +50,8 @@ public class ActivityMain extends AppCompatActivity
     private TextView nameText;
     Fragment fragment = null;
     NavigationView navigationView;
+
+    DrawerLayout navDrawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,19 +111,43 @@ public class ActivityMain extends AppCompatActivity
             SaveSharedPreference.setEmailList(ActivityMain.this,prevEmails);
         }
 
+        navDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
-
-
-
-
-
-
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
+                this, navDrawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
+
+            /** Called when a drawer has settled in a completely closed state. */
+            public void onDrawerClosed(View view) {
+                super.onDrawerClosed(view);
+
+                if (fragment != null && changeFragment) {
+
+                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frame_container, fragment);
+                    transaction.addToBackStack(null);
+                    transaction.commit();
+                    setTitle(inFragment);
+
+                }
+                else {
+
+                    // error in creating fragment
+                    Log.e("ActivityMain", "Fragment not Created");
+
+                }
+
+            }
+
+            /** Called when a drawer has settled in a completely open state. */
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                // Do whatever you want here
+            }
+        };
+        navDrawer.addDrawerListener(toggle);
         toggle.syncState();
+
+
 
         navigationView = (NavigationView) findViewById(R.id.nav_view);
 
@@ -188,33 +208,30 @@ public class ActivityMain extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
 
-        if(inHome)
-        {
-            fragment = new FragmentHome();
-            FragmentTransaction transaction = getFragmentManager().beginTransaction();
-            transaction.replace(R.id.frame_container, fragment);
-            transaction.addToBackStack(null);
-            transaction.commit();
-            setTitle("Home");
-            navigationView.setCheckedItem(R.id.nav_home);
-
-        }
+        fragment = new FragmentHome();
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.frame_container, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+        setTitle("Home");
+        navigationView.setCheckedItem(R.id.nav_home);
+        inFragment = "Home";
 
     }
 
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
+
+        if (navDrawer.isDrawerOpen(GravityCompat.START)) {                         //close drawer if opened
+            navDrawer.closeDrawer(GravityCompat.START);
         }
 
-        else if(!drawer.isDrawerOpen(GravityCompat.START) && inHome){
+        else if(!navDrawer.isDrawerOpen(GravityCompat.START) && inFragment.equals("Home")){        // if drawer is closed and user is in home fragment
             moveTaskToBack(true);
         }
 
-        else if(inHistory || inAwards || inTraining || inFriends || inFriends || inHelp || inAbout){
+        else if(!inFragment.equals("Home") && !inFragment.equals("")){     // if user in some other fragment than home
 
             fragment = new FragmentHome();
             FragmentTransaction transaction = getFragmentManager().beginTransaction();
@@ -223,7 +240,7 @@ public class ActivityMain extends AppCompatActivity
             transaction.commit();
             setTitle("Home");
             navigationView.setCheckedItem(R.id.nav_home);
-            inHome = true;
+            inFragment = "Home";
         }
 
         else {
@@ -258,8 +275,6 @@ public class ActivityMain extends AppCompatActivity
     }
 
 
-
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // The action bar home/up action should open or close the drawer.
@@ -281,8 +296,8 @@ public class ActivityMain extends AppCompatActivity
 
             case R.id.calibrate:
 
-                Intent intent1 = new Intent(ActivityMain.this, ActivityCalibrate.class);
-                startActivity(intent1);
+//                Intent intent1 = new Intent(ActivityMain.this, ActivityCalibrate.class);
+//                startActivity(intent1);
                 return true;
 
 
@@ -309,129 +324,92 @@ public class ActivityMain extends AppCompatActivity
                 return super.onOptionsItemSelected(item);
         }
     }
+
+
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        inHome = false;
+        switch(id){
+            case R.id.nav_home:{
 
-        if (id == R.id.nav_home) {
-            fragment = new FragmentHome();
-            inHome = true;
-            inHistory = false;
-            inAwards = false;
-            inTraining = false;
-            inFriends = false;
-            inHelp = false;
-            inAbout = false;
+                if(!inFragment.equals("Home")){
+                    inFragment = "Home";
+                    fragment = new FragmentHome();
+                    changeFragment = true;
+                }
+                else
+                    changeFragment = false;
 
-        }
-        else if (id == R.id.nav_history) {
-            fragment = new FragmentHistory();
+                break;
+            }
+            case R.id.nav_history:{
 
-            inHome = false;
-            inHistory = true;
-            inAwards = false;
-            inTraining = false;
-            inFriends = false;
-            inHelp = false;
-            inAbout = false;
-        }
+                if(!inFragment.equals("History")){
+                    inFragment = "History";
+                    fragment = new FragmentHistory();
+                    changeFragment = true;
+                }
+                else
+                    changeFragment = false;
 
-        else if (id == R.id.nav_awards) {
-            Toast.makeText(this, "Update to premium for this feature.", Toast.LENGTH_SHORT).show();
-            //fragment = new FragmentAwards();
+                break;
+            }
+            case R.id.nav_awards:{
+                Toast.makeText(this, "Update to premium for this feature.", Toast.LENGTH_SHORT).show();
+                //fragment = new FragmentAwards();
 
-            inHome = false;
-            inHistory = false;
-            inAwards = true;
-            inTraining = false;
-            inFriends = false;
-            inHelp = false;
-            inAbout = false;
+                break;
+            }
+            case R.id.nav_training:{
+                Toast.makeText(this, "Update to premium for this feature.", Toast.LENGTH_SHORT).show();
+                //fragment = new FragmentTraining();
 
-            return true;
-        }
 
-        else if (id == R.id.nav_training) {
-            Toast.makeText(this, "Update to premium for this feature.", Toast.LENGTH_SHORT).show();
-            //fragment = new FragmentTraining();
+                break;
+            }
+            case R.id.nav_friends:{
+                Toast.makeText(this, "Update to premium for this feature.", Toast.LENGTH_SHORT).show();
+                //fragment = new FragmentFriends();
 
-            inHome = false;
-            inHistory = false;
-            inAwards = false;
-            inTraining = true;
-            inFriends = false;
-            inHelp = false;
-            inAbout = false;
 
-            return true;
-        }
+                break;
+            }
+            case R.id.nav_help:{
+                if(!inFragment.equals("Help")){
+                    inFragment = "Help";
+                    fragment = new FragmentHelp();
+                    changeFragment = true;
+                }
+                else
+                    changeFragment = false;
 
-        else if (id == R.id.nav_friends) {
-            Toast.makeText(this, "Update to premium for this feature.", Toast.LENGTH_SHORT).show();
-            //fragment = new FragmentFriends();
+                break;
+            }
+            case R.id.nav_about:{
+                if(!inFragment.equals("About")){
+                    inFragment = "About";
+                    fragment = new FragmentAbout();
+                    changeFragment = true;
+                }
+                else
+                    changeFragment = false;
 
-            inHome = false;
-            inHistory = false;
-            inAwards = false;
-            inTraining = false;
-            inFriends = true;
-            inHelp = false;
-            inAbout = false;
+                break;
+            }
+            default:
 
-            return true;
-        }
-
-        else if (id == R.id.nav_help) {
-            fragment = new FragmentHelp();
-
-            inHome = false;
-            inHistory = false;
-            inAwards = false;
-            inTraining = false;
-            inFriends = false;
-            inHelp = true;
-            inAbout = false;
-
-        }
-
-        else if (id == R.id.nav_about) {
-            fragment = new FragmentAbout();
-
-            inHome = false;
-            inHistory = false;
-            inAwards = false;
-            inTraining = false;
-            inFriends = false;
-            inHelp = false;
-            inAbout = true;
-
+                break;
         }
 
 
-        if (fragment != null) {
-
-            FragmentTransaction transaction = getFragmentManager().beginTransaction();
-            transaction.replace(R.id.frame_container, fragment);
-            transaction.addToBackStack(null);
-            transaction.commit();
-
-            setTitle(item.getTitle());
-            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            // error in creating fragment
-            Log.e("ActivityMain", "Error in creating fragment");
-
-        }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
+        navDrawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 
 //
 //    /*
@@ -475,9 +453,9 @@ public class ActivityMain extends AppCompatActivity
 
     @Override
     public void setTitle(CharSequence title) {
-//        mTitle = title;
-        //getSupportActionBar().setTitle(title);
-        getSupportActionBar().setTitle((Html.fromHtml("<font color=\"#FFFFFF\">" + title + "</font>")));
+
+        getSupportActionBar().setTitle(title);
+//      getSupportActionBar().setTitle((Html.fromHtml("<font color=\"#FFFFFF\">" + title + "</font>")));
 
     }
 

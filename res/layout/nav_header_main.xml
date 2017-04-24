@@ -19,7 +19,7 @@
         android:layout_height="75dp"
         android:id="@+id/profilepicture"
         android:gravity="center"
-        android:src="@drawable/profile_icon"
+        android:src="@drawable/profile_icon_large"
         app:civ_border_width="2dp"
         app:civ_border_color="@color/light" />
 

@@ -36,7 +36,7 @@
                 android:layout_centerHorizontal="true"
                 android:gravity="center">
 
-                <com.example.cricflex.CircleImageView
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="225dp"
                     android:layout_height="225dp"
                     android:id="@+id/profilepicture"
@@ -250,7 +250,7 @@
                     android:layout_height="0dp"
                     android:layout_margin="10dp"
                     android:layout_marginTop="2dp"
-                    android:id="@+id/stp_dob"
+                    android:id="@+id/edp_dob"
                     android:drawableStart="@drawable/calendar_icon"
                     android:drawablePadding="10dp"
                     android:textColor="#FFFFFF"

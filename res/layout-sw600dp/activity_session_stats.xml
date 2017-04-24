@@ -45,7 +45,7 @@
         android:gravity="center"
         android:orientation="vertical"
         android:background="@color/session_angle_tile"
-        app:layout_heightPercent="40%"
+        app:layout_heightPercent="41%"
         app:layout_widthPercent="50%">
 
         <TextView
@@ -88,7 +88,7 @@
         android:gravity="center"
         android:orientation="vertical"
         android:background="@color/transparent"
-        app:layout_heightPercent="40%"
+        app:layout_heightPercent="41%"
         app:layout_widthPercent="50%">
 
         <TextView
@@ -126,7 +126,7 @@
         android:gravity="center"
         android:orientation="vertical"
         android:background="@color/transparent"
-        app:layout_heightPercent="40%"
+        app:layout_heightPercent="41%"
         app:layout_widthPercent="50%">
 
         <TextView
@@ -165,7 +165,7 @@
         android:gravity="center"
         android:orientation="vertical"
         android:background="@color/session_twist_tile"
-        app:layout_heightPercent="40%"
+        app:layout_heightPercent="41%"
         app:layout_widthPercent="50%">
 
         <TextView
@@ -194,29 +194,18 @@
             />
 
     </LinearLayout>
-    <LinearLayout
-        android:id="@+id/footer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tile_time"
+    <Button
+        android:id="@+id/session_finish_button"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_heightPercent="8%"
+        app:layout_widthPercent="100%"
         android:layout_alignParentBottom="true"
-        android:layout_gravity="center_horizontal"
+        android:layout_gravity="bottom"
         android:gravity="center"
-        android:orientation="vertical"
-        android:background="@color/transparent">
-
-        <Button
-            android:id="@+id/session_finish_button"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_vertical"
-            android:gravity="center"
-            android:text="@string/session_button_finish"
-            android:textStyle="bold"
-            android:textColor="@color/session_finish_button_text"
-            android:textSize="40sp"
-            android:background="@drawable/button2_bg"
-            android:padding="15dp"/>
-
-    </LinearLayout>
+        android:text="@string/session_button_finish"
+        android:textStyle="bold"
+        android:textColor="@color/session_finish_button_text"
+        android:textSize="35sp"
+        android:background="@drawable/button2_bg" />
 </android.support.percent.PercentRelativeLayout>

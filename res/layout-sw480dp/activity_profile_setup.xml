@@ -43,8 +43,8 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <com.example.cricflex.CircleImageView
-                    android:layout_width="115dp"
+                <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="115dp"
                     android:layout_height="115dp"
                     android:id="@+id/profilepicture"
                     android:gravity="center"
@@ -66,12 +66,13 @@
                 android:layout_below="@+id/header">
 
 
+
                 <!--Name-->
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="5dp"
                     android:text="@string/name"
                     android:textColor="#ffffff"
                     android:textSize="15sp"
@@ -79,25 +80,23 @@
                 </TextView>
 
                 <View
-                    android:id="@+id/view91"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginTop="2dp"
                     android:background="#ffffff" />
+
                 <EditText
-                    android:id="@+id/stp_name"
+
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="start"
-                    android:inputType="textPersonName"
-                    android:maxLength="20"
-                    android:hint="@string/name"
-                    android:textColor="@color/text_light"
+                    android:layout_marginTop="2dp"
+                    android:id="@+id/stp_name"
+                    android:textColor="#FFFFFF"
+                    android:hint="@string/enter_name"
                     android:textColorHint="@color/text_hint"
+                    android:inputType="none"
                     android:imeOptions="actionDone"
                     />
-
-
 
 
                 <!--Gender-->

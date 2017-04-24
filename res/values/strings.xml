@@ -45,8 +45,10 @@
     <string name="rgp_button_registe">Register new account</string>
 
 
+
     <!--setup profile-->
     <string name="name">Name</string>
+    <string name="enter_name">Enter Name</string>
     <string name="gender">Gender</string>
     <string name="male">Male</string>
     <string name="female">Female</string>
@@ -150,26 +152,39 @@
     <string name="session_twist_text">Arm Twist</string>
     <string name="session_button_finish">FINISH</string>
 
+    <!--profile-->
+    <string name="button_edit_profile">Edit</string>
+    <string name="cancel_edit_profile">Cancel</string>
+    <string name="save_edit_profile">Save</string>
 
     <!--fragment home-->
     <string name="legal_illegal_ratio">Legal to Illegal Ball Ratio</string>
-    <string name="home_total_balls">0</string>
+    <string name="home_total_balls">520</string>
     <string name="home_total_balls_text">Total Balls: </string>
     <string name="home_average_stats">Average\nBowling\nStats</string>
-    <string name="home_armflex">0\u00b0</string>
-    <string name="home_force">0 N</string>
-    <string name="home_time">0.0s</string>
-    <string name="home_twist">0\u00b0</string>
+    <string name="home_armflex">10\u00b0</string>
+    <string name="home_force">600 N</string>
+    <string name="home_time">0.120s</string>
+    <string name="home_twist">4\u00b0</string>
     <string name="home_armflex_text">Arm Flex</string>
     <string name="home_force_text">Force</string>
     <string name="home_time_text">Action Time</string>
     <string name="home_twist_text">Arm Twist</string>
     <string name="home_button_start">START BOWLING !</string>
 
-    <!--profile-->
-    <string name="button_edit_profile">Edit</string>
-    <string name="cancel_edit_profile">Cancel</string>
-    <string name="save_edit_profile">Save</string>
+    <!--fragment history-->
+    <string name="history_month_year">January 1995</string>
+    <string name="history_tab_angle">Angle</string>
+    <string name="history_tab_force">Force</string>
+    <string name="history_tab_time">Time</string>
+    <string name="history_tab_twist">Twist</string>
+    <string name="history_over">Overs</string>
+    <string name="history_stat_maximum">Maximum</string>
+    <string name="history_stat_minimum">Minimum</string>
+    <string name="history_stat_average">Average</string>
+    <string name="history_stat_maximum_value">0.0</string>
+    <string name="history_stat_minimum_value">0.0</string>
+    <string name="history_stat_average_value">0.0</string>
 
     <!--fragment about-->
     <string name="team_cricflex">Team CricFlex</string>
@@ -180,7 +195,7 @@
     <string name="bilal">Bilal Zahid</string>
     <string name="www.cricflex.com">www.cricflex.com</string>
 
-    <!--help fragment-->
+    <!--fragment help-->
 
     <string name="we_can_help">We Can Help</string>
     <string name="please_find">Please find the following tutorial screens to help you on how to use CricFlex Band:</string>
@@ -201,6 +216,8 @@
     <string name="number_5">5</string>
     <string name="number_6">6</string>
     <string name="number_7">7</string>
+
+
 
 
     <string name="charging_instructions">Charging Instructions:</string>
@@ -239,6 +256,7 @@
     <string name="save_session_desc">You can save your bowling session at the session stats screen. You can later see your bowling data in “History” section. If you discard the session, the bowling data of that session will be discarded and will not be saved in your profile. </string>
 
 
+
     <!--gif duration-->
     <string name="duration_frame">32</string>
 
@@ -247,8 +265,10 @@
     <string name="content_desc_imageView">desc</string>
 
 
+
     <string name="illegal_monitor_status">Illegal</string>
     <string name="legal_monitor_status">Legal</string>
+
 
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
