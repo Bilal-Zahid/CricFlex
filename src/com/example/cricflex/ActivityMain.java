@@ -46,8 +46,8 @@ public class ActivityMain extends AppCompatActivity
 
     DatabaseHelper helper = new DatabaseHelper(this);
 //    TextView mainEmail;
-    private TextView emailText ;
-    private TextView nameText;
+    private TextView emailTextView ;
+    private TextView nameTextView;
     Fragment fragment = null;
     NavigationView navigationView;
 
@@ -56,9 +56,15 @@ public class ActivityMain extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // full screen view
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        // setting the layout
         setContentView(R.layout.activity_main);
+
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -152,10 +158,10 @@ public class ActivityMain extends AppCompatActivity
         navigationView = (NavigationView) findViewById(R.id.nav_view);
 
         View nav_header =  navigationView.getHeaderView(0);
-        TextView name = (TextView)nav_header.findViewById(R.id.name);
-        name.setText(helper.getName(SaveSharedPreference.getEmail(ActivityMain.this)));
-        TextView email = (TextView)nav_header.findViewById(R.id.email);
-        email.setText(SaveSharedPreference.getEmail(ActivityMain.this));
+        nameTextView = (TextView)nav_header.findViewById(R.id.name);
+        nameTextView.setText(helper.getName(SaveSharedPreference.getEmail(ActivityMain.this)));
+        emailTextView = (TextView)nav_header.findViewById(R.id.email);
+        emailTextView.setText(SaveSharedPreference.getEmail(ActivityMain.this));
 
         ValueEventListener userListener = new ValueEventListener() {
             @Override

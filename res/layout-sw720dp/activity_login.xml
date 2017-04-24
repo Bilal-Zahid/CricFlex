@@ -112,7 +112,6 @@
             android:paddingTop="15dp"
             android:paddingBottom="15dp"
             android:text="@string/forgot_password"
-            android:onClick="setfgpLayout1"
             android:textColor="@drawable/button_text_color"
             android:textSize="25sp"
             android:background="@android:color/transparent"

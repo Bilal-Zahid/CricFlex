@@ -168,7 +168,7 @@
 //
 //            public void onClick(View view) {
 //
-//                Intent intent = new Intent(getActivity(), ActivityMonitor2.class);
+//                Intent intent = new Intent(getActivity(), ActivityMonitor.class);
 //                startActivity(intent);
 //            }
 //        });
@@ -362,7 +362,7 @@ public class FragmentHome extends Fragment {
 
             public void onClick(View view) {
 
-                Intent intent = new Intent(getActivity(), ActivityMonitor2.class);
+                Intent intent = new Intent(getActivity(), ActivityMonitor.class);
                 startActivity(intent);
             }
         });

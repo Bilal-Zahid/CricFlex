@@ -110,7 +110,6 @@
             android:layout_height="wrap_content"
             android:text="@string/forgot_password"
             android:textSize="12sp"
-            android:onClick="setfgpLayout1"
             android:textColor="@drawable/button_text_color"
             android:background="@android:color/transparent"
             android:layout_gravity="end"

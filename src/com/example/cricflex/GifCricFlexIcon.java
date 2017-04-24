@@ -7,21 +7,21 @@ import android.os.Bundle;
 import android.widget.ImageView;
 
 
-public class MyCustomProgressDialog extends ProgressDialog {
+public class GifCricFlexIcon extends ProgressDialog {
   private AnimationDrawable animation;
 
   public static ProgressDialog ctor(Context context) {
-    MyCustomProgressDialog dialog = new MyCustomProgressDialog(context);
+    GifCricFlexIcon dialog = new GifCricFlexIcon(context);
     dialog.setIndeterminate(true);
     dialog.setCancelable(false);
     return dialog;
   }
 
-  public MyCustomProgressDialog(Context context) {
+  public GifCricFlexIcon(Context context) {
     super(context);
   }
 
-  public MyCustomProgressDialog(Context context, int theme) {
+  public GifCricFlexIcon(Context context, int theme) {
     super(context, theme);
   }
 
@@ -31,11 +31,11 @@ public class MyCustomProgressDialog extends ProgressDialog {
     setContentView(R.layout.anim_custom_dialog);
 
     ImageView la = (ImageView) findViewById(R.id.animation);
-    la.setBackgroundResource(R.drawable.custom_progress_dialog_animation1);
+    la.setBackgroundResource(R.drawable.gif_cricflex_icon);
     animation = (AnimationDrawable) la.getBackground();
 
 //    ImageView la = (ImageView) findViewById(R.id.animation);
-//    la.setImageResource(R.drawable.custom_progress_dialog_animation1);
+//    la.setImageResource(R.drawable.gif_cricflex_icon);
 //    animation = (AnimationDrawable) la.getDrawable();
   }
 

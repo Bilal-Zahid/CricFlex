@@ -17,6 +17,8 @@ import android.bluetooth.le.ScanResult;
 import android.content.DialogInterface;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Handler;
@@ -56,26 +58,19 @@ import org.json.JSONObject;
 
 import me.grantland.widget.AutofitTextView;
 
-import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
-import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
 import com.google.android.gms.common.api.PendingResult;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
-import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.LocationSettingsResult;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
 
-import java.text.DateFormat;
-import java.util.Date;
-
 
 @TargetApi(21)
-public class ActivityMonitor2 extends Activity {
+public class ActivityMonitor extends Activity {
 
     private static Boolean exit = false;
 
@@ -269,6 +264,7 @@ public class ActivityMonitor2 extends Activity {
                 ble_indicator.setImageResource(R.drawable.bluetooth_connected_icon);
                 connectedToBand = true;
                 scanLeDevice(false);
+//                calibrateBandDialog();
                 monitorStatusText.setText(R.string.straighten_arm);        ////////////////////
                 once = 0;
             }
@@ -311,9 +307,10 @@ public class ActivityMonitor2 extends Activity {
         ble_indicator.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                String abc = "123";
+//                String abc = "123";
 //                rfduinoService.send(abc);
-                rfduinoService.send(abc.getBytes());
+//                rfduinoService.send(abc.getBytes());
+//                calibrateBandDialog();
             }
         });
 
@@ -334,7 +331,7 @@ public class ActivityMonitor2 extends Activity {
         monitorLegalBalls = (TextView)findViewById(R.id.monitor_legal_balls);
         monitorIllegalBalls = (TextView)findViewById(R.id.monitor_illegal_balls);
 
-        email = SaveSharedPreference.getEmail(ActivityMonitor2.this);
+        email = SaveSharedPreference.getEmail(ActivityMonitor.this);
         System.out.println("Username: "+ email);
 
 //        mHandler = new Handler();
@@ -482,7 +479,7 @@ public class ActivityMonitor2 extends Activity {
                 if (device.getName().equals("Abdullah")) {
 
                     bluetoothDevice = device;
-                    Intent rfduinoIntent = new Intent(ActivityMonitor2.this, RFDService.class);
+                    Intent rfduinoIntent = new Intent(ActivityMonitor.this, RFDService.class);
                     isBound = getApplicationContext().bindService(rfduinoIntent, bleServiceConnection, BIND_AUTO_CREATE);
                     System.out.println("scanLeDevice(false) called in ScanCallback mScanCallback ");
                     scanLeDevice(false);
@@ -531,7 +528,7 @@ public class ActivityMonitor2 extends Activity {
 
 
                                     bluetoothDevice = device;
-                                    Intent rfduinoIntent = new Intent(ActivityMonitor2.this, RFDService.class);
+                                    Intent rfduinoIntent = new Intent(ActivityMonitor.this, RFDService.class);
                                     isBound = getApplicationContext().bindService(rfduinoIntent, bleServiceConnection, BIND_AUTO_CREATE);
                                     scanLeDevice(false);
                                 } else {
@@ -547,6 +544,7 @@ public class ActivityMonitor2 extends Activity {
                     });
                 }
             };
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -588,9 +586,9 @@ public class ActivityMonitor2 extends Activity {
 
         if(rfduinoService!=null)
             rfduinoService.close();
-        Intent i = new Intent(ActivityMonitor2.this, ActivityMain.class);
+        Intent i = new Intent(ActivityMonitor.this, ActivityMain.class);
 
-        ActivityMonitor2.this.startActivity(i);
+        ActivityMonitor.this.startActivity(i);
         finish();
 
     }
@@ -801,7 +799,7 @@ public class ActivityMonitor2 extends Activity {
         helper.insertPlayerStats(playerStats);
         helper.changeStatLegalIllegal(playerStats.getEmail(), playerStats.getLegalBowls(), playerStats.getIllegalBowls());
 
-        Intent i = new Intent(ActivityMonitor2.this, ActivitySessionStats.class);
+        Intent i = new Intent(ActivityMonitor.this, ActivitySessionStats.class);
 
         Bundle extraBundle = new Bundle();
         extraBundle.putIntegerArrayList("angleValues", angleValues);
@@ -824,7 +822,7 @@ public class ActivityMonitor2 extends Activity {
         downgradeState(STATE_DISCONNECTED);
 
 
-        ActivityMonitor2.this.startActivity(i);
+        ActivityMonitor.this.startActivity(i);
         finish();
 
 
@@ -859,7 +857,7 @@ public class ActivityMonitor2 extends Activity {
                         try {
                             // Show the dialog by calling startResolutionForResult(), and check the result
                             // in onActivityResult().
-                            status.startResolutionForResult(ActivityMonitor2.this, REQUEST_CHECK_SETTINGS);
+                            status.startResolutionForResult(ActivityMonitor.this, REQUEST_CHECK_SETTINGS);
                         } catch (IntentSender.SendIntentException e) {
                             Log.i(TAG, "PendingIntent unable to execute request.");
                         }
@@ -899,7 +897,7 @@ public class ActivityMonitor2 extends Activity {
                 }
 
             } else if (incoming == 118) {
-//                Toast.makeText(ActivityMonitor2.this, "Bowl" , Toast.LENGTH_SHORT).show();
+//                Toast.makeText(ActivityMonitor.this, "Bowl" , Toast.LENGTH_SHORT).show();
                 monitorStatusText.setText("Bowl");
                 monitoringTextChange = false;
 
@@ -959,7 +957,7 @@ public class ActivityMonitor2 extends Activity {
             Log.e(TAG, "armtwist value= "+armAngle_value);
 
 
-            final ProgressDialog dialog = new MyCustomProgressDialog(ActivityMonitor2.this, R.style.AnimDialogTheme);
+            final ProgressDialog dialog = new GifCricFlexIcon(ActivityMonitor.this, R.style.AnimDialogTheme);
 
             dialog.setCancelable(false);
             dialog.show();
@@ -1164,7 +1162,7 @@ public class ActivityMonitor2 extends Activity {
 
         System.out.println("updating metrics");
 
-        final ProgressDialog dialog = new MyCustomProgressDialog(ActivityMonitor2.this);
+        final ProgressDialog dialog = new GifCricFlexIcon(ActivityMonitor.this);
 
         dialog.setCancelable(false);
         dialog.show();
@@ -1279,5 +1277,27 @@ public class ActivityMonitor2 extends Activity {
 
     }
 
+
+    void calibrateBandDialog(){
+
+        AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+        alertDialog.setCancelable(false);
+        alertDialog.setTitle("Calibration Needed");
+        alertDialog.setMessage("We just need to calibrate the band. Its a simple 4 step process.");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        endSession();
+                        dialog.dismiss();
+                    }
+                }); // OK button listener end
+
+        alertDialog.show();
+
+//        CustomDialogClass cdd=new CustomDialogClass(this);
+//        cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//        cdd.show();
+
+    }
 
 }
