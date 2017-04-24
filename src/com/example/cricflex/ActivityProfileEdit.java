@@ -130,11 +130,15 @@ public class ActivityProfileEdit extends FragmentActivity {
 
                 playerProfile = dataSnapshot.getValue(User.class);
 
+
+
                 System.out.println("Datasnapshot mai ara hai : " + playerProfile.bowlingArm );
                 if(playerProfile==null){
                     System.out.println("Cant fetch data");
                     return;
                 }
+
+                selectedGender = playerProfile.gender;
 
                 name.setText(playerProfile.nameOfPerson);
                 initializeBowlingStylesSpinner(playerProfile.bowlingArm,playerProfile.bowlingStyle);
