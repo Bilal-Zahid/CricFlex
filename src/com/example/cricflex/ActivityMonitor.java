@@ -39,6 +39,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -155,6 +156,15 @@ public class ActivityMonitor extends Activity {
 
     private DatabaseReference databaseReference;
     FirebaseAuth firebaseAuth;
+
+
+//    calibration items
+
+    PlayGifView calGif;
+    TextView calTextTop;
+    TextView calTextBottom;
+    Button calOkButton;
+    ProgressBar calProgress;
     
 
     private final BroadcastReceiver bluetoothStateReceiver = new BroadcastReceiver() {
@@ -264,7 +274,7 @@ public class ActivityMonitor extends Activity {
                 ble_indicator.setImageResource(R.drawable.bluetooth_connected_icon);
                 connectedToBand = true;
                 scanLeDevice(false);
-//                calibrateBandDialog();
+//                viewGifStraight();
                 monitorStatusText.setText(R.string.straighten_arm);        ////////////////////
                 once = 0;
             }
@@ -280,8 +290,8 @@ public class ActivityMonitor extends Activity {
 //                intent.getDataString();
 //                convert(intent.getByteArrayExtra(RFDService.EXTRA_DATA));
 //                dataRecieved(intent.getByteArrayExtra(RFDService.EXTRA_DATA));
-//                addData(intent.getByteArrayExtra(RFDService.EXTRA_DATA));
-                viewData(intent.getByteArrayExtra(RFDService.EXTRA_DATA));
+                addData(intent.getByteArrayExtra(RFDService.EXTRA_DATA));
+//                viewData(intent.getByteArrayExtra(RFDService.EXTRA_DATA));
             }
         }
     };
@@ -310,7 +320,7 @@ public class ActivityMonitor extends Activity {
 //                String abc = "123";
 //                rfduinoService.send(abc);
 //                rfduinoService.send(abc.getBytes());
-//                calibrateBandDialog();
+//                showCalibrationDialog();
             }
         });
 
@@ -890,8 +900,10 @@ public class ActivityMonitor extends Activity {
             if (once == 0 || once == 1) {
                 if (incoming == 120) {
                     monitorStatusText.setText("Bend arm at 45");
+//                    viewGifBend45();
                     once = 1;
                 } else if (incoming == 119) {
+//                    hideGif();
                     monitorStatusText.setText("Monitoring...");
                     once = 2;
                 }
@@ -1278,26 +1290,200 @@ public class ActivityMonitor extends Activity {
     }
 
 
-    void calibrateBandDialog(){
+    void showCalibrationDialog(){
 
         AlertDialog alertDialog = new AlertDialog.Builder(this).create();
         alertDialog.setCancelable(false);
         alertDialog.setTitle("Calibration Needed");
         alertDialog.setMessage("We just need to calibrate the band. Its a simple 4 step process.");
         alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        endSession();
-                        dialog.dismiss();
-                    }
-                }); // OK button listener end
+            new DialogInterface.OnClickListener() {
+
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                    startCalibration();
+
+                }
+            }); // OK button listener end
 
         alertDialog.show();
+    }
 
-//        CustomDialogClass cdd=new CustomDialogClass(this);
-//        cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//        cdd.show();
+    void startCalibration(){
+
+        setContentView(R.layout.calibrate_layout);
+        calGif = (PlayGifView)findViewById(R.id.calGifView);
+        calTextTop = (TextView) findViewById(R.id.calTextTop);
+        calTextBottom = (TextView) findViewById(R.id.calTextBottom);
+        calOkButton = (Button) findViewById(R.id.calOkButton);
+        calProgress = (ProgressBar) findViewById(R.id.cal_progress);
+
+        calStep1();
+
+    }
+    void calStep1(){
+        calTextTop.setText(R.string.cal_step1);
+        calTextBottom.setText(R.string.cal_step1_desc);
+        calGif.setImageResource(R.drawable.arm_straight);
+        calOkButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                calOkButton.setEnabled(false);
+                calOkButton.setVisibility(View.INVISIBLE);
+                calProgress.setVisibility(View.VISIBLE);
+
+                Runnable progressRunnable = new Runnable() {
+
+                    @Override
+                    public void run() {
+                        calStep2();
+                    }
+                };
+
+                Handler pdCanceller = new Handler();
+                pdCanceller.postDelayed(progressRunnable, 3072);
+            }
+        });
+
+    }
+    void calStep2(){
+        calOkButton.setEnabled(true);
+        calOkButton.setVisibility(View.VISIBLE);
+        calProgress.setVisibility(View.INVISIBLE);
+
+        calTextTop.setText(R.string.cal_step2);
+        calTextBottom.setText(R.string.cal_step2_desc);
+        calGif.setImageResource(R.drawable.arm_bend_gif);
+        calOkButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                calOkButton.setEnabled(false);
+                calOkButton.setVisibility(View.INVISIBLE);
+                calProgress.setVisibility(View.VISIBLE);
+
+                Runnable progressRunnable = new Runnable() {
+
+                    @Override
+                    public void run() {
+                        calStep3();
+                    }
+                };
+
+                Handler pdCanceller = new Handler();
+                pdCanceller.postDelayed(progressRunnable, 3072);
+            }
+        });
+
+    }
+    void calStep3(){
+        calOkButton.setEnabled(true);
+        calOkButton.setVisibility(View.VISIBLE);
+        calProgress.setVisibility(View.INVISIBLE);
+
+        calTextTop.setText(R.string.cal_step3);
+        calTextBottom.setText(R.string.cal_step3_desc);
+        calGif.setImageResource(R.drawable.arm_bend_gif);
+        calOkButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                calOkButton.setEnabled(false);
+                calOkButton.setVisibility(View.INVISIBLE);
+                calProgress.setVisibility(View.VISIBLE);
+
+                Runnable progressRunnable = new Runnable() {
+
+                    @Override
+                    public void run() {
+                        calStep4();
+                    }
+                };
+
+                Handler pdCanceller = new Handler();
+                pdCanceller.postDelayed(progressRunnable, 3072);
+            }
+        });
+    }
+    void calStep4(){
+        calOkButton.setEnabled(true);
+        calOkButton.setVisibility(View.VISIBLE);
+        calProgress.setVisibility(View.INVISIBLE);
+
+        calTextTop.setText(R.string.cal_step4);
+        calTextBottom.setText(R.string.cal_step4_desc);
+        calGif.setImageResource(R.drawable.arm_bend_gif);
+        calOkButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                calOkButton.setEnabled(false);
+                calOkButton.setVisibility(View.INVISIBLE);
+                calProgress.setVisibility(View.VISIBLE);
+
+                Runnable progressRunnable = new Runnable() {
+
+                    @Override
+                    public void run() {
+                        calibrationDone();
+                    }
+                };
+
+                Handler pdCanceller = new Handler();
+                pdCanceller.postDelayed(progressRunnable, 3072);
+            }
+        });
+    }
+
+    void calibrationDone(){
+
+        setContentView(R.layout.activity_monitor);
+        reInitializeLayoutItems();
+
+    }
+    void reInitializeLayoutItems(){
+        batteryProgressBar = (ProgressBar)findViewById(R.id.battery_progress);
+        batteryProgressText = (TextView)findViewById(R.id.battery_text);
+        //set battery percentage here
+        ble_indicator = (ImageView)findViewById(R.id.monitor_ble_icon);
+        ble_indicator.setImageResource(R.drawable.bluetooth_connected_icon);
+
+        monitorAngleValue = (TextView) findViewById(R.id.monitor_angle_text);
+        monitorStatusText = (TextView) findViewById(R.id.monitor_status_text);
+        monitorActionTime = (AutofitTextView) findViewById(R.id.monitor_action_time);
+        monitorArmTwist = (AutofitTextView) findViewById(R.id.monitor_arm_twist);
+        monitorForce = (AutofitTextView) findViewById(R.id.monitor_force);
+
+        monitorLegalBalls = (TextView)findViewById(R.id.monitor_legal_balls);
+        monitorIllegalBalls = (TextView)findViewById(R.id.monitor_illegal_balls);
+        monitorFinishButton = (Button) findViewById(R.id.monitor_finish_button);
+        monitorFinishButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                endSession();
+            }
+        });
 
     }
 
+
 }
+
+//    AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+//        alertDialog.setCancelable(false);
+//                alertDialog.setTitle("Calibration Needed");
+//                alertDialog.setMessage("We just need to calibrate the band. Its a simple 4 step process.");
+//                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+//                new DialogInterface.OnClickListener() {
+//public void onClick(DialogInterface dialog, int which) {
+//        endSession();
+//        dialog.dismiss();
+//        }
+//        }); // OK button listener end
+//
+//        alertDialog.show();
+//
+////        CustomDialogClass cdd=new CustomDialogClass(this);
+////        cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+////        cdd.show();
