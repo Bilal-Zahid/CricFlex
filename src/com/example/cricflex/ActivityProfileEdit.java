@@ -44,6 +44,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 import static android.content.ContentValues.TAG;
 
 public class ActivityProfileEdit extends FragmentActivity {
@@ -88,7 +90,7 @@ public class ActivityProfileEdit extends FragmentActivity {
     Button saveEditProfile, cancelEditProfile;
 
 
-    de.hdodenhof.circleimageview.CircleImageView profilePicture;
+    CircleImageView profilePicture;
     Bitmap bitmapImage;
 
 
@@ -282,7 +284,7 @@ public class ActivityProfileEdit extends FragmentActivity {
 
         bitmapImage = BitmapFactory.decodeResource(getResources(), R.drawable.profile_icon_large);
 
-        profilePicture = (de.hdodenhof.circleimageview.CircleImageView) findViewById(R.id.profilepicture);
+        profilePicture = (CircleImageView) findViewById(R.id.profilepicture);
         profilePicture.setClickable(true);
         profilePicture.setOnClickListener(new View.OnClickListener() {
             @Override

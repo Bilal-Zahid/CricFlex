@@ -25,10 +25,11 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support:support-v4:25.3.1'
     compile 'com.android.support:design:25.3.1'
-    compile 'com.android.support:percent:25.3.1'
-    compile 'de.hdodenhof:circleimageview:2.1.0'
+    compile 'com.android.support:percent:25.3.1'            // for Percent Layout
+    compile 'de.hdodenhof:circleimageview:2.1.0'            // for circular profile pictures
+    compile 'com.github.lzyzsd:circleprogress:1.2.1'        // for arc progress
 
-    compile 'com.google.android.gms:play-services:10.2.0'  //this should have same version as firebase
+    compile 'com.google.android.gms:play-services:10.2.0'   // this should have same version as firebase
 
     compile 'com.github.PhilJay:MPAndroidChart:v3.0.0-beta1'
     compile 'com.github.mukeshsolanki:country-picker-android:1.1.7'
