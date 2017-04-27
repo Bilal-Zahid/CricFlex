@@ -371,10 +371,10 @@ public class ActivityMonitor extends Activity {
             Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
             startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
         }
-
-        if(!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
-            displayLocationSettingsRequest(getApplicationContext());    // ask user to turn on location
-        }
+//      to turn on location
+//        if(!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
+//            displayLocationSettingsRequest(getApplicationContext());    // ask user to turn on location
+//        }
 
         else
             {
