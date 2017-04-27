@@ -5,15 +5,19 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Rect;
+import android.hardware.input.InputManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -28,6 +32,9 @@ public class ActivityRegister extends Activity{
 
     private Pattern pattern;
     private Matcher matcher;
+    EditText reg_email;
+    EditText reg_password;
+    Button registerButton;
 
     private static final String EMAIL_PATTERN =
             "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
@@ -57,13 +64,29 @@ public class ActivityRegister extends Activity{
         progressDialog = new ProgressDialog(this);
         pattern = Pattern.compile(EMAIL_PATTERN);
 
-        final Button button_register = (Button) findViewById(R.id.button_register);
+        reg_email = (EditText) findViewById(R.id.reg_email);
+        reg_password = (EditText) findViewById(R.id.reg_password);
+        registerButton = (Button) findViewById(R.id.button_register);
 
-        button_register.setOnClickListener(new View.OnClickListener() {
+        reg_password.setOnEditorActionListener(new EditText.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+
+                    hideSoftKeyboard(ActivityRegister.this);
+                    registerButton.performClick();
+
+                    return true;
+                }
+                return false;
+            }
+        });
+
+
+        registerButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
 
-                final EditText reg_email = (EditText) findViewById(R.id.reg_email);
-                final EditText reg_password = (EditText) findViewById(R.id.reg_password);
+
 
                 final String emailstr = reg_email.getText().toString();
                 final String passwordstr = reg_password.getText().toString();
@@ -206,22 +229,30 @@ public class ActivityRegister extends Activity{
         finish();
     }
 
-    @Override
-    public boolean dispatchTouchEvent(MotionEvent event) {
-        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            View v = getCurrentFocus();
-            if ( v instanceof EditText) {
-                Rect outRect = new Rect();
-                v.getGlobalVisibleRect(outRect);
-                if (!outRect.contains((int)event.getRawX(), (int)event.getRawY())) {
-                    v.clearFocus();
-                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-                }
-            }
-        }
-        return super.dispatchTouchEvent( event );
+    public static void hideSoftKeyboard(Activity activity) {
+        InputMethodManager inputMethodManager =
+                (InputMethodManager) activity.getSystemService(
+                        Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(
+                activity.getCurrentFocus().getWindowToken(), 0);
     }
+
+//    @Override
+//    public boolean dispatchTouchEvent(MotionEvent event) {
+//        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+//            View v = getCurrentFocus();
+//            if ( v instanceof EditText) {
+//                Rect outRect = new Rect();
+//                v.getGlobalVisibleRect(outRect);
+//                if (!outRect.contains((int)event.getRawX(), (int)event.getRawY())) {
+//                    v.clearFocus();
+//                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+//                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+//                }
+//            }
+//        }
+//        return super.dispatchTouchEvent( event );
+//    }
 
 
 }

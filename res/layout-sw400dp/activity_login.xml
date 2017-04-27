@@ -71,7 +71,7 @@
                 android:padding="10dp"
                 android:textColorHint="#CCCCCC"
                 android:layout_weight="1"
-                android:inputType="textNoSuggestions"
+                android:inputType="textEmailAddress"
                 android:imeOptions="actionNext"
                 android:nextFocusDown="@+id/etPassword"
                 android:textCursorDrawable="@null"

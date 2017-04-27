@@ -12,15 +12,18 @@ import android.support.annotation.NonNull;
 import android.support.percent.PercentRelativeLayout;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -58,7 +61,7 @@ public class ActivityLogin extends Activity {
     // layout items
     AutoCompleteTextView emailEditText;
     EditText passwordEditText;
-
+    Button loginButton;
     private ProgressDialog progressDialog ;
 
     private static Boolean exit = false;
@@ -86,8 +89,12 @@ public class ActivityLogin extends Activity {
         usersDatabaseReference = databaseReference.child("Users");
 
         
-
+//        initialing layout items
         emailEditText = (AutoCompleteTextView) findViewById(R.id.lgn_email);
+        passwordEditText = (EditText) findViewById(R.id.lgn_password);
+        loginButton = (Button) findViewById(R.id.Login);
+
+//        setting layout items
         emailEditText.setThreshold(1);
 
         System.out.println("Aisay hi print" + SaveSharedPreference.getEmail(ActivityLogin.this) );
@@ -141,10 +148,23 @@ public class ActivityLogin extends Activity {
 //        firebaseAuth = FirebaseAuth.getInstance();
 
 
-        passwordEditText = (EditText) findViewById(R.id.lgn_password);
 
-        final Button bLogin = (Button) findViewById(R.id.Login);
-        bLogin.setOnClickListener(new View.OnClickListener(){
+        passwordEditText.setOnEditorActionListener(new EditText.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+
+                    hideSoftKeyboard(ActivityLogin.this);
+                    loginButton.performClick();
+
+                    return true;
+                }
+                return false;
+            }
+        });
+
+
+        loginButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
 
 
@@ -410,4 +430,13 @@ public class ActivityLogin extends Activity {
         }
         return true;
     }
+
+    public static void hideSoftKeyboard(Activity activity) {
+        InputMethodManager inputMethodManager =
+                (InputMethodManager) activity.getSystemService(
+                        Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(
+                activity.getCurrentFocus().getWindowToken(), 0);
+    }
+
 }

@@ -81,7 +81,8 @@
             android:name=".ActivityLogin"
             android:label="CricFlex"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".ActivityRegister"
             android:label="@string/app_name"
@@ -105,9 +106,6 @@
             android:name=".ActivitySessionGraphActionTime"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".test_asawal"
-            android:screenOrientation="portrait" />
 
         <activity
             android:name=".ActivityTour"
