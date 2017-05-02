@@ -49,8 +49,6 @@ import android.bluetooth.le.ScanSettings;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -69,9 +67,6 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.LocationSettingsResult;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
-import com.google.firebase.database.ValueEventListener;
-
-import static android.content.ContentValues.TAG;
 
 
 @TargetApi(21)
@@ -103,9 +98,6 @@ public class ActivityMonitor extends Activity {
     private boolean connectedToBand = false;
     private boolean calibrationDone = false;
     private boolean monitoring = false;
-
-
-    AllMetrics allMetricsInMonitor ;
 
 
 
@@ -288,8 +280,8 @@ public class ActivityMonitor extends Activity {
 //                intent.getDataString();
 //                convert(intent.getByteArrayExtra(RFDService.EXTRA_DATA));
 //                dataRecieved(intent.getByteArrayExtra(RFDService.EXTRA_DATA));
-                addData(intent.getByteArrayExtra(RFDService.EXTRA_DATA));
-//                viewData(intent.getByteArrayExtra(RFDService.EXTRA_DATA));
+//                addData(intent.getByteArrayExtra(RFDService.EXTRA_DATA));
+                viewData(intent.getByteArrayExtra(RFDService.EXTRA_DATA));
             }
         }
     };
@@ -307,51 +299,6 @@ public class ActivityMonitor extends Activity {
 
         firebaseAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference();
-
-
-
-
-        ValueEventListener allMetricsListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // Getting all metrics object
-                // ...
-
-
-                System.out.println("Datasnapshot mai ara hai : ");
-                AllMetrics allMetrics = new AllMetrics();
-
-                allMetrics = dataSnapshot.getValue(AllMetrics.class);
-
-
-                if(allMetrics==null){
-                    System.out.println("Cant fetch data");
-                    allMetricsInMonitor = null;
-                    return;
-                }
-                else{
-                    allMetricsInMonitor = allMetrics;
-                    System.out.println("Angle values from firebase: " + allMetricsInMonitor.angleValues);
-                }
-
-
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Getting Post failed, log a message
-                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
-                // ...
-            }
-        };
-
-
-        DatabaseReference allMetricsRef = databaseReference.child("AllMetrics")
-                .child(FirebaseAuth.getInstance().getCurrentUser().getUid());
-
-        allMetricsRef.addValueEventListener(allMetricsListener);
-
 
 
         batteryProgressBar = (ProgressBar)findViewById(R.id.battery_progress);
@@ -415,9 +362,9 @@ public class ActivityMonitor extends Activity {
             startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
         }
 
-//        if(!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
-//            displayLocationSettingsRequest(getApplicationContext());    // ask user to turn on location
-//        }
+        if(!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
+            displayLocationSettingsRequest(getApplicationContext());    // ask user to turn on location
+        }
 
         else
             {
@@ -477,7 +424,7 @@ public class ActivityMonitor extends Activity {
         if (requestCode == REQUEST_ENABLE_BT) {
             if (resultCode == Activity.RESULT_CANCELED) {
                 //Bluetooth not enabled.
-//                finish();
+                finish();
                 return;
             }
         }
@@ -839,68 +786,15 @@ public class ActivityMonitor extends Activity {
             }
         }
 
-        //dummy data
 
-//        angleValues.add(1);
-//        angleValues.add(1);
-//        angleValues.add(1);
-//
-//        forceValues.add(2);
-//        forceValues.add(2);
-//        forceValues.add(2);
-//
-//        armTwistValues.add(3);
-//        armTwistValues.add(3);
-//        armTwistValues.add(3);
-//
-//        actionTimeValues.add(Float.valueOf(4));
-//        actionTimeValues.add(Float.valueOf(4));
-//        actionTimeValues.add(Float.valueOf(4));
-//
-//        counterLegal++;
-//        counterIllegal++;
-//        counterIllegal++;
-
-
-
-
-
-
-//        AllMetrics allMetrics1 = new AllMetrics(email,counterLegal,counterIllegal,angleValues,forceValues,armTwistValues,actionTimeValues);
-
-        if(allMetricsInMonitor==null){
-            allMetricsInMonitor = new AllMetrics(email,counterLegal,counterIllegal,angleValues,forceValues,armTwistValues,actionTimeValues);
-        }
-        else{
-            allMetricsInMonitor.legalBalls += counterLegal;
-            allMetricsInMonitor.illegalBalls += counterIllegal;
-            allMetricsInMonitor.angleValues.addAll(angleValues);
-            allMetricsInMonitor.forceValues.addAll(forceValues);
-            allMetricsInMonitor.armTwistValues.addAll(armTwistValues);
-            allMetricsInMonitor.actionTimeValues.addAll(actionTimeValues);
-        }
-
-
-
-        System.out.println("Email: " + allMetricsInMonitor.Email +
-                " Legal: " + allMetricsInMonitor.legalBalls +
-                " IllLegal: " + allMetricsInMonitor.illegalBalls +
-                " Angle Values: " + allMetricsInMonitor.angleValues +
-                " Force Values: " + allMetricsInMonitor.forceValues +
-                " Arm Twist: " + allMetricsInMonitor.armTwistValues +
-                " Action Time: " + allMetricsInMonitor.actionTimeValues );
 
 
         FirebaseUser user = firebaseAuth.getCurrentUser();
-
-        databaseReference.child("AllMetrics").child(user.getUid()).setValue(allMetricsInMonitor);
-
-
-//        databaseReference.child("Metrics").child(user.getUid()).child("Email").setValue(email);
-//        databaseReference.child("Metrics").child(user.getUid()).child("Angle Values").setValue(ArrayListOfAngles);
-//        databaseReference.child("Metrics").child(user.getUid()).child("Force Values").setValue(ArrayListOfForces);
-//        databaseReference.child("Metrics").child(user.getUid()).child("Arm Twist Values").setValue(ArrayListOfArmTwist);
-//        databaseReference.child("Metrics").child(user.getUid()).child("Action Time Values").setValue(ArrayListOfActionTime);
+        databaseReference.child("Metrics").child(user.getUid()).child("Email").setValue(email);
+        databaseReference.child("Metrics").child(user.getUid()).child("Angle Values").setValue(ArrayListOfAngles);
+        databaseReference.child("Metrics").child(user.getUid()).child("Force Values").setValue(ArrayListOfForces);
+        databaseReference.child("Metrics").child(user.getUid()).child("Arm Twist Values").setValue(ArrayListOfArmTwist);
+        databaseReference.child("Metrics").child(user.getUid()).child("Action Time Values").setValue(ArrayListOfActionTime);
 
         helper.insertPlayerStats(playerStats);
         helper.changeStatLegalIllegal(playerStats.getEmail(), playerStats.getLegalBowls(), playerStats.getIllegalBowls());
@@ -1149,184 +1043,184 @@ public class ActivityMonitor extends Activity {
     }
 
 
-//    void dataRecieved(byte[] temp){
-//
-//
-//
-//
-//        try {
-//
-//        String data = new String(temp,"UTF-8");
+    void dataRecieved(byte[] temp){
+
+
+
+
+        try {
+
+        String data = new String(temp,"UTF-8");
+        System.out.println("data recieved: " + data);
+
+        String[] parts = data.split("-");    // split string into 2 parts separated by -
+
+
+        String part1 = parts[0];    // first part
+        System.out.println("part1: " + part1);
+
+        String part2 = parts[1];    // second part
+        System.out.println("part2" + part2);
+
+
 //        System.out.println("data recieved: " + data);
-//
-//        String[] parts = data.split("-");    // split string into 2 parts separated by -
-//
-//
-//        String part1 = parts[0];    // first part
 //        System.out.println("part1: " + part1);
-//
-//        String part2 = parts[1];    // second part
 //        System.out.println("part2" + part2);
-//
-//
-////        System.out.println("data recieved: " + data);
-////        System.out.println("part1: " + part1);
-////        System.out.println("part2" + part2);
-//
-//        if(!monitoring) {
-//
-//            if (part1.equals("bat")) {
-//                System.out.println("setting battery progress: " + part2);
-//                batteryProgressBar.setProgress(Integer.parseInt(part2));
-//                batteryProgressText.setText(part2);
+
+        if(!monitoring) {
+
+            if (part1.equals("bat")) {
+                System.out.println("setting battery progress: " + part2);
+                batteryProgressBar.setProgress(Integer.parseInt(part2));
+                batteryProgressText.setText(part2);
+            }
+            else if (part1.equals("cal")) {
+
+                System.out.println("calibrating");
+
+                if (part2.equals("1")) {
+
+                    System.out.println("straight arm");
+                    monitorStatusText.setText(R.string.straighten_arm);
+
+                }
+                else if (part2.equals("2")) {
+
+                    System.out.println("bend arm");
+                    monitorStatusText.setText(R.string.bend_arm_45);
+
+                }
+                else if (part2.equals("done")) {
+
+                    System.out.println("calibration done");
+                    calibrationDone = true;
+                    monitoring=true;
+                    Toast.makeText(getApplicationContext(), "Calibration Done", Toast.LENGTH_SHORT).show();
+
+                }
+
+            }
+        }
+        else if(monitoring){
+
+
+            monitorStatusText.setText("Monitoring...");
+            monitorStatusText.setTextColor(0xFFFFFFFF);
+
+            if(part1.equals("ang")){
+
+                System.out.println("armAngle_value set: " + part2);
+                armAngle_value=part2;
+            }
+            else if(part1.equals("frc")){
+
+                System.out.println("force_value set: " + part2);
+                force_value=part2;
+            }
+            else if(part1.equals("tim")){
+
+                System.out.println("actionTime_value set: " + part2);
+                actionTime_value=part2;
+            }
+            else if(part1.equals("tws")){
+
+                System.out.println("armTwist_value set: " + part2);
+                armTwist_value=part2;
+                updateMetrics();
+            }
+
+
+//            if(metric_check==1){
+//                armAngle_value=data;
+//                metric_check=2;
 //            }
-//            else if (part1.equals("cal")) {
-//
-//                System.out.println("calibrating");
-//
-//                if (part2.equals("1")) {
-//
-//                    System.out.println("straight arm");
-//                    monitorStatusText.setText(R.string.straighten_arm);
-//
-//                }
-//                else if (part2.equals("2")) {
-//
-//                    System.out.println("bend arm");
-//                    monitorStatusText.setText(R.string.bend_arm_45);
-//
-//                }
-//                else if (part2.equals("done")) {
-//
-//                    System.out.println("calibration done");
-//                    calibrationDone = true;
-//                    monitoring=true;
-//                    Toast.makeText(getApplicationContext(), "Calibration Done", Toast.LENGTH_SHORT).show();
-//
-//                }
-//
+//            else if(metric_check==2){
+//                force_value=data;
+//                metric_check=3;
 //            }
-//        }
-//        else if(monitoring){
-//
-//
-//            monitorStatusText.setText("Monitoring...");
-//            monitorStatusText.setTextColor(0xFFFFFFFF);
-//
-//            if(part1.equals("ang")){
-//
-//                System.out.println("armAngle_value set: " + part2);
-//                armAngle_value=part2;
+//            else if(metric_check==3){
+//                actionTime_value=data;
+//                metric_check=4;
 //            }
-//            else if(part1.equals("frc")){
-//
-//                System.out.println("force_value set: " + part2);
-//                force_value=part2;
-//            }
-//            else if(part1.equals("tim")){
-//
-//                System.out.println("actionTime_value set: " + part2);
-//                actionTime_value=part2;
-//            }
-//            else if(part1.equals("tws")){
-//
-//                System.out.println("armTwist_value set: " + part2);
-//                armTwist_value=part2;
+//            else if(metric_check==4){
+//                armTwist_value=data;
+//                metric_check=1;
 //                updateMetrics();
 //            }
-//
-//
-////            if(metric_check==1){
-////                armAngle_value=data;
-////                metric_check=2;
-////            }
-////            else if(metric_check==2){
-////                force_value=data;
-////                metric_check=3;
-////            }
-////            else if(metric_check==3){
-////                actionTime_value=data;
-////                metric_check=4;
-////            }
-////            else if(metric_check==4){
-////                armTwist_value=data;
-////                metric_check=1;
-////                updateMetrics();
-////            }
-//
-//
-//        }
-//
-//        }catch(IOException ex) {
-//            //Do something witht the exception
-//            System.out.println("NOT RIGHT ENCODING!!!");
-//        }
-//
-//    }
 
-//    void updateMetrics(){
-//
-//        System.out.println("updating metrics");
-//
-//        final ProgressDialog dialog = new GifCricFlexIcon(ActivityMonitor.this);
-//
-//        dialog.setCancelable(false);
-//        dialog.show();
-//
-//
-//
-//        Runnable progressRunnable = new Runnable() {
-//
-//            @Override
-//            public void run() {
-//                dialog.cancel();
-//            }
-//        };
-//
-//        Handler pdCanceller = new Handler();
-//        pdCanceller.postDelayed(progressRunnable, 1024);
-//
-//        dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-//
-//            @Override
-//            public void onDismiss(DialogInterface dialog) {
-//
-//
-//                if (Integer.parseInt(armAngle_value) > 15) {
-//                    //stopButtonPressed = true;
-//
-//                    monitorIllegalBalls.setText(String.valueOf(++counterIllegal));
-//                    monitorAngleValue.setTextColor(0xFFFF0000);
-////                    monitorAngleValue.setText(Integer.toString(genFlex) + "\u00b0");
-//                    monitorStatusText.setText("Illegal");
-//                    monitorStatusText.setTextColor(0xFFFF0000);
-//                } else {
-//                    monitorLegalBalls.setText(String.valueOf(++counterLegal));
-//                    //stopButtonPressed = true;
-//                    monitorAngleValue.setTextColor(0xFF00FF00);
-////                    monitorAngleValue.setText(Integer.toString(genFlex) + "\u00b0");
-//                    //degreeSign.setTextColor(0xFF00FF00);
-//                    //monitorAngleValue.setTextSize(200);
-//                    monitorStatusText.setText("Legal");
-//                    monitorStatusText.setTextColor(0xFF00FF00);
-//                }
-//
-//                angleValues.add(Integer.parseInt(armAngle_value));
-//                forceValues.add(Integer.parseInt(force_value));
-//                armTwistValues.add(Integer.parseInt(armTwist_value));
-//                actionTimeValues.add(Float.valueOf(actionTime_value));
-//
-//
-//
-////                showAlertDialog(this, "Feedback recieved", "Thank you for your FeedBack :):):)", true);
-//                monitorAngleValue.setText(armAngle_value + "\u00b0");
-//                monitorArmTwist.setText(armTwist_value + "\u00b0");
-//                monitorForce.setText(force_value + "N");
-//                monitorActionTime.setText(actionTime_value + "s");
-//            }
-//        });
-//
-//    }
+
+        }
+
+        }catch(IOException ex) {
+            //Do something witht the exception
+            System.out.println("NOT RIGHT ENCODING!!!");
+        }
+
+    }
+
+    void updateMetrics(){
+
+        System.out.println("updating metrics");
+
+        final ProgressDialog dialog = new GifCricFlexIcon(ActivityMonitor.this);
+
+        dialog.setCancelable(false);
+        dialog.show();
+
+
+
+        Runnable progressRunnable = new Runnable() {
+
+            @Override
+            public void run() {
+                dialog.cancel();
+            }
+        };
+
+        Handler pdCanceller = new Handler();
+        pdCanceller.postDelayed(progressRunnable, 1024);
+
+        dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+
+
+                if (Integer.parseInt(armAngle_value) > 15) {
+                    //stopButtonPressed = true;
+
+                    monitorIllegalBalls.setText(String.valueOf(++counterIllegal));
+                    monitorAngleValue.setTextColor(0xFFFF0000);
+//                    monitorAngleValue.setText(Integer.toString(genFlex) + "\u00b0");
+                    monitorStatusText.setText("Illegal");
+                    monitorStatusText.setTextColor(0xFFFF0000);
+                } else {
+                    monitorLegalBalls.setText(String.valueOf(++counterLegal));
+                    //stopButtonPressed = true;
+                    monitorAngleValue.setTextColor(0xFF00FF00);
+//                    monitorAngleValue.setText(Integer.toString(genFlex) + "\u00b0");
+                    //degreeSign.setTextColor(0xFF00FF00);
+                    //monitorAngleValue.setTextSize(200);
+                    monitorStatusText.setText("Legal");
+                    monitorStatusText.setTextColor(0xFF00FF00);
+                }
+
+                angleValues.add(Integer.parseInt(armAngle_value));
+                forceValues.add(Integer.parseInt(force_value));
+                armTwistValues.add(Integer.parseInt(armTwist_value));
+                actionTimeValues.add(Float.valueOf(actionTime_value));
+
+
+
+//                showAlertDialog(this, "Feedback recieved", "Thank you for your FeedBack :):):)", true);
+                monitorAngleValue.setText(armAngle_value + "\u00b0");
+                monitorArmTwist.setText(armTwist_value + "\u00b0");
+                monitorForce.setText(force_value + "N");
+                monitorActionTime.setText(actionTime_value + "s");
+            }
+        });
+
+    }
 
 
 

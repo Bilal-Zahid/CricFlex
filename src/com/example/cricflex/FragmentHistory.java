@@ -40,8 +40,7 @@ public class FragmentHistory extends Fragment {
     
     DatabaseHelper helper;
     String email;
-
-
+    
     // date selector items
     private TextView currentMonth;
     private ImageButton prevMonth;
@@ -383,7 +382,7 @@ public class FragmentHistory extends Fragment {
         xAxis = lineChart.getXAxis();
         xAxis.setTextColor(Color.WHITE);
         xAxis.setTextSize(10f);
-        xAxis.setAxisMinValue(0);
+        xAxis.setAxisMinValue(1);
         xAxis.setDrawGridLines(false);
         xAxis.setDrawAxisLine(true);
         xAxis.setDrawLabels(true);
@@ -391,7 +390,10 @@ public class FragmentHistory extends Fragment {
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setAxisMinValue(1);
         xAxis.setGranularityEnabled(true);
-        xAxis.setGranularity(1f);              //minimum interval on the x-axis
+        xAxis.setGranularity(1f);               // minimum interval on the x-axis
+        xAxis.setLabelCount(count);             // no. of balls in the respective month
+
+
         xAxis.setValueFormatter(new AxisValueFormatter() {
             @Override
             public String getFormattedValue(float value, AxisBase axis) {
@@ -454,9 +456,6 @@ public class FragmentHistory extends Fragment {
             }
         });
 
-        // no. of overs in the respective month
-        xAxis.setLabelCount(count/6);
-
         // notify chart that data is changed
         lineChart.notifyDataSetChanged();
 
@@ -504,28 +503,34 @@ public class FragmentHistory extends Fragment {
                 }
             }
         }
-        System.out.println("List of angle values with date in fragment history: " + list1);
-        for (int i=0;i < list1.size();i++){
 
-            value = Integer.valueOf(list1.get(i));
+        if(list1.size()!=0){
 
-            entriesAngle.add(new Entry(i,value));
+            maximum = Integer.valueOf(list1.get(0));
+            minimum = Integer.valueOf(list1.get(0));
 
-            sum += value;
-            if(value > maximum)
-                maximum=value;
-            if(value < minimum)
-                minimum=value;
+            for (int i=0;i < list1.size();i++){
+
+                value = Integer.valueOf(list1.get(i));
+
+                entriesAngle.add(new Entry(i+1,value));
+
+                sum += value;
+                if(value > maximum)
+                    maximum=value;
+                if(value < minimum)
+                    minimum=value;
+            }
+
+            updateGraph(entriesAngle,checkForTab, list1.size());
+
+            if(list1.size() != 0)
+                average = sum/list1.size();
+
+            maximumValue.setText(String.valueOf(maximum));
+            minimumValue.setText(String.valueOf(minimum));
+            averageValue.setText(String.valueOf(average));
         }
-
-        updateGraph(entriesAngle,checkForTab, list1.size());
-
-        if(list1.size() != 0)
-            average = sum/list1.size();
-
-        maximumValue.setText(String.valueOf(maximum));
-        minimumValue.setText(String.valueOf(minimum));
-        averageValue.setText(String.valueOf(average));
 
     }
 
@@ -567,27 +572,34 @@ public class FragmentHistory extends Fragment {
                 }
             }
         }
-//        System.out.println("List of angle values with date in fragment history: " + list1);
-        for (int i=0;i<list2.size();i++){
 
-            value = Integer.valueOf(list2.get(i));
-            entriesForce.add(new Entry(i,value));
 
-            sum += value;
-            if(value > maximum)
-                maximum=value;
-            if(value < minimum)
-                minimum=value;
+        if(list2.size()!=0) {
+
+            maximum = Integer.valueOf(list2.get(0));
+            minimum = Integer.valueOf(list2.get(0));
+
+            for (int i = 0; i < list2.size(); i++) {
+
+                value = Integer.valueOf(list2.get(i));
+                entriesForce.add(new Entry(i + 1, value));
+
+                sum += value;
+                if (value > maximum)
+                    maximum = value;
+                if (value < minimum)
+                    minimum = value;
+            }
+
+            updateGraph(entriesForce, checkForTab, list2.size());
+
+            if (list2.size() != 0)
+                average = sum / list2.size();
+
+            maximumValue.setText(String.valueOf(maximum));
+            minimumValue.setText(String.valueOf(minimum));
+            averageValue.setText(String.valueOf(average));
         }
-
-        updateGraph(entriesForce,checkForTab, list2.size());
-
-        if(list2.size() != 0)
-            average = sum/list2.size();
-
-        maximumValue.setText(String.valueOf(maximum));
-        minimumValue.setText(String.valueOf(minimum));
-        averageValue.setText(String.valueOf(average));
     }
 
     // shows actionTime data of the selected month
@@ -628,30 +640,34 @@ public class FragmentHistory extends Fragment {
                 }
             }
         }
-//        System.out.println("List of angle values with date in fragment history: " + list1);
-        for (int i=0;i<list3.size();i++){
 
-            value = Float.valueOf(list3.get(i));
+        if(list3.size()!=0) {
 
-            entriesActionTime.add(new Entry(i,value));
+            maximum = Float.valueOf(list3.get(0));
+            minimum = Float.valueOf(list3.get(0));
 
-            sum += value;
-            if(value > maximum)
-                maximum=value;
-            if(value < minimum)
-                minimum=value;
+            for (int i = 0; i < list3.size(); i++) {
 
+                value = Float.valueOf(list3.get(i));
+
+                entriesActionTime.add(new Entry(i + 1, value));
+
+                sum += value;
+                if (value > maximum)
+                    maximum = value;
+                if (value < minimum)
+                    minimum = value;
+
+            }
+            updateGraph(entriesActionTime, checkForTab, list3.size());
+
+            if (list3.size() != 0)
+                average = sum / list3.size();
+
+            maximumValue.setText(String.valueOf(maximum));
+            minimumValue.setText(String.valueOf(minimum));
+            averageValue.setText(String.valueOf(average));
         }
-        System.out.println("List of action time values with date in fragment history: " + list3);
-
-        updateGraph(entriesActionTime,checkForTab, list3.size());
-
-        if(list3.size() != 0)
-            average = sum/list3.size();
-
-        maximumValue.setText(String.valueOf(maximum));
-        minimumValue.setText(String.valueOf(minimum));
-        averageValue.setText(String.valueOf(average));
     }
 
     // shows twist data of the selected month
@@ -695,29 +711,32 @@ public class FragmentHistory extends Fragment {
             }
         }
 
-        for (int i=0;i<list4.size();i++){
+        if(list4.size()!=0) {
 
-            value = Integer.valueOf(list4.get(i));
-            entriesArmTwist.add(new Entry(i,value));
+            maximum = Integer.valueOf(list4.get(0));
+            minimum = Integer.valueOf(list4.get(0));
 
-            sum += value;
-            if(value > maximum)
-                maximum=value;
-            if(value < minimum)
-                minimum=value;
+            for (int i = 0; i < list4.size(); i++) {
+
+                value = Integer.valueOf(list4.get(i));
+                entriesArmTwist.add(new Entry(i + 1, value));
+
+                sum += value;
+                if (value > maximum)
+                    maximum = value;
+                if (value < minimum)
+                    minimum = value;
+            }
+
+            updateGraph(entriesArmTwist, checkForTab, list4.size());
+
+            if (list4.size() != 0)
+                average = sum / list4.size();
+
+            maximumValue.setText(String.valueOf(maximum));
+            minimumValue.setText(String.valueOf(minimum));
+            averageValue.setText(String.valueOf(average));
         }
-
-        System.out.println("List of arm twist values with date in fragment history: " + list4);
-
-
-        updateGraph(entriesArmTwist,checkForTab, list4.size());
-
-        if(list4.size() != 0)
-            average = sum/list4.size();
-
-        maximumValue.setText(String.valueOf(maximum));
-        minimumValue.setText(String.valueOf(minimum));
-        averageValue.setText(String.valueOf(average));
     }
 
     // updates graph when date changed

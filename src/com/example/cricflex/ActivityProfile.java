@@ -23,6 +23,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.io.FileInputStream;
 import java.util.Calendar;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 import static android.content.ContentValues.TAG;
 
 public class ActivityProfile extends AppCompatActivity {
@@ -34,7 +36,7 @@ public class ActivityProfile extends AppCompatActivity {
 
     FirebaseAuth firebaseAuth;
     DatabaseReference usersDatabaseReference;
-    de.hdodenhof.circleimageview.CircleImageView profilePicture;
+    CircleImageView profilePicture;
 
 
     @Override
@@ -207,7 +209,7 @@ public class ActivityProfile extends AppCompatActivity {
 
 
 
-        profilePicture = (de.hdodenhof.circleimageview.CircleImageView) findViewById(R.id.profilepicture);
+        profilePicture = (CircleImageView) findViewById(R.id.profilepicture);
         //Bitmap bitmapImage1 = helper.getImage(email);
 
         //circleImageView.setImageBitmap(bitmapImage1);

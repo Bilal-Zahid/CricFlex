@@ -14,7 +14,7 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark"
     android:onClick="viewProfile">
 
-    <com.example.cricflex.CircleImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:id="@+id/profilepicture"

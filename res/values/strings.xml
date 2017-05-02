@@ -138,6 +138,17 @@
     <string name="monitor_illegal_text">Illegal Balls</string>
     <string name="monitor_finish_button">END SESSION</string>
 
+    <!--activity calibration-->
+    <string name="cal_ok">Ok</string>
+    <string name="cal_step1">Step 1</string>
+    <string name="cal_step2">Step 2</string>
+    <string name="cal_step3">Step 3</string>
+    <string name="cal_step4">Step 4</string>
+    <string name="cal_step1_desc">Straighten your elbow across the straight strip (provided with the band).</string>
+    <string name="cal_step2_desc">Bend your elbow across the 45° angled strip (provided with the band).</string>
+    <string name="cal_step3_desc">Twist your arm towards your right as much as you can.</string>
+    <string name="cal_step4_desc">Twist your arm towards your left as much as you can.</string>
+
 
     <!--session stats-->
 
@@ -178,6 +189,10 @@
     <string name="history_tab_force">Force</string>
     <string name="history_tab_time">Time</string>
     <string name="history_tab_twist">Twist</string>
+    <string name="history_angle_text">Angle</string>
+    <string name="history_force_text">Force</string>
+    <string name="history_time_text">Time</string>
+    <string name="history_twist_text">Twist</string>
     <string name="history_over">Overs</string>
     <string name="history_stat_maximum">Maximum</string>
     <string name="history_stat_minimum">Minimum</string>

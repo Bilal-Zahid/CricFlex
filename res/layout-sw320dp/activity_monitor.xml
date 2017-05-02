@@ -6,12 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <ImageView android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:scaleType="centerCrop"
         android:id="@+id/background"
         android:src="@drawable/bkd22"
         android:contentDescription="@string/content_desc_imageView"/>
+
 
 
     <RelativeLayout
@@ -179,6 +181,7 @@
             android:textStyle="bold"/>
 
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/metric3"
         android:layout_width="0dp"
@@ -281,7 +284,6 @@
 
     </LinearLayout>
 
-    <!--second column body-->
     <LinearLayout
         android:id="@+id/tile_illegal"
         android:layout_above="@id/monitor_finish_button"
@@ -323,5 +325,6 @@
             android:textStyle="bold"/>
 
     </LinearLayout>
+
 
 </android.support.percent.PercentRelativeLayout>

@@ -102,6 +102,15 @@
     <color name="bluetooth_disconnected">#222222</color>
     <color name="bluetooth_connected">@color/text_light</color>
     <color name="monitor_metric_bar_color">#aa002147</color>
+
+    <!--calibration-->
+    <color name="cal_bg_color">#111111</color>
+    <color name="cal_header_color">#111111</color>
+    <color name="cal_gif_bg_color">@color/c5</color>
+    <color name="cal_ok_button_normal">@color/c1</color>
+    <color name="cal_ok_button_pressed">@color/c1</color>
+
+
     <!--session-->
     <color name="session_header">#50000000</color>
     <color name="session_header_text">@color/text_light</color>
@@ -114,6 +123,7 @@
     <color name="session_footer">#ffff8800</color>
     <color name="session_finish_button_text">@color/text_light</color>
     <color name="session_graph_back_button_color">@color/c5</color>
+    <color name="session_graph_layout_bg">#111111</color>
 
     <!--profile-->
     <color name="edit_profile_button_text">@color/text_light</color>
@@ -126,12 +136,12 @@
     <color name="help_popup_bkd">#333333</color>
     <color name="number_bkd">@color/c1</color>
 
-
     <!--history-->
 
     <color name="date_arrow_icon_color">@color/c5</color>
     <color name="history_fragment_background_color">#111</color>
     <color name="history_stat_background">@color/c180</color>
+    <color name="history_chart_marker_view_bg">#e0333333</color>
 
 
     <!--about-->

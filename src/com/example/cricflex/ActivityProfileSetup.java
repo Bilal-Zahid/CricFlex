@@ -50,6 +50,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 /**
  * Created by Asawal on 8/13/2016.
  */
@@ -82,7 +84,7 @@ public class ActivityProfileSetup extends FragmentActivity {
     Context ctx;
 
     Bitmap bitmapImage;
-    de.hdodenhof.circleimageview.CircleImageView profileImage;
+    CircleImageView profileImage;
 
     String backCheck = "activity setup profile 1";
 
@@ -179,7 +181,7 @@ public class ActivityProfileSetup extends FragmentActivity {
         });
 
 
-        profileImage = (de.hdodenhof.circleimageview.CircleImageView) findViewById(R.id.profilepicture);
+        profileImage = (CircleImageView) findViewById(R.id.profilepicture);
         profileImage.setClickable(true);
 
         profileImage.setOnClickListener(new View.OnClickListener() {

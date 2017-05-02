@@ -96,7 +96,8 @@
                     android:textColor="#FFFFFF"
                     android:hint="@string/enter_name"
                     android:textColorHint="@color/text_hint"
-                    android:inputType="none"
+                    android:inputType="textPersonName"
+                    android:maxLines="1"
                     android:imeOptions="actionDone"
                     />
 
