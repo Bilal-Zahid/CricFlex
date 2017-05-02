@@ -8,21 +8,21 @@ import java.util.ArrayList;
 
 public class AllMetrics {
 
-    String Email;
-    String Name;
-    String legalBalls;
-    String illegalBalls;
-    ArrayList<Integer> angleValues = new ArrayList<Integer>();
-    ArrayList<Integer> forceValues = new ArrayList<Integer>();
-    ArrayList<Integer> armTwistValues = new ArrayList<Integer>();
-    ArrayList<Float> actionTimeValues = new ArrayList<Float>();
+
+
+    public String Email;
+    public int legalBalls;
+    public int illegalBalls;
+    public ArrayList<Integer> angleValues = new ArrayList<Integer>();
+    public ArrayList<Integer> forceValues = new ArrayList<Integer>();
+    public ArrayList<Integer> armTwistValues = new ArrayList<Integer>();
+    public ArrayList<Float> actionTimeValues = new ArrayList<Float>();
 
     public AllMetrics() {
     }
 
-    public AllMetrics(String email, String name, String legalBalls, String illegalBalls, ArrayList<Integer> angleValues, ArrayList<Integer> forceValues, ArrayList<Integer> armTwistValues, ArrayList<Float> actionTimeValues) {
+    public AllMetrics(String email, int legalBalls, int illegalBalls, ArrayList<Integer> angleValues, ArrayList<Integer> forceValues, ArrayList<Integer> armTwistValues, ArrayList<Float> actionTimeValues) {
         Email = email;
-        Name = name;
         this.legalBalls = legalBalls;
         this.illegalBalls = illegalBalls;
         this.angleValues = angleValues;
@@ -30,4 +30,15 @@ public class AllMetrics {
         this.armTwistValues = armTwistValues;
         this.actionTimeValues = actionTimeValues;
     }
+
+
+//    public AllMetrics(String email, int legalBalls, int illegalBalls, ArrayList<Integer> angleValues, ArrayList<Integer> forceValues, ArrayList<Integer> armTwistValues, ArrayList<Float> actionTimeValues) {
+//        Email = email;
+//        this.legalBalls = legalBalls;
+//        this.illegalBalls = illegalBalls;
+//        this.angleValues = angleValues;
+//        this.forceValues = forceValues;
+//        this.armTwistValues = armTwistValues;
+//        this.actionTimeValues = actionTimeValues;
+//    }
 }

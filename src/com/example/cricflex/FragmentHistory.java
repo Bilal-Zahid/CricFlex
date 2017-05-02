@@ -505,7 +505,7 @@ public class FragmentHistory extends Fragment {
             }
         }
         System.out.println("List of angle values with date in fragment history: " + list1);
-        for (int i=1;i <= list1.size();i++){
+        for (int i=0;i < list1.size();i++){
 
             value = Integer.valueOf(list1.get(i));
 
