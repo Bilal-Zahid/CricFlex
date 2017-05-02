@@ -189,6 +189,10 @@
     <string name="history_tab_force">Force</string>
     <string name="history_tab_time">Time</string>
     <string name="history_tab_twist">Twist</string>
+    <string name="history_angle_text">Angle</string>
+    <string name="history_force_text">Force</string>
+    <string name="history_time_text">Time</string>
+    <string name="history_twist_text">Twist</string>
     <string name="history_over">Overs</string>
     <string name="history_stat_maximum">Maximum</string>
     <string name="history_stat_minimum">Minimum</string>

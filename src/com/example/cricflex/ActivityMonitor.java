@@ -427,6 +427,8 @@ public class ActivityMonitor extends Activity {
         unregisterReceiver(scanModeReceiver);
         unregisterReceiver(bluetoothStateReceiver);
         unregisterReceiver(rfduinoReceiver);
+        unregisterReceiver(BleConnectionReceiver);
+
 
     }
     @Override
@@ -1022,8 +1024,15 @@ public class ActivityMonitor extends Activity {
 
     void viewData(byte[] data){
 
+        int value=0;
+        for (int i = 0; i < data.length; i++) {
+            value += ((int) data[i] & 0xffL) << (8 * i);
+        }
+        monitorStatusText.setText(String.valueOf(value));
+        System.out.println("!!!!!!!!!!int recieving: " + value);
+        System.out.println("!!!!!!!!!!bytes recieving: " + data);
         String temp = bytesToHex(data);
-        System.out.println("bytes recieving: " + temp);
+        System.out.println("!!!!!!!!!!hex recieving: " + temp);
         String msg;
         //            final byte[] data = characteristic.getValue();
         if (data != null && data.length > 0) {
@@ -1032,8 +1041,8 @@ public class ActivityMonitor extends Activity {
                 stringBuilder.append(String.format("%02X ", byteChar));
 
             msg = new String(data) + "\n" + stringBuilder.toString();
-            monitorAngleValue.setText(msg);
-            System.out.println("string receiving: " + msg);
+//            monitorStatusText.setText(msg);
+            System.out.println("!!!!!!!!!!!!string receiving: " + msg);
         }
     }
 

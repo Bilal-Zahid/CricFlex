@@ -40,8 +40,7 @@ public class FragmentHistory extends Fragment {
     
     DatabaseHelper helper;
     String email;
-
-
+    
     // date selector items
     private TextView currentMonth;
     private ImageButton prevMonth;
