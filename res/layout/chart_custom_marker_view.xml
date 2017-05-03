@@ -1,18 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@color/c3" >
+    android:background="@color/history_chart_marker_view_bg" >
+
+    <!--angle-->
 
     <TextView
-        android:id="@+id/chart_custom_marker_text"
+        android:id="@+id/text_angle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:text=""
+        android:padding="2dp"
+        android:text="@string/history_angle_text"
         android:textSize="12sp"
         android:textColor="@android:color/white"
         android:ellipsize="end"
         android:maxLines="1" />
+    <TextView
+        android:id="@+id/value_angle"
+        android:layout_toEndOf="@id/text_angle"
+        android:layout_marginStart="2dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="2dp"
+        android:text="12\u00b0"
+        android:textSize="12sp"
+        android:textColor="@android:color/white"
+        android:ellipsize="end"
+        android:maxLines="1" />
+
+    <!--force-->
+
+    <TextView
+        android:id="@+id/text_force"
+        android:layout_below="@id/text_angle"
+        android:layout_alignStart="@id/text_angle"
+        android:layout_alignEnd="@id/text_angle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="2dp"
+        android:text="@string/history_force_text"
+        android:textSize="12sp"
+        android:textColor="@android:color/white"
+        android:ellipsize="end"
+        android:maxLines="1" />
+    <TextView
+        android:id="@+id/value_force"
+        android:layout_below="@id/value_angle"
+        android:layout_toEndOf="@id/text_force"
+        android:layout_marginStart="2dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="2dp"
+        android:text="1500N"
+        android:textSize="12sp"
+        android:textColor="@android:color/white"
+        android:ellipsize="end"
+        android:maxLines="1" />
+
+    <!--time-->
+
+    <TextView
+        android:id="@+id/text_time"
+        android:layout_below="@id/text_force"
+        android:layout_alignStart="@id/text_angle"
+        android:layout_alignEnd="@id/text_angle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="2dp"
+        android:text="@string/history_time_text"
+        android:textSize="12sp"
+        android:textColor="@android:color/white"
+        android:ellipsize="end"
+        android:maxLines="1" />
+    <TextView
+        android:id="@+id/value_time"
+        android:layout_below="@id/value_force"
+        android:layout_toEndOf="@id/text_time"
+        android:layout_marginStart="2dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="2dp"
+        android:text="0.052s"
+        android:textSize="12sp"
+        android:textColor="@android:color/white"
+        android:ellipsize="end"
+        android:maxLines="1" />
+
+    <!--twist-->
+
+    <TextView
+        android:id="@+id/text_twist"
+        android:layout_below="@id/text_time"
+        android:layout_alignStart="@id/text_angle"
+        android:layout_alignEnd="@id/text_angle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="2dp"
+        android:text="@string/history_twist_text"
+        android:textSize="12sp"
+        android:textColor="@android:color/white"
+        android:ellipsize="end"
+        android:maxLines="1" />
+    <TextView
+        android:id="@+id/value_twist"
+        android:layout_below="@id/value_time"
+        android:layout_toEndOf="@id/text_twist"
+        android:layout_marginStart="2dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="2dp"
+        android:text="3\u00b0"
+        android:textSize="12sp"
+        android:textColor="@android:color/white"
+        android:ellipsize="end"
+        android:maxLines="1" />
+
 
 </RelativeLayout>

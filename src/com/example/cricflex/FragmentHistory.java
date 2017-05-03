@@ -40,7 +40,7 @@ public class FragmentHistory extends Fragment {
     
     DatabaseHelper helper;
     String email;
-    
+
     // date selector items
     private TextView currentMonth;
     private ImageButton prevMonth;
@@ -79,8 +79,11 @@ public class FragmentHistory extends Fragment {
     TextView minimumValue;
     TextView averageValue;
     
-    
-    
+    int angleMax, angleMin, angleAvg;
+    int forceMax, forceMin, forceAvg;
+    float timeMax, timeMin, timeAvg;
+    int twistMax, twistMin, twistAvg;
+    int angleDataSize, forceDataSize, timeDataSize, twistDataSize;
 
     public FragmentHistory(){}
 
@@ -94,8 +97,10 @@ public class FragmentHistory extends Fragment {
         //getting email from shared preference
         email = SaveSharedPreference.getEmail(getActivity());
 
-        //database helper
+        //database
         helper = new DatabaseHelper(getActivity());
+
+
 
         //initializing date selector items
         prevYear = (ImageButton) rootView.findViewById(R.id.prevYear);
@@ -283,10 +288,15 @@ public class FragmentHistory extends Fragment {
         // update date selector to local date
         currentMonth.setText(DateFormat.format(dateTemplate, _calendar.getTime()));
 
+        // get data from database
+        getAngleDataFromDatabase();
+        getForceDataFromDatabase();
+        getTimeDataFromDatabase();
+        getTwistDataFromDatabase();
+
         // updates the graph to local month year
         // sets to angle graph on first start
         updateGraphToDate(month, year);
-
 
 
         return rootView;
@@ -349,6 +359,7 @@ public class FragmentHistory extends Fragment {
 
         // shows popup on data point when clicked
         markerView = new ChartCustomMarkerView(getActivity(), R.layout.chart_custom_marker_view);
+        markerView.setMetricData(entriesAngle, entriesForce, entriesActionTime, entriesArmTwist);
         lineChart.setMarkerView(markerView);
 
         // limit line settings
@@ -467,70 +478,13 @@ public class FragmentHistory extends Fragment {
     public void showAngleData(){
 
         selectTab("angle");
-        entriesAngle.clear();
 
-        int value;
+        updateGraph(entriesAngle, checkForTab, angleDataSize);
 
-        int sum = 0;
-        int average = 0;
-        int maximum = 0;
-        int minimum = 0;
+        maximumValue.setText(String.valueOf(angleMax));
+        minimumValue.setText(String.valueOf(angleMin));
+        averageValue.setText(String.valueOf(angleAvg));
 
-
-        String angleValuesWithDate = helper.getAngleValuesWithDate(email,currentMonth.getText().toString());
-
-        //making arraylist after getting response from database
-        ArrayList<String> list1 = new ArrayList<>();
-
-        if(!angleValuesWithDate.equals("not found")) {
-            // Getting Arraylist back
-            JSONObject json1 = null;
-            try {
-                json1 = new JSONObject(angleValuesWithDate);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-            JSONArray jsonArray = json1.optJSONArray("angleArray");
-            if (jsonArray != null) {
-                int len = jsonArray.length();
-                for (int i = 0; i < len; i++) {
-                    try {
-                        list1.add(jsonArray.get(i).toString());
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
-
-        if(list1.size()!=0){
-
-            maximum = Integer.valueOf(list1.get(0));
-            minimum = Integer.valueOf(list1.get(0));
-
-            for (int i=0;i < list1.size();i++){
-
-                value = Integer.valueOf(list1.get(i));
-
-                entriesAngle.add(new Entry(i+1,value));
-
-                sum += value;
-                if(value > maximum)
-                    maximum=value;
-                if(value < minimum)
-                    minimum=value;
-            }
-
-            updateGraph(entriesAngle,checkForTab, list1.size());
-
-            if(list1.size() != 0)
-                average = sum/list1.size();
-
-            maximumValue.setText(String.valueOf(maximum));
-            minimumValue.setText(String.valueOf(minimum));
-            averageValue.setText(String.valueOf(average));
-        }
 
     }
 
@@ -538,136 +492,26 @@ public class FragmentHistory extends Fragment {
     public void showForceData(){
 
         selectTab("force");
-        entriesForce.clear();
 
-        int value;
+        updateGraph(entriesForce, checkForTab, forceDataSize);
 
-        int sum = 0;
-        int average = 0;
-        int maximum = 0;
-        int minimum = 0;
+        maximumValue.setText(String.valueOf(forceMax));
+        minimumValue.setText(String.valueOf(forceMin));
+        averageValue.setText(String.valueOf(forceAvg));
 
-        String forceWithDate = helper.getForceValuesWithDate(email,currentMonth.getText().toString());
-
-        //making arraylist after getting response from database
-        ArrayList<String> list2 = new ArrayList<>();
-        if(!forceWithDate.equals("not found")) {
-            // Getting Arraylist back
-            JSONObject json1 = null;
-            try {
-                json1 = new JSONObject(forceWithDate);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-            JSONArray jsonArray = json1.optJSONArray("forceArray");
-            if (jsonArray != null) {
-                int len = jsonArray.length();
-                for (int i = 0; i < len; i++) {
-                    try {
-                        list2.add(jsonArray.get(i).toString());
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
-
-
-        if(list2.size()!=0) {
-
-            maximum = Integer.valueOf(list2.get(0));
-            minimum = Integer.valueOf(list2.get(0));
-
-            for (int i = 0; i < list2.size(); i++) {
-
-                value = Integer.valueOf(list2.get(i));
-                entriesForce.add(new Entry(i + 1, value));
-
-                sum += value;
-                if (value > maximum)
-                    maximum = value;
-                if (value < minimum)
-                    minimum = value;
-            }
-
-            updateGraph(entriesForce, checkForTab, list2.size());
-
-            if (list2.size() != 0)
-                average = sum / list2.size();
-
-            maximumValue.setText(String.valueOf(maximum));
-            minimumValue.setText(String.valueOf(minimum));
-            averageValue.setText(String.valueOf(average));
-        }
     }
 
     // shows actionTime data of the selected month
     public void showActionTimeData(){
 
         selectTab("time");
-        entriesActionTime.clear();
 
-        float value;
+        updateGraph(entriesActionTime, checkForTab, timeDataSize);
 
-        float sum = 0f;
-        float average = 0f;
-        float maximum = 0f;
-        float minimum = 0f;
+        maximumValue.setText(String.valueOf(timeMax));
+        minimumValue.setText(String.valueOf(timeMin));
+        averageValue.setText(String.valueOf(timeAvg));
 
-        String actionTimeWithDate = helper.getActionTimeValuesWithDate(email,currentMonth.getText().toString());
-
-        //making arraylist after getting response from database
-        ArrayList<String> list3 = new ArrayList<>();
-        if(!actionTimeWithDate.equals("not found")) {
-            // Getting Arraylist back
-            JSONObject json1 = null;
-            try {
-                json1 = new JSONObject(actionTimeWithDate);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-            JSONArray jsonArray = json1.optJSONArray("actionTimeArray");
-            if (jsonArray != null) {
-                int len = jsonArray.length();
-                for (int i = 0; i < len; i++) {
-                    try {
-                        list3.add(jsonArray.get(i).toString());
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
-
-        if(list3.size()!=0) {
-
-            maximum = Float.valueOf(list3.get(0));
-            minimum = Float.valueOf(list3.get(0));
-
-            for (int i = 0; i < list3.size(); i++) {
-
-                value = Float.valueOf(list3.get(i));
-
-                entriesActionTime.add(new Entry(i + 1, value));
-
-                sum += value;
-                if (value > maximum)
-                    maximum = value;
-                if (value < minimum)
-                    minimum = value;
-
-            }
-            updateGraph(entriesActionTime, checkForTab, list3.size());
-
-            if (list3.size() != 0)
-                average = sum / list3.size();
-
-            maximumValue.setText(String.valueOf(maximum));
-            minimumValue.setText(String.valueOf(minimum));
-            averageValue.setText(String.valueOf(average));
-        }
     }
 
     // shows twist data of the selected month
@@ -675,68 +519,12 @@ public class FragmentHistory extends Fragment {
 
         selectTab("twist");
 
-        entriesArmTwist.clear();
+            updateGraph(entriesArmTwist, checkForTab, twistDataSize);
 
-        int value;
+            maximumValue.setText(String.valueOf(twistMax));
+            minimumValue.setText(String.valueOf(twistMin));
+            averageValue.setText(String.valueOf(twistAvg));
 
-        int sum = 0;
-        int average = 0;
-        int maximum = 0;
-        int minimum = 0;
-
-        String armTwistWithDate = helper.getArmTwistValuesWithDate(email,currentMonth.getText().toString());
-
-        //making arraylist after getting response from database
-        ArrayList<String> list4 = new ArrayList<>();
-
-        if(!armTwistWithDate.equals("not found")) {
-            // Getting Arraylist back
-            JSONObject json1 = null;
-            try {
-                json1 = new JSONObject(armTwistWithDate);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-            JSONArray jsonArray = json1.optJSONArray("armTwistArray");
-            if (jsonArray != null) {
-                int len = jsonArray.length();
-                for (int i = 0; i < len; i++) {
-                    try {
-                        list4.add(jsonArray.get(i).toString());
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
-
-        if(list4.size()!=0) {
-
-            maximum = Integer.valueOf(list4.get(0));
-            minimum = Integer.valueOf(list4.get(0));
-
-            for (int i = 0; i < list4.size(); i++) {
-
-                value = Integer.valueOf(list4.get(i));
-                entriesArmTwist.add(new Entry(i + 1, value));
-
-                sum += value;
-                if (value > maximum)
-                    maximum = value;
-                if (value < minimum)
-                    minimum = value;
-            }
-
-            updateGraph(entriesArmTwist, checkForTab, list4.size());
-
-            if (list4.size() != 0)
-                average = sum / list4.size();
-
-            maximumValue.setText(String.valueOf(maximum));
-            minimumValue.setText(String.valueOf(minimum));
-            averageValue.setText(String.valueOf(average));
-        }
     }
 
     // updates graph when date changed
@@ -828,5 +616,231 @@ public class FragmentHistory extends Fragment {
         }
     }
 
+
+    public void getAngleDataFromDatabase() {
+
+        int value;
+
+        String angleValuesWithDate = helper.getAngleValuesWithDate(email, currentMonth.getText().toString());
+        //making arraylist after getting response from database
+        ArrayList<String> list1 = new ArrayList<>();
+
+        if (!angleValuesWithDate.equals("not found")) {
+            // Getting Arraylist back
+            JSONObject json1 = null;
+            try {
+                json1 = new JSONObject(angleValuesWithDate);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            JSONArray jsonArray = json1.optJSONArray("angleArray");
+            if (jsonArray != null) {
+                int len = jsonArray.length();
+                for (int i = 0; i < len; i++) {
+                    try {
+                        list1.add(jsonArray.get(i).toString());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+
+        if (list1.size() != 0) {
+
+            angleDataSize = list1.size();
+
+            angleMax = Integer.valueOf(list1.get(0));
+            angleMin = Integer.valueOf(list1.get(0));
+
+            for (int i = 0; i < list1.size(); i++) {
+
+                value = Integer.valueOf(list1.get(i));
+                entriesAngle.add(new Entry(i + 1, value));
+
+                angleAvg += value;
+                if (value > angleMax)
+                    angleMax = value;
+                if (value < angleMin)
+                    angleMin = value;
+            }
+
+            angleAvg = angleAvg / list1.size();
+
+        }
+
+    }
+
+    public void getForceDataFromDatabase() {
+
+        int value;
+
+        String forceWithDate = helper.getForceValuesWithDate(email, currentMonth.getText().toString());
+
+        //making arraylist after getting response from database
+        ArrayList<String> list2 = new ArrayList<>();
+        if (!forceWithDate.equals("not found")) {
+            // Getting Arraylist back
+            JSONObject json1 = null;
+            try {
+                json1 = new JSONObject(forceWithDate);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            JSONArray jsonArray = json1.optJSONArray("forceArray");
+            if (jsonArray != null) {
+                int len = jsonArray.length();
+                for (int i = 0; i < len; i++) {
+                    try {
+                        list2.add(jsonArray.get(i).toString());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+
+
+        if (list2.size() != 0) {
+
+            forceDataSize = list2.size();
+
+            forceMax = Integer.valueOf(list2.get(0));
+            forceMin = Integer.valueOf(list2.get(0));
+
+            for (int i = 0; i < list2.size(); i++) {
+
+                value = Integer.valueOf(list2.get(i));
+                entriesForce.add(new Entry(i + 1, value));
+
+                forceAvg += value;
+                if (value > forceMax)
+                    forceMax = value;
+                if (value < forceMin)
+                    forceMin = value;
+            }
+
+            forceAvg = forceAvg / list2.size();
+
+        }
+
+
+    }
+
+    public void getTimeDataFromDatabase() {
+
+        float valueFloat;
+
+        String actionTimeWithDate = helper.getActionTimeValuesWithDate(email, currentMonth.getText().toString());
+
+        //making arraylist after getting response from database
+        ArrayList<String> list3 = new ArrayList<>();
+        if (!actionTimeWithDate.equals("not found")) {
+            // Getting Arraylist back
+            JSONObject json1 = null;
+            try {
+                json1 = new JSONObject(actionTimeWithDate);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            JSONArray jsonArray = json1.optJSONArray("actionTimeArray");
+            if (jsonArray != null) {
+                int len = jsonArray.length();
+                for (int i = 0; i < len; i++) {
+                    try {
+                        list3.add(jsonArray.get(i).toString());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+
+        if (list3.size() != 0) {
+
+            timeDataSize = list3.size();
+
+            timeMax = Float.valueOf(list3.get(0));
+            timeMin = Float.valueOf(list3.get(0));
+
+            for (int i = 0; i < list3.size(); i++) {
+                valueFloat = Float.valueOf(list3.get(i));
+                entriesActionTime.add(new Entry(i + 1, valueFloat));
+
+                timeAvg += valueFloat;
+
+                if (valueFloat > timeMax)
+                    timeMax = valueFloat;
+                if (valueFloat < timeMin)
+                    timeMin = valueFloat;
+            }
+
+            timeAvg = timeAvg / list3.size();
+
+        }
+
+
+    }
+
+    public void getTwistDataFromDatabase() {
+
+        int value;
+
+        String armTwistWithDate = helper.getArmTwistValuesWithDate(email,currentMonth.getText().toString());
+
+        //making arraylist after getting response from database
+        ArrayList<String> list4 = new ArrayList<>();
+
+        if(!armTwistWithDate.equals("not found")) {
+            // Getting Arraylist back
+            JSONObject json1 = null;
+            try {
+                json1 = new JSONObject(armTwistWithDate);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            JSONArray jsonArray = json1.optJSONArray("armTwistArray");
+            if (jsonArray != null) {
+                int len = jsonArray.length();
+                for (int i = 0; i < len; i++) {
+                    try {
+                        list4.add(jsonArray.get(i).toString());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+
+        if(list4.size()!=0) {
+
+            twistDataSize = list4.size();
+
+            twistMax = Integer.valueOf(list4.get(0));
+            twistMin = Integer.valueOf(list4.get(0));
+
+            for (int i = 0; i < list4.size(); i++) {
+
+                value = Integer.valueOf(list4.get(i));
+                entriesArmTwist.add(new Entry(i + 1, value));
+
+                timeAvg += value;
+
+                if (value > twistMax)
+                    twistMax = value;
+                if (value < twistMin)
+                    twistMin = value;
+            }
+
+            timeAvg = timeAvg / list4.size();
+        }
+
+
+
+    }
 
 }
