@@ -39,7 +39,6 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,6 +49,8 @@ import android.bluetooth.le.ScanSettings;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -68,6 +69,9 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.LocationSettingsResult;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
+import com.google.firebase.database.ValueEventListener;
+
+import static android.content.ContentValues.TAG;
 
 
 @TargetApi(21)
@@ -99,6 +103,9 @@ public class ActivityMonitor extends Activity {
     private boolean connectedToBand = false;
     private boolean calibrationDone = false;
     private boolean monitoring = false;
+
+
+    AllMetrics allMetricsInMonitor ;
 
 
 
@@ -157,15 +164,6 @@ public class ActivityMonitor extends Activity {
     private DatabaseReference databaseReference;
     FirebaseAuth firebaseAuth;
 
-
-//    calibration items
-
-    PlayGifView calGif;
-    TextView calTextTop;
-    TextView calTextBottom;
-    Button calOkButton;
-    ProgressBar calProgress;
-    
 
     private final BroadcastReceiver bluetoothStateReceiver = new BroadcastReceiver() {
         @Override
@@ -274,7 +272,7 @@ public class ActivityMonitor extends Activity {
                 ble_indicator.setImageResource(R.drawable.bluetooth_connected_icon);
                 connectedToBand = true;
                 scanLeDevice(false);
-//                viewGifStraight();
+//                calibrateBandDialog();
                 monitorStatusText.setText(R.string.straighten_arm);        ////////////////////
                 once = 0;
             }
@@ -311,6 +309,51 @@ public class ActivityMonitor extends Activity {
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
 
+
+
+        ValueEventListener allMetricsListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Getting all metrics object
+                // ...
+
+
+                System.out.println("Datasnapshot mai ara hai : ");
+                AllMetrics allMetrics = new AllMetrics();
+
+                allMetrics = dataSnapshot.getValue(AllMetrics.class);
+
+
+                if(allMetrics==null){
+                    System.out.println("Cant fetch data");
+                    allMetricsInMonitor = null;
+                    return;
+                }
+                else{
+                    allMetricsInMonitor = allMetrics;
+                    System.out.println("Angle values from firebase: " + allMetricsInMonitor.angleValues);
+                }
+
+
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+                // ...
+            }
+        };
+
+
+        DatabaseReference allMetricsRef = databaseReference.child("AllMetrics")
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+
+        allMetricsRef.addValueEventListener(allMetricsListener);
+
+
+
         batteryProgressBar = (ProgressBar)findViewById(R.id.battery_progress);
         batteryProgressText = (TextView)findViewById(R.id.battery_text);
         ble_indicator = (ImageView)findViewById(R.id.monitor_ble_icon);
@@ -320,7 +363,7 @@ public class ActivityMonitor extends Activity {
 //                String abc = "123";
 //                rfduinoService.send(abc);
 //                rfduinoService.send(abc.getBytes());
-//                showCalibrationDialog();
+//                calibrateBandDialog();
             }
         });
 
@@ -371,22 +414,22 @@ public class ActivityMonitor extends Activity {
             Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
             startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
         }
-//      to turn on location
+
 //        if(!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
 //            displayLocationSettingsRequest(getApplicationContext());    // ask user to turn on location
 //        }
 
         else
-            {
+        {
 
             if (Build.VERSION.SDK_INT >= 21)
 
-                {
-                    mLEScanner = mBluetoothAdapter.getBluetoothLeScanner();
-                    settings = new ScanSettings.Builder()
-                            .setScanMode(ScanSettings.SCAN_MODE_LOW_LATENCY)    ///This mode uses the highest power, when compared to other modes. Also detects the BLE devices fastest, hence should be used when the app is in foreground
-                            .build();
-                    filters = new ArrayList<ScanFilter>();
+            {
+                mLEScanner = mBluetoothAdapter.getBluetoothLeScanner();
+                settings = new ScanSettings.Builder()
+                        .setScanMode(ScanSettings.SCAN_MODE_LOW_LATENCY)    ///This mode uses the highest power, when compared to other modes. Also detects the BLE devices fastest, hence should be used when the app is in foreground
+                        .build();
+                filters = new ArrayList<ScanFilter>();
             }
             System.out.println("scanLeDevice(true) called in onResume() ");
             scanLeDevice(true);
@@ -427,8 +470,6 @@ public class ActivityMonitor extends Activity {
         unregisterReceiver(scanModeReceiver);
         unregisterReceiver(bluetoothStateReceiver);
         unregisterReceiver(rfduinoReceiver);
-        unregisterReceiver(BleConnectionReceiver);
-
 
     }
     @Override
@@ -436,7 +477,7 @@ public class ActivityMonitor extends Activity {
         if (requestCode == REQUEST_ENABLE_BT) {
             if (resultCode == Activity.RESULT_CANCELED) {
                 //Bluetooth not enabled.
-                finish();
+//                finish();
                 return;
             }
         }
@@ -631,7 +672,7 @@ public class ActivityMonitor extends Activity {
                         endSession();
                         dialog.dismiss();
                     }
-                    }); // OK button listener end
+                }); // OK button listener end
 
         alertDialog.show();
     }
@@ -798,15 +839,68 @@ public class ActivityMonitor extends Activity {
             }
         }
 
+        //dummy data
 
+//        angleValues.add(1);
+//        angleValues.add(1);
+//        angleValues.add(1);
+//
+//        forceValues.add(2);
+//        forceValues.add(2);
+//        forceValues.add(2);
+//
+//        armTwistValues.add(3);
+//        armTwistValues.add(3);
+//        armTwistValues.add(3);
+//
+//        actionTimeValues.add(Float.valueOf(4));
+//        actionTimeValues.add(Float.valueOf(4));
+//        actionTimeValues.add(Float.valueOf(4));
+//
+//        counterLegal++;
+//        counterIllegal++;
+//        counterIllegal++;
+
+
+
+
+
+
+//        AllMetrics allMetrics1 = new AllMetrics(email,counterLegal,counterIllegal,angleValues,forceValues,armTwistValues,actionTimeValues);
+
+        if(allMetricsInMonitor==null){
+            allMetricsInMonitor = new AllMetrics(email,counterLegal,counterIllegal,angleValues,forceValues,armTwistValues,actionTimeValues);
+        }
+        else{
+            allMetricsInMonitor.legalBalls += counterLegal;
+            allMetricsInMonitor.illegalBalls += counterIllegal;
+            allMetricsInMonitor.angleValues.addAll(angleValues);
+            allMetricsInMonitor.forceValues.addAll(forceValues);
+            allMetricsInMonitor.armTwistValues.addAll(armTwistValues);
+            allMetricsInMonitor.actionTimeValues.addAll(actionTimeValues);
+        }
+
+
+
+        System.out.println("Email: " + allMetricsInMonitor.Email +
+                " Legal: " + allMetricsInMonitor.legalBalls +
+                " IllLegal: " + allMetricsInMonitor.illegalBalls +
+                " Angle Values: " + allMetricsInMonitor.angleValues +
+                " Force Values: " + allMetricsInMonitor.forceValues +
+                " Arm Twist: " + allMetricsInMonitor.armTwistValues +
+                " Action Time: " + allMetricsInMonitor.actionTimeValues );
 
 
         FirebaseUser user = firebaseAuth.getCurrentUser();
-        databaseReference.child("Metrics").child(user.getUid()).child("Email").setValue(email);
-        databaseReference.child("Metrics").child(user.getUid()).child("Angle Values").setValue(ArrayListOfAngles);
-        databaseReference.child("Metrics").child(user.getUid()).child("Force Values").setValue(ArrayListOfForces);
-        databaseReference.child("Metrics").child(user.getUid()).child("Arm Twist Values").setValue(ArrayListOfArmTwist);
-        databaseReference.child("Metrics").child(user.getUid()).child("Action Time Values").setValue(ArrayListOfActionTime);
+
+        databaseReference.child("AllMetrics").child(user.getUid()).setValue(allMetricsInMonitor);
+
+
+//        databaseReference.child("Metrics").child(user.getUid()).child("Email").setValue(email);
+//        databaseReference.child("Metrics").child(user.getUid()).child("Angle Values").setValue(ArrayListOfAngles);
+//        databaseReference.child("Metrics").child(user.getUid()).child("Force Values").setValue(ArrayListOfForces);
+//        databaseReference.child("Metrics").child(user.getUid()).child("Arm Twist Values").setValue(ArrayListOfArmTwist);
+//        databaseReference.child("Metrics").child(user.getUid()).child("Action Time Values").setValue(ArrayListOfActionTime);
 
         helper.insertPlayerStats(playerStats);
         helper.changeStatLegalIllegal(playerStats.getEmail(), playerStats.getLegalBowls(), playerStats.getIllegalBowls());
@@ -902,10 +996,8 @@ public class ActivityMonitor extends Activity {
             if (once == 0 || once == 1) {
                 if (incoming == 120) {
                     monitorStatusText.setText("Bend arm at 45");
-//                    viewGifBend45();
                     once = 1;
                 } else if (incoming == 119) {
-//                    hideGif();
                     monitorStatusText.setText("Monitoring...");
                     once = 2;
                 }
@@ -990,31 +1082,31 @@ public class ActivityMonitor extends Activity {
 
             dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
 
-            @Override
-            public void onDismiss(DialogInterface dialog) {
+                @Override
+                public void onDismiss(DialogInterface dialog) {
 
 
-                if (genFlex > 15) {
-                    monitorIllegalBalls.setText(String.valueOf(++counterIllegal));
-                    monitorAngleValue.setTextColor(0xFFFF0000);
-                    monitorStatusText.setText("Illegal");
-                    monitorStatusText.setTextColor(0xFFFF0000);
-                } else {
-                    monitorLegalBalls.setText(String.valueOf(++counterLegal));
-                    monitorAngleValue.setTextColor(0xFF00FF00);
-                    monitorStatusText.setText("Legal");
-                    monitorStatusText.setTextColor(0xFF00FF00);
-                }
+                    if (genFlex > 15) {
+                        monitorIllegalBalls.setText(String.valueOf(++counterIllegal));
+                        monitorAngleValue.setTextColor(0xFFFF0000);
+                        monitorStatusText.setText("Illegal");
+                        monitorStatusText.setTextColor(0xFFFF0000);
+                    } else {
+                        monitorLegalBalls.setText(String.valueOf(++counterLegal));
+                        monitorAngleValue.setTextColor(0xFF00FF00);
+                        monitorStatusText.setText("Legal");
+                        monitorStatusText.setTextColor(0xFF00FF00);
+                    }
 
-                angleValues.add(genFlex);
-                forceValues.add(Integer.parseInt(force_value));
-                armTwistValues.add(Integer.parseInt(armTwist_value));
-                actionTimeValues.add(Float.valueOf(actionTime_value));
+                    angleValues.add(genFlex);
+                    forceValues.add(Integer.parseInt(force_value));
+                    armTwistValues.add(Integer.parseInt(armTwist_value));
+                    actionTimeValues.add(Float.valueOf(actionTime_value));
 
-                monitorAngleValue.setText(Integer.toString(genFlex) + "\u00b0");
-                monitorArmTwist.setText(armTwist_value);
-                monitorForce.setText(force_value);
-                monitorActionTime.setText(actionTime_value);
+                    monitorAngleValue.setText(Integer.toString(genFlex) + "\u00b0");
+                    monitorArmTwist.setText(armTwist_value);
+                    monitorForce.setText(force_value);
+                    monitorActionTime.setText(actionTime_value);
                 }
             });
 
@@ -1024,15 +1116,8 @@ public class ActivityMonitor extends Activity {
 
     void viewData(byte[] data){
 
-        int value=0;
-        for (int i = 0; i < data.length; i++) {
-            value += ((int) data[i] & 0xffL) << (8 * i);
-        }
-        monitorStatusText.setText(String.valueOf(value));
-        System.out.println("!!!!!!!!!!int recieving: " + value);
-        System.out.println("!!!!!!!!!!bytes recieving: " + data);
         String temp = bytesToHex(data);
-        System.out.println("!!!!!!!!!!hex recieving: " + temp);
+        System.out.println("bytes recieving: " + temp);
         String msg;
         //            final byte[] data = characteristic.getValue();
         if (data != null && data.length > 0) {
@@ -1041,8 +1126,8 @@ public class ActivityMonitor extends Activity {
                 stringBuilder.append(String.format("%02X ", byteChar));
 
             msg = new String(data) + "\n" + stringBuilder.toString();
-//            monitorStatusText.setText(msg);
-            System.out.println("!!!!!!!!!!!!string receiving: " + msg);
+            monitorAngleValue.setText(msg);
+            System.out.println("string receiving: " + msg);
         }
     }
 
@@ -1064,184 +1149,184 @@ public class ActivityMonitor extends Activity {
     }
 
 
-    void dataRecieved(byte[] temp){
-
-
-
-
-        try {
-
-        String data = new String(temp,"UTF-8");
-        System.out.println("data recieved: " + data);
-
-        String[] parts = data.split("-");    // split string into 2 parts separated by -
-
-
-        String part1 = parts[0];    // first part
-        System.out.println("part1: " + part1);
-
-        String part2 = parts[1];    // second part
-        System.out.println("part2" + part2);
-
-
+//    void dataRecieved(byte[] temp){
+//
+//
+//
+//
+//        try {
+//
+//        String data = new String(temp,"UTF-8");
 //        System.out.println("data recieved: " + data);
+//
+//        String[] parts = data.split("-");    // split string into 2 parts separated by -
+//
+//
+//        String part1 = parts[0];    // first part
 //        System.out.println("part1: " + part1);
+//
+//        String part2 = parts[1];    // second part
 //        System.out.println("part2" + part2);
-
-        if(!monitoring) {
-
-            if (part1.equals("bat")) {
-                System.out.println("setting battery progress: " + part2);
-                batteryProgressBar.setProgress(Integer.parseInt(part2));
-                batteryProgressText.setText(part2);
-            }
-            else if (part1.equals("cal")) {
-
-                System.out.println("calibrating");
-
-                if (part2.equals("1")) {
-
-                    System.out.println("straight arm");
-                    monitorStatusText.setText(R.string.straighten_arm);
-
-                }
-                else if (part2.equals("2")) {
-
-                    System.out.println("bend arm");
-                    monitorStatusText.setText(R.string.bend_arm_45);
-
-                }
-                else if (part2.equals("done")) {
-
-                    System.out.println("calibration done");
-                    calibrationDone = true;
-                    monitoring=true;
-                    Toast.makeText(getApplicationContext(), "Calibration Done", Toast.LENGTH_SHORT).show();
-
-                }
-
-            }
-        }
-        else if(monitoring){
-
-
-            monitorStatusText.setText("Monitoring...");
-            monitorStatusText.setTextColor(0xFFFFFFFF);
-
-            if(part1.equals("ang")){
-
-                System.out.println("armAngle_value set: " + part2);
-                armAngle_value=part2;
-            }
-            else if(part1.equals("frc")){
-
-                System.out.println("force_value set: " + part2);
-                force_value=part2;
-            }
-            else if(part1.equals("tim")){
-
-                System.out.println("actionTime_value set: " + part2);
-                actionTime_value=part2;
-            }
-            else if(part1.equals("tws")){
-
-                System.out.println("armTwist_value set: " + part2);
-                armTwist_value=part2;
-                updateMetrics();
-            }
-
-
-//            if(metric_check==1){
-//                armAngle_value=data;
-//                metric_check=2;
+//
+//
+////        System.out.println("data recieved: " + data);
+////        System.out.println("part1: " + part1);
+////        System.out.println("part2" + part2);
+//
+//        if(!monitoring) {
+//
+//            if (part1.equals("bat")) {
+//                System.out.println("setting battery progress: " + part2);
+//                batteryProgressBar.setProgress(Integer.parseInt(part2));
+//                batteryProgressText.setText(part2);
 //            }
-//            else if(metric_check==2){
-//                force_value=data;
-//                metric_check=3;
+//            else if (part1.equals("cal")) {
+//
+//                System.out.println("calibrating");
+//
+//                if (part2.equals("1")) {
+//
+//                    System.out.println("straight arm");
+//                    monitorStatusText.setText(R.string.straighten_arm);
+//
+//                }
+//                else if (part2.equals("2")) {
+//
+//                    System.out.println("bend arm");
+//                    monitorStatusText.setText(R.string.bend_arm_45);
+//
+//                }
+//                else if (part2.equals("done")) {
+//
+//                    System.out.println("calibration done");
+//                    calibrationDone = true;
+//                    monitoring=true;
+//                    Toast.makeText(getApplicationContext(), "Calibration Done", Toast.LENGTH_SHORT).show();
+//
+//                }
+//
 //            }
-//            else if(metric_check==3){
-//                actionTime_value=data;
-//                metric_check=4;
+//        }
+//        else if(monitoring){
+//
+//
+//            monitorStatusText.setText("Monitoring...");
+//            monitorStatusText.setTextColor(0xFFFFFFFF);
+//
+//            if(part1.equals("ang")){
+//
+//                System.out.println("armAngle_value set: " + part2);
+//                armAngle_value=part2;
 //            }
-//            else if(metric_check==4){
-//                armTwist_value=data;
-//                metric_check=1;
+//            else if(part1.equals("frc")){
+//
+//                System.out.println("force_value set: " + part2);
+//                force_value=part2;
+//            }
+//            else if(part1.equals("tim")){
+//
+//                System.out.println("actionTime_value set: " + part2);
+//                actionTime_value=part2;
+//            }
+//            else if(part1.equals("tws")){
+//
+//                System.out.println("armTwist_value set: " + part2);
+//                armTwist_value=part2;
 //                updateMetrics();
 //            }
+//
+//
+////            if(metric_check==1){
+////                armAngle_value=data;
+////                metric_check=2;
+////            }
+////            else if(metric_check==2){
+////                force_value=data;
+////                metric_check=3;
+////            }
+////            else if(metric_check==3){
+////                actionTime_value=data;
+////                metric_check=4;
+////            }
+////            else if(metric_check==4){
+////                armTwist_value=data;
+////                metric_check=1;
+////                updateMetrics();
+////            }
+//
+//
+//        }
+//
+//        }catch(IOException ex) {
+//            //Do something witht the exception
+//            System.out.println("NOT RIGHT ENCODING!!!");
+//        }
+//
+//    }
 
-
-        }
-
-        }catch(IOException ex) {
-            //Do something witht the exception
-            System.out.println("NOT RIGHT ENCODING!!!");
-        }
-
-    }
-
-    void updateMetrics(){
-
-        System.out.println("updating metrics");
-
-        final ProgressDialog dialog = new GifCricFlexIcon(ActivityMonitor.this);
-
-        dialog.setCancelable(false);
-        dialog.show();
-
-
-
-        Runnable progressRunnable = new Runnable() {
-
-            @Override
-            public void run() {
-                dialog.cancel();
-            }
-        };
-
-        Handler pdCanceller = new Handler();
-        pdCanceller.postDelayed(progressRunnable, 1024);
-
-        dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-
-            @Override
-            public void onDismiss(DialogInterface dialog) {
-
-
-                if (Integer.parseInt(armAngle_value) > 15) {
-                    //stopButtonPressed = true;
-
-                    monitorIllegalBalls.setText(String.valueOf(++counterIllegal));
-                    monitorAngleValue.setTextColor(0xFFFF0000);
-//                    monitorAngleValue.setText(Integer.toString(genFlex) + "\u00b0");
-                    monitorStatusText.setText("Illegal");
-                    monitorStatusText.setTextColor(0xFFFF0000);
-                } else {
-                    monitorLegalBalls.setText(String.valueOf(++counterLegal));
-                    //stopButtonPressed = true;
-                    monitorAngleValue.setTextColor(0xFF00FF00);
-//                    monitorAngleValue.setText(Integer.toString(genFlex) + "\u00b0");
-                    //degreeSign.setTextColor(0xFF00FF00);
-                    //monitorAngleValue.setTextSize(200);
-                    monitorStatusText.setText("Legal");
-                    monitorStatusText.setTextColor(0xFF00FF00);
-                }
-
-                angleValues.add(Integer.parseInt(armAngle_value));
-                forceValues.add(Integer.parseInt(force_value));
-                armTwistValues.add(Integer.parseInt(armTwist_value));
-                actionTimeValues.add(Float.valueOf(actionTime_value));
-
-
-
-//                showAlertDialog(this, "Feedback recieved", "Thank you for your FeedBack :):):)", true);
-                monitorAngleValue.setText(armAngle_value + "\u00b0");
-                monitorArmTwist.setText(armTwist_value + "\u00b0");
-                monitorForce.setText(force_value + "N");
-                monitorActionTime.setText(actionTime_value + "s");
-            }
-        });
-
-    }
+//    void updateMetrics(){
+//
+//        System.out.println("updating metrics");
+//
+//        final ProgressDialog dialog = new GifCricFlexIcon(ActivityMonitor.this);
+//
+//        dialog.setCancelable(false);
+//        dialog.show();
+//
+//
+//
+//        Runnable progressRunnable = new Runnable() {
+//
+//            @Override
+//            public void run() {
+//                dialog.cancel();
+//            }
+//        };
+//
+//        Handler pdCanceller = new Handler();
+//        pdCanceller.postDelayed(progressRunnable, 1024);
+//
+//        dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+//
+//            @Override
+//            public void onDismiss(DialogInterface dialog) {
+//
+//
+//                if (Integer.parseInt(armAngle_value) > 15) {
+//                    //stopButtonPressed = true;
+//
+//                    monitorIllegalBalls.setText(String.valueOf(++counterIllegal));
+//                    monitorAngleValue.setTextColor(0xFFFF0000);
+////                    monitorAngleValue.setText(Integer.toString(genFlex) + "\u00b0");
+//                    monitorStatusText.setText("Illegal");
+//                    monitorStatusText.setTextColor(0xFFFF0000);
+//                } else {
+//                    monitorLegalBalls.setText(String.valueOf(++counterLegal));
+//                    //stopButtonPressed = true;
+//                    monitorAngleValue.setTextColor(0xFF00FF00);
+////                    monitorAngleValue.setText(Integer.toString(genFlex) + "\u00b0");
+//                    //degreeSign.setTextColor(0xFF00FF00);
+//                    //monitorAngleValue.setTextSize(200);
+//                    monitorStatusText.setText("Legal");
+//                    monitorStatusText.setTextColor(0xFF00FF00);
+//                }
+//
+//                angleValues.add(Integer.parseInt(armAngle_value));
+//                forceValues.add(Integer.parseInt(force_value));
+//                armTwistValues.add(Integer.parseInt(armTwist_value));
+//                actionTimeValues.add(Float.valueOf(actionTime_value));
+//
+//
+//
+////                showAlertDialog(this, "Feedback recieved", "Thank you for your FeedBack :):):)", true);
+//                monitorAngleValue.setText(armAngle_value + "\u00b0");
+//                monitorArmTwist.setText(armTwist_value + "\u00b0");
+//                monitorForce.setText(force_value + "N");
+//                monitorActionTime.setText(actionTime_value + "s");
+//            }
+//        });
+//
+//    }
 
 
 
@@ -1299,200 +1384,26 @@ public class ActivityMonitor extends Activity {
     }
 
 
-    void showCalibrationDialog(){
+    void calibrateBandDialog(){
 
         AlertDialog alertDialog = new AlertDialog.Builder(this).create();
         alertDialog.setCancelable(false);
         alertDialog.setTitle("Calibration Needed");
         alertDialog.setMessage("We just need to calibrate the band. Its a simple 4 step process.");
         alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-            new DialogInterface.OnClickListener() {
-
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.dismiss();
-                    startCalibration();
-
-                }
-            }); // OK button listener end
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        endSession();
+                        dialog.dismiss();
+                    }
+                }); // OK button listener end
 
         alertDialog.show();
-    }
 
-    void startCalibration(){
-
-        setContentView(R.layout.calibrate_layout);
-        calGif = (PlayGifView)findViewById(R.id.calGifView);
-        calTextTop = (TextView) findViewById(R.id.calTextTop);
-        calTextBottom = (TextView) findViewById(R.id.calTextBottom);
-        calOkButton = (Button) findViewById(R.id.calOkButton);
-        calProgress = (ProgressBar) findViewById(R.id.cal_progress);
-
-        calStep1();
+//        CustomDialogClass cdd=new CustomDialogClass(this);
+//        cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//        cdd.show();
 
     }
-    void calStep1(){
-        calTextTop.setText(R.string.cal_step1);
-        calTextBottom.setText(R.string.cal_step1_desc);
-        calGif.setImageResource(R.drawable.arm_straight);
-        calOkButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                calOkButton.setEnabled(false);
-                calOkButton.setVisibility(View.INVISIBLE);
-                calProgress.setVisibility(View.VISIBLE);
-
-                Runnable progressRunnable = new Runnable() {
-
-                    @Override
-                    public void run() {
-                        calStep2();
-                    }
-                };
-
-                Handler pdCanceller = new Handler();
-                pdCanceller.postDelayed(progressRunnable, 3072);
-            }
-        });
-
-    }
-    void calStep2(){
-        calOkButton.setEnabled(true);
-        calOkButton.setVisibility(View.VISIBLE);
-        calProgress.setVisibility(View.INVISIBLE);
-
-        calTextTop.setText(R.string.cal_step2);
-        calTextBottom.setText(R.string.cal_step2_desc);
-        calGif.setImageResource(R.drawable.arm_bend_gif);
-        calOkButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                calOkButton.setEnabled(false);
-                calOkButton.setVisibility(View.INVISIBLE);
-                calProgress.setVisibility(View.VISIBLE);
-
-                Runnable progressRunnable = new Runnable() {
-
-                    @Override
-                    public void run() {
-                        calStep3();
-                    }
-                };
-
-                Handler pdCanceller = new Handler();
-                pdCanceller.postDelayed(progressRunnable, 3072);
-            }
-        });
-
-    }
-    void calStep3(){
-        calOkButton.setEnabled(true);
-        calOkButton.setVisibility(View.VISIBLE);
-        calProgress.setVisibility(View.INVISIBLE);
-
-        calTextTop.setText(R.string.cal_step3);
-        calTextBottom.setText(R.string.cal_step3_desc);
-        calGif.setImageResource(R.drawable.arm_bend_gif);
-        calOkButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                calOkButton.setEnabled(false);
-                calOkButton.setVisibility(View.INVISIBLE);
-                calProgress.setVisibility(View.VISIBLE);
-
-                Runnable progressRunnable = new Runnable() {
-
-                    @Override
-                    public void run() {
-                        calStep4();
-                    }
-                };
-
-                Handler pdCanceller = new Handler();
-                pdCanceller.postDelayed(progressRunnable, 3072);
-            }
-        });
-    }
-    void calStep4(){
-        calOkButton.setEnabled(true);
-        calOkButton.setVisibility(View.VISIBLE);
-        calProgress.setVisibility(View.INVISIBLE);
-
-        calTextTop.setText(R.string.cal_step4);
-        calTextBottom.setText(R.string.cal_step4_desc);
-        calGif.setImageResource(R.drawable.arm_bend_gif);
-        calOkButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                calOkButton.setEnabled(false);
-                calOkButton.setVisibility(View.INVISIBLE);
-                calProgress.setVisibility(View.VISIBLE);
-
-                Runnable progressRunnable = new Runnable() {
-
-                    @Override
-                    public void run() {
-                        calibrationDone();
-                    }
-                };
-
-                Handler pdCanceller = new Handler();
-                pdCanceller.postDelayed(progressRunnable, 3072);
-            }
-        });
-    }
-
-    void calibrationDone(){
-
-        setContentView(R.layout.activity_monitor);
-        reInitializeLayoutItems();
-
-    }
-    void reInitializeLayoutItems(){
-        batteryProgressBar = (ProgressBar)findViewById(R.id.battery_progress);
-        batteryProgressText = (TextView)findViewById(R.id.battery_text);
-        //set battery percentage here
-        ble_indicator = (ImageView)findViewById(R.id.monitor_ble_icon);
-        ble_indicator.setImageResource(R.drawable.bluetooth_connected_icon);
-
-        monitorAngleValue = (TextView) findViewById(R.id.monitor_angle_text);
-        monitorStatusText = (TextView) findViewById(R.id.monitor_status_text);
-        monitorActionTime = (AutofitTextView) findViewById(R.id.monitor_action_time);
-        monitorArmTwist = (AutofitTextView) findViewById(R.id.monitor_arm_twist);
-        monitorForce = (AutofitTextView) findViewById(R.id.monitor_force);
-
-        monitorLegalBalls = (TextView)findViewById(R.id.monitor_legal_balls);
-        monitorIllegalBalls = (TextView)findViewById(R.id.monitor_illegal_balls);
-        monitorFinishButton = (Button) findViewById(R.id.monitor_finish_button);
-        monitorFinishButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                endSession();
-            }
-        });
-
-    }
-
 
 }
-
-//    AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-//        alertDialog.setCancelable(false);
-//                alertDialog.setTitle("Calibration Needed");
-//                alertDialog.setMessage("We just need to calibrate the band. Its a simple 4 step process.");
-//                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-//                new DialogInterface.OnClickListener() {
-//public void onClick(DialogInterface dialog, int which) {
-//        endSession();
-//        dialog.dismiss();
-//        }
-//        }); // OK button listener end
-//
-//        alertDialog.show();
-//
-////        CustomDialogClass cdd=new CustomDialogClass(this);
-////        cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-////        cdd.show();
