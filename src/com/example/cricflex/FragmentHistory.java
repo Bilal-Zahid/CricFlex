@@ -481,9 +481,9 @@ public class FragmentHistory extends Fragment {
 
         updateGraph(entriesAngle, checkForTab, angleDataSize);
 
-        maximumValue.setText(String.valueOf(angleMax));
-        minimumValue.setText(String.valueOf(angleMin));
-        averageValue.setText(String.valueOf(angleAvg));
+        maximumValue.setText(String.valueOf(angleMax) + "\u00b0");
+        minimumValue.setText(String.valueOf(angleMin) + "\u00b0");
+        averageValue.setText(String.valueOf(angleAvg) + "\u00b0");
 
 
     }
@@ -495,9 +495,9 @@ public class FragmentHistory extends Fragment {
 
         updateGraph(entriesForce, checkForTab, forceDataSize);
 
-        maximumValue.setText(String.valueOf(forceMax));
-        minimumValue.setText(String.valueOf(forceMin));
-        averageValue.setText(String.valueOf(forceAvg));
+        maximumValue.setText(String.valueOf(forceMax) + "N");
+        minimumValue.setText(String.valueOf(forceMin) + "N");
+        averageValue.setText(String.valueOf(forceAvg) + "N");
 
     }
 
@@ -508,9 +508,9 @@ public class FragmentHistory extends Fragment {
 
         updateGraph(entriesActionTime, checkForTab, timeDataSize);
 
-        maximumValue.setText(String.valueOf(timeMax));
-        minimumValue.setText(String.valueOf(timeMin));
-        averageValue.setText(String.valueOf(timeAvg));
+        maximumValue.setText(String.valueOf(timeMax) + "s");
+        minimumValue.setText(String.valueOf(timeMin) + "s");
+        averageValue.setText(String.valueOf(timeAvg) + "s");
 
     }
 
@@ -521,9 +521,9 @@ public class FragmentHistory extends Fragment {
 
             updateGraph(entriesArmTwist, checkForTab, twistDataSize);
 
-            maximumValue.setText(String.valueOf(twistMax));
-            minimumValue.setText(String.valueOf(twistMin));
-            averageValue.setText(String.valueOf(twistAvg));
+            maximumValue.setText(String.valueOf(twistMax) + "\u00b0");
+            minimumValue.setText(String.valueOf(twistMin) + "\u00b0");
+            averageValue.setText(String.valueOf(twistAvg) + "\u00b0");
 
     }
 

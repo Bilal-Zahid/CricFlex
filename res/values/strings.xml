@@ -170,13 +170,13 @@
 
     <!--fragment home-->
     <string name="legal_illegal_ratio">Legal to Illegal Ball Ratio</string>
-    <string name="home_total_balls">520</string>
+    <string name="home_total_balls">0</string>
     <string name="home_total_balls_text">Total Balls: </string>
     <string name="home_average_stats">Average\nBowling\nStats</string>
-    <string name="home_armflex">10\u00b0</string>
-    <string name="home_force">600 N</string>
-    <string name="home_time">0.120s</string>
-    <string name="home_twist">4\u00b0</string>
+    <string name="home_armflex">0\u00b0</string>
+    <string name="home_force">0 N</string>
+    <string name="home_time">0 s</string>
+    <string name="home_twist">0\u00b0</string>
     <string name="home_armflex_text">Arm Flex</string>
     <string name="home_force_text">Force</string>
     <string name="home_time_text">Action Time</string>
@@ -284,6 +284,11 @@
     <string name="illegal_monitor_status">Illegal</string>
     <string name="legal_monitor_status">Legal</string>
 
+
+    <string name="angleUnit">\u00b0</string>
+    <string name="forceUnit">N</string>
+    <string name="timeUnit">s</string>
+    <string name="twistUnit">\u00b0</string>
 
 
     <string name="navigation_drawer_open">Open navigation drawer</string>

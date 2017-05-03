@@ -38,10 +38,10 @@ public class ChartCustomMarkerView extends MarkerView {
     @Override
     public void refreshContent(Entry e, Highlight highlight) {
 
-        angleValue.setText(String.valueOf(angleValues.get(((int) e.getX())-1).getY()) + "\u00b0");
-        forceValue.setText(String.valueOf(forceValues.get(((int) e.getX())-1).getY()) + "N");
+        angleValue.setText(String.valueOf((int)angleValues.get(((int) e.getX())-1).getY()) + "\u00b0");
+        forceValue.setText(String.valueOf((int)forceValues.get(((int) e.getX())-1).getY()) + "N");
         timeValue.setText(String.valueOf(timeValues.get(((int) e.getX())-1).getY()) + "s");
-        twistValue.setText(String.valueOf(twistValues.get(((int) e.getX())-1).getY()) + "\u00b0");
+        twistValue.setText(String.valueOf((int)twistValues.get(((int) e.getX())-1).getY()) + "\u00b0");
     }
 
 
