@@ -22,7 +22,7 @@
         android:id="@+id/home_legal_to_illegal_ratio"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="25dp"
         android:layout_marginBottom="-17dp"
         android:layout_centerHorizontal="true"
         android:background="@android:color/transparent"
@@ -161,7 +161,7 @@
             android:gravity="center_vertical">
 
             <me.grantland.widget.AutofitTextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/home_average_angle"
                 android:gravity="center"
@@ -198,7 +198,7 @@
 
 
             <me.grantland.widget.AutofitTextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/home_action_time"
                 android:gravity="center"
@@ -235,7 +235,7 @@
             android:gravity="center_vertical">
 
             <me.grantland.widget.AutofitTextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/home_arm_twist"
                 android:gravity="center"
@@ -272,7 +272,7 @@
             android:gravity="center_vertical">
 
             <me.grantland.widget.AutofitTextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/home_force"
                 android:gravity="center"
