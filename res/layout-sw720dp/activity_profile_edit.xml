@@ -52,7 +52,7 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="@string/name"
                     android:id="@+id/edp_name"
-                    android:textColor="#FFFFFF"
+                    android:textColor="@color/white"
                     android:textSize="40sp"
                     android:layout_gravity="center_horizontal"
                     android:layout_weight="1" />
@@ -81,7 +81,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:text="@string/gender"
-                    android:textColor="#ffffff"
+                    android:textColor="@color/white"
                     android:textSize="30sp"
                     android:textStyle="bold" >
                 </TextView>
@@ -90,7 +90,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginTop="2dp"
-                    android:background="#ffffff" />
+                    android:background="@color/white" />
 
                 <LinearLayout
                     android:id="@+id/linearlayout"
@@ -112,7 +112,7 @@
                             android:layout_weight="1"
                             android:checked="true"
                             android:text="@string/male"
-                            android:textColor="#ffffff"
+                            android:textColor="@color/white"
                             android:textSize="30sp"
                             android:textStyle="bold"
                             />
@@ -123,7 +123,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="@string/female"
-                            android:textColor="#ffffff"
+                            android:textColor="@color/white"
                             android:textSize="30sp"
                             android:textStyle="bold" />
                     </RadioGroup>
@@ -136,9 +136,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="15dp"
                     android:text="@string/weight"
-                    android:textColor="#ffffff"
+                    android:textColor="@color/white"
                     android:textSize="30sp"
                     android:textStyle="bold" >
                 </TextView>
@@ -147,7 +147,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginTop="2dp"
-                    android:background="#ffffff" />
+                    android:background="@color/white" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -161,7 +161,7 @@
                         android:inputType="number"
                         android:maxLength="3"
                         android:hint="@string/enter_weight_here"
-                        android:textColor="@color/text_light"
+                        android:textColor="@color/white"
                         android:textColorHint="@color/text_hint"
                         android:id="@+id/pv_weight"
                         android:textSize="30sp"
@@ -169,8 +169,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="KG"
-                        android:textColor="#ffffff"
+                        android:text="@string/KG"
+                        android:textColor="@color/white"
                         android:textStyle="bold"
                         android:textSize="30sp"/>
 
@@ -183,9 +183,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="15dp"
                     android:text="@string/location"
-                    android:textColor="#ffffff"
+                    android:textColor="@color/white"
                     android:textSize="30sp"
                     android:textStyle="bold" >
                 </TextView>
@@ -195,7 +195,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginTop="2dp"
-                    android:background="#ffffff" />
+                    android:background="@color/white" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -209,15 +209,15 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="-5dp"
                         android:scaleX="0.5"
-                        android:scaleY="0.5" />
+                        android:scaleY="0.5"
+                        android:contentDescription="@string/content_desc_imageView"/>
                     <TextView
                         android:id="@+id/location"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="5dp"
-                        android:textColor="@color/text_light"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/white"
                         android:hint="@string/select_country"
                         android:textSize="30sp"/>
 
@@ -230,9 +230,9 @@
                     android:id="@+id/dateofbirth"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="0dp"
+                    android:layout_marginTop="15dp"
                     android:text="@string/date_of_birth"
-                    android:textColor="#ffffff"
+                    android:textColor="@color/white"
                     android:textSize="30sp"
                     android:textStyle="bold" >
                 </TextView>
@@ -242,22 +242,22 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginTop="2dp"
-                    android:background="#ffffff" />
+                    android:background="@color/white" />
 
-                <EditText
-
+                <TextView
+                    android:id="@+id/edp_dob"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_margin="10dp"
-                    android:layout_marginTop="2dp"
-                    android:id="@+id/edp_dob"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:drawableStart="@drawable/calendar_icon"
                     android:drawablePadding="10dp"
-                    android:textColor="#FFFFFF"
+                    android:textSize="30sp"
+                    android:textColor="@color/white"
                     android:hint="@string/select_date"
                     android:textColorHint="@color/text_hint"
                     android:layout_weight="1"
-                    android:textSize="30sp"
                     />
 
 
@@ -265,9 +265,9 @@
                     android:id="@+id/bowlingarm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="15dp"
                     android:text="@string/bowling_arm"
-                    android:textColor="#ffffff"
+                    android:textColor="@color/white"
                     android:textSize="30sp"
                     android:textStyle="bold" >
                 </TextView>
@@ -277,7 +277,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginTop="2dp"
-                    android:background="#ffffff" />
+                    android:background="@color/white" />
 
                 <LinearLayout
                     android:layout_width="fill_parent"
@@ -298,7 +298,7 @@
                             android:layout_weight="1"
                             android:checked="true"
                             android:text="@string/left"
-                            android:textColor="#ffffff"
+                            android:textColor="@color/white"
                             android:textSize="30sp"
                             android:textStyle="bold" />
 
@@ -308,7 +308,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="@string/right"
-                            android:textColor="#ffffff"
+                            android:textColor="@color/white"
                             android:textSize="30sp"
                             android:textStyle="bold" />
                     </RadioGroup>
@@ -321,9 +321,9 @@
                     android:id="@+id/bowlingstyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="15dp"
                     android:text="@string/bowling_style"
-                    android:textColor="#ffffff"
+                    android:textColor="@color/white"
                     android:textSize="30sp"
                     android:textStyle="bold" >
                 </TextView>
@@ -333,7 +333,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginTop="2dp"
-                    android:background="#ffffff" />
+                    android:background="@color/white" />
 
 
                 <Spinner
@@ -354,9 +354,9 @@
                     android:id="@+id/careerlevel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="15dp"
                     android:text="@string/career_level"
-                    android:textColor="#ffffff"
+                    android:textColor="@color/white"
                     android:textSize="30sp"
                     android:textStyle="bold" >
                 </TextView>
@@ -366,7 +366,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginTop="2dp"
-                    android:background="#ffffff" />
+                    android:background="@color/white" />
 
                 <Spinner
                     android:id="@+id/careerlevel_spinner"
@@ -408,7 +408,7 @@
             app:layout_heightPercent="100%"
             app:layout_widthPercent="49.5%"
             android:text="@string/cancel_edit_profile"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/white"
             android:textSize="35sp"
             android:background="@drawable/edp_footer_button"
             android:layout_alignParentStart="true"
@@ -422,7 +422,7 @@
             app:layout_heightPercent="100%"
             app:layout_widthPercent="49.5%"
             android:text="@string/save_edit_profile"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/white"
             android:textSize="35sp"
             android:background="@drawable/edp_footer_button"
             android:layout_alignParentEnd="true"

@@ -53,7 +53,7 @@
     <string name="male">Male</string>
     <string name="female">Female</string>
     <string name="weight">Weight</string>
-    <string name="enter_weight_here">enter here</string>
+    <string name="enter_weight_here">Enter here</string>
     <string name="KG">KG</string>
     <string name="location">Location</string>
     <string name="select_country">Select your country</string>

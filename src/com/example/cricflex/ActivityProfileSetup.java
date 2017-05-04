@@ -92,7 +92,7 @@ public class ActivityProfileSetup extends FragmentActivity {
 
     //private String location = "not set";
 
-    private EditText birthDate;
+    private TextView birthDate;
 
     private DatePickerDialog birthDatePickerDialog;
     private SimpleDateFormat dateFormatter;
@@ -708,8 +708,7 @@ public class ActivityProfileSetup extends FragmentActivity {
 
 
 
-        birthDate = (EditText) findViewById(R.id.stp_dob);
-        birthDate.setInputType(InputType.TYPE_NULL);
+        birthDate = (TextView) findViewById(R.id.stp_dob);
 //        birthDate.requestFocus();
 
         rgBowlingArm = (RadioGroup) findViewById(R.id.rgBowlingArm);

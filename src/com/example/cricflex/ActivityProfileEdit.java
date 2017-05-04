@@ -69,7 +69,7 @@ public class ActivityProfileEdit extends FragmentActivity {
 
     String bowlingStyleFromFirebase;
 
-    private EditText birthDate;
+    private TextView birthDate;
     private DatePickerDialog birthDatePickerDialog;
     private SimpleDateFormat dateFormatter;
 
@@ -569,7 +569,7 @@ public class ActivityProfileEdit extends FragmentActivity {
 
         name = (TextView) findViewById(R.id.edp_name);
         bowlingStylesSpinner = (Spinner)findViewById(R.id.bowlingstyle_spinner);
-        birthDate = (EditText) findViewById(R.id.edp_dob);
+        birthDate = (TextView) findViewById(R.id.edp_dob);
         birthDate.setInputType(InputType.TYPE_NULL);
         birthDate.requestFocus();
 
