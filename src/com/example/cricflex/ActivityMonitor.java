@@ -106,6 +106,7 @@ public class ActivityMonitor extends Activity {
 
 
     AllMetrics allMetricsInMonitor ;
+    MetricsWithDates metricOfDateInMonitor;
 
 
 
@@ -163,6 +164,8 @@ public class ActivityMonitor extends Activity {
 
     private DatabaseReference databaseReference;
     FirebaseAuth firebaseAuth;
+
+    String DateToStr;
 
 
     private final BroadcastReceiver bluetoothStateReceiver = new BroadcastReceiver() {
@@ -347,9 +350,63 @@ public class ActivityMonitor extends Activity {
         };
 
 
+
+        ValueEventListener metricsWithDatesListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Getting all metrics object
+                // ...
+
+
+                System.out.println("Datasnapshot mai ara hai : ");
+                MetricsWithDates metricsOfDate = new MetricsWithDates();
+
+                metricsOfDate = dataSnapshot.getValue(MetricsWithDates.class);
+
+
+                if(metricsOfDate==null){
+                    System.out.println("Cant fetch data");
+                    metricOfDateInMonitor = null;
+                    return;
+                }
+                else{
+                    metricOfDateInMonitor = metricsOfDate;
+//                    System.out.println("Angle values from firebase: " + allMetricsInMonitor.angleValues);
+                }
+
+
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+                // ...
+            }
+        };
+
+
+
+
+
+//Getting date to store on firebase
+        Date curDate = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("MMMM yyyy");
+        DateToStr = format.format(curDate);
+
+        //getting firebase reference of session date
+        DatabaseReference MetricsOfDateRef = databaseReference.child("MetricsWithDates")
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(DateToStr);
+
+        MetricsOfDateRef.addValueEventListener(metricsWithDatesListener);
+
+
+        //Firebase Reference For All Metrics
         DatabaseReference allMetricsRef = databaseReference.child("AllMetrics")
                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
+        //Listener for all metrics listener
         allMetricsRef.addValueEventListener(allMetricsListener);
 
 
@@ -731,7 +788,7 @@ public class ActivityMonitor extends Activity {
         Date curDate = new Date();
 //            SimpleDateFormat format = new SimpleDateFormat();
         SimpleDateFormat format = new SimpleDateFormat("MMMM yyyy");
-        String DateToStr = format.format(curDate);
+        DateToStr = format.format(curDate);
 
         System.out.println("date to store: " + DateToStr);
 
@@ -880,6 +937,17 @@ public class ActivityMonitor extends Activity {
             allMetricsInMonitor.actionTimeValues.addAll(actionTimeValues);
         }
 
+        if(metricOfDateInMonitor==null){
+            metricOfDateInMonitor = new MetricsWithDates(email,angleValues,forceValues,armTwistValues,actionTimeValues);
+        }
+        else{
+
+            metricOfDateInMonitor.angleValues.addAll(angleValues);
+            metricOfDateInMonitor.forceValues.addAll(forceValues);
+            metricOfDateInMonitor.armTwistValues.addAll(armTwistValues);
+            metricOfDateInMonitor.actionTimeValues.addAll(actionTimeValues);
+        }
+
 
 
         System.out.println("Email: " + allMetricsInMonitor.Email +
@@ -893,7 +961,9 @@ public class ActivityMonitor extends Activity {
 
         FirebaseUser user = firebaseAuth.getCurrentUser();
 
+        databaseReference.child("MetricsWithDates").child(user.getUid()).child(DateToStr).setValue(metricOfDateInMonitor);
         databaseReference.child("AllMetrics").child(user.getUid()).setValue(allMetricsInMonitor);
+
 
 
 //        databaseReference.child("Metrics").child(user.getUid()).child("Email").setValue(email);
