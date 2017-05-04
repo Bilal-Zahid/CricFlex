@@ -370,8 +370,8 @@ public class ActivityLogin extends Activity {
 
 
 
-                            Intent i = new Intent(ActivityLogin.this, ActivityMain.class);
-                            ActivityLogin.this.startActivity(i);
+//                            Intent i = new Intent(ActivityLogin.this, ActivityMain.class);
+//                            ActivityLogin.this.startActivity(i);
                             finish();
 
                         }
