@@ -288,12 +288,6 @@ public class FragmentHistory extends Fragment {
         // update date selector to local date
         currentMonth.setText(DateFormat.format(dateTemplate, _calendar.getTime()));
 
-        // get data from database
-        getAngleDataFromDatabase();
-        getForceDataFromDatabase();
-        getTimeDataFromDatabase();
-        getTwistDataFromDatabase();
-
         // updates the graph to local month year
         // sets to angle graph on first start
         updateGraphToDate(month, year);
@@ -309,7 +303,6 @@ public class FragmentHistory extends Fragment {
         selectTab(checkForTab);
 
     }
-
 
 
     // updates graph
@@ -534,8 +527,13 @@ public class FragmentHistory extends Fragment {
         _calendar.set(year, month, _calendar.get(Calendar.DAY_OF_MONTH));
         currentMonth.setText(DateFormat.format(dateTemplate, _calendar.getTime()));
 
+        // get data from database of respective month
+        getAngleDataFromDatabase();
+        getForceDataFromDatabase();
+        getTimeDataFromDatabase();
+        getTwistDataFromDatabase();
 
-        // updates data according to selected tab
+        // show data according to selected tab
         switch (checkForTab){
             
             case "angle":{
