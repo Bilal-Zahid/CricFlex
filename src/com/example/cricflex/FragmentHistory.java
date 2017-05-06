@@ -311,6 +311,7 @@ public class FragmentHistory extends Fragment {
         // sets the new data
         dataset = new LineDataSet(entries, metricType);
         LineData data = new LineData(dataset);
+        lineChart.clear();
         lineChart.setData(data);
 
         //data settings
@@ -617,6 +618,7 @@ public class FragmentHistory extends Fragment {
 
     public void getAngleDataFromDatabase() {
 
+        entriesAngle.clear();
         int value;
 
         String angleValuesWithDate = helper.getAngleValuesWithDate(email, currentMonth.getText().toString());
@@ -672,6 +674,7 @@ public class FragmentHistory extends Fragment {
 
     public void getForceDataFromDatabase() {
 
+        entriesForce.clear();
         int value;
 
         String forceWithDate = helper.getForceValuesWithDate(email, currentMonth.getText().toString());
@@ -729,6 +732,7 @@ public class FragmentHistory extends Fragment {
 
     public void getTimeDataFromDatabase() {
 
+        entriesActionTime.clear();
         float valueFloat;
 
         String actionTimeWithDate = helper.getActionTimeValuesWithDate(email, currentMonth.getText().toString());
@@ -784,6 +788,8 @@ public class FragmentHistory extends Fragment {
     }
 
     public void getTwistDataFromDatabase() {
+
+        entriesArmTwist.clear();
 
         int value;
 
