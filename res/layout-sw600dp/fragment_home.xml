@@ -17,92 +17,20 @@
         android:src="@drawable/bkd21"
         android:contentDescription="@string/content_desc_imageView"/>
 
-
-
-    <com.github.lzyzsd.circleprogress.ArcProgress
-        android:id="@+id/home_legal_to_illegal_ratio"
-        android:layout_width="275dp"
-        android:layout_height="275dp"
-        android:layout_marginTop="35dp"
-        android:layout_marginBottom="-17dp"
-        android:layout_centerHorizontal="true"
-        android:background="@android:color/transparent"
-        android:layout_gravity="center"
-        custom:arc_angle="260"
-        custom:arc_stroke_width="25dp"
-        custom:arc_max="100"
-        custom:arc_finished_color="@color/home_arc_finished_color"
-        custom:arc_unfinished_color="@color/home_arc_unfinished_color"
-        android:textStyle="bold"
-        custom:arc_bottom_text=""
-        custom:arc_bottom_text_size="0sp"
-        custom:arc_suffix_text_padding="11dp"
-        custom:arc_suffix_text_size="25dp"
-        custom:arc_text_size="70dp"
-        custom:arc_text_color="@color/text_light"/>
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_below="@id/home_legal_to_illegal_ratio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:paddingBottom="0dp"
-        android:layout_marginBottom="0dp"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:textSize="25sp"
-        android:text="@string/legal_illegal_ratio"
-        android:textColor="@color/text_light" />
-
-
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:id="@+id/header2"
+    <Button
+        android:id="@+id/home_start"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="9%"
         app:layout_widthPercent="100%"
-        android:layout_below="@id/textView1"
-        android:layout_gravity="center"
-        android:gravity="center_horizontal"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="0dp"
-        android:weightSum="1">
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            android:layout_marginBottom="3dp"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/home_total_balls_text"
-            android:textSize="35sp"
-            android:textColor="@color/text_light"
-            android:textStyle="bold"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="3dp"
-            android:layout_marginBottom="3dp"
-            android:layout_marginEnd="3dp"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/home_total_balls"
-            android:textSize="35sp"
-            android:textColor="@color/text_light"
-            android:textStyle="bold"
-            android:id="@+id/home_totalballs" />
-
-    </LinearLayout>
-
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:gravity="center"
+        android:text="@string/home_button_start"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textSize="35sp"
+        android:background="@drawable/button2_bg"/>
 
     <View
         android:id="@+id/gap1"
@@ -110,16 +38,16 @@
         android:layout_height="0dp"
         app:layout_heightPercent="5%"
         app:layout_widthPercent="100%"
-        android:layout_centerVertical="true"
-        android:layout_below="@id/header2"/>
+        android:layout_above="@id/home_start" />
 
 
     <android.support.percent.PercentRelativeLayout
+        android:id="@+id/avgMetricsLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_heightPercent="30%"
         app:layout_widthPercent="100%"
-        android:layout_below="@id/gap1"
+        android:layout_above="@id/gap1"
         android:textAlignment="center"
         android:layout_gravity="center"
         android:gravity="center_vertical"
@@ -300,21 +228,95 @@
 
     </android.support.percent.PercentRelativeLayout>
 
-
-    <Button
-        android:id="@+id/home_start"
+    <View
+        android:id="@+id/gap2"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_heightPercent="9%"
+        app:layout_heightPercent="3%"
         app:layout_widthPercent="100%"
-        android:layout_alignParentBottom="true"
-        android:layout_gravity="bottom"
+        android:layout_above="@id/avgMetricsLayout"/>
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/totalBallsLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_heightPercent="10%"
+        app:layout_widthPercent="100%"
+        android:layout_above="@id/gap2"
+        android:layout_gravity="center"
+        android:gravity="center_horizontal">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:text="@string/home_total_balls_text"
+            android:textSize="35sp"
+            android:textColor="@color/text_light"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:text="@string/home_total_balls"
+            android:textSize="35sp"
+            android:textColor="@color/text_light"
+            android:textStyle="bold"
+            android:id="@+id/home_totalballs" />
+
+    </LinearLayout>
+
+
+    <View
+        android:id="@+id/gap3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_heightPercent="3%"
+        app:layout_widthPercent="100%"
+        android:layout_above="@id/totalBallsLayout"/>
+
+    <TextView
+        android:id="@+id/legalIllegalText"
+        android:layout_above="@id/gap3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:text="@string/home_button_start"
+        android:layout_gravity="center"
+        android:textSize="22sp"
+        android:text="@string/legal_illegal_ratio"
+        android:textColor="@color/text_light" />
+
+
+
+    <com.github.lzyzsd.circleprogress.ArcProgress
+        android:id="@+id/home_legal_to_illegal_ratio"
+        android:layout_above="@id/legalIllegalText"
+        android:layout_width="275dp"
+        android:layout_height="275dp"
+        android:layout_marginBottom="-17dp"
+        android:layout_centerHorizontal="true"
+        android:background="@android:color/transparent"
+        android:layout_gravity="center"
+        custom:arc_angle="260"
+        custom:arc_stroke_width="25dp"
+        custom:arc_max="100"
+        custom:arc_finished_color="@color/home_arc_finished_color"
+        custom:arc_unfinished_color="@color/home_arc_unfinished_color"
         android:textStyle="bold"
-        android:textColor="#FFFFFF"
-        android:textSize="35sp"
-        android:background="@drawable/button2_bg"/>
+        custom:arc_bottom_text=""
+        custom:arc_bottom_text_size="0sp"
+        custom:arc_suffix_text_padding="11dp"
+        custom:arc_suffix_text_size="25dp"
+        custom:arc_text_size="70dp"
+        custom:arc_text_color="@color/text_light"/>
 
 
 </android.support.percent.PercentRelativeLayout>
