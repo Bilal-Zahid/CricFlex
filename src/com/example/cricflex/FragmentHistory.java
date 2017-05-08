@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -19,6 +20,13 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.AxisValueFormatter;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -32,12 +40,14 @@ import org.json.JSONObject;
 
 import android.support.percent.PercentRelativeLayout;
 
+import static android.content.ContentValues.TAG;
+
 
 public class FragmentHistory extends Fragment {
 
 
     View rootView;
-    
+
     DatabaseHelper helper;
     String email;
 
@@ -78,12 +88,17 @@ public class FragmentHistory extends Fragment {
     TextView maximumValue;
     TextView minimumValue;
     TextView averageValue;
-    
+
     int angleMax, angleMin, angleAvg;
     int forceMax, forceMin, forceAvg;
     float timeMax, timeMin, timeAvg;
     int twistMax, twistMin, twistAvg;
     int angleDataSize, forceDataSize, timeDataSize, twistDataSize;
+
+
+    //Firebase History Maintenance
+    private DatabaseReference databaseReference;
+    FirebaseAuth firebaseAuth;
 
     public FragmentHistory(){}
 
@@ -93,6 +108,48 @@ public class FragmentHistory extends Fragment {
 
         //inflating layout
         rootView = inflater.inflate(R.layout.fragment_history, container, false);
+
+        //Firebase
+        firebaseAuth = FirebaseAuth.getInstance();
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+
+
+        ValueEventListener metricsWithDatesListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Getting all metrics object
+                // ...
+
+
+                System.out.println("Datasnapshot mai ara hai : ");
+                MetricsWithDates metricsOfDate = new MetricsWithDates();
+
+                metricsOfDate = dataSnapshot.getValue(MetricsWithDates.class);
+
+
+                if(metricsOfDate==null){
+                    System.out.println("Cant fetch data");
+
+                    return;
+                }
+                else{
+//                    System.out.println("Angle values from firebase: " + allMetricsInMonitor.angleValues);
+                }
+
+
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+                // ...
+            }
+        };
+
+
+
 
         //getting email from shared preference
         email = SaveSharedPreference.getEmail(getActivity());
@@ -127,11 +184,11 @@ public class FragmentHistory extends Fragment {
         minimumValue = (TextView)rootView.findViewById(R.id.history_stat_minimum);
         averageValue = (TextView)rootView.findViewById(R.id.history_stat_average);
 
-        
-        
+
+
 
         //date selector items listeners
-        
+
         prevYear.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
 
@@ -139,7 +196,7 @@ public class FragmentHistory extends Fragment {
                 updateGraphToDate(month, year);
             }
         });
-        
+
         prevMonth.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
 
@@ -152,7 +209,7 @@ public class FragmentHistory extends Fragment {
                 updateGraphToDate(month, year);
             }
         });
-        
+
         nextMonth.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
 
@@ -166,7 +223,7 @@ public class FragmentHistory extends Fragment {
                 updateGraphToDate(month, year);
             }
         });
-        
+
         nextYear.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
 
@@ -176,8 +233,8 @@ public class FragmentHistory extends Fragment {
         });
 
 
-        
-        
+
+
         // tabs' listener
 
         angleTab.setOnTouchListener(new View.OnTouchListener() {
@@ -190,7 +247,7 @@ public class FragmentHistory extends Fragment {
                 return true;
             }
         });
-        
+
         forceTab.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -223,7 +280,7 @@ public class FragmentHistory extends Fragment {
                 return true;
             }
         });
-        
+
 
         // swipes listener for tabs
         swipeLayout.setOnTouchListener(new OnSwipeTouchListener(getActivity()) {
@@ -276,7 +333,7 @@ public class FragmentHistory extends Fragment {
             }
 
         });
-        
+
 
 
         // updating the graph on start
@@ -284,7 +341,7 @@ public class FragmentHistory extends Fragment {
         _calendar = Calendar.getInstance(Locale.getDefault());
         month = _calendar.get(Calendar.MONTH);
         year = _calendar.get(Calendar.YEAR);
-        
+
         // update date selector to local date
         currentMonth.setText(DateFormat.format(dateTemplate, _calendar.getTime()));
 
@@ -311,6 +368,7 @@ public class FragmentHistory extends Fragment {
         // sets the new data
         dataset = new LineDataSet(entries, metricType);
         LineData data = new LineData(dataset);
+        lineChart.clear();
         lineChart.setData(data);
 
         //data settings
@@ -512,11 +570,11 @@ public class FragmentHistory extends Fragment {
 
         selectTab("twist");
 
-            updateGraph(entriesArmTwist, checkForTab, twistDataSize);
+        updateGraph(entriesArmTwist, checkForTab, twistDataSize);
 
-            maximumValue.setText(String.valueOf(twistMax) + "\u00b0");
-            minimumValue.setText(String.valueOf(twistMin) + "\u00b0");
-            averageValue.setText(String.valueOf(twistAvg) + "\u00b0");
+        maximumValue.setText(String.valueOf(twistMax) + "\u00b0");
+        minimumValue.setText(String.valueOf(twistMin) + "\u00b0");
+        averageValue.setText(String.valueOf(twistAvg) + "\u00b0");
 
     }
 
@@ -535,7 +593,7 @@ public class FragmentHistory extends Fragment {
 
         // show data according to selected tab
         switch (checkForTab){
-            
+
             case "angle":{
                 showAngleData();
                 break;
@@ -552,7 +610,7 @@ public class FragmentHistory extends Fragment {
                 showTwistData();
                 break;
             }
-            
+
             default:
                 break;
         }
@@ -617,6 +675,7 @@ public class FragmentHistory extends Fragment {
 
     public void getAngleDataFromDatabase() {
 
+        entriesAngle.clear();
         int value;
 
         String angleValuesWithDate = helper.getAngleValuesWithDate(email, currentMonth.getText().toString());
@@ -672,6 +731,7 @@ public class FragmentHistory extends Fragment {
 
     public void getForceDataFromDatabase() {
 
+        entriesForce.clear();
         int value;
 
         String forceWithDate = helper.getForceValuesWithDate(email, currentMonth.getText().toString());
@@ -729,6 +789,7 @@ public class FragmentHistory extends Fragment {
 
     public void getTimeDataFromDatabase() {
 
+        entriesActionTime.clear();
         float valueFloat;
 
         String actionTimeWithDate = helper.getActionTimeValuesWithDate(email, currentMonth.getText().toString());
@@ -784,6 +845,8 @@ public class FragmentHistory extends Fragment {
     }
 
     public void getTwistDataFromDatabase() {
+
+        entriesArmTwist.clear();
 
         int value;
 

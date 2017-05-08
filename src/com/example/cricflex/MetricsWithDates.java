@@ -9,11 +9,11 @@ import java.util.ArrayList;
 public class MetricsWithDates {
 
 
-    String Email;
-    ArrayList<Integer> angleValues = new ArrayList<Integer>();
-    ArrayList<Integer> forceValues = new ArrayList<Integer>();
-    ArrayList<Integer> armTwistValues = new ArrayList<Integer>();
-    ArrayList<Float> actionTimeValues = new ArrayList<Float>();
+    public String Email;
+    public ArrayList<Integer> angleValues = new ArrayList<Integer>();
+    public ArrayList<Integer> forceValues = new ArrayList<Integer>();
+    public ArrayList<Integer> armTwistValues = new ArrayList<Integer>();
+    public ArrayList<Float> actionTimeValues = new ArrayList<Float>();
 
     public MetricsWithDates() {
     }

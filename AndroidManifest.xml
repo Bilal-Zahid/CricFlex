@@ -36,7 +36,11 @@
         android:largeHeap="true"
         android:logo="@mipmap/cricflexlogosmall"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:name="android.support.multidex.MultiDexApplication">
+
+
+
         <activity
             android:name=".ActivitySplash"
             android:screenOrientation="portrait">

@@ -547,12 +547,98 @@ public class ActivityMonitor extends Activity {
 
             System.out.println("SCANNING TRUE");
 
-            if (Build.VERSION.SDK_INT < 21) {
+
+
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+                System.out.println("upper wala");
+
+
+                mLeScanCallback =
+                        new BluetoothAdapter.LeScanCallback() {
+                            @Override
+                            public void onLeScan(final BluetoothDevice device, int rssi,
+                                                 byte[] scanRecord) {
+
+
+                                mBluetoothAdapter.stopLeScan(this);
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Log.i("onLeScan", device.toString());
+
+                                        if(device.getName() != null) {
+
+                                            if (device.getName().equals("Abdullah")) {
+
+
+                                                bluetoothDevice = device;
+                                                Intent rfduinoIntent = new Intent(ActivityMonitor.this, RFDService.class);
+                                                isBound = getApplicationContext().bindService(rfduinoIntent, bleServiceConnection, BIND_AUTO_CREATE);
+                                                scanLeDevice(false);
+                                            } else {
+                                                System.out.println("scanLeDevice(true) called in BluetoothAdapter.LeScanCallback mLeScanCallback ");
+                                                scanLeDevice(true);
+                                            }
+                                        }
+                                        else{
+                                            System.out.println("scanned device does not have name ");
+                                        }
+
+                                    }
+                                });
+                            }
+                        };
 
                 if(mBluetoothAdapter != null && mBluetoothAdapter.isEnabled())
                     mBluetoothAdapter.startLeScan(new UUID[]{RFDService.UUID_SERVICE}, mLeScanCallback);
 
             } else {
+
+                System.out.println("Is me aata hai");
+
+
+                mScanCallback =  new ScanCallback() {
+                    @Override
+                    public void onScanResult(int callbackType, ScanResult result) {
+                        Log.i("callbackType", String.valueOf(callbackType));
+                        Log.i("result", result.toString());
+                        System.out.println("ScanCallback mScanCallback device name:" + result.getDevice().getName());
+                        BluetoothDevice device = result.getDevice();
+                        if (device.getName() != null ) {
+
+                            if (device.getName().equals("Abdullah")) {
+
+                                bluetoothDevice = device;
+                                Intent rfduinoIntent = new Intent(ActivityMonitor.this, RFDService.class);
+                                isBound = getApplicationContext().bindService(rfduinoIntent, bleServiceConnection, BIND_AUTO_CREATE);
+                                System.out.println("scanLeDevice(false) called in ScanCallback mScanCallback ");
+                                scanLeDevice(false);
+
+                            }
+                            else {
+                                System.out.println("scanLeDevice(true) called in ScanCallback mScanCallback ");
+                                scanLeDevice(true);
+                            }
+                        }
+                        else{
+                            System.out.println("scanned device does not have name ");
+                        }
+
+                    }
+
+                    @Override
+                    public void onBatchScanResults(List<ScanResult> results) {
+                        for (ScanResult sr : results) {
+                            Log.i("ScanResult - Results", sr.toString());
+                        }
+                    }
+
+                    @Override
+                    public void onScanFailed(int errorCode) {
+                        Log.e("Scan Failed", "Error Code: " + errorCode);
+                    }
+                };
+
 
                 if(mLEScanner != null)
                     mLEScanner.startScan(mScanCallback);
@@ -562,98 +648,104 @@ public class ActivityMonitor extends Activity {
         else {
             System.out.println("SCANNING FALSE");
 
-            if (Build.VERSION.SDK_INT < 21) {
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+                System.out.println("upper wala");
 
+                mLeScanCallback =
+                        new BluetoothAdapter.LeScanCallback() {
+                            @Override
+                            public void onLeScan(final BluetoothDevice device, int rssi,
+                                                 byte[] scanRecord) {
+
+
+                                mBluetoothAdapter.stopLeScan(this);
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Log.i("onLeScan", device.toString());
+
+                                        if(device.getName() != null) {
+
+                                            if (device.getName().equals("Abdullah")) {
+
+
+                                                bluetoothDevice = device;
+                                                Intent rfduinoIntent = new Intent(ActivityMonitor.this, RFDService.class);
+                                                isBound = getApplicationContext().bindService(rfduinoIntent, bleServiceConnection, BIND_AUTO_CREATE);
+                                                scanLeDevice(false);
+                                            } else {
+                                                System.out.println("scanLeDevice(true) called in BluetoothAdapter.LeScanCallback mLeScanCallback ");
+                                                scanLeDevice(true);
+                                            }
+                                        }
+                                        else{
+                                            System.out.println("scanned device does not have name ");
+                                        }
+
+                                    }
+                                });
+                            }
+                        };
                 if(mBluetoothAdapter != null && mBluetoothAdapter.isEnabled())
                     mBluetoothAdapter.stopLeScan(mLeScanCallback);
             }
 
             else {
+                System.out.println("Is me aata hai");
 
+                mScanCallback =  new ScanCallback() {
+                    @Override
+                    public void onScanResult(int callbackType, ScanResult result) {
+                        Log.i("callbackType", String.valueOf(callbackType));
+                        Log.i("result", result.toString());
+                        System.out.println("ScanCallback mScanCallback device name:" + result.getDevice().getName());
+                        BluetoothDevice device = result.getDevice();
+                        if (device.getName() != null ) {
+
+                            if (device.getName().equals("Abdullah")) {
+
+                                bluetoothDevice = device;
+                                Intent rfduinoIntent = new Intent(ActivityMonitor.this, RFDService.class);
+                                isBound = getApplicationContext().bindService(rfduinoIntent, bleServiceConnection, BIND_AUTO_CREATE);
+                                System.out.println("scanLeDevice(false) called in ScanCallback mScanCallback ");
+                                scanLeDevice(false);
+
+                            }
+                            else {
+                                System.out.println("scanLeDevice(true) called in ScanCallback mScanCallback ");
+                                scanLeDevice(true);
+                            }
+                        }
+                        else{
+                            System.out.println("scanned device does not have name ");
+                        }
+
+                    }
+
+                    @Override
+                    public void onBatchScanResults(List<ScanResult> results) {
+                        for (ScanResult sr : results) {
+                            Log.i("ScanResult - Results", sr.toString());
+                        }
+                    }
+
+                    @Override
+                    public void onScanFailed(int errorCode) {
+                        Log.e("Scan Failed", "Error Code: " + errorCode);
+                    }
+                };
                 if(mLEScanner != null)
+
+
                     mLEScanner.stopScan(mScanCallback);
 
             }
         }
     }
 
-    private ScanCallback mScanCallback = new ScanCallback() {
-        @Override
-        public void onScanResult(int callbackType, ScanResult result) {
-            Log.i("callbackType", String.valueOf(callbackType));
-            Log.i("result", result.toString());
-            System.out.println("ScanCallback mScanCallback device name:" + result.getDevice().getName());
-            BluetoothDevice device = result.getDevice();
-            if (device.getName() != null ) {
+    private ScanCallback mScanCallback ;
 
-                if (device.getName().equals("Abdullah")) {
-
-                    bluetoothDevice = device;
-                    Intent rfduinoIntent = new Intent(ActivityMonitor.this, RFDService.class);
-                    isBound = getApplicationContext().bindService(rfduinoIntent, bleServiceConnection, BIND_AUTO_CREATE);
-                    System.out.println("scanLeDevice(false) called in ScanCallback mScanCallback ");
-                    scanLeDevice(false);
-
-                }
-                else {
-                    System.out.println("scanLeDevice(true) called in ScanCallback mScanCallback ");
-                    scanLeDevice(true);
-                }
-            }
-            else{
-                System.out.println("scanned device does not have name ");
-            }
-
-        }
-
-        @Override
-        public void onBatchScanResults(List<ScanResult> results) {
-            for (ScanResult sr : results) {
-                Log.i("ScanResult - Results", sr.toString());
-            }
-        }
-
-        @Override
-        public void onScanFailed(int errorCode) {
-            Log.e("Scan Failed", "Error Code: " + errorCode);
-        }
-    };
-
-    private BluetoothAdapter.LeScanCallback mLeScanCallback =
-            new BluetoothAdapter.LeScanCallback() {
-                @Override
-                public void onLeScan(final BluetoothDevice device, int rssi,
-                                     byte[] scanRecord) {
-
-
-                    mBluetoothAdapter.stopLeScan(this);
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Log.i("onLeScan", device.toString());
-
-                            if(device.getName() != null) {
-
-                                if (device.getName().equals("Abdullah")) {
-
-
-                                    bluetoothDevice = device;
-                                    Intent rfduinoIntent = new Intent(ActivityMonitor.this, RFDService.class);
-                                    isBound = getApplicationContext().bindService(rfduinoIntent, bleServiceConnection, BIND_AUTO_CREATE);
-                                    scanLeDevice(false);
-                                } else {
-                                    System.out.println("scanLeDevice(true) called in BluetoothAdapter.LeScanCallback mLeScanCallback ");
-                                    scanLeDevice(true);
-                                }
-                            }
-                            else{
-                                System.out.println("scanned device does not have name ");
-                            }
-
-                        }
-                    });
-                }
-            };
+    private BluetoothAdapter.LeScanCallback mLeScanCallback;
 
     @Override
     protected void onStart() {
