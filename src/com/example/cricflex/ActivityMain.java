@@ -44,7 +44,7 @@ public class ActivityMain extends AppCompatActivity
     String inFragment = "Home";
     Boolean changeFragment = false;
 
-    DatabaseHelper helper = new DatabaseHelper(this);
+//    DatabaseHelper helper = new DatabaseHelper(this);
 //    TextView mainEmail;
     private TextView emailTextView ;
     private TextView nameTextView;
@@ -159,7 +159,7 @@ public class ActivityMain extends AppCompatActivity
 
         View nav_header =  navigationView.getHeaderView(0);
         nameTextView = (TextView)nav_header.findViewById(R.id.name);
-        nameTextView.setText(helper.getName(SaveSharedPreference.getEmail(ActivityMain.this)));
+//        nameTextView.setText(helper.getName(SaveSharedPreference.getEmail(ActivityMain.this)));
         emailTextView = (TextView)nav_header.findViewById(R.id.email);
         emailTextView.setText(SaveSharedPreference.getEmail(ActivityMain.this));
 

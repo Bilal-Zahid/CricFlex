@@ -48,7 +48,7 @@ public class FragmentHistory extends Fragment {
 
     View rootView;
 
-    DatabaseHelper helper;
+//    DatabaseHelper helper;
     String email;
 
     // date selector items
@@ -155,7 +155,7 @@ public class FragmentHistory extends Fragment {
         email = SaveSharedPreference.getEmail(getActivity());
 
         //database
-        helper = new DatabaseHelper(getActivity());
+//        helper = new DatabaseHelper(getActivity());
 
 
 
@@ -824,235 +824,235 @@ public class FragmentHistory extends Fragment {
     }
 
 
-    public void getAngleDataFromDatabase() {
-
-        entriesAngle.clear();
-        int value;
-
-        String angleValuesWithDate = helper.getAngleValuesWithDate(email, currentMonth.getText().toString());
-        //making arraylist after getting response from database
-        ArrayList<String> list1 = new ArrayList<>();
-
-        if (!angleValuesWithDate.equals("not found")) {
-            // Getting Arraylist back
-            JSONObject json1 = null;
-            try {
-                json1 = new JSONObject(angleValuesWithDate);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-            JSONArray jsonArray = json1.optJSONArray("angleArray");
-            if (jsonArray != null) {
-                int len = jsonArray.length();
-                for (int i = 0; i < len; i++) {
-                    try {
-                        list1.add(jsonArray.get(i).toString());
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
-
-        if (list1.size() != 0) {
-
-            angleDataSize = list1.size();
-
-            angleMax = Integer.valueOf(list1.get(0));
-            angleMin = Integer.valueOf(list1.get(0));
-
-            for (int i = 0; i < list1.size(); i++) {
-
-                value = Integer.valueOf(list1.get(i));
-                entriesAngle.add(new Entry(i + 1, value));
-
-                angleAvg += value;
-                if (value > angleMax)
-                    angleMax = value;
-                if (value < angleMin)
-                    angleMin = value;
-            }
-
-            angleAvg = angleAvg / list1.size();
-
-        }
-
-    }
-
-    public void getForceDataFromDatabase() {
-
-        entriesForce.clear();
-        int value;
-
-        String forceWithDate = helper.getForceValuesWithDate(email, currentMonth.getText().toString());
-
-        //making arraylist after getting response from database
-        ArrayList<String> list2 = new ArrayList<>();
-        if (!forceWithDate.equals("not found")) {
-            // Getting Arraylist back
-            JSONObject json1 = null;
-            try {
-                json1 = new JSONObject(forceWithDate);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-            JSONArray jsonArray = json1.optJSONArray("forceArray");
-            if (jsonArray != null) {
-                int len = jsonArray.length();
-                for (int i = 0; i < len; i++) {
-                    try {
-                        list2.add(jsonArray.get(i).toString());
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
-
-
-        if (list2.size() != 0) {
-
-            forceDataSize = list2.size();
-
-            forceMax = Integer.valueOf(list2.get(0));
-            forceMin = Integer.valueOf(list2.get(0));
-
-            for (int i = 0; i < list2.size(); i++) {
-
-                value = Integer.valueOf(list2.get(i));
-                entriesForce.add(new Entry(i + 1, value));
-
-                forceAvg += value;
-                if (value > forceMax)
-                    forceMax = value;
-                if (value < forceMin)
-                    forceMin = value;
-            }
-
-            forceAvg = forceAvg / list2.size();
-
-        }
-
-
-    }
-
-    public void getTimeDataFromDatabase() {
-
-        entriesActionTime.clear();
-        float valueFloat;
-
-        String actionTimeWithDate = helper.getActionTimeValuesWithDate(email, currentMonth.getText().toString());
-
-        //making arraylist after getting response from database
-        ArrayList<String> list3 = new ArrayList<>();
-        if (!actionTimeWithDate.equals("not found")) {
-            // Getting Arraylist back
-            JSONObject json1 = null;
-            try {
-                json1 = new JSONObject(actionTimeWithDate);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-            JSONArray jsonArray = json1.optJSONArray("actionTimeArray");
-            if (jsonArray != null) {
-                int len = jsonArray.length();
-                for (int i = 0; i < len; i++) {
-                    try {
-                        list3.add(jsonArray.get(i).toString());
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
-
-        if (list3.size() != 0) {
-
-            timeDataSize = list3.size();
-
-            timeMax = Float.valueOf(list3.get(0));
-            timeMin = Float.valueOf(list3.get(0));
-
-            for (int i = 0; i < list3.size(); i++) {
-                valueFloat = Float.valueOf(list3.get(i));
-                entriesActionTime.add(new Entry(i + 1, valueFloat));
-
-                timeAvg += valueFloat;
-
-                if (valueFloat > timeMax)
-                    timeMax = valueFloat;
-                if (valueFloat < timeMin)
-                    timeMin = valueFloat;
-            }
-
-            timeAvg = timeAvg / list3.size();
-
-        }
-
-
-    }
-
-    public void getTwistDataFromDatabase() {
-
-        entriesArmTwist.clear();
-
-        int value;
-
-        String armTwistWithDate = helper.getArmTwistValuesWithDate(email,currentMonth.getText().toString());
-
-        //making arraylist after getting response from database
-        ArrayList<String> list4 = new ArrayList<>();
-
-        if(!armTwistWithDate.equals("not found")) {
-            // Getting Arraylist back
-            JSONObject json1 = null;
-            try {
-                json1 = new JSONObject(armTwistWithDate);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-            JSONArray jsonArray = json1.optJSONArray("armTwistArray");
-            if (jsonArray != null) {
-                int len = jsonArray.length();
-                for (int i = 0; i < len; i++) {
-                    try {
-                        list4.add(jsonArray.get(i).toString());
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
-
-        if(list4.size()!=0) {
-
-            twistDataSize = list4.size();
-
-            twistMax = Integer.valueOf(list4.get(0));
-            twistMin = Integer.valueOf(list4.get(0));
-
-            for (int i = 0; i < list4.size(); i++) {
-
-                value = Integer.valueOf(list4.get(i));
-                entriesArmTwist.add(new Entry(i + 1, value));
-
-                timeAvg += value;
-
-                if (value > twistMax)
-                    twistMax = value;
-                if (value < twistMin)
-                    twistMin = value;
-            }
-
-            timeAvg = timeAvg / list4.size();
-        }
-
-
-
-    }
+//    public void getAngleDataFromDatabase() {
+//
+//        entriesAngle.clear();
+//        int value;
+//
+//        String angleValuesWithDate = helper.getAngleValuesWithDate(email, currentMonth.getText().toString());
+//        //making arraylist after getting response from database
+//        ArrayList<String> list1 = new ArrayList<>();
+//
+//        if (!angleValuesWithDate.equals("not found")) {
+//            // Getting Arraylist back
+//            JSONObject json1 = null;
+//            try {
+//                json1 = new JSONObject(angleValuesWithDate);
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+//
+//            JSONArray jsonArray = json1.optJSONArray("angleArray");
+//            if (jsonArray != null) {
+//                int len = jsonArray.length();
+//                for (int i = 0; i < len; i++) {
+//                    try {
+//                        list1.add(jsonArray.get(i).toString());
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            }
+//        }
+//
+//        if (list1.size() != 0) {
+//
+//            angleDataSize = list1.size();
+//
+//            angleMax = Integer.valueOf(list1.get(0));
+//            angleMin = Integer.valueOf(list1.get(0));
+//
+//            for (int i = 0; i < list1.size(); i++) {
+//
+//                value = Integer.valueOf(list1.get(i));
+//                entriesAngle.add(new Entry(i + 1, value));
+//
+//                angleAvg += value;
+//                if (value > angleMax)
+//                    angleMax = value;
+//                if (value < angleMin)
+//                    angleMin = value;
+//            }
+//
+//            angleAvg = angleAvg / list1.size();
+//
+//        }
+//
+//    }
+//
+//    public void getForceDataFromDatabase() {
+//
+//        entriesForce.clear();
+//        int value;
+//
+//        String forceWithDate = helper.getForceValuesWithDate(email, currentMonth.getText().toString());
+//
+//        //making arraylist after getting response from database
+//        ArrayList<String> list2 = new ArrayList<>();
+//        if (!forceWithDate.equals("not found")) {
+//            // Getting Arraylist back
+//            JSONObject json1 = null;
+//            try {
+//                json1 = new JSONObject(forceWithDate);
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+//
+//            JSONArray jsonArray = json1.optJSONArray("forceArray");
+//            if (jsonArray != null) {
+//                int len = jsonArray.length();
+//                for (int i = 0; i < len; i++) {
+//                    try {
+//                        list2.add(jsonArray.get(i).toString());
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            }
+//        }
+//
+//
+//        if (list2.size() != 0) {
+//
+//            forceDataSize = list2.size();
+//
+//            forceMax = Integer.valueOf(list2.get(0));
+//            forceMin = Integer.valueOf(list2.get(0));
+//
+//            for (int i = 0; i < list2.size(); i++) {
+//
+//                value = Integer.valueOf(list2.get(i));
+//                entriesForce.add(new Entry(i + 1, value));
+//
+//                forceAvg += value;
+//                if (value > forceMax)
+//                    forceMax = value;
+//                if (value < forceMin)
+//                    forceMin = value;
+//            }
+//
+//            forceAvg = forceAvg / list2.size();
+//
+//        }
+//
+//
+//    }
+//
+//    public void getTimeDataFromDatabase() {
+//
+//        entriesActionTime.clear();
+//        float valueFloat;
+//
+//        String actionTimeWithDate = helper.getActionTimeValuesWithDate(email, currentMonth.getText().toString());
+//
+//        //making arraylist after getting response from database
+//        ArrayList<String> list3 = new ArrayList<>();
+//        if (!actionTimeWithDate.equals("not found")) {
+//            // Getting Arraylist back
+//            JSONObject json1 = null;
+//            try {
+//                json1 = new JSONObject(actionTimeWithDate);
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+//
+//            JSONArray jsonArray = json1.optJSONArray("actionTimeArray");
+//            if (jsonArray != null) {
+//                int len = jsonArray.length();
+//                for (int i = 0; i < len; i++) {
+//                    try {
+//                        list3.add(jsonArray.get(i).toString());
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            }
+//        }
+//
+//        if (list3.size() != 0) {
+//
+//            timeDataSize = list3.size();
+//
+//            timeMax = Float.valueOf(list3.get(0));
+//            timeMin = Float.valueOf(list3.get(0));
+//
+//            for (int i = 0; i < list3.size(); i++) {
+//                valueFloat = Float.valueOf(list3.get(i));
+//                entriesActionTime.add(new Entry(i + 1, valueFloat));
+//
+//                timeAvg += valueFloat;
+//
+//                if (valueFloat > timeMax)
+//                    timeMax = valueFloat;
+//                if (valueFloat < timeMin)
+//                    timeMin = valueFloat;
+//            }
+//
+//            timeAvg = timeAvg / list3.size();
+//
+//        }
+//
+//
+//    }
+//
+//    public void getTwistDataFromDatabase() {
+//
+//        entriesArmTwist.clear();
+//
+//        int value;
+//
+//        String armTwistWithDate = helper.getArmTwistValuesWithDate(email,currentMonth.getText().toString());
+//
+//        //making arraylist after getting response from database
+//        ArrayList<String> list4 = new ArrayList<>();
+//
+//        if(!armTwistWithDate.equals("not found")) {
+//            // Getting Arraylist back
+//            JSONObject json1 = null;
+//            try {
+//                json1 = new JSONObject(armTwistWithDate);
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+//
+//            JSONArray jsonArray = json1.optJSONArray("armTwistArray");
+//            if (jsonArray != null) {
+//                int len = jsonArray.length();
+//                for (int i = 0; i < len; i++) {
+//                    try {
+//                        list4.add(jsonArray.get(i).toString());
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            }
+//        }
+//
+//        if(list4.size()!=0) {
+//
+//            twistDataSize = list4.size();
+//
+//            twistMax = Integer.valueOf(list4.get(0));
+//            twistMin = Integer.valueOf(list4.get(0));
+//
+//            for (int i = 0; i < list4.size(); i++) {
+//
+//                value = Integer.valueOf(list4.get(i));
+//                entriesArmTwist.add(new Entry(i + 1, value));
+//
+//                timeAvg += value;
+//
+//                if (value > twistMax)
+//                    twistMax = value;
+//                if (value < twistMin)
+//                    twistMin = value;
+//            }
+//
+//            timeAvg = timeAvg / list4.size();
+//        }
+//
+//
+//
+//    }
 
 }

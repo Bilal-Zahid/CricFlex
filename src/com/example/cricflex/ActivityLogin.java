@@ -50,7 +50,7 @@ public class ActivityLogin extends Activity {
 
     
     // database items
-    DatabaseHelper helper = new DatabaseHelper(this);
+//    DatabaseHelper helper = new DatabaseHelper(this);
     FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
     private DatabaseReference usersDatabaseReference;
@@ -169,25 +169,26 @@ public class ActivityLogin extends Activity {
 
 
                 emailString = emailEditText.getText().toString();
-                final String passwordstr = passwordEditText.getText().toString();
+//                final String passwordstr = passwordEditText.getText().toString();
 
-                String password = helper.getPassword(emailString);
+//                String password = helper.getPassword(emailString);
                 //System.out.print("Dpassword: "+ password + "entered password:"+passwordstr);
                 //Log.v("Dpassword", password);
                 //Log.v("Entered Password", passwordstr);
 
-                if(password.equals(passwordstr) && password!=null && password!=""){
-                    //Toast message = Toast.makeText(ActivityLogin.this, "Right Password! ", Toast.LENGTH_SHORT);
-                    //CharSequence text1 = password;
-                    // text2 = passwordstr;
-
-                    userLogin();
-
-                }
-                else{
-                    //Toast message = Toast.makeText(ActivityLogin.this, "Wrong Password! ", Toast.LENGTH_SHORT);
-                    Toast.makeText(ActivityLogin.this, "Wrong Credentials", Toast.LENGTH_SHORT).show();
-                }
+                userLogin();
+//                if(password.equals(passwordstr) && password!=null && password!=""){
+//                    //Toast message = Toast.makeText(ActivityLogin.this, "Right Password! ", Toast.LENGTH_SHORT);
+//                    //CharSequence text1 = password;
+//                    // text2 = passwordstr;
+//
+//
+//
+//                }
+//                else{
+//                    //Toast message = Toast.makeText(ActivityLogin.this, "Wrong Password! ", Toast.LENGTH_SHORT);
+//                    Toast.makeText(ActivityLogin.this, "Wrong Credentials", Toast.LENGTH_SHORT).show();
+//                }
             }
         });
 
@@ -273,19 +274,19 @@ public class ActivityLogin extends Activity {
 
                             FirebaseUser user = firebaseAuth.getCurrentUser();
 
-                            Player player = new Player();
-
-                            player.setName(helper.getName(email));
-                            player.setGender(helper.getGender(email));
-                            player.setEmail(email);
-                            player.setWeight(helper.getWeight(email));
-                            player.setLocation(helper.getLocation(email));
-                            player.setDOB(helper.getDOB(email));
-                            player.setBowlingArm(helper.getBowlingArm(email));
-                            player.setBowlingStyle(helper.getBowlingStyle(email));
-                            player.setCareerLevel(helper.getCareerLevel(email));
-                            player.setPassword(helper.getPassword(email));
-                            player.setHeight("6");
+//                            Player player = new Player();
+//
+//                            player.setName(helper.getName(email));
+//                            player.setGender(helper.getGender(email));
+//                            player.setEmail(email);
+//                            player.setWeight(helper.getWeight(email));
+//                            player.setLocation(helper.getLocation(email));
+//                            player.setDOB(helper.getDOB(email));
+//                            player.setBowlingArm(helper.getBowlingArm(email));
+//                            player.setBowlingStyle(helper.getBowlingStyle(email));
+//                            player.setCareerLevel(helper.getCareerLevel(email));
+//                            player.setPassword(helper.getPassword(email));
+//                            player.setHeight("6");
 
 
                             databaseReference.child("Players").child(user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -343,16 +344,16 @@ public class ActivityLogin extends Activity {
 
 
 
-                            System.out.println(
-                                    "name: " + player.getName() +
-                                    "gender: " + player.getGender() +
-                                    "email: " + player.getEmail() +
-                                    "weight: " + player.getWeight() +
-                                    "location: " + player.getLocation() +
-                                    "bowling Arm: " + player.getBowlingArm() +
-                                    "bowling Style: " + player.getBowlingStyle() +
-                                    "career level: " + player.getCareerLevel()
-                            );
+//                            System.out.println(
+//                                    "name: " + player.getName() +
+//                                    "gender: " + player.getGender() +
+//                                    "email: " + player.getEmail() +
+//                                    "weight: " + player.getWeight() +
+//                                    "location: " + player.getLocation() +
+//                                    "bowling Arm: " + player.getBowlingArm() +
+//                                    "bowling Style: " + player.getBowlingStyle() +
+//                                    "career level: " + player.getCareerLevel()
+//                            );
 
 
 

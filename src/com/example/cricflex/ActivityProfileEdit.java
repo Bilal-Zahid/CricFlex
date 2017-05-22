@@ -52,7 +52,7 @@ public class ActivityProfileEdit extends FragmentActivity {
 
 
     String email;
-    DatabaseHelper helper = new DatabaseHelper(this);
+//    DatabaseHelper helper = new DatabaseHelper(this);
 
     RadioButton rdbMale, rdbFemale;
     RadioGroup rgGender;
@@ -406,13 +406,13 @@ public class ActivityProfileEdit extends FragmentActivity {
 
 
 
-                helper.changeGender(email,selectedGender);
-                helper.changeWeight(email,selectedWeight);
-                helper.changeLocation(email,selectedLocation);
-                helper.changeDOB(email,selectedDOB);
-                helper.changeBowlingArm(email,selectedBowlingArm);
-                helper.changeBowlingStyle(email,selectedBowlingStyle);
-                helper.changeCareerLevel(email,selectedCareerLevel);
+//                helper.changeGender(email,selectedGender);
+//                helper.changeWeight(email,selectedWeight);
+//                helper.changeLocation(email,selectedLocation);
+//                helper.changeDOB(email,selectedDOB);
+//                helper.changeBowlingArm(email,selectedBowlingArm);
+//                helper.changeBowlingStyle(email,selectedBowlingStyle);
+//                helper.changeCareerLevel(email,selectedCareerLevel);
 
                 FirebaseUser user = firebaseAuth.getCurrentUser();
 

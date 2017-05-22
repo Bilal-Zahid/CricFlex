@@ -43,7 +43,7 @@ public class ActivityRegister extends Activity{
 
 
 
-    DatabaseHelper helper = new DatabaseHelper(this);
+//    DatabaseHelper helper = new DatabaseHelper(this);
 
 
     //progress dialog for waiting
@@ -102,10 +102,10 @@ public class ActivityRegister extends Activity{
                     Toast.makeText(ActivityRegister.this, "Invalid Email Address", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if(!helper.getPassword(emailstr).equals("not found")){
-                    Toast.makeText(ActivityRegister.this, "Email Already Exists", Toast.LENGTH_SHORT).show();
-                    return;
-                }
+//                if(!helper.getPassword(emailstr).equals("not found")){
+//                    Toast.makeText(ActivityRegister.this, "Email Already Exists", Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
 
 
                 if(passwordstr.length()<6){
@@ -141,24 +141,24 @@ public class ActivityRegister extends Activity{
 
 
 
-                                    Player player = new Player();
-                                    player.setName("Unknown");
-                                    player.setEmail(emailstr);
-                                    player.setPassword(passwordstr);
-                                    player.setGender("male");
-                                    player.setLocation("Pakistan");
-                                    player.setDOB("01-01-2000");
-                                    player.setBowlingArm("Right");
-                                    player.setBowlingStyle("Right Arm Fast");
-                                    player.setCareerLevel("Club");
-                                    player.setWeight("100");
-
-
-                                    player.setLegalBowls("0");
-                                    player.setIllegalBowls("0");
-                                    player.setAverageAngle("0");
-                                    player.setLongestStreak("0");
-                                    player.setLastBowlAngle("0");
+//                                    Player player = new Player();
+//                                    player.setName("Unknown");
+//                                    player.setEmail(emailstr);
+//                                    player.setPassword(passwordstr);
+//                                    player.setGender("male");
+//                                    player.setLocation("Pakistan");
+//                                    player.setDOB("01-01-2000");
+//                                    player.setBowlingArm("Right");
+//                                    player.setBowlingStyle("Right Arm Fast");
+//                                    player.setCareerLevel("Club");
+//                                    player.setWeight("100");
+//
+//
+//                                    player.setLegalBowls("0");
+//                                    player.setIllegalBowls("0");
+//                                    player.setAverageAngle("0");
+//                                    player.setLongestStreak("0");
+//                                    player.setLastBowlAngle("0");
 
 
 //                                    saveImage(getApplicationContext(),bitmapImage,email,"jpeg");
@@ -175,19 +175,19 @@ public class ActivityRegister extends Activity{
 
 
 
-                                    helper.insertPlayerStats(player);
-                                    helper.insertPlayer(player);
-
-                                    helper.insertPlayerAngleValues(player.getEmail(),"");
-                                    helper.insertPlayerActionTimeValues(player.getEmail(),"");
-                                    helper.insertPlayerForceValues(player.getEmail(),"");
-                                    helper.insertPlayerArmTwistValues(player.getEmail(),"");
-
-
-                                    helper.insertPlayerAngleValuesWithDate(player.getEmail(),"","");
-                                    helper.insertPlayerActionTimeValuesWithDate(player.getEmail(),"","");
-                                    helper.insertPlayerForceValuesWithDate(player.getEmail(),"","");
-                                    helper.insertPlayerArmTwistValuesWithDate(player.getEmail(),"","");
+//                                    helper.insertPlayerStats(player);
+//                                    helper.insertPlayer(player);
+//
+//                                    helper.insertPlayerAngleValues(player.getEmail(),"");
+//                                    helper.insertPlayerActionTimeValues(player.getEmail(),"");
+//                                    helper.insertPlayerForceValues(player.getEmail(),"");
+//                                    helper.insertPlayerArmTwistValues(player.getEmail(),"");
+//
+//
+//                                    helper.insertPlayerAngleValuesWithDate(player.getEmail(),"","");
+//                                    helper.insertPlayerActionTimeValuesWithDate(player.getEmail(),"","");
+//                                    helper.insertPlayerForceValuesWithDate(player.getEmail(),"","");
+//                                    helper.insertPlayerArmTwistValuesWithDate(player.getEmail(),"","");
 
 
 

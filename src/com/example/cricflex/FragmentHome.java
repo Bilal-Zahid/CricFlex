@@ -59,7 +59,7 @@ public class FragmentHome extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        DatabaseHelper helper = new DatabaseHelper(getActivity());
+//        DatabaseHelper helper = new DatabaseHelper(getActivity());
         email = SaveSharedPreference.getEmail(getActivity());
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
 
@@ -72,21 +72,21 @@ public class FragmentHome extends Fragment {
 
         startButton = (Button) rootView.findViewById(R.id.home_start);
 
-        legalBalls = helper.getLegalCount(email);
-        illegalBalls = helper.getIllegalCount(email);
+//        legalBalls = helper.getLegalCount(email);
+//        illegalBalls = helper.getIllegalCount(email);
 
-        int totalBowls;
-        totalBowls = Integer.valueOf(legalBalls) + Integer.valueOf(illegalBalls);
+//        int totalBowls;
+//        totalBowls = Integer.valueOf(legalBalls) + Integer.valueOf(illegalBalls);
 
-        totalBalls.setText(Integer.toString(totalBowls));
-
-
+//        totalBalls.setText(Integer.toString(totalBowls));
 
 
-        float ratio = (float)Integer.valueOf(legalBalls) / (float) totalBowls;
-        ratio *= 100;
 
-        int successRateValue = (int)ratio;
+
+//        float ratio = (float)Integer.valueOf(legalBalls) / (float) totalBowls;
+//        ratio *= 100;
+//
+//        int successRateValue = (int)ratio;
 
 
 

@@ -58,7 +58,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class ActivityProfileSetup extends FragmentActivity {
 
     DbBitmapUtility dbBitmapUtility = new DbBitmapUtility();
-    DatabaseHelper helper = new DatabaseHelper(this);
+//    DatabaseHelper helper = new DatabaseHelper(this);
 
     RadioButton rdbMale, rdbFemale;
     RadioGroup rgGender;
@@ -454,7 +454,7 @@ public class ActivityProfileSetup extends FragmentActivity {
 
 
 
-                helper.changePlayerInfo(player);
+//                helper.changePlayerInfo(player);
 //                        helper.insertPlayer(player);
 
 //                        helper.insertPlayerAngleValues(player.getEmail(),"");

@@ -48,7 +48,7 @@ public class ActivityProfile extends AppCompatActivity {
 
 
 
-        DatabaseHelper helper = new DatabaseHelper(ActivityProfile.this);
+//        DatabaseHelper helper = new DatabaseHelper(ActivityProfile.this);
 
 
         firebaseAuth = FirebaseAuth.getInstance();

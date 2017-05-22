@@ -151,8 +151,10 @@ public class ActivityMonitor extends Activity {
 
 
     //For Stats and home page
-    DatabaseHelper helper = new DatabaseHelper(this);
-    Player playerStats = new Player();
+    //Database
+
+    //    DatabaseHelper helper = new DatabaseHelper(this);
+//    Player playerStats = new Player();
     String email;
     ArrayList<Integer> angleValues = new ArrayList<Integer>();
     ArrayList<Integer> forceValues = new ArrayList<Integer>();
@@ -832,49 +834,49 @@ public class ActivityMonitor extends Activity {
 
     void endSession(){
 
-        playerStats.setEmail(email);
-        playerStats.setIllegalBowls(String.valueOf(counterIllegal));
-        playerStats.setLegalBowls(String.valueOf(counterLegal));
-
-        System.out.println("Legal Bowls: "+ playerStats.getLegalBowls()+"\nIllegal Bowls:" + playerStats.getIllegalBowls());
-        System.out.println("Angle Values: \n"+ angleValues);
+//        playerStats.setEmail(email);
+//        playerStats.setIllegalBowls(String.valueOf(counterIllegal));
+//        playerStats.setLegalBowls(String.valueOf(counterLegal));
+//
+//        System.out.println("Legal Bowls: "+ playerStats.getLegalBowls()+"\nIllegal Bowls:" + playerStats.getIllegalBowls());
+//        System.out.println("Angle Values: \n"+ angleValues);
 
 
         //Angle Values for database
 
 //            converting array into JSON
-
-        JSONObject json = new JSONObject();
-        try {
-            json.put("angleArray", new JSONArray(angleValues));
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        String convertedArrayListOfAnglesToString = json.toString();
-
-        JSONObject json1 = new JSONObject();
-        try {
-            json1.put("armTwistArray", new JSONArray(armTwistValues));
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        String convertedArrayListOfArmTwistToString = json1.toString();
-
-        JSONObject json2 = new JSONObject();
-        try {
-            json2.put("forceArray", new JSONArray(forceValues));
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        String convertedArrayListOfForceToString = json2.toString();
-
-        JSONObject json3 = new JSONObject();
-        try {
-            json3.put("actionTimeArray", new JSONArray(actionTimeValues));
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        String convertedArrayListOfActionTimeToString = json3.toString();
+//
+//        JSONObject json = new JSONObject();
+//        try {
+//            json.put("angleArray", new JSONArray(angleValues));
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
+//        String convertedArrayListOfAnglesToString = json.toString();
+//
+//        JSONObject json1 = new JSONObject();
+//        try {
+//            json1.put("armTwistArray", new JSONArray(armTwistValues));
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
+//        String convertedArrayListOfArmTwistToString = json1.toString();
+//
+//        JSONObject json2 = new JSONObject();
+//        try {
+//            json2.put("forceArray", new JSONArray(forceValues));
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
+//        String convertedArrayListOfForceToString = json2.toString();
+//
+//        JSONObject json3 = new JSONObject();
+//        try {
+//            json3.put("actionTimeArray", new JSONArray(actionTimeValues));
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
+//        String convertedArrayListOfActionTimeToString = json3.toString();
 
 //            System.out.println("Arraylist : " + convertedArrayListOfAnglesToString);
 
@@ -886,111 +888,113 @@ public class ActivityMonitor extends Activity {
         SimpleDateFormat format = new SimpleDateFormat("MMMM yyyy");
         DateToStr = format.format(curDate);
 
-        System.out.println("date to store: " + DateToStr);
+        //Database
 
-
-        helper.changeAngleValues(email,convertedArrayListOfAnglesToString);
-        helper.changeArmTwistValues(email,convertedArrayListOfArmTwistToString);
-        helper.changeActionTimeValues(email,convertedArrayListOfActionTimeToString);
-        helper.changeForceValues(email,convertedArrayListOfForceToString);
-
-        helper.changeAngleValuesWithDate(email,convertedArrayListOfAnglesToString,DateToStr);
-        helper.changeArmTwistValuesWithDate(email,convertedArrayListOfArmTwistToString,DateToStr);
-        helper.changeActionTimeValuesWithDate(email,convertedArrayListOfActionTimeToString,DateToStr);
-        helper.changeForceValuesWithDate(email,convertedArrayListOfForceToString,DateToStr);
-
-        String angleValuesFromDatabase = helper.getAngleValues(email);
-        ArrayList<String> ArrayListOfAngles = new ArrayList<String>();
-        if(!angleValuesFromDatabase.equals("")) {
-//        getting previous array list from string
-            JSONObject jsonAngleValues = null;
-            try {
-                jsonAngleValues = new JSONObject(angleValuesFromDatabase);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            JSONArray jsonArray = jsonAngleValues.optJSONArray("angleArray");
-            if (jsonArray != null) {
-                int len = jsonArray.length();
-                for (int i = 0; i < len; i++) {
-                    try {
-                        ArrayListOfAngles.add(jsonArray.get(i).toString());
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
-
-
-        String forceValuesFromDatabase = helper.getForceValues(email);
-        ArrayList<String> ArrayListOfForces = new ArrayList<String>();
-        if(!forceValuesFromDatabase.equals("")) {
-//        getting previous array list from string
-            JSONObject jsonForceValues = null;
-            try {
-                jsonForceValues = new JSONObject(forceValuesFromDatabase);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            JSONArray jsonArray = jsonForceValues.optJSONArray("forceArray");
-            if (jsonArray != null) {
-                int len = jsonArray.length();
-                for (int i = 0; i < len; i++) {
-                    try {
-                        ArrayListOfForces.add(jsonArray.get(i).toString());
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
-
-        String actionTimeValuesFromDatabase = helper.getActionTimeValues(email);
-        ArrayList<String> ArrayListOfActionTime = new ArrayList<String>();
-        if(!actionTimeValuesFromDatabase.equals("")) {
-//        getting previous array list from string
-            JSONObject jsonActionTimeValues = null;
-            try {
-                jsonActionTimeValues = new JSONObject(actionTimeValuesFromDatabase);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            JSONArray jsonArray = jsonActionTimeValues.optJSONArray("actionTimeArray");
-            if (jsonArray != null) {
-                int len = jsonArray.length();
-                for (int i = 0; i < len; i++) {
-                    try {
-                        ArrayListOfActionTime.add(jsonArray.get(i).toString());
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
-
-        String armTwistFromDatabase = helper.getArmTwistValues(email);
-        ArrayList<String> ArrayListOfArmTwist = new ArrayList<String>();
-        if(!armTwistFromDatabase.equals("")) {
-//        getting previous array list from string
-            JSONObject jsonArmTwistValues = null;
-            try {
-                jsonArmTwistValues = new JSONObject(armTwistFromDatabase);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            JSONArray jsonArray = jsonArmTwistValues.optJSONArray("armTwistArray");
-            if (jsonArray != null) {
-                int len = jsonArray.length();
-                for (int i = 0; i < len; i++) {
-                    try {
-                        ArrayListOfArmTwist.add(jsonArray.get(i).toString());
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
+//        System.out.println("date to store: " + DateToStr);
+//
+//
+//        helper.changeAngleValues(email,convertedArrayListOfAnglesToString);
+//        helper.changeArmTwistValues(email,convertedArrayListOfArmTwistToString);
+//        helper.changeActionTimeValues(email,convertedArrayListOfActionTimeToString);
+//        helper.changeForceValues(email,convertedArrayListOfForceToString);
+//
+//        helper.changeAngleValuesWithDate(email,convertedArrayListOfAnglesToString,DateToStr);
+//        helper.changeArmTwistValuesWithDate(email,convertedArrayListOfArmTwistToString,DateToStr);
+//        helper.changeActionTimeValuesWithDate(email,convertedArrayListOfActionTimeToString,DateToStr);
+//        helper.changeForceValuesWithDate(email,convertedArrayListOfForceToString,DateToStr);
+//
+//        String angleValuesFromDatabase = helper.getAngleValues(email);
+//        ArrayList<String> ArrayListOfAngles = new ArrayList<String>();
+//        if(!angleValuesFromDatabase.equals("")) {
+////        getting previous array list from string
+//            JSONObject jsonAngleValues = null;
+//            try {
+//                jsonAngleValues = new JSONObject(angleValuesFromDatabase);
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+//            JSONArray jsonArray = jsonAngleValues.optJSONArray("angleArray");
+//            if (jsonArray != null) {
+//                int len = jsonArray.length();
+//                for (int i = 0; i < len; i++) {
+//                    try {
+//                        ArrayListOfAngles.add(jsonArray.get(i).toString());
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            }
+//        }
+//
+//
+//        String forceValuesFromDatabase = helper.getForceValues(email);
+//        ArrayList<String> ArrayListOfForces = new ArrayList<String>();
+//        if(!forceValuesFromDatabase.equals("")) {
+////        getting previous array list from string
+//            JSONObject jsonForceValues = null;
+//            try {
+//                jsonForceValues = new JSONObject(forceValuesFromDatabase);
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+//            JSONArray jsonArray = jsonForceValues.optJSONArray("forceArray");
+//            if (jsonArray != null) {
+//                int len = jsonArray.length();
+//                for (int i = 0; i < len; i++) {
+//                    try {
+//                        ArrayListOfForces.add(jsonArray.get(i).toString());
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            }
+//        }
+//
+//        String actionTimeValuesFromDatabase = helper.getActionTimeValues(email);
+//        ArrayList<String> ArrayListOfActionTime = new ArrayList<String>();
+//        if(!actionTimeValuesFromDatabase.equals("")) {
+////        getting previous array list from string
+//            JSONObject jsonActionTimeValues = null;
+//            try {
+//                jsonActionTimeValues = new JSONObject(actionTimeValuesFromDatabase);
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+//            JSONArray jsonArray = jsonActionTimeValues.optJSONArray("actionTimeArray");
+//            if (jsonArray != null) {
+//                int len = jsonArray.length();
+//                for (int i = 0; i < len; i++) {
+//                    try {
+//                        ArrayListOfActionTime.add(jsonArray.get(i).toString());
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            }
+//        }
+//
+//        String armTwistFromDatabase = helper.getArmTwistValues(email);
+//        ArrayList<String> ArrayListOfArmTwist = new ArrayList<String>();
+//        if(!armTwistFromDatabase.equals("")) {
+////        getting previous array list from string
+//            JSONObject jsonArmTwistValues = null;
+//            try {
+//                jsonArmTwistValues = new JSONObject(armTwistFromDatabase);
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+//            JSONArray jsonArray = jsonArmTwistValues.optJSONArray("armTwistArray");
+//            if (jsonArray != null) {
+//                int len = jsonArray.length();
+//                for (int i = 0; i < len; i++) {
+//                    try {
+//                        ArrayListOfArmTwist.add(jsonArray.get(i).toString());
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            }
+//        }
 
         //dummy data
 
@@ -1068,8 +1072,9 @@ public class ActivityMonitor extends Activity {
 //        databaseReference.child("Metrics").child(user.getUid()).child("Arm Twist Values").setValue(ArrayListOfArmTwist);
 //        databaseReference.child("Metrics").child(user.getUid()).child("Action Time Values").setValue(ArrayListOfActionTime);
 
-        helper.insertPlayerStats(playerStats);
-        helper.changeStatLegalIllegal(playerStats.getEmail(), playerStats.getLegalBowls(), playerStats.getIllegalBowls());
+        //Database
+//        helper.insertPlayerStats(playerStats);
+//        helper.changeStatLegalIllegal(playerStats.getEmail(), playerStats.getLegalBowls(), playerStats.getIllegalBowls());
 
         Intent i = new Intent(ActivityMonitor.this, ActivitySessionStats.class);
 
