@@ -406,9 +406,13 @@ public class ActivityMonitor extends Activity {
         DatabaseReference allMetricsRef = databaseReference.child("AllMetrics")
                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
+
+
         //Listener for all metrics listener
         allMetricsRef.addValueEventListener(allMetricsListener);
 
+        MetricsOfDateRef.keepSynced(true);
+        allMetricsRef.keepSynced(true);
 
 
         batteryProgressBar = (ProgressBar)findViewById(R.id.battery_progress);

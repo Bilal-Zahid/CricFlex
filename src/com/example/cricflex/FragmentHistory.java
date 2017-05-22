@@ -582,38 +582,189 @@ public class FragmentHistory extends Fragment {
     private void updateGraphToDate(int month, int year) {
 
         // sets the date selector to selected date
+
+        entriesAngle.clear();
+        entriesActionTime.clear();
+        entriesArmTwist.clear();
+        entriesForce.clear();
         _calendar.set(year, month, _calendar.get(Calendar.DAY_OF_MONTH));
         currentMonth.setText(DateFormat.format(dateTemplate, _calendar.getTime()));
 
+
+
+        ValueEventListener metricsWithDatesListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Getting all metrics object
+                // ...
+
+
+                System.out.println("Datasnapshot mai ara hai : ");
+                MetricsWithDates metricsOfDate = new MetricsWithDates();
+
+                metricsOfDate = dataSnapshot.getValue(MetricsWithDates.class);
+
+
+                if(metricsOfDate==null){
+                    System.out.println("Cant fetch data");
+//                    metricOfDateInMonitor = null;
+                    return;
+                }
+                else{
+//                    metricOfDateInMonitor = metricsOfDate;
+
+
+
+                    //Setting angle values with date
+                    System.out.println("Angle Values: " + metricsOfDate.angleValues);
+
+                    angleDataSize = metricsOfDate.angleValues.size();
+
+                    angleMax = metricsOfDate.angleValues.get(0);
+                    angleMin = metricsOfDate.angleValues.get(0);
+
+                    for (int i = 0; i < angleDataSize; i++) {
+
+//                        value = Integer.valueOf(list1.get(i));
+                        entriesAngle.add(new Entry(i + 1, metricsOfDate.angleValues.get(i)));
+
+                        angleAvg += metricsOfDate.angleValues.get(i);
+                        if (metricsOfDate.angleValues.get(i) > angleMax)
+                            angleMax = metricsOfDate.angleValues.get(i);
+                        if (metricsOfDate.angleValues.get(i) < angleMin)
+                            angleMin = metricsOfDate.angleValues.get(i);
+                    }
+
+                    angleAvg = angleAvg / angleDataSize;
+
+
+
+
+                    //Setting Force Values from firebase
+
+                    forceDataSize = metricsOfDate.forceValues.size();
+
+                    forceMax = metricsOfDate.forceValues.get(0);
+                    forceMin = metricsOfDate.forceValues.get(0);
+
+                    for (int i = 0; i < forceDataSize; i++) {
+
+//                        value = Integer.valueOf(list2.get(i));
+                        entriesForce.add(new Entry(i + 1,  metricsOfDate.forceValues.get(i)));
+
+                        forceAvg += metricsOfDate.forceValues.get(i);
+                        if (metricsOfDate.forceValues.get(i) > forceMax)
+                            forceMax = metricsOfDate.forceValues.get(i);
+                        if (metricsOfDate.forceValues.get(i) < forceMin)
+                            forceMin = metricsOfDate.forceValues.get(i);
+                    }
+
+                    forceAvg = forceAvg / forceDataSize;
+
+
+
+
+                    //Action Time Data
+
+                    timeDataSize = metricsOfDate.actionTimeValues.size();
+
+                    timeMax = metricsOfDate.actionTimeValues.get(0);
+                    timeMin = metricsOfDate.actionTimeValues.get(0);
+
+                    for (int i = 0; i < timeDataSize; i++) {
+//                        valueFloat = Float.valueOf(list3.get(i));
+                        entriesActionTime.add(new Entry(i + 1, metricsOfDate.actionTimeValues.get(i)));
+
+                        timeAvg += metricsOfDate.actionTimeValues.get(i);
+
+
+                        if (metricsOfDate.actionTimeValues.get(i) > timeMax)
+                            timeMax = metricsOfDate.actionTimeValues.get(i);
+                        if (metricsOfDate.actionTimeValues.get(i) < timeMin)
+                            timeMin = metricsOfDate.actionTimeValues.get(i);
+                    }
+
+                    timeAvg = timeAvg / timeDataSize;
+
+
+                    //Twist Data
+
+                    twistDataSize = metricsOfDate.armTwistValues.size();
+
+                    twistMax = metricsOfDate.armTwistValues.get(0);
+                    twistMin = metricsOfDate.armTwistValues.get(0);
+
+                    for (int i = 0; i < twistDataSize; i++) {
+
+//                        value = Integer.valueOf(list4.get(i));
+                        entriesArmTwist.add(new Entry(i + 1, metricsOfDate.armTwistValues.get(i)));
+
+                        timeAvg += metricsOfDate.armTwistValues.get(i);
+
+                        if (metricsOfDate.armTwistValues.get(i) > twistMax)
+                            twistMax = metricsOfDate.armTwistValues.get(i);
+                        if (metricsOfDate.armTwistValues.get(i) < twistMin)
+                            twistMin = metricsOfDate.armTwistValues.get(i);
+                    }
+
+                    timeAvg = timeAvg / twistDataSize;
+//                    System.out.println("Angle values from firebase: " + allMetricsInMonitor.angleValues);
+
+                    // show data according to selected tab
+                    switch (checkForTab){
+
+                        case "angle":{
+                            showAngleData();
+                            break;
+                        }
+                        case "force":{
+                            showForceData();
+                            break;
+                        }
+                        case "time":{
+                            showActionTimeData();
+                            break;
+                        }
+                        case "twist":{
+                            showTwistData();
+                            break;
+                        }
+
+                        default:
+                            break;
+                    }
+                }
+
+
+
+
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+                // ...
+            }
+        };
+
+
+
+        DatabaseReference MetricsOfDateRef = databaseReference.child("MetricsWithDates")
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(currentMonth.getText().toString());
+
+        MetricsOfDateRef.addValueEventListener(metricsWithDatesListener);
+
+
+
         // get data from database of respective month
-        getAngleDataFromDatabase();
-        getForceDataFromDatabase();
-        getTimeDataFromDatabase();
-        getTwistDataFromDatabase();
+//        getAngleDataFromDatabase();
+//        getForceDataFromDatabase();
+//        getTimeDataFromDatabase();
+//        getTwistDataFromDatabase();
 
-        // show data according to selected tab
-        switch (checkForTab){
 
-            case "angle":{
-                showAngleData();
-                break;
-            }
-            case "force":{
-                showForceData();
-                break;
-            }
-            case "time":{
-                showActionTimeData();
-                break;
-            }
-            case "twist":{
-                showTwistData();
-                break;
-            }
-
-            default:
-                break;
-        }
 
     }
 
