@@ -615,11 +615,16 @@ public class FragmentHistory extends Fragment {
 
 
 
+
                     //Setting angle values with date
                     System.out.println("Angle Values: " + metricsOfDate.angleValues);
 
                     angleDataSize = metricsOfDate.angleValues.size();
 
+                    if(angleDataSize==0){
+
+                        return;
+                    }
                     angleMax = metricsOfDate.angleValues.get(0);
                     angleMin = metricsOfDate.angleValues.get(0);
 

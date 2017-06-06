@@ -9,6 +9,7 @@ import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.app.Fragment;
+import android.net.Uri;
 import android.support.v4.widget.DrawerLayout;
 import android.text.Html;
 import android.util.Log;
@@ -20,6 +21,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.support.design.widget.NavigationView;
@@ -29,11 +31,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserInfo;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import static android.content.ContentValues.TAG;
 
@@ -163,6 +168,24 @@ public class ActivityMain extends AppCompatActivity
         emailTextView = (TextView)nav_header.findViewById(R.id.email);
         emailTextView.setText(SaveSharedPreference.getEmail(ActivityMain.this));
 
+
+        boolean imageCheck = false;
+
+        ImageView profilePicture = (ImageView) nav_header.findViewById(R.id.profilepicture);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        for (UserInfo profile : user.getProviderData()) {
+
+            Uri photoUrl = profile.getPhotoUrl();
+            if(photoUrl!= null){
+                imageCheck = true;
+            }
+            Picasso.with(ActivityMain.this).load(photoUrl).fit().centerCrop().into(profilePicture);
+        }
+        if (!imageCheck){
+            profilePicture.setImageDrawable(getResources().getDrawable(R.drawable.profile_icon));
+        }
+
         ValueEventListener userListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -176,6 +199,8 @@ public class ActivityMain extends AppCompatActivity
                 name.setText(playerProfile.nameOfPerson);
                 TextView email = (TextView)nav_header.findViewById(R.id.email);
                 email.setText(SaveSharedPreference.getEmail(ActivityMain.this));
+
+
 
 
 

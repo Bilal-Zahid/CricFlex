@@ -233,11 +233,13 @@ public class ActivityLogin extends Activity {
 
 
 
-        if(TextUtils.isEmpty(email)){
+        if(TextUtils.isEmpty(email) || email.equals("")){
             Toast.makeText(this,"Please Enter Email",Toast.LENGTH_SHORT).show();
+            return;
         }
-        if(TextUtils.isEmpty(password)){
+        if(TextUtils.isEmpty(password ) || password.equals("")){
             Toast.makeText(this,"Please Enter Password",Toast.LENGTH_SHORT).show();
+            return;
         }
 
 
@@ -294,6 +296,7 @@ public class ActivityLogin extends Activity {
                                 public void onDataChange(DataSnapshot dataSnapshot) {
 
                                     if(dataSnapshot.exists()){
+                                        System.out.println("Data doesn't exists but it is here");
                                         Intent i = new Intent(ActivityLogin.this, ActivityMain.class);
                                         ActivityLogin.this.startActivity(i);
                                         finish();

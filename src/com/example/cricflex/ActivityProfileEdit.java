@@ -10,6 +10,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Handler;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.text.InputType;
@@ -28,8 +29,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserInfo;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -38,8 +43,11 @@ import com.google.firebase.database.ValueEventListener;
 import com.mukesh.countrypicker.fragments.CountryPicker;
 import com.mukesh.countrypicker.interfaces.CountryPickerListener;
 import com.mukesh.countrypicker.models.Country;
+import com.squareup.picasso.Picasso;
 
+import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
@@ -375,7 +383,7 @@ public class ActivityProfileEdit extends FragmentActivity {
 
                 selectedGender = selectedGender;
                 selectedWeight = weightOfPerson.getText().toString();
-                selectedLocation = country.getName();
+                selectedLocation = location_text.getText().toString();
                 selectedDOB = birthDate.getText().toString();
                 selectedBowlingArm = selectedBowlingArm  ;
                 selectedBowlingStyle = bowlingStylesSpinner.getSelectedItem().toString();
@@ -455,30 +463,100 @@ public class ActivityProfileEdit extends FragmentActivity {
 
     //end onCreate
 
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//
+//        if (requestCode == 1 && resultCode == RESULT_OK && null != data) {
+//            Uri selectedImage = data.getData();
+//            String[] filePathColumn = { MediaStore.Images.Media.DATA };
+//
+//            Cursor cursor = getContentResolver().query(selectedImage,
+//                    filePathColumn, null, null, null);
+//            cursor.moveToFirst();
+//
+//            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+//            String picturePath = cursor.getString(columnIndex);
+//            cursor.close();
+//
+//
+//            ImageView profileImage = (ImageView) findViewById(R.id.profilepicture);
+//            bitmapImage = BitmapFactory.decodeFile(picturePath);
+//            bitmapImage = Bitmap.createScaledBitmap(bitmapImage, 200, 200, true);
+//
+//            profileImage.setImageBitmap(bitmapImage);
+//        }
+//
+//    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == 1 && resultCode == RESULT_OK && null != data) {
-            Uri selectedImage = data.getData();
-            String[] filePathColumn = { MediaStore.Images.Media.DATA };
 
-            Cursor cursor = getContentResolver().query(selectedImage,
-                    filePathColumn, null, null, null);
-            cursor.moveToFirst();
-
-            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-            String picturePath = cursor.getString(columnIndex);
-            cursor.close();
+        if(requestCode == 1 && resultCode == RESULT_OK){
 
 
-            ImageView profileImage = (ImageView) findViewById(R.id.profilepicture);
-            bitmapImage = BitmapFactory.decodeFile(picturePath);
-            bitmapImage = Bitmap.createScaledBitmap(bitmapImage, 200, 200, true);
+            Uri uri = data.getData();
 
-            profileImage.setImageBitmap(bitmapImage);
+
+            byte[] imageByteArray = null;
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
+
+                ByteArrayOutputStream bos = new ByteArrayOutputStream();
+
+                if (bitmap.compress(Bitmap.CompressFormat.JPEG, 20, bos)) {
+                    //image is now compressed into the output stream
+                    imageByteArray = bos.toByteArray();
+                } else {
+                    //compress failed
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            Bitmap bmp = BitmapFactory.decodeByteArray(imageByteArray, 0, imageByteArray.length);
+
+
+
+            String path = MediaStore.Images.Media.insertImage(ActivityProfileEdit.this.getContentResolver(), bmp, "Title", null);
+            final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+
+                    .setPhotoUri(Uri.parse(path))
+                    .build();
+
+
+
+            user.updateProfile(profileUpdates)
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                Log.d("done! ", "User profile updated.");
+
+                                for (UserInfo profile : user.getProviderData()) {
+                                    // Id of the provider (ex: google.com)
+//                String providerId = profile.getProviderId();
+//
+//                // UID specific to the provider
+//                String uid = profile.getUid();
+
+                                    // Name, email address, and profile photo Url
+//                String name = profile.getDisplayName();
+//                String email = profile.getEmail();
+                                    Uri photoUrl = profile.getPhotoUrl();
+
+                                    ImageView profileImage = (ImageView) findViewById(R.id.profilepicture);
+                                    Picasso.with(ActivityProfileEdit.this).load(photoUrl).fit().centerCrop().into(profileImage);
+
+
+                                };
+                            }
+                        }
+                    });
         }
-
     }
 
 

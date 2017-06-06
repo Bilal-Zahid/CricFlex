@@ -1,6 +1,7 @@
 package com.example.cricflex;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -13,6 +14,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
 import android.text.InputType;
 import android.util.Log;
@@ -30,18 +32,28 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserInfo;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.mukesh.countrypicker.fragments.CountryPicker;
 import com.mukesh.countrypicker.interfaces.CountryPickerListener;
 import com.mukesh.countrypicker.models.Country;
+import com.squareup.picasso.Picasso;
 
 
+import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -122,8 +134,12 @@ public class ActivityProfileSetup extends FragmentActivity {
     DatabaseReference userValuesReference = userNameReference.child("values");
 
 
-    private static final int SELECT_PICTURE = 1;
+    //Firebase Storage
+    StorageReference mStorage = FirebaseStorage.getInstance().getReference();
 
+    private static final int GALLERY_INTENT = 2;
+
+    private ProgressDialog mProgressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -137,6 +153,8 @@ public class ActivityProfileSetup extends FragmentActivity {
         bitmapImage = BitmapFactory.decodeResource(getResources(), R.drawable.profile_icon_large);
 
         initializeCountrySpinner();
+
+        mProgressDialog = new ProgressDialog(this);
 
         dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
 //        setDateTimeField();
@@ -188,11 +206,17 @@ public class ActivityProfileSetup extends FragmentActivity {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(
-                        Intent.ACTION_PICK,
-                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+//                Intent i = new Intent(
+//                        Intent.ACTION_PICK,
+//                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 
-                startActivityForResult(i, 1);
+
+                Intent i = new Intent(
+                        Intent.ACTION_PICK);
+
+                i.setType("image/*");
+
+                startActivityForResult(i, GALLERY_INTENT);
 
 
             }
@@ -475,7 +499,7 @@ public class ActivityProfileSetup extends FragmentActivity {
                 Intent i = new Intent(ActivityProfileSetup.this, ActivityLogin.class);
                 ActivityProfileSetup.this.startActivity(i);
 
-                FirebaseAuth.getInstance().signOut();
+//                FirebaseAuth.getInstance().signOut();
 
 
             }
@@ -488,31 +512,119 @@ public class ActivityProfileSetup extends FragmentActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == 1 && resultCode == RESULT_OK && null != data) {
-            Uri selectedImage = data.getData();
-            String[] filePathColumn = { MediaStore.Images.Media.DATA };
 
-            Cursor cursor = getContentResolver().query(selectedImage,
-                    filePathColumn, null, null, null);
-            cursor.moveToFirst();
-
-            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-            String picturePath = cursor.getString(columnIndex);
-            cursor.close();
+        if(requestCode == GALLERY_INTENT && resultCode == RESULT_OK){
 
 
-            ImageView profileImage = (ImageView) findViewById(R.id.profilepicture);
-            bitmapImage = BitmapFactory.decodeFile(picturePath);
-            bitmapImage = Bitmap.createScaledBitmap(bitmapImage, 500, 500, true);
+            Uri uri = data.getData();
 
 
-            profileImage.setImageBitmap(bitmapImage);
-//            ImageView imageView = (ImageView) findViewById(R.id.imgView);
-//            imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+            byte[] imageByteArray = null;
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
 
+                ByteArrayOutputStream bos = new ByteArrayOutputStream();
+
+                if (bitmap.compress(Bitmap.CompressFormat.JPEG, 20, bos)) {
+                    //image is now compressed into the output stream
+                    imageByteArray = bos.toByteArray();
+                } else {
+                    //compress failed
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            Bitmap bmp = BitmapFactory.decodeByteArray(imageByteArray, 0, imageByteArray.length);
+
+
+
+            String path = MediaStore.Images.Media.insertImage(ActivityProfileSetup.this.getContentResolver(), bmp, "Title", null);
+            final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+
+                    .setPhotoUri(Uri.parse(path))
+                    .build();
+
+            mProgressDialog.setMessage("Uploading ... ");
+            mProgressDialog.show();
+
+            user.updateProfile(profileUpdates)
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                Log.d("done! ", "User profile updated.");
+
+                                for (UserInfo profile : user.getProviderData()) {
+                                    // Id of the provider (ex: google.com)
+//                String providerId = profile.getProviderId();
+//
+//                // UID specific to the provider
+//                String uid = profile.getUid();
+
+                                    // Name, email address, and profile photo Url
+//                String name = profile.getDisplayName();
+//                String email = profile.getEmail();
+                                    Uri photoUrl = profile.getPhotoUrl();
+
+                                    Picasso.with(ActivityProfileSetup.this).load(photoUrl).fit().centerCrop().into(profileImage);
+
+                                    mProgressDialog.dismiss();
+                                };
+                            }
+                        }
+                    });
         }
-
     }
+
+
+//            StorageReference userPictureRef = mStorage.child("Photos").child(uri.getLastPathSegment());
+//
+//            userPictureRef.putBytes(imageByteArray).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+//                @Override
+//                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+//
+//                    Toast.makeText(ActivityProfileSetup.this, "Upload Done...", Toast.LENGTH_SHORT).show();
+//                    @SuppressWarnings("VisibleForTests") Uri downloadUrl = taskSnapshot.getDownloadUrl();
+//                    taskSnapshot.
+//
+//                    Picasso.with(ActivityProfileSetup.this).load(downloadUrl).fit().centerCrop().into(profileImage);
+////;
+//                    mProgressDialog.dismiss();
+//                }
+//            });
+
+
+    //    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//
+//        if (requestCode == 1 && resultCode == RESULT_OK && null != data) {
+//            Uri selectedImage = data.getData();
+//            String[] filePathColumn = { MediaStore.Images.Media.DATA };
+//
+//            Cursor cursor = getContentResolver().query(selectedImage,
+//                    filePathColumn, null, null, null);
+//            cursor.moveToFirst();
+//
+//            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+//            String picturePath = cursor.getString(columnIndex);
+//            cursor.close();
+//
+//
+//            ImageView profileImage = (ImageView) findViewById(R.id.profilepicture);
+//            bitmapImage = BitmapFactory.decodeFile(picturePath);
+//            bitmapImage = Bitmap.createScaledBitmap(bitmapImage, 500, 500, true);
+//
+//
+//            profileImage.setImageBitmap(bitmapImage);
+////            ImageView imageView = (ImageView) findViewById(R.id.imgView);
+////            imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+//
+//        }
+//
+//    }
 
 
 

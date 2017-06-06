@@ -1,9 +1,12 @@
 buildscript {
     repositories {
         jcenter()
+//        jcenter({url "http://jcenter.bintray.com/"})
+        mavenCentral()
     }
+
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.1'
+        classpath 'com.android.tools.build:gradle:2.3.2'
         classpath 'com.google.gms:google-services:3.0.0'
     }
 }
@@ -38,6 +41,12 @@ dependencies {
     compile 'com.google.firebase:firebase-auth:10.2.0'
     compile 'com.google.firebase:firebase-database:10.2.0'
     compile 'com.google.firebase:firebase-messaging:10.2.0'
+    compile 'com.google.firebase:firebase-storage:10.2.0'
+
+    compile 'com.squareup.picasso:picasso:2.5.2'
+//    compile 'id.zelory:compressor:1.0.4'
+    compile 'com.android.support:multidex:1.0.1'
+
 
     testCompile 'junit:junit:4.12'
 }
@@ -47,6 +56,19 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
     useLibrary 'org.apache.http.legacy'
+
+
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 19
+
+        // Enabling multidex support.
+        multiDexEnabled true
+    }
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
