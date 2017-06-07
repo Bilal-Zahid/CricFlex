@@ -4,21 +4,25 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserInfo;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.io.FileInputStream;
 import java.util.Calendar;
@@ -37,6 +41,7 @@ public class ActivityProfile extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     DatabaseReference usersDatabaseReference;
     CircleImageView profilePicture;
+    boolean imageCheck = false;
 
 
     @Override
@@ -46,6 +51,7 @@ public class ActivityProfile extends AppCompatActivity {
         System.out.println("In Profile Activity!!!");
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        setContentView(R.layout.activity_profile);
 
 
 //        DatabaseHelper helper = new DatabaseHelper(ActivityProfile.this);
@@ -57,6 +63,25 @@ public class ActivityProfile extends AppCompatActivity {
         System.out.println("Activity mai ara hai : ");
 
         Log.v("hi","lolxz");
+
+        profilePicture = (CircleImageView) findViewById(R.id.profilepicture);
+
+        //Setting profile Picture
+//        ImageView profilePicture = (ImageView) nav_header.findViewById(R.id.profilepicture);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        for (UserInfo profile : user.getProviderData()) {
+
+            Uri photoUrl = profile.getPhotoUrl();
+            if(photoUrl!= null){
+                imageCheck = true;
+            }
+            Picasso.with(ActivityProfile.this).load(photoUrl).fit().centerCrop().into(profilePicture);
+        }
+        if (!imageCheck){
+            profilePicture.setImageDrawable(getResources().getDrawable(R.drawable.profile_icon));
+        }
+
 
         ValueEventListener userListener = new ValueEventListener() {
             @Override
@@ -139,13 +164,13 @@ public class ActivityProfile extends AppCompatActivity {
 
 
 
-        setContentView(R.layout.activity_profile);
 
 
 
 
 
-        String email = SaveSharedPreference.getEmail(ActivityProfile.this);;
+
+//        String email = SaveSharedPreference.getEmail(ActivityProfile.this);;
 
         ///// CHECK THIS
 
@@ -209,13 +234,12 @@ public class ActivityProfile extends AppCompatActivity {
 
 
 
-        profilePicture = (CircleImageView) findViewById(R.id.profilepicture);
         //Bitmap bitmapImage1 = helper.getImage(email);
 
         //circleImageView.setImageBitmap(bitmapImage1);
 
-        Bitmap b = getImageBitmap(ActivityProfile.this,email,"jpeg");
-        profilePicture.setImageBitmap(b);
+//        Bitmap b = getImageBitmap(ActivityProfile.this,email,"jpeg");
+//        profilePicture.setImageBitmap(b);
 
 
 
@@ -233,18 +257,18 @@ public class ActivityProfile extends AppCompatActivity {
     }
 
 
-    public Bitmap getImageBitmap(Context context, String name, String extension){
-            name=name+"."+extension;
-        try{
-            FileInputStream fis = context.openFileInput(name);
-            Bitmap b = BitmapFactory.decodeStream(fis);
-            fis.close();
-            return b;
-        }
-        catch(Exception e){
-        }
-        return null;
-    }
+//    public Bitmap getImageBitmap(Context context, String name, String extension){
+//            name=name+"."+extension;
+//        try{
+//            FileInputStream fis = context.openFileInput(name);
+//            Bitmap b = BitmapFactory.decodeStream(fis);
+//            fis.close();
+//            return b;
+//        }
+//        catch(Exception e){
+//        }
+//        return null;
+//    }
 
 
     private String getAge(int year, int month, int day){

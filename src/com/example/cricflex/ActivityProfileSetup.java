@@ -535,66 +535,71 @@ public class ActivityProfileSetup extends FragmentActivity {
                 e.printStackTrace();
             }
 
-            Bitmap bmp = BitmapFactory.decodeByteArray(imageByteArray, 0, imageByteArray.length);
+//            Bitmap bmp = BitmapFactory.decodeByteArray(imageByteArray, 0, imageByteArray.length);
 
 
 
-            String path = MediaStore.Images.Media.insertImage(ActivityProfileSetup.this.getContentResolver(), bmp, "Title", null);
-            final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-            UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+//            String path = MediaStore.Images.Media.insertImage(ActivityProfileSetup.this.getContentResolver(), bmp, "Title", null);
 
-                    .setPhotoUri(Uri.parse(path))
-                    .build();
+
+
+
+            StorageReference userPictureRef = mStorage.child("Photos").child(uri.getLastPathSegment());
+
 
             mProgressDialog.setMessage("Uploading ... ");
             mProgressDialog.show();
+            userPictureRef.putBytes(imageByteArray).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-            user.updateProfile(profileUpdates)
-                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()) {
-                                Log.d("done! ", "User profile updated.");
+                    Toast.makeText(ActivityProfileSetup.this, "Upload Done...", Toast.LENGTH_SHORT).show();
+                    @SuppressWarnings("VisibleForTests") Uri downloadUrl = taskSnapshot.getDownloadUrl();
+//                    taskSnapshot.;
 
-                                for (UserInfo profile : user.getProviderData()) {
-                                    // Id of the provider (ex: google.com)
+
+                    final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+
+                            .setPhotoUri(downloadUrl)
+                            .build();
+
+
+
+                    user.updateProfile(profileUpdates)
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        Log.d("done! ", "User profile updated.");
+
+                                        for (UserInfo profile : user.getProviderData()) {
+                                            // Id of the provider (ex: google.com)
 //                String providerId = profile.getProviderId();
 //
 //                // UID specific to the provider
 //                String uid = profile.getUid();
 
-                                    // Name, email address, and profile photo Url
+                                            // Name, email address, and profile photo Url
 //                String name = profile.getDisplayName();
 //                String email = profile.getEmail();
-                                    Uri photoUrl = profile.getPhotoUrl();
+                                            Uri photoUrl = profile.getPhotoUrl();
 
-                                    Picasso.with(ActivityProfileSetup.this).load(photoUrl).fit().centerCrop().into(profileImage);
+                                            Picasso.with(ActivityProfileSetup.this).load(photoUrl).fit().centerCrop().into(profileImage);
 
-                                    mProgressDialog.dismiss();
-                                };
-                            }
-                        }
-                    });
-        }
-    }
+                                            mProgressDialog.dismiss();
+                                        };
+                                    }
+                                }
+                            });
 
-
-//            StorageReference userPictureRef = mStorage.child("Photos").child(uri.getLastPathSegment());
-//
-//            userPictureRef.putBytes(imageByteArray).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//                @Override
-//                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//
-//                    Toast.makeText(ActivityProfileSetup.this, "Upload Done...", Toast.LENGTH_SHORT).show();
-//                    @SuppressWarnings("VisibleForTests") Uri downloadUrl = taskSnapshot.getDownloadUrl();
-//                    taskSnapshot.
-//
 //                    Picasso.with(ActivityProfileSetup.this).load(downloadUrl).fit().centerCrop().into(profileImage);
 ////;
 //                    mProgressDialog.dismiss();
-//                }
-//            });
-
+                }
+            });
+        }
+    }
 
     //    @Override
 //    protected void onActivityResult(int requestCode, int resultCode, Intent data) {

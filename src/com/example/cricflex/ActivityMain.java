@@ -171,6 +171,7 @@ public class ActivityMain extends AppCompatActivity
 
         boolean imageCheck = false;
 
+        //Setting Navigation Bar Picture
         ImageView profilePicture = (ImageView) nav_header.findViewById(R.id.profilepicture);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 

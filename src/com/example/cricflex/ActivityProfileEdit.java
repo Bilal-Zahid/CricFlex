@@ -30,6 +30,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -40,6 +41,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.mukesh.countrypicker.fragments.CountryPicker;
 import com.mukesh.countrypicker.interfaces.CountryPickerListener;
 import com.mukesh.countrypicker.models.Country;
@@ -108,6 +112,13 @@ public class ActivityProfileEdit extends FragmentActivity {
     FirebaseAuth firebaseAuth;
 
     User playerProfile = new User();
+    boolean imageCheck = false;
+
+    StorageReference mStorage = FirebaseStorage.getInstance().getReference();
+
+    private ProgressDialog mProgressDialog;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -125,7 +136,7 @@ public class ActivityProfileEdit extends FragmentActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference();
-        progressDialog = new ProgressDialog(this);
+        mProgressDialog = new ProgressDialog(this);
 
 
         ValueEventListener userListener = new ValueEventListener() {
@@ -290,9 +301,30 @@ public class ActivityProfileEdit extends FragmentActivity {
 
 
 
-        bitmapImage = BitmapFactory.decodeResource(getResources(), R.drawable.profile_icon_large);
+//        bitmapImage = BitmapFactory.decodeResource(getResources(), R.drawable.profile_icon_large);
 
         profilePicture = (CircleImageView) findViewById(R.id.profilepicture);
+
+
+        profilePicture = (CircleImageView) findViewById(R.id.profilepicture);
+
+        //Setting profile Picture
+//        ImageView profilePicture = (ImageView) nav_header.findViewById(R.id.profilepicture);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        for (UserInfo profile : user.getProviderData()) {
+
+            Uri photoUrl = profile.getPhotoUrl();
+            if(photoUrl!= null){
+                imageCheck = true;
+            }
+            Picasso.with(ActivityProfileEdit.this).load(photoUrl).fit().centerCrop().into(profilePicture);
+        }
+        if (!imageCheck){
+            profilePicture.setImageDrawable(getResources().getDrawable(R.drawable.profile_icon));
+        }
+
+
         profilePicture.setClickable(true);
         profilePicture.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -448,7 +480,7 @@ public class ActivityProfileEdit extends FragmentActivity {
 
                 Toast.makeText(ActivityProfileEdit.this, "Profile Updated" , Toast.LENGTH_SHORT).show();
 
-                saveImage(getApplicationContext(),bitmapImage, email,"jpeg");
+//                saveImage(getApplicationContext(),bitmapImage, email,"jpeg");
 
                 Intent intent = new Intent(ActivityProfileEdit.this, ActivityMain.class);
                 startActivity(intent);
@@ -516,46 +548,101 @@ public class ActivityProfileEdit extends FragmentActivity {
                 e.printStackTrace();
             }
 
-            Bitmap bmp = BitmapFactory.decodeByteArray(imageByteArray, 0, imageByteArray.length);
+//            Bitmap bmp = BitmapFactory.decodeByteArray(imageByteArray, 0, imageByteArray.length);
+
+
+            StorageReference userPictureRef = mStorage.child("Photos").child(uri.getLastPathSegment());
+
+
+            mProgressDialog.setMessage("Uploading ... ");
+            mProgressDialog.show();
+            userPictureRef.putBytes(imageByteArray).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                    Toast.makeText(ActivityProfileEdit.this, "Upload Done...", Toast.LENGTH_SHORT).show();
+                    @SuppressWarnings("VisibleForTests") Uri downloadUrl = taskSnapshot.getDownloadUrl();
+//                    taskSnapshot.;
+
+
+                    final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+
+                            .setPhotoUri(downloadUrl)
+                            .build();
 
 
 
-            String path = MediaStore.Images.Media.insertImage(ActivityProfileEdit.this.getContentResolver(), bmp, "Title", null);
-            final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-            UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                    user.updateProfile(profileUpdates)
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        Log.d("done! ", "User profile updated.");
 
-                    .setPhotoUri(Uri.parse(path))
-                    .build();
-
-
-
-            user.updateProfile(profileUpdates)
-                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()) {
-                                Log.d("done! ", "User profile updated.");
-
-                                for (UserInfo profile : user.getProviderData()) {
-                                    // Id of the provider (ex: google.com)
+                                        for (UserInfo profile : user.getProviderData()) {
+                                            // Id of the provider (ex: google.com)
 //                String providerId = profile.getProviderId();
 //
 //                // UID specific to the provider
 //                String uid = profile.getUid();
 
-                                    // Name, email address, and profile photo Url
+                                            // Name, email address, and profile photo Url
 //                String name = profile.getDisplayName();
 //                String email = profile.getEmail();
-                                    Uri photoUrl = profile.getPhotoUrl();
+                                            Uri photoUrl = profile.getPhotoUrl();
 
-                                    ImageView profileImage = (ImageView) findViewById(R.id.profilepicture);
-                                    Picasso.with(ActivityProfileEdit.this).load(photoUrl).fit().centerCrop().into(profileImage);
+                                            Picasso.with(ActivityProfileEdit.this).load(photoUrl).fit().centerCrop().into(profilePicture);
+
+                                            mProgressDialog.dismiss();
+                                        };
+                                    }
+                                }
+                            });
+
+//                    Picasso.with(ActivityProfileSetup.this).load(downloadUrl).fit().centerCrop().into(profileImage);
+////;
+//                    mProgressDialog.dismiss();
+                }
+            });
 
 
-                                };
-                            }
-                        }
-                    });
+//            String path = MediaStore.Images.Media.insertImage(ActivityProfileEdit.this.getContentResolver(), bmp, "Title", null);
+//            final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+//            UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+//
+//                    .setPhotoUri(Uri.parse(path))
+//                    .build();
+//
+//
+//
+//            user.updateProfile(profileUpdates)
+//                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+//                        @Override
+//                        public void onComplete(@NonNull Task<Void> task) {
+//                            if (task.isSuccessful()) {
+//                                Log.d("done! ", "User profile updated.");
+//
+//                                for (UserInfo profile : user.getProviderData()) {
+//                                    // Id of the provider (ex: google.com)
+////                String providerId = profile.getProviderId();
+////
+////                // UID specific to the provider
+////                String uid = profile.getUid();
+//
+//                                    // Name, email address, and profile photo Url
+////                String name = profile.getDisplayName();
+////                String email = profile.getEmail();
+//                                    Uri photoUrl = profile.getPhotoUrl();
+//
+//                                    ImageView profileImage = (ImageView) findViewById(R.id.profilepicture);
+//                                    Picasso.with(ActivityProfileEdit.this).load(photoUrl).fit().centerCrop().into(profileImage);
+//
+//
+//                                };
+//                            }
+//                        }
+//                    });
         }
     }
 
@@ -732,20 +819,20 @@ public class ActivityProfileEdit extends FragmentActivity {
 //        return super.dispatchTouchEvent( event );
 //    }
 
-    public void saveImage(Context context, Bitmap b,String name,String extension){
-        name=name+"."+extension;
-
-//        Bitmap resized = Bitmap.createScaledBitmap(b, 200, 200, true);
-//        b = resized;
-        FileOutputStream out;
-        try {
-            out = context.openFileOutput(name, Context.MODE_PRIVATE);
-            b.compress(Bitmap.CompressFormat.JPEG, 90, out);
-            out.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+//    public void saveImage(Context context, Bitmap b,String name,String extension){
+//        name=name+"."+extension;
+//
+////        Bitmap resized = Bitmap.createScaledBitmap(b, 200, 200, true);
+////        b = resized;
+//        FileOutputStream out;
+//        try {
+//            out = context.openFileOutput(name, Context.MODE_PRIVATE);
+//            b.compress(Bitmap.CompressFormat.JPEG, 90, out);
+//            out.close();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     private int getAge(int year, int month, int day){
         Calendar dob = Calendar.getInstance();
