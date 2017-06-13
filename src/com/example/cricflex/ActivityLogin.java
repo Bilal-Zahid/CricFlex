@@ -379,6 +379,11 @@ public class ActivityLogin extends Activity {
                             finish();
 
                         }
+                        else{
+                            progressDialog.dismiss();
+
+                            Toast.makeText(ActivityLogin.this, task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                        }
 
                     }
                 });
