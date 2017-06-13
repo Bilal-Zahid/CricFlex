@@ -54,6 +54,7 @@ import com.squareup.picasso.Picasso;
 
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -126,6 +127,7 @@ public class ActivityProfileSetup extends FragmentActivity {
 
 //    private ImageView profileImage;
 
+    private static final String TAG = "CameraExif";
 
     //Firebase Things
     private DatabaseReference rootDatabaseReference = FirebaseDatabase.getInstance().getReference();
@@ -152,8 +154,8 @@ public class ActivityProfileSetup extends FragmentActivity {
 
         bitmapImage = BitmapFactory.decodeResource(getResources(), R.drawable.profile_icon_large);
 
-        initializeCountrySpinner();
-
+//        initializeCountrySpinner();
+//
         mProgressDialog = new ProgressDialog(this);
 
         dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
@@ -465,7 +467,7 @@ public class ActivityProfileSetup extends FragmentActivity {
 
 
                 Log.d("MyApp","I am here" + ijp++);
-                saveImage(getApplicationContext(),bitmapImage,email,"jpeg");
+//                saveImage(getApplicationContext(),bitmapImage,email,"jpeg");
 
 
 
@@ -508,6 +510,30 @@ public class ActivityProfileSetup extends FragmentActivity {
 
     }   //end OnCreate
 
+
+    //Method for handling rotation
+    private static int exifToDegrees(int exifOrientation) {
+        if (exifOrientation == ExifInterface.ORIENTATION_ROTATE_90) { return 90; }
+        else if (exifOrientation == ExifInterface.ORIENTATION_ROTATE_180) {  return 180; }
+        else if (exifOrientation == ExifInterface.ORIENTATION_ROTATE_270) {  return 270; }
+        return 0;
+    }
+
+    public static String getRealPathFromUri(Context context, Uri contentUri) {
+        Cursor cursor = null;
+        try {
+            String[] proj = { MediaStore.Images.Media.DATA };
+            cursor = context.getContentResolver().query(contentUri, proj, null, null, null);
+            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            cursor.moveToFirst();
+            return cursor.getString(column_index);
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -519,11 +545,28 @@ public class ActivityProfileSetup extends FragmentActivity {
             Uri uri = data.getData();
 
 
+
+
+
             byte[] imageByteArray = null;
             try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
+
+                //Rotation by orientation
+                ExifInterface exif = new ExifInterface(getRealPathFromUri(ActivityProfileSetup.this,uri));
+
+                int rotation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);
+                int rotationInDegrees = exifToDegrees(rotation);
+
+
+                System.out.println("Rotation: " + rotation + "  Rotation In degrees: " + rotationInDegrees );
+                Matrix matrix = new Matrix();
+                if (rotation != 0f) {matrix.preRotate(rotationInDegrees);}
+
+                Bitmap bitmap  = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
 
                 ByteArrayOutputStream bos = new ByteArrayOutputStream();
+
+                bitmap = Bitmap.createBitmap(bitmap, 0, 0,bitmap.getWidth(), bitmap.getHeight(), matrix, true);
 
                 if (bitmap.compress(Bitmap.CompressFormat.JPEG, 20, bos)) {
                     //image is now compressed into the output stream
@@ -535,6 +578,20 @@ public class ActivityProfileSetup extends FragmentActivity {
                 e.printStackTrace();
             }
 
+//            int orientation  = getOrientation(imageByteArray);
+
+
+
+
+
+
+//            Bitmap bmp = BitmapFactory.decodeByteArray(imageByteArray, 0, imageByteArray.length);
+
+//            bmp = rotateImage(bmp,orientation);
+//
+////            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+//            bmp.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+//            imageByteArray = stream.toByteArray();
 //            Bitmap bmp = BitmapFactory.decodeByteArray(imageByteArray, 0, imageByteArray.length);
 
 
@@ -543,9 +600,11 @@ public class ActivityProfileSetup extends FragmentActivity {
 
 
 
+            final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-            StorageReference userPictureRef = mStorage.child("Photos").child(uri.getLastPathSegment());
+            StorageReference userPictureRef = mStorage.child("Photos").child(user.getUid());
 
+            userPictureRef.delete();
 
             mProgressDialog.setMessage("Uploading ... ");
             mProgressDialog.show();
@@ -558,7 +617,6 @@ public class ActivityProfileSetup extends FragmentActivity {
 //                    taskSnapshot.;
 
 
-                    final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                     UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
 
                             .setPhotoUri(downloadUrl)
@@ -633,104 +691,104 @@ public class ActivityProfileSetup extends FragmentActivity {
 
 
 
-    public static Bitmap handleSamplingAndRotationBitmap(Context context, Uri selectedImage)
-            throws IOException {
-        int MAX_HEIGHT = 1024;
-        int MAX_WIDTH = 1024;
+//    public static Bitmap handleSamplingAndRotationBitmap(Context context, Uri selectedImage)
+//            throws IOException {
+//        int MAX_HEIGHT = 1024;
+//        int MAX_WIDTH = 1024;
+//
+//        // First decode with inJustDecodeBounds=true to check dimensions
+//        final BitmapFactory.Options options = new BitmapFactory.Options();
+//        options.inJustDecodeBounds = true;
+//        InputStream imageStream = context.getContentResolver().openInputStream(selectedImage);
+//        BitmapFactory.decodeStream(imageStream, null, options);
+//        imageStream.close();
+//
+//        // Calculate inSampleSize
+//        options.inSampleSize = calculateInSampleSize(options, MAX_WIDTH, MAX_HEIGHT);
+//
+//        // Decode bitmap with inSampleSize set
+//        options.inJustDecodeBounds = false;
+//        imageStream = context.getContentResolver().openInputStream(selectedImage);
+//        Bitmap img = BitmapFactory.decodeStream(imageStream, null, options);
+//
+//        img = rotateImageIfRequired(img, selectedImage);
+//        return img;
+//    }
+//
+//    private static int calculateInSampleSize(BitmapFactory.Options options,
+//                                             int reqWidth, int reqHeight) {
+//        // Raw height and width of image
+//        final int height = options.outHeight;
+//        final int width = options.outWidth;
+//        int inSampleSize = 1;
+//
+//        if (height > reqHeight || width > reqWidth) {
+//
+//            // Calculate ratios of height and width to requested height and width
+//            final int heightRatio = Math.round((float) height / (float) reqHeight);
+//            final int widthRatio = Math.round((float) width / (float) reqWidth);
+//
+//            // Choose the smallest ratio as inSampleSize value, this will guarantee a final image
+//            // with both dimensions larger than or equal to the requested height and width.
+//            inSampleSize = heightRatio < widthRatio ? heightRatio : widthRatio;
+//
+//            // This offers some additional logic in case the image has a strange
+//            // aspect ratio. For example, a panorama may have a much larger
+//            // width than height. In these cases the total pixels might still
+//            // end up being too large to fit comfortably in memory, so we should
+//            // be more aggressive with sample down the image (=larger inSampleSize).
+//
+//            final float totalPixels = width * height;
+//
+//            // Anything more than 2x the requested pixels we'll sample down further
+//            final float totalReqPixelsCap = reqWidth * reqHeight * 2;
+//
+//            while (totalPixels / (inSampleSize * inSampleSize) > totalReqPixelsCap) {
+//                inSampleSize++;
+//            }
+//        }
+//        return inSampleSize;
+//    }
 
-        // First decode with inJustDecodeBounds=true to check dimensions
-        final BitmapFactory.Options options = new BitmapFactory.Options();
-        options.inJustDecodeBounds = true;
-        InputStream imageStream = context.getContentResolver().openInputStream(selectedImage);
-        BitmapFactory.decodeStream(imageStream, null, options);
-        imageStream.close();
 
-        // Calculate inSampleSize
-        options.inSampleSize = calculateInSampleSize(options, MAX_WIDTH, MAX_HEIGHT);
-
-        // Decode bitmap with inSampleSize set
-        options.inJustDecodeBounds = false;
-        imageStream = context.getContentResolver().openInputStream(selectedImage);
-        Bitmap img = BitmapFactory.decodeStream(imageStream, null, options);
-
-        img = rotateImageIfRequired(img, selectedImage);
-        return img;
-    }
-
-    private static int calculateInSampleSize(BitmapFactory.Options options,
-                                             int reqWidth, int reqHeight) {
-        // Raw height and width of image
-        final int height = options.outHeight;
-        final int width = options.outWidth;
-        int inSampleSize = 1;
-
-        if (height > reqHeight || width > reqWidth) {
-
-            // Calculate ratios of height and width to requested height and width
-            final int heightRatio = Math.round((float) height / (float) reqHeight);
-            final int widthRatio = Math.round((float) width / (float) reqWidth);
-
-            // Choose the smallest ratio as inSampleSize value, this will guarantee a final image
-            // with both dimensions larger than or equal to the requested height and width.
-            inSampleSize = heightRatio < widthRatio ? heightRatio : widthRatio;
-
-            // This offers some additional logic in case the image has a strange
-            // aspect ratio. For example, a panorama may have a much larger
-            // width than height. In these cases the total pixels might still
-            // end up being too large to fit comfortably in memory, so we should
-            // be more aggressive with sample down the image (=larger inSampleSize).
-
-            final float totalPixels = width * height;
-
-            // Anything more than 2x the requested pixels we'll sample down further
-            final float totalReqPixelsCap = reqWidth * reqHeight * 2;
-
-            while (totalPixels / (inSampleSize * inSampleSize) > totalReqPixelsCap) {
-                inSampleSize++;
-            }
-        }
-        return inSampleSize;
-    }
-
-
-    private static Bitmap rotateImageIfRequired(Bitmap img, Uri selectedImage) throws IOException {
-
-        ExifInterface ei = new ExifInterface(selectedImage.getPath());
-        //int orientation = ei.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);
-
-        int orientation = ei.getAttributeInt(ExifInterface.TAG_ORIENTATION, 1);
-
-//                ExifInterface exif = new ExifInterface(pathToImage);
-//                int orientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, 1);
-//                Log.d("EXIF", "Exif: " + orientation);
-//                Matrix matrix = new Matrix();
-//                if (orientation == 6) {
-//                    matrix.postRotate(90);
-//                }
-//                else if (orientation == 3) {
-//                    matrix.postRotate(180);
-//                }
-//                else if (orientation == 8) {
-//                    matrix.postRotate(270);
-//                }
-        switch (orientation) {
-            case ExifInterface.ORIENTATION_ROTATE_90:
-                return rotateImage(img, 90);
-            case ExifInterface.ORIENTATION_ROTATE_180:
-                return rotateImage(img, 180);
-            case ExifInterface.ORIENTATION_ROTATE_270:
-                return rotateImage(img, 270);
-            default:
-                return img;
-        }
-    }
-    private static Bitmap rotateImage(Bitmap img, int degree) {
-        Matrix matrix = new Matrix();
-        matrix.postRotate(degree);
-        Bitmap rotatedImg = Bitmap.createBitmap(img, 0, 0, img.getWidth(), img.getHeight(), matrix, true);
-        img.recycle();
-        return rotatedImg;
-    }
+//    private static Bitmap rotateImageIfRequired(Bitmap img, Uri selectedImage) throws IOException {
+//
+//        ExifInterface ei = new ExifInterface(selectedImage.getPath());
+//        //int orientation = ei.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);
+//
+//        int orientation = ei.getAttributeInt(ExifInterface.TAG_ORIENTATION, 1);
+//
+////                ExifInterface exif = new ExifInterface(pathToImage);
+////                int orientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, 1);
+////                Log.d("EXIF", "Exif: " + orientation);
+////                Matrix matrix = new Matrix();
+////                if (orientation == 6) {
+////                    matrix.postRotate(90);
+////                }
+////                else if (orientation == 3) {
+////                    matrix.postRotate(180);
+////                }
+////                else if (orientation == 8) {
+////                    matrix.postRotate(270);
+////                }
+//        switch (orientation) {
+//            case ExifInterface.ORIENTATION_ROTATE_90:
+//                return rotateImage(img, 90);
+//            case ExifInterface.ORIENTATION_ROTATE_180:
+//                return rotateImage(img, 180);
+//            case ExifInterface.ORIENTATION_ROTATE_270:
+//                return rotateImage(img, 270);
+//            default:
+//                return img;
+//        }
+//    }
+//    private static Bitmap rotateImage(Bitmap img, int degree) {
+//        Matrix matrix = new Matrix();
+//        matrix.postRotate(degree);
+//        Bitmap rotatedImg = Bitmap.createBitmap(img, 0, 0, img.getWidth(), img.getHeight(), matrix, true);
+//        img.recycle();
+//        return rotatedImg;
+//    }
 
 
 
@@ -778,7 +836,7 @@ public class ActivityProfileSetup extends FragmentActivity {
 
 
 
-    private void initializeCountrySpinner(){
+//    private void initializeCountrySpinner(){
 
 //        Locale[] locale = Locale.getAvailableLocales();
 //        ArrayList<String> countries = new ArrayList<String>();
@@ -813,7 +871,7 @@ public class ActivityProfileSetup extends FragmentActivity {
         //location_text.setCompoundDrawablesWithIntrinsicBounds(country.getFlag(), 0, 0, 0);
 
 
-    }
+//    }
 
     private void findViewsById() {
 
@@ -888,29 +946,29 @@ public class ActivityProfileSetup extends FragmentActivity {
         }
     }
 
-    public Bitmap getImageBitmap(Context context,String name,String extension){
-        name=name+"."+extension;
-        try{
-            FileInputStream fis = context.openFileInput(name);
-            Bitmap b = BitmapFactory.decodeStream(fis);
-            fis.close();
-            return b;
-        }
-        catch(Exception e){
-        }
-        return null;
-    }
-
-
-
-    private void takePictureFromGallery()
-    {
-        startActivityForResult(
-                Intent.createChooser(
-                        new Intent(Intent.ACTION_GET_CONTENT)
-                                .setType("image/*"), "Choose an image"),
-                1);
-    }
+//    public Bitmap getImageBitmap(Context context,String name,String extension){
+//        name=name+"."+extension;
+//        try{
+//            FileInputStream fis = context.openFileInput(name);
+//            Bitmap b = BitmapFactory.decodeStream(fis);
+//            fis.close();
+//            return b;
+//        }
+//        catch(Exception e){
+//        }
+//        return null;
+//    }
+//
+//
+//
+//    private void takePictureFromGallery()
+//    {
+//        startActivityForResult(
+//                Intent.createChooser(
+//                        new Intent(Intent.ACTION_GET_CONTENT)
+//                                .setType("image/*"), "Choose an image"),
+//                1);
+//    }
 
 //
 //    private void handleGalleryResult(Intent data)
@@ -1040,4 +1098,127 @@ public void show(){
         Integer ageInt = new Integer(age);
         return  ageInt;
     }
+
+
+
+    // Returns the degrees in clockwise. Values are 0, 90, 180, or 270.
+//    public static int getOrientation(byte[] jpeg) {
+//        if (jpeg == null) {
+//            return 0;
+//        }
+//
+//        int offset = 0;
+//        int length = 0;
+//
+//        // ISO/IEC 10918-1:1993(E)
+//        while (offset + 3 < jpeg.length && (jpeg[offset++] & 0xFF) == 0xFF) {
+//            int marker = jpeg[offset] & 0xFF;
+//
+//            // Check if the marker is a padding.
+//            if (marker == 0xFF) {
+//                continue;
+//            }
+//            offset++;
+//
+//            // Check if the marker is SOI or TEM.
+//            if (marker == 0xD8 || marker == 0x01) {
+//                continue;
+//            }
+//            // Check if the marker is EOI or SOS.
+//            if (marker == 0xD9 || marker == 0xDA) {
+//                break;
+//            }
+//
+//            // Get the length and check if it is reasonable.
+//            length = pack(jpeg, offset, 2, false);
+//            if (length < 2 || offset + length > jpeg.length) {
+//                Log.e(TAG, "Invalid length");
+//                return 0;
+//            }
+//
+//            // Break if the marker is EXIF in APP1.
+//            if (marker == 0xE1 && length >= 8 &&
+//                    pack(jpeg, offset + 2, 4, false) == 0x45786966 &&
+//                    pack(jpeg, offset + 6, 2, false) == 0) {
+//                offset += 8;
+//                length -= 8;
+//                break;
+//            }
+//
+//            // Skip other markers.
+//            offset += length;
+//            length = 0;
+//        }
+//
+//        // JEITA CP-3451 Exif Version 2.2
+//        if (length > 8) {
+//            // Identify the byte order.
+//            int tag = pack(jpeg, offset, 4, false);
+//            if (tag != 0x49492A00 && tag != 0x4D4D002A) {
+//                Log.e(TAG, "Invalid byte order");
+//                return 0;
+//            }
+//            boolean littleEndian = (tag == 0x49492A00);
+//
+//            // Get the offset and check if it is reasonable.
+//            int count = pack(jpeg, offset + 4, 4, littleEndian) + 2;
+//            if (count < 10 || count > length) {
+//                Log.e(TAG, "Invalid offset");
+//                return 0;
+//            }
+//            offset += count;
+//            length -= count;
+//
+//            // Get the count and go through all the elements.
+//            count = pack(jpeg, offset - 2, 2, littleEndian);
+//            while (count-- > 0 && length >= 12) {
+//                // Get the tag and check if it is orientation.
+//                tag = pack(jpeg, offset, 2, littleEndian);
+//                if (tag == 0x0112) {
+//                    // We do not really care about type and count, do we?
+//                    int orientation = pack(jpeg, offset + 8, 2, littleEndian);
+//                    switch (orientation) {
+//                        case 1:
+//                            return 0;
+//                        case 3:
+//                            return 180;
+//                        case 6:
+//                            return 90;
+//                        case 8:
+//                            return 270;
+//                    }
+//                    Log.i(TAG, "Unsupported orientation");
+//                    return 0;
+//                }
+//                offset += 12;
+//                length -= 12;
+//            }
+//        }
+//
+//        Log.i(TAG, "Orientation not found");
+//        return 0;
+//    }
+//
+//    private static int pack(byte[] bytes, int offset, int length,
+//                            boolean littleEndian) {
+//        int step = 1;
+//        if (littleEndian) {
+//            offset += length - 1;
+//            step = -1;
+//        }
+//
+//        int value = 0;
+//        while (length-- > 0) {
+//            value = (value << 8) | (bytes[offset] & 0xFF);
+//            offset += step;
+//        }
+//        return value;
+//    }
+
+//    public Bitmap rotateImage(int angle, Bitmap bitmapSrc) {
+//        Matrix matrix = new Matrix();
+//        matrix.postRotate(angle);
+//        return Bitmap.createBitmap(bitmapSrc, 0, 0,
+//                bitmapSrc.getWidth(), bitmapSrc.getHeight(), matrix, true);
+//    }
 }

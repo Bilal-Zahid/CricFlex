@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
+import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Handler;
 import android.provider.MediaStore;
@@ -521,6 +523,29 @@ public class ActivityProfileEdit extends FragmentActivity {
 //
 //    }
 
+    //Method for handling rotation
+    private static int exifToDegrees(int exifOrientation) {
+        if (exifOrientation == ExifInterface.ORIENTATION_ROTATE_90) { return 90; }
+        else if (exifOrientation == ExifInterface.ORIENTATION_ROTATE_180) {  return 180; }
+        else if (exifOrientation == ExifInterface.ORIENTATION_ROTATE_270) {  return 270; }
+        return 0;
+    }
+
+    public static String getRealPathFromUri(Context context, Uri contentUri) {
+        Cursor cursor = null;
+        try {
+            String[] proj = { MediaStore.Images.Media.DATA };
+            cursor = context.getContentResolver().query(contentUri, proj, null, null, null);
+            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            cursor.moveToFirst();
+            return cursor.getString(column_index);
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -534,9 +559,23 @@ public class ActivityProfileEdit extends FragmentActivity {
 
             byte[] imageByteArray = null;
             try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
+
+                //Rotation by orientation
+                ExifInterface exif = new ExifInterface(getRealPathFromUri(ActivityProfileEdit.this,uri));
+
+                int rotation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);
+                int rotationInDegrees = exifToDegrees(rotation);
+
+
+                System.out.println("Rotation: " + rotation + "  Rotation In degrees: " + rotationInDegrees );
+                Matrix matrix = new Matrix();
+                if (rotation != 0f) {matrix.preRotate(rotationInDegrees);}
+
+                Bitmap bitmap  = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
 
                 ByteArrayOutputStream bos = new ByteArrayOutputStream();
+
+                bitmap = Bitmap.createBitmap(bitmap, 0, 0,bitmap.getWidth(), bitmap.getHeight(), matrix, true);
 
                 if (bitmap.compress(Bitmap.CompressFormat.JPEG, 20, bos)) {
                     //image is now compressed into the output stream
@@ -548,11 +587,13 @@ public class ActivityProfileEdit extends FragmentActivity {
                 e.printStackTrace();
             }
 
+
 //            Bitmap bmp = BitmapFactory.decodeByteArray(imageByteArray, 0, imageByteArray.length);
 
+            final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            StorageReference userPictureRef = mStorage.child("Photos").child(user.getUid());
 
-            StorageReference userPictureRef = mStorage.child("Photos").child(uri.getLastPathSegment());
-
+            userPictureRef.delete();
 
             mProgressDialog.setMessage("Uploading ... ");
             mProgressDialog.show();
@@ -565,7 +606,7 @@ public class ActivityProfileEdit extends FragmentActivity {
 //                    taskSnapshot.;
 
 
-                    final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
                     UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
 
                             .setPhotoUri(downloadUrl)
