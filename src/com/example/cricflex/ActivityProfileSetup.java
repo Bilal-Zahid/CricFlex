@@ -60,7 +60,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -283,6 +285,37 @@ public class ActivityProfileSetup extends FragmentActivity {
 //                String name = intent.getStringExtra("name");
 //                        String username = intent.getStringExtra("email");
                 String email = intent.getStringExtra("email");
+
+                List<String> prevEmails = new ArrayList<String>(SaveSharedPreference.getEmailList(ActivityProfileSetup.this));
+//        prevEmails = ;
+
+                boolean emailExistCheck = true;
+                System.out.println("Previous mails: " + prevEmails);
+
+                int j;
+                for( j=0;j<prevEmails.size();j++){
+                    if(prevEmails.get(j).equals(email)){
+                        System.out.println("In if of Previous mails for loop: ");
+
+                        emailExistCheck = false;
+                    }
+                    System.out.println("In Previous mails for loop: " + prevEmails.get(j));
+                }
+
+                if(emailExistCheck){
+                    System.out.println("In Email exist check: " + email);
+
+                    prevEmails.add(email);
+
+                    System.out.println("bhinot: ");
+
+                    System.out.println("Kabhi yahan bhi aao" + prevEmails);
+                    SaveSharedPreference.setEmailList(ActivityProfileSetup.this,prevEmails);
+                }
+
+
+
+
                 String password = intent.getStringExtra("password");
 //                        String security = intent.getStringExtra("security");
                 String gender = selectedGender;
@@ -608,6 +641,8 @@ public class ActivityProfileSetup extends FragmentActivity {
 
             mProgressDialog.setMessage("Uploading ... ");
             mProgressDialog.show();
+            mProgressDialog.setCancelable(false);
+            mProgressDialog.setCanceledOnTouchOutside(false);
             userPictureRef.putBytes(imageByteArray).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {

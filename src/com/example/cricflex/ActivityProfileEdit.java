@@ -597,6 +597,9 @@ public class ActivityProfileEdit extends FragmentActivity {
 
             mProgressDialog.setMessage("Uploading ... ");
             mProgressDialog.show();
+            mProgressDialog.setCancelable(false);
+            mProgressDialog.setCanceledOnTouchOutside(false);
+
             userPictureRef.putBytes(imageByteArray).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
