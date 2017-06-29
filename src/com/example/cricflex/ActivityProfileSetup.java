@@ -17,6 +17,7 @@ import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
 import android.text.InputType;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -35,6 +36,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserInfo;
@@ -284,7 +286,7 @@ public class ActivityProfileSetup extends FragmentActivity {
                 String name;
 //                String name = intent.getStringExtra("name");
 //                        String username = intent.getStringExtra("email");
-                String email = intent.getStringExtra("email");
+                final String email = intent.getStringExtra("email");
 
                 List<String> prevEmails = new ArrayList<String>(SaveSharedPreference.getEmailList(ActivityProfileSetup.this));
 //        prevEmails = ;
@@ -319,7 +321,7 @@ public class ActivityProfileSetup extends FragmentActivity {
                 String password = intent.getStringExtra("password");
 //                        String security = intent.getStringExtra("security");
                 String gender = selectedGender;
-                String location = selectedCountry;
+                String location = location_text.getText().toString();
                 String DOB = selectedDOB;
                 String bowlingArm = selectedBowlingArm;
                 String bowlingStyle = selectedBowlingStyle;
@@ -334,7 +336,7 @@ public class ActivityProfileSetup extends FragmentActivity {
 //                country = picker.getUserCountryInfo(ActivityProfileSetup.this);
 //                selectedCountry = country.getName();
 
-                location = selectedCountry;
+//                location = selectedCountry;
                 System.out.println("Country Name: " + selectedCountry);
                 //String selectedGender = gender;
 
@@ -531,8 +533,15 @@ public class ActivityProfileSetup extends FragmentActivity {
                 Toast toast = Toast.makeText(ActivityProfileSetup.this, "Registered Account!" , Toast.LENGTH_SHORT);
 
                 toast.show();
-                Intent i = new Intent(ActivityProfileSetup.this, ActivityLogin.class);
-                ActivityProfileSetup.this.startActivity(i);
+
+
+
+
+
+
+//                Intent i = new Intent(ActivityProfileSetup.this, ActivityMain.class);
+//                ActivityProfileSetup.this.startActivity(i);
+                userLogin();
 
 //                FirebaseAuth.getInstance().signOut();
 
@@ -542,6 +551,82 @@ public class ActivityProfileSetup extends FragmentActivity {
 
 
     }   //end OnCreate
+
+
+    private void userLogin() {
+
+        final String email = getIntent().getStringExtra("email");;
+        String password = getIntent().getStringExtra("password");
+
+
+
+
+
+        if(TextUtils.isEmpty(email) || email.equals("")){
+            Toast.makeText(this,"Please Enter Email",Toast.LENGTH_SHORT).show();
+            return ;
+        }
+        if(TextUtils.isEmpty(password ) || password.equals("")){
+            Toast.makeText(this,"Please Enter Password",Toast.LENGTH_SHORT).show();
+            return ;
+        }
+
+
+        final ProgressDialog progressDialog = new ProgressDialog(ActivityProfileSetup.this);
+        progressDialog.setMessage("Signing In");
+        progressDialog.show();
+        progressDialog.setCancelable(false);
+        progressDialog.setCanceledOnTouchOutside(false);
+
+        FirebaseAuth.getInstance().signInWithEmailAndPassword(email,password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+
+
+
+
+                        progressDialog.dismiss();
+
+                        if(task.isSuccessful()){
+                            //logging in
+
+
+
+
+
+//                            System.out.println("Email: " + email);
+                            Toast.makeText(ActivityProfileSetup.this, "Signed In" ,
+                                    Toast.LENGTH_SHORT).show();
+
+                            SaveSharedPreference.setEmail(ActivityProfileSetup.this,getIntent().getStringExtra("email"));
+
+                            Intent i = new Intent(ActivityProfileSetup.this, ActivityMain.class);
+                            ActivityProfileSetup.this.startActivity(i);
+
+                            finish();
+
+
+                        }
+                        else{
+                            progressDialog.dismiss();
+
+                            Toast.makeText(ActivityProfileSetup.this, task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                });
+
+
+
+
+
+
+
+
+
+    }
+
 
 
     //Method for handling rotation

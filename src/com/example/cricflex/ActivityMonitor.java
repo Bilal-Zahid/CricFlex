@@ -529,19 +529,23 @@ public class ActivityMonitor extends Activity {
             rfduinoService=null;
         }
 
+//        Toast.makeText(ActivityMonitor.this, "On destroy call howa hai" , Toast.LENGTH_SHORT).show();
 
         unregisterReceiver(scanModeReceiver);
         unregisterReceiver(bluetoothStateReceiver);
         unregisterReceiver(rfduinoReceiver);
+        unregisterReceiver(BleConnectionReceiver);
 
+
+        finish();
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_ENABLE_BT) {
             if (resultCode == Activity.RESULT_CANCELED) {
                 //Bluetooth not enabled.
-//                finish();
-                return;
+                finish();
+//                return;
             }
         }
         super.onActivityResult(requestCode, resultCode, data);
@@ -794,10 +798,28 @@ public class ActivityMonitor extends Activity {
 
         if(rfduinoService!=null)
             rfduinoService.close();
+
+        connectedToBand=false;
+
+        if (isBound)
+            getApplicationContext().unbindService(bleServiceConnection);
+
+        if(rfduinoService != null){
+            rfduinoService.disconnect();
+            rfduinoService.close();
+            rfduinoService.stopSelf();
+            rfduinoService = null;
+        }
+        downgradeState(STATE_DISCONNECTED);
+
+//        unregisterReceiver(scanModeReceiver);
+//        unregisterReceiver(bluetoothStateReceiver);
+//        unregisterReceiver(rfduinoReceiver);
+
         Intent i = new Intent(ActivityMonitor.this, ActivityMain.class);
 
         ActivityMonitor.this.startActivity(i);
-        finish();
+
 
     }
 
@@ -1085,6 +1107,8 @@ public class ActivityMonitor extends Activity {
         i.putExtra("actionTimeValues",actionTimeValues);
         i.putExtras(extraBundle);
 
+
+
         connectedToBand=false;
 
         if (isBound)
@@ -1097,6 +1121,10 @@ public class ActivityMonitor extends Activity {
             rfduinoService = null;
         }
         downgradeState(STATE_DISCONNECTED);
+
+//        unregisterReceiver(scanModeReceiver);
+//        unregisterReceiver(bluetoothStateReceiver);
+//        unregisterReceiver(rfduinoReceiver);
 
 
         ActivityMonitor.this.startActivity(i);
