@@ -227,7 +227,7 @@ public class ActivityLogin extends Activity {
     private void userLogin() {
 
         final String email = emailEditText.getText().toString().trim();
-        String password = passwordEditText.getText().toString().trim();
+        final String password = passwordEditText.getText().toString().trim();
 
 
 
@@ -266,8 +266,7 @@ public class ActivityLogin extends Activity {
 
 
 //                            System.out.println("Email: " + email);
-                            Toast.makeText(ActivityLogin.this, "Signed In" ,
-                                    Toast.LENGTH_SHORT).show();
+
 
                             SaveSharedPreference.setEmail(ActivityLogin.this,emailString);
 //                    SaveSharedPreference.semailEditText(ActivityLogin.this,helper.gemailEditText(usernamestr));
@@ -306,6 +305,7 @@ public class ActivityLogin extends Activity {
                                         Intent i = new Intent(ActivityLogin.this, ActivityProfileSetup.class);
 
                                         i.putExtra("email", email);
+                                        i.putExtra("password", password);
                                         ActivityLogin.this.startActivity(i);
                                         finish();
                                     }
@@ -376,7 +376,8 @@ public class ActivityLogin extends Activity {
 
 //                            Intent i = new Intent(ActivityLogin.this, ActivityMain.class);
 //                            ActivityLogin.this.startActivity(i);
-
+                            Toast.makeText(ActivityLogin.this, "Signed In" ,
+                                    Toast.LENGTH_SHORT).show();
                         }
                         else{
                             progressDialog.dismiss();
